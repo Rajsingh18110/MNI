@@ -11,7 +11,7 @@ export type AgentConfigFingerprint = {
 	tasks: string[];
 	triggers: string[];
 	vector_stores: string[];
-	memory: { enabled: boolean; storage: 'n8n' } | null;
+	memory: { enabled: boolean; storage: 'MNI' } | null;
 	model: string | null;
 	config_version: string;
 };

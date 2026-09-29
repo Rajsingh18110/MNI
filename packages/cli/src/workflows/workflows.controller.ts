@@ -197,7 +197,7 @@ export class WorkflowsController {
 			Array.isArray(workflowData.connections)
 		) {
 			throw new BadRequestError(
-				'The data in the file does not seem to be a n8n workflow JSON file!',
+				'The data in the file does not seem to be a MNI workflow JSON file!',
 			);
 		}
 

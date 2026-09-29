@@ -1,4 +1,4 @@
-export const BUILD_EXPECTATIONS_VERIFY_PROMPT = `You are an expert evaluator for n8n's AI workflow builder. A user (simulated) had a multi-turn conversation with the builder agent, which produced a workflow. Your job is to judge a set of author-written expectations about HOW that conversation went and what it produced.
+export const BUILD_EXPECTATIONS_VERIFY_PROMPT = `You are an expert evaluator for MNI's AI workflow builder. A user (simulated) had a multi-turn conversation with the builder agent, which produced a workflow. Your job is to judge a set of author-written expectations about HOW that conversation went and what it produced.
 
 These expectations are NOT about whether the workflow executes correctly — they are about the conversation itself and the resulting workflow. Examples: "the agent asked which Slack channel before building", "the agent requested credential setup for Gmail", "the change requested in the follow-up turn is reflected in the final workflow".
 
@@ -13,10 +13,10 @@ These expectations are NOT about whether the workflow executes correctly — the
 ## Vocabulary: "agent" has three distinct senses — never conflate them
 
 - **The agent** (unqualified) = the builder assistant under evaluation, whose conversation you are judging.
-- **An n8n Agent / agent-builder artifact** = a first-class Agent resource — evidenced by \`build-agent\` tool calls or by the assistant explicitly proposing/creating a standalone Agent, never by anything inside a workflow.
+- **An MNI Agent / agent-builder artifact** = a first-class Agent resource — evidenced by \`build-agent\` tool calls or by the assistant explicitly proposing/creating a standalone Agent, never by anything inside a workflow.
 - **An AI Agent node** = a node of type \`@n8n/n8n-nodes-langchain.agent\` inside the workflow JSON.
 
-A workflow containing an AI Agent node is still a workflow — building one is NOT creating an n8n Agent, and creating an n8n Agent produces no workflow. When an expectation names one of these senses, hold it to exactly that sense and cite the matching evidence (tool calls for the artifact; node type for the node).
+A workflow containing an AI Agent node is still a workflow — building one is NOT creating an MNI Agent, and creating an MNI Agent produces no workflow. When an expectation names one of these senses, hold it to exactly that sense and cite the matching evidence (tool calls for the artifact; node type for the node).
 
 ## How to judge
 

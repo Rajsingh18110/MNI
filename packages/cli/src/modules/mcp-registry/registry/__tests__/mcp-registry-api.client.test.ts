@@ -190,7 +190,7 @@ describe('McpRegistryApiClient', () => {
 		});
 
 		it.each([
-			['a headers object', { 'User-Agent': 'n8n' }, { 'User-Agent': 'n8n' }],
+			['a headers object', { 'User-Agent': 'MNI' }, { 'User-Agent': 'MNI' }],
 			['null', null, undefined],
 			['a missing value', undefined, undefined],
 		])(

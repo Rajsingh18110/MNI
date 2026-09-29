@@ -250,7 +250,7 @@ describe('ToolRow', () => {
 		const item: NodeConnectionItem = { ...baseNode, verified: true };
 		const { getByTestId, queryByTestId } = render(item);
 
-		// The badge tracks "reviewed by n8n", not install state.
+		// The badge tracks "reviewed by MNI", not install state.
 		expect(getByTestId('tools-connection-row-verified-badge')).toBeTruthy();
 		expect(queryByTestId('tools-connection-row-install')).toBeNull();
 	});

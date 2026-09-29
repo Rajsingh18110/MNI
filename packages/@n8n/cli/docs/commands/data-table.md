@@ -1,6 +1,6 @@
 # data-table
 
-Manage n8n data tables and their rows.
+Manage MNI data tables and their rows.
 
 ## `data-table list`
 

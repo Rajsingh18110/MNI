@@ -14,7 +14,7 @@ test.describe(
 	},
 	() => {
 		test("should show resolved inline expression preview in NDV if the node's input data is populated", async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(requirements);

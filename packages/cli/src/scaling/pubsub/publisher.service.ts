@@ -50,7 +50,7 @@ export class Publisher {
 		this.workerResponseChannel = `${prefix}:${WORKER_RESPONSE_PUBSUB_CHANNEL}`;
 		this.mcpRelayChannel = `${prefix}:${MCP_RELAY_PUBSUB_CHANNEL}`;
 
-		this.client = this.redisClientService.createClient({ type: 'publisher(n8n)' });
+		this.client = this.redisClientService.createClient({ type: 'publisher(MNI)' });
 	}
 
 	getClient() {

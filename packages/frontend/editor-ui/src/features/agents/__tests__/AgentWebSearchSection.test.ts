@@ -11,7 +11,7 @@ import type { AgentJsonConfig } from '../types';
 
 const openNewCredentialMock = vi.hoisted(() => vi.fn());
 
-// Mutable per test so the n8n Connect gating (enabled + served credential type)
+// Mutable per test so the MNI Connect gating (enabled + served credential type)
 // can be exercised without touching the real gateway stores.
 const aiGatewayState = vi.hoisted(() => ({
 	isEnabled: false,
@@ -215,7 +215,7 @@ describe('AgentWebSearchSection', () => {
 		} | null;
 	}
 
-	it('offers the n8n Connect option when the gateway serves the Brave credential type', () => {
+	it('offers the MNI Connect option when the gateway serves the Brave credential type', () => {
 		aiGatewayState.isEnabled = true;
 		aiGatewayState.servedTypes = new Set(['braveSearchApi']);
 
@@ -224,7 +224,7 @@ describe('AgentWebSearchSection', () => {
 		expect(getManagedOption(wrapper)?.value).toBe(AI_GATEWAY_MANAGED_TAG);
 	});
 
-	it('offers no n8n Connect option while the gateway is disabled', () => {
+	it('offers no MNI Connect option while the gateway is disabled', () => {
 		aiGatewayState.isEnabled = false;
 		aiGatewayState.servedTypes = new Set(['braveSearchApi']);
 
@@ -233,7 +233,7 @@ describe('AgentWebSearchSection', () => {
 		expect(getManagedOption(wrapper)).toBeNull();
 	});
 
-	it('shows a positive balance pill on the n8n Connect option', () => {
+	it('shows a positive balance pill on the MNI Connect option', () => {
 		aiGatewayState.isEnabled = true;
 		aiGatewayState.servedTypes = new Set(['braveSearchApi']);
 		aiGatewayState.balance = 4.92;
@@ -259,7 +259,7 @@ describe('AgentWebSearchSection', () => {
 		});
 	});
 
-	it('hides the n8n Connect option for SearXNG, which the gateway does not serve', () => {
+	it('hides the MNI Connect option for SearXNG, which the gateway does not serve', () => {
 		aiGatewayState.isEnabled = true;
 		aiGatewayState.servedTypes = new Set(['braveSearchApi']);
 
@@ -277,7 +277,7 @@ describe('AgentWebSearchSection', () => {
 		expect(getManagedOption(wrapper)).toBeNull();
 	});
 
-	it('emits the managed tag when the n8n Connect option is selected', async () => {
+	it('emits the managed tag when the MNI Connect option is selected', async () => {
 		aiGatewayState.isEnabled = true;
 		aiGatewayState.servedTypes = new Set(['braveSearchApi']);
 

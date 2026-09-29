@@ -4,7 +4,7 @@
 // Drives the orchestrator with a scenario's userMessage + instanceState,
 // captures InstanceAi events into the CapturedEvent[] shape that
 // extractOutcomeFromEvents consumes, then runs the discovery check. No
-// Docker, no n8n server — the orchestrator runs in-process against
+// Docker, no MNI server — the orchestrator runs in-process against
 // stubbed services.
 //
 // What's tested: the orchestrator's first dispatch decision. Tools are NOT

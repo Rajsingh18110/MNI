@@ -26,7 +26,7 @@ export interface EmitPerSpecLcovsOptions {
 	 * Feed a spec's raw files into the report. Frontend adds raws directly;
 	 * backend resolves dist→source first. Return `false` to skip the spec.
 	 * Keeps this kernel framework-agnostic — the runner-specific raw handling
-	 * (and any n8n dist→src resolution) is injected by the caller.
+	 * (and any MNI dist→src resolution) is injected by the caller.
 	 */
 	feedRaws: (
 		report: CoverageReport,

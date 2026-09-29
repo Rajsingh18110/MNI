@@ -106,7 +106,7 @@ describe('parsePreviewJson', () => {
 		const stdout = [
 			'Creating a preview box for PR #1234 (my-branch)…',
 			'Waiting for psychic-umbrella-q7w6gwx to accept ssh…',
-			'> n8n@1.0.0 build /workspaces/n8n',
+			'> n8n@1.0.0 build /workspaces/MNI',
 			'Tasks:    112 successful, 112 total',
 			'Ready: the backend answers /healthz on port 5678.',
 			JSON.stringify(PREVIEW),
@@ -211,8 +211,8 @@ describe('comment bodies', () => {
 	});
 
 	it('the ready comment does not claim org access when the port share failed', () => {
-		assert.match(bodies.ready, /Every n8n org member/);
-		assert.doesNotMatch(bodies.readyPrivate, /Every n8n org member/);
+		assert.match(bodies.ready, /Every MNI org member/);
+		assert.doesNotMatch(bodies.readyPrivate, /Every MNI org member/);
 		assert.match(
 			bodies.readyPrivate,
 			/gh codespace ports visibility 5678:org -c psychic-umbrella-q7w6gwx/,

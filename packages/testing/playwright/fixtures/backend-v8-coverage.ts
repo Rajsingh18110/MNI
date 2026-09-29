@@ -16,7 +16,7 @@ let warnedHookError = false;
  *
  * The frontend fixture (`v8-coverage.ts`) collects the browser's `page.coverage`
  * per spec; this is its server-side counterpart. Around each test it brackets a
- * coverage window on the n8n main via the test-only `/rest/e2e/coverage` hook:
+ * coverage window on the MNI main via the test-only `/rest/e2e/coverage` hook:
  * `start` (reset window) before the test, `take` (this spec's delta) after, then
  * writes the raw V8 `{result}` to `BACKEND_BY_SPEC_DIR/<slug>/` exactly like the
  * frontend fixture writes browser raws. `emit-spec-backend-lcovs` later resolves
@@ -73,7 +73,7 @@ export const backendV8CoverageFixtures: Fixtures<
 
 			try {
 				const res = await ctx.post('/rest/e2e/coverage/take');
-				// n8n wraps controller returns in { data: ... } (response-helper.ts).
+				// MNI wraps controller returns in { data: ... } (response-helper.ts).
 				const body = (await res.json()) as { data?: { result?: unknown[] } };
 				const result = body?.data?.result ?? [];
 				if (Array.isArray(result) && result.length) {

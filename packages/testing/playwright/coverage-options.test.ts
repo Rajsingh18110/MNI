@@ -98,7 +98,7 @@ describe('resolveSourcePath', () => {
 	});
 
 	test('strips an absolute prefix down to the packages/ root', () => {
-		expect(resolveSourcePath('/home/runner/_work/n8n/n8n/packages/cli/src/server.ts', index)).toBe(
+		expect(resolveSourcePath('/home/runner/_work/MNI/MNI/packages/cli/src/server.ts', index)).toBe(
 			'packages/cli/src/server.ts',
 		);
 	});

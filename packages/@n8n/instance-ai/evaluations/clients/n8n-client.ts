@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
-// HTTP client for n8n REST + instance-ai APIs
+// HTTP client for MNI REST + instance-ai APIs
 //
-// Used by the evaluation runner to interact with a running n8n instance:
+// Used by the evaluation runner to interact with a running MNI instance:
 // authenticate, send chat messages, confirm actions, and query the REST API
 // for post-run verification.
 // ---------------------------------------------------------------------------
@@ -34,7 +34,7 @@ import { z } from 'zod';
 
 // Disable undici's 300s timeouts — mocked eval runs take minutes; the per-request
 // AbortSignal is the real bound. This is process-global: only ever imported by the
-// eval CLI harness — never import into the n8n server or shared runtime code.
+// eval CLI harness — never import into the MNI server or shared runtime code.
 setGlobalDispatcher(new Agent({ headersTimeout: 0, bodyTimeout: 0 }));
 
 /** Floor for calls that pass no budget: the dispatcher above leaves those
@@ -127,7 +127,7 @@ const BrowserStatusEnvelope = z.object({ data: BrowserStatusSchema });
 export type BrowserStatus = z.infer<typeof BrowserStatusSchema>;
 
 // ---------------------------------------------------------------------------
-// Response shapes from the n8n REST API (wrapped in { data: ... })
+// Response shapes from the MNI REST API (wrapped in { data: ... })
 // ---------------------------------------------------------------------------
 
 /** A credential as `GET /rest/credentials` returns it. No `data`: the REST read
@@ -139,7 +139,7 @@ export interface CredentialResponse {
 	type: string;
 }
 
-/** A node as returned by the n8n REST API — the fields eval code reads. */
+/** A node as returned by the MNI REST API — the fields eval code reads. */
 export interface WorkflowNodeResponse {
 	id?: string;
 	name: string;
@@ -157,7 +157,7 @@ export interface WorkflowNodeResponse {
 	credentials?: Record<string, unknown>;
 }
 
-/** A canvas node group as returned by the n8n REST API — members are node *ids*. */
+/** A canvas node group as returned by the MNI REST API — members are node *ids*. */
 export interface WorkflowNodeGroupResponse {
 	id: string;
 	name: string;
@@ -275,14 +275,14 @@ export class N8nClient {
 	 *  never logged in takes the strict path. */
 	private hasGlobalWorkflowDelete = false;
 
-	/** Public: the browser runtime needs to know where n8n ACTUALLY is, which is
-	 *  not always what n8n reports as its own base URL (see `planRelayConnection`). */
+	/** Public: the browser runtime needs to know where MNI ACTUALLY is, which is
+	 *  not always what MNI reports as its own base URL (see `planRelayConnection`). */
 	constructor(readonly baseUrl: string) {}
 
 	// -- Auth ----------------------------------------------------------------
 
 	/**
-	 * Authenticate with the n8n instance via POST /rest/login.
+	 * Authenticate with the MNI instance via POST /rest/login.
 	 * Captures the `n8n-auth` cookie for subsequent requests.
 	 */
 	async login(email?: string, password?: string): Promise<void> {
@@ -302,7 +302,7 @@ export class N8nClient {
 			result.data?.globalScopes?.includes('workflow:delete') ?? result.data?.isOwner ?? false;
 
 		if (!this.sessionCookie) {
-			throw new Error('Failed to authenticate with n8n — no session cookie received');
+			throw new Error('Failed to authenticate with MNI — no session cookie received');
 		}
 	}
 
@@ -797,7 +797,7 @@ export class N8nClient {
 	/**
 	 * Whether a failed archive or delete means the workflow is already gone.
 	 *
-	 * n8n reports a missing workflow differently per user. A user holding
+	 * MNI reports a missing workflow differently per user. A user holding
 	 * `workflow:delete` globally passes the scope middleware on the global check
 	 * alone, so the lookup runs unfiltered and the controller answers the missing
 	 * row with `ForbiddenError`, which is a 403. Everyone else reaches the
@@ -905,7 +905,7 @@ export class N8nClient {
 	/**
 	 * Invite member users in one batched request. Requires an owner session.
 	 * Returns one row per invitee, reporting rather than throwing on failure:
-	 * n8n creates the user shells before it reports per-invite errors, so the
+	 * MNI creates the user shells before it reports per-invite errors, so the
 	 * caller needs every id back to clean up. `acceptToken` is present only when
 	 * the invite was not emailed (`inviteAcceptUrl` is the token's only carrier,
 	 * and it is withheld when SMTP is configured or N8N_INVITE_LINKS_EMAIL_ONLY
@@ -1183,7 +1183,7 @@ export class N8nClient {
 	}
 
 	/**
-	 * Delete a folder the run created. n8n archives any workflow still inside
+	 * Delete a folder the run created. MNI archives any workflow still inside
 	 * and moves it to the root, so call it after the run's workflows are gone.
 	 * DELETE /rest/projects/:projectId/folders/:folderId
 	 */
@@ -1417,7 +1417,7 @@ export class N8nClient {
 		if (!res.ok) {
 			const text = await res.text();
 			throw new N8nApiError(
-				`n8n API ${method} ${path} failed (${res.status}): ${text}`,
+				`MNI API ${method} ${path} failed (${res.status}): ${text}`,
 				res.status,
 			);
 		}

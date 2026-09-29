@@ -10,8 +10,8 @@
  *   1. Overrides   — replace an empty/non-SPDX license with the resolved SPDX id,
  *                    PURL-pinned (release closure) or version-agnostic via byName
  *                    (container images, where a package can appear at >1 version).
- *   2. First-party — emit n8n's own packages as LicenseRef-n8n-sustainable-use
- *                    with the full license text, so scanners read "n8n's declared
+ *   2. First-party — emit MNI's own packages as LicenseRef-n8n-sustainable-use
+ *                    with the full license text, so scanners read "MNI's declared
  *                    license" instead of "unknown/proprietary". A first-party
  *                    package published under a real OSI license keeps that license.
  *   3. Elections   — record the elected license for validly dual-licensed (OR)

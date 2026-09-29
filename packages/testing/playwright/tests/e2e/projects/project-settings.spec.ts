@@ -9,12 +9,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.goHome();
 		});
 
 		test('should display project settings page with correct layout @auth:owner', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Create a new project
 			const projectName = `UI Test ${nanoid(8)}`;
@@ -49,7 +49,7 @@ test.describe(
 			await expect(n8n.projectSettings.getDeleteButton()).toBeVisible();
 		});
 
-		test('should allow editing project name and description @auth:owner', async ({ n8n }) => {
+		test('should allow editing project name and description @auth:owner', async ({ MNI }) => {
 			// Create a new project
 			const projectName = `Edit Test ${nanoid(8)}`;
 			const { projectId } = await n8n.projectComposer.createProject(projectName);
@@ -77,7 +77,7 @@ test.describe(
 			await n8n.projectSettings.expectProjectDescriptionValue(newDescription);
 		});
 
-		test('should display members table with correct structure @auth:owner', async ({ n8n }) => {
+		test('should display members table with correct structure @auth:owner', async ({ MNI }) => {
 			// Create a new project
 			const projectName = `Table Structure ${nanoid(8)}`;
 			const { projectId } = await n8n.projectComposer.createProject(projectName);
@@ -99,7 +99,7 @@ test.describe(
 		});
 
 		test('should display role dropdown for members but not for current user @auth:owner', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Create a new project
 			const projectName = `Role Dropdown ${nanoid(8)}`;
@@ -121,7 +121,7 @@ test.describe(
 			await n8n.projectSettings.expectRowAlwaysHasAccess(adminRow);
 		});
 
-		test('should show project settings form validation @auth:owner', async ({ n8n }) => {
+		test('should show project settings form validation @auth:owner', async ({ MNI }) => {
 			// Create a new project
 			const projectName = `Validation ${nanoid(8)}`;
 			const { projectId } = await n8n.projectComposer.createProject(projectName);
@@ -143,7 +143,7 @@ test.describe(
 			await expect(n8n.projectSettings.getSaveButton()).toBeEnabled();
 		});
 
-		test('should handle unsaved changes state @auth:owner', async ({ n8n }) => {
+		test('should handle unsaved changes state @auth:owner', async ({ MNI }) => {
 			// Create a new project
 			const projectName = `Unsaved Changes ${nanoid(8)}`;
 			const { projectId } = await n8n.projectComposer.createProject(projectName);
@@ -171,7 +171,7 @@ test.describe(
 			await expect(n8n.projectSettings.getCancelButton()).toBeDisabled();
 		});
 
-		test('should display delete project section with warning @auth:owner', async ({ n8n }) => {
+		test('should display delete project section with warning @auth:owner', async ({ MNI }) => {
 			// Create a new project
 			const projectName = `Delete Test ${nanoid(8)}`;
 			const { projectId } = await n8n.projectComposer.createProject(projectName);
@@ -191,7 +191,7 @@ test.describe(
 		});
 
 		test('should allow owner to search and add a member to the project @auth:owner', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const member = await api.publicApi.createUser({
@@ -215,7 +215,7 @@ test.describe(
 		});
 
 		test('should allow project admin to search and add a member to the project @auth:owner', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const projectAdmin = await api.publicApi.createUser({
@@ -243,7 +243,7 @@ test.describe(
 		});
 
 		test('should show instance owners and admins as permanent members @auth:owner', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const projectAdmin = await api.publicApi.createUser({
@@ -279,7 +279,7 @@ test.describe(
 		});
 
 		test('should show a non-member instance admin their own permanent row @auth:owner', async ({
-			n8n,
+			MNI,
 		}) => {
 			const { projectId } = await n8n.projectComposer.createProject(`Admin Own Row ${nanoid(8)}`);
 
@@ -293,7 +293,7 @@ test.describe(
 		});
 
 		test('should list the project creator first and the current user second @auth:owner', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const projectAdmin = await api.publicApi.createUser({
@@ -313,7 +313,7 @@ test.describe(
 			await expect(rows.nth(1)).toContainText(projectAdmin.email);
 		});
 
-		test('should persist settings after page reload @auth:owner', async ({ n8n }) => {
+		test('should persist settings after page reload @auth:owner', async ({ MNI }) => {
 			// Create a new project
 			const projectName = `Persistence ${nanoid(8)}`;
 			const { projectId } = await n8n.projectComposer.createProject(projectName);

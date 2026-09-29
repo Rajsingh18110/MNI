@@ -18,7 +18,7 @@ form responses as part of the administration of their workflow.
 Required storage destinations include:
 - Google Sheets node
 - Airtable node
-- n8n Data Tables
+- MNI Data Tables
 - PostgreSQL/MySQL/MongoDB nodes
 - Any other database or spreadsheet service
 
@@ -34,13 +34,13 @@ Storage Requirements:
 
 ## Message Attribution
 
-n8n forms attach the attribution "n8n workflow" to messages by default - you must disable this setting which will
-often be called "Append n8n Attribution" for the n8n form nodes, add this setting and set it to false.
+MNI forms attach the attribution "MNI workflow" to messages by default - you must disable this setting which will
+often be called "Append MNI Attribution" for the MNI form nodes, add this setting and set it to false.
 
 ## Multi-Step Forms
 
 Build multi-step forms by chaining multiple Form nodes together. Each Form node represents a page or step in your form
-sequence. Use the n8n Form Trigger node to start the workflow and display the first form page to the user.
+sequence. Use the MNI Form Trigger node to start the workflow and display the first form page to the user.
 
 ## Data Collection & Aggregation
 
@@ -66,7 +66,7 @@ an error message to guide the user to correct their submission. This prevents ba
 
 ## Recommended Nodes
 
-### n8n Form Trigger (n8n-nodes-base.formTrigger)
+### MNI Form Trigger (n8n-nodes-base.formTrigger)
 
 Purpose: Starts the workflow and displays the first form page to the user
 
@@ -75,7 +75,7 @@ Pitfalls:
 - Use the Production URL for live forms; the Test URL is for development and debugging only
 - Ensure the form trigger is properly configured before sharing URLs with users
 
-### n8n Form (n8n-nodes-base.form)
+### MNI Form (n8n-nodes-base.form)
 
 Purpose: Displays form pages in multi-step form sequences
 
@@ -87,11 +87,11 @@ Pitfalls:
 
 ### Storage Nodes
 
-Purpose: Persist raw form data to a storage destination, preference should be for built-in n8n tables
+Purpose: Persist raw form data to a storage destination, preference should be for built-in MNI tables
 but use the most applicable node depending on the user's request.
 
 Required nodes (use at least one):
-- Data table (n8n-nodes-base.dataTable): Built-in n8n storage for quick setup - preferred
+- Data table (n8n-nodes-base.dataTable): Built-in MNI storage for quick setup - preferred
 - Google Sheets (n8n-nodes-base.googleSheets): Best for simple spreadsheet storage
 - Airtable (n8n-nodes-base.airtable): Best for structured database with relationships
 - Postgres (n8n-nodes-base.postgres) / MySQL (n8n-nodes-base.mySql) / MongoDB (n8n-nodes-base.mongoDb): For production database storage
@@ -137,8 +137,8 @@ Pitfalls:
 
 ### Missing Raw Form Response Storage
 
-When building n8n forms it is recommended to always store the raw form response to some form of data storage (Googlesheets, Airtable, etc)
-for administration later. It is CRITICAL if you create a n8n form node that you store the raw output with a storage node.
+When building MNI forms it is recommended to always store the raw form response to some form of data storage (Googlesheets, Airtable, etc)
+for administration later. It is CRITICAL if you create a MNI form node that you store the raw output with a storage node.
 
 ### Data Loss in Multi-Step Forms
 

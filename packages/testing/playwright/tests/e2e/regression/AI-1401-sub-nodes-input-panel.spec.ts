@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test('should show correct root node for nested sub-nodes in input panel', async ({ n8n }) => {
+		test('should show correct root node for nested sub-nodes in input panel', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_ai_1401.json');
 
 			// Execute the workflow first to generate data

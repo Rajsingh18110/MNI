@@ -170,7 +170,7 @@ describe('N8nLlmTracing', () => {
 					configuration: {
 						baseURL: 'https://api.openai.com/v1',
 						defaultHeaders: {
-							'User-Agent': 'n8n',
+							'User-Agent': 'MNI',
 							'x-secret-header': 'My_secret_API_key123456789',
 						},
 					},
@@ -188,7 +188,7 @@ describe('N8nLlmTracing', () => {
 			expect(persistedHeaders['x-secret-header']).toBe('**********');
 			expect(persistedHeaders['x-secret-header']).not.toBe('My_secret_API_key123456789');
 			// non-declared header is untouched
-			expect(persistedHeaders['User-Agent']).toBe('n8n');
+			expect(persistedHeaders['User-Agent']).toBe('MNI');
 
 			// stored run details are masked the same way
 			const storedOptions = tracer.runsMap['run-123'].options as {
@@ -217,7 +217,7 @@ describe('N8nLlmTracing', () => {
 					model: 'claude',
 					clientOptions: {
 						defaultHeaders: {
-							'User-Agent': 'n8n',
+							'User-Agent': 'MNI',
 							'x-secret-header': 'My_secret_API_key123456789',
 						},
 					},
@@ -232,7 +232,7 @@ describe('N8nLlmTracing', () => {
 			const persistedHeaders = inputArg[0][0].json.options.clientOptions.defaultHeaders;
 
 			expect(persistedHeaders['x-secret-header']).toBe('**********');
-			expect(persistedHeaders['User-Agent']).toBe('n8n');
+			expect(persistedHeaders['User-Agent']).toBe('MNI');
 		});
 
 		it('should always mask the Authorization header value', async () => {

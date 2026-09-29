@@ -69,7 +69,7 @@ export function toTokenUsage(
 }
 
 /**
- * Convert a single AI SDK stream chunk to an n8n StreamChunk
+ * Convert a single AI SDK stream chunk to an MNI StreamChunk
  */
 export function convertChunk(c: TextStreamPart<ToolSet>): StreamChunk | undefined {
 	switch (c.type) {

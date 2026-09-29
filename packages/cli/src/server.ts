@@ -407,8 +407,8 @@ export class Server extends AbstractServer {
 				ieNoOpen: false,
 				// This is already disabled in AbstractServer
 				xPoweredBy: false,
-				// Enable HSTS headers only when n8n handles TLS.
-				// if n8n is behind a reverse-proxy, then these headers needs to be configured there
+				// Enable HSTS headers only when MNI handles TLS.
+				// if MNI is behind a reverse-proxy, then these headers needs to be configured there
 				strictTransportSecurity: isTLSEnabled
 					? {
 							maxAge: 180 * Time.days.toSeconds,
@@ -439,7 +439,7 @@ export class Server extends AbstractServer {
 			// case or spelling reaches the static handler rather than the editor page.
 			const nonUIRoutesRegex = new RegExp(`^/(${nonUIRoutes.join('|')})/?.*$`, 'i');
 
-			// `index.html` does not change while n8n runs. Read it once and keep it split
+			// `index.html` does not change while MNI runs. Read it once and keep it split
 			// around the nonce placeholders, so serving a request is only a join.
 			let indexHtmlParts: string[] | undefined;
 			const indexHtmlTemplate = async () => {

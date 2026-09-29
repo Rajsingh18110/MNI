@@ -152,7 +152,7 @@ export class AgentChatController {
 
 	private async requireProductionChat(agentId: string, projectId: string): Promise<void> {
 		if (!(await this.agentsService.isN8nChatPublished(agentId, projectId))) {
-			throw new NotFoundError('Agent is not available in n8n Chat');
+			throw new NotFoundError('Agent is not available in MNI Chat');
 		}
 	}
 
@@ -198,7 +198,7 @@ export class AgentChatController {
 			if (!(await this.agentsService.isN8nChatPublished(agentId, projectId))) {
 				send({
 					type: 'error',
-					message: 'This agent is not available in n8n Chat.',
+					message: 'This agent is not available in MNI Chat.',
 					errorCode: 'agent_unavailable',
 				});
 				return;
@@ -282,7 +282,7 @@ export class AgentChatController {
 			if (!(await this.agentsService.isN8nChatPublished(agentId, req.params.projectId))) {
 				send({
 					type: 'error',
-					message: 'This agent is not available in n8n Chat.',
+					message: 'This agent is not available in MNI Chat.',
 					errorCode: 'agent_unavailable',
 				});
 				return;
@@ -840,7 +840,7 @@ export class AgentChatController {
 		res.setHeader('X-Content-Type-Options', 'nosniff');
 		// Sandbox anything rendered inline: attachments are user-supplied content
 		// served same-origin, so active content in them must never script against
-		// the n8n session (same posture as the binary-data controller).
+		// the MNI session (same posture as the binary-data controller).
 		res.setHeader('Content-Security-Policy', getHtmlSandboxCSP());
 		// Non-viewable types must not render inline in the browser.
 		if (!ViewableMimeTypes.includes(attachment.mimeType.toLowerCase())) {

@@ -1,9 +1,9 @@
 // ---------------------------------------------------------------------------
 // Browser runtime for credential-setup evals — a headless Chromium running the
-// REAL browser-use extension, attached to the n8n server's own relay.
+// REAL browser-use extension, attached to the MNI server's own relay.
 //
 // This is the PRODUCTION path, not an imitation of it. Production browser use
-// is `mode: 'remote'`: the n8n server owns the CDP relay and the extension
+// is `mode: 'remote'`: the MNI server owns the CDP relay and the extension
 // dials in (`mcp-browser/src/adapters/playwright.ts:112-120`, composed into the
 // agent's tool scope at `instance-ai.service.ts:2116-2119`). So the harness only
 // has to supply a browser with the extension in it — nothing in `@n8n/mcp-browser`,
@@ -94,15 +94,15 @@ export function findChromiumForEval(): string {
  *
  * The extension only honours `autoConnect` when the relay URL's host is
  * localhost (`relayAllowlist.ts` — a deliberate gate against a page pointing a
- * user's browser at someone else's relay). When the harness runs beside n8n
+ * user's browser at someone else's relay). When the harness runs beside MNI
  * that is simply true and nothing here applies.
  *
- * It stops being true when the harness runs in a SEPARATE container from n8n —
- * the lang-tracer dispatcher. n8n still reports its base URL as `localhost`
+ * It stops being true when the harness runs in a SEPARATE container from MNI —
+ * the lang-tracer dispatcher. MNI still reports its base URL as `localhost`
  * (compose sets no `N8N_EDITOR_BASE_URL`), so the gate passes, but that name
  * resolves to the HARNESS's own container and the extension connects to
  * nothing. So keep the URL saying localhost — the gate is about what the page
- * was handed — and redirect that one host:port onto the real n8n at the DNS
+ * was handed — and redirect that one host:port onto the real MNI at the DNS
  * layer.
  *
  * Port-scoped deliberately: an unscoped `MAP localhost <host>:<port>` captures
@@ -133,8 +133,8 @@ export function planRelayConnection(
 	}
 
 	const port = target.port || (target.protocol === 'https:' ? '443' : '80');
-	// Nothing to do only when the relay URL ALREADY points at n8n — host AND
-	// port. A port mismatch is the common local case: n8n in a container thinks
+	// Nothing to do only when the relay URL ALREADY points at MNI — host AND
+	// port. A port mismatch is the common local case: MNI in a container thinks
 	// it is on :5678 while the host reaches it on the published port.
 	if (relay.hostname === target.hostname && relay.port === port) return { connectUrl };
 
@@ -142,7 +142,7 @@ export function planRelayConnection(
 	relay.port = port;
 	url.searchParams.set('mcpRelayUrl', relay.toString());
 
-	// DNS help is only needed when n8n is on a DIFFERENT host. If it is reachable
+	// DNS help is only needed when MNI is on a DIFFERENT host. If it is reachable
 	// on loopback, rewriting the port is enough and a MAP would be noise.
 	const needsDnsRule = !LOOPBACK_HOSTS.has(target.hostname);
 	return {
@@ -155,11 +155,11 @@ export function planRelayConnection(
 const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', '::1']);
 
 /**
- * Origins the BROWSER can reach n8n on — not necessarily the harness's own
+ * Origins the BROWSER can reach MNI on — not necessarily the harness's own
  * `baseUrl`.
  *
  * `planRelayConnection` rewrites the relay's host to `localhost` whenever it
- * does not already match, so the browser can know n8n by a different spelling
+ * does not already match, so the browser can know MNI by a different spelling
  * than the harness does: `http://n8n:5678` in the split-container topology, and
  * `http://127.0.0.1:5678` on a laptop — cookies are host-scoped, and an IP host
  * is never sent to `localhost`. The `localhost` spelling is therefore always
@@ -192,10 +192,10 @@ export function browserSessionCookie(
 }
 
 /**
- * Give the launched browser the n8n session the harness already holds.
+ * Give the launched browser the MNI session the harness already holds.
  *
- * A launched browser has never seen n8n, but the credential-setup skill opens
- * n8n's OWN credential page first — for OAuth providers that is where the
+ * A launched browser has never seen MNI, but the credential-setup skill opens
+ * MNI's OWN credential page first — for OAuth providers that is where the
  * redirect URL lives. Without a session it lands on /signin and stops, and
  * every expectation about the PROVIDER console then fails as though the agent
  * had misbehaved (NODE-5549). `attachToRunningBrowser` needs none of this: the
@@ -210,28 +210,28 @@ async function signInBrowserToN8n(
 	try {
 		cookieHeader = client.cookie;
 	} catch {
-		logger.warn('  Browser not signed in to n8n: the harness holds no session cookie');
+		logger.warn('  Browser not signed in to MNI: the harness holds no session cookie');
 		return;
 	}
 	const cookies = browserN8nOrigins(client.baseUrl)
 		.map((origin) => browserSessionCookie(cookieHeader, origin))
 		.filter((c): c is { name: string; value: string; url: string } => c !== undefined);
 	if (!cookies.length) {
-		logger.warn('  Browser not signed in to n8n: session cookie is not a name=value pair');
+		logger.warn('  Browser not signed in to MNI: session cookie is not a name=value pair');
 		return;
 	}
 	try {
 		await context.addCookies(cookies);
 	} catch (error: unknown) {
 		// Warn-and-continue, per this helper's contract: the run still works, it
-		// just starts on n8n's sign-in page. Throwing here would leak the browser
+		// just starts on MNI's sign-in page. Throwing here would leak the browser
 		// and its profile — `cleanup` is not armed until after this call.
 		logger.warn(
-			`  Browser not signed in to n8n: ${error instanceof Error ? error.message : String(error)}`,
+			`  Browser not signed in to MNI: ${error instanceof Error ? error.message : String(error)}`,
 		);
 		return;
 	}
-	logger.verbose(`  Browser signed in to n8n (${cookies.map((c) => c.url).join(', ')})`);
+	logger.verbose(`  Browser signed in to MNI (${cookies.map((c) => c.url).join(', ')})`);
 }
 
 /** Loopback spellings the extension's own relay allowlist accepts. All of them
@@ -280,7 +280,7 @@ export interface BrowserRuntime {
 	/** The launched context — ONLY for the fixture path. Local mode attaches to
 	 *  a browser it did not start, so there is nothing to hand back. */
 	context?: BrowserContext;
-	/** Resolves once the extension reports connected to the n8n relay. */
+	/** Resolves once the extension reports connected to the MNI relay. */
 	connected: boolean;
 	close(): Promise<void>;
 }
@@ -323,7 +323,7 @@ export async function startBrowserRuntime(
 		const relayPlan = planRelayConnection(withAutoConnect, client.baseUrl);
 		const connectUrl = relayPlan.connectUrl;
 		if (relayPlan.hostResolverRule) {
-			logger.verbose(`  Relay redirected to n8n: ${relayPlan.hostResolverRule}`);
+			logger.verbose(`  Relay redirected to MNI: ${relayPlan.hostResolverRule}`);
 		}
 
 		const executablePath = findChromiumForEval();
@@ -385,12 +385,12 @@ export async function startBrowserRuntime(
 			}
 			if (!connected) {
 				throw new Error(
-					`Extension did not connect to the n8n relay within ${String(connectTimeoutMs)}ms. ` +
+					`Extension did not connect to the MNI relay within ${String(connectTimeoutMs)}ms. ` +
 						'Check that Browser Use is enabled on the instance and the relay URL is loopback ' +
 						'(the extension only honors autoConnect for localhost relays).',
 				);
 			}
-			logger.info('  Browser runtime connected to the n8n relay');
+			logger.info('  Browser runtime connected to the MNI relay');
 
 			// The returned runtime owns the session from here — its `close` is what
 			// releases it, so the guard below must not.
@@ -494,7 +494,7 @@ export async function attachToRunningBrowser(
 	try {
 		const withAutoConnect = `${link.connectUrl}${link.connectUrl.includes('?') ? '&' : '?'}autoConnect=1`;
 		// Same URL planning as the launch path — it already rewrites the relay's
-		// PORT (the container case) and only asks for a DNS rule when n8n is on a
+		// PORT (the container case) and only asks for a DNS rule when MNI is on a
 		// different HOST. That rule is the one thing we cannot supply here, since
 		// flags only exist for a browser we start ourselves.
 		const relayPlan = planRelayConnection(withAutoConnect, client.baseUrl);
@@ -504,13 +504,13 @@ export async function attachToRunningBrowser(
 		// base URL, so a non-loopback --base-url produced no rule and slipped
 		// through — pointing the developer's own browser at a remote relay. Fails
 		// closed: an absent or unparseable relay param is a refusal, not a pass.
-		// A requested DNS rule means n8n is NOT on loopback. The launch path fixes
+		// A requested DNS rule means MNI is NOT on loopback. The launch path fixes
 		// that with `--host-resolver-rules`; we cannot, because this browser is not
 		// ours to give flags to — so the connect page would resolve `localhost` on
 		// the developer's machine, where nothing is listening.
 		if (relayPlan.hostResolverRule) {
 			throw new Error(
-				'Local mode needs an n8n reachable on loopback from your own browser, but ' +
+				'Local mode needs an MNI reachable on loopback from your own browser, but ' +
 					`--base-url is ${client.baseUrl}, which needs a DNS rule only a launched ` +
 					'browser can be given. Point --base-url at localhost (a published port is fine).',
 			);
@@ -518,7 +518,7 @@ export async function attachToRunningBrowser(
 		const relayHost = relayHostname(relayPlan.connectUrl);
 		if (relayHost === undefined || !LOOPBACK_HOSTS.has(relayHost)) {
 			throw new Error(
-				'Local mode needs an n8n reachable on loopback, but the relay resolved to ' +
+				'Local mode needs an MNI reachable on loopback, but the relay resolved to ' +
 					`${relayHost ?? 'an unreadable URL'} (--base-url is ${client.baseUrl}). ` +
 					'Your own browser cannot be given host-resolver rules, and the browser-use ' +
 					'extension only auto-connects to localhost relays.',
@@ -554,7 +554,7 @@ export async function attachToRunningBrowser(
 				throw new Error(`Could not hand the relay link to your browser: ${launchError.message}`);
 			}
 			if ((await client.getBrowserStatus()).connected) {
-				logger.info('  Your browser is connected to the n8n relay');
+				logger.info('  Your browser is connected to the MNI relay');
 				// The caller owns the session from here; `close` releases it.
 				relayOwned = true;
 				return {
@@ -568,9 +568,9 @@ export async function attachToRunningBrowser(
 			await new Promise((resolve) => setTimeout(resolve, 500));
 		}
 		throw new Error(
-			`Your browser did not connect to the n8n relay within ${String(connectTimeoutMs)}ms. ` +
+			`Your browser did not connect to the MNI relay within ${String(connectTimeoutMs)}ms. ` +
 				'Check that the browser-use extension is installed and enabled in the browser ' +
-				'that just opened, and that Browser Use is enabled on the n8n instance.',
+				'that just opened, and that Browser Use is enabled on the MNI instance.',
 		);
 	} finally {
 		if (!relayOwned) await client.disconnectBrowserSession().catch(() => {});

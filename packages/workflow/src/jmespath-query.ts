@@ -9,7 +9,7 @@ export class JmespathQueryError extends Error {
 
 /**
  * Evaluate a JMESPath query against arbitrary JSON data, applying the same
- * property-name security guard n8n uses for the `$jmespath()` expression
+ * property-name security guard MNI uses for the `$jmespath()` expression
  * helper. Throws `JmespathQueryError` for guarded queries and rethrows
  * jmespath's own parser errors for invalid syntax.
  */

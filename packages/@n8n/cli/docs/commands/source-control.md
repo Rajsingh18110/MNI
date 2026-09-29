@@ -1,6 +1,6 @@
 # source-control
 
-Interact with n8n's source control integration.
+Interact with MNI's source control integration.
 
 ## `source-control pull`
 

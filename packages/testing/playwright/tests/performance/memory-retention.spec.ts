@@ -15,20 +15,20 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		async function performMemoryAction(n8n: n8nPage) {
+		async function performMemoryAction(MNI: n8nPage) {
 			await n8n.start.fromBlankCanvas();
 			await n8n.navigate.toWorkflows();
 		}
 
 		test('Memory should be released after actions', async ({
 			n8nContainer,
-			n8n,
+			MNI,
 			services,
 		}, testInfo) => {
 			const obs = services.observability;
 
 			const baseline = await getStableHeap(n8nContainer.baseUrl, obs.metrics);
-			await performMemoryAction(n8n);
+			await performMemoryAction(MNI);
 			await n8n.page.goto('/home/workflows');
 			const final = await getStableHeap(n8nContainer.baseUrl, obs.metrics);
 

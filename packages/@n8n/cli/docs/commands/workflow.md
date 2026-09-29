@@ -1,6 +1,6 @@
 # workflow
 
-Manage n8n workflows.
+Manage MNI workflows.
 
 ## `workflow list`
 

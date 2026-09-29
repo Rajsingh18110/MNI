@@ -13,7 +13,7 @@ import {
 	type N8nDocsMatch,
 } from '../n8n-docs.tool';
 
-const REGISTRY = `# n8n Docs
+const REGISTRY = `# MNI Docs
 
 > Documentation for n8n.
 
@@ -171,7 +171,7 @@ describe('n8n-docs tool', () => {
 		const registry = parseN8nDocsRegistry(REGISTRY, '2026-06-23T08:00:00.000Z');
 
 		const matches = rankN8nDocsEntries(registry.entries, {
-			query: 'How do I set up Slack credentials in n8n?',
+			query: 'How do I set up Slack credentials in MNI?',
 			intent: 'credential-setup',
 			credentialType: 'slackApi',
 			credentialDisplayName: 'Slack API',
@@ -189,7 +189,7 @@ describe('n8n-docs tool', () => {
 			[GOOGLE_OAUTH_URL]:
 				'# Google: OAuth2 single service\n\nCopy the OAuth Redirect URL into Authorized redirect URIs.',
 			[CREATE_EDIT_URL]:
-				'# Create and edit credentials\n\nWhen you save a credential, n8n tests it.',
+				'# Create and edit credentials\n\nWhen you save a credential, MNI tests it.',
 			[GMAIL_NODE_URL]: '# Gmail\n\nUse Gmail to send and receive email.',
 		});
 		const tool = createN8nDocsTool(createMockContext());
@@ -340,7 +340,7 @@ describe('n8n-docs tool', () => {
 		stubFetchWithMap({
 			[N8N_DOCS_REGISTRY_URL]: REGISTRY,
 			[MICROSOFT_CREDENTIALS_URL]:
-				'# Microsoft credentials\n\nCopy the OAuth Callback URL from your n8n credential.',
+				'# Microsoft credentials\n\nCopy the OAuth Callback URL from your MNI credential.',
 			[CREATE_EDIT_URL]: '# Create and edit credentials\n\nCredential setup modal guidance.',
 		});
 		const tool = createN8nDocsTool(createMockContext());
@@ -402,7 +402,7 @@ describe('n8n-docs tool', () => {
 		});
 
 		expect(result.documents).toEqual([]);
-		expect(result.error).toBe('URL is not an n8n docs registry entry.');
+		expect(result.error).toBe('URL is not an MNI docs registry entry.');
 	});
 
 	it('read requires a URL even though the provider schema is flattened', async () => {
@@ -421,7 +421,7 @@ describe('n8n-docs tool', () => {
 		});
 
 		expect(result.documents).toEqual([]);
-		expect(result.error).toBe('URL is not an n8n docs registry entry.');
+		expect(result.error).toBe('URL is not an MNI docs registry entry.');
 	});
 
 	it('read accepts a trailing-slash docs URL by normalizing it to markdown', async () => {
@@ -489,7 +489,7 @@ describe('n8n-docs tool', () => {
 
 		expect(fetchMock).toHaveBeenCalledTimes(2);
 		expect(result.matches?.[0].url).toBe(PUBLIC_GOOGLE_OAUTH_URL);
-		expect(result.hint).toContain('Using cached n8n docs registry');
+		expect(result.hint).toContain('Using cached MNI docs registry');
 	});
 
 	it('returns a structured error when the registry cannot be fetched', async () => {
@@ -506,7 +506,7 @@ describe('n8n-docs tool', () => {
 
 		expect(result.matches).toEqual([]);
 		expect(result.error).toBe('offline');
-		expect(result.hint).toContain('Could not load n8n docs registry');
+		expect(result.hint).toContain('Could not load MNI docs registry');
 	});
 
 	it('truncates over-limit docs page content deterministically', async () => {

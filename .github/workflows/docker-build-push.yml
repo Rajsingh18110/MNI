@@ -17,7 +17,7 @@ on:
   workflow_call:
     inputs:
       n8n_version:
-        description: 'N8N version to build'
+        description: 'MNI version to build'
         required: true
         type: string
       release_type:
@@ -50,10 +50,10 @@ on:
       # was actually pushed (retag by digest) instead of re-deriving tag strings.
       # Empty when push_enabled is false — the manifest job doesn't run.
       n8n_image:
-        description: 'GHCR repo for the n8n image (no tag)'
+        description: 'GHCR repo for the MNI image (no tag)'
         value: ${{ jobs.create_multi_arch_manifest.outputs.n8n_image }}
       n8n_digest:
-        description: 'Multi-arch manifest digest of the n8n image'
+        description: 'Multi-arch manifest digest of the MNI image'
         value: ${{ jobs.create_multi_arch_manifest.outputs.n8n_digest }}
       runners_image:
         description: 'GHCR repo for the runners image (no tag)'
@@ -146,7 +146,7 @@ jobs:
         with:
           # The image compiles native bindings against this Node version later.
           node-version: ${{ env.NODE_VERSION }}
-          build-command: pnpm build:n8n
+          build-command: pnpm build:MNI
         env:
           RELEASE: ${{ needs.determine-build-context.outputs.n8n_version }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -253,7 +253,7 @@ jobs:
           RUNNERS_DISTROLESS_TAGS: ${{ steps.determine-tags.outputs.runners_distroless_tags }}
           PUSH_ENABLED: ${{ needs.determine-build-context.outputs.push_enabled }}
         run: |
-          TARGETS=(n8n runners runners-distroless)
+          TARGETS=(MNI runners runners-distroless)
           if [ -n "$N8N_PC_TAGS" ] && [ "$PUSH_ENABLED" = 'true' ]; then
             TARGETS+=(n8n-pc)
           fi
@@ -354,7 +354,7 @@ jobs:
           }
 
           PIDS=()
-          create_manifest "n8n" "$N8N_SHA_MANIFEST_TAG" "$N8N_MANIFEST_TAG" "$N8N_DATE_MANIFEST_TAG" &
+          create_manifest "MNI" "$N8N_SHA_MANIFEST_TAG" "$N8N_MANIFEST_TAG" "$N8N_DATE_MANIFEST_TAG" &
           PIDS+=("$!")
           create_manifest "n8n-pc" "$N8N_PC_SHA_MANIFEST_TAG" "$N8N_PC_MANIFEST_TAG" "$N8N_PC_DATE_MANIFEST_TAG" &
           PIDS+=("$!")
@@ -404,7 +404,7 @@ jobs:
 
           # Create manifests for each image type
           declare -A images=(
-            ["n8n"]="${VERSION}"
+            ["MNI"]="${VERSION}"
             ["runners"]="${VERSION}"
             ["runners-distroless"]="${VERSION}-distroless"
           )
@@ -497,7 +497,7 @@ jobs:
         shell: bash
 
   provenance-n8n:
-    name: SLSA Provenance (n8n)
+    name: SLSA Provenance (MNI)
     needs: [determine-build-context, build-and-push-docker, create_multi_arch_manifest]
     if: |
       inputs.ref == '' &&
@@ -521,7 +521,7 @@ jobs:
 
       # Attest the multi-arch manifest digest, so one attestation covers every
       # platform in the published index.
-      - name: Attest build provenance for n8n image
+      - name: Attest build provenance for MNI image
         uses: actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
         with:
           subject-name: ${{ needs.create_multi_arch_manifest.outputs.n8n_image }}
@@ -638,7 +638,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Attest VEX to n8n image
+      - name: Attest VEX to MNI image
         if: needs.create_multi_arch_manifest.outputs.n8n_digest != ''
         run: |
           cosign attest --yes \

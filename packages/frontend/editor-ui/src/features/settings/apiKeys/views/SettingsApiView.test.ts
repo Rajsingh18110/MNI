@@ -186,7 +186,7 @@ describe('SettingsApiView', () => {
 		renderComponent(SettingsApiView);
 
 		expect(screen.getByText('Create API key')).toBeInTheDocument();
-		expect(screen.getByText('Control n8n programmatically using the')).toBeInTheDocument();
+		expect(screen.getByText('Control MNI programmatically using the')).toBeInTheDocument();
 	});
 
 	it('renders the table when keys exist, with swagger hint', () => {

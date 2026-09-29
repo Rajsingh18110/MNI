@@ -26,7 +26,7 @@ describe('classifyHttpError', () => {
 		});
 	});
 
-	it('tags n8n UnexpectedError', () => {
+	it('tags MNI UnexpectedError', () => {
 		const d = classifyHttpError(new UnexpectedError('internal bug'));
 		expect(d).toEqual({
 			kind: HttpErrorKind.unexpectedError,

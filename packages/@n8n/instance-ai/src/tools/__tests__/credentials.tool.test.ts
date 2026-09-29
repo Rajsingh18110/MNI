@@ -457,9 +457,9 @@ describe('credentials tool', () => {
 		});
 	});
 
-	// ── list with n8n Connect ───────────────────────────────────────────────
+	// ── list with MNI Connect ───────────────────────────────────────────────
 
-	describe('list action — n8n Connect entry', () => {
+	describe('list action — MNI Connect entry', () => {
 		function makeContextWithGateway(isGatewaySupported: boolean | undefined) {
 			const context = createMockContext();
 			(context.credentialService.list as Mock).mockResolvedValue([
@@ -607,7 +607,7 @@ describe('credentials tool', () => {
 			expect(context.credentialService.list).toHaveBeenCalledTimes(1);
 		});
 
-		it('still hints when the requested type only has the synthetic n8n Connect entry', async () => {
+		it('still hints when the requested type only has the synthetic MNI Connect entry', async () => {
 			const context = makeContextWithStored([gemini]);
 			(
 				context.credentialService as unknown as { isAiGatewayCredentialType: Mock }

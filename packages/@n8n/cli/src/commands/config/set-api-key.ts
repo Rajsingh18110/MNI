@@ -8,7 +8,7 @@ export default class ConfigSetApiKey extends Command {
 	static override examples = ['<%= config.bin %> config set-api-key n8n_api_xxx'];
 
 	static override args = {
-		key: Args.string({ description: 'n8n API key', required: true }),
+		key: Args.string({ description: 'MNI API key', required: true }),
 	};
 
 	async run(): Promise<void> {

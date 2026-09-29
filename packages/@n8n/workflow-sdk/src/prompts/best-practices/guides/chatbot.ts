@@ -11,7 +11,7 @@ export class ChatbotBestPractices implements BestPracticesDocument {
 
 Break chatbot logic into manageable steps and use error handling nodes (IF, Switch) with fallback mechanisms to manage unexpected inputs.
 
-Most chatbots run through external platforms like Slack, Telegram, or WhatsApp rather than through the n8n chat interface - if the user requests a service like this don't use the built in chat interface nodes. But, the n8n chat node is easier to get started with tests. If the user mentions chatting but does not mention a service then use the built in n8n chat node.
+Most chatbots run through external platforms like Slack, Telegram, or WhatsApp rather than through the MNI chat interface - if the user requests a service like this don't use the built in chat interface nodes. But, the MNI chat node is easier to get started with tests. If the user mentions chatting but does not mention a service then use the built in MNI chat node.
 
 CRITICAL: The user may ask to be able to chat to a workflow as well as trigger it via some other method, for example scheduling information gathering but also being able to chat with the agent - in scenarios like this the two separate workflows MUST be connected through shared memory, vector stores, data storage, or direct connections.
 
@@ -42,7 +42,7 @@ Use nodeJson(triggerNode, 'field.path') for external chat platforms:
 - Slack: sessionIdType = customKey, sessionKey = nodeJson(slackTrigger, 'event.channel')
 - WhatsApp: sessionIdType = customKey, sessionKey = nodeJson(whatsAppTrigger, 'messages.0.from')
 
-For the built-in n8n Chat Trigger, prefer memory parameters sessionIdType = fromInput and omit a custom sessionKey, because the Chat Trigger provides the session ID directly to the AI Agent.
+For the built-in MNI Chat Trigger, prefer memory parameters sessionIdType = fromInput and omit a custom sessionKey, because the Chat Trigger provides the session ID directly to the AI Agent.
 
 ## Context Engineering & AI Agent Output
 
@@ -51,8 +51,8 @@ This will require adding a note to the system prompt for the agent to tell it to
 
 ## Message Attribution
 
-n8n chatbots often attach the attribution "n8n workflow" to messages by default - you must disable this setting which will
-often be called "Append n8n Attribution" for nodes that support it, add this setting and set it to false.
+MNI chatbots often attach the attribution "MNI workflow" to messages by default - you must disable this setting which will
+often be called "Append MNI Attribution" for nodes that support it, add this setting and set it to false.
 
 ## Recommended Nodes
 
@@ -62,7 +62,7 @@ Purpose: Entry point for user messages in n8n-hosted chat interfaces
 
 Pitfalls:
 
-- Most production chatbots use external platforms (Slack, Telegram) rather than n8n's chat interface
+- Most production chatbots use external platforms (Slack, Telegram) rather than MNI's chat interface
 
 ### AI Agent (@n8n/n8n-nodes-langchain.agent)
 

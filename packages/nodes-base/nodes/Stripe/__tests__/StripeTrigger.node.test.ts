@@ -71,7 +71,7 @@ describe('Stripe Trigger Node', () => {
 
 		const expectedRequestBody = {
 			url: 'https://webhook.url/test',
-			description: 'Created by n8n for workflow ID: test-workflow-id',
+			description: 'Created by MNI for workflow ID: test-workflow-id',
 			enabled_events: ['*'],
 		};
 
@@ -94,7 +94,7 @@ describe('Stripe Trigger Node', () => {
 
 		const expectedRequestBody = {
 			url: 'https://webhook.url/test',
-			description: 'Created by n8n for workflow ID: test-workflow-id',
+			description: 'Created by MNI for workflow ID: test-workflow-id',
 			enabled_events: ['*'],
 			api_version: '2025-05-28.basil',
 		};

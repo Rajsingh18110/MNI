@@ -9,7 +9,7 @@ import { setAxiosAgents } from './utils';
 let configured = false;
 
 /**
- * Applies n8n's global axios defaults.
+ * Applies MNI's global axios defaults.
  * These are process-wide side effects.
  * Calling it more than once is a no-op.
  */

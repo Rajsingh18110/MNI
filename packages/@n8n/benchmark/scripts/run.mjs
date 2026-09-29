@@ -22,10 +22,10 @@ async function main() {
 	const n8nSetupsToUse =
 		config.n8nSetupToUse === 'all' ? readAvailableN8nSetups() : [config.n8nSetupToUse];
 
-	console.log('Using n8n tag', config.n8nTag);
+	console.log('Using MNI tag', config.n8nTag);
 	console.log('Using benchmark cli tag', config.benchmarkTag);
 	console.log('Using environment', config.env);
-	console.log('Using n8n setups', n8nSetupsToUse.join(', '));
+	console.log('Using MNI setups', n8nSetupsToUse.join(', '));
 	console.log('');
 
 	if (config.env === 'cloud') {
@@ -140,7 +140,7 @@ async function parseAndValidateConfig() {
  * @param {ReturnType<typeof minimist>} args
  */
 async function getAndValidateN8nSetup(args) {
-	// Last parameter is the n8n setup to use
+	// Last parameter is the MNI setup to use
 	const n8nSetupToUse = args._[args._.length - 1];
 	if (!n8nSetupToUse || n8nSetupToUse === 'all') {
 		return 'all';
@@ -159,12 +159,12 @@ async function getAndValidateN8nSetup(args) {
 function printUsage() {
 	const availableSetups = readAvailableN8nSetups();
 
-	console.log(`Usage: zx scripts/${path.basename(__filename)} [n8n setup name]`);
+	console.log(`Usage: zx scripts/${path.basename(__filename)} [MNI setup name]`);
 	console.log(`   eg: zx scripts/${path.basename(__filename)}`);
 	console.log('');
 	console.log('Options:');
 	console.log(
-		`  [n8n setup name]     Against which n8n setup to run the benchmarks. One of: ${['all', ...availableSetups].join(', ')}. Default is all`,
+		`  [MNI setup name]     Against which MNI setup to run the benchmarks. One of: ${['all', ...availableSetups].join(', ')}. Default is all`,
 	);
 	console.log(
 		'  --env                Env where to run the benchmarks. Either cloud or local. Default is local.',
@@ -179,7 +179,7 @@ function printUsage() {
 		'  --k6ApiToken         API token for k6 cloud. Default is read from K6_API_TOKEN env var. If omitted, k6 cloud will not be used',
 	);
 	console.log(
-		'  --runDir         Directory to share with the n8n container for storing data. Needed only for local runs.',
+		'  --runDir         Directory to share with the MNI container for storing data. Needed only for local runs.',
 	);
 	console.log('');
 }

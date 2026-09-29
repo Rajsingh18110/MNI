@@ -2,10 +2,10 @@
 
 # n8n-editor-ui
 
-The UI to create and update n8n workflows
+The UI to create and update MNI workflows
 
 ```
-npm install n8n -g
+npm install MNI -g
 ```
 
 ## Project setup

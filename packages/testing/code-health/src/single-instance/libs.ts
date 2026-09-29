@@ -28,10 +28,10 @@ const PIN_ONLY_LIBS = ['reflect-metadata'];
 
 /**
  * Host / standalone packages that provide their own runtime instance — the end-user CLI
- * (`n8n`), the task runner, and standalone tools like `@n8n/computer-use`. They keep curated
+ * (`MNI`), the task runner, and standalone tools like `@n8n/computer-use`. They keep curated
  * libs as real `dependencies` and are exempt from the peerDependency rule.
  */
-export const HOST_PACKAGES = ['n8n', '@n8n/task-runner', '@n8n/computer-use'];
+export const HOST_PACKAGES = ['MNI', '@n8n/task-runner', '@n8n/computer-use'];
 
 /**
  * Frontend packages that bundle their dependencies (Vite), so runtime-identity duplication

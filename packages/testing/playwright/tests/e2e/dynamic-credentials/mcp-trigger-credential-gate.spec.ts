@@ -132,7 +132,7 @@ async function provisionGatedWorkflow(
 		.toBe(200);
 	expect(resource).toContain(triggerPath);
 
-	// Mint an n8n OAuth token scoped to this workflow (owner consents).
+	// Mint an MNI OAuth token scoped to this workflow (owner consents).
 	const { tokens } = await mainApi.mcpOauth.completeAuthorizationCodeFlow({
 		clientName: `mcp-gate e2e ${nanoid(8)}`,
 		resource,
@@ -202,7 +202,7 @@ test.describe(
 			);
 
 			try {
-				// First call hits the gate and returns an n8n authorize link
+				// First call hits the gate and returns an MNI authorize link
 				// (`/rest/credentials/:id/authorize?token=…`), bound to the owner.
 				const gateResult = await mainApi.mcp.callTool(
 					session,
@@ -217,9 +217,9 @@ test.describe(
 				expect(authorizationUrl).toBeTruthy();
 
 				// The authorize link is owner-bound, so open it with the owner's authenticated
-				// context: n8n resolves the intent and redirects to the Keycloak authorization
-				// URL. Then complete the Keycloak flow and GET the n8n callback (on the same
-				// main) so n8n exchanges the code and stores the caller's token for the
+				// context: MNI resolves the intent and redirects to the Keycloak authorization
+				// URL. Then complete the Keycloak flow and GET the MNI callback (on the same
+				// main) so MNI exchanges the code and stores the caller's token for the
 				// resolver-keyed private credential.
 				const providerUrl = await mainApi.dynamicCredentials.resolveProviderUrlFromAuthorizeLink(
 					authorizationUrl!,

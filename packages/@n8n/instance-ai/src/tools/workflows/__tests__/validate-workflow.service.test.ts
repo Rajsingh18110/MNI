@@ -83,7 +83,7 @@ function makeNode(overrides: Partial<NodeJSON> = {}): NodeJSON {
 }
 
 /**
- * The n8n Connect managed credential as written onto a node — `id` is `null`,
+ * The MNI Connect managed credential as written onto a node — `id` is `null`,
  * which NodeJSON's credential slot (`id?: string`) doesn't model. Cast at this
  * one boundary so the fixtures below stay readable.
  */
@@ -239,7 +239,7 @@ describe('validateWorkflowConfig', () => {
 			expect(result.issues).toEqual({});
 		});
 
-		it('skips the raw builder-emitted n8n Connect tag (not yet resolved)', async () => {
+		it('skips the raw builder-emitted MNI Connect tag (not yet resolved)', async () => {
 			const context = createMockContext();
 			(context.nodeService.getDescription as Mock).mockResolvedValue(
 				makeDescription({
@@ -877,7 +877,7 @@ describe('validateWorkflowConfig', () => {
 		});
 	});
 
-	describe('n8n Connect (AI Gateway) issues', () => {
+	describe('MNI Connect (AI Gateway) issues', () => {
 		function makeGatewayContext(overrides?: {
 			isAiGatewayCredentialType?: Mock;
 			nodeDesc?: NodeDescription;

@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { searchForHeader } from './utils';
 
 const N8N_PRODUCT_URL = 'https://n8n.io/';
-const LEGACY_USER_AGENT = 'n8n';
+const LEGACY_USER_AGENT = 'MNI';
 
 function readN8nVersion(): string {
 	try {
@@ -26,16 +26,16 @@ function readN8nVersion(): string {
  * @see https://github.com/n8n-io/n8n/issues/28280
  */
 export function buildRfcStyleUserAgent(version: string): string {
-	return `Mozilla/5.0 (compatible; n8n/${version}; +${N8N_PRODUCT_URL})`;
+	return `Mozilla/5.0 (compatible; MNI/${version}; +${N8N_PRODUCT_URL})`;
 }
 
 /**
  * Resolves the outbound User-Agent to apply when a request does not set one.
  *
  * Precedence:
- * 1. Legacy default `n8n` when `N8N_ENFORCE_GLOBAL_USER_AGENT` is `false` (current default).
+ * 1. Legacy default `MNI` when `N8N_ENFORCE_GLOBAL_USER_AGENT` is `false` (current default).
  * 2. `N8N_GLOBAL_USER_AGENT_VALUE` when set.
- * 3. RFC-style `Mozilla/5.0 (compatible; n8n/<version>; +https://n8n.io/)` otherwise.
+ * 3. RFC-style `Mozilla/5.0 (compatible; MNI/<version>; +https://n8n.io/)` otherwise.
  */
 export function getDefaultN8nOutboundUserAgent(): string {
 	const { enforceGlobalUserAgent, globalUserAgentValue } = Container.get(HttpRequestConfig);
@@ -48,7 +48,7 @@ export function getDefaultN8nOutboundUserAgent(): string {
 }
 
 /**
- * Applies the n8n default outbound User-Agent to an axios request config,
+ * Applies the MNI default outbound User-Agent to an axios request config,
  * unless the caller already supplied a User-Agent header.
  */
 export function applyDefaultOutboundUserAgent(axiosConfig: AxiosRequestConfig): void {

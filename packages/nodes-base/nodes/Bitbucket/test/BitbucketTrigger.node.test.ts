@@ -505,7 +505,7 @@ describe('BitbucketTrigger', () => {
 					'POST',
 					'/workspaces/test-workspace/hooks',
 					{
-						description: 'n8n webhook',
+						description: 'MNI webhook',
 						url: 'https://test.n8n.io/webhook/test',
 						active: true,
 						events: ['repo:push', 'repo:fork'],
@@ -542,7 +542,7 @@ describe('BitbucketTrigger', () => {
 					'POST',
 					'/repositories/test-workspace/test-repo/hooks',
 					{
-						description: 'n8n webhook',
+						description: 'MNI webhook',
 						url: 'https://test.n8n.io/webhook/test',
 						active: true,
 						events: ['pullrequest:created'],

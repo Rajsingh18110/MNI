@@ -273,7 +273,7 @@ describe('eval-results.json — dispatcher contract', () => {
 		// Build thread ids — one per iteration, null when the iteration never
 		// reached a build. LangTracer persists these (case_run_artifacts.thread_ids)
 		// as the join key from a case run to its LangSmith builder trace
-		// (`metadata.thread_id`) when eval trace capture is enabled on the n8n
+		// (`metadata.thread_id`) when eval trace capture is enabled on the MNI
 		// container. Dropping the field orphans every captured trace: the trace
 		// itself carries only a bare UUID, with no case, verdict, or version.
 		expect(tc.threadIds).toEqual(['3f0c9a2e-8d41-4b77-9a10-1c2d3e4f5a6b', null]);

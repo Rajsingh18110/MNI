@@ -1,6 +1,6 @@
 # user
 
-View n8n users.
+View MNI users.
 
 ## `user list`
 

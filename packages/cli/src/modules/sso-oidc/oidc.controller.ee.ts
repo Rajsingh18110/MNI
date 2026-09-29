@@ -177,7 +177,7 @@ export class OidcController {
 						});
 					} else {
 						this.logger.warn(
-							'The OIDC ID token is too large to be stored in a cookie. Signing out will terminate the n8n session but not the OIDC provider session. Consider reducing the claims included in the ID token.',
+							'The OIDC ID token is too large to be stored in a cookie. Signing out will terminate the MNI session but not the OIDC provider session. Consider reducing the claims included in the ID token.',
 						);
 					}
 				} catch (error) {
@@ -216,11 +216,11 @@ export class OidcController {
 	}
 
 	/**
-	 * Signs the user out of n8n and, when the session was established through
+	 * Signs the user out of MNI and, when the session was established through
 	 * OIDC, returns the provider's RP-Initiated Logout URL (built from the
 	 * discovered `end_session_endpoint`, including the `id_token_hint`) for
-	 * the client to redirect to. The n8n session is always invalidated first,
-	 * so whatever happens at the provider afterwards cannot leave a valid n8n
+	 * the client to redirect to. The MNI session is always invalidated first,
+	 * so whatever happens at the provider afterwards cannot leave a valid MNI
 	 * session behind.
 	 *
 	 * Trade-off: the returned URL carries the ID token as a URL-encoded
@@ -257,7 +257,7 @@ export class OidcController {
 			const endSessionUrl = await this.oidcService.generateEndSessionUrl(idToken);
 			return { redirectUrl: endSessionUrl?.toString() ?? null };
 		} catch (error) {
-			// The n8n session is already terminated at this point; a failure to
+			// The MNI session is already terminated at this point; a failure to
 			// reach the provider (e.g. discovery endpoint unavailable) must not
 			// fail the sign-out itself.
 			this.logger.warn('Failed to build the OIDC RP-initiated logout URL', { error });

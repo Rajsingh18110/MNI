@@ -8,7 +8,7 @@ test.describe(
 	},
 	() => {
 		test.describe('From URL', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.page.route('**/rest/workflows/from-url*', async (route) => {
 					await route.fulfill({
 						status: 200,
@@ -18,7 +18,7 @@ test.describe(
 				});
 			});
 
-			test('should import workflow', async ({ n8n }) => {
+			test('should import workflow', async ({ MNI }) => {
 				await n8n.navigate.toWorkflow('new');
 				await n8n.page.waitForLoadState('load');
 
@@ -38,7 +38,7 @@ test.describe(
 				await expect(n8n.notifications.getSuccessNotifications()).toHaveCount(0);
 			});
 
-			test('clicking outside modal should not show error toast', async ({ n8n }) => {
+			test('clicking outside modal should not show error toast', async ({ MNI }) => {
 				await n8n.navigate.toWorkflow('new');
 				await n8n.page.waitForLoadState('load');
 
@@ -50,7 +50,7 @@ test.describe(
 				await expect(n8n.notifications.getErrorNotifications()).toHaveCount(0);
 			});
 
-			test('canceling modal should not show error toast', async ({ n8n }) => {
+			test('canceling modal should not show error toast', async ({ MNI }) => {
 				await n8n.navigate.toWorkflow('new');
 				await n8n.page.waitForLoadState('load');
 
@@ -62,7 +62,7 @@ test.describe(
 				await expect(n8n.notifications.getErrorNotifications()).toHaveCount(0);
 			});
 
-			test('should import workflow from URL without .json extension', async ({ n8n }) => {
+			test('should import workflow from URL without .json extension', async ({ MNI }) => {
 				await n8n.navigate.toWorkflow('new');
 				await n8n.page.waitForLoadState('load');
 
@@ -84,7 +84,7 @@ test.describe(
 		});
 
 		test.describe('From File', () => {
-			test('should import workflow', async ({ n8n }) => {
+			test('should import workflow', async ({ MNI }) => {
 				await n8n.navigate.toWorkflow('new');
 				await n8n.page.waitForLoadState('load');
 

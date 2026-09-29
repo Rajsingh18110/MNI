@@ -51,7 +51,7 @@ describe('Webhook', () => {
 
 	describe('initOrchestration', () => {
 		it('should get command channel and subscribe to it', async () => {
-			const mockCommandChannel = 'n8n:n8n.commands';
+			const mockCommandChannel = 'MNI:n8n.commands';
 			mockSubscriber.getCommandChannel.mockReturnValue(mockCommandChannel);
 			mockSubscriber.subscribe.mockResolvedValue(undefined);
 

@@ -1,12 +1,12 @@
 ---
 name: n8n-cli
-description: Use the n8n CLI to manage workflows, credentials, executions, and more on an n8n instance. Use when the user asks to interact with n8n, automate workflows, manage credentials, or operate their instance from the command line.
+description: Use the MNI CLI to manage workflows, credentials, executions, and more on an MNI instance. Use when the user asks to interact with MNI, automate workflows, manage credentials, or operate their instance from the command line.
 allowed-tools: Bash(n8n-cli:*), Bash(echo:*), Bash(cat:*), Read, Write
 ---
 
-# n8n CLI
+# MNI CLI
 
-The `n8n-cli` command-line tool manages an n8n instance via its REST API.
+The `n8n-cli` command-line tool manages an MNI instance via its REST API.
 It auto-detects piped output and switches to JSON, making it composable for scripts and LLM tool use.
 
 ## Setup

@@ -177,7 +177,7 @@ export const useViewStacks = defineStore('nodeCreatorViewStacks', () => {
 		// baselineItems stays unfiltered: it is also the search base, where restricted types stay findable.
 		const browseItems = withoutRestrictedNodes(stack.baselineItems, isNodeItemRestricted);
 
-		// Surface n8n Connect-powered nodes in a dedicated section at the top,
+		// Surface MNI Connect-powered nodes in a dedicated section at the top,
 		// extracted before grouping so they don't also land in the AI sections
 		if (showsAiGatewaySection(stack)) {
 			const extracted = extractAiGatewaySection(browseItems);

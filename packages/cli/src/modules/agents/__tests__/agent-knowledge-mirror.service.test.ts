@@ -395,7 +395,7 @@ describe('AgentKnowledgeMirrorService', () => {
 			);
 		});
 
-		it('uses the n8n sandbox home for the knowledge mirror', async () => {
+		it('uses the MNI sandbox home for the knowledge mirror', async () => {
 			sandbox = makeSandbox('n8n-sandbox', 'n8n-sandbox-id');
 			filesystem = mock<WorkspaceFilesystem>();
 			runtimeService = makeRuntimeService(makeRuntime(sandbox, filesystem));

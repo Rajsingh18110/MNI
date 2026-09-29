@@ -30,7 +30,7 @@ function buildTestImage(targetImage) {
 		console.log(`🎯 Preparing test image from ${targetImage}`);
 
 		// Build CLI with e2e controller
-		execCommand('pnpm turbo build --filter=n8n', {
+		execCommand('pnpm turbo build --filter=MNI', {
 			env: { ...process.env, INCLUDE_TEST_CONTROLLER: 'true' },
 		});
 
@@ -51,7 +51,7 @@ function buildTestImage(targetImage) {
 		writeFileSync(
 			dockerfilePath,
 			`FROM ${targetImage}
-COPY e2e.controller.js /usr/local/lib/node_modules/n8n/dist/controllers/e2e.controller.js
+COPY e2e.controller.js /usr/local/lib/node_modules/MNI/dist/controllers/e2e.controller.js
 `,
 		);
 

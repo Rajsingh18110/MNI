@@ -14,7 +14,7 @@
 						<li><a href="https://docs.n8n.io/flow-logic/error-handling/" style="color: #007bff; text-decoration: none;">Docs</a></li>
 					</ul>
 				</mj-text>
-				<mj-text>Happy automating,<br />The n8n team</mj-text>
+				<mj-text>Happy automating,<br />The MNI team</mj-text>
 				<mj-include path="./_footer.mjml" />
 			</mj-column>
 		</mj-section>

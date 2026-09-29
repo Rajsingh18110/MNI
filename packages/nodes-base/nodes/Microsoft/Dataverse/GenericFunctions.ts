@@ -47,7 +47,7 @@ const CONTENT_TYPE_JSON = 'application/json; charset=utf-8';
 /**
  * Per-request HTTP timeout (milliseconds). Dataverse occasionally takes 30+
  * seconds for large list / metadata queries; a generous one-minute cap keeps
- * a hung request from blocking an n8n executor indefinitely while still
+ * a hung request from blocking an MNI executor indefinitely while still
  * allowing legitimately slow operations to complete.
  */
 const REQUEST_TIMEOUT_MS = 60_000;

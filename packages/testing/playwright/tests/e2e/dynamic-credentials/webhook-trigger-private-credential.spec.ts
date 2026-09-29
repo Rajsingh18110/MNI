@@ -41,7 +41,7 @@ test.describe(
 
 			const keycloak = services.keycloak;
 			// authUrl is the EXTERNAL URL (this machine follows the redirect); the token
-			// URL is INTERNAL (n8n exchanges the code server-to-server).
+			// URL is INTERNAL (MNI exchanges the code server-to-server).
 			const externalBase = keycloak.discoveryUrl.replace('/.well-known/openid-configuration', '');
 			const internalBase = keycloak.internalDiscoveryUrl.replace(
 				'/.well-known/openid-configuration',
@@ -54,7 +54,7 @@ test.describe(
 			await api.setMaxTeamProjectsQuota(-1);
 			const project = await api.projects.createProject('Dynamic Credentials');
 
-			// Resolvable: the seeded `system-n8n` resolver stores its tokens per n8n user.
+			// Resolvable: the seeded `system-n8n` resolver stores its tokens per MNI user.
 			const credential = await api.credentials.createCredential({
 				name: `Webhook Private OAuth2 ${nanoid()}`,
 				type: 'oAuth2Api',
@@ -161,7 +161,7 @@ test.describe(
 				expect(missing?.authorizationUrl).toBeTruthy();
 				expect(await api.workflows.getExecutions(workflowId)).toHaveLength(0);
 
-				// The link is bound to the owner, so open it with the owner's session: n8n
+				// The link is bound to the owner, so open it with the owner's session: MNI
 				// redirects to Keycloak, and the callback stores the owner's tokens against
 				// the resolver-keyed credential.
 				const providerUrl = await api.dynamicCredentials.resolveProviderUrlFromAuthorizeLink(

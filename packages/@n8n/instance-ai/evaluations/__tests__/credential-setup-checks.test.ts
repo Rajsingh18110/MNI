@@ -116,7 +116,7 @@ describe('evaluateCredentialSetup', () => {
 	it('produces expectation texts stable enough to read in a report', () => {
 		const results = evaluateCredentialSetup(facts());
 		expect(results.map((r) => r.expectation)).toEqual([
-			'A anthropicApi credential is created in n8n',
+			'A anthropicApi credential is created in MNI',
 			'The saved credential authenticates against the provider API',
 			'The secret never appears in the conversation or tool traces',
 		]);

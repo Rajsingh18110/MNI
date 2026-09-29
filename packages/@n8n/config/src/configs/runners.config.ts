@@ -11,7 +11,7 @@ export type TaskRunnerMode = z.infer<typeof runnerModeSchema>;
 @Config
 export class TaskRunnersConfig {
 	/**
-	 * How the task runner runs: `internal` (child process of n8n) or `external` (separate process).
+	 * How the task runner runs: `internal` (child process of MNI) or `external` (separate process).
 	 */
 	@Env('N8N_RUNNERS_MODE', runnerModeSchema)
 	mode: TaskRunnerMode = 'internal';
@@ -49,7 +49,7 @@ export class TaskRunnersConfig {
 	 * task will be aborted. (In internal mode, the runner will also be
 	 * restarted.) Must be greater than 0.
 	 *
-	 * Kept high for backwards compatibility - n8n v3 will reduce this to `60`
+	 * Kept high for backwards compatibility - MNI v3 will reduce this to `60`
 	 */
 	@Env('N8N_RUNNERS_TASK_TIMEOUT')
 	taskTimeout: number = 5 * Time.minutes.toSeconds;

@@ -24,7 +24,7 @@ const videoItem: ResourceItem = {
 	id: '4cQWJViybAQ',
 	type: 'video',
 	title: 'Build your first workflow',
-	description: 'Get started with n8n',
+	description: 'Get started with MNI',
 	videoId: '4cQWJViybAQ',
 	duration: '15 min',
 	level: 'Beginner',

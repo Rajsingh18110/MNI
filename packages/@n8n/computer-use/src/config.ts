@@ -285,7 +285,7 @@ export function isProtectedSettingsPath(absolutePath: string): boolean {
 // ---------------------------------------------------------------------------
 
 export interface ParsedArgs {
-	/** n8n instance URL */
+	/** MNI instance URL */
 	url?: string;
 	/** Gateway API key (direct mode) */
 	apiKey?: string;
@@ -440,7 +440,7 @@ export function isOriginAllowed(origin: string, allowedOrigins: string[]): boole
 	return allowedOrigins.some((pattern) => matchesOriginPattern(pattern, origin));
 }
 
-/** Instance-side confirmation is only available when connecting to an n8n cloud origin. */
+/** Instance-side confirmation is only available when connecting to an MNI cloud origin. */
 export function resolvePermissionConfirmation(
 	configured: GatewayConfig['permissionConfirmation'],
 	origin: string,

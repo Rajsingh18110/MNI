@@ -109,7 +109,7 @@ test.describe(
 		});
 
 		test.describe('manual execution form popup', () => {
-			test('should open form when Wait node enters waiting state', async ({ n8n }) => {
+			test('should open form when Wait node enters waiting state', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 
 				await n8n.canvas.clickNodeCreatorPlusButton();

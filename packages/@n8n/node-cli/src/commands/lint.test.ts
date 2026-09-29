@@ -94,24 +94,24 @@ describe('lint command', () => {
 		await expect(CommandTester.run('lint')).rejects.toThrow();
 	});
 
-	tmpdirTest('invalid package - not an n8n node package', async ({ tmpdir }) => {
+	tmpdirTest('invalid package - not an MNI node package', async ({ tmpdir }) => {
 		await fs.writeFile(
 			`${tmpdir}/package.json`,
 			JSON.stringify({
 				name: 'regular-package',
 				version: '1.0.0',
-				// No n8n field - this makes it an invalid n8n package
+				// No MNI field - this makes it an invalid MNI package
 			}),
 		);
 
 		await expect(CommandTester.run('lint')).rejects.toThrow('EEXIT: 1');
 
-		expect(cancel).toHaveBeenCalledWith('lint can only be run in an n8n node package');
+		expect(cancel).toHaveBeenCalledWith('lint can only be run in an MNI node package');
 	});
 
 	tmpdirTest('strict mode with default config - passes validation', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
-			packageJson: { n8n: { strict: true } },
+			packageJson: { MNI: { strict: true } },
 			eslintConfig: true,
 		});
 
@@ -137,7 +137,7 @@ describe('lint command', () => {
 		const stdoutCalls = mockProcessStdout.mock.calls.flat();
 		const hasCloudMessage = stdoutCalls.some(
 			(call) =>
-				typeof call === 'string' && call.includes('n8n Cloud compatibility issues detected'),
+				typeof call === 'string' && call.includes('MNI cloud compatibility issues detected'),
 		);
 		expect(hasCloudMessage).toBe(true);
 	});
@@ -156,14 +156,14 @@ describe('lint command', () => {
 
 		const stdoutCalls = mockProcessStdout.mock.calls.flat();
 		const hasCloudMessage = stdoutCalls.some(
-			(call) => typeof call === 'string' && call.includes('n8n Cloud compatibility'),
+			(call) => typeof call === 'string' && call.includes('MNI cloud compatibility'),
 		);
 		expect(hasCloudMessage).toBe(false);
 	});
 
 	tmpdirTest('strict mode with modified config - fails validation', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
-			packageJson: { n8n: { strict: true } },
+			packageJson: { MNI: { strict: true } },
 			eslintConfig:
 				"import { config } from '@n8n/node-cli/eslint';\n\n// Custom modification\nexport default config;\n",
 		});
@@ -181,7 +181,7 @@ describe('lint command', () => {
 
 	tmpdirTest('strict mode with missing config - fails validation', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
-			packageJson: { n8n: { strict: true } },
+			packageJson: { MNI: { strict: true } },
 		});
 
 		await fs.writeFile(`${tmpdir}/pnpm-lock.yaml`, 'lockfileVersion: 5.4\n');

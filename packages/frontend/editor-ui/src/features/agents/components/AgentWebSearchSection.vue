@@ -53,7 +53,7 @@ const aiGateway = useAiGateway();
 
 onMounted(() => {
 	// Load the gateway config so the managed option can be gated, and the wallet
-	// for its balance subtitle. Both self-guard when n8n Connect is disabled.
+	// for its balance subtitle. Both self-guard when MNI Connect is disabled.
 	void aiGateway.fetchConfig();
 	if (aiGateway.isEnabled.value) void aiGateway.fetchWallet();
 });
@@ -188,7 +188,7 @@ const balancePill = computed<{ text: string; type: 'default' | 'danger' } | unde
 	};
 });
 
-// n8n Connect (Gateway credits) is offered as a credential option only when the
+// MNI Connect (Gateway credits) is offered as a credential option only when the
 // gateway can actually serve the selected provider's credential type. SearXNG is
 // self-hosted, so this stays hidden for it.
 const managedCredentialOption = computed<ManagedCredentialOption | null>(() => {

@@ -109,7 +109,7 @@ watch(
 	{ immediate: true },
 );
 
-// Model lists are credential-scoped — n8n Connect serves an allowlist, a user's
+// Model lists are credential-scoped — MNI Connect serves an allowlist, a user's
 // own credential serves the provider's full catalog — so each difficulty has to
 // resolve its own list from the credential it actually uses.
 const modelsByDifficulty = computed(() => {
@@ -294,7 +294,7 @@ function onDifficultySelectCredential(
 	}
 
 	// No model chosen yet: remember the choice per-difficulty so the next model
-	// pick uses it. This includes the n8n Connect tag — writing that to the shared
+	// pick uses it. This includes the MNI Connect tag — writing that to the shared
 	// selection instead would leak it into the other difficulties and the main
 	// model selector, and persist it where the user never chose it.
 	setPendingDifficultyCredential(difficulty, provider, credentialId);

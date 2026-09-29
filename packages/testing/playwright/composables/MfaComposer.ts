@@ -4,7 +4,7 @@ import { authenticator } from 'otplib';
 import type { n8nPage } from '../pages/n8nPage';
 
 export class MfaComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Enable MFA for a user using predefined secret

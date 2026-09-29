@@ -73,7 +73,7 @@ describe('MemoryMongoDbChat', () => {
 		await new MemoryMongoDbChat().supplyData.call(context, 0);
 
 		expect(mongoClientConstructor).toHaveBeenCalledWith(
-			'mongodb://user:password@localhost:27017/?appname=n8n',
+			'mongodb://user:password@localhost:27017/?appname=MNI',
 			expect.any(Object),
 		);
 		expect(mongoClient.db).toHaveBeenCalledWith('credential-db');

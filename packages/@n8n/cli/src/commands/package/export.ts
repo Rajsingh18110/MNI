@@ -24,7 +24,7 @@ function describeExport(counts: ExportPackageCounts & { projects?: number }): st
 }
 
 export default class PackageExport extends BaseCommand {
-	static override description = 'Export workflows, folders, or projects as an n8n package (.n8np)';
+	static override description = 'Export workflows, folders, or projects as an MNI package (.n8np)';
 
 	static override examples = [
 		'<%= config.bin %> package export --workflow-id=abc --output=export.n8np',

@@ -132,7 +132,7 @@ function resolveDelegateSubAgentSystemInstruction(
  * `subagent-started` / `-completed`
  * lifecycle events. You only supply HOW to run the child, via `runSubAgent`.
  *
- * @example Host-controlled execution (what the n8n CLI does):
+ * @example Host-controlled execution (what the MNI CLI does):
  *   agent.tool(createDelegateSubAgentTool({
  *     runSubAgent: (request) => runner.run(request),
  *     availableSubAgents,

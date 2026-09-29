@@ -93,7 +93,7 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 	}
 
 	/**
-	 * Stop n8n in a graceful way.
+	 * Stop MNI in a graceful way.
 	 * Make for example sure that all the webhooks from third party services
 	 * get removed.
 	 */
@@ -151,9 +151,9 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 		const endpointsConfigEncoded = b64Encode(JSON.stringify(this.globalConfig.endpoints));
 
 		const configMetaTags = [
-			`<meta name="n8n:config:rest-endpoint" content="${restEndpointEncoded}">`,
-			`<meta name="n8n:config:sentry" content="${sentryConfigEncoded}">`,
-			`<meta name="n8n:config:endpoints" content="${endpointsConfigEncoded}">`,
+			`<meta name="MNI:config:rest-endpoint" content="${restEndpointEncoded}">`,
+			`<meta name="MNI:config:sentry" content="${sentryConfigEncoded}">`,
+			`<meta name="MNI:config:endpoints" content="${endpointsConfigEncoded}">`,
 		].join('');
 
 		return configMetaTags;

@@ -48,7 +48,7 @@ if (hot) {
 	});
 
 	// 2) Handle explicit locale update events (fetch ensures latest content)
-	hot.on('n8n:locale-update', async (payload: { locales?: string[]; file?: string }) => {
+	hot.on('MNI:locale-update', async (payload: { locales?: string[]; file?: string }) => {
 		if (payload.file) await fetchAndApply(payload.file);
 		refresh();
 	});

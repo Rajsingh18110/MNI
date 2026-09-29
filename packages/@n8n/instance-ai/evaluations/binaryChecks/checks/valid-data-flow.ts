@@ -4,14 +4,14 @@ export const validDataFlow = createLlmCheck({
 	name: 'valid_data_flow',
 	description: 'Expressions reference fields that actually exist upstream',
 	dimension: 'parameter_correctness',
-	systemPrompt: `You are an evaluator checking whether expressions in an n8n workflow reference fields that actually exist upstream.
+	systemPrompt: `You are an evaluator checking whether expressions in an MNI workflow reference fields that actually exist upstream.
 
 For each expression in node parameters, check:
 1. \`{{ $json.fieldName }}\` — does the immediately upstream node output this field?
 2. \`$('NodeName').item.json.field\` — does that node exist, and does it output that field?
 3. Cross-references between nodes are consistent (field set in one node matches what's read in another)
 
-Important n8n context:
+Important MNI context:
 - Manual Trigger and Schedule Trigger nodes output an empty object — they do NOT provide custom fields unless a Set node is placed after them
 - YouTube video.get returns \`snippet.title\`, \`snippet.description\`, etc. — NOT \`caption\` or \`transcript\`
 - Set nodes output exactly the fields defined in their assignments
@@ -26,7 +26,7 @@ Focus on CRITICAL issues only:
 
 Do NOT fail for:
 - Minor field name case differences
-- Fields that might be available through n8n's built-in variables (\`$execution\`, \`$workflow\`, etc.)
+- Fields that might be available through MNI's built-in variables (\`$execution\`, \`$workflow\`, etc.)
 
 Respond with pass: true if there are no critical data flow issues.`,
 	humanTemplate: `User Request: {userPrompt}

@@ -10,10 +10,10 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test('Kafka node publishes messages to topic', async ({ api, n8n, services }) => {
+		test('Kafka node publishes messages to topic', async ({ api, MNI, services }) => {
 			const kafka = services.kafka;
 			const topic = `producer-test-${nanoid()}`;
-			const testPayload = { greeting: 'Hello from n8n Kafka node' };
+			const testPayload = { greeting: 'Hello from MNI Kafka node' };
 
 			await kafka.createTopic(topic, 1);
 

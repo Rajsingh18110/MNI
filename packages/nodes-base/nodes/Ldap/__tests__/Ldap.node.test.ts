@@ -479,7 +479,7 @@ describe('Ldap', () => {
 
 		describe('raw parameter reads', () => {
 			// Escaping only works on the template, so a dropped `rawExpressions` would
-			// silently hand back a filter n8n has already interpolated
+			// silently hand back a filter MNI has already interpolated
 			it('should read the object class and search text before they are interpolated', async () => {
 				mockParameters({ searchText: 'johndoe' });
 

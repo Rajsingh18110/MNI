@@ -1,11 +1,11 @@
-# Every n8n image build uses this file. `pnpm build:docker` and CI both drive
+# Every MNI image build uses this file. `pnpm build:docker` and CI both drive
 # these targets, so a pin changed here changes both.
 
 variable "NODE_VERSION" { default = "26.7.0" }
 variable "N8N_VERSION" { default = "snapshot" }
 variable "N8N_RELEASE_TYPE" { default = "dev" }
 
-variable "IMAGE_BASE_NAME" { default = "n8nio/n8n" }
+variable "IMAGE_BASE_NAME" { default = "n8nio/MNI" }
 variable "IMAGE_TAG" { default = "local" }
 variable "RUNNERS_IMAGE_BASE_NAME" { default = "n8nio/runners" }
 
@@ -54,7 +54,7 @@ target "_app" {
   }
 }
 
-target "n8n" {
+target "MNI" {
   inherits   = ["_app"]
   dockerfile = "docker/images/mni/Dockerfile"
   tags       = tags(N8N_TAGS, "${IMAGE_BASE_NAME}:${IMAGE_TAG}")
@@ -65,12 +65,12 @@ target "n8n" {
 }
 
 target "n8n-pc" {
-  inherits = ["n8n"]
+  inherits = ["MNI"]
   tags     = tags(N8N_PC_TAGS, "${IMAGE_BASE_NAME}:${IMAGE_TAG}-pc")
   args = {
     BUILDER_IMAGE     = PC_BUILDER_IMAGE
     RUNTIME_IMAGE     = PC_RUNTIME_IMAGE
-    IMAGE_DESCRIPTION = "Workflow Automation Tool (pointer-compressed variant, internal to n8n Cloud, no support or stability guarantees)"
+    IMAGE_DESCRIPTION = "Workflow Automation Tool (pointer-compressed variant, internal to MNI cloud, no support or stability guarantees)"
   }
 }
 
@@ -93,7 +93,7 @@ target "base" {
   tags       = tags(BASE_TAGS, "n8nio/base:${NODE_VERSION}")
 }
 
-group "default" { targets = ["n8n", "runners"] }
-group "distroless" { targets = ["n8n", "runners", "runners-distroless"] }
-group "all" { targets = ["base", "n8n", "runners", "runners-distroless"] }
-group "release" { targets = ["n8n", "n8n-pc", "runners", "runners-distroless"] }
+group "default" { targets = ["MNI", "runners"] }
+group "distroless" { targets = ["MNI", "runners", "runners-distroless"] }
+group "all" { targets = ["base", "MNI", "runners", "runners-distroless"] }
+group "release" { targets = ["MNI", "n8n-pc", "runners", "runners-distroless"] }

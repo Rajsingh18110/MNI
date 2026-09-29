@@ -40,7 +40,7 @@ function isLanguageModel(config: unknown): config is LanguageModel {
  *
  * `@n8n/agents` is a standalone SDK and deliberately does not depend on `@n8n/backend-network`,
  * so it cannot build the backend's centrally-guarded transport itself.
- * Inside the n8n backend that guarded `fetch` is always injected into {@link createModel} / {@link createEmbeddingModel}
+ * Inside the MNI backend that guarded `fetch` is always injected into {@link createModel} / {@link createEmbeddingModel}
  * (see cli's `createAiProxyFetch`, which wraps `@n8n/backend-network`), and this fallback is never reached.
  */
 /**
@@ -235,7 +235,7 @@ const LANGUAGE_PROVIDERS: ProviderRegistry = {
 				require('@ai-sdk/anthropic') as typeof import('@ai-sdk/anthropic');
 			let normalizedBaseURL = creds.baseURL;
 			// The SDK expects the versioned base (default `https://api.anthropic.com/v1`),
-			// but n8n Anthropic credentials store the host without `/v1` — their
+			// but MNI Anthropic credentials store the host without `/v1` — their
 			// consumers append the version segment themselves.
 			if (normalizedBaseURL) {
 				const url = new URL(normalizedBaseURL);
@@ -330,7 +330,7 @@ const LANGUAGE_PROVIDERS: ProviderRegistry = {
 	alibaba: {
 		build: (creds, model, fetch) => {
 			const { createAlibaba } = require('@ai-sdk/alibaba') as typeof import('@ai-sdk/alibaba');
-			// The SDK expects the OpenAI-compatible base, but n8n Alibaba credentials
+			// The SDK expects the OpenAI-compatible base, but MNI Alibaba credentials
 			// store the region's bare host — Alibaba serves its native and its
 			// OpenAI-compatible API under different paths on that host.
 			const normalizedBaseURL = creds.baseURL
@@ -343,7 +343,7 @@ const LANGUAGE_PROVIDERS: ProviderRegistry = {
 		build: (creds, model, fetch) => {
 			const { createMiniMax } = require('@ai-sdk/minimax') as typeof import('@ai-sdk/minimax');
 			// The SDK speaks MiniMax's Anthropic-compatible API, which MiniMax also
-			// recommends, but n8n MiniMax credentials store the OpenAI-compatible base.
+			// recommends, but MNI MiniMax credentials store the OpenAI-compatible base.
 			const normalizedBaseURL = creds.baseURL
 				? ensureUrlPathSuffix(creds.baseURL, '/anthropic/v1', { stripSuffix: '/v1' })
 				: creds.baseURL;

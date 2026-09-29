@@ -38,7 +38,7 @@ export const FORM_TRIGGER_PATH_IDENTIFIER = 'n8n-form';
 
 export const UNKNOWN_ERROR_MESSAGE = 'There was an unknown issue while executing the node';
 export const UNKNOWN_ERROR_DESCRIPTION =
-	'Double-check the node configuration and the service it connects to. Check the error details below and refer to the <a href="https://docs.n8n.io" target="_blank">n8n documentation</a> to troubleshoot the issue.';
+	'Double-check the node configuration and the service it connects to. Check the error details below and refer to the <a href="https://docs.n8n.io" target="_blank">MNI documentation</a> to troubleshoot the issue.';
 export const UNKNOWN_ERROR_MESSAGE_CRED = 'UNKNOWN ERROR';
 
 //n8n-nodes-base
@@ -149,9 +149,9 @@ export const ALIBABA_CLOUD_LANGCHAIN_NODE_TYPE = '@n8n/n8n-nodes-langchain.aliba
 export const MOONSHOT_LANGCHAIN_NODE_TYPE = '@n8n/n8n-nodes-langchain.moonshot';
 export const MINIMAX_LANGCHAIN_NODE_TYPE = '@n8n/n8n-nodes-langchain.minimax';
 
-// Trigger types that always run with the manually-executing n8n user's identity.
+// Trigger types that always run with the manually-executing MNI user's identity.
 // Chat and MCP triggers are deliberately not listed: they only establish an
-// identity in specific configurations (Chat Hub availability, n8n OAuth2), which
+// identity in specific configurations (Chat Hub availability, MNI OAuth2), which
 // `classifyTriggerIdentity` checks parameter-by-parameter (IAM-1238).
 export const MANUAL_TRIGGER_NODE_TYPES: readonly string[] = [
 	MANUAL_TRIGGER_NODE_TYPE,

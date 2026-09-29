@@ -24,7 +24,7 @@ import { McpServer } from '../McpServer';
 import { McpTrigger } from '../McpTrigger.node';
 
 const INBOUND_TRIGGER_AUTHENTICATION_BUILDER_HINT =
-	"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
+	"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
 
 // Mock the McpServer
 vi.mock('../McpServer', () => ({
@@ -603,7 +603,7 @@ describe('McpTrigger', () => {
 			const result = await mcpTrigger.webhook(mockContext);
 
 			expect(resp.writeHead).toHaveBeenCalledWith(401, {
-				'WWW-Authenticate': `Bearer realm="n8n MCP Server", resource_metadata="${prmUrl}"`,
+				'WWW-Authenticate': `Bearer realm="MNI MCP Server", resource_metadata="${prmUrl}"`,
 			});
 			expect(mockContext.validateN8nOAuth2Token).not.toHaveBeenCalled();
 			expect(result).toEqual({ noWebhookResponse: true });
@@ -623,7 +623,7 @@ describe('McpTrigger', () => {
 
 			expect(mockContext.validateN8nOAuth2Token).toHaveBeenCalledWith('bad-token', resourceUrl);
 			expect(resp.writeHead).toHaveBeenCalledWith(401, {
-				'WWW-Authenticate': `Bearer realm="n8n MCP Server", resource_metadata="${prmUrl}", error="invalid_token"`,
+				'WWW-Authenticate': `Bearer realm="MNI MCP Server", resource_metadata="${prmUrl}", error="invalid_token"`,
 			});
 			expect(result).toEqual({ noWebhookResponse: true });
 		});

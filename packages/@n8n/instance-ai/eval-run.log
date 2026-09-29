@@ -1,5 +1,5 @@
 
-> @n8n/instance-ai@1.15.0 eval:instance-ai /Users/robin/Documents/n8n/packages/@n8n/instance-ai
+> @n8n/instance-ai@1.15.0 eval:instance-ai /Users/robin/Documents/MNI/packages/@n8n/instance-ai
 > tsx evaluations/cli/index.ts
 
 2026-07-07T12:05:13.323Z [INFO] Authenticating with http://localhost:5678...
@@ -37,7 +37,7 @@
 2026-07-07T12:10:05.437Z [INFO]     [happy-path] exec=81s (4 nodes)
 2026-07-07T12:10:10.180Z [INFO]     [happy-path] PASS verify=5s
 2026-07-07T12:10:10.180Z [INFO]   Scenarios done: 2 scenarios [86s]
-2026-07-07T12:10:10.208Z [INFO]   Running case [multi-turn]: "Build a scheduled n8n workflow that runs every hour and sync..."
+2026-07-07T12:10:10.208Z [INFO]   Running case [multi-turn]: "Build a scheduled MNI workflow that runs every hour and sync..."
 2026-07-07T12:11:07.504Z [INFO]   Workflow built: Webhook Image Upload to Slack (3 nodes) [202s] [thread 38ca5cd6-f239-4785-8cb6-04088f5dd483]
 2026-07-07T12:11:13.681Z [INFO]   Workflow built: Telegram Voice Transcription (4 nodes) [96s] [thread 9be23690-5037-4f17-90d5-d94a276283c6]
 2026-07-07T12:11:37.516Z [WARN]   Workflow checks: 1 errored, excluded from scoring (response_matches_workflow_changes)

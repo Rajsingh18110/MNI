@@ -24,7 +24,7 @@ const { t } = useI18n();
 
 const { app, connectionError, connectionStatus, hostContext, hostVersion, toolResult } =
 	useMcpHostApp({
-		name: 'n8n Workflow Preview',
+		name: 'MNI Workflow Preview',
 		version: '0.1.0',
 	});
 

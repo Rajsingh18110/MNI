@@ -14,7 +14,7 @@ test.describe(
 	() => {
 		test('heap is cleaned up after cancelling runs mid-flight', async ({
 			instanceAiDriver: driver,
-			n8n,
+			MNI,
 			backendUrl,
 			services,
 		}, testInfo) => {

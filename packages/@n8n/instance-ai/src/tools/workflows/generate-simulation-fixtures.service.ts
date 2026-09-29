@@ -45,7 +45,7 @@ import { itemsForNode } from '../../utils/node-keyed-items';
 import type { NodeSimulationVerdict } from '../../workflow-loop/workflow-loop-state';
 
 /**
- * Fixture items per node name, stored UNWRAPPED (plain objects, not n8n's
+ * Fixture items per node name, stored UNWRAPPED (plain objects, not MNI's
  * `{json: ...}` envelope) — the same shape `executionService.run` expects for
  * pin data, so they flow to the verification run without conversion. Only the
  * LLM prompt/response uses the `{json}` envelope; it is unwrapped here.
@@ -73,7 +73,7 @@ export interface GenerateSimulationFixturesInput {
 // batch on any mismatch).
 const FixturesResponseSchema = z.record(z.string(), z.array(z.unknown()));
 
-const SYSTEM_INSTRUCTIONS = `You generate realistic mock output for n8n workflow nodes whose real execution is being simulated (their operation would create, update, send, or delete data in an external system, would wait for an outside event, or would pause the workflow for user action).
+const SYSTEM_INSTRUCTIONS = `You generate realistic mock output for MNI workflow nodes whose real execution is being simulated (their operation would create, update, send, or delete data in an external system, would wait for an outside event, or would pause the workflow for user action).
 
 For each node, return the output items the node would naturally emit after a SUCCESSFUL run of its operation — matching the response shape of the underlying service (e.g. a Slack message post returns "ok", "ts" and "channel"; a row insert returns the row including its new "id"). Base the field values on the node's parameters so the data is plausible in context, and keep values consistent across nodes (same fictional users, ids, timestamps).
 
@@ -87,7 +87,7 @@ Special node types:
 - Pass-through nodes (a timer Wait, Text Classifier, Sentiment Analysis): their real output IS their input. Emit data matching what the listed upstream nodes would produce, so downstream expressions keep resolving — a timer Wait and Text Classifier pass it through unchanged; Sentiment Analysis passes it through and adds a "sentimentAnalysis" object.
 - A Wait set to resume on a webhook call or a form submission does NOT pass its input through: emit what resumes it — the received request body, or one key per field in the node's own formFields plus "submittedAt".
 
-Output: a single JSON object whose keys are node names and whose values are arrays of n8n pin-data items in the form { "json": { ... } }. One item per node is enough.
+Output: a single JSON object whose keys are node names and whose values are arrays of MNI pin-data items in the form { "json": { ... } }. One item per node is enough.
 
 Return only the JSON object. No prose, no markdown fences.`;
 
@@ -416,7 +416,7 @@ export async function generateSimulationFixtures(
 	);
 	const now = new Date();
 	const userText = [
-		'Generate realistic mock output (pin-data items) for the following simulated n8n nodes.',
+		'Generate realistic mock output (pin-data items) for the following simulated MNI nodes.',
 		input.workflow.name ? `\nWorkflow: ${input.workflow.name}` : '',
 		'',
 		nodes

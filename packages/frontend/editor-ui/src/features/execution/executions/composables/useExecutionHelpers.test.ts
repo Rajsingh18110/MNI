@@ -167,13 +167,13 @@ describe('useExecutionHelpers()', () => {
 			expect(resolveRelatedExecutionUrl({})).toEqual('');
 		});
 
-		// Edge case: under a sub-path (N8N_PATH=/n8n/), the link is a real
+		// Edge case: under a sub-path (N8N_PATH=/MNI/), the link is a real
 		// `<a href target="_blank">`, so it must use router.resolve(...).href
 		// (base-included), not .fullPath - else the opened tab drops the prefix and 404s.
-		describe('subpath deployment (e.g. N8N_PATH=/n8n/)', () => {
+		describe('subpath deployment (e.g. N8N_PATH=/MNI/)', () => {
 			it('includes the base path in the link (href, not fullPath)', () => {
 				resolve.mockReturnValue({
-					href: `/n8n${executionUrl}`,
+					href: `/MNI${executionUrl}`,
 					fullPath: executionUrl,
 				});
 				const { resolveRelatedExecutionUrl } = useExecutionHelpers();
@@ -181,7 +181,7 @@ describe('useExecutionHelpers()', () => {
 				const result = resolveRelatedExecutionUrl({
 					subExecution: { executionId: '123', workflowId: 'xyz' },
 				});
-				expect(result).toEqual(`/n8n${executionUrl}`);
+				expect(result).toEqual(`/MNI${executionUrl}`);
 				expect(result).not.toEqual(executionUrl);
 			});
 		});

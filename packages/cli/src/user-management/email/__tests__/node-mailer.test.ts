@@ -83,14 +83,14 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'You have been invited to n8n',
+				subject: 'You have been invited to MNI',
 				body,
 			});
 
 			const sentText = mockTransport.sendMail.mock.calls[0][0].text as string;
-			expect(sentText).toContain('Welcome to n8n!');
+			expect(sentText).toContain('Welcome to MNI!');
 			expect(sentText).toContain('example.com');
-			expect(sentText).toContain('Set up your n8n account (https://n8n.example.com/invite/abc123)');
+			expect(sentText).toContain('Set up your MNI account (https://n8n.example.com/invite/abc123)');
 			expect(sentText).not.toMatch(/<[^>]+>/);
 		});
 
@@ -103,12 +103,12 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'n8n password reset',
+				subject: 'MNI password reset',
 				body,
 			});
 
 			const sentText = mockTransport.sendMail.mock.calls[0][0].text as string;
-			expect(sentText).toContain('Reset your n8n password');
+			expect(sentText).toContain('Reset your MNI password');
 			expect(sentText).toContain('Hi John,');
 			expect(sentText).toContain('example.com');
 			expect(sentText).toContain('Set a new password (https://n8n.example.com/reset/abc123)');
@@ -125,7 +125,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'Sharer has shared an n8n workflow with you',
+				subject: 'Sharer has shared an MNI workflow with you',
 				body,
 			});
 
@@ -145,7 +145,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'Sharer has shared an n8n credential with you',
+				subject: 'Sharer has shared an MNI credential with you',
 				body,
 			});
 
@@ -186,7 +186,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'n8n has automatically autodeactivated a workflow',
+				subject: 'MNI has automatically autodeactivated a workflow',
 				body,
 			});
 
@@ -222,7 +222,7 @@ describe('NodeMailer', () => {
 			expect(sentText).toContain('Tutorial (https://www.youtube.com/watch?v=bTF3tACqPRU)');
 			expect(sentText).toContain('Docs (https://docs.n8n.io/flow-logic/error-handling/)');
 			expect(sentText).toContain('Happy automating');
-			expect(sentText).toContain('The n8n team');
+			expect(sentText).toContain('The MNI team');
 			expect(sentText).not.toMatch(/<[^>]+>/);
 		});
 	});
@@ -291,11 +291,11 @@ describe('NodeMailer', () => {
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
 				subject: 'Test',
-				body: 'Happy automating,<br />The n8n team',
+				body: 'Happy automating,<br />The MNI team',
 			});
 
 			const sentText = mockTransport.sendMail.mock.calls[0][0].text as string;
-			expect(sentText).toContain('Happy automating,\nThe n8n team');
+			expect(sentText).toContain('Happy automating,\nThe MNI team');
 		});
 	});
 });

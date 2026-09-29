@@ -22,7 +22,7 @@ describe('TelemetryRecorder', () => {
 		telemetry.startStage('n8n-startup');
 		await new Promise((resolve) => setTimeout(resolve, 2));
 		telemetry.finishStage('failure', new Error('readiness failed after 25ms'));
-		telemetry.flush(false, 'n8n startup failed');
+		telemetry.flush(false, 'MNI startup failed');
 
 		const output = String(log.mock.calls[0]?.[0] ?? '');
 		expect(typeof output).toBe('string');

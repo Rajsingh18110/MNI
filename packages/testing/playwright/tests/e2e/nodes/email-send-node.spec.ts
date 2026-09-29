@@ -7,7 +7,7 @@ test(
 	{
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
-	async ({ api, n8n, services }) => {
+	async ({ api, MNI, services }) => {
 		// Sign in to use internal APIs for creating credentials and workflows
 		const mailpit = services.mailpit;
 
@@ -49,7 +49,7 @@ test(
 						toEmail,
 						subject,
 						emailFormat: 'text',
-						text: 'Hello from n8n E2E test',
+						text: 'Hello from MNI E2E test',
 					},
 					credentials: {
 						smtp: {

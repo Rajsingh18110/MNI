@@ -41,7 +41,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n, api, setupRequirements, a11y }) => {
+			async ({ MNI, api, setupRequirements, a11y }) => {
 				await setupRequirements(requirements);
 				const project = await api.projects.getMyPersonalProject();
 				const workflow = await api.workflows.createWorkflow(
@@ -121,7 +121,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n, api, setupRequirements }) => {
+			async ({ MNI, api, setupRequirements }) => {
 				await setupRequirements(requirements);
 				const project = await api.projects.getMyPersonalProject();
 				const imported = await api.workflows.importWorkflowFromFile(

@@ -41,7 +41,7 @@ export const NoUncentralizedHttpRule = ESLintUtils.RuleCreator.withoutDocs<Optio
 		},
 		messages: {
 			useBackendNetwork:
-				"Importing '{{ module }}' opens an outbound connection that bypasses n8n's SSRF/DNS guarding and proxy handling. Route it through @n8n/backend-network instead: inject the `OutboundHttp` service, then `.requests()` to send a request or `.transport()` to hand a guarded fetch/dispatcher to an SDK (DI-less code: import from '@n8n/backend-network/transport'). Sanctioned exceptions and the full factory API are in the rule docs.",
+				"Importing '{{ module }}' opens an outbound connection that bypasses MNI's SSRF/DNS guarding and proxy handling. Route it through @n8n/backend-network instead: inject the `OutboundHttp` service, then `.requests()` to send a request or `.transport()` to hand a guarded fetch/dispatcher to an SDK (DI-less code: import from '@n8n/backend-network/transport'). Sanctioned exceptions and the full factory API are in the rule docs.",
 			addReviewedException:
 				'Mark this line as a reviewed exception (inserts an eslint-disable with a TODO reason to complete)',
 		},

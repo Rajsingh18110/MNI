@@ -11,7 +11,7 @@ describe('SelectorPurityRule', () => {
 			'/composables/TestComposer.ts',
 			`
 export class TestComposer {
-  constructor(private n8n: n8nPage) {}
+  constructor(private MNI: n8nPage) {}
 
   async doSomething() {
     await this.n8n.page.getByTestId('something').click();
@@ -30,7 +30,7 @@ export class TestComposer {
 			'/composables/TestComposer.ts',
 			`
 export class TestComposer {
-  constructor(private n8n: n8nPage) {}
+  constructor(private MNI: n8nPage) {}
 
   async doSomething() {
     await this.n8n.canvas.openNode('Code');
@@ -50,7 +50,7 @@ export class TestComposer {
 			'/composables/TestComposer.ts',
 			`
 export class TestComposer {
-  constructor(private n8n: n8nPage) {}
+  constructor(private MNI: n8nPage) {}
 
   async doSomething() {
     await this.n8n.page.keyboard.press('Enter');
@@ -71,7 +71,7 @@ export class TestComposer {
 		const file = createFile(
 			'/tests/e2e/my-test.spec.ts',
 			`
-test('my test', async ({ n8n }) => {
+test('my test', async ({ MNI }) => {
   await n8n.page.getByTestId('something').click();
 });
 `,
@@ -87,7 +87,7 @@ test('my test', async ({ n8n }) => {
 			'/composables/TestComposer.ts',
 			`
 export class TestComposer {
-  constructor(private n8n: n8nPage) {}
+  constructor(private MNI: n8nPage) {}
 
   async doSomething() {
     await this.n8n.page.locator('.class').click();
@@ -107,7 +107,7 @@ export class TestComposer {
 		const file = createFile(
 			'/tests/e2e/my-test.spec.ts',
 			`
-test('my test', async ({ n8n }) => {
+test('my test', async ({ MNI }) => {
   const category = n8n.settingsPage.getCategory('credentials');
   const links = category.locator('a[href*="/workflow/"]');
   await expect(links.first()).toBeVisible();
@@ -126,7 +126,7 @@ test('my test', async ({ n8n }) => {
 		const file = createFile(
 			'/tests/e2e/another-test.spec.ts',
 			`
-test('my test', async ({ n8n }) => {
+test('my test', async ({ MNI }) => {
   const category = n8n.settingsPage.getCategory('credentials');
   const button = category.getByRole('button');
   await expect(button).toBeVisible();
@@ -149,7 +149,7 @@ test('my test', async ({ n8n }) => {
 			'/composables/TestComposer.ts',
 			`
 export class TestComposer {
-  constructor(private n8n: n8nPage) {}
+  constructor(private MNI: n8nPage) {}
 
   async doSomething() {
     // This uses page object methods, not direct locators

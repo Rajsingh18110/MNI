@@ -359,7 +359,7 @@ export interface WorkflowTestCaseResult {
 	/** Per-expectation verdicts from the build-expectations judge. Aggregated as
 	 *  scoring units alongside execution scenarios. */
 	buildExpectationResults?: BuildExpectationResult[];
-	/** Base URL of the n8n instance behind this run. Per-result so multi-lane
+	/** Base URL of the MNI instance behind this run. Per-result so multi-lane
 	 *  configs each get their own URL for canvas/execution links. */
 	n8nBaseUrl?: string;
 	/** Per-run LLM step debug captured from the instance-ai debug API after build. */

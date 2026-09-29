@@ -1,5 +1,5 @@
 /**
- * Precise lookup of verified community nodes in the n8n registry.
+ * Precise lookup of verified community nodes in the MNI registry.
  *
  * The alternative is a local fuzzy index over the whole registry, which is
  * built for recall: it always finds something, so a query like "slack" comes
@@ -41,7 +41,7 @@ const STOP_WORDS = new Set([
 	'app',
 	'for',
 	'from',
-	'n8n',
+	'MNI',
 	'node',
 	'nodes',
 	'official',

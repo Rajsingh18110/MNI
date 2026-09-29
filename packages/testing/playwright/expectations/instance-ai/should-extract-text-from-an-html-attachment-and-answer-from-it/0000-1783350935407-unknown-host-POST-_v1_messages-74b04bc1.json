@@ -4,7 +4,7 @@
     "path": "/v1/messages",
     "body": {
       "type": "REGEX",
-      "regex": "[\\s\\S]*You are the n8n Instance Agent — an AI assistant embedded in an n8n instance\\. Yo[\\s\\S]*Read the attached HTML file and reply with just the launch codeword mentioned in it\\.\\\\n\\\\n\\[ATTACHMENTS\\]\\\\n- \\[0\\] `release-notes[\\s\\S]*"
+      "regex": "[\\s\\S]*You are the MNI instance Agent — an AI assistant embedded in an MNI instance\\. Yo[\\s\\S]*Read the attached HTML file and reply with just the launch codeword mentioned in it\\.\\\\n\\\\n\\[ATTACHMENTS\\]\\\\n- \\[0\\] `release-notes[\\s\\S]*"
     }
   },
   "httpResponse": {

@@ -2,7 +2,7 @@
 
 # @n8n/workflow-sdk
 
-TypeScript SDK for programmatically creating n8n workflows.
+TypeScript SDK for programmatically creating MNI workflows.
 
 ## Features
 

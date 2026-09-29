@@ -1,1 +1,1 @@
-"""Tests for n8n workflow comparison"""
+"""Tests for MNI workflow comparison"""

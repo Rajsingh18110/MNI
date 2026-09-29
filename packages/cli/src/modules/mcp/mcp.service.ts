@@ -471,7 +471,7 @@ export class McpService {
 			(allowedToolNames?.has(MCP_GET_USER_PREFERENCES_TOOL_NAME) ?? true);
 		const server = new McpServer(
 			{
-				name: 'n8n MCP Server',
+				name: 'MNI MCP Server',
 				version: agentsEnabled ? '1.2.0' : builderEnabled ? '1.1.0' : '1.0.0',
 			},
 			{
@@ -1080,15 +1080,15 @@ export class McpService {
 		// SDK reference as MCP resource — for clients that support resources.
 		registerResource({
 			name: 'workflow-sdk-reference',
-			uri: 'n8n://workflow-sdk/reference',
+			uri: 'MNI://workflow-sdk/reference',
 			config: {
 				description:
-					'Required n8n Workflow SDK reference for building workflows from code. Read this before writing workflow code.',
+					'Required MNI Workflow SDK reference for building workflows from code. Read this before writing workflow code.',
 			},
 			read: () => ({
 				contents: [
 					{
-						uri: 'n8n://workflow-sdk/reference',
+						uri: 'MNI://workflow-sdk/reference',
 						mimeType: 'text/plain',
 						text: getSdkReferenceContent(),
 					},
@@ -1105,7 +1105,7 @@ export class McpService {
 	// #region Queue Mode Support
 
 	/**
-	 * Whether n8n is running in queue mode.
+	 * Whether MNI is running in queue mode.
 	 */
 	get isQueueMode(): boolean {
 		return this.executionsConfig.mode === 'queue';

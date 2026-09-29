@@ -1,10 +1,10 @@
 [
 	{
-		"prompt": "An AI agent that will upload and process a set of files via Drive in a folder, then it will respond based on the documents table of the implemented Supabase vector database, and a webhook that will link my Cursor project and my n8n agent.",
+		"prompt": "An AI agent that will upload and process a set of files via Drive in a folder, then it will respond based on the documents table of the implemented Supabase vector database, and a webhook that will link my Cursor project and my MNI agent.",
 		"expectedTechniques": ["document_processing", "knowledge_base"]
 	},
 	{
-		"prompt": "Automate LinkedIn posting in n8n: fetch 20 trending topics (Google Trends, Reddit, Twitter, NewsAPI), score with AI for virality (≥7 keep), if <5 fill from evergreen list (Airtable/Sheet), generate founder-style post (hook, body, punchline, CTA) with AI, create creative via Nano Banana API, post 5/day (9am–9pm IST) via LinkedIn node, and archive all (topic, score, text, creative URL, timestamp, engagement)",
+		"prompt": "Automate LinkedIn posting in MNI: fetch 20 trending topics (Google Trends, Reddit, Twitter, NewsAPI), score with AI for virality (≥7 keep), if <5 fill from evergreen list (Airtable/Sheet), generate founder-style post (hook, body, punchline, CTA) with AI, create creative via Nano Banana API, post 5/day (9am–9pm IST) via LinkedIn node, and archive all (topic, score, text, creative URL, timestamp, engagement)",
 		"expectedTechniques": ["scraping_and_research", "content_generation", "triage"]
 	},
 	{
@@ -28,7 +28,7 @@
 		"expectedTechniques": ["scraping_and_research", "scheduling"]
 	},
 	{
-		"prompt": "Create a n8n that automatically posts new content to social media. The trigger should be either a new post published in WordPress or a new row added in Google Sheets. For each new item, take the post title, link, and featured image, then use AI to generate a short and engaging caption under 200 characters. Post the content automatically across multiple platforms with platform-specific formatting: on Twitter (X), keep it short with relevant hashtags; on LinkedIn, use a professional tone with 2–3 industry-related hashtags; and on Facebook, write a friendly caption with the link preview. Make sure the Zap prevents duplicate posts and includes links and images where supported.",
+		"prompt": "Create a MNI that automatically posts new content to social media. The trigger should be either a new post published in WordPress or a new row added in Google Sheets. For each new item, take the post title, link, and featured image, then use AI to generate a short and engaging caption under 200 characters. Post the content automatically across multiple platforms with platform-specific formatting: on Twitter (X), keep it short with relevant hashtags; on LinkedIn, use a professional tone with 2–3 industry-related hashtags; and on Facebook, write a friendly caption with the link preview. Make sure the Zap prevents duplicate posts and includes links and images where supported.",
 		"expectedTechniques": ["content_generation"]
 	},
 	{
@@ -61,7 +61,7 @@
 		"expectedTechniques": ["scraping_and_research", "enrichment", "triage"]
 	},
 	{
-		"prompt": "Create a comprehensive automation agent for small businesses that fully manages customer interaction through WhatsApp. The system must receive initial messages, respond naturally like a human, request necessary information for quotations, process reservations, and capture all data in a Google Sheets database organized into clients who made reservations and those who did not. It must integrate automatic scheduling in Google Calendar, notifications to the administrator about new reservations, and support online payment processing as well as OXXO payments, all orchestrated through n8n flows that connect these platforms cohesively.",
+		"prompt": "Create a comprehensive automation agent for small businesses that fully manages customer interaction through WhatsApp. The system must receive initial messages, respond naturally like a human, request necessary information for quotations, process reservations, and capture all data in a Google Sheets database organized into clients who made reservations and those who did not. It must integrate automatic scheduling in Google Calendar, notifications to the administrator about new reservations, and support online payment processing as well as OXXO payments, all orchestrated through MNI flows that connect these platforms cohesively.",
 		"expectedTechniques": ["chatbot"]
 	},
 	{
@@ -73,7 +73,7 @@
 		"expectedTechniques": ["notification"]
 	},
 	{
-		"prompt": "I am an automation expert using n8n, and I want to create a workflow to manage customer purchase orders (POs). The workflow should use Airtable as the central database and do the following:\n\nTrigger: When a purchase order email is received in my Titan email account.\n\nExtract Data: Automatically extract the content from the attached PDF PO document.\n\nDatabase Integration: Add a new record in Airtable with all relevant data from the PO.\n\nOrder Tracking: Include a status field in Airtable for each order. When the status is updated to Completed, trigger the next step.\n\nDocument Signing: Automatically send an email to the customer with the PDF attached for signature, serving as proof of receipt.\n\nConfirmation: Once the customer signs the document, automatically send a confirmation email with the signed document attached.",
+		"prompt": "I am an automation expert using MNI, and I want to create a workflow to manage customer purchase orders (POs). The workflow should use Airtable as the central database and do the following:\n\nTrigger: When a purchase order email is received in my Titan email account.\n\nExtract Data: Automatically extract the content from the attached PDF PO document.\n\nDatabase Integration: Add a new record in Airtable with all relevant data from the PO.\n\nOrder Tracking: Include a status field in Airtable for each order. When the status is updated to Completed, trigger the next step.\n\nDocument Signing: Automatically send an email to the customer with the PDF attached for signature, serving as proof of receipt.\n\nConfirmation: Once the customer signs the document, automatically send a confirmation email with the signed document attached.",
 		"expectedTechniques": [
 			"document_processing",
 			"data_extraction",
@@ -150,7 +150,7 @@
 		"expectedTechniques": ["form_input", "notification", "document_processing"]
 	},
 	{
-		"prompt": "Create an n8n workflow that automatically analyzes competitor Facebook ads, extracts marketing insights using AI, and saves results to Google Sheets. The workflow processes multiple competitors in batches and runs on a manual trigger. On trigger, split the comma-separated competitor names into individual items; for each name, call SearchAPI.io’s Meta Ad Library endpoint to fetch up to 50 ads; extract key ad fields; send each ad’s text and CTA to GPT-4o-mini to return JSON with primary, secondary, action, emotional, and brand keywords plus tone, audience, offer, urgency, and strategy insights; merge the AI output with the ad data; and append or update each record in a Google Sheet.",
+		"prompt": "Create an MNI workflow that automatically analyzes competitor Facebook ads, extracts marketing insights using AI, and saves results to Google Sheets. The workflow processes multiple competitors in batches and runs on a manual trigger. On trigger, split the comma-separated competitor names into individual items; for each name, call SearchAPI.io’s Meta Ad Library endpoint to fetch up to 50 ads; extract key ad fields; send each ad’s text and CTA to GPT-4o-mini to return JSON with primary, secondary, action, emotional, and brand keywords plus tone, audience, offer, urgency, and strategy insights; merge the AI output with the ad data; and append or update each record in a Google Sheet.",
 		"expectedTechniques": ["data_analysis", "data_extraction", "scraping_and_research"]
 	},
 	{

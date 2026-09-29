@@ -264,7 +264,7 @@ export class N8nClient {
 			this.debug?.(`✗ Connection failed (${Date.now() - start}ms): ${msg}`);
 			throw new ApiError(
 				0,
-				`Could not connect to n8n at ${this.baseUrl.replace('/api/v1', '')}`,
+				`Could not connect to MNI at ${this.baseUrl.replace('/api/v1', '')}`,
 				`Connection error: ${msg}. Check the URL and ensure the instance is running.`,
 			);
 		}

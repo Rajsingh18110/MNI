@@ -91,7 +91,7 @@ If the task needs more than that — several chained steps, branching, merges,
 non-trivial transformations, or data that must flow between nodes — build the
 workflow and use the flow below.
 
-A one-off that touches external systems is still anchored on n8n nodes (you
+A one-off that touches external systems is still anchored on MNI nodes (you
 cannot write to external services directly) — the intent changes the
 *post-build flow*, not the anchor.
 

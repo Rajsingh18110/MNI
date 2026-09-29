@@ -12,7 +12,7 @@
 			"parameters": {
 				"resource": "distTag",
 				"operation": "getMany",
-				"packageName": "n8n"
+				"packageName": "MNI"
 			},
 			"name": "Get All dist-tags",
 			"type": "n8n-nodes-base.npm",
@@ -26,7 +26,7 @@
 			"parameters": {
 				"resource": "package",
 				"operation": "getVersions",
-				"packageName": "n8n"
+				"packageName": "MNI"
 			},
 			"name": "Get Versions",
 			"type": "n8n-nodes-base.npm",
@@ -40,7 +40,7 @@
 			"parameters": {
 				"resource": "package",
 				"operation": "getMetadata",
-				"packageName": "n8n",
+				"packageName": "MNI",
 				"packageVersion": "latest"
 			},
 			"name": "Get Metadata",
@@ -84,7 +84,7 @@
 		"Get Metadata": [
 			{
 				"json": {
-					"name": "n8n",
+					"name": "MNI",
 					"version": "0.225.2",
 					"rest": "of the properties"
 				}

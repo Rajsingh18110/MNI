@@ -10,7 +10,7 @@ vi.mock('fs/promises');
 const mockFs = vi.mocked(fs);
 
 const INBOUND_TRIGGER_AUTHENTICATION_BUILDER_HINT =
-	"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
+	"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
 
 describe('Test Webhook Node', () => {
 	new NodeTestHarness().setupTests();
@@ -198,7 +198,7 @@ describe('Test Webhook Node', () => {
 		});
 	});
 
-	describe('n8n User Auth (OAuth2) authentication', () => {
+	describe('MNI user Auth (OAuth2) authentication', () => {
 		const node = new Webhook();
 		let context: ReturnType<typeof mock<IWebhookFunctions>>;
 		let req: ReturnType<typeof mock<Request>>;

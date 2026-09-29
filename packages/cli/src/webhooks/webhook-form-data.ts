@@ -8,7 +8,7 @@ import { discardBlankFileInputs } from '@/webhooks/webhook-blank-file-inputs';
 
 // formidable reports the status code it considers appropriate on `httpCode`
 // (413 for a file or field exceeding a limit, 400 for a request it cannot
-// parse). n8n's error classifier reads `httpStatusCode`, not `httpCode`, so
+// parse). MNI's error classifier reads `httpStatusCode`, not `httpCode`, so
 // without this mapping every parse failure surfaces as a generic 500.
 const getFormidableHttpCode = (error: unknown): number | undefined => {
 	if (typeof error !== 'object' || error === null || !('httpCode' in error)) return undefined;

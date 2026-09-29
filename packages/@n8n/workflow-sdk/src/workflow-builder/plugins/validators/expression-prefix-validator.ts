@@ -120,7 +120,7 @@ function unsupportedExpressionMessage(
 			? "Keep the {{ }} inline and drop the leading '='."
 			: "Drop the leading '='.";
 
-	return `'${nodeName}' has parameter "${parameter}" starting with '=', but the field does not support expressions. n8n removes the prefix when the workflow is opened in the editor or executed. ${remedy}`;
+	return `'${nodeName}' has parameter "${parameter}" starting with '=', but the field does not support expressions. MNI removes the prefix when the workflow is opened in the editor or executed. ${remedy}`;
 }
 
 /**
@@ -128,8 +128,8 @@ function unsupportedExpressionMessage(
  *
  * Checks for:
  * - Expressions like {{ $json }} or {{ $now }} that are missing the '=' prefix
- * - n8n expressions must start with '=' like '={{ $json.field }}'
- * - Values a field declared `noDataExpression` cannot carry, which n8n rewrites
+ * - MNI expressions must start with '=' like '={{ $json.field }}'
+ * - Values a field declared `noDataExpression` cannot carry, which MNI rewrites
  *   silently (needs a node-type provider)
  */
 export const expressionPrefixValidator: ValidatorPlugin = {
@@ -208,7 +208,7 @@ export const expressionPrefixValidator: ValidatorPlugin = {
 
 			issues.push({
 				code: 'MISSING_EXPRESSION_PREFIX',
-				message: `'${node.name}' has parameter "${path}" containing {{ $... }} without '=' prefix. n8n expressions must start with '=' like '={{ $json.field }}'.`,
+				message: `'${node.name}' has parameter "${path}" containing {{ $... }} without '=' prefix. MNI expressions must start with '=' like '={{ $json.field }}'.`,
 				severity: 'warning',
 				nodeName: node.name,
 				parameterPath: path,

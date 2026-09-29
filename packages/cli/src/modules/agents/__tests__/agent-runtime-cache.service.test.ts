@@ -624,7 +624,7 @@ describe('AgentRuntimeCacheService', () => {
 		);
 	});
 
-	it('keeps production n8n Chat on published instructions with project-scoped tools', async () => {
+	it('keeps production MNI Chat on published instructions with project-scoped tools', async () => {
 		const { service, agentRepository, reconstructionService } = makeService();
 		const agent = makeAgent({
 			schema: {

@@ -284,14 +284,14 @@ export function escapeNewlinesInStringLiterals(code: string): string {
 /**
  * Escape raw newlines inside string literals within {{ }} expression blocks.
  *
- * Only processes strings starting with `=` (n8n expressions).
+ * Only processes strings starting with `=` (MNI expressions).
  * Only escapes inside double/single quoted strings within {{ }}.
  * Does NOT escape inside backtick template literals (they allow newlines).
  * Does NOT double-escape already escaped \\n.
  */
 export function escapeNewlinesInExpressionStrings(value: unknown): unknown {
 	if (typeof value === 'string') {
-		// Only process n8n expressions (start with =)
+		// Only process MNI expressions (start with =)
 		if (!value.startsWith('=')) {
 			return value;
 		}

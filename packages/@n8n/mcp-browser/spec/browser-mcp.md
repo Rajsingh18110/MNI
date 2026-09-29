@@ -6,7 +6,7 @@
 
 Browser MCP is a Model Context Protocol (MCP) server that gives AI agents
 full control over a Chrome browser. It connects to the user's real installed
-Chrome via the **n8n Browser Bridge** extension, using their actual profile,
+Chrome via the **MNI Browser Bridge** extension, using their actual profile,
 cookies, and login sessions.
 
 The AI can navigate pages, click elements, fill forms, read page content,
@@ -174,7 +174,7 @@ CLI flags take precedence over environment variables.
 ## Prerequisites
 
 1. **Chrome** (or another Chromium-based browser) installed
-2. **n8n Browser Bridge** extension loaded in Chrome:
+2. **MNI Browser Bridge** extension loaded in Chrome:
    - Open `chrome://extensions`
    - Enable Developer mode
    - Click "Load unpacked" and select the `mcp-browser-extension` directory

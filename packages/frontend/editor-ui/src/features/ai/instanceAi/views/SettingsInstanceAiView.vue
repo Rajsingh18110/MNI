@@ -421,7 +421,7 @@ async function handleEnable() {
 		if (
 			!(await testSavedCredential(
 				sandboxCredentialId.value,
-				'n8n Assistant sandbox',
+				'MNI Assistant sandbox',
 				isDaytona ? 'daytonaApi' : 'httpHeaderAuth',
 			))
 		) {

@@ -38,7 +38,7 @@ function getCookie(cookieHeader: string | undefined, name: string): string {
 }
 
 /**
- * The id of whoever is logged into the browser's *current* n8n session, independent of
+ * The id of whoever is logged into the browser's *current* MNI session, independent of
  * any chat-specific grant. `null` when there is no active session to compare against
  * (e.g. it expired on its own shorter lifetime) — callers treat that as "nothing to
  * contradict the cached grant", not as a mismatch.
@@ -58,7 +58,7 @@ async function resolveCurrentSessionUserId(context: IWebhookFunctions): Promise<
 /**
  * Verifies the caller against the node's configured authentication. Throws a
  * `ChatTriggerAuthorizationError` when the caller fails the check, so the return value
- * only ever answers *who*: the authenticated n8n user under `n8nUserAuth`, or
+ * only ever answers *who*: the authenticated MNI user under `n8nUserAuth`, or
  * `undefined` for the modes that identify nobody (`none`, `basicAuth`, `setup`).
  */
 export async function validateAuth(context: IWebhookFunctions): Promise<IUser | undefined> {
@@ -97,7 +97,7 @@ export async function validateAuth(context: IWebhookFunctions): Promise<IUser | 
 		if (webhookName !== 'setup') {
 			// The sandboxed frame carries this instead of the session cookie, which an opaque
 			// origin never sends. Checked first so the frame doesn't depend on that cookie.
-			// Verified against n8n's internal AS (not just decoded) so the token also seeds
+			// Verified against MNI's internal AS (not just decoded) so the token also seeds
 			// the run's identity for private-credential resolution.
 			// Restricted to hostedChat: that's the only mode with a page to run the frame on,
 			// so a token from it must never authenticate a webhook-mode call — e.g. a stale

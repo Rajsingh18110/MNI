@@ -2368,7 +2368,7 @@
 				"name": "Execute Workflow",
 				"color": "#ff6d5a"
 			},
-			"description": "Helpers for calling other n8n workflows. Used for designing modular, microservice-like workflows.",
+			"description": "Helpers for calling other MNI workflows. Used for designing modular, microservice-like workflows.",
 			"name": "n8n-nodes-base.executeWorkflow",
 			"group": ["transform"],
 			"icon": "fa:sign-in-alt",
@@ -2379,7 +2379,7 @@
 				"subcategories": {
 					"Core Nodes": ["Helpers", "Flow"]
 				},
-				"alias": ["n8n", "call", "sub", "workflow", "sub-workflow", "subworkflow"],
+				"alias": ["MNI", "call", "sub", "workflow", "sub-workflow", "subworkflow"],
 				"resources": {
 					"primaryDocumentation": [
 						{
@@ -2497,7 +2497,7 @@
 			"defaults": {
 				"name": "Read/Write Files from Disk"
 			},
-			"description": "Read or write files from the computer that runs n8n",
+			"description": "Read or write files from the computer that runs MNI",
 			"name": "n8n-nodes-base.readWriteFile",
 			"group": ["input"],
 			"iconUrl": "icons/n8n-nodes-base/dist/nodes/Files/ReadWriteFile/readWriteFile.svg",
@@ -2702,11 +2702,11 @@
 		"key": "n8n-nodes-base.form",
 		"subcategory": "Helpers",
 		"properties": {
-			"displayName": "n8n Form",
+			"displayName": "MNI Form",
 			"defaults": {
 				"name": "Form"
 			},
-			"description": "Generate webforms in n8n and pass their responses to the workflow",
+			"description": "Generate webforms in MNI and pass their responses to the workflow",
 			"name": "n8n-nodes-base.form",
 			"group": ["input"],
 			"iconUrl": "icons/n8n-nodes-base/dist/nodes/Form/form.svg",
@@ -7385,14 +7385,14 @@
 		"key": "n8n-nodes-base.n8n",
 		"subcategory": "Helpers",
 		"properties": {
-			"displayName": "n8n",
+			"displayName": "MNI",
 			"defaults": {
-				"name": "n8n"
+				"name": "MNI"
 			},
-			"description": "Handle events and perform actions on your n8n instance",
+			"description": "Handle events and perform actions on your MNI instance",
 			"name": "n8n-nodes-base.n8n",
 			"group": ["transform"],
-			"iconUrl": "icons/n8n-nodes-base/dist/nodes/N8n/n8n.svg",
+			"iconUrl": "icons/n8n-nodes-base/dist/nodes/MNI/n8n.svg",
 			"outputs": ["main"],
 			"codex": {
 				"categories": ["Development", "Core Nodes"],
@@ -7421,11 +7421,11 @@
 		"key": "n8n-nodes-base.n8nTrainingCustomerDatastore",
 		"subcategory": "*",
 		"properties": {
-			"displayName": "Customer Datastore (n8n training)",
+			"displayName": "Customer Datastore (MNI training)",
 			"defaults": {
-				"name": "Customer Datastore (n8n training)"
+				"name": "Customer Datastore (MNI training)"
 			},
-			"description": "Dummy node used for n8n training",
+			"description": "Dummy node used for MNI training",
 			"name": "n8n-nodes-base.n8nTrainingCustomerDatastore",
 			"group": ["transform"],
 			"iconUrl": {
@@ -7441,11 +7441,11 @@
 		"key": "n8n-nodes-base.n8nTrainingCustomerMessenger",
 		"subcategory": "*",
 		"properties": {
-			"displayName": "Customer Messenger (n8n training)",
+			"displayName": "Customer Messenger (MNI training)",
 			"defaults": {
-				"name": "Customer Messenger (n8n training)"
+				"name": "Customer Messenger (MNI training)"
 			},
-			"description": "Dummy node used for n8n training",
+			"description": "Dummy node used for MNI training",
 			"name": "n8n-nodes-base.n8nTrainingCustomerMessenger",
 			"group": ["transform"],
 			"iconUrl": {
@@ -12853,7 +12853,7 @@
 				"name": "When clicking ‘Execute workflow’",
 				"color": "#909298"
 			},
-			"description": "Runs the flow on clicking a button in n8n",
+			"description": "Runs the flow on clicking a button in MNI",
 			"name": "n8n-nodes-base.manualTrigger",
 			"group": ["trigger"],
 			"icon": "fa:mouse-pointer",
@@ -13234,7 +13234,7 @@
 			"defaults": {
 				"name": "When chat message received"
 			},
-			"description": "Runs the workflow when an n8n generated webchat is submitted",
+			"description": "Runs the workflow when an MNI generated webchat is submitted",
 			"name": "@n8n/n8n-nodes-langchain.chatTrigger",
 			"group": ["trigger"],
 			"icon": "fa:comments",

@@ -34,7 +34,7 @@ import { canManageInstanceAi } from './instanceAiPermissions';
  * Instance AI. Everybody else gets a page with nothing but its header. The one
  * exception is the default editor row, which the openWorkflowInAssistant
  * experiment adds for members in its treatment group. The sidebar entry and the
- * route use the same gate, so n8n does not offer or serve an empty page.
+ * route use the same gate, so MNI does not offer or serve an empty page.
  *
  * Experiment cleanup: drop the treatment term with openWorkflowInAssistant.
  */
@@ -54,8 +54,8 @@ function hasInstanceAiSettingsContent(): boolean {
 const ONBOARDING_TEAM_QUERY = 'team';
 
 /**
- * The team question of the n8n Cloud signup survey: from the URL when it carries one (a test
- * run, or a handoff that passes it), otherwise from the cloud account. Only n8n Cloud has one;
+ * The team question of the MNI cloud signup survey: from the URL when it carries one (a test
+ * run, or a handoff that passes it), otherwise from the cloud account. Only MNI cloud has one;
  * elsewhere the onboarding card asks the team itself.
  */
 async function readSignupSurvey(
@@ -83,8 +83,8 @@ const SettingsInstanceAiView = async () => await import('./views/SettingsInstanc
 
 export const InstanceAiModule = defineFrontendModule({
 	id: 'instance-ai',
-	name: 'n8n Assistant',
-	description: 'Chat with your n8n instance.',
+	name: 'MNI Assistant',
+	description: 'Chat with your MNI instance.',
 	icon: 'sparkles',
 	routes: [
 		{
@@ -151,7 +151,7 @@ export const InstanceAiModule = defineFrontendModule({
 					name: INSTANCE_AI_VIEW,
 					path: '',
 					component: InstanceAiEmptyView,
-					// n8n Cloud sends a new signup to `/assistant?source=onboarding` after its survey.
+					// MNI cloud sends a new signup to `/assistant?source=onboarding` after its survey.
 					// The onboarding thread opens with the greeting and the first question card in
 					// place, so the guard creates it with the survey and lands on it. `&team=Sales`
 					// answers the team question from the URL, so one account can run it again.

@@ -216,9 +216,9 @@
 				"mode": "insert",
 				"pineconeIndex": {
 					"__rl": true,
-					"value": "n8n",
+					"value": "MNI",
 					"mode": "list",
-					"cachedResultName": "n8n"
+					"cachedResultName": "MNI"
 				},
 				"options": {
 					"clearNamespace": true,
@@ -274,9 +274,9 @@
 			"parameters": {
 				"pineconeIndex": {
 					"__rl": true,
-					"value": "n8n",
+					"value": "MNI",
 					"mode": "list",
-					"cachedResultName": "n8n"
+					"cachedResultName": "MNI"
 				},
 				"options": {
 					"pineconeNamespace": "bitcoin_wf_test"
@@ -299,9 +299,9 @@
 				"mode": "load",
 				"pineconeIndex": {
 					"__rl": true,
-					"value": "n8n",
+					"value": "MNI",
 					"mode": "list",
-					"cachedResultName": "n8n"
+					"cachedResultName": "MNI"
 				},
 				"prompt": "What is bitcoin?",
 				"options": {

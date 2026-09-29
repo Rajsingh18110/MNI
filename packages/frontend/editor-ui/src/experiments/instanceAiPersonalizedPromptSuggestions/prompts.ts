@@ -74,9 +74,9 @@ export const INSTANCE_AI_PERSONALIZED_PROMPT_SUGGESTIONS = [
 		order: 3,
 		style: 'tool-specific',
 		shortTitle: 'Back up credentials to GitHub',
-		description: 'Keep a versioned backup of your n8n setup.',
+		description: 'Keep a versioned backup of your MNI setup.',
 		builderPrompt:
-			'Build a scheduled workflow that exports my n8n workflows and credentials and commits them to a private GitHub repo, so I always have a versioned backup.',
+			'Build a scheduled workflow that exports my MNI workflows and credentials and commits them to a private GitHub repo, so I always have a versioned backup.',
 	},
 	{
 		id: 'v4-engineering-development-support-4-document-code-with-ai',
@@ -803,7 +803,7 @@ export const INSTANCE_AI_PERSONALIZED_PROMPT_SUGGESTIONS = [
 		description:
 			'Pull business names, sites, phones and emails from Google Maps into a spreadsheet.',
 		builderPrompt:
-			'Build a workflow triggered by an n8n Form where I enter a business type and location. Use HTTP Request nodes to scrape matching businesses from Google Maps (name, website, phone, email), then save results to a Google Sheet, skipping any row without an email.',
+			'Build a workflow triggered by an MNI Form where I enter a business type and location. Use HTTP Request nodes to scrape matching businesses from Google Maps (name, website, phone, email), then save results to a Google Sheet, skipping any row without an email.',
 	},
 	{
 		id: 'v4-sales-lead-generation-qualification-2-qualify-inbound-leads-automatically',
@@ -936,7 +936,7 @@ export const INSTANCE_AI_PERSONALIZED_PROMPT_SUGGESTIONS = [
 		description:
 			'Pull business names, sites, phones and emails from Google Maps into a spreadsheet.',
 		builderPrompt:
-			'Build a workflow triggered by an n8n Form where I enter a business type and location. Use HTTP Request nodes to scrape matching businesses from Google Maps (name, website, phone, email), then save results to a Google Sheet, skipping any row without an email.',
+			'Build a workflow triggered by an MNI Form where I enter a business type and location. Use HTTP Request nodes to scrape matching businesses from Google Maps (name, website, phone, email), then save results to a Google Sheet, skipping any row without an email.',
 	},
 	{
 		id: 'v4-sales-role-default-2-qualify-inbound-leads-automatically',

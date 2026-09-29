@@ -63,7 +63,7 @@ Use Cases:
 - Follow-up actions after specific duration
 
 Best Practices:
-- Use n8n Data Tables for waits longer than 24 hours (store scheduled time, check periodically)
+- Use MNI Data Tables for waits longer than 24 hours (store scheduled time, check periodically)
 - Avoid wait times longer than 7 days - use a polling pattern instead
 
 ### IF (n8n-nodes-base.if)
@@ -88,7 +88,7 @@ Use Cases:
 - Time-based routing (morning vs afternoon processing)
 - Multi-path conditional execution
 
-### n8n Data Tables (n8n-nodes-base.n8nTables)
+### MNI Data Tables (n8n-nodes-base.n8nTables)
 
 Purpose: Store scheduling state and pending tasks
 
@@ -105,10 +105,10 @@ Best Practices:
 
 ### Missed Schedules During Downtime
 
-**Problem**: Scheduled runs missed when n8n instance is down. No automatic catch-up for missed triggers.
+**Problem**: Scheduled runs missed when MNI instance is down. No automatic catch-up for missed triggers.
 
 **Solution**: Design idempotent workflows with catch-up logic:
-- Store last successful run timestamp in n8n Data Tables
+- Store last successful run timestamp in MNI Data Tables
 - On each run, check if enough time has passed since last run
 - Example: For a task that should run once per 24 hours, schedule it every 4 hours but only execute if last run was >20 hours ago
 
@@ -118,7 +118,7 @@ Best Practices:
 
 **Solution**:
 - Increase interval to exceed worst-case execution time
-- Implement mutex/lock using n8n Data Tables (check/set "running" flag at start, clear at end)
+- Implement mutex/lock using MNI Data Tables (check/set "running" flag at start, clear at end)
 - Add execution check at workflow start
 
 ### Wait Node Timezone Confusion
@@ -140,7 +140,7 @@ Best Practices:
 
 ### Cron Syntax
 
-n8n supports both 5-field and 6-field (with seconds) cron syntax. Use 6 fields if you want to specify seconds (e.g., prefix with 0 for seconds: \`0 0 9 * * *\` for 9 AM daily).
+MNI supports both 5-field and 6-field (with seconds) cron syntax. Use 6 fields if you want to specify seconds (e.g., prefix with 0 for seconds: \`0 0 9 * * *\` for 9 AM daily).
 
 For simple schedules, prefer Interval mode over cron for better readability.
 `;

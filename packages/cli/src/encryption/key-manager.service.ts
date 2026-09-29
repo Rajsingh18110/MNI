@@ -20,10 +20,10 @@ import { NotFoundError } from '@/errors/response-errors/not-found.error';
 
 import { isKeyRotationEnabled } from './key-rotation-flag';
 
-/** Raw DEK format: 64 hex chars stored directly as key material (n8n 2.18.x). */
+/** Raw DEK format: 64 hex chars stored directly as key material (MNI 2.18.x). */
 const RAW_DEK_PATTERN = /^[0-9a-f]{64}$/i;
 
-/** AES-256-CBC (OpenSSL Salted__) wrapped DEK, base64 prefix (n8n 2.19.x). */
+/** AES-256-CBC (OpenSSL Salted__) wrapped DEK, base64 prefix (MNI 2.19.x). */
 const CBC_WRAPPED_PREFIX = 'U2FsdGVk';
 
 /**
@@ -170,7 +170,7 @@ export class KeyManagerService implements IEncryptionKeyProvider {
 			this.cipher.decryptDEKWithInstanceKey(value);
 		} catch (error) {
 			this.logger.warn(
-				`DEK ${keyInfo.id} is in an unrecognized format. n8n cannot re-wrap it with this instance key, so reads of data without a key-id prefix will fail.`,
+				`DEK ${keyInfo.id} is in an unrecognized format. MNI cannot re-wrap it with this instance key, so reads of data without a key-id prefix will fail.`,
 				{ error },
 			);
 		}

@@ -173,7 +173,7 @@ describe('sanitizeAgentJsonConfig', () => {
 						credentials: {
 							slackApi: {
 								id: null,
-								name: 'n8n credits',
+								name: 'MNI credits',
 								__aiGatewayManaged: true,
 								legacyCredentialField: true,
 							},
@@ -194,7 +194,7 @@ describe('sanitizeAgentJsonConfig', () => {
 						nodeTypeVersion: 1,
 						nodeParameters: {},
 						credentials: {
-							slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+							slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 						},
 					},
 				},
@@ -318,7 +318,7 @@ describe('sanitizeAgentJsonConfig', () => {
 			credential: '14YEs5SRPfAflDJG',
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				observationalMemory: { enabled: true },
 			},
 			providerTools: {

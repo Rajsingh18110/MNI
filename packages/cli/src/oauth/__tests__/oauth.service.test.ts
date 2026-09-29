@@ -2308,7 +2308,7 @@ describe('OauthService', () => {
 			expect(httpClientMock.post).toHaveBeenCalledWith(
 				'https://example.domain/oauth2/register',
 				expect.objectContaining({
-					client_name: 'n8n',
+					client_name: 'MNI',
 					grant_types: ['authorization_code', 'refresh_token'],
 				}),
 			);
@@ -4513,7 +4513,7 @@ describe('OauthService', () => {
 						url: 'https://as.example.com/register',
 						method: 'POST',
 						json: true,
-						body: expect.objectContaining({ client_name: 'n8n' }),
+						body: expect.objectContaining({ client_name: 'MNI' }),
 					}),
 				);
 			});
@@ -5146,7 +5146,7 @@ describe('OauthService', () => {
 				consumerSecret: 'consumer_secret',
 				requestTokenUrl: 'https://trello.com/1/OAuthGetRequestToken',
 				authUrl:
-					'https://trello.com/1/OAuthAuthorizeToken?scope=read,write,account&expiration=never&name=n8n',
+					'https://trello.com/1/OAuthAuthorizeToken?scope=read,write,account&expiration=never&name=MNI',
 				accessTokenUrl: 'https://trello.com/1/OAuthGetAccessToken',
 				signatureMethod: 'HMAC-SHA1',
 			};
@@ -5166,7 +5166,7 @@ describe('OauthService', () => {
 			const parsed = new URL(authUri);
 			expect(parsed.searchParams.get('scope')).toBe('read,write,account');
 			expect(parsed.searchParams.get('expiration')).toBe('never');
-			expect(parsed.searchParams.get('name')).toBe('n8n');
+			expect(parsed.searchParams.get('name')).toBe('MNI');
 			expect(parsed.searchParams.get('oauth_token')).toBe('random-token');
 		});
 	});

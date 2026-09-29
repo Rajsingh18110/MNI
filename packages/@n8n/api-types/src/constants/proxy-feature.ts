@@ -1,5 +1,5 @@
 /**
- * Header names and registry shared between n8n and the ai-assistant-service
+ * Header names and registry shared between MNI and the ai-assistant-service
  * proxy. Mirrors the `FEATURES` tuple on the proxy side — any new feature
  * must be added in both places.
  */
@@ -24,7 +24,7 @@ export interface ProxyHeaderInput extends ProxyContext {
 
 /**
  * Builds the headers required on every call to `/v1/api-proxy/*`. Every
- * caller on the n8n side must use this helper — types enforce both
+ * caller on the MNI side must use this helper — types enforce both
  * `feature` (constrained union) and `n8nVersion` are supplied, so
  * omission becomes impossible at the call site.
  */

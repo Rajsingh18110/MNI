@@ -8,7 +8,7 @@
  * - Frontend: browser V8 already in outputDir/.cache (inline maps w/ sources) —
  *   monocart resolves it with no extra inputs.
  * - Backend: Node V8 from the containers (N8N_COVERAGE_DIR). The repo isn't
- *   built on the shard, so .js/.map BYTES are read from the n8n image's dist
+ *   built on the shard, so .js/.map BYTES are read from the MNI image's dist
  *   (docker cp'd to IMAGE_DIST_ROOT — the exact executed files), while the map's
  *   `sources` are resolved to the checkout's `packages/<x>/src/*.ts`. No build.
  *

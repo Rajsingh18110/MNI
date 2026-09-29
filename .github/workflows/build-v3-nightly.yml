@@ -1,6 +1,6 @@
 # Builds and publishes nightly Docker images for the v3 (3.x) branch.
 #
-# Produces n8nio/n8n:v3-nightly and a timestamped n8nio/n8n:v3-nightly-<date>
+# Produces n8nio/MNI:v3-nightly and a timestamped n8nio/MNI:v3-nightly-<date>
 # (plus the matching runners images) so v3 can be trialed in docker/kubernetes
 # before release. Reuses the shared docker-build-push.yml pipeline, pointing it
 # at the 3.x branch via the `ref` input.
@@ -59,7 +59,7 @@ jobs:
       create_attestations: true
     secrets: inherit
 
-  # On Mondays (or on demand via force_rc), promote the whole set (n8n + both runners
+  # On Mondays (or on demand via force_rc), promote the whole set (MNI + both runners
   # images) to v3-rc so a stack pulling `v3-rc` gets images that were built from the same
   # 3.x commit. Pure retag of manifests the build already pushed — nothing is rebuilt.
   #
@@ -105,7 +105,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          # The n8n GHCR repo is the single source of truth for the counter; all images
+          # The MNI GHCR repo is the single source of truth for the counter; all images
           # then share the number, so one RC is always one consistent set.
           tag_exists() {
             local ref=$1 out

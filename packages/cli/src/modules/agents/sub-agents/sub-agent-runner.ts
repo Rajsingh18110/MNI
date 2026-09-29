@@ -57,7 +57,7 @@ import { SubAgentSourceResolver } from './sub-agent-source-resolver';
 
 export interface SubAgentRunContext {
 	projectId: string;
-	/** Saved n8n agent id of the delegating parent agent, used to link the child session back. */
+	/** Saved MNI agent id of the delegating parent agent, used to link the child session back. */
 	parentAgentId: string;
 	credentialProvider: CredentialProvider;
 	/**
@@ -76,7 +76,7 @@ export interface SubAgentRunContext {
 	 */
 	telemetry?: BuiltTelemetry;
 	/**
-	 * Interactive n8n user of the delegating parent run; used to filter the
+	 * Interactive MNI user of the delegating parent run; used to filter the
 	 * sub-agent's node/workflow tools by their access. Absent when the parent
 	 * is a published/integration run.
 	 */

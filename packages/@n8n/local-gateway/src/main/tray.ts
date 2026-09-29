@@ -101,7 +101,7 @@ export function createTray(
 	onDisconnect: () => void,
 ): Tray {
 	const tray = new Tray(getTrayIcon('disconnected'));
-	tray.setToolTip('n8n Gateway');
+	tray.setToolTip('MNI Gateway');
 
 	const update = (snapshot: StatusSnapshot): void => {
 		logger.debug('Tray updating', { status: snapshot.status, connectedUrl: snapshot.connectedUrl });

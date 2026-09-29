@@ -58,7 +58,7 @@ export class WhatsAppTrigger implements INodeType {
 		outputs: [NodeConnectionTypes.Main],
 		builderHint: {
 			searchHint:
-				'Webhook verification is automatic — there is NO user-settable "verify token". On activation n8n registers the Meta webhook subscription and verifies Meta\'s challenge against this node\'s own auto-generated id. The whatsAppTriggerApi credential holds only Client ID and Client Secret (no verify-token field). Never tell the user to invent a verify-token string or look for a verify-token credential field; if Meta\'s "Verify token" box must be filled in manually it has to be this node\'s id, not an arbitrary value.',
+				'Webhook verification is automatic — there is NO user-settable "verify token". On activation MNI registers the Meta webhook subscription and verifies Meta\'s challenge against this node\'s own auto-generated id. The whatsAppTriggerApi credential holds only Client ID and Client Secret (no verify-token field). Never tell the user to invent a verify-token string or look for a verify-token credential field; if Meta\'s "Verify token" box must be filled in manually it has to be this node\'s id, not an arbitrary value.',
 		},
 		credentials: [
 			{

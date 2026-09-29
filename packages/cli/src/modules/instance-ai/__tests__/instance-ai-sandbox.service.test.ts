@@ -181,7 +181,7 @@ describe('InstanceAiSandboxService', () => {
 			}
 		});
 
-		it('keeps n8n Sandbox traffic direct when the assistant proxy is enabled', async () => {
+		it('keeps MNI Sandbox traffic direct when the assistant proxy is enabled', async () => {
 			const getClient = vi.fn();
 			const resolveN8nSandboxConfig = vi.fn(async () => ({
 				serviceUrl: 'https://admin.sandbox',
@@ -416,12 +416,12 @@ describe('InstanceAiSandboxService', () => {
 
 		it('pins the full snapshot name when the override env var is set', () => {
 			const { service } = createSandboxService({
-				config: { ...daytonaEnvConfig, sandboxSnapshot: 'n8n/instance-ai:2.27.3' },
+				config: { ...daytonaEnvConfig, sandboxSnapshot: 'MNI/instance-ai:2.27.3' },
 			});
 
 			expect(service.getSandboxConfigFromEnv()).toMatchObject({
 				provider: 'daytona',
-				snapshot: 'n8n/instance-ai:2.27.3',
+				snapshot: 'MNI/instance-ai:2.27.3',
 			});
 		});
 

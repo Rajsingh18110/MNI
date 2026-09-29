@@ -12,7 +12,7 @@ import { isContextPreferencesEnabledOnceEvaluated } from './context.utils';
 export const ContextModule: FrontendModuleDescription = {
 	id: 'context',
 	name: 'Context',
-	description: 'Reusable preferences for the n8n assistant and connected AI tools',
+	description: 'Reusable preferences for the MNI assistant and connected AI tools',
 	icon: 'brain',
 	routes: [
 		{

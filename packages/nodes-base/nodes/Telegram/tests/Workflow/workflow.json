@@ -265,7 +265,7 @@
 										}
 									},
 									{
-										"text": "n8n",
+										"text": "MNI",
 										"additionalFields": {
 											"url": "https://n8n.io"
 										}
@@ -543,9 +543,9 @@
 						"id": 123456789,
 						"first_name": "Nathan",
 						"last_name": "W",
-						"username": "n8n",
+						"username": "MNI",
 						"type": "private",
-						"active_usernames": ["n8n"],
+						"active_usernames": ["MNI"],
 						"bio": "Automation",
 						"has_private_forwards": true,
 						"max_reaction_count": 11,
@@ -577,11 +577,11 @@
 							"id": 123456789,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"type": "private"
 						},
 						"date": 1732960606,
-						"text": "a\n\nThis message was sent automatically with n8n",
+						"text": "a\n\nThis message was sent automatically with MNI",
 						"entities": [
 							{
 								"offset": 3,
@@ -619,7 +619,7 @@
 								"id": 123456789,
 								"first_name": "Nathan",
 								"last_name": "W",
-								"username": "n8n",
+								"username": "MNI",
 								"type": "private"
 							},
 							"date": 1732963445,
@@ -667,7 +667,7 @@
 							"id": 123456789,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"type": "private"
 						},
 						"date": 1732963630,
@@ -683,11 +683,11 @@
 								"id": 123456789,
 								"first_name": "Nathan",
 								"last_name": "W",
-								"username": "n8n",
+								"username": "MNI",
 								"type": "private"
 							},
 							"date": 1732960606,
-							"text": "a\n\nThis message was sent automatically with n8n",
+							"text": "a\n\nThis message was sent automatically with MNI",
 							"entities": [
 								{
 									"offset": 3,
@@ -745,7 +745,7 @@
 							"id": 123456789,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"type": "private"
 						},
 						"date": 1732965815,
@@ -790,7 +790,7 @@
 							"id": 123456789,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"type": "private"
 						},
 						"date": 1732960606,
@@ -804,7 +804,7 @@
 										"callback_data": "callback"
 									},
 									{
-										"text": "n8n",
+										"text": "MNI",
 										"url": "https://n8n.io/"
 									}
 								]
@@ -864,7 +864,7 @@
 						"is_bot": false,
 						"first_name": "Nathan",
 						"last_name": "W",
-						"username": "n8n",
+						"username": "MNI",
 						"language_code": "en"
 					},
 					"status": "creator",
@@ -896,7 +896,7 @@
 							"id": 123456789,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"type": "private"
 						},
 						"date": 1732968868,
@@ -966,7 +966,7 @@
 							"id": 123456789,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"type": "private"
 						},
 						"date": 1732969291,
@@ -1008,7 +1008,7 @@
 							"is_bot": false,
 							"first_name": "Nathan",
 							"last_name": "W",
-							"username": "n8n",
+							"username": "MNI",
 							"language_code": "en"
 						},
 						"status": "creator",

@@ -6,11 +6,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should configure webhook node', async ({ n8n }) => {
+		test('should configure webhook node', async ({ MNI }) => {
 			await n8n.canvas.addNode('Webhook');
 
 			await n8n.ndv.setupHelper.webhook({
@@ -22,7 +22,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterInputField('path')).toHaveValue('test-webhook');
 		});
 
-		test('should configure HTTP Request node', async ({ n8n }) => {
+		test('should configure HTTP Request node', async ({ MNI }) => {
 			await n8n.canvas.addNode('HTTP Request');
 
 			await n8n.ndv.setupHelper.httpRequest({
@@ -37,7 +37,7 @@ test.describe(
 			);
 		});
 
-		test('should auto-detect parameter types', async ({ n8n }) => {
+		test('should auto-detect parameter types', async ({ MNI }) => {
 			await n8n.canvas.addNode('Webhook');
 
 			await n8n.ndv.setupHelper.setParameter('httpMethod', 'PUT');
@@ -46,7 +46,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterInputField('path')).toHaveValue('auto-detect-test');
 		});
 
-		test('should use explicit types for better performance', async ({ n8n }) => {
+		test('should use explicit types for better performance', async ({ MNI }) => {
 			await n8n.canvas.addNode('Webhook');
 
 			await n8n.ndv.setupHelper.setParameter('httpMethod', 'PATCH', 'dropdown');
@@ -55,7 +55,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterInputField('path')).toHaveValue('explicit-types');
 		});
 
-		test('should configure Edit Fields node with single field', async ({ n8n }) => {
+		test('should configure Edit Fields node with single field', async ({ MNI }) => {
 			await n8n.canvas.addNode('Edit Fields (Set)');
 
 			await n8n.ndv.editFields.setSingleFieldValue('testField', 'string', 'Hello World');
@@ -64,7 +64,7 @@ test.describe(
 			await expect(nameInput).toHaveValue('testField');
 		});
 
-		test('should configure Edit Fields node with multiple fields', async ({ n8n }) => {
+		test('should configure Edit Fields node with multiple fields', async ({ MNI }) => {
 			await n8n.canvas.addNode('Edit Fields (Set)');
 
 			await n8n.ndv.editFields.setFieldsValues([
@@ -76,7 +76,7 @@ test.describe(
 			await expect(n8n.ndv.getAssignments('assignments')).toHaveCount(3);
 		});
 
-		test('should configure Edit Fields node with all field types', async ({ n8n }) => {
+		test('should configure Edit Fields node with all field types', async ({ MNI }) => {
 			await n8n.canvas.addNode('Edit Fields (Set)');
 
 			await n8n.ndv.editFields.setFieldsValues([

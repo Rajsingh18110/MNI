@@ -176,7 +176,7 @@ export function getCredentialActivationState(
 }
 
 /**
- * Fallback for a slot whose credential type n8n credits doesn't support: the
+ * Fallback for a slot whose credential type MNI credits doesn't support: the
  * first declared sibling type that is supported, unassigned, not backed by a
  * stored user credential, and reachable by a parameter switch. The async/loosely-
  * typed counterpart of the shared `resolveSupportedCredentialActivation`.
@@ -470,7 +470,7 @@ async function resolveCredentialState(
 	let isAutoApplied = false;
 	let autoAppliedGateway: true | undefined;
 
-	// Auto-apply n8n credits only when the user has no credentials of their own
+	// Auto-apply MNI credits only when the user has no credentials of their own
 	// for this type: none assigned on the node (`hasExistingOnNode`) and none
 	// stored (`existingCredentials`). Any user-defined credential wins — we never
 	// override a saved key with the managed gateway.
@@ -489,7 +489,7 @@ async function resolveCredentialState(
 		}
 	}
 
-	// Fall back to auto-applying the sole stored credential when n8n credits
+	// Fall back to auto-applying the sole stored credential when MNI credits
 	// is not available. With multiple candidates, picking the first is a
 	// silent guess — surface the list so the setup wizard can prompt.
 	// Generic auth types never auto-apply: the type alone does not identify a
@@ -686,7 +686,7 @@ async function buildRequestForCredentialType(
 
 	// The connected credential can rule out a parameter value chosen before it existed
 	// (see computeUnavailableLocatorIssues), so fold those in as parameter issues.
-	// Gateway-managed (n8n credits) slots use the managed tag so the host can
+	// Gateway-managed (MNI credits) slots use the managed tag so the host can
 	// validate against the gateway allowlist.
 	const locatorCredential =
 		effectiveCredential ??
@@ -1145,15 +1145,15 @@ export async function applyNodeParameters(
 }
 
 /**
- * Attribution funnel: record who configured a credential and whether it is n8n
+ * Attribution funnel: record who configured a credential and whether it is MNI
  * Connect vs BYOK, so analytics can compare agent-driven vs manual assignment
  * (the manual canvas emits the same event with `source: 'user'`).
  *
  * `instance-ai-auto` mirrors the auto-apply rules in `buildSetupRequests`: Instance
  * AI defaults a credential unprompted only when the node had none and the user did
- * not have to choose — n8n Connect when the user has no stored credential of the
+ * not have to choose — MNI Connect when the user has no stored credential of the
  * type (rule 3), or their sole stored non-generic credential (rule 2). Anything
- * else — a credential picked among several, a generic auth type, or n8n Connect
+ * else — a credential picked among several, a generic auth type, or MNI Connect
  * chosen despite having stored keys — is a user-confirmed choice.
  */
 async function trackCredentialAssignment(
@@ -1184,7 +1184,7 @@ async function trackCredentialAssignment(
 		credential_type: opts.credType,
 		node_type: opts.nodeType,
 		workflow_id: opts.workflowId,
-		// The join key back to `User created credentials`; n8n Connect slots have no
+		// The join key back to `User created credentials`; MNI Connect slots have no
 		// stored credential of the user's own.
 		credential_id: isGateway ? null : opts.credential.id,
 		thread_id: context.threadId ?? null,

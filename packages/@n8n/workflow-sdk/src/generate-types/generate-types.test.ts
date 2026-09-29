@@ -283,7 +283,7 @@ const mockGmailNode: NodeTypeDescription = {
 					name: 'appendAttribution',
 					type: 'boolean',
 					default: true,
-					description: 'Whether to append n8n attribution to the email',
+					description: 'Whether to append MNI attribution to the email',
 				},
 				{
 					displayName: 'CC',

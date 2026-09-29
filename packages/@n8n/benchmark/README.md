@@ -1,6 +1,6 @@
-# n8n benchmarking tool
+# MNI benchmarking tool
 
-Tool for executing benchmarks against an n8n instance.
+Tool for executing benchmarks against an MNI instance.
 
 ## Directory structure
 
@@ -13,7 +13,7 @@ packages/@n8n/benchmark
 ├── scripts          Orchestration scripts
 ```
 
-## Benchmarking an existing n8n instance
+## Benchmarking an existing MNI instance
 
 The easiest way to run the existing benchmark scenarios is to use the benchmark docker image:
 
@@ -48,7 +48,7 @@ docker run -v ./scenarios:/scenarios ghcr.io/n8n-io/n8n-benchmark:latest run \
 
 ## Running the entire benchmark suite
 
-The benchmark suite consists of [benchmark scenarios](#benchmark-scenarios) and different [n8n setups](#n8n-setups).
+The benchmark suite consists of [benchmark scenarios](#benchmark-scenarios) and different [MNI setups](#n8n-setups).
 
 ### locally
 
@@ -78,7 +78,7 @@ pnpm destroy-cloud-env
 
 ## Running the `n8n-benchmark` cli
 
-The `n8n-benchmark` cli is a node.js program that runs one or more scenarios against a single n8n instance.
+The `n8n-benchmark` cli is a node.js program that runs one or more scenarios against a single MNI instance.
 
 ### Locally with Docker
 
@@ -96,7 +96,7 @@ Run the image
 docker run \
   -e N8N_USER_EMAIL=user@n8n.io \
   -e N8N_USER_PASSWORD=password \
-  # For macos, n8n running outside docker
+  # For macos, MNI running outside docker
   -e N8N_BASE_URL=http://host.docker.internal:5678 \
   n8n-benchmark
 ```
@@ -125,6 +125,6 @@ A benchmark scenario defines one or multiple steps to execute and measure. It co
 
 Available scenarios are located in [`./scenarios`](./scenarios/).
 
-## n8n setups
+## MNI setups
 
-A n8n setup defines a single n8n runtime configuration using Docker compose. Different n8n setups are located in [`./scripts/n8nSetups`](./scripts/n8nSetups).
+A MNI setup defines a single MNI runtime configuration using Docker compose. Different n8n setups are located in [`./scripts/n8nSetups`](./scripts/n8nSetups).

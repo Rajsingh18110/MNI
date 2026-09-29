@@ -734,7 +734,7 @@ describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — sub-a
 	});
 });
 
-describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — n8n chat tool gating', () => {
+describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — MNI chat tool gating', () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
 		builtAgent.hasCheckpointStorage.mockReturnValue(true);

@@ -53,7 +53,7 @@ if (!inE2ETests && !inTest) {
 				}
 				if (value !== value.trim()) {
 					console.warn(
-						`[n8n] Warning: The file specified by ${envName} contains leading or trailing whitespace, which may cause authentication failures.`,
+						`[MNI] Warning: The file specified by ${envName} contains leading or trailing whitespace, which may cause authentication failures.`,
 					);
 				}
 				config.set(key, value);

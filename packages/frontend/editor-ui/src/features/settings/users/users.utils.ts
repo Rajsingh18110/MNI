@@ -3,7 +3,7 @@ import type { IUser } from '@n8n/rest-api-client/api/users';
 import type { ILogInStatus } from './users.types';
 
 /*
-	Utility functions used to handle users in n8n
+	Utility functions used to handle users in MNI
 */
 
 export const LOGIN_STATUS: { LoggedIn: ILogInStatus; LoggedOut: ILogInStatus } = {

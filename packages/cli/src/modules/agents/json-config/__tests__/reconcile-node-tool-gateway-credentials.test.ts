@@ -179,7 +179,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 
 	it('keeps an explicit inbound managed marker even when the project has a credential of the type', () => {
 		// An inbound marker is an explicit choice (manual toggle or the user
-		// asking the builder for n8n credits) — own credentials must not veto it.
+		// asking the builder for MNI credits) — own credentials must not veto it.
 		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
@@ -387,7 +387,7 @@ describe('listAiGatewayManagedCredentialTypes', () => {
 	});
 
 	it('excludes a managed type that still has an empty required slot on another tool', () => {
-		// Per-operation coverage: one tool runs a covered operation on n8n credits,
+		// Per-operation coverage: one tool runs a covered operation on MNI credits,
 		// another needs a real credential for an uncovered one — so the type must
 		// keep prompting rather than be suppressed globally.
 		const tools = [

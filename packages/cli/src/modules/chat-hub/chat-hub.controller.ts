@@ -207,7 +207,7 @@ export class ChatHubController {
 			req.user,
 			{
 				...payload,
-				model: { provider: 'n8n' as const, workflowId },
+				model: { provider: 'MNI' as const, workflowId },
 				credentials: {},
 				userId: req.user.id,
 			},
@@ -264,7 +264,7 @@ export class ChatHubController {
 			req.user,
 			{
 				...payload,
-				model: { provider: 'n8n' as const, workflowId },
+				model: { provider: 'MNI' as const, workflowId },
 				credentials: {},
 				sessionId,
 				editId,
@@ -323,7 +323,7 @@ export class ChatHubController {
 			req.user,
 			{
 				...payload,
-				model: { provider: 'n8n' as const, workflowId },
+				model: { provider: 'MNI' as const, workflowId },
 				credentials: {},
 				sessionId,
 				retryId,

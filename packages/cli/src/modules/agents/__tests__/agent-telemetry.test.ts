@@ -48,7 +48,7 @@ describe('agent telemetry', () => {
 			},
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				episodicMemory: { enabled: true, credential: 'memory-cred' },
 			},
 		};

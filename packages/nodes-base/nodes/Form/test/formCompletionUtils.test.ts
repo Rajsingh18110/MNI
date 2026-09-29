@@ -150,7 +150,7 @@ describe('formCompletionUtils', () => {
 		});
 
 		it('should pass the attribution link to the completion template', async () => {
-			// The completion template renders the "Form automated with n8n" footer as
+			// The completion template renders the "Form automated with MNI" footer as
 			// `<a href={{n8nWebsiteLink}} ...>`. Without the link in the render context
 			// the anchor has no usable href, so the footer resolves against the
 			// completion page's own URL instead of pointing at n8n.io.

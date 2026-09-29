@@ -318,7 +318,7 @@ describe('AgentValidationService — structured issues', () => {
 		]);
 	});
 
-	it('accepts the n8n Connect managed tag on the main model when the gateway serves the provider, else flags it', async () => {
+	it('accepts the MNI Connect managed tag on the main model when the gateway serves the provider, else flags it', async () => {
 		const { service, agentRepository, aiGatewayService } = makeService();
 		agentRepository.findByIdAndProjectId.mockResolvedValue(
 			makeAgent({ ...runnableConfig, credential: AI_GATEWAY_MANAGED_TAG }),
@@ -463,7 +463,7 @@ describe('AgentValidationService — structured issues', () => {
 		expect(result).toEqual({ status: 'valid', issues: [] });
 	});
 
-	it('treats an n8n Connect managed node-tool credential as satisfied when the gateway covers it', async () => {
+	it('treats an MNI Connect managed node-tool credential as satisfied when the gateway covers it', async () => {
 		const { service, agentRepository, nodeTypes, aiGatewayService } = makeService();
 		nodeTypes.getByNameAndVersion.mockReturnValue({
 			description: { credentials: [{ name: 'slackApi', required: true }], properties: [] },
@@ -488,7 +488,7 @@ describe('AgentValidationService — structured issues', () => {
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
-								slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+								slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 							},
 						},
 					},
@@ -505,7 +505,7 @@ describe('AgentValidationService — structured issues', () => {
 		expect(result).toEqual({ status: 'valid', issues: [] });
 	});
 
-	it('flags an n8n Connect managed node-tool credential when the config no longer covers the node', async () => {
+	it('flags an MNI Connect managed node-tool credential when the config no longer covers the node', async () => {
 		const { service, agentRepository, nodeTypes, aiGatewayService } = makeService();
 		nodeTypes.getByNameAndVersion.mockReturnValue({
 			description: { credentials: [{ name: 'slackApi', required: true }], properties: [] },
@@ -530,7 +530,7 @@ describe('AgentValidationService — structured issues', () => {
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
-								slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+								slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 							},
 						},
 					},
@@ -553,7 +553,7 @@ describe('AgentValidationService — structured issues', () => {
 		);
 	});
 
-	it('flags an n8n Connect managed node-tool credential when the feature is disabled', async () => {
+	it('flags an MNI Connect managed node-tool credential when the feature is disabled', async () => {
 		const { service, agentRepository, nodeTypes, aiGatewayService } = makeService();
 		nodeTypes.getByNameAndVersion.mockReturnValue({
 			description: { credentials: [{ name: 'slackApi', required: true }], properties: [] },
@@ -572,7 +572,7 @@ describe('AgentValidationService — structured issues', () => {
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
-								slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+								slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 							},
 						},
 					},
@@ -616,7 +616,7 @@ describe('AgentValidationService — structured issues', () => {
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
-								slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+								slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 							},
 						},
 					},
@@ -897,7 +897,7 @@ describe('AgentValidationService — structured issues', () => {
 		]);
 	});
 
-	it('accepts credential-free n8n Chat without relaxing other channel checks', async () => {
+	it('accepts credential-free MNI Chat without relaxing other channel checks', async () => {
 		const { service, agentRepository } = makeService();
 		agentRepository.findByIdAndProjectId.mockResolvedValue(
 			makeAgent(runnableConfig, {}, { integrations: [{ type: 'n8n_chat', credentialId: '' }] }),

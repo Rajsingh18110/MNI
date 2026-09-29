@@ -22,12 +22,12 @@ export default class RunCommand extends Command {
 			default: 'Unnamed',
 		}),
 		n8nBaseUrl: Flags.string({
-			description: 'The base URL for the n8n instance',
+			description: 'The base URL for the MNI instance',
 			default: 'http://localhost:5678',
 			env: 'N8N_BASE_URL',
 		}),
 		n8nUserEmail: Flags.string({
-			description: 'The email address of the n8n user',
+			description: 'The email address of the MNI user',
 			default: 'benchmark-user@n8n.io',
 			env: 'N8N_USER_EMAIL',
 		}),
@@ -57,7 +57,7 @@ export default class RunCommand extends Command {
 			env: 'BENCHMARK_RESULT_WEBHOOK_AUTH_HEADER',
 		}),
 		n8nUserPassword: Flags.string({
-			description: 'The password of the n8n user',
+			description: 'The password of the MNI user',
 			default: 'VerySecret!123',
 			env: 'N8N_USER_PASSWORD',
 		}),

@@ -176,7 +176,7 @@ describe('Engine', () => {
 		it('sends execution responses over Redis', async () => {
 			await createEngine().init();
 
-			expect(redisClientService.createClient).toHaveBeenCalledWith({ type: 'publisher(n8n)' });
+			expect(redisClientService.createClient).toHaveBeenCalledWith({ type: 'publisher(MNI)' });
 			expect(runtime.init).toHaveBeenCalledWith(expect.any(RedisExecutionResponseSender));
 		});
 

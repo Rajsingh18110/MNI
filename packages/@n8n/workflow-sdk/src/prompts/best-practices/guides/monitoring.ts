@@ -155,7 +155,7 @@ Cron expression mistakes can cause workflows to run at wrong times or not at all
 
 ### Hardcoded Credentials
 
-Never hardcode API keys, passwords, or sensitive URLs directly in nodes. Use n8n's credential manager for security and maintainability.
+Never hardcode API keys, passwords, or sensitive URLs directly in nodes. Use MNI's credential manager for security and maintainability.
 
 ### Missing Recovery Notifications
 

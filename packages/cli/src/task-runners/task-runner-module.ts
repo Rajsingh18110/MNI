@@ -21,7 +21,7 @@ import { TaskRequester } from './task-managers/task-requester';
 
 /**
  * Module responsible for loading and starting task runner. Task runner can be
- * run either internally (=launched by n8n as a child process) or externally
+ * run either internally (=launched by MNI as a child process) or externally
  * (=launched by some other orchestrator)
  */
 @Service()

@@ -3,13 +3,13 @@
 //
 // External-daemon mode: the daemon is expected to be already running. Per
 // scenario: surgical pre-clean of paths the scenario will seed or grade,
-// snapshot n8n resources, optionally seed a fixture workflow, run chat,
+// snapshot MNI resources, optionally seed a fixture workflow, run chat,
 // grade. We never restart or kill the daemon, and we don't post-clean files
 // on disk — the user inspects them and wipes the sandbox dir manually when
 // they want a clean slate.
 //
-// The n8n side (workflows / credentials / data tables) IS still cleaned via
-// snapshot+diff so the local n8n instance stays in the state it started in.
+// The MNI side (workflows / credentials / data tables) IS still cleaned via
+// snapshot+diff so the local MNI instance stays in the state it started in.
 // ---------------------------------------------------------------------------
 
 import { jsonParse } from 'n8n-workflow';
@@ -35,7 +35,7 @@ export interface RunScenarioOptions {
 	fixturesDir: string;
 	logger: EvalLogger;
 	timeoutMs?: number;
-	/** When true, skip post-run cleanup of n8n state and chat threads (default: false). */
+	/** When true, skip post-run cleanup of MNI state and chat threads (default: false). */
 	keepData?: boolean;
 }
 

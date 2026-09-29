@@ -21,7 +21,7 @@ export const TOKEN_REQUEST_TIMEOUT = 30_000;
  *   at credential-resolution time, outside any node execution context, so
  *   reaching for the node helper there is the odd path, not the clean one.
  *
- * These POSTs used to call `axios` directly, which bypassed n8n's outbound HTTP
+ * These POSTs used to call `axios` directly, which bypassed MNI's outbound HTTP
  * layer entirely (no SSRF guard, no proxy, no timeout).
  */
 export function getTokenRequestClient(host: 'fixed-vendor' | 'user-controlled'): HttpRequestClient {

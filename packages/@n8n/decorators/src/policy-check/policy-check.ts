@@ -5,7 +5,7 @@ import type { INode } from 'n8n-workflow';
 export type { PolicyViolation, PolicyCheckFailure };
 
 /**
- * The points in n8n where a policy can block an action.
+ * The points in MNI where a policy can block an action.
  *
  * Adding a point here leaves existing checks untouched. Removing one isn't silent either:
  * the registry rejects `on*` methods that aren't in this list, so a check can't keep

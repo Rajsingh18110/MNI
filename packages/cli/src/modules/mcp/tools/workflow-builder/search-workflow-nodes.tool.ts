@@ -23,7 +23,7 @@ const inputSchema = {
 		.array(z.string())
 		.min(1)
 		.describe(
-			'Search queries for n8n nodes — service names (e.g. "gmail", "slack"), trigger types (e.g. "schedule trigger", "webhook"), or utility nodes (e.g. "set", "if", "merge", "code")',
+			'Search queries for MNI nodes — service names (e.g. "gmail", "slack"), trigger types (e.g. "schedule trigger", "webhook"), or utility nodes (e.g. "set", "if", "merge", "code")',
 		),
 	usage: z
 		.enum(['workflow', 'agentTool'])
@@ -70,7 +70,7 @@ type SearchNodesToolDefinition = Omit<ToolDefinition<typeof inputSchema>, 'handl
 };
 
 /**
- * MCP tool that searches for n8n nodes by keyword.
+ * MCP tool that searches for MNI nodes by keyword.
  * Wraps the code-builder's search tool.
  */
 export const createSearchWorkflowNodesTool = (
@@ -88,7 +88,7 @@ export const createSearchWorkflowNodesTool = (
 	name: CODE_BUILDER_SEARCH_NODES_TOOL.toolName,
 	config: {
 		description:
-			'Search for n8n nodes by service name, trigger type, or utility function. Set usage="agentTool" to return only Agent-compatible tool nodes. Returns node IDs, discriminators (resource/operation/mode), and related nodes needed for get_node_types.',
+			'Search for MNI nodes by service name, trigger type, or utility function. Set usage="agentTool" to return only Agent-compatible tool nodes. Returns node IDs, discriminators (resource/operation/mode), and related nodes needed for get_node_types.',
 		inputSchema,
 		outputSchema,
 		annotations: {

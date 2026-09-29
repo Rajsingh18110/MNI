@@ -81,7 +81,7 @@ export class SentryConfig {
 	eventLoopBlockMaxEventsPerHour: number = 5;
 
 	/**
-	 * Environment of the n8n instance.
+	 * Environment of the MNI instance.
 	 *
 	 * @example 'production'
 	 */

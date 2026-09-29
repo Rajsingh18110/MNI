@@ -860,7 +860,7 @@ describe('Neutral /oauth/* endpoint aliases', () => {
 describe('OAuth server decoupled from MCP access (IAM-798)', () => {
 	beforeEach(async () => {
 		// MCP access stays OFF for every test in this block: protecting a resource
-		// with n8n OAuth must not depend on the instance MCP server being exposed.
+		// with MNI OAuth must not depend on the instance MCP server being exposed.
 		await mcpSettingsService.setEnabled(false);
 	});
 

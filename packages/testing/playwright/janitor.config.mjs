@@ -1,7 +1,7 @@
 /**
- * n8n Playwright Janitor Configuration
+ * MNI Playwright Janitor Configuration
  *
- * This configures the janitor for the n8n Playwright test suite.
+ * This configures the janitor for the MNI Playwright test suite.
  */
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -37,7 +37,7 @@ export default defineConfig({
 		excludeTypes: ['Page', 'ApiHelpers'],
 	},
 
-	fixtureObjectName: 'n8n',
+	fixtureObjectName: 'MNI',
 
 	apiFixtureName: 'api',
 

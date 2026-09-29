@@ -2339,7 +2339,7 @@ export class InstanceAiAdapterService {
 					if (plan.unhonoredInput.requested === 'mocked') {
 						throw new UserError(
 							`mockInput cannot keep every node above "${nodeName}" out of the run: ` +
-								`the mock leaves a Loop Over Items node unfinished, and n8n would restart it and execute these nodes for real (${upstream}). ` +
+								`the mock leaves a Loop Over Items node unfinished, and MNI would restart it and execute these nodes for real (${upstream}). ` +
 								'Pass reuseExecutionId with an execution where the loop finished, or omit both options to run the chain on purpose.',
 						);
 					}
@@ -2351,14 +2351,14 @@ export class InstanceAiAdapterService {
 				}
 
 				// A tool runs through a virtual Tool Executor that passes it the agent
-				// request. Every other sub-node type has no such path: n8n runs it as
+				// request. Every other sub-node type has no such path: MNI runs it as
 				// part of the node that owns it and nowhere else.
 				let agentRequest: AiAgentRequest | undefined;
 				if (plan.rootNodeNames) {
 					const roots = plan.rootNodeNames.map((name) => `"${name}"`).join(' or ');
 					if (!isToolNode(nodeTypes, target)) {
 						throw new UserError(
-							`Node "${nodeName}" cannot run on its own — n8n runs it as part of ${roots}. ` +
+							`Node "${nodeName}" cannot run on its own — MNI runs it as part of ${roots}. ` +
 								`Run ${roots} instead: its execution records what this node returned on every ` +
 								'call it made.',
 						);
@@ -4636,7 +4636,7 @@ function foldToolExecutorRun(
  * They differ when `N8N_AI_ALLOW_SENDING_PARAMETER_VALUES` is on: that setting
  * opts the operator into sending upstream response content (`error.description`
  * / `.messages`, which routinely echo API keys and record-level PII) *to the
- * model*, not into n8n's product analytics. So the telemetry copy is always
+ * model*, not into MNI's product analytics. So the telemetry copy is always
  * formatted with upstream details suppressed.
  */
 export async function extractExecutionOutcome(
@@ -5329,7 +5329,7 @@ function hasCredentialId(value: unknown): boolean {
 }
 
 /**
- * Convert the n8n credits managed tag, when written as a credential id, to the
+ * Convert the MNI credits managed tag, when written as a credential id, to the
  * runtime sentinel. Build-time resolve already does this; normalizing at save
  * also covers direct saves (e.g. workflows update) so the tag never persists as
  * a real id the runtime would fail to resolve.

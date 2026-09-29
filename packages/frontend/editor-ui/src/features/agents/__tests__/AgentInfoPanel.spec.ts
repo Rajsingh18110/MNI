@@ -439,7 +439,7 @@ describe('AgentInfoPanel', () => {
 			expect(wrapper.find('[data-testid="agent-default-model-hint"]').exists()).toBe(true);
 		});
 
-		it('seeds the managed openai fallback on mount when only n8n credits are available', async () => {
+		it('seeds the managed openai fallback on mount when only MNI credits are available', async () => {
 			credsHolder.value = { openai: AI_GATEWAY_MANAGED_TAG };
 			defaultModelHolder.value = {
 				provider: 'openai',
@@ -586,7 +586,7 @@ describe('AgentInfoPanel', () => {
 			expect((props.credentials as Record<string, string>).anthropic).toBe('real-cred-x');
 		});
 
-		it('marks the selection as managed when config uses the n8n Connect tag', () => {
+		it('marks the selection as managed when config uses the MNI Connect tag', () => {
 			credsHolder.value = { anthropic: 'some-stored-cred' };
 
 			const wrapper = mountPanel('# Role', {

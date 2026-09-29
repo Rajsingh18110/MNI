@@ -27,7 +27,7 @@ function pickLatestVersion(version: number | number[]): number {
 
 /**
  * Convert the config's credential map to `INodeCredentials` for rendering,
- * carrying the n8n Connect managed marker through.
+ * carrying the MNI Connect managed marker through.
  */
 function toINodeCredentials(
 	credentials: NodeToolConfig['credentials'],
@@ -45,7 +45,7 @@ function toINodeCredentials(
 
 /**
  * Convert `INodeCredentials` back to the config shape. Drops entries whose
- * credential is not yet persisted (null id), except n8n Connect managed slots.
+ * credential is not yet persisted (null id), except MNI Connect managed slots.
  */
 function toConfigCredentials(
 	credentials: INodeCredentials | undefined,

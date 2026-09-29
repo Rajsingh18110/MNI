@@ -140,7 +140,7 @@
 }
 
 .n8n-chat {
-	/* Keep the shared Markdown styles self-contained when chat is embedded outside the n8n app. */
+	/* Keep the shared Markdown styles self-contained when chat is embedded outside the MNI app. */
 	--spacing--5xs: calc(var(--chat--spacing) / 8);
 	--spacing--4xs: calc(var(--chat--spacing) / 4);
 	--spacing--2xs: calc(var(--chat--spacing) / 2);

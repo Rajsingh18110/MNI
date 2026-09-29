@@ -20,7 +20,7 @@ services:
     image: postgres:18.4
     restart: always
     environment:
-      - POSTGRES_DB=n8n
+      - POSTGRES_DB=MNI
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - PGDATA=/var/lib/postgresql/data/pgdata
@@ -36,7 +36,7 @@ services:
     image: ghcr.io/n8n-io/n8n:${N8N_VERSION:-latest}
     environment:
       - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_USER_FOLDER=/n8n/worker1
+      - N8N_USER_FOLDER=/MNI/worker1
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - N8N_LICENSE_CERT=${N8N_LICENSE_CERT}
       - N8N_LICENSE_ACTIVATION_KEY=${N8N_LICENSE_ACTIVATION_KEY}
@@ -59,7 +59,7 @@ services:
       - N8N_RUNNERS_AUTH_TOKEN=test
     command: worker
     volumes:
-      - ${RUN_DIR}/n8n-worker1:/n8n
+      - ${RUN_DIR}/n8n-worker1:/MNI
     depends_on:
       postgres:
         condition: service_healthy
@@ -85,7 +85,7 @@ services:
     image: ghcr.io/n8n-io/n8n:${N8N_VERSION:-latest}
     environment:
       - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_USER_FOLDER=/n8n/worker2
+      - N8N_USER_FOLDER=/MNI/worker2
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - N8N_LICENSE_CERT=${N8N_LICENSE_CERT}
       - N8N_LICENSE_ACTIVATION_KEY=${N8N_LICENSE_ACTIVATION_KEY}
@@ -108,7 +108,7 @@ services:
       - N8N_RUNNERS_AUTH_TOKEN=test
     command: worker
     volumes:
-      - ${RUN_DIR}/n8n-worker2:/n8n
+      - ${RUN_DIR}/n8n-worker2:/MNI
     depends_on:
       # We let the worker 1 start first so it can run the DB migrations
       n8n_worker1:
@@ -137,7 +137,7 @@ services:
     image: ghcr.io/n8n-io/n8n:${N8N_VERSION:-latest}
     environment:
       - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_USER_FOLDER=/n8n
+      - N8N_USER_FOLDER=/MNI
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - N8N_LICENSE_CERT=${N8N_LICENSE_CERT}
       - N8N_LICENSE_ACTIVATION_KEY=${N8N_LICENSE_ACTIVATION_KEY}
@@ -153,7 +153,7 @@ services:
       - DB_POSTGRESDB_PASSWORD=password
       - N8N_METRICS=true
     volumes:
-      - ${RUN_DIR}/n8n-main2:/n8n
+      - ${RUN_DIR}/n8n-main2:/MNI
     depends_on:
       n8n_worker1:
         condition: service_healthy
@@ -175,7 +175,7 @@ services:
     image: ghcr.io/n8n-io/n8n:${N8N_VERSION:-latest}
     environment:
       - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_USER_FOLDER=/n8n
+      - N8N_USER_FOLDER=/MNI
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - N8N_LICENSE_CERT=${N8N_LICENSE_CERT}
       - N8N_LICENSE_ACTIVATION_KEY=${N8N_LICENSE_ACTIVATION_KEY}
@@ -191,7 +191,7 @@ services:
       - DB_POSTGRESDB_PASSWORD=password
       - N8N_METRICS=true
     volumes:
-      - ${RUN_DIR}/n8n-main1:/n8n
+      - ${RUN_DIR}/n8n-main1:/MNI
     depends_on:
       n8n_worker1:
         condition: service_healthy
@@ -209,8 +209,8 @@ services:
       timeout: 5s
       retries: 10
 
-  # Load balancer that acts as an entry point for n8n
-  n8n:
+  # Load balancer that acts as an entry point for MNI
+  MNI:
     image: nginx:1.27.2
     ports:
       - '5678:80'
@@ -225,7 +225,7 @@ services:
   benchmark:
     image: ghcr.io/n8n-io/n8n-benchmark:${N8N_BENCHMARK_VERSION:-latest}
     depends_on:
-      - n8n
+      - MNI
     environment:
       - N8N_BASE_URL=http://n8n:80
       - K6_API_TOKEN=${K6_API_TOKEN}

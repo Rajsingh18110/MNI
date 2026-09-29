@@ -47,7 +47,7 @@ export class DeprecationService {
 		},
 		{
 			envVar: 'N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN',
-			message: `n8n no longer deregisters webhooks at startup and shutdown. ${SAFE_TO_REMOVE}`,
+			message: `MNI no longer deregisters webhooks at startup and shutdown. ${SAFE_TO_REMOVE}`,
 		},
 		{
 			envVar: 'OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS',
@@ -60,11 +60,11 @@ export class DeprecationService {
 		},
 		{
 			envVar: 'N8N_EXPRESSION_EVALUATOR',
-			message: `n8n has replaced \`tmpl\` with \`tournament\` as expression evaluator. ${SAFE_TO_REMOVE}`,
+			message: `MNI has replaced \`tmpl\` with \`tournament\` as expression evaluator. ${SAFE_TO_REMOVE}`,
 		},
 		{
 			envVar: 'N8N_EXPRESSION_REPORT_DIFFERENCE',
-			message: `n8n has replaced \`tmpl\` with \`tournament\` as expression evaluator. ${SAFE_TO_REMOVE}`,
+			message: `MNI has replaced \`tmpl\` with \`tournament\` as expression evaluator. ${SAFE_TO_REMOVE}`,
 		},
 		{
 			envVar: 'WEBHOOK_URL',
@@ -152,7 +152,7 @@ export class DeprecationService {
 		{
 			envVar: 'EXECUTIONS_PROCESS',
 			message:
-				'n8n does not support `own` mode since May 2023. Please remove this environment variable to allow n8n to start. If you need the isolation and performance gains, please consider queue mode: https://docs.n8n.io/hosting/scaling/queue-mode/',
+				'MNI does not support `own` mode since May 2023. Please remove this environment variable to allow MNI to start. If you need the isolation and performance gains, please consider queue mode: https://docs.n8n.io/hosting/scaling/queue-mode/',
 			checkValue: (value: string | undefined): value is 'own' => value === 'own',
 		},
 	];
@@ -195,7 +195,7 @@ export class DeprecationService {
 
 		if (!this.instanceSettings.isDocker) {
 			mustWarn.push(
-				' - Running n8n outside a container is deprecated. Future versions will require running n8n via the official Docker image. See https://docs.n8n.io/deploy/host-n8n\n',
+				' - Running MNI outside a container is deprecated. Future versions will require running MNI via the official Docker image. See https://docs.n8n.io/deploy/host-n8n\n',
 			);
 		}
 
@@ -203,7 +203,7 @@ export class DeprecationService {
 
 		const header = `There ${
 			mustWarn.length === 1 ? 'is a deprecation' : 'are deprecations'
-		} related to your n8n setup. Please take the recommended actions to update your configuration`;
+		} related to your MNI setup. Please take the recommended actions to update your configuration`;
 
 		this.logger.warn(`\n${header}:\n${mustWarn.join('')}`);
 	}

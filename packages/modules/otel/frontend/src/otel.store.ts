@@ -32,7 +32,7 @@ const defaultSettings: OtelSettings = {
 	exporterProtocol: 'http/protobuf',
 	exporterEndpoint: 'http://localhost:4318',
 	exporterTracingPath: '/v1/traces',
-	exporterServiceName: 'n8n',
+	exporterServiceName: 'MNI',
 	exporterHeaders: '',
 	tracesSampleRate: 1.0,
 	startupConnectivityTimeoutMs: 2_000,

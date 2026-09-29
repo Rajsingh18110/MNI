@@ -13,7 +13,7 @@ export default defineConfig(
 			'@n8n/community-nodes': n8nCommunityNodesPlugin,
 		},
 		rules: {
-			// Allow PascalCase for object literal property names (n8n node names and AST types)
+			// Allow PascalCase for object literal property names (MNI node names and AST types)
 			'@typescript-eslint/naming-convention': [
 				'error',
 				// Default: require camelCase for most things

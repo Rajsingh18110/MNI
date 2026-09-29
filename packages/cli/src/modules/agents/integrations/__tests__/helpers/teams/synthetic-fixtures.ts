@@ -39,7 +39,7 @@ function baseActivity(overrides: Partial<TeamsActivityFixture> = {}): TeamsActiv
 			tenantId: TEAMS_TENANT_ID,
 		},
 		from: { id: TEAMS_USER_ID, name: 'Alice', aadObjectId: TEAMS_USER_AAD_ID },
-		recipient: { id: `28:${TEAMS_APP_ID}`, name: 'n8n Agent' },
+		recipient: { id: `28:${TEAMS_APP_ID}`, name: 'MNI Agent' },
 		channelData: { tenant: { id: TEAMS_TENANT_ID } },
 		...overrides,
 	};
@@ -60,7 +60,7 @@ export const dmFollowUp: TeamsActivityFixture = baseActivity({
 export const selfMessage: TeamsActivityFixture = baseActivity({
 	id: 'activity-self-1',
 	text: 'agent talking to itself',
-	from: { id: `28:${TEAMS_APP_ID}`, name: 'n8n Agent' },
+	from: { id: `28:${TEAMS_APP_ID}`, name: 'MNI Agent' },
 });
 
 /**
@@ -87,8 +87,8 @@ export function cardAction(
 
 const mentionEntity = {
 	type: 'mention',
-	text: '<at>n8n Agent</at>',
-	mentioned: { id: `28:${TEAMS_APP_ID}`, name: 'n8n Agent' },
+	text: '<at>MNI Agent</at>',
+	mentioned: { id: `28:${TEAMS_APP_ID}`, name: 'MNI Agent' },
 };
 
 // A channel conversation id carries the id of the thread's root message, so
@@ -121,7 +121,7 @@ function channelActivity(overrides: Partial<TeamsActivityFixture> = {}): TeamsAc
 
 export const channelMention: TeamsActivityFixture = channelActivity({
 	id: 'activity-channel-1',
-	text: '<at>n8n Agent</at> hello agent',
+	text: '<at>MNI Agent</at> hello agent',
 	entities: [mentionEntity],
 });
 
@@ -133,7 +133,7 @@ export const channelFollowUp: TeamsActivityFixture = channelActivity({
 
 export const channelSecondThreadMention: TeamsActivityFixture = channelActivity({
 	id: 'activity-channel-3',
-	text: '<at>n8n Agent</at> a different thread',
+	text: '<at>MNI Agent</at> a different thread',
 	entities: [mentionEntity],
 	conversation: {
 		id: TEAMS_CHANNEL_SECOND_THREAD_CONVERSATION_ID,
@@ -161,7 +161,7 @@ function groupChatActivity(overrides: Partial<TeamsActivityFixture> = {}): Teams
 
 export const groupChatMention: TeamsActivityFixture = groupChatActivity({
 	id: 'activity-group-1',
-	text: '<at>n8n Agent</at> hello agent',
+	text: '<at>MNI Agent</at> hello agent',
 	entities: [mentionEntity],
 });
 
@@ -183,7 +183,7 @@ export const TEAMS_LEGACY_GROUP_CHAT_CONVERSATION_ID = 'a:group_chat_legacy';
 
 export const legacyGroupChatMention: TeamsActivityFixture = groupChatActivity({
 	id: 'activity-legacy-group-1',
-	text: '<at>n8n Agent</at> hello agent',
+	text: '<at>MNI Agent</at> hello agent',
 	entities: [mentionEntity],
 	conversation: {
 		id: TEAMS_LEGACY_GROUP_CHAT_CONVERSATION_ID,

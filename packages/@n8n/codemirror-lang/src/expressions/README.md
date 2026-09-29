@@ -1,4 +1,4 @@
-# n8n Expression language support
+# MNI Expression language support
 
 ## Usage
 

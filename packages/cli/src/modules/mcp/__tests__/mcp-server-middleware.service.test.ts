@@ -227,7 +227,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(res.send).toHaveBeenCalledWith({
@@ -258,7 +258,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(res.send).toHaveBeenCalledWith({
@@ -289,7 +289,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(res.send).toHaveBeenCalledWith({
@@ -471,7 +471,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(res.send).toHaveBeenCalledWith({ message: 'Unauthorized' });
@@ -499,7 +499,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(res.send).toHaveBeenCalledWith({
@@ -542,7 +542,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(next).not.toHaveBeenCalled();
@@ -575,7 +575,7 @@ describe('McpServerMiddlewareService', () => {
 
 			expect(res.header).toHaveBeenCalledWith(
 				'WWW-Authenticate',
-				'Bearer realm="n8n MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
+				'Bearer realm="MNI MCP Server", resource_metadata="https://n8n.example.com/.well-known/oauth-protected-resource/mcp-server/http"',
 			);
 			expect(res.status).toHaveBeenCalledWith(401);
 			expect(res.send).toHaveBeenCalledWith({ message: 'Unauthorized' });

@@ -1,6 +1,6 @@
 export const SOURCE_CONTROL_PREFERENCES_DB_KEY = 'features.sourceControl';
 export const SOURCE_CONTROL_GIT_FOLDER = 'git';
-export const SOURCE_CONTROL_GIT_KEY_COMMENT = 'n8n deploy key';
+export const SOURCE_CONTROL_GIT_KEY_COMMENT = 'MNI deploy key';
 export const SOURCE_CONTROL_WORKFLOW_EXPORT_FOLDER = 'workflows';
 export const SOURCE_CONTROL_PROJECT_EXPORT_FOLDER = 'projects';
 export const SOURCE_CONTROL_CREDENTIAL_EXPORT_FOLDER = 'credential_stubs';
@@ -15,9 +15,9 @@ export const SOURCE_CONTROL_DEFAULT_BRANCH = 'main';
 export const SOURCE_CONTROL_DEFAULT_BRANCH_COLOR = '#5296D6';
 export const SOURCE_CONTROL_ORIGIN = 'origin';
 export const SOURCE_CONTROL_README = `
-# n8n Source Control
+# MNI Source Control
 `;
-export const SOURCE_CONTROL_DEFAULT_NAME = 'n8n user';
+export const SOURCE_CONTROL_DEFAULT_NAME = 'MNI user';
 export const SOURCE_CONTROL_DEFAULT_EMAIL = 'n8n@example.com';
 export const SOURCE_CONTROL_WRITE_FILE_BATCH_SIZE = 20;
 export const SOURCE_CONTROL_READ_FILE_BATCH_SIZE = 20;

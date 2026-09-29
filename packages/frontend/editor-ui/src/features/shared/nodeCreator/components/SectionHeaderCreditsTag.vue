@@ -17,7 +17,7 @@ const text = computed(() => {
 			});
 });
 
-// No enabled-check needed: this tag only mounts inside the n8n Connect
+// No enabled-check needed: this tag only mounts inside the MNI Connect
 // section, which is only built when the AI gateway is enabled.
 onMounted(() => {
 	void aiGatewayStore.fetchWallet();

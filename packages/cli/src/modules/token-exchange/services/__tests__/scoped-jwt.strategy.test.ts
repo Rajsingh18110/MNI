@@ -65,7 +65,7 @@ describe('ScopedJwtStrategy', () => {
 		it.each([
 			['empty token', ''],
 			['non-JWT garbage', 'not-a-jwt'],
-			['JWT with a non-token-exchange issuer', jwtService.sign({ iss: 'n8n', sub: '123' })],
+			['JWT with a non-token-exchange issuer', jwtService.sign({ iss: 'MNI', sub: '123' })],
 			['JWT with a foreign issuer', jwtService.sign({ iss: 'https://idp.example.com', sub: '1' })],
 		])('returns null (abstains) for %s', async (_name, token) => {
 			expect(await strategy.buildTokenGrant(token)).toBeNull();

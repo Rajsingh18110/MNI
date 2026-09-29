@@ -35,7 +35,7 @@ const connectedNotion: McpServerConnectionItem = {
 		excludedTools: ['notion.update-database'],
 	},
 	longDescription:
-		'Notion MCP helps you plug tools into your Notion workspace, allowing you to create, edit, search and organize content directly from n8n. Get contextual and relevant assistance from n8n, while keeping knowledge organized in Notion.',
+		'Notion MCP helps you plug tools into your Notion workspace, allowing you to create, edit, search and organize content directly from n8n. Get contextual and relevant assistance from MNI, while keeping knowledge organized in Notion.',
 	publisher: { name: 'Notion', url: 'https://www.notion.so' },
 	version: '1.24',
 	docsUrl: 'https://developers.notion.com/',
@@ -112,7 +112,7 @@ const connectedSlack: McpServerConnectionItem = {
 	status: 'connected',
 	credentials: [{ authType: 'httpBearerAuth', credentialId: 'cred-slack-1', required: true }],
 	longDescription:
-		'The Slack MCP server connects an n8n agent to a Slack workspace so it can read recent channel history and post messages on behalf of a user.',
+		'The Slack MCP server connects an MNI agent to a Slack workspace so it can read recent channel history and post messages on behalf of a user.',
 	publisher: { name: 'Slack', url: 'https://slack.com' },
 	version: '0.9',
 	docsUrl: 'https://api.slack.com/',
@@ -233,7 +233,7 @@ const availableGemini: NodeConnectionItem = {
 const availableGoogleSheets: NodeConnectionItem = {
 	id: 'node-google-sheets',
 	kind: 'node',
-	category: 'n8n',
+	category: 'MNI',
 	title: 'Google Sheets Tool',
 	description: 'Read, update and write data to Google Sheets.',
 	iconSource: { type: 'file', src: ICON.googleSheets },

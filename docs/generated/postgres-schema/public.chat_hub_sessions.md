@@ -12,7 +12,7 @@
 | lastMessageAt | timestamp(3) with time zone |  | false |  |  |  |
 | model | varchar(256) |  | true |  |  | Model name used at the respective Model node, ie. "gpt-4" |
 | ownerId | uuid |  | false |  | [public.user](public.user.md) |  |
-| provider | varchar(16) |  | true |  |  | ChatHubProvider enum: "openai", "anthropic", "google", "n8n" |
+| provider | varchar(16) |  | true |  |  | ChatHubProvider enum: "openai", "anthropic", "google", "MNI" |
 | title | varchar(256) |  | false |  |  |  |
 | type | varchar(16) | 'production'::character varying | false |  |  |  |
 | updatedAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |

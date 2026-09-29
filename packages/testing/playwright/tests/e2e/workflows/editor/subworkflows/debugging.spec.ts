@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(WORKFLOW_FILE);
 
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(11);
@@ -19,7 +19,7 @@ test.describe(
 
 		test.describe('can inspect sub executed workflow', () => {
 			test('(Run once with all items/ Wait for Sub-workflow completion) (default behavior)', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.openNode('Execute Workflow with param');
 
@@ -33,7 +33,7 @@ test.describe(
 				await expect(n8n.ndv.outputPanel.getTbodyCell(0, 0)).toHaveText('world Natalie Moore');
 			});
 
-			test('(Run once for each item/ Wait for Sub-workflow completion) param1', async ({ n8n }) => {
+			test('(Run once for each item/ Wait for Sub-workflow completion) param1', async ({ MNI }) => {
 				await n8n.canvas.openNode('Execute Workflow with param1');
 
 				await expect(n8n.ndv.outputPanel.getItemsCount()).toContainText('2 items, 2 sub-execution');
@@ -45,7 +45,7 @@ test.describe(
 			});
 
 			test('(Run once with all items/ Wait for Sub-workflow completion) param2', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.openNode('Execute Workflow with param2');
 
@@ -75,7 +75,7 @@ test.describe(
 				);
 			});
 
-			test('(Run once for each item/ Wait for Sub-workflow completion) param3', async ({ n8n }) => {
+			test('(Run once for each item/ Wait for Sub-workflow completion) param3', async ({ MNI }) => {
 				await n8n.canvas.openNode('Execute Workflow with param3');
 
 				await expect(n8n.ndv.outputPanel.getRunSelectorInput()).toHaveValue(

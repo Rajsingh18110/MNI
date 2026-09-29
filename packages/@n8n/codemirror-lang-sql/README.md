@@ -1,6 +1,6 @@
 # codemirror-lang-n8n-sql
 
-SQL + n8n expression language support for CodeMirror 6. 
+SQL + MNI expression language support for CodeMirror 6. 
 
 Based on [`@codemirror/lang-sql`](https://github.com/codemirror/lang-sql).
 

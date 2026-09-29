@@ -164,7 +164,7 @@ describe('AiGatewayService', () => {
 	});
 
 	describe('isAvailable()', () => {
-		it('returns available:false when n8n Connect is not enabled', async () => {
+		it('returns available:false when MNI Connect is not enabled', async () => {
 			const service = makeService({ aiGatewayEnabled: false });
 
 			const result = await service.isAvailable();
@@ -217,7 +217,7 @@ describe('AiGatewayService', () => {
 			).rejects.toThrow(FeatureNotLicensedError);
 		});
 
-		it('throws when n8n Connect is not enabled', async () => {
+		it('throws when MNI Connect is not enabled', async () => {
 			const service = makeService({ aiGatewayEnabled: false });
 			await expect(
 				service.getSyntheticCredential({ credentialType: 'googlePalmApi', userId: USER_ID }),
@@ -1128,7 +1128,7 @@ describe('AiGatewayService', () => {
 		});
 
 		it('maps a provider whose gateway path slug differs from the provider id', async () => {
-			// The gateway's URL slugs are its own naming scheme and need not match n8n's
+			// The gateway's URL slugs are its own naming scheme and need not match MNI's
 			// provider ids (Moonshot serves Kimi under `/moonshot`). Mapping must key on
 			// the providerConfig credential type, not on the path.
 			requestMock.mockResolvedValueOnce(
@@ -1149,7 +1149,7 @@ describe('AiGatewayService', () => {
 			await expect(service.getCredentialTypeForProvider('openai')).resolves.toBe('openAiApi');
 		});
 
-		it('returns undefined (without fetching config) when n8n Connect is unlicensed', async () => {
+		it('returns undefined (without fetching config) when MNI Connect is unlicensed', async () => {
 			const service = makeService({ isAiGatewayLicensed: false });
 
 			await expect(service.getCredentialTypeForProvider('openai')).resolves.toBeUndefined();
@@ -1197,7 +1197,7 @@ describe('AiGatewayService', () => {
 			expect(service.getCredentialTypeForProviderCached('xai')).toBeNull();
 		});
 
-		it('returns null (definitive no) when n8n Connect is unlicensed', async () => {
+		it('returns null (definitive no) when MNI Connect is unlicensed', async () => {
 			const service = makeService({ isAiGatewayLicensed: false });
 
 			expect(service.getCredentialTypeForProviderCached('openai')).toBeNull();

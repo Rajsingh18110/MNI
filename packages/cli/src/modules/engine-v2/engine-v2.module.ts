@@ -17,7 +17,7 @@ import { randomBytes } from 'node:crypto';
  * Main-only, and regular mode only. The in-process engine uses
  * `InMemoryWorkQueue`, so its work does not survive the process and cannot be
  * shared with other mains or workers. In `remote` mode (`N8N_ENGINE_MODE`) a
- * separate `n8n engine` process hosts the data plane; this module then starts
+ * separate `MNI engine` process hosts the data plane; this module then starts
  * only the control plane server, the client that dials the engine, and a Redis
  * receiver for execution responses.
  */

@@ -29,7 +29,7 @@ test.describe(
 	},
 	() => {
 		test('should not shift nodes to the left of insertion point in cyclic workflow', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Workflow: Trigger → Start(x=0) → Middle(x=220) → End(x=440) → Start (cycle)
 			await n8n.start.fromBlankCanvas();
@@ -61,7 +61,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(5);
 		});
 
-		test('should stretch sticky note when inserting node in front of it', async ({ n8n }) => {
+		test('should stretch sticky note when inserting node in front of it', async ({ MNI }) => {
 			// Workflow with a pink sticky note ("Sticky Note14") between Edit Fields and A node
 			// The sticky should stretch to encompass the new node when inserted close to it
 			await n8n.start.fromBlankCanvas();
@@ -92,7 +92,7 @@ test.describe(
 		});
 
 		test('should not associate node with stickies when inserting between two separate sticky notes', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Workflow with two sticky notes: "Sticky Note20" (pink) and "Note for A5" (yellow)
 			// Inserting a node between "Get a post3" and "A5" should place it in the gap between stickies

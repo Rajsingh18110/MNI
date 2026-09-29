@@ -1,6 +1,6 @@
 # MCP Server
 
-Model Context Protocol (MCP) server implementation for the n8n McpTrigger node.
+Model Context Protocol (MCP) server implementation for the MNI McpTrigger node.
 
 ## Overview
 
@@ -285,7 +285,7 @@ flowchart LR
 interface McpToolCallInfo {
   toolName: string;                    // Name of the tool to invoke
   arguments: Record<string, unknown>;  // Arguments passed to the tool
-  sourceNodeName?: string;             // Optional: n8n node that registered the tool
+  sourceNodeName?: string;             // Optional: MNI node that registered the tool
 }
 
 // Formatted result to send back to the client
@@ -803,7 +803,7 @@ sequenceDiagram
 ```
 McpTrigger/
 ├── McpServer.ts              # Main facade coordinating all subsystems
-├── McpTrigger.node.ts        # n8n node implementation
+├── McpTrigger.node.ts        # MNI node implementation
 ├── protocol/                 # JSONRPC message parsing & formatting
 │   ├── MessageParser.ts
 │   ├── MessageFormatter.ts

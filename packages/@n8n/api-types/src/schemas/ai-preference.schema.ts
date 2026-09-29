@@ -17,7 +17,7 @@ export const AI_PREFERENCE_CONTENT_MAX_LENGTH = 2000;
 export const AI_PREFERENCE_MAX_PER_SCOPE = 50;
 
 /**
- * Which surface wrote the row. `ui` is the settings area, `aia` the n8n Assistant,
+ * Which surface wrote the row. `ui` is the settings area, `aia` the MNI Assistant,
  * `mcp` an MCP client. Never taken from a request body: a client must not be able
  * to claim that the assistant wrote a row the user wrote.
  */

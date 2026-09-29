@@ -6,7 +6,7 @@ import { UserError } from 'n8n-workflow';
 import { mapCredentialForProvider } from './credential-field-mapping';
 
 /**
- * A `CredentialProvider` that can also mint the n8n Connect (AI Gateway)
+ * A `CredentialProvider` that can also mint the MNI Connect (AI Gateway)
  * synthetic credential for a model slot, keyed by the model's provider prefix
  * (e.g. `openai`). `AgentsCredentialProvider` implements this; keeping the
  * capability on the provider avoids threading a resolver through the build path.

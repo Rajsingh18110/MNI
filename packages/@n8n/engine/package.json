@@ -1,7 +1,7 @@
 {
   "name": "@n8n/engine",
   "version": "0.21.0",
-  "description": "n8n workflow execution engine (v2)",
+  "description": "MNI workflow execution engine (v2)",
   "scripts": {
     "clean": "rimraf dist .turbo compiled",
     "typecheck": "tsc --noEmit",

@@ -12,7 +12,7 @@ export const NoRuntimeDependenciesRule = createRule({
 		},
 		messages: {
 			runtimeDependenciesForbidden:
-				'The "dependencies" field must be empty or absent in community node packages. Runtime dependencies get bundled into the n8n instance and can conflict with other nodes or the n8n runtime itself. Move shared libraries to "peerDependencies" or bundle them into your build artifact.',
+				'The "dependencies" field must be empty or absent in community node packages. Runtime dependencies get bundled into the MNI instance and can conflict with other nodes or the MNI runtime itself. Move shared libraries to "peerDependencies" or bundle them into your build artifact.',
 		},
 		schema: [],
 	},

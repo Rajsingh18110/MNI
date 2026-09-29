@@ -19,7 +19,7 @@ test.describe(
 	() => {
 		test.describe.configure({ mode: 'serial' });
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.goHome();
 			// Enable features required for project workflows and moving resources
 			await n8n.api.enableFeature('sharing');
@@ -32,7 +32,7 @@ test.describe(
 
 		test.describe('when starting from scratch', () => {
 			test('should not show project add button and projects to a member if not invited to any project @auth:member', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.sideBar.universalAdd();
 				await expect(n8n.sideBar.getProjectButtonInUniversalAdd()).toContainClass('is-disabled');
@@ -41,7 +41,7 @@ test.describe(
 
 			// This test needs empty credentials list - must run before tests that create credentials
 			test('should allow changing an inaccessible credential when the workflow was moved to a team project @auth:owner', async ({
-				n8n,
+				MNI,
 			}) => {
 				// Seed the setup via API (none of it is under test): a personal Notion
 				// credential, a personal workflow whose Notion node is bound to it, and a
@@ -136,7 +136,7 @@ test.describe(
 			});
 
 			test('should filter credentials by project ID when creating new workflow or hard reloading an opened workflow', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { projectName, projectId } = await n8n.projectComposer.createProject();
 				await n8n.projectComposer.addCredentialToProject(
@@ -155,7 +155,7 @@ test.describe(
 			});
 
 			test('should create sub-workflow and credential in the sub-workflow in the same project @auth:owner', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { projectName } = await n8n.projectComposer.createProject();
 				await n8n.sideBar.addWorkflowFromUniversalAdd(projectName);
@@ -194,7 +194,7 @@ test.describe(
 			});
 
 			test('should create credential from workflow in the correct project after editor page refresh @auth:owner', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { projectName } = await n8n.projectComposer.createProject(`Dev ${nanoid(8)}`);
 
@@ -224,7 +224,7 @@ test.describe(
 				await expect(n8n.credentials.cards.getCredentials()).toHaveCount(1);
 			});
 
-			test('should set and update project icon @auth:admin', async ({ n8n }) => {
+			test('should set and update project icon @auth:admin', async ({ MNI }) => {
 				const DEFAULT_ICON = 'layers';
 				const NEW_PROJECT_NAME = `Test Project ${nanoid(8)}`;
 
@@ -253,7 +253,7 @@ test.describe(
 			});
 
 			test('should be able to create a workflow when in the workflow editor @auth:owner', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.navigate.toWorkflow('new');
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);

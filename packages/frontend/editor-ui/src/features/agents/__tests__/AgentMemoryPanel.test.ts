@@ -61,7 +61,7 @@ function baseConfig(): AgentJsonConfig {
 		name: 'Agent',
 		model: 'anthropic/claude-sonnet-4-5',
 		instructions: 'Help the user.',
-		memory: { enabled: true, storage: 'n8n' },
+		memory: { enabled: true, storage: 'MNI' },
 	};
 }
 
@@ -104,7 +104,7 @@ describe('AgentMemoryPanel', () => {
 				{
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						episodicMemory: {
 							enabled: true,
 							credential: MANAGED_CREDENTIAL_TOKEN,
@@ -153,7 +153,7 @@ describe('AgentMemoryPanel', () => {
 				{
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						episodicMemory: {
 							enabled: true,
 							credential: 'openai-credential',
@@ -169,7 +169,7 @@ describe('AgentMemoryPanel', () => {
 		const config = baseConfig();
 		config.memory = {
 			enabled: true,
-			storage: 'n8n',
+			storage: 'MNI',
 			episodicMemory: {
 				enabled: true,
 				credential: 'existing-credential',
@@ -202,7 +202,7 @@ describe('AgentMemoryPanel', () => {
 		const config = baseConfig();
 		config.memory = {
 			enabled: true,
-			storage: 'n8n',
+			storage: 'MNI',
 			episodicMemory: {
 				enabled: true,
 				credential: 'existing-credential',
@@ -228,7 +228,7 @@ describe('AgentMemoryPanel', () => {
 				{
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						episodicMemory: {
 							enabled: true,
 							credential: 'replacement-credential',

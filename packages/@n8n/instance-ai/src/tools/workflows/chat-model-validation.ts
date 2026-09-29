@@ -378,7 +378,7 @@ export interface ChatModelRecoveryContext {
 	suggestionsByNodeName: ReadonlyMap<string, string[]>;
 	/**
 	 * Node names (chat-model + parent agent/chain names) whose credential type
-	 * is covered by n8n credits. Tracked per node so recovery never suggests
+	 * is covered by MNI credits. Tracked per node so recovery never suggests
 	 * credits for a provider the gateway does not cover.
 	 */
 	creditsCoveredNodeNames: ReadonlySet<string>;

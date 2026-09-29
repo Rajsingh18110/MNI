@@ -72,7 +72,7 @@ export const test = base.extend<ChatHubFixtures>({
 	],
 
 	chatHubEnabled: [
-		async ({ n8n }, use) => {
+		async ({ MNI }, use) => {
 			// Toggling chat hub requires the chatHub:manage scope, which only owners
 			// and admins have. The test user may be a member/chat user, so drive this
 			// through a dedicated owner context instead of n8n.api.
@@ -98,7 +98,7 @@ export const test = base.extend<ChatHubFixtures>({
 		{ auto: true },
 	],
 
-	project: async ({ n8n }, use) => {
+	project: async ({ MNI }, use) => {
 		const project = await n8n.api.projects.createProject('ChatHub test project');
 
 		await use(project);
@@ -106,7 +106,7 @@ export const test = base.extend<ChatHubFixtures>({
 		await n8n.api.projects.deleteProject(project.id);
 	},
 
-	agentWorkflow: async ({ n8n, anthropicCredential, project: _ }, use) => {
+	agentWorkflow: async ({ MNI, anthropicCredential, project: _ }, use) => {
 		const res = await n8n.api.workflows.importWorkflowFromFile('chat-hub-workflow-agent.json', {
 			transform: (workflow) => {
 				const anthropicNode = workflow.nodes?.find((n) => n.type.includes('lmChatAnthropic'));
@@ -123,7 +123,7 @@ export const test = base.extend<ChatHubFixtures>({
 		await n8n.api.workflows.delete(res.workflowId);
 	},
 
-	anthropicCredential: async ({ n8n, anthropicApiKey, project: _ }, use) => {
+	anthropicCredential: async ({ MNI, anthropicApiKey, project: _ }, use) => {
 		const res = await n8n.api.credentials.createCredential({
 			name: `Anthropic cred ${crypto.randomUUID().slice(0, 8)}`,
 			type: 'anthropicApi',
@@ -137,7 +137,7 @@ export const test = base.extend<ChatHubFixtures>({
 		await n8n.api.credentials.deleteCredential(res.id);
 	},
 
-	jinaCredential: async ({ n8n, jinaApiKey }, use) => {
+	jinaCredential: async ({ MNI, jinaApiKey }, use) => {
 		const res = await n8n.api.credentials.createCredential({
 			name: `Jina AI cred ${crypto.randomUUID().slice(0, 8)}`,
 			type: 'jinaAiApi',

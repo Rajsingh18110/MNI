@@ -23,31 +23,31 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		const expectZoomLevel = async (n8n: n8nPage, expectedFactor: number) => {
+		const expectZoomLevel = async (MNI: n8nPage, expectedFactor: number) => {
 			const actual = await n8n.canvas.getCanvasZoomLevel();
 			expect(actual).toBeGreaterThanOrEqual(expectedFactor - ZOOM_TOLERANCE);
 			expect(actual).toBeLessThanOrEqual(expectedFactor + ZOOM_TOLERANCE);
 		};
 
-		test('should zoom in', async ({ n8n }) => {
+		test('should zoom in', async ({ MNI }) => {
 			await expect(n8n.canvas.getZoomInButton()).toBeVisible();
 
 			const initialZoom = await n8n.canvas.getCanvasZoomLevel();
 
 			await n8n.canvas.clickZoomInButton();
-			await expectZoomLevel(n8n, initialZoom * ZOOM_IN_X1_FACTOR);
+			await expectZoomLevel(MNI, initialZoom * ZOOM_IN_X1_FACTOR);
 
 			await n8n.canvas.clickZoomInButton();
-			await expectZoomLevel(n8n, initialZoom * ZOOM_IN_X2_FACTOR);
+			await expectZoomLevel(MNI, initialZoom * ZOOM_IN_X2_FACTOR);
 		});
 
-		test('should zoom out', async ({ n8n }) => {
+		test('should zoom out', async ({ MNI }) => {
 			await n8n.canvas.clickZoomOutButton();
-			await expectZoomLevel(n8n, ZOOM_OUT_X1_FACTOR);
+			await expectZoomLevel(MNI, ZOOM_OUT_X1_FACTOR);
 
 			await n8n.canvas.clickZoomOutButton();
 			const finalZoom = await n8n.canvas.getCanvasZoomLevel();
@@ -55,14 +55,14 @@ test.describe(
 			expect(finalZoom).toBeLessThanOrEqual(ZOOM_OUT_X2_FACTOR + ZOOM_TOLERANCE);
 		});
 
-		test('should reset zoom on keyboard shortcut', async ({ n8n }) => {
+		test('should reset zoom on keyboard shortcut', async ({ MNI }) => {
 			await n8n.canvas.clickZoomInButton();
 			await n8n.page.keyboard.press('0');
 
-			await expectZoomLevel(n8n, DEFAULT_ZOOM_FACTOR);
+			await expectZoomLevel(MNI, DEFAULT_ZOOM_FACTOR);
 		});
 
-		test('should zoom to fit', async ({ n8n }) => {
+		test('should zoom to fit', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -83,7 +83,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes().last()).toBeInViewport();
 		});
 
-		test('should disable node (context menu or shortcut)', async ({ n8n }) => {
+		test('should disable node (context menu or shortcut)', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -95,7 +95,7 @@ test.describe(
 			await expect(n8n.canvas.disabledNodes()).toHaveCount(0);
 		});
 
-		test('should disable multiple nodes (context menu or shortcut)', async ({ n8n }) => {
+		test('should disable multiple nodes (context menu or shortcut)', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript' });
@@ -133,7 +133,7 @@ test.describe(
 			await expect(n8n.canvas.disabledNodes()).toHaveCount(2);
 		});
 
-		test('should rename node (context menu or shortcut)', async ({ n8n }) => {
+		test('should rename node (context menu or shortcut)', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvasComposer.renameNodeViaShortcut(CODE_NODE_DISPLAY_NAME, 'Something else');
@@ -147,7 +147,7 @@ test.describe(
 			await expect(n8n.canvas.nodeByName('Something different')).toBeAttached();
 		});
 
-		test('should allow typing space while holding Shift in rename dialog', async ({ n8n }) => {
+		test('should allow typing space while holding Shift in rename dialog', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.getCanvasNodes().last().click();
@@ -165,7 +165,7 @@ test.describe(
 			await expect(n8n.canvas.nodeByName('X: Y')).toBeAttached();
 		});
 
-		test('should not allow empty strings for node names', async ({ n8n }) => {
+		test('should not allow empty strings for node names', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.getCanvasNodes().last().click();
@@ -176,7 +176,7 @@ test.describe(
 			await expect(n8n.canvas.getRenamePrompt()).toContainText('Invalid Name');
 		});
 
-		test('should duplicate nodes (context menu or shortcut)', async ({ n8n }) => {
+		test('should duplicate nodes (context menu or shortcut)', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -189,7 +189,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(5);
 		});
 
-		test('should preserve connections after rename & node-view switch', async ({ n8n }) => {
+		test('should preserve connections after rename & node-view switch', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.clickExecuteWorkflowButton();
@@ -222,7 +222,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(1);
 		});
 
-		test('should remove unknown credentials on pasting workflow', async ({ n8n }) => {
+		test('should remove unknown credentials on pasting workflow', async ({ MNI }) => {
 			const workflowJson = fs.readFileSync(
 				resolveFromRoot('workflows', 'workflow-with-unknown-credentials.json'),
 				'utf-8',
@@ -233,14 +233,14 @@ test.describe(
 			await n8n.clipboard.paste(workflowJson);
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(2);
 
-			await n8n.canvas.nodeByName('n8n').hover();
-			await n8n.canvas.nodeOverflowButton('n8n').click();
+			await n8n.canvas.nodeByName('MNI').hover();
+			await n8n.canvas.nodeOverflowButton('MNI').click();
 			await n8n.canvas.getContextMenuItem('open').click();
 
 			await expect(n8n.ndv.getNodeCredentialsEmptyState()).toBeVisible();
 		});
 
-		test.fixme('should open and close the about modal on keyboard shortcut', async ({ n8n }) => {
+		test.fixme('should open and close the about modal on keyboard shortcut', async ({ MNI }) => {
 			await n8n.sideBar.openAboutModalViaShortcut();
 			await expect(n8n.sideBar.getAboutModal()).toBeVisible();
 			await n8n.sideBar.closeAboutModal();

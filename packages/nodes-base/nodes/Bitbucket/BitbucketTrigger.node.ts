@@ -347,7 +347,7 @@ export class BitbucketTrigger implements INodeType {
 					endpoint = `/repositories/${workspace}/${repository}/hooks`;
 				}
 				const body: IDataObject = {
-					description: 'n8n webhook',
+					description: 'MNI webhook',
 					url: webhookUrl,
 					active: true,
 					events,

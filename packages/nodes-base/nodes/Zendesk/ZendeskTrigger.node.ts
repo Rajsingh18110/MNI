@@ -227,7 +227,7 @@ export class ZendeskTrigger implements INodeType {
 			 * create() call causes clearWebhooks() to delete the Zendesk webhook.
 			 *
 			 * We intentionally do NOT delete triggers owned by other workflows.
-			 * Duplicated n8n workflows share the same webhook URL, so cleaning up
+			 * Duplicated MNI workflows share the same webhook URL, so cleaning up
 			 * "unknown" triggers would silently destroy a sibling workflow's setup.
 			 */
 			async checkExists(this: IHookFunctions): Promise<boolean> {
@@ -359,7 +359,7 @@ export class ZendeskTrigger implements INodeType {
 
 					const bodyTarget: IDataObject = {
 						webhook: {
-							name: 'n8n webhook',
+							name: 'MNI webhook',
 							endpoint: webhookUrl,
 							http_method: 'POST',
 							status: 'active',
@@ -410,7 +410,7 @@ export class ZendeskTrigger implements INodeType {
 					await zendeskApiRequest.call(this, 'DELETE', `/triggers/${webhookData.webhookId}`);
 
 					// Only delete the Zendesk webhook if no other triggers still reference it.
-					// A duplicated n8n workflow shares the same webhook URL and may have its
+					// A duplicated MNI workflow shares the same webhook URL and may have its
 					// own trigger pointing at the same Zendesk webhook — deleting the webhook
 					// would silently break the sibling workflow's incoming events.
 					const remainingTriggers: Array<{

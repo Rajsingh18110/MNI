@@ -138,7 +138,7 @@ export class WorkflowStatisticsRollupService {
 
 	/**
 	 * Occasional skips are expected around leader transitions; persistent skips suggest a process
-	 * outside this deployment holds the lock, e.g. a second n8n instance sharing this database
+	 * outside this deployment holds the lock, e.g. a second MNI instance sharing this database
 	 * (advisory locks are not schema- or table-prefix-scoped).
 	 */
 	private registerLockSkip() {

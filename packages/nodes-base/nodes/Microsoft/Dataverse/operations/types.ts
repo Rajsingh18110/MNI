@@ -11,13 +11,13 @@ import type {
  * makes it easy to add or remove actions without touching `Dataverse.node.ts`.
  */
 export interface OperationDefinition {
-	/** The dropdown label shown in the n8n editor (e.g. "Add a new row"). */
+	/** The dropdown label shown in the MNI editor (e.g. "Add a new row"). */
 	displayName: string;
 	/** Internal id used by `getNodeParameter('operation')`. */
 	value: string;
 	/** Short description displayed under the dropdown entry. */
 	description: string;
-	/** The action label that appears in n8n's "Action" column. */
+	/** The action label that appears in MNI's "Action" column. */
 	action: string;
 	/** UI fields specific to this operation (entitySet, recordId, options...). */
 	properties: INodeProperties[];

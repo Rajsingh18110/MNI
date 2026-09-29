@@ -66,7 +66,7 @@ export const textComparisonMetricInputsSchema = z.object({
 export const toolsUsedMetricInputsSchema = z.object({
 	// Comma-separated tool names — matches the Set Metrics node's input shape.
 	expectedTools: z.string().min(1),
-	// n8n expression that resolves to the agent's `intermediateSteps` array.
+	// MNI expression that resolves to the agent's `intermediateSteps` array.
 	intermediateSteps: z.string().min(1),
 });
 

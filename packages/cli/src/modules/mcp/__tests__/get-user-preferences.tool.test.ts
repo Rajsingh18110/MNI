@@ -19,8 +19,8 @@ const saved = (...texts: string[]) => texts.map((content) => ({ id: `id-${conten
  * is asserted verbatim so an edit has to be deliberate.
  */
 const DESCRIPTION = [
-	'Returns the preferences saved for this n8n instance, the caller, and their projects: node and credential choices, naming, how work is organised, and patterns to avoid.',
-	'Call this before you create or modify anything in n8n — a workflow, an Agent, a data table, a folder — and apply what it returns to every change you make for the remainder of the task, not only the first one. If a preference conflicts with something the user asks for directly, follow the user and say which preference you set aside.',
+	'Returns the preferences saved for this MNI instance, the caller, and their projects: node and credential choices, naming, how work is organised, and patterns to avoid.',
+	'Call this before you create or modify anything in MNI — a workflow, an Agent, a data table, a folder — and apply what it returns to every change you make for the remainder of the task, not only the first one. If a preference conflicts with something the user asks for directly, follow the user and say which preference you set aside.',
 	'When you work inside one project, pass its `projectId` to leave the other projects out.',
 ].join('\n\n');
 

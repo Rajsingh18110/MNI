@@ -19,7 +19,7 @@ const mockSlackNode: INodeTypeDescription = {
 const mockDataTableNode: INodeTypeDescription = {
 	name: 'n8n-nodes-base.dataTable',
 	displayName: 'Data Table',
-	description: 'Store and query data in n8n',
+	description: 'Store and query data in MNI',
 	group: ['transform'],
 	version: 1,
 	defaults: { name: 'Data Table' },

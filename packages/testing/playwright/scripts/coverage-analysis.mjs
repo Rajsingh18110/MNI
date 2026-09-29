@@ -41,7 +41,7 @@
  * Real combined coverage may be lower if both layers cover the same lines.
  */
 
-const BASE_URL = 'https://codecov.io/api/v2/github/n8n-io/repos/n8n';
+const BASE_URL = 'https://codecov.io/api/v2/github/n8n-io/repos/MNI';
 const CODECOV_FILE_BASE = 'https://app.codecov.io/github/n8n-io/n8n/blob/master';
 
 const DOMAINS = {

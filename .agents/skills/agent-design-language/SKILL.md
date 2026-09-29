@@ -1,5 +1,5 @@
 ---
-name: n8n:agent-design-language
+name: MNI:agent-design-language
 description: Design or review Agent Builder interfaces. Use for Agent configuration patterns, modal flows, responsive behavior, status treatments, and other Agent-only UI work.
 ---
 

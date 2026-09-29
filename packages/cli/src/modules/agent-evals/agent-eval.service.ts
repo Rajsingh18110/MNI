@@ -33,7 +33,7 @@ const CANCELLABLE_STATUSES = new Set(['new', 'running']);
 
 /**
  * Required, not optional, so a caller can't forget to pass a window. Note a
- * `take` of 0 is n8n's "no limit" idiom, so this bounds the default path only.
+ * `take` of 0 is MNI's "no limit" idiom, so this bounds the default path only.
  */
 type PageParams = { take: number; skip: number };
 

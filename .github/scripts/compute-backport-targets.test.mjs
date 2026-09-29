@@ -19,7 +19,7 @@ mock.module('./github-helpers.mjs', {
 		writeGithubOutput: () => {}, //no-op
 		getPullRequestById: () => {
 			return {
-				labels: ['n8n team', 'Backport to Beta'],
+				labels: ['MNI team', 'Backport to Beta'],
 			};
 		},
 	},
@@ -54,7 +54,7 @@ describe('Compute backport targets', () => {
 	});
 
 	it("Doesn't parse other labes to backport branches", () => {
-		const labels = new Set(['n8n team', 'release']);
+		const labels = new Set(['MNI team', 'release']);
 		/** @type { Set<string> } */
 		const result = labelsToReleaseCandidateBranches(labels);
 
@@ -93,7 +93,7 @@ describe('Compute backport targets', () => {
 		const labels = await getLabels();
 
 		assert.equal(labels.size, 2);
-		assert.ok(labels.has('n8n team'));
+		assert.ok(labels.has('MNI team'));
 		assert.ok(labels.has('Backport to Beta'));
 	});
 

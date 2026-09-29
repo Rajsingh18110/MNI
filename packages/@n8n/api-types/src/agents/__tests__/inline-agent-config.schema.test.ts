@@ -75,7 +75,7 @@ describe('InlineAgentJsonConfigSchema', () => {
 	);
 
 	it.each([
-		['memory', { memory: { enabled: true, storage: 'n8n' } }],
+		['memory', { memory: { enabled: true, storage: 'MNI' } }],
 		['subAgents', { subAgents: [{ id: 'a' }] }],
 		['config options block', { config: { webSearch: { enabled: true } } }],
 	])('rejects saved-agent-only keys (%s) via strict parsing', (_key, extra) => {

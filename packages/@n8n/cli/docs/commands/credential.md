@@ -1,6 +1,6 @@
 # credential
 
-Manage n8n credentials.
+Manage MNI credentials.
 
 ## `credential list`
 

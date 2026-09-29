@@ -44,7 +44,7 @@ test.describe(
 		test(
 			'keeps an oversized file out of the composer and says why',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				const oversized = path.join(tmpDir, 'huge-screenshot.png');
 				await writeImageOfSize(oversized, PER_FILE_DECODED_LIMIT + 1024);
 
@@ -65,7 +65,7 @@ test.describe(
 		test(
 			'takes the files that fit when a batch busts the combined budget',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				// Sized so each file clears the per-file limit on its own but the third
 				// crosses the combined budget once base64 inflation is applied.
 				const perFile = Math.floor(TOTAL_DECODED_LIMIT / 2.5);
@@ -90,7 +90,7 @@ test.describe(
 		test(
 			'stages a non-image attachment that fits',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				// Non-image files render through ChatFile rather than a thumbnail, so this
 				// also covers the second marker `getComposerAttachments` has to match.
 				const csv = path.join(tmpDir, 'rows.csv');
@@ -107,7 +107,7 @@ test.describe(
 		test(
 			'rejects an oversized attachment at the API even when the composer guard is bypassed',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				// The composer check is a convenience; the backend is authoritative. Post
 				// straight to the endpoint to prove a scripted client cannot get past it.
 				const response = await n8n.api.instanceAi.sendMessageResponse(crypto.randomUUID(), {
@@ -134,7 +134,7 @@ test.describe(
 		test(
 			'drops a provider-refused attachment so the next turn still works',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n, n8nContainer }) => {
+			async ({ MNI, n8nContainer }) => {
 				test.skip(!n8nContainer, 'Requires the proxy service to simulate a provider refusal');
 				test.setTimeout(240_000);
 

@@ -53,7 +53,7 @@ const EXPECT_TIMEOUT = IS_DEV ? 20000 : 10000;
 const webServer: PlaywrightTestConfig['webServer'] = [];
 
 // Escape hatch for wrapper scripts (e.g. `pnpm test:local:isolated`) that
-// manage the n8n process themselves with custom env vars and a more reliable
+// manage the MNI process themselves with custom env vars and a more reliable
 // readiness check. Stops Playwright from racing to launch a second n8n.
 const SKIP_WEB_SERVER = process.env.PLAYWRIGHT_SKIP_WEBSERVER === 'true';
 
@@ -70,7 +70,7 @@ if (BACKEND_URL && !SKIP_WEB_SERVER) {
 	}
 	// Probe readiness, not a static asset: the startup middleware answers assets
 	// with 200 while the migrations still run, so global setup could reset the
-	// database before n8n registered the E2E controller.
+	// database before MNI registered the E2E controller.
 	const envHealthEndpoint: unknown =
 		getTestEnv().N8N_ENDPOINT_HEALTH ?? process.env.N8N_ENDPOINT_HEALTH;
 	webServer.push({
@@ -127,7 +127,7 @@ export default defineConfig<CurrentsFixtures, CurrentsWorkerFixtures>({
 	},
 	projects: getProjects(),
 
-	// We use this if an n8n url is passed in. If the server is already running, we reuse it.
+	// We use this if an MNI url is passed in. If the server is already running, we reuse it.
 	webServer,
 
 	use: {

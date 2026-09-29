@@ -88,7 +88,7 @@ const OPENCODE_CONFIG =
 // Worktrees share the pnpm store but not the turbo cache; a shared TURBO_CACHE_DIR
 // (seeded from the main checkout) keeps new-worktree builds at cache-hit speed.
 const CACHE =
-	'export TURBO_CACHE_DIR=/workspaces/.turbo-cache; [ -d "$TURBO_CACHE_DIR" ] || cp -r /workspaces/n8n/.turbo/cache "$TURBO_CACHE_DIR" 2>/dev/null || mkdir -p "$TURBO_CACHE_DIR"';
+	'export TURBO_CACHE_DIR=/workspaces/.turbo-cache; [ -d "$TURBO_CACHE_DIR" ] || cp -r /workspaces/MNI/.turbo/cache "$TURBO_CACHE_DIR" 2>/dev/null || mkdir -p "$TURBO_CACHE_DIR"';
 // On a freshly created codespace, post-start.mjs installs the skills plugins via a
 // network clone that takes tens of seconds. If `claude` boots first it builds its
 // skill registry before a plugin exists on disk, and /reload-plugins can't
@@ -114,14 +114,14 @@ function remoteCommand(session, launcher, extraArgs) {
 		CACHE,
 		...(launcher === 'claude' ? [ENSURE_PLUGINS] : []),
 	].join('; ');
-	if (session === 'agent') return `${prelude}; cd /workspaces/n8n && ${command}`;
+	if (session === 'agent') return `${prelude}; cd /workspaces/MNI && ${command}`;
 	const wt = `/workspaces/wt-${session}`;
 	const branch = `session/${session}`;
 	return [
 		prelude,
 		`if [ ! -d "${wt}" ]; then echo "Setting up worktree ${wt}…"`,
-		`git -C /workspaces/n8n fetch origin master`,
-		`git -C /workspaces/n8n worktree add --no-track -b "${branch}" "${wt}" origin/master 2>/dev/null || git -C /workspaces/n8n worktree add "${wt}" "${branch}"`,
+		`git -C /workspaces/MNI fetch origin master`,
+		`git -C /workspaces/MNI worktree add --no-track -b "${branch}" "${wt}" origin/master 2>/dev/null || git -C /workspaces/MNI worktree add "${wt}" "${branch}"`,
 		`(cd "${wt}" && pnpm install); fi`,
 		`cd "${wt}" && ${command}`,
 	].join('; ');

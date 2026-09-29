@@ -9,7 +9,7 @@ test.describe(
 	},
 	() => {
 		test('use web search tool in conversation', async ({
-			n8n,
+			MNI,
 			anthropicCredential: _,
 			jinaCredential,
 		}) => {
@@ -45,9 +45,9 @@ test.describe(
 			await expect(n8n.chatHubChat.getToolsButton()).toContainText('Search web in Jina AI');
 
 			// Send message and check response
-			await n8n.chatHubChat.getChatInput().fill('What is n8n?');
+			await n8n.chatHubChat.getChatInput().fill('What is MNI?');
 			await n8n.chatHubChat.getSendButton().click();
-			await expect(n8n.chatHubChat.getChatMessages().nth(0)).toContainText('What is n8n?');
+			await expect(n8n.chatHubChat.getChatMessages().nth(0)).toContainText('What is MNI?');
 			await expect(n8n.chatHubChat.getChatMessages().nth(1)).toContainText(/automation/i, {
 				timeout: 60000,
 			});

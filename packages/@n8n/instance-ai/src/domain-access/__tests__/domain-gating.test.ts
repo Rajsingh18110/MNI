@@ -179,17 +179,17 @@ describe('checkWebSearchAccess', () => {
 	it('returns a web-search suspend payload when not yet approved', () => {
 		const tracker = createDomainAccessTracker();
 		const result = checkWebSearchAccess({
-			query: 'how to deploy n8n',
+			query: 'how to deploy MNI',
 			tracker,
 			permissionMode: 'require_approval',
 		});
 		expect(result.allowed).toBe(false);
 		expect(result.suspendPayload).toBeDefined();
 		const payload = result.suspendPayload!;
-		expect(payload.webSearch?.query).toBe('how to deploy n8n');
+		expect(payload.webSearch?.query).toBe('how to deploy MNI');
 		expect(payload.domainAccess).toBeUndefined();
 		expect(payload.severity).toBe('info');
-		expect(payload.message).toContain('how to deploy n8n');
+		expect(payload.message).toContain('how to deploy MNI');
 	});
 
 	it('allows when tracker has persistent web-search approval', async () => {

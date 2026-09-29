@@ -65,7 +65,7 @@ describe('Microsoft Dataverse operations', () => {
 
 	/**
 	 * Drive `ctx.getNodeParameter(name, index, fallback)` from a plain map,
-	 * honoring the caller's fallback when a key is absent — mirrors n8n's real
+	 * honoring the caller's fallback when a key is absent — mirrors MNI's real
 	 * behavior so each op's optional-param defaults are exercised.
 	 */
 	const withParams = (params: Record<string, unknown>) => {

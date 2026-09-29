@@ -22,7 +22,7 @@ export class OtelConfig {
 	exporterHeaders: string = '';
 
 	@Env(OTEL_ENV_VARS.exporterServiceName)
-	exporterServiceName: string = 'n8n';
+	exporterServiceName: string = 'MNI';
 
 	@Env(OTEL_ENV_VARS.tracesSampleRate)
 	tracesSampleRate: number = 1.0;

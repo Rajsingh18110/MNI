@@ -156,7 +156,7 @@ function getValidatedUsesCredentials(
 }
 
 /**
- * Builds a dedicated credential type extending a known n8n credential. A
+ * Builds a dedicated credential type extending a known MNI credential. A
  * templated remote has no literal hostname, so the endpoint and the domain
  * pin are both written as `$self`-expressions resolved against the parent
  * credential's own `host` field, the same field the Strapi-authored URL

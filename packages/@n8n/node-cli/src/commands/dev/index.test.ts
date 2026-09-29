@@ -18,7 +18,7 @@ vi.mock('./utils', async () => {
 		openUrl: vi.fn(),
 		sleep: vi.fn(),
 		createOpenN8nHandler: vi.fn(() => ({ key: 'o', handler: vi.fn() })),
-		buildHelpText: vi.fn(() => 'Press q to quit | o to open n8n'),
+		buildHelpText: vi.fn(() => 'Press q to quit | o to open MNI'),
 	};
 });
 
@@ -68,7 +68,7 @@ describe('dev command', () => {
 		},
 	);
 
-	tmpdirTest('starts both TypeScript watcher and n8n server by default', async ({ tmpdir }) => {
+	tmpdirTest('starts both TypeScript watcher and MNI server by default', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
 			packageJson: { name: 'n8n-nodes-test' },
 		});
@@ -79,7 +79,7 @@ describe('dev command', () => {
 		const calls = vi.mocked(runCommands).mock.calls[0]?.[0];
 		expect(calls?.commands).toHaveLength(2);
 		expect(calls?.commands[0]?.name).toBe('TypeScript Build (watching)');
-		expect(calls?.commands[1]?.name).toBe('n8n Server');
+		expect(calls?.commands[1]?.name).toBe('MNI server');
 	});
 
 	tmpdirTest('creates symlink in default custom folder location', async ({ tmpdir }) => {
@@ -126,7 +126,7 @@ describe('dev command', () => {
 		expect(runCommands).not.toHaveBeenCalled();
 	});
 
-	tmpdirTest('passes correct environment to n8n server', async ({ tmpdir }) => {
+	tmpdirTest('passes correct environment to MNI server', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
 			packageJson: { name: 'n8n-nodes-test' },
 		});
@@ -136,7 +136,7 @@ describe('dev command', () => {
 		await command.run();
 
 		const calls = vi.mocked(runCommands).mock.calls[0]?.[0];
-		const n8nCommand = calls?.commands.find((c) => c.name === 'n8n Server');
+		const n8nCommand = calls?.commands.find((c) => c.name === 'MNI server');
 
 		expect(n8nCommand).toBeDefined();
 		expect(n8nCommand?.env).toMatchObject({
@@ -145,7 +145,7 @@ describe('dev command', () => {
 		});
 	});
 
-	tmpdirTest('includes open n8n key handler when n8n is enabled', async ({ tmpdir }) => {
+	tmpdirTest('includes open MNI key handler when MNI is enabled', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
 			packageJson: { name: 'n8n-nodes-test' },
 		});

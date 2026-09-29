@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('maps paired input and output items', async ({ n8n }) => {
+		test('maps paired input and output items', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('multi-branch-data-transform.json');
 			await n8n.canvas.clickZoomToFitButton();
 
@@ -78,7 +78,7 @@ test.describe(
 			);
 		});
 
-		test('maps paired input and output items based on selected input node', async ({ n8n }) => {
+		test('maps paired input and output items based on selected input node', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('multi-branch-data-transform.json');
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
@@ -116,7 +116,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterExpressionPreviewValue()).toContainText('1111');
 		});
 
-		test('maps paired input and output items based on selected run', async ({ n8n }) => {
+		test('maps paired input and output items based on selected run', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('multi-branch-data-transform.json');
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
@@ -177,7 +177,7 @@ test.describe(
 			);
 		});
 
-		test('can pair items between input and output across branches and runs', async ({ n8n }) => {
+		test('can pair items between input and output across branches and runs', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('multi-branch-data-transform.json');
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
@@ -244,7 +244,7 @@ test.describe(
 		});
 
 		test('should auto-fix pairedItem when multiple inputs create single output', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_ndv_paired_item_single_output.json');
 			await n8n.canvas.openNode('Use paired item');
@@ -254,7 +254,7 @@ test.describe(
 			await expect(n8n.ndv.outputPanel.get()).toContainText('Jay Gatsby');
 		});
 
-		test('can resolve expression with paired item in multi-input node', async ({ n8n }) => {
+		test('can resolve expression with paired item in multi-input node', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('expression_with_paired_item_in_multi_input_node.json');
 
 			await n8n.canvas.clickZoomToFitButton();

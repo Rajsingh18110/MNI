@@ -97,7 +97,7 @@ export type ClusterCheckContext = {
  * ```typescript
  * {
  *   code: 'cluster.versionMismatch',
- *   message: 'Detected 2 distinct n8n versions across 5 instances',
+ *   message: 'Detected 2 distinct MNI versions across 5 instances',
  *   severity: 'warning',
  *   context: { versions: ['1.42.0', '1.43.0'] },
  * }
@@ -290,7 +290,7 @@ export type CheckDescription = {
  *       warnings: [
  *         {
  *           code: 'cluster.versionMismatch',
- *           message: `Detected ${versions.size} distinct n8n versions in the cluster`,
+ *           message: `Detected ${versions.size} distinct MNI versions in the cluster`,
  *           severity: 'warning',
  *           context: { versions: [...versions] },
  *         },

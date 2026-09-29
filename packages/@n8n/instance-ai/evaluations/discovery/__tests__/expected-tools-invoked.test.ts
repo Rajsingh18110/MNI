@@ -298,7 +298,7 @@ describe('runExpectedToolsInvokedCheck', () => {
 	describe('allOfToolCalls — actual tool-call requirements', () => {
 		const dataTableScenario: DiscoveryTestCase = {
 			id: 'test',
-			userMessage: 'List my n8n Data Tables.',
+			userMessage: 'List my MNI Data Tables.',
 			expectedToolInvocations: {
 				allOfToolCalls: [
 					{ toolName: 'load_skill', argsContainAny: ['data-table-manager'] },

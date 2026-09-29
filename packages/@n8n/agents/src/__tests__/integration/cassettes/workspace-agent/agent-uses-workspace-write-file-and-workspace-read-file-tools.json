@@ -18,7 +18,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Write \"Hello from n8n!\" to /greeting.txt, then read it back and tell me the contents. You MUST call both tools"
+							"text": "Write \"Hello from MNI!\" to /greeting.txt, then read it back and tell me the contents. You MUST call both tools"
 						}
 					]
 				}
@@ -375,7 +375,7 @@
 			}
 		},
 		"status": 200,
-		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011Ceii55HukBcpJ7cL9q8Sb\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"I'll write the greeting to the file and then read it back.\"},{\"type\":\"tool_use\",\"id\":\"toolu_01RuzwS1hk4bDWYCoMQa8yTZ\",\"name\":\"workspace_write_file\",\"input\":{\"path\":\"/greeting.txt\",\"content\":\"Hello from n8n!\"},\"caller\":{\"type\":\"direct\"}},{\"type\":\"tool_use\",\"id\":\"toolu_01U2oiMh929Q1eM6Fif71zGp\",\"name\":\"workspace_read_file\",\"input\":{\"path\":\"/greeting.txt\"},\"caller\":{\"type\":\"direct\"}}],\"stop_reason\":\"tool_use\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":2878,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":135,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
+		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011Ceii55HukBcpJ7cL9q8Sb\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"I'll write the greeting to the file and then read it back.\"},{\"type\":\"tool_use\",\"id\":\"toolu_01RuzwS1hk4bDWYCoMQa8yTZ\",\"name\":\"workspace_write_file\",\"input\":{\"path\":\"/greeting.txt\",\"content\":\"Hello from MNI!\"},\"caller\":{\"type\":\"direct\"}},{\"type\":\"tool_use\",\"id\":\"toolu_01U2oiMh929Q1eM6Fif71zGp\",\"name\":\"workspace_read_file\",\"input\":{\"path\":\"/greeting.txt\"},\"caller\":{\"type\":\"direct\"}}],\"stop_reason\":\"tool_use\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":2878,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":135,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
 		"rawHeaders": {
 			"anthropic-ratelimit-input-tokens-limit": "10000000",
 			"anthropic-ratelimit-input-tokens-remaining": "9998000",
@@ -423,7 +423,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Write \"Hello from n8n!\" to /greeting.txt, then read it back and tell me the contents. You MUST call both tools"
+							"text": "Write \"Hello from MNI!\" to /greeting.txt, then read it back and tell me the contents. You MUST call both tools"
 						}
 					]
 				},
@@ -440,7 +440,7 @@
 							"name": "workspace_write_file",
 							"input": {
 								"path": "/greeting.txt",
-								"content": "Hello from n8n!"
+								"content": "Hello from MNI!"
 							},
 							"caller": {
 								"type": "direct"
@@ -470,7 +470,7 @@
 						{
 							"type": "tool_result",
 							"tool_use_id": "toolu_01U2oiMh929Q1eM6Fif71zGp",
-							"content": "{\"content\":\"Hello from n8n!\"}"
+							"content": "{\"content\":\"Hello from MNI!\"}"
 						}
 					]
 				}
@@ -827,7 +827,7 @@
 			}
 		},
 		"status": 200,
-		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011Ceii5ApHtLpXEGZKjeyfQ\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Perfect! I've successfully written to the file and read it back. The contents of `/greeting.txt` are:\\n\\n**Hello from n8n!**\"}],\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":3093,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":36,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
+		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011Ceii5ApHtLpXEGZKjeyfQ\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Perfect! I've successfully written to the file and read it back. The contents of `/greeting.txt` are:\\n\\n**Hello from MNI!**\"}],\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":3093,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":36,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
 		"rawHeaders": {
 			"anthropic-ratelimit-input-tokens-limit": "10000000",
 			"anthropic-ratelimit-input-tokens-remaining": "9998000",

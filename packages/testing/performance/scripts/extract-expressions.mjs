@@ -2,7 +2,7 @@
 /**
  * Expression Extraction Tool
  *
- * Reads a directory of n8n workflow JSON exports, extracts all expressions,
+ * Reads a directory of MNI workflow JSON exports, extracts all expressions,
  * categorizes them by pattern, and outputs analysis + fixture file.
  *
  * Usage: node scripts/extract-expressions.mjs /path/to/workflow-jsons/
@@ -19,7 +19,7 @@ const PROFILES_DIR = resolve(__dirname, '../profiles');
 const inputDir = process.argv[2];
 if (!inputDir || !existsSync(inputDir)) {
 	console.error('Usage: node scripts/extract-expressions.mjs /path/to/workflow-jsons/');
-	console.error('  Directory should contain one .json file per workflow (n8n export format)');
+	console.error('  Directory should contain one .json file per workflow (MNI export format)');
 	process.exit(1);
 }
 

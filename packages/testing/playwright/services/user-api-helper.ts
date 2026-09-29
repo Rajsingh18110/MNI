@@ -17,7 +17,7 @@ export interface TestUser {
 }
 
 /**
- * Creates test users via n8n's invitation API.
+ * Creates test users via MNI's invitation API.
  * Note: Using this with n8n.api will affect browser cookies. Use with the isolated api fixture instead unless you want to overwrite the existing user
  */
 export class UserApiHelper {

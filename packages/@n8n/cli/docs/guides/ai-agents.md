@@ -1,13 +1,13 @@
-# Using n8n CLI with AI Agents
+# Using MNI CLI with AI Agents
 
-The n8n CLI is designed from the ground up to work with AI coding agents like Claude Code, Cursor, and Windsurf.
+The MNI CLI is designed from the ground up to work with AI coding agents like Claude Code, Cursor, and Windsurf.
 
 ## Setup for AI agents
 
 Add this single line to your `CLAUDE.md` (or equivalent agent config):
 
 ```
-Use `n8n-cli` to manage n8n workflows, executions, and credentials.
+Use `n8n-cli` to manage MNI workflows, executions, and credentials.
 Run `n8n-cli --help` to see available commands.
 ```
 

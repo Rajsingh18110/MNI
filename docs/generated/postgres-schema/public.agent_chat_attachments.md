@@ -9,7 +9,7 @@
 | createdAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |
 | fileName | varchar(255) |  | false |  |  |  |
 | fileSizeBytes | integer |  | false |  |  | Uploaded file size in bytes |
-| id | varchar(16) |  | false |  |  | Application-generated n8n nano ID |
+| id | varchar(16) |  | false |  |  | Application-generated MNI nano ID |
 | mimeType | varchar(255) |  | false |  |  |  |
 | projectId | varchar(36) |  | false |  | [public.project](public.project.md) | Project owning the conversation; authorization scope for downloads |
 | resourceId | varchar(255) |  | true |  |  | Per-user scope within the thread (platform user), when known |

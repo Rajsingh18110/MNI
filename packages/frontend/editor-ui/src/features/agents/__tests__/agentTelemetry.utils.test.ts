@@ -36,7 +36,7 @@ describe('buildAgentConfigFingerprint', () => {
 				embedding: { model: 'openai/text-embedding-3-small', credential: 'cred-2' },
 			},
 		],
-		memory: { enabled: true, storage: 'n8n' },
+		memory: { enabled: true, storage: 'MNI' },
 		integrations: [
 			{ type: 'slack', credentialId: 'cred-slack' },
 			{ type: 'telegram', credentialId: 'cred-telegram' },

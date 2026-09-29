@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('should traverse floating nodes with mouse', async ({ n8n }) => {
+		test('should traverse floating nodes with mouse', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Floating_Nodes.json');
 			await n8n.canvas.getCanvasNodes().first().dblclick();
 			await expect(n8n.ndv.container).toBeVisible();
@@ -43,7 +43,7 @@ test.describe(
 			await expect(n8n.canvas.getSelectedNodes()).toHaveCount(1);
 		});
 
-		test('should traverse floating nodes with keyboard', async ({ n8n }) => {
+		test('should traverse floating nodes with keyboard', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Floating_Nodes.json');
 
 			await n8n.canvas.getCanvasNodes().first().dblclick();
@@ -81,7 +81,7 @@ test.describe(
 			await expect(n8n.canvas.getSelectedNodes()).toHaveCount(1);
 		});
 
-		test('should connect floating sub-nodes', async ({ n8n }) => {
+		test('should connect floating sub-nodes', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('AI Agent', { closeNDV: false });
 			await expect(n8n.ndv.container).toBeVisible();
@@ -93,7 +93,7 @@ test.describe(
 			await expect(n8n.ndv.getNodesWithIssues()).toHaveCount(3);
 		});
 
-		test('should have the floating nodes in correct order', async ({ n8n }) => {
+		test('should have the floating nodes in correct order', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Floating_Nodes.json');
 
 			await n8n.canvas.openNode('Merge');

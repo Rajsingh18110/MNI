@@ -36,7 +36,7 @@ const TAG_ID_MAX_LENGTH = 36;
 // \p{Cs}: a lone UTF-16 surrogate would collapse to U+FFFD in the database.
 // Format chars (\p{Cf}) stay allowed: entity validation accepts them and
 // ZWJ-joined emoji names/ids are legitimate, so gating them would break
-// re-import of a package n8n itself exported.
+// re-import of a package MNI itself exported.
 const FORBIDDEN_CHARS = /[\p{Cc}\p{Cs}]/u;
 
 /**

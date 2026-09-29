@@ -57,7 +57,7 @@ test.describe(
 		});
 
 		test('hides execute button and exposes Open chat that opens logs panel', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			// Create the workflow via API so it exists in the database

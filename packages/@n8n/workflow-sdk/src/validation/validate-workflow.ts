@@ -349,7 +349,7 @@ const FALLBACK_MODEL_NODE_TYPES = new Set([
  * real (billable) calls to a model the workflow never used.
  *
  * Informational, so it never blocks a save. Real workflows already carry this
- * shape — a user can wire a fallback and switch the toggle back off, and n8n keeps
+ * shape — a user can wire a fallback and switch the toggle back off, and MNI keeps
  * the orphaned connection — and those users must still be able to save unrelated
  * edits. It guides the author; it does not gate them.
  */

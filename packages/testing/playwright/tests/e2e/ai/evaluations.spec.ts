@@ -8,14 +8,14 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 
 			await n8n.goHome();
 		});
 
 		// @AI team to look at this
-		test.fixme('should load evaluations workflow and execute twice', async ({ n8n, services }) => {
+		test.fixme('should load evaluations workflow and execute twice', async ({ MNI, services }) => {
 			await services.proxy.loadExpectations('evaluations');
 
 			await n8n.api.credentials.createCredentialFromDefinition({

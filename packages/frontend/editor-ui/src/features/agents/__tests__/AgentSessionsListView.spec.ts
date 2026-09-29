@@ -46,7 +46,7 @@ vi.mock('@n8n/i18n', () => ({
 				{
 					'agentSessions.viewTrace': 'View session trace',
 					'agentSessions.origin.preview': 'Preview',
-					'agentSessions.origin.instanceAi': 'n8n Assistant',
+					'agentSessions.origin.instanceAi': 'MNI Assistant',
 					'agentSessions.origin.mcp': 'MCP',
 					'agentSessions.origin.subAgent': 'Sub-agent',
 					'agentSessions.origin.schedule': 'Schedule',
@@ -419,7 +419,7 @@ describe('AgentSessionsListView', () => {
 		[{ source: 'telegram' }, 'Telegram', 'telegram'],
 		[{ source: 'linear' }, 'Linear', 'linear'],
 		[{ source: 'discord' }, 'Discord', 'discord'],
-		[{ source: 'instance-ai' }, 'n8n Assistant', 'flask-conical'],
+		[{ source: 'instance-ai' }, 'MNI Assistant', 'flask-conical'],
 		[{ source: 'mcp' }, 'MCP', 'flask-conical'],
 		[{ source: null }, 'Preview', 'flask-conical'],
 		[{ source: 'chat' }, 'Preview', 'flask-conical'],

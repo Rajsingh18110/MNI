@@ -180,7 +180,7 @@ describe('unresponsive IMAP connection', () => {
 	});
 });
 
-// TLS is the transport n8n actually runs on, and the one whose sockets are
+// TLS is the transport MNI actually runs on, and the one whose sockets are
 // wrapped rather than raw. One case is enough; the rest run over plain TCP.
 describe('unresponsive IMAP connection over TLS', () => {
 	const fake = useFakeServer(true);

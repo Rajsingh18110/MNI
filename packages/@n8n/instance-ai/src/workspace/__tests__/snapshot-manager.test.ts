@@ -71,7 +71,7 @@ import { join } from 'node:path';
 import type { Logger } from '../../logger';
 import { SnapshotManager } from '../snapshot-manager';
 
-const SNAPSHOT_NAME = 'n8n/instance-ai:1.123.0';
+const SNAPSHOT_NAME = 'MNI/instance-ai:1.123.0';
 const SKILLS_HASH_A = 'aaaaaaaaaaaa';
 const SKILLS_HASH_B = 'bbbbbbbbbbbb';
 
@@ -232,7 +232,7 @@ describe('SnapshotManager.ensureImage', () => {
 		).resolves.toBeDefined();
 	});
 
-	it('uses a content-hash cache key when no n8n version is configured', async () => {
+	it('uses a content-hash cache key when no MNI version is configured', async () => {
 		const manager = new SnapshotManager(undefined, NOOP_LOGGER, undefined);
 
 		const image = await manager.ensureImage();
@@ -302,7 +302,7 @@ describe('SnapshotManager.createSnapshot', () => {
 	it('returns the snapshot name on successful create', async () => {
 		const manager = new SnapshotManager(undefined, NOOP_LOGGER, '1.123.0');
 		const daytona = makeFakeDaytona();
-		daytona.snapshot.create.mockResolvedValue({ name: 'n8n/instance-ai:1.123.0' });
+		daytona.snapshot.create.mockResolvedValue({ name: 'MNI/instance-ai:1.123.0' });
 
 		const result = await manager.createSnapshot(daytona as never);
 
@@ -717,7 +717,7 @@ describe('SnapshotManager.createSnapshot', () => {
 	it('forwards options to daytona.snapshot.create', async () => {
 		const manager = new SnapshotManager(undefined, NOOP_LOGGER, '1.123.0');
 		const daytona = makeFakeDaytona();
-		daytona.snapshot.create.mockResolvedValue({ name: 'n8n/instance-ai:1.123.0' });
+		daytona.snapshot.create.mockResolvedValue({ name: 'MNI/instance-ai:1.123.0' });
 		const onLogs = vi.fn();
 
 		await manager.createSnapshot(daytona as never, { timeout: 1800, onLogs });
@@ -737,11 +737,11 @@ describe('SnapshotManager snapshot pruning', () => {
 			.mockResolvedValue({ name: SNAPSHOT_NAME });
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
-				{ name: 'n8n/instance-ai:1.122.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.120.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.118.0', state: 'inactive' },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.120.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.118.0', state: 'inactive' },
 			]),
 		);
 		mockGetActiveOnlyFor(daytona, SNAPSHOT_NAME);
@@ -752,8 +752,8 @@ describe('SnapshotManager snapshot pruning', () => {
 		expect(daytona.snapshot.create).toHaveBeenCalledTimes(2);
 		// The count backstop evicts beyond the newest-3 floor.
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toContain('n8n/instance-ai:1.119.0');
-		expect(deletedNames).toContain('n8n/instance-ai:1.118.0');
+		expect(deletedNames).toContain('MNI/instance-ai:1.119.0');
+		expect(deletedNames).toContain('MNI/instance-ai:1.118.0');
 	});
 
 	it('waits for pruned snapshots to finish removing before retrying after a quota error', async () => {
@@ -764,10 +764,10 @@ describe('SnapshotManager snapshot pruning', () => {
 			.mockResolvedValue({ name: SNAPSHOT_NAME });
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
-				{ name: 'n8n/instance-ai:1.122.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.120.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.120.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active' },
 			]),
 		);
 		// The deleted snapshot lingers in `removing` before disappearing.
@@ -789,7 +789,7 @@ describe('SnapshotManager snapshot pruning', () => {
 			// The retry happened only after the pruned snapshot was gone.
 			expect(daytona.snapshot.create).toHaveBeenCalledTimes(2);
 			const removalPolls = daytona.snapshot.get.mock.calls.filter(
-				([requested]) => requested === 'n8n/instance-ai:1.119.0',
+				([requested]) => requested === 'MNI/instance-ai:1.119.0',
 			);
 			expect(removalPolls.length).toBeGreaterThanOrEqual(2);
 		} finally {
@@ -832,10 +832,10 @@ describe('SnapshotManager snapshot pruning', () => {
 			.mockResolvedValue({ name: SNAPSHOT_NAME });
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
-				{ name: 'n8n/instance-ai:1.122.0', state: 'active', lastUsedAt: daysAgo(1) },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'active', lastUsedAt: daysAgo(2) },
-				{ name: 'n8n/instance-ai:1.120.0', state: 'active', lastUsedAt: daysAgo(3) },
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active', lastUsedAt: daysAgo(10) },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'active', lastUsedAt: daysAgo(1) },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'active', lastUsedAt: daysAgo(2) },
+				{ name: 'MNI/instance-ai:1.120.0', state: 'active', lastUsedAt: daysAgo(3) },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active', lastUsedAt: daysAgo(10) },
 			]),
 		);
 		mockGetActiveOnlyFor(daytona, SNAPSHOT_NAME);
@@ -845,7 +845,7 @@ describe('SnapshotManager snapshot pruning', () => {
 		expect(result).toBe(SNAPSHOT_NAME);
 		expect(daytona.snapshot.create).toHaveBeenCalledTimes(2);
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.119.0']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.119.0']);
 	});
 
 	it('throws the quota error when pruning frees nothing', async () => {
@@ -855,7 +855,7 @@ describe('SnapshotManager snapshot pruning', () => {
 			new DaytonaError('Snapshot quota exceeded. Maximum allowed: 30'),
 		);
 		daytona.snapshot.list.mockResolvedValue(
-			snapshotPage([{ name: 'n8n/instance-ai:1.122.0', state: 'active' }]),
+			snapshotPage([{ name: 'MNI/instance-ai:1.122.0', state: 'active' }]),
 		);
 
 		await expect(manager.createSnapshot(daytona as never, { retention: 5 })).rejects.toThrow(
@@ -871,11 +871,11 @@ describe('SnapshotManager snapshot pruning', () => {
 		daytona.snapshot.create.mockResolvedValue({ name: SNAPSHOT_NAME });
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
-				{ name: 'n8n/instance-ai:1.122.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'active' },
 				{ name: SNAPSHOT_NAME, state: 'active' },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'inactive' },
-				{ name: 'n8n/instance-ai:1.121.0-abc123', state: 'active' },
-				{ name: 'n8n/instance-ai:1.120.0', state: 'building' },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'inactive' },
+				{ name: 'MNI/instance-ai:1.121.0-abc123', state: 'active' },
+				{ name: 'MNI/instance-ai:1.120.0', state: 'building' },
 				{ name: 'someone-elses/snapshot:1.0.0', state: 'active' },
 			]),
 		);
@@ -886,7 +886,7 @@ describe('SnapshotManager snapshot pruning', () => {
 		// 1.121.0-abc123 ranks below plain 1.121.0) are floor-protected; the
 		// building and foreign snapshots are untouched.
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.121.0-abc123']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.121.0-abc123']);
 	});
 
 	it('age-prunes snapshots unused beyond maxAgeDays, keeping recently used and floor-protected ones', async () => {
@@ -898,34 +898,34 @@ describe('SnapshotManager snapshot pruning', () => {
 				{ name: SNAPSHOT_NAME, state: 'active', createdAt: daysAgo(0), lastUsedAt: daysAgo(0) },
 				// Aged but within the newest-3 floor → kept.
 				{
-					name: 'n8n/instance-ai:1.122.0',
+					name: 'MNI/instance-ai:1.122.0',
 					state: 'active',
 					createdAt: daysAgo(40),
 					lastUsedAt: daysAgo(25),
 				},
 				// Created long ago but recently used → kept.
 				{
-					name: 'n8n/instance-ai:1.121.0',
+					name: 'MNI/instance-ai:1.121.0',
 					state: 'active',
 					createdAt: daysAgo(30),
 					lastUsedAt: daysAgo(2),
 				},
 				// Idle past the cutoff → pruned.
 				{
-					name: 'n8n/instance-ai:1.120.0',
+					name: 'MNI/instance-ai:1.120.0',
 					state: 'inactive',
 					createdAt: daysAgo(40),
 					lastUsedAt: daysAgo(25),
 				},
 				// No lastUsedAt → createdAt fallback → pruned.
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active', createdAt: daysAgo(25) },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active', createdAt: daysAgo(25) },
 			]),
 		);
 
 		await manager.createSnapshot(daytona as never, { maxAgeDays: 20 });
 
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.120.0', 'n8n/instance-ai:1.119.0']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.120.0', 'MNI/instance-ai:1.119.0']);
 	});
 
 	it('does not let failed or suffixed snapshots consume rollback-floor slots', async () => {
@@ -936,20 +936,20 @@ describe('SnapshotManager snapshot pruning', () => {
 			snapshotPage([
 				{ name: SNAPSHOT_NAME, state: 'active', lastUsedAt: daysAgo(0) },
 				// Failed build: deleted, and must not occupy a floor slot.
-				{ name: 'n8n/instance-ai:1.122.0', state: 'build_failed', lastUsedAt: daysAgo(1) },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'build_failed', lastUsedAt: daysAgo(1) },
 				// Suffixed build: not a rollback target; aged out → pruned.
-				{ name: 'n8n/instance-ai:1.121.0-pr1', state: 'active', lastUsedAt: daysAgo(25) },
+				{ name: 'MNI/instance-ai:1.121.0-pr1', state: 'active', lastUsedAt: daysAgo(25) },
 				// Idle plain releases: floor-protected because the failed and
 				// suffixed snapshots above don't count toward the newest-3 floor.
-				{ name: 'n8n/instance-ai:1.120.0', state: 'active', lastUsedAt: daysAgo(25) },
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active', lastUsedAt: daysAgo(25) },
+				{ name: 'MNI/instance-ai:1.120.0', state: 'active', lastUsedAt: daysAgo(25) },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active', lastUsedAt: daysAgo(25) },
 			]),
 		);
 
 		await manager.createSnapshot(daytona as never, { maxAgeDays: 20 });
 
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.122.0', 'n8n/instance-ai:1.121.0-pr1']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.122.0', 'MNI/instance-ai:1.121.0-pr1']);
 	});
 
 	it('count-cap eviction is LRU: an old version still in use outlives an idle newer one', async () => {
@@ -959,20 +959,20 @@ describe('SnapshotManager snapshot pruning', () => {
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
 				{ name: SNAPSHOT_NAME, state: 'active', lastUsedAt: daysAgo(0) },
-				{ name: 'n8n/instance-ai:1.122.0', state: 'active', lastUsedAt: daysAgo(1) },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'active', lastUsedAt: daysAgo(1) },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'active', lastUsedAt: daysAgo(1) },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'active', lastUsedAt: daysAgo(1) },
 				// Oldest version but used yesterday (a pinned instance) → kept.
-				{ name: 'n8n/instance-ai:1.100.0', state: 'active', lastUsedAt: daysAgo(1) },
+				{ name: 'MNI/instance-ai:1.100.0', state: 'active', lastUsedAt: daysAgo(1) },
 				// Idle for two weeks → evicted first.
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active', lastUsedAt: daysAgo(15) },
-				{ name: 'n8n/instance-ai:1.118.0', state: 'active', lastUsedAt: daysAgo(10) },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active', lastUsedAt: daysAgo(15) },
+				{ name: 'MNI/instance-ai:1.118.0', state: 'active', lastUsedAt: daysAgo(10) },
 			]),
 		);
 
 		await manager.createSnapshot(daytona as never, { retention: 5 });
 
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.119.0']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.119.0']);
 	});
 
 	it('deletes failed snapshots even within the retention window', async () => {
@@ -982,15 +982,15 @@ describe('SnapshotManager snapshot pruning', () => {
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
 				{ name: SNAPSHOT_NAME, state: 'active' },
-				{ name: 'n8n/instance-ai:1.122.0', state: 'build_failed', errorReason: 'npm exit 1' },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'build_failed', errorReason: 'npm exit 1' },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'active' },
 			]),
 		);
 
 		await manager.createSnapshot(daytona as never, { retention: 3 });
 
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.122.0']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.122.0']);
 	});
 
 	it('never deletes the snapshot being published', async () => {
@@ -1000,7 +1000,7 @@ describe('SnapshotManager snapshot pruning', () => {
 		daytona.snapshot.create.mockResolvedValue({ name: SNAPSHOT_NAME });
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
-				{ name: 'n8n/instance-ai:2.0.0', state: 'active' },
+				{ name: 'MNI/instance-ai:2.0.0', state: 'active' },
 				{ name: SNAPSHOT_NAME, state: 'active' },
 			]),
 		);
@@ -1017,14 +1017,14 @@ describe('SnapshotManager snapshot pruning', () => {
 		daytona.snapshot.list
 			.mockResolvedValueOnce(snapshotPage([{ name: SNAPSHOT_NAME, state: 'active' }], 1, 2))
 			.mockResolvedValueOnce(
-				snapshotPage([{ name: 'n8n/instance-ai:1.100.0', state: 'build_failed' }], 2, 2),
+				snapshotPage([{ name: 'MNI/instance-ai:1.100.0', state: 'build_failed' }], 2, 2),
 			);
 
 		await manager.createSnapshot(daytona as never, { retention: 1 });
 
 		expect(daytona.snapshot.list).toHaveBeenCalledTimes(2);
 		const deletedNames = daytona.snapshot.delete.mock.calls.map(([snapshot]) => snapshot.name);
-		expect(deletedNames).toEqual(['n8n/instance-ai:1.100.0']);
+		expect(deletedNames).toEqual(['MNI/instance-ai:1.100.0']);
 	});
 
 	it('does not fail the publish when pruning fails', async () => {
@@ -1045,10 +1045,10 @@ describe('SnapshotManager snapshot pruning', () => {
 		daytona.snapshot.list.mockResolvedValue(
 			snapshotPage([
 				{ name: SNAPSHOT_NAME, state: 'active' },
-				{ name: 'n8n/instance-ai:1.122.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.121.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.120.0', state: 'active' },
-				{ name: 'n8n/instance-ai:1.119.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.122.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.121.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.120.0', state: 'active' },
+				{ name: 'MNI/instance-ai:1.119.0', state: 'active' },
 			]),
 		);
 		daytona.snapshot.delete

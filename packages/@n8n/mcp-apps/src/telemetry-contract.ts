@@ -23,12 +23,12 @@ export interface McpAppTelemetryConfig {
 	enabled: boolean;
 	/** RudderStack write key. */
 	writeKey: string;
-	/** Data plane URL proxied through the n8n instance. */
+	/** Data plane URL proxied through the MNI instance. */
 	dataPlaneUrl: string;
-	/** Source config URL proxied through the n8n instance. */
+	/** Source config URL proxied through the MNI instance. */
 	configUrl: string;
 	/** Instance ID, used for event enrichment. */
 	instanceId: string;
-	/** n8n version, used for event enrichment. */
+	/** MNI version, used for event enrichment. */
 	versionCli: string;
 }

@@ -66,7 +66,7 @@ if (addMarketplace()) {
 if (failed.length > 0) {
 	console.error(`\n!! SKILLS NOT INSTALLED: ${failed.join(', ')}`);
 	console.error('!! Sessions start without them. Retry with:');
-	console.error('!!   node /workspaces/n8n/.devcontainer/codespaces/post-start.mjs\n');
+	console.error('!!   node /workspaces/MNI/.devcontainer/codespaces/post-start.mjs\n');
 }
 let harness;
 try {
@@ -84,7 +84,7 @@ const workerStarted =
 		'-d',
 		'-s',
 		'agent-worker',
-		'bash -lc ". /usr/local/lib/codespaces-env.sh; export CLAUDE_CODE_PLUGIN_PREFER_HTTPS=1 CLAUDE_CODE_PLUGIN_KEEP_MARKETPLACE_ON_FAILURE=1; node /workspaces/n8n/.devcontainer/codespaces/agent-worker.mjs >> /tmp/agent-worker.log 2>&1"',
+		'bash -lc ". /usr/local/lib/codespaces-env.sh; export CLAUDE_CODE_PLUGIN_PREFER_HTTPS=1 CLAUDE_CODE_PLUGIN_KEEP_MARKETPLACE_ON_FAILURE=1; node /workspaces/MNI/.devcontainer/codespaces/agent-worker.mjs >> /tmp/agent-worker.log 2>&1"',
 	]);
 
 if (!workerStarted && harness.status !== 'active') {

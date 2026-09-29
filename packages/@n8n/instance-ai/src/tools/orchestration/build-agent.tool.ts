@@ -1060,7 +1060,7 @@ async function resolveTargetForCall(
 export function createBuildAgentTool(context: OrchestrationContext) {
 	return new Tool(ORCHESTRATION_TOOL_IDS.BUILD_AGENT)
 		.description(
-			'Builds and edits n8n **Agent** artifacts (instructions, model, tools, skills, tasks, ' +
+			'Builds and edits MNI **Agent** artifacts (instructions, model, tools, skills, tasks, ' +
 				'integrations, sub-agents) and delegates draft agent test runs to the agents-module ' +
 				'builder. Load `agent-builder` via `load_skill` before calling this tool and follow it ' +
 				'for prerequisite creation, faithful handoff, targeting, interactive questions, ' +

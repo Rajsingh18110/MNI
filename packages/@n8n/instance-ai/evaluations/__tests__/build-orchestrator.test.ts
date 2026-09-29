@@ -47,7 +47,7 @@ vi.mock('../harness/capture-run-debug', () => ({
 
 vi.mock('../harness/credential-setup-checks', async (importOriginal) => ({
 	...(await importOriginal<typeof import('../harness/credential-setup-checks')>()),
-	// Only the call that would hit n8n is stubbed. `redactTranscriptSecrets`
+	// Only the call that would hit MNI is stubbed. `redactTranscriptSecrets`
 	// stays REAL: mocking the whole module would have made the leak test below
 	// pass against a no-op.
 	runCredentialSetupChecks: vi.fn().mockResolvedValue([]),
@@ -1007,7 +1007,7 @@ describe('local-mode secret scrubbing', () => {
 
 	it('scrubs a field nobody enumerated — the probe detail from the real provider', () => {
 		// The scrub is a denylist over the whole build now. `valueProbe.detail` is
-		// n8n's credential-test message, fired at the REAL provider in local mode,
+		// MNI's credential-test message, fired at the REAL provider in local mode,
 		// and was never on any of the hand-listed surfaces.
 		const build = localBuild();
 		build.credentialSetup = {
@@ -1059,7 +1059,7 @@ describe('surfaces fetched after the scrub', () => {
 	const PREFIX = 'sk-ant-api03-';
 	const KEY = `${PREFIX}abcdefghijklmnopqrstuvwx`;
 
-	it('redacts run debug, which is re-read from n8n and rendered into the report', () => {
+	it('redacts run debug, which is re-read from MNI and rendered into the report', () => {
 		// captureThreadRunDebug runs after the build was scrubbed, so its payload
 		// arrives raw; run-debug-report renders step input/output verbatim.
 		const debug = [{ steps: [{ input: { messages: [`saved ${KEY}`] } }] }];

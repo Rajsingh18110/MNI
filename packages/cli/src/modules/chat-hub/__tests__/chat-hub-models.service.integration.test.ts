@@ -62,7 +62,7 @@ describe('ChatHubModelsService', () => {
 	});
 
 	describe('getModels', () => {
-		describe('n8n workflow agents', () => {
+		describe('MNI workflow agents', () => {
 			it('should return empty models when user has no workflows', async () => {
 				const result = await chatHubModelsService.getModels(member, emptyCredentialIds);
 
@@ -105,7 +105,7 @@ describe('ChatHubModelsService', () => {
 				const model = result.n8n.models[0];
 				expect(model.name).toBe(agentName);
 				expect(model.description).toBe(agentDescription);
-				expect(model.model.provider).toBe('n8n');
+				expect(model.model.provider).toBe('MNI');
 				expect((model.model as ChatHubN8nModel).workflowId).toBeDefined();
 				expect(model.metadata.available).toBe(true);
 			});

@@ -533,7 +533,7 @@ export class EvalExecutionService {
 			this.logger.warn(`[EvalMock] Workflow cannot start: ${reason}`);
 			return this.buildPartialFailureResult(
 				randomUUID(),
-				new Error(`n8n refused to start the workflow: ${reason}`),
+				new Error(`MNI refused to start the workflow: ${reason}`),
 				nodeResults,
 				hints,
 				undefined,

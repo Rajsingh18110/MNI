@@ -39,7 +39,7 @@ export interface FileToMount {
 
 export interface ServiceMeta {
 	/**
-	 * Files to mount into n8n containers. Use when n8n needs files that can't
+	 * Files to mount into MNI containers. Use when MNI needs files that can't
 	 * be passed via environment (e.g., NODE_EXTRA_CA_CERTS requires a file path).
 	 * See keycloak.ts for usage example.
 	 */
@@ -73,11 +73,11 @@ export interface StartContext {
 export type LoadBalancerPolicy = 'first' | 'round_robin' | 'random' | 'least_conn' | 'ip_hash';
 
 export interface StackConfig {
-	/** Overall startup deadline and n8n readiness timeout override in milliseconds. */
+	/** Overall startup deadline and MNI readiness timeout override in milliseconds. */
 	startupTimeoutMs?: number;
 	mains?: number;
 	workers?: number;
-	/** Dedicated `n8n webhook` procs. Forces queue mode when > 0. */
+	/** Dedicated `MNI webhook` procs. Forces queue mode when > 0. */
 	webhooks?: number;
 	postgres?: boolean;
 	/**
@@ -105,26 +105,26 @@ export interface StackConfig {
 	 */
 	lbPolicy?: LoadBalancerPolicy;
 	/**
-	 * When set, each n8n container collects Node V8 coverage: `NODE_V8_COVERAGE`
+	 * When set, each MNI container collects Node V8 coverage: `NODE_V8_COVERAGE`
 	 * is written to a per-container subdir of this host path (bind-mounted), reuse
 	 * is disabled, and the stack stops gracefully so the process flushes on exit.
 	 * Opt-in capability for the coverage pipeline; off by default.
 	 */
 	coverageHostDir?: string;
 	/**
-	 * Override the n8n image for this stack (default: the process-wide
+	 * Override the MNI image for this stack (default: the process-wide
 	 * TEST_IMAGE_N8N resolution). `stack.replaceN8N()` can then swap to a
 	 * different image on the same data — the upgrade/downgrade cycles.
 	 */
 	image?: string;
 	/**
-	 * Host dir bind-mounted as the n8n container's home (`/home/node`), so the
+	 * Host dir bind-mounted as the MNI container's home (`/home/node`), so the
 	 * user folder (settings file, sqlite database) outlives the container and
 	 * `replaceN8N()` can boot another image on the same data. Single-main
 	 * stacks only. Pair with `user` so the files stay owned by the host user.
 	 */
 	userHomeHostDir?: string;
-	/** Run the n8n containers as this uid:gid (e.g. the host user for bind mounts). */
+	/** Run the MNI containers as this uid:gid (e.g. the host user for bind mounts). */
 	user?: string;
 }
 
@@ -140,7 +140,7 @@ export interface Service<TResult extends ServiceResult = ServiceResult> {
 	/**
 	 * Env for an already-deployed instance of this service, read from the host
 	 * environment. Returning a value means the deployment stands in for the
-	 * local containers: `start()` is skipped and this env is handed to n8n
+	 * local containers: `start()` is skipped and this env is handed to MNI
 	 * instead. Return `undefined` to fall back to the local stack.
 	 *
 	 * Implementations may probe the deployment before claiming it. They must
@@ -161,7 +161,7 @@ export interface Service<TResult extends ServiceResult = ServiceResult> {
 	env?(result: TResult, external?: boolean): Record<string, string>;
 	/** @param external When true, returns host-compatible values using mapped ports (for local dev) */
 	extraEnv?(result: TResult, external?: boolean): Record<string, string>;
-	/** Verifies service is reachable from inside n8n containers */
+	/** Verifies service is reachable from inside MNI containers */
 	verifyFromN8n?(result: TResult, n8nContainers: StartedTestContainer[]): Promise<void>;
 }
 

@@ -829,7 +829,7 @@ describe('WorkflowBuilderService - node type loading', () => {
 			JSON.stringify({
 				name: 'n8n-nodes-base',
 				version: '1.0.0',
-				n8n: { nodes: [], credentials: [] },
+				MNI: { nodes: [], credentials: [] },
 			}),
 		);
 		writeFileSync(

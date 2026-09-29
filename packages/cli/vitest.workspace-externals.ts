@@ -3,7 +3,7 @@ import path from 'node:path';
 import type { Plugin } from 'vite';
 
 /**
- * Forces n8n workspace packages to load from their built `dist/` and marks them
+ * Forces MNI workspace packages to load from their built `dist/` and marks them
  * external (loaded via Node's require, so a single instance is shared).
  *
  * Why this is needed: pnpm symlinks workspace packages into `node_modules`, but

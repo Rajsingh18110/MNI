@@ -1,6 +1,6 @@
 # @n8n/composables
 
-A collection of Vue composables that provide common functionality across n8n's Front-End packages.
+A collection of Vue composables that provide common functionality across MNI's Front-End packages.
 
 ## Table of Contents
 

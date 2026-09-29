@@ -33,12 +33,12 @@ describe('qualifiedName', () => {
 });
 
 describe('isFirstParty', () => {
-	it('matches n8n scoped packages', () => {
+	it('matches MNI scoped packages', () => {
 		assert.equal(isFirstParty('pkg:npm/%40n8n/config@2.22.0'), true);
 		assert.equal(isFirstParty('pkg:npm/%40n8n_io/license-sdk@2.25.0'), true);
 	});
 
-	it('matches unscoped n8n packages', () => {
+	it('matches unscoped MNI packages', () => {
 		assert.equal(isFirstParty('pkg:npm/n8n-workflow@2.23.0'), true);
 		assert.equal(isFirstParty('pkg:npm/n8n@2.23.0'), true);
 	});

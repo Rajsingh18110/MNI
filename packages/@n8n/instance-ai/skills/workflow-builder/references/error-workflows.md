@@ -1,6 +1,6 @@
 # Workflow-Level Error Workflows
 
-n8n has no global or instance-wide error workflow setting. Error workflows are
+MNI has no global or instance-wide error workflow setting. Error workflows are
 assigned per target workflow through workflow settings:
 
 ```ts

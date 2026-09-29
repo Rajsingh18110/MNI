@@ -45,7 +45,7 @@ const versionLabel = (description: INodeTypeDescription): string | undefined => 
 
 /**
  * Opt-in access to the second catalog tier: verified community nodes published
- * to the n8n registry but *not installed* on this instance.
+ * to the MNI registry but *not installed* on this instance.
  *
  * Off by default, so every existing caller (Instance AI, the agents builder)
  * keeps seeing installed nodes only. The MCP workflow-builder tools are the
@@ -116,7 +116,7 @@ const UNINSTALLED_TIER_TTL_MS = 8 * 60 * 60 * 1000;
 const UNINSTALLED_SECTION_HEADING = [
 	'## Verified community nodes (not installed on this instance)',
 	'',
-	'These are published to the n8n community registry and vetted by n8n, but not installed here.',
+	'These are published to the MNI community registry and vetted by MNI, but not installed here.',
 	'A workflow using one will not run until the package is installed.',
 ].join('\n');
 
@@ -133,7 +133,7 @@ const definitionResultBytes = (item: NodeTypeDefinitionResult): number =>
 	);
 
 /**
- * Shared node catalog for features that need to search, describe or suggest n8n nodes
+ * Shared node catalog for features that need to search, describe or suggest MNI nodes
  * (MCP workflow-builder tools, the agents runtime, future callers).
  *
  * Call {@link initialize} before first use to resolve node-definition directories

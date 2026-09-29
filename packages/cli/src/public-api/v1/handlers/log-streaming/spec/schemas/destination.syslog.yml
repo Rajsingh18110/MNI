@@ -36,7 +36,7 @@ allOf:
       app_name:
         type: string
         description: Application name reported in the syslog message.
-        example: n8n
+        example: MNI
       tlsCa:
         type: string
         description: PEM-encoded CA certificate used when `protocol` is `tls`.

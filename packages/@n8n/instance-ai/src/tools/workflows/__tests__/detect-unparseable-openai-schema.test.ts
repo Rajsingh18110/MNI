@@ -96,8 +96,8 @@ describe('detectUnparseableOpenAiSchema', () => {
 		expect(codes(workflow({}))).toEqual([]);
 	});
 
-	it('treats a leading-space "=" as a literal string, not an expression (n8n semantics)', () => {
-		// n8n only treats charAt(0)==='=' as an expression; ' ={{...}}' is a
+	it('treats a leading-space "=" as a literal string, not an expression (MNI semantics)', () => {
+		// MNI only treats charAt(0)==='=' as an expression; ' ={{...}}' is a
 		// literal that will crash JSON.parse at runtime.
 		expect(codes(workflow(jsonSchemaParams(' ={{ $json.schema }}')))).toEqual([
 			'OPENAI_STRUCTURED_OUTPUT_SCHEMA_INVALID',

@@ -22,7 +22,7 @@ export class GristApi implements ICredentialType {
 			displayName: 'Grist URL',
 			name: 'url',
 			type: 'string',
-			// Must default to empty: n8n injects field defaults into any saved credential
+			// Must default to empty: MNI injects field defaults into any saved credential
 			// missing the field, so a non-empty default would shadow the legacy fields
 			// below. Empty means hosted Grist. Optional on purpose: if required, editing a
 			// legacy credential (e.g. to rotate the API key) would force a URL into it,

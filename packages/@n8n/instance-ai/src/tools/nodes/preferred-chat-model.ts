@@ -124,7 +124,7 @@ export function buildChatModelProviderHint(
  * Deterministic post-build counterpart of `buildChatModelProviderHint` for
  * builders that never consult the credential list: one warning per chat-model
  * node whose provider has no stored credential while the user has one for
- * another provider. Nodes the resolver already covered with the n8n credits
+ * another provider. Nodes the resolver already covered with the MNI credits
  * managed credential are skipped — they run as built, so a rebuild directive
  * would be a false alarm. The decision to switch (or keep an explicitly
  * requested provider and ask) stays with the agent — only it can see the

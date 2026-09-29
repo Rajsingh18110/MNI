@@ -39,7 +39,7 @@ export function isWorkflowCompatibleWithAgentTools(workflow: IWorkflowDb): boole
 /**
  * Tab a node type belongs to in the tools connection modal.
  *
- * MCP tools keep their own tab. All other tools use the n8n nodes tab.
+ * MCP tools keep their own tab. All other tools use the MNI nodes tab.
  * Community packages are still matched first by provenance so they cannot
  * claim another category through their metadata.
  */

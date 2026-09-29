@@ -1544,7 +1544,7 @@ describe('createInstanceAiTraceContext', () => {
 				{
 					id: 'data-table-manager',
 					name: 'data-table-manager',
-					description: 'Manage n8n Data Tables directly.',
+					description: 'Manage MNI Data Tables directly.',
 					category: 'data',
 					recommendedTools: ['data-tables'],
 					instructions: 'Full skill instructions must stay out of trace inputs.',

@@ -6,8 +6,8 @@ function replaceN8n(str) {
   if (typeof str !== 'string') return str;
   // skip urls
   if (str.includes('http://') || str.includes('https://') || str.includes('docs.n8n.io') || str.includes('npmjs.com')) {
-    // maybe only replace outside of URLs, but it's easier to just replace n8n safely.
-    // Let's replace ' n8n ' with ' MNI ', 'n8n ' with 'MNI ', ' n8n' with ' MNI', 'n8n's' with 'MNI's'.
+    // maybe only replace outside of URLs, but it's easier to just replace MNI safely.
+    // Let's replace ' MNI ' with ' MNI ', 'MNI ' with 'MNI ', ' MNI' with ' MNI', 'MNI's' with 'MNI's'.
     return str.replace(/\bn8n\b/g, 'MNI');
   }
   return str.replace(/\bn8n\b/gi, 'MNI');

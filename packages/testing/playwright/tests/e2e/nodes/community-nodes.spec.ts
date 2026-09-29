@@ -6,7 +6,7 @@ import customNodeWithCustomCredentialFixture from '../../../workflows/Custom_nod
 import customNodeWithN8nCredentialFixture from '../../../workflows/Custom_node_n8n_credential.json';
 
 const CUSTOM_NODE_NAME = 'E2E Node';
-const CUSTOM_NODE_WITH_N8N_CREDENTIAL = 'E2E Node with native n8n credential';
+const CUSTOM_NODE_WITH_N8N_CREDENTIAL = 'E2E Node with native MNI credential';
 const CUSTOM_NODE_WITH_CUSTOM_CREDENTIAL = 'E2E Node with custom credential';
 
 test.describe(
@@ -15,7 +15,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.page.route('/types/nodes.json', async (route) => {
 				const response = await route.fetch();
 				const nodes = await response.json();
@@ -55,7 +55,7 @@ test.describe(
 			});
 		});
 
-		test('should render and select community node', async ({ n8n }) => {
+		test('should render and select community node', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 
 			await n8n.canvas.clickCanvasPlusButton();
@@ -72,7 +72,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterInputField('resource')).toHaveValue('option4');
 		});
 
-		test('should render custom node with n8n credential', async ({ n8n }) => {
+		test('should render custom node with MNI credential', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 
@@ -86,7 +86,7 @@ test.describe(
 			await expect(n8n.canvas.credentialModal.getModal()).toContainText('Notion API');
 		});
 
-		test('should render custom node with custom credential', async ({ n8n }) => {
+		test('should render custom node with custom credential', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 

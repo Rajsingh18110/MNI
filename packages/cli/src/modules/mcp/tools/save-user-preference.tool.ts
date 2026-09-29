@@ -40,7 +40,7 @@ import {
  * between a durable preference and a one-off instruction on its own.
  */
 const DESCRIPTION = [
-	'Saves a preference about how the user likes to work with n8n, so the n8n assistant and every connected AI tool apply it from now on: node and credential choices, naming, how work is organised, patterns to avoid.',
+	'Saves a preference about how the user likes to work with MNI, so the MNI assistant and every connected AI tool apply it from now on: node and credential choices, naming, how work is organised, patterns to avoid.',
 	'Call this only for a durable preference the user states about their way of working, such as "always add an error workflow" or "name nodes in English". Do not call it for an instruction that applies to the current task only, such as "make this one a POST request", and do not infer a preference the user did not state.',
 	`Read ${MCP_GET_USER_PREFERENCES_TOOL_NAME} first. If a saved preference already covers the same ground, call ${MCP_UPDATE_USER_PREFERENCE_TOOL_NAME} with its id instead of saving a near-duplicate; saving the exact same text again is refused.`,
 	`The preference is saved at once, without a confirmation step. In the same turn, tell the user the exact text that was saved and give them the settings link from the result, so they can check it. If they want it changed, call ${MCP_UPDATE_USER_PREFERENCE_TOOL_NAME}; if they want it gone, call ${MCP_UNDO_USER_PREFERENCE_TOOL_NAME}.`,
@@ -93,7 +93,7 @@ const reviewFormSchema = z.object({
 /** What the form calls each scope. A project move needs an id, so it stays on the update tool. */
 const SCOPE_LABELS = {
 	user: 'Just you, in every project',
-	instance: 'Everyone on this n8n instance',
+	instance: 'Everyone on this MNI instance',
 } as const;
 
 /**
@@ -337,7 +337,7 @@ export const createSaveUserPreferenceTool = (
 			return await applyReview(id, review);
 		}
 
-		// First round: write at once, through the write the n8n Assistant tool also uses. It sets
+		// First round: write at once, through the write the MNI Assistant tool also uses. It sets
 		// the source, maps a refusal to a reason and fires the shown/accepted/saved events: the
 		// review form below is the surface those events describe, and silence keeps the row.
 		const written = await writeAssistantPreference({
@@ -372,7 +372,7 @@ export const createSaveUserPreferenceTool = (
 					// Clients may show only the first lines of the message, so the state comes first:
 					// the row is already saved, and closing the form keeps it. The last lines name where
 					// the person manages it, and the consent permission that stops this tool saving more.
-					message: `Saved to your n8n preferences. Accept to keep it, or Decline to delete it.\n\n"${preference.content}"\n\nFrom now on, the n8n assistant and your connected AI tools follow this preference. To change it, edit the text${scopeChoices.length > 1 ? ' or who it applies to' : ''}, then accept. If you close this, the preference stays saved.\n\nYou can change or delete it anytime in n8n under Settings > Context > Preferences. To stop this tool from saving preferences, connect it again without the "Save, update and undo AI preferences" permission.`,
+					message: `Saved to your MNI preferences. Accept to keep it, or Decline to delete it.\n\n"${preference.content}"\n\nFrom now on, the MNI assistant and your connected AI tools follow this preference. To change it, edit the text${scopeChoices.length > 1 ? ' or who it applies to' : ''}, then accept. If you close this, the preference stays saved.\n\nYou can change or delete it anytime in MNI under Settings > Context > Preferences. To stop this tool from saving preferences, connect it again without the "Save, update and undo AI preferences" permission.`,
 					requestedSchema: {
 						type: 'object',
 						properties: {

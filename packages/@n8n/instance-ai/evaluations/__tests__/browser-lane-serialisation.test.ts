@@ -1,6 +1,6 @@
 import { serialiseForBrowserLane } from '../cli/index';
 
-// The n8n relay is instance-wide: two concurrent browser builds displace each
+// The MNI relay is instance-wide: two concurrent browser builds displace each
 // other's session. The condition is "can more than one browser BUILD exist",
 // which is not the same as "is a browser case selected" — that over-serialised
 // every unrelated row in a full run — nor "are two browser cases selected",

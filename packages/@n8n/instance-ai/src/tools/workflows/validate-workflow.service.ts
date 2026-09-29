@@ -213,7 +213,7 @@ async function evaluateCredentialEntry(
 		return credentialTypeDescription.required ? notSetIssue(credName, nodeDesc.displayName) : null;
 	}
 
-	// n8n Connect managed credentials have no real DB record — treat as
+	// MNI Connect managed credentials have no real DB record — treat as
 	// configured. Recognizes both the resolved `AI_GATEWAY_CREDENTIAL` shape and
 	// the raw builder-emitted `AI_GATEWAY_MANAGED_TAG`, so a node that still
 	// carries the tag isn't flagged missing-credential before the gateway checks.
@@ -310,7 +310,7 @@ function isManagedCredentialEntry(entry: unknown): boolean {
 }
 
 /**
- * Static AI Gateway (n8n Connect) checks over a single node. Fires only for
+ * Static AI Gateway (MNI Connect) checks over a single node. Fires only for
  * nodes that opt into the gateway via a managed credential — nodes that use a
  * stored credential aren't bound by gateway constraints. Returns one entry
  * per failure kind so the summary lines stay well-scoped.

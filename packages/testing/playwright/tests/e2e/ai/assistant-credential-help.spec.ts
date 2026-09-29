@@ -17,7 +17,7 @@ test.describe(
 	() => {
 		test.describe('Credential Help', () => {
 			test('should start credential help from node credential', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(aiEnabledWithSimpleChatRequirements);
@@ -46,7 +46,7 @@ test.describe(
 			});
 
 			test('should start credential help from credential list', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(aiEnabledWithSimpleChatRequirements);
@@ -71,7 +71,7 @@ test.describe(
 			});
 
 			test('should not show assistant button if click to connect', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(aiEnabledRequirements);
@@ -120,7 +120,7 @@ test.describe(
 			});
 
 			test('should not show assistant button when click to connect with some fields', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(aiEnabledRequirements);

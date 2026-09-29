@@ -2,7 +2,7 @@
   "name": "@n8n/module-cli",
   "version": "0.1.0",
   "private": true,
-  "description": "Interactive scaffolder for n8n modules",
+  "description": "Interactive scaffolder for MNI modules",
   "type": "module",
   "bin": {
     "n8n-module-sdk": "bin/n8n-module-sdk.mjs"

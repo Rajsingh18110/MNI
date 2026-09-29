@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // Stub InstanceAiContext services for in-process workflow-build evals.
 //
-// The goal is to run createInstanceAgent without a running n8n instance.
+// The goal is to run createInstanceAgent without a running MNI instance.
 // `nodeService` is wired to the same node catalogue (`nodes.json`) and the
 // same production resolvers (`resolveNodeTypeDefinition`,
 // `listNodeDiscriminators`) that the real adapter uses, so the agent sees

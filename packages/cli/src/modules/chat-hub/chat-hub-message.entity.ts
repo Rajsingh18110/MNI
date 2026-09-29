@@ -49,7 +49,7 @@ export class ChatHubMessage extends WithTimestamps {
 	content: string;
 
 	/**
-	 * Enum value of the LLM provider that generated this message, e.g. 'openai', 'anthropic', 'google', 'n8n'.
+	 * Enum value of the LLM provider that generated this message, e.g. 'openai', 'anthropic', 'google', 'MNI'.
 	 * Human messages have this field set to NULL.
 	 */
 	@Column({ type: 'varchar', length: 16, nullable: true })
@@ -63,14 +63,14 @@ export class ChatHubMessage extends WithTimestamps {
 	model: string | null;
 
 	/**
-	 * ID of a custom n8n agent workflow that produced this message (if applicable).
+	 * ID of a custom MNI agent workflow that produced this message (if applicable).
 	 * Human messages have this field set to NULL.
 	 */
 	@Column({ type: 'varchar', length: 36, nullable: true })
 	workflowId: string | null;
 
 	/**
-	 * Custom n8n agent workflow that produced this message (if applicable).
+	 * Custom MNI agent workflow that produced this message (if applicable).
 	 */
 	@ManyToOne('WorkflowEntity', { onDelete: 'SET NULL', nullable: true })
 	@JoinColumn({ name: 'workflowId' })

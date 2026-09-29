@@ -315,7 +315,7 @@ describe('createModel', () => {
 	});
 
 	it('uses the Responses API when a baseURL explicitly serves it', () => {
-		// The n8n Connect gateway proxies real OpenAI, so it sets a baseURL but does
+		// The MNI Connect gateway proxies real OpenAI, so it sets a baseURL but does
 		// serve /responses. An explicit `apiStyle` pins that and skips the probe.
 		const model = createModel({
 			id: 'openai/gpt-5-mini',

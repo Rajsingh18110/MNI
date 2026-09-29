@@ -1,7 +1,7 @@
 /**
  * JSON Serializer Plugin
  *
- * Serializes workflows to n8n's standard JSON format.
+ * Serializes workflows to MNI's standard JSON format.
  */
 
 import { deepCopy, normalizeGroupDescription, normalizeNodeShape } from 'n8n-workflow';
@@ -32,7 +32,7 @@ import type { SerializerPlugin, SerializerContext } from '../types';
 
 /**
  * Node types that require a webhookId for proper webhook path registration.
- * Without it, n8n falls back to encoding the node name into the URL path.
+ * Without it, MNI falls back to encoding the node name into the URL path.
  */
 const WEBHOOK_NODE_TYPES = new Set([
 	'n8n-nodes-base.webhook',
@@ -85,7 +85,7 @@ function serializeNode(
 
 	// Serialize parameters - for SDK-created nodes, also normalize resource locators
 	// (add __rl: true if missing) and escape newlines in expression strings.
-	// Missing parameters are serialized as an empty object because n8n requires
+	// Missing parameters are serialized as an empty object because MNI requires
 	// each persisted node to have an object-valued parameters field.
 	const parsedParams = deepCopy(config.parameters ?? {});
 	let serializedParams: IDataObject;
@@ -110,7 +110,7 @@ function serializeNode(
 		parameters: serializedParams,
 	};
 
-	// Generate webhookId for webhook-based nodes so n8n registers clean paths
+	// Generate webhookId for webhook-based nodes so MNI registers clean paths
 	// (e.g., "{uuid}/dashboard" instead of "{workflowId}/{encodedNodeName}/dashboard")
 	if (WEBHOOK_NODE_TYPES.has(instance.type)) {
 		n8nNode.webhookId = config.webhookId ?? randomUUID();
@@ -229,7 +229,7 @@ function serializeNodeConnections(
 }
 
 /**
- * Serializer for the standard n8n workflow JSON format.
+ * Serializer for the standard MNI workflow JSON format.
  *
  * Produces WorkflowJSON output that can be imported into n8n.
  */

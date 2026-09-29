@@ -53,21 +53,21 @@ const metricInputSchema = z.object({
 		.string()
 		.min(1)
 		.describe(
-			"n8n expression for the workflow's produced answer (read from the workflow output). " +
+			"MNI expression for the workflow's produced answer (read from the workflow output). " +
 				'Must begin with `=` so it is stored as an expression, not literal text, e.g. ={{ $json.output }}',
 		),
 	userQuery: z
 		.string()
 		.optional()
 		.describe(
-			'n8n expression for the user query — a dataset column (required for the "helpfulness" preset). ' +
+			'MNI expression for the user query — a dataset column (required for the "helpfulness" preset). ' +
 				'Write it as `={{ $json.<column> }}` (the eval reads it from the dataset row); do not reference the trigger by name. Must begin with `=`, e.g. ={{ $json.input }}',
 		),
 	expectedAnswer: z
 		.string()
 		.optional()
 		.describe(
-			'n8n expression for the expected/ground-truth answer — a dataset column (required for the "correctness" preset). ' +
+			'MNI expression for the expected/ground-truth answer — a dataset column (required for the "correctness" preset). ' +
 				'Write it as `={{ $json.<column> }}` (the eval reads it from the dataset row); do not reference the trigger by name. Must begin with `=`, e.g. ={{ $json.expected_output }}',
 		),
 	prompt: z.string().optional().describe('Optional override for the judge prompt'),

@@ -29,7 +29,7 @@ export interface CredentialResolverMetadata {
 	/** Optional display name shown in UI. Falls back to name if not provided. */
 	displayName?: string;
 
-	/** Configuration schema using n8n's INodeProperties format for dynamic form rendering */
+	/** Configuration schema using MNI's INodeProperties format for dynamic form rendering */
 	options?: INodeProperties[];
 }
 
@@ -104,14 +104,14 @@ export interface ICredentialResolver {
 	): Promise<void>;
 
 	/**
-	 * Returns the n8n user id the resolved credentials belong to, when this
-	 * resolver maps the context identity to an n8n user (e.g. the n8n JWT
+	 * Returns the MNI user id the resolved credentials belong to, when this
+	 * resolver maps the context identity to an MNI user (e.g. the MNI JWT
 	 * resolver). Resolvers keyed on external identities (Slack, OAuth subjects)
-	 * leave this unimplemented, so the execution has no attributable n8n user.
+	 * leave this unimplemented, so the execution has no attributable MNI user.
 	 *
 	 * Consumed by the redaction layer to grant the executing user access to
 	 * their own data on executions that resolved private credentials.
-	 * Optional - not all resolvers map to n8n users.
+	 * Optional - not all resolvers map to MNI users.
 	 */
 	resolveOwningUserId?(
 		context: ICredentialContext,

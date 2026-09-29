@@ -20,7 +20,7 @@ const RECIPIENT = '11111111-2222-3333-4444-555555555555';
 const PATH = `/v1.0/users/${RECIPIENT}/teamwork/sendActivityNotification`;
 const LINK = 'https://teams.microsoft.com/l/chat/0/0?users=someone@contoso.com';
 const BODY = {
-	topic: { source: 'text', value: 'n8n workflow run', webUrl: LINK },
+	topic: { source: 'text', value: 'MNI workflow run', webUrl: LINK },
 	activityType: 'systemDefault',
 	previewText: { content: 'Order #4711 needs approval' },
 	templateParameters: [{ name: 'systemDefaultText', value: 'Approval needed' }],
@@ -33,7 +33,7 @@ const baseParams = {
 	recipientId: RECIPIENT,
 	headline: 'Approval needed',
 	previewText: 'Order #4711 needs approval',
-	topic: 'n8n workflow run',
+	topic: 'MNI workflow run',
 	topicLink: LINK,
 	options: {},
 };

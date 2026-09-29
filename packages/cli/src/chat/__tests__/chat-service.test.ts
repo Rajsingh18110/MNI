@@ -292,7 +292,7 @@ describe('ChatService', () => {
 
 				await (chatService as any).checkHeartbeats();
 
-				expect(mockWs.send).toHaveBeenCalledWith('n8n|heartbeat');
+				expect(mockWs.send).toHaveBeenCalledWith('MNI|heartbeat');
 				expect(clearInterval).toHaveBeenCalledWith(123);
 				expect((chatService as any).sessions.get(sessionKey)).toBeUndefined();
 			});
@@ -310,7 +310,7 @@ describe('ChatService', () => {
 
 				await (chatService as any).checkHeartbeats();
 
-				expect(mockWs.send).toHaveBeenCalledWith('n8n|heartbeat');
+				expect(mockWs.send).toHaveBeenCalledWith('MNI|heartbeat');
 				expect((chatService as any).sessions.get(sessionKey)).toBeDefined();
 			});
 		});
@@ -334,7 +334,7 @@ describe('ChatService', () => {
 			};
 			(chatService as any).sessions.set(sessionKey, session);
 
-			const data = 'n8n|heartbeat-ack';
+			const data = 'MNI|heartbeat-ack';
 			const incomingMessageHandler = (chatService as any).incomingMessageHandler(sessionKey);
 			await incomingMessageHandler(data);
 
@@ -468,7 +468,7 @@ describe('ChatService', () => {
 			);
 			await pollAndProcessChatResponses();
 
-			expect(session.connection.send).toHaveBeenCalledWith('n8n|continue');
+			expect(session.connection.send).toHaveBeenCalledWith('MNI|continue');
 			expect(session.nodeWaitingForChatResponse).toBeUndefined();
 		});
 
@@ -490,7 +490,7 @@ describe('ChatService', () => {
 			);
 			await pollAndProcessChatResponses();
 
-			expect(session.connection.send).toHaveBeenCalledWith('n8n|continue');
+			expect(session.connection.send).toHaveBeenCalledWith('MNI|continue');
 			expect(session.nodeWaitingForChatResponse).toBeUndefined();
 		});
 

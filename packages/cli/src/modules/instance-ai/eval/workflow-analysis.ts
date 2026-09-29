@@ -72,7 +72,7 @@ export function isVendorSdkSubNode(nodeType: string | undefined): boolean {
 	return isVendorLlmSubNode(nodeType) || isVendorEmbeddingsSubNode(nodeType);
 }
 
-/** MCP registry nodes talk via the MCP SDK's own transport, not n8n's HTTP helper — the mock can't reach them, so their root must stay pinned. */
+/** MCP registry nodes talk via the MCP SDK's own transport, not MNI's HTTP helper — the mock can't reach them, so their root must stay pinned. */
 function isMcpRegistryNode(nodeType: string): boolean {
 	return nodeType.startsWith('@n8n/mcp-registry.');
 }
@@ -199,7 +199,7 @@ const PREFERRED_BINARY_DEFAULTS: Record<string, Omit<TriggerBinaryRequirement, '
 const BINARY_EXPRESSION_RE = /\$binary\.([A-Za-z_][\w-]*)/;
 
 /**
- * Parameter names n8n uses on upload-flavored operations to declare which
+ * Parameter names MNI uses on upload-flavored operations to declare which
  * binary key on the input item to read from. The literal value is the key
  * name — there's no `$binary.X` reference because the node looks it up via
  * `assertBinaryData(itemIndex, binaryPropertyName)` internally.
@@ -214,7 +214,7 @@ const BINARY_PROPERTY_PARAM_NAMES = new Set([
 ]);
 
 /**
- * Try to pull a literal string from an n8n expression like `={{ "image" }}` or
+ * Try to pull a literal string from an MNI expression like `={{ "image" }}` or
  * `={{ 'image' }}`. Returns undefined when the expression has interpolations or
  * references — those can't be resolved without an execution context.
  */
@@ -232,7 +232,7 @@ function findBinaryPropertyNameParam(params: unknown): { propertyName: string } 
 		if (BINARY_PROPERTY_PARAM_NAMES.has(key) && typeof value === 'string' && value.length > 0) {
 			if (!value.startsWith('=')) return { propertyName: value };
 			// `={{ "image" }}` style — extract the literal if we can; otherwise
-			// fall back to `data` (the n8n default) so we still attach SOMETHING
+			// fall back to `data` (the MNI default) so we still attach SOMETHING
 			// for the upload node to read.
 			const literal = extractLiteralFromExpression(value);
 			return { propertyName: literal ?? 'data' };
@@ -595,7 +595,7 @@ export interface GenerateMockHintsOptions {
 export const TRIGGER_CONTENT_CORRECTION =
 	'The previous answer left "triggerContent" empty. The Test Scenario describes the event that fires the workflow\'s trigger or start node, so "triggerContent" must carry that event as the node\'s output object and must not be {}. Set "triggerEmitsNoItems": true only when the scenario says the trigger has nothing to emit.';
 
-const SYSTEM_PROMPT = `You are a test data planner for n8n workflow automation. Your job is to create a consistent data context, trigger output data, and per-node hints that will guide an API mock server to generate realistic, coherent responses across all nodes in a workflow.
+const SYSTEM_PROMPT = `You are a test data planner for MNI workflow automation. Your job is to create a consistent data context, trigger output data, and per-node hints that will guide an API mock server to generate realistic, coherent responses across all nodes in a workflow.
 
 RULES:
 1. Create a "globalContext" that defines the shared world — user IDs, entity names, channel names, email addresses, and relationships that ALL nodes should reference consistently.

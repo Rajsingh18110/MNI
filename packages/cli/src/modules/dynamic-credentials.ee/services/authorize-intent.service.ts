@@ -16,7 +16,7 @@ export type AuthorizeIntent = {
 	/** Caller identity (the bearer/subject) the credential connection must be bound to. */
 	identity: string;
 	/**
-	 * The n8n user the link was issued for, when the resolver maps to one. Set only
+	 * The MNI user the link was issued for, when the resolver maps to one. Set only
 	 * for resolvers implementing `resolveOwningUserId`; absent for external-subject
 	 * resolvers, which leaves the link unbound (any clicker with the token proceeds).
 	 */
@@ -28,7 +28,7 @@ const CACHE_PREFIX = 'dynamic-credentials:authorize-intent:';
 
 /**
  * Stores short-lived "authorize intents" in the shared cache so a credential gate can
- * hand back a tiny n8n link (`/credentials/:id/authorize?token=…`) instead of a large
+ * hand back a tiny MNI link (`/credentials/:id/authorize?token=…`) instead of a large
  * provider authorization URL. The cache is shared across mains, so the link can be
  * opened on a different main than the one that issued it.
  */

@@ -85,7 +85,7 @@ on:
         type: string
         default: ''
       lanes:
-        description: 'Parallel n8n lane containers (1-11). Empty = 10, or 1 when model-key=baseten (fits Baseten Basic verified ~500k TPM).'
+        description: 'Parallel MNI lane containers (1-11). Empty = 10, or 1 when model-key=baseten (fits Baseten Basic verified ~500k TPM).'
         required: false
         type: string
         default: ''
@@ -145,7 +145,7 @@ on:
         required: false
         default: ''
       lanes:
-        description: 'Parallel n8n lane containers (1-11). Empty = 10, or 1 when model-key=baseten (fits Baseten Basic verified ~500k TPM).'
+        description: 'Parallel MNI lane containers (1-11). Empty = 10, or 1 when model-key=baseten (fits Baseten Basic verified ~500k TPM).'
         required: false
         default: ''
       eval-concurrency:
@@ -248,7 +248,7 @@ jobs:
           fi
           pnpm --filter n8n-containers services --services sandbox --network n8n-eval-net --name n8n-svc-sandbox
 
-      - name: Start n8n containers
+      - name: Start MNI containers
         env:
           EVALS_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
           EVALS_OPENAI_KEY: ${{ secrets.EVALS_OPENAI_KEY }}
@@ -330,7 +330,7 @@ jobs:
           fi
 
           # custom/* experiment knobs: pass through workflow inputs only.
-          # When unset, the n8n runtime looks up custom-model-defaults.ts and
+          # When unset, the MNI runtime looks up custom-model-defaults.ts and
           # omits the field if still unresolved — do not re-implement that map here.
           if [ -n "$INSTANCE_AI_REASONING_EFFORT" ]; then
             MODEL_ARGS+=(-e N8N_INSTANCE_AI_REASONING_EFFORT="$INSTANCE_AI_REASONING_EFFORT")
@@ -467,23 +467,23 @@ jobs:
               -e N8N_LICENSE_CERT="$N8N_LICENSE_CERT" \
               -e N8N_ENCRYPTION_KEY="$N8N_ENCRYPTION_KEY" \
               -p "$port:5678" \
-              n8nio/n8n:local
+              n8nio/MNI:local
           done
           # 120s budget per port: containers booting in parallel on a shared
-          # runner contend for CPU/disk during n8n's startup (DB migrations,
+          # runner contend for CPU/disk during MNI's startup (DB migrations,
           # license init), so each takes longer than a solo boot.
           for port in "${PORTS[@]}"; do
             ready=false
             for i in $(seq 1 120); do
               if curl -s "http://localhost:$port/healthz/readiness" -o /dev/null -w "%{http_code}" | grep -q 200; then
-                echo "n8n on port $port ready after ${i}s"
+                echo "MNI on port $port ready after ${i}s"
                 ready=true
                 break
               fi
               sleep 1
             done
             if [ "$ready" != "true" ]; then
-              echo "::error::n8n on port $port failed to start within 120s"
+              echo "::error::MNI on port $port failed to start within 120s"
               for n in $(docker ps -aq --filter "name=n8n-eval-"); do
                 echo "Logs for $n:"
                 docker logs "$n" --tail 30 || true
@@ -635,7 +635,7 @@ jobs:
       #      reinforces it.
       #
       # Runs even on eval failure so we have the post-mortem regardless.
-      - name: Capture n8n container logs (debug)
+      - name: Capture MNI container logs (debug)
         if: ${{ always() }}
         env:
           EVALS_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
@@ -733,7 +733,7 @@ jobs:
             fi
           done
 
-      - name: Stop n8n containers
+      - name: Stop MNI containers
         if: ${{ always() }}
         run: |
           [ -f eval-diag/sampler.pid ] && kill "$(cat eval-diag/sampler.pid)" 2>/dev/null || true

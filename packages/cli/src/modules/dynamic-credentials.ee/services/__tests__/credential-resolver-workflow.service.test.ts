@@ -385,7 +385,7 @@ describe('CredentialResolverWorkflowService', () => {
 			expect(mockResolverImplementation.getSecret).not.toHaveBeenCalled();
 		});
 
-		it('should return resolver_missing when the resolver cannot be used with an n8n identity', async () => {
+		it('should return resolver_missing when the resolver cannot be used with an MNI identity', async () => {
 			const mockWorkflow = createMockWorkflow({
 				nodes: [
 					createMockNode({
@@ -423,7 +423,7 @@ describe('CredentialResolverWorkflowService', () => {
 			expect(mockResolverImplementation.getSecret).not.toHaveBeenCalled();
 		});
 
-		it('should check the resolver when it maps the n8n identity to a user', async () => {
+		it('should check the resolver when it maps the MNI identity to a user', async () => {
 			const mockWorkflow = createMockWorkflow({
 				nodes: [
 					createMockNode({

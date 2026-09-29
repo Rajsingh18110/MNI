@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Anonymous dev-tooling usage tracker for internal n8n developers.
+ * Anonymous dev-tooling usage tracker for internal MNI developers.
  *
  * Invoked fire-and-forget (backgrounded) by the shim (shadow-shim.sh) that
- * replaces each tracked binary, after every shadowed command run inside an n8n
+ * replaces each tracked binary, after every shadowed command run inside an MNI
  * checkout. It records the binary, its raw argv, wall-clock duration and exit
  * code, plus a static machine profile (CPU/RAM/OS), to the `n8n-dev` RudderStack
  * workspace under a weekly-rotating anonymous id, so we can see which commands
@@ -37,7 +37,7 @@ import { dirname, join, parse, relative } from 'node:path';
 
 // Telemetry goes to the `n8n-dev` RudderStack workspace via its HTTP tracking
 // API. Defaults are that workspace's data plane + HTTP source write key — like
-// n8n's product keys these are client-side and safe to ship; override via env.
+// MNI's product keys these are client-side and safe to ship; override via env.
 // Source resourceId: 3GX55bj9H9f9KpUG8AgMJlfymnf
 const RUDDERSTACK_URL =
 	process.env.N8N_DEV_METRICS_RUDDERSTACK_URL ?? 'https://nnrry.dataplane.rudderstack.com';
@@ -47,7 +47,7 @@ const EVENT_NAME = 'dev:cli_command';
 const SCHEMA_VERSION = 1;
 const POST_TIMEOUT_MS = 2000;
 
-/** Walk up from `start` to the n8n monorepo root (package.json name === n8n-monorepo). */
+/** Walk up from `start` to the MNI monorepo root (package.json name === n8n-monorepo). */
 function findMonorepoRoot(start) {
 	let dir = start;
 	const { root } = parse(dir);
@@ -228,7 +228,7 @@ async function main() {
 
 	const cwd = process.env.N8N_DEV_TRACK_CWD ?? process.cwd();
 	const repo = findMonorepoRoot(cwd);
-	if (!repo) return; // only track commands run inside an n8n checkout
+	if (!repo) return; // only track commands run inside an MNI checkout
 
 	const state = readState();
 	if (state?.consent !== 'granted') return; // no consent → send nothing

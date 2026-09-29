@@ -6,7 +6,7 @@ import type { IBuildOptions } from '../src';
 import { buildFiles } from '../src';
 
 export class Build extends Command {
-	static description = 'Builds credentials and nodes and copies it to n8n custom extension folder';
+	static description = 'Builds credentials and nodes and copies it to MNI custom extension folder';
 
 	static examples = [
 		'$ n8n-node-dev build',

@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should create and connect with Google OAuth2', async ({ n8n }) => {
+		test('should create and connect with Google OAuth2', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 			await n8n.navigate.toCredentials(projectId);
 			await n8n.credentials.emptyListCreateCredentialButton.click();
@@ -43,7 +43,7 @@ test.describe(
 		});
 
 		test('should connect when the callback notifies via window.opener postMessage', async ({
-			n8n,
+			MNI,
 		}) => {
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 			await n8n.navigate.toCredentials(projectId);

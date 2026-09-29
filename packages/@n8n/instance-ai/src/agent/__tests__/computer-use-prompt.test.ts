@@ -207,7 +207,7 @@ describe('getComputerUsePrompt', () => {
 
 		it('does not name the Chrome extension', () => {
 			expect(result).not.toContain('chromewebstore.google.com');
-			expect(result).not.toContain('n8n Browser Use');
+			expect(result).not.toContain('MNI Browser Use');
 		});
 
 		it('does not list browser-only suggestion signals', () => {
@@ -267,7 +267,7 @@ describe('getComputerUsePrompt', () => {
 			});
 
 			expect(withLocalOff).toContain('"Connect local computer"');
-			expect(withLocalOff).not.toContain('n8n Assistant settings');
+			expect(withLocalOff).not.toContain('MNI Assistant settings');
 		});
 	});
 

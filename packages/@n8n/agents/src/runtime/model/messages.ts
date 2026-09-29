@@ -208,7 +208,7 @@ export function fileMetadataText(block: ContentFile): string {
 	} — not directly viewable by this model]`;
 }
 
-/** Convert a single n8n MessageContent block to an AI SDK content part. */
+/** Convert a single MNI MessageContent block to an AI SDK content part. */
 function toAiContent(block: MessageContent): AiContentPart | undefined {
 	let base: AiContentPart | undefined;
 	if (isText(block)) {
@@ -314,7 +314,7 @@ function replayableToolCallId(id: unknown, messageIndex: number, blockIndex: num
 	return `n8n_${digest}`;
 }
 
-/** Convert a single AI SDK content part to an n8n MessageContent block. */
+/** Convert a single AI SDK content part to an MNI MessageContent block. */
 function fromAiContent(part: AiContentPart): MessageContent | undefined {
 	const providerMetadata = getRecord(
 		'providerMetadata' in part ? part.providerMetadata : undefined,
@@ -385,7 +385,7 @@ function fromAiContent(part: AiContentPart): MessageContent | undefined {
 }
 
 /**
- * Convert a single n8n Message to one or more AI SDK ModelMessages.
+ * Convert a single MNI Message to one or more AI SDK ModelMessages.
  *
  * For assistant messages with resolved/rejected tool-call blocks, this emits:
  *  1. The assistant ModelMessage (tool-call parts only, no result fields)
@@ -485,7 +485,7 @@ function toAiMessageList(msg: Message, messageIndex: number): ModelMessage[] {
 	}
 }
 
-/** Convert n8n Messages to AI SDK ModelMessages for passing to stream/generateText. */
+/** Convert MNI Messages to AI SDK ModelMessages for passing to stream/generateText. */
 export function toAiMessages(messages: Message[]): ModelMessage[] {
 	const modelMessages = messages.flatMap((message, index) => toAiMessageList(message, index));
 	const result: ModelMessage[] = [];
@@ -510,18 +510,18 @@ export function toAiMessages(messages: Message[]): ModelMessage[] {
 }
 
 /**
- * Convert AI SDK ModelMessages to n8n AgentMessages.
+ * Convert AI SDK ModelMessages to MNI AgentMessages.
  *
  * This is a stateful walk: when a role:'tool' ModelMessage is encountered,
  * the matching tool-call block on the preceding assistant message is mutated
  * to 'resolved' or 'rejected'. The tool message itself is not emitted as a
- * separate n8n message.
+ * separate MNI message.
  *
  * If a tool-result references a toolCallId not in the index (orphan), it is
  * silently dropped.
  */
 export function fromAiMessages(messages: ModelMessage[]): AgentMessage[] {
-	// Map from toolCallId → ContentToolCall block (mutable ref inside the n8n message)
+	// Map from toolCallId → ContentToolCall block (mutable ref inside the MNI message)
 	const toolCallIndex = new Map<string, ContentToolCall>();
 	const result: AgentMessage[] = [];
 
@@ -560,7 +560,7 @@ export function fromAiMessages(messages: ModelMessage[]): AgentMessage[] {
 	for (const msg of messages) {
 		if (msg.role === 'tool') {
 			settleToolCalls(msg.content);
-			// Do not emit a separate n8n message for tool results
+			// Do not emit a separate MNI message for tool results
 			continue;
 		}
 

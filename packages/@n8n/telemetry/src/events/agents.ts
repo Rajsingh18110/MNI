@@ -24,7 +24,7 @@ const agentConfigurationTelemetry = {
 	num_skills: z.number(),
 	memory_type: z.enum([
 		'none',
-		'n8n',
+		'MNI',
 		'n8n_observational',
 		'n8n_episodic',
 		'n8n_observational_episodic',
@@ -45,7 +45,7 @@ const agentConfigFingerprint = z.object({
 	tasks: z.array(z.string()),
 	triggers: z.array(z.string()),
 	vector_stores: z.array(z.string()),
-	memory: z.object({ enabled: z.boolean(), storage: z.literal('n8n') }).nullable(),
+	memory: z.object({ enabled: z.boolean(), storage: z.literal('MNI') }).nullable(),
 	model: z.string().nullable(),
 	config_version: z.string(),
 });
@@ -195,7 +195,7 @@ export const AGENTS_TELEMETRY = defineTelemetryEvents({
 			user_id: z
 				.string()
 				.optional()
-				.describe('Present only for runs with an n8n user — absent for chat integrations and cron'),
+				.describe('Present only for runs with an MNI user — absent for chat integrations and cron'),
 			run_type: agentRunType,
 			message_count: z
 				.number()
@@ -623,7 +623,7 @@ export const AGENTS_TELEMETRY = defineTelemetryEvents({
 				.enum(['certificate', 'incomplete', 'rejected', 'unreachable', 'cloud', 'request_failed'])
 				.optional()
 				.describe(
-					'Only when status is failed. request_failed: the request to n8n failed, so Microsoft was never asked',
+					'Only when status is failed. request_failed: the request to MNI failed, so Microsoft was never asked',
 				),
 			session_id: sessionId,
 		}),

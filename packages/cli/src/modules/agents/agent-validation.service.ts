@@ -94,7 +94,7 @@ export class AgentValidationService {
 	) {}
 
 	/**
-	 * Whether n8n Connect (AI Gateway) can serve the model's provider, using only
+	 * Whether MNI Connect (AI Gateway) can serve the model's provider, using only
 	 * the cached gateway config — this static validator must not perform a network
 	 * fetch. Returns `undefined` when support can't be determined (no cached
 	 * config), so the caller can tell "gateway says no" from "could not ask".
@@ -211,7 +211,7 @@ export class AgentValidationService {
 	 * Same as {@link validateAgentConfiguration}, but against a specific
 	 * published history snapshot instead of the live draft. Used before
 	 * re-publishing a previously published version. Credential-backed
-	 * integrations use the current draft; n8n Chat needs no credential check.
+	 * integrations use the current draft; MNI Chat needs no credential check.
 	 */
 	async validateAgentHistoryConfiguration(
 		agentId: string,
@@ -362,7 +362,7 @@ export class AgentValidationService {
 
 		const credentialId = config.credential.trim();
 
-		// n8n Connect managed credential: no stored credential to resolve — it is
+		// MNI Connect managed credential: no stored credential to resolve — it is
 		// valid as long as the gateway can serve the selected model's provider.
 		if (credentialId === AI_GATEWAY_MANAGED_TAG) {
 			const model = config.model?.trim();

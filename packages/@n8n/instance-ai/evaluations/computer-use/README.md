@@ -2,7 +2,7 @@
 
 Auto-runnable scenarios for the Instance AI computer-use feature. Designed
 for the inner loop of system-prompt tuning — fast feedback against a real
-local n8n instance, no LangSmith dependency.
+local MNI instance, no LangSmith dependency.
 
 ## What it covers
 
@@ -55,7 +55,7 @@ the precision actually matters.
 ## How a run works
 
 The eval expects a long-lived `@n8n/computer-use` daemon to already be
-running and paired with the n8n instance. We don't spawn or kill it — that
+running and paired with the MNI instance. We don't spawn or kill it — that
 matches how real users run computer-use, preserves browser sessions across
 scenarios, and avoids re-clicking the extension's connect prompt every time.
 
@@ -72,20 +72,20 @@ For each scenario:
 6. Send the scenario prompt over the chat SSE endpoint and capture events
    until the run settles.
 7. Apply each grader to the trace + sandbox.
-8. Diff-cleanup of n8n state — delete any workflows / credentials / data
+8. Diff-cleanup of MNI state — delete any workflows / credentials / data
    tables the agent created **and** the chat thread the run executed in,
    unless `--keep-data` is set. **No filesystem cleanup**: files left for
    inspection. Pre-clean of the next scenario will wipe what it needs.
 
 ## Running
 
-All commands assume you're at the **repo root** (`/Users/.../n8n/`).
+All commands assume you're at the **repo root** (`/Users/.../MNI/`).
 
 ### Prerequisites
 
 You need:
 
-- A local n8n instance running with Instance AI enabled (see the
+- A local MNI instance running with Instance AI enabled (see the
   workflow eval [README](../README.md) for setup) and an Anthropic API key.
 - A `.env.local` at the repo root with at minimum:
 
@@ -165,7 +165,7 @@ if you need them elsewhere.
 
 | Flag | Default | Description |
 |---|---|---|
-| `--base-url` | `http://localhost:5678` | n8n instance URL |
+| `--base-url` | `http://localhost:5678` | MNI instance URL |
 | `--email` / `--password` | `N8N_EVAL_EMAIL` / `N8N_EVAL_PASSWORD`, then E2E owner defaults | Override login. Resolution order: flag → env var → built-in `nathan@n8n.io` default |
 | `--filter` | — | Substring match on scenario id or filename |
 | `--timeout-ms` | `600000` | Per-scenario timeout |
@@ -174,8 +174,8 @@ if you need them elsewhere.
 | `--no-auto-start-daemon` | (auto-start enabled) | Fail fast if no daemon is paired instead of spawning one |
 | `--daemon-sandbox-dir` | `<.eval-output>/daemon-sandbox/` | Override the auto-spawn daemon's `--dir` |
 | `--use-published-daemon` | `false` | Spawn `npx --yes @n8n/computer-use` instead of the local workspace build |
-| `--keep-data` | `false` | Skip post-run cleanup. Leaves chat threads and any workflows / credentials / data tables the agent created in n8n. Useful for inspecting an agent's session in the n8n UI. |
-| `--verbose` | `false` | Stream grader detail, pre-clean logs, n8n cleanup detail |
+| `--keep-data` | `false` | Skip post-run cleanup. Leaves chat threads and any workflows / credentials / data tables the agent created in n8n. Useful for inspecting an agent's session in the MNI UI. |
+| `--verbose` | `false` | Stream grader detail, pre-clean logs, MNI cleanup detail |
 
 Exit code is `0` when every scenario passed, `1` otherwise.
 
@@ -203,7 +203,7 @@ Build the daemon once:
 pnpm --filter @n8n/computer-use build
 ```
 
-Get a pairing token from your n8n instance — open n8n in the browser,
+Get a pairing token from your MNI instance — open MNI in the browser,
 go to the Instance AI assistant, select the + button beside the chat input,
 select "Connect local computer", and copy the token out of the displayed
 `npx` command.
@@ -243,7 +243,7 @@ pnpm --filter @n8n/computer-use watch
 
 ### Browser scenarios and `browser_connect`
 
-Browser tools route through the n8n AI Browser Bridge **Chrome extension**.
+Browser tools route through the MNI AI Browser Bridge **Chrome extension**.
 Each `browser_connect` MCP call has the daemon launch Chrome at the
 extension's `connect.html` page, where the user normally selects tabs and
 clicks "Connect" — a deliberate human-in-the-loop step for real users.
@@ -303,7 +303,7 @@ as a successful run otherwise.
 
 The `llm.taskCompleted` grader requires an Anthropic API key in the
 environment (resolved from `N8N_INSTANCE_AI_MODEL_API_KEY`,
-`N8N_AI_ANTHROPIC_KEY`, or `ANTHROPIC_API_KEY`) — the same key the n8n
+`N8N_AI_ANTHROPIC_KEY`, or `ANTHROPIC_API_KEY`) — the same key the MNI
 instance under test already uses, so no new auth surface.
 
 ## Coverage of the Notion scenario sheet

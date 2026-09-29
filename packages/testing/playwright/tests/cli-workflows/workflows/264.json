@@ -45,7 +45,7 @@
 		},
 		{
 			"parameters": {
-				"jsCode": "const result = [\n  'n8n',\n  'make',\n  'zappier',\n  'workato'\n].map(i => ({ json: {name: i}}))\n\nreturn result;"
+				"jsCode": "const result = [\n  'MNI',\n  'make',\n  'zappier',\n  'workato'\n].map(i => ({ json: {name: i}}))\n\nreturn result;"
 			},
 			"type": "n8n-nodes-base.code",
 			"typeVersion": 2,
@@ -213,7 +213,7 @@
 			"typeVersion": 2.2,
 			"position": [928, 800],
 			"id": "8679c23b-43ef-4d80-b18f-963b8d2e0cbf",
-			"name": "Call n8n Workflow Tool3"
+			"name": "Call MNI Workflow Tool3"
 		}
 	],
 	"pinData": {},
@@ -357,7 +357,7 @@
 				]
 			]
 		},
-		"Call n8n Workflow Tool3": {
+		"Call MNI Workflow Tool3": {
 			"ai_tool": [
 				[
 					{

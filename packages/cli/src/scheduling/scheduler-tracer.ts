@@ -2,7 +2,7 @@ import type { Tracer } from '@n8n/scheduler';
 import type { Tracing } from 'n8n-core';
 
 /**
- * Adapts n8n's Sentry-backed {@link Tracing} to the scheduler package's minimal
+ * Adapts MNI's Sentry-backed {@link Tracing} to the scheduler package's minimal
  * {@link Tracer} port. The `newTrace` flag routes a span to a fresh trace instead
  * of parenting under whatever span is active on the calling async context (see
  * `SpanOptions.newTrace`); every other span parents normally.

@@ -1,5 +1,5 @@
 import { auditOperations } from '../AuditDescription';
-import { N8n } from '../N8n.node';
+import { MNI } from '../N8n.node';
 
 function collectUrls(value: unknown): string[] {
 	if (Array.isArray(value)) return value.flatMap(collectUrls);
@@ -11,7 +11,7 @@ function collectUrls(value: unknown): string[] {
 	});
 }
 
-describe('n8n Node Structure', () => {
+describe('MNI Node Structure', () => {
 	it('audit operation default should be one of its options', () => {
 		const operation = auditOperations[0];
 		const values = (operation.options as Array<{ value: string }>).map((o) => o.value);
@@ -19,7 +19,7 @@ describe('n8n Node Structure', () => {
 	});
 
 	it('encodes every dynamic request URL path segment', () => {
-		const dynamicUrls = collectUrls(new N8n().description.properties).filter(
+		const dynamicUrls = collectUrls(new MNI().description.properties).filter(
 			(url) => url.includes('$value') || url.includes('$parameter'),
 		);
 

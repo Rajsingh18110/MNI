@@ -4,7 +4,7 @@ import type { n8nPage } from '../pages/n8nPage';
  * A class for user interactions with workflow executions that go across multiple pages.
  */
 export class ExecutionsComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Creates workflow executions by executing the workflow multiple times.

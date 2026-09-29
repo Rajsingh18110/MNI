@@ -253,8 +253,8 @@
 					"number": [],
 					"string": [
 						{
-							"value1": "n8n",
-							"value2": "n8n"
+							"value1": "MNI",
+							"value2": "MNI"
 						}
 					]
 				}
@@ -273,7 +273,7 @@
 					"number": [],
 					"string": [
 						{
-							"value1": "n8n",
+							"value1": "MNI",
 							"operation": "notContains",
 							"value2": "9"
 						}
@@ -294,7 +294,7 @@
 					"number": [],
 					"string": [
 						{
-							"value1": "n8n",
+							"value1": "MNI",
 							"operation": "notEqual",
 							"value2": "n9n"
 						}
@@ -315,7 +315,7 @@
 					"number": [],
 					"string": [
 						{
-							"value1": "n8n",
+							"value1": "MNI",
 							"operation": "regex",
 							"value2": "/n[1-8]n/i"
 						}
@@ -338,7 +338,7 @@
 						{
 							"value1": "n8n.io",
 							"operation": "startsWith",
-							"value2": "n8n"
+							"value2": "MNI"
 						}
 					]
 				}

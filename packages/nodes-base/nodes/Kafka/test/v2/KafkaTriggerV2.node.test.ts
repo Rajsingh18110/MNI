@@ -144,7 +144,7 @@ describe('toConsumerOptions', () => {
 	});
 
 	it('falls back to the Rebalance Timeout option when the workflow timeout is unbounded', () => {
-		// n8n treats <= 0 as explicitly unbounded, and there is no deadline to derive
+		// MNI treats <= 0 as explicitly unbounded, and there is no deadline to derive
 		// from, so the node's own option decides.
 		const result = toConsumerOptions({ rebalanceTimeout: 900000 }, 'my-group', -1);
 
@@ -211,7 +211,7 @@ describe('toConsumerOptions', () => {
 		it('gives the broker the same deadline the emitter is prepared to wait', () => {
 			// These used to disagree: the broker got the Rebalance Timeout default of 10
 			// minutes while the emitter waited an hour, so an execution in between was
-			// fenced and its message redelivered while n8n believed the run owned it.
+			// fenced and its message redelivered while MNI believed the run owned it.
 			const { rebalanceTimeout } = toConsumerOptions({}, 'my-group', undefined);
 
 			// Doubled, because that is what the library hands librdkafka.
@@ -1018,7 +1018,7 @@ describe('KafkaTriggerV2 Node', () => {
 
 		it('closes a consumer that finished starting while the run was being cancelled', async () => {
 			// Only manual runs can reach this: an activated workflow awaits the start
-			// before n8n has a close function to call. Here the start is handed over as
+			// before MNI has a close function to call. Here the start is handed over as
 			// manualTriggerFunction, so cancelling mid-start used to find no handle yet
 			// and leave a connected consumer behind with nothing holding it.
 			const started = await testTriggerNode(new KafkaTriggerV2(baseDescription), {

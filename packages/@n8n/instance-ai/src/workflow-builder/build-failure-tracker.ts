@@ -25,7 +25,7 @@ const SDK_LANGUAGE_GUIDANCE =
 	'SDK builder code is a restricted subset of TypeScript (see ' +
 	'knowledge-base/reference/workflow-sdk-language.md): only SDK builder methods are allowed, not ' +
 	'native array/string methods or globals. Build strings with template literals or explicit lines, ' +
-	'and move runtime joining, aggregation, or transforms into a Code node or an n8n expression.';
+	'and move runtime joining, aggregation, or transforms into a Code node or an MNI expression.';
 
 const HTTP_REQUEST_RAW_BODY_GUIDANCE =
 	'HTTP Request body rule: specifyBody is only for contentType="json" or ' +

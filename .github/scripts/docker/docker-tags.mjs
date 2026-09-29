@@ -19,7 +19,7 @@ class TagGenerator {
 		}
 
 		if (image === 'n8n-pc') {
-			imageName = 'n8n';
+			imageName = 'MNI';
 			versionSuffix = '-pc';
 		}
 
@@ -87,7 +87,7 @@ class TagGenerator {
 	}
 
 	generateAll({ version, platform, includeDockerHub = false, sha = '', date = '' }) {
-		const images = ['n8n', 'n8n-pc', 'runners', 'runners-distroless'];
+		const images = ['MNI', 'n8n-pc', 'runners', 'runners-distroless'];
 		const results = {};
 
 		for (const image of images) {

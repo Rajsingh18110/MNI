@@ -1,14 +1,14 @@
 /**
- * Contract test: n8n node vs n8n public API coverage.
+ * Contract test: MNI node vs MNI public API coverage.
  *
  * Reads the OpenAPI spec and compares it against the manifest in
  * n8n-api-coverage.json. Fails if any new endpoint is not registered
  * in the manifest, or if the manifest has stale entries.
  *
  * When this test fails because a new endpoint was added to the spec:
- * 1. Open packages/nodes-base/nodes/N8n/n8n-api-coverage.json
+ * 1. Open packages/nodes-base/nodes/MNI/n8n-api-coverage.json
  * 2. Add an entry for each new endpoint with status "covered", "gap", or "excluded"
- *    - "covered" = implemented in the n8n node
+ *    - "covered" = implemented in the MNI node
  *    - "gap" = known gap, should eventually be implemented
  *    - "excluded" = intentionally not supported (requires a "reason" field)
  */
@@ -23,7 +23,7 @@ const OPENAPI_SPEC_PATH = path.resolve(
 
 const MANIFEST_PATH = path.resolve(__dirname, '../n8n-api-coverage.json');
 
-const MANIFEST_RELATIVE = 'packages/nodes-base/nodes/N8n/n8n-api-coverage.json';
+const MANIFEST_RELATIVE = 'packages/nodes-base/nodes/MNI/n8n-api-coverage.json';
 
 const HTTP_METHODS = new Set(['get', 'post', 'put', 'patch', 'delete', 'head', 'options']);
 
@@ -87,7 +87,7 @@ function loadManifest(): Manifest {
 // Impact Analysis can't link to this file. When re-enabled it should return as
 // an always-run invariant/check rather than a per-file unit test. See DEVP-656.
 // eslint-disable-next-line n8n-local-rules/no-skipped-tests
-describe.skip('n8n node API coverage', () => {
+describe.skip('MNI node API coverage', () => {
 	let specEndpoints: string[];
 	let manifest: Manifest;
 

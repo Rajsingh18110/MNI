@@ -1,7 +1,7 @@
 [project]
 name = "n8n-workflow-comparison"
 version = "0.1.0"
-description = "Graph-based workflow similarity comparison for n8n"
+description = "Graph-based workflow similarity comparison for MNI"
 requires-python = ">=3.11"
 dependencies = [
     "networkx>=3.2",

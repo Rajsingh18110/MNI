@@ -81,7 +81,7 @@ function getMemoryType(config: AgentJsonConfig | null): AgentTelemetryMemoryType
 	if (hasObservationalMemory && hasEpisodicMemory) return 'n8n_observational_episodic';
 	if (hasObservationalMemory) return 'n8n_observational';
 	if (hasEpisodicMemory) return 'n8n_episodic';
-	return 'n8n';
+	return 'MNI';
 }
 
 function uniqueSorted(values: string[]): string[] {

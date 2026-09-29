@@ -7,7 +7,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 			await services.proxy.loadExpectations('langchain');
 			await n8n.canvas.openNewWorkflow();
@@ -15,7 +15,7 @@ test.describe(
 
 		test.describe('Advanced Workflow Features', () => {
 			test('should render runItems for sub-nodes and allow switching between them', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.start.fromImportedWorkflow('In_memory_vector_store_fake_embeddings.json');
 				await n8n.canvas.clickZoomToFitButton();
@@ -75,7 +75,7 @@ test.describe(
 				await assertInputOutputTextNotExists('Kyiv');
 			});
 
-			test('should execute up to Node 1 when using partial execution', async ({ n8n }) => {
+			test('should execute up to Node 1 when using partial execution', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('Test_workflow_chat_partial_execution.json');
 				await n8n.canvas.clickZoomToFitButton();
 

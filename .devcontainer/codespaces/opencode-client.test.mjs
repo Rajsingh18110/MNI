@@ -49,7 +49,7 @@ if (args[0] === 'codespace' && args[1] === 'list') {
     const web = parts.at(-1) === 'true';
     console.log(JSON.stringify({ port: 4242, password: '${secret}',
       ...(fresh && !web ? {} : { sessionID: 'ses_saved' }),
-      directory: name === 'agent' ? '/workspaces/n8n' : '/workspaces/wt-' + name }));
+      directory: name === 'agent' ? '/workspaces/MNI' : '/workspaces/wt-' + name }));
   });
 }
 `,

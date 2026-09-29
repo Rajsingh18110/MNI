@@ -13,7 +13,7 @@ function isBrowserUseSupportedOnDevice(): boolean {
 }
 
 /**
- * Browser Use only supports Chromium through n8n Browser Use Chrome extension
+ * Browser Use only supports Chromium through MNI Browser Use Chrome extension
  */
 export function isBrowserUseSupportedForBrowser(): boolean {
 	return Bowser.parse(navigator.userAgent).engine.name === 'Blink';

@@ -5,7 +5,7 @@ import * as path from 'node:path';
 
 export default class SkillInstall extends Command {
 	static override description =
-		'Install the n8n CLI skill for AI coding agents (Claude Code, Cursor, Windsurf)';
+		'Install the MNI CLI skill for AI coding agents (Claude Code, Cursor, Windsurf)';
 
 	static override examples = [
 		'<%= config.bin %> skill install',
@@ -75,15 +75,15 @@ export default class SkillInstall extends Command {
 
 		if (fs.existsSync(targetFile)) {
 			const existing = fs.readFileSync(targetFile, 'utf-8');
-			if (existing.includes('# n8n CLI')) {
-				this.log('.cursorrules already contains n8n CLI skill. Skipping.');
+			if (existing.includes('# MNI CLI')) {
+				this.log('.cursorrules already contains MNI CLI skill. Skipping.');
 				return;
 			}
 			fs.writeFileSync(targetFile, `${existing}\n\n${stripped}`);
-			this.log('Appended n8n CLI skill to .cursorrules');
+			this.log('Appended MNI CLI skill to .cursorrules');
 		} else {
 			fs.writeFileSync(targetFile, stripped);
-			this.log('Created .cursorrules with n8n CLI skill.');
+			this.log('Created .cursorrules with MNI CLI skill.');
 		}
 	}
 
@@ -93,15 +93,15 @@ export default class SkillInstall extends Command {
 
 		if (fs.existsSync(targetFile)) {
 			const existing = fs.readFileSync(targetFile, 'utf-8');
-			if (existing.includes('# n8n CLI')) {
-				this.log('.windsurfrules already contains n8n CLI skill. Skipping.');
+			if (existing.includes('# MNI CLI')) {
+				this.log('.windsurfrules already contains MNI CLI skill. Skipping.');
 				return;
 			}
 			fs.writeFileSync(targetFile, `${existing}\n\n${stripped}`);
-			this.log('Appended n8n CLI skill to .windsurfrules');
+			this.log('Appended MNI CLI skill to .windsurfrules');
 		} else {
 			fs.writeFileSync(targetFile, stripped);
-			this.log('Created .windsurfrules with n8n CLI skill.');
+			this.log('Created .windsurfrules with MNI CLI skill.');
 		}
 	}
 }

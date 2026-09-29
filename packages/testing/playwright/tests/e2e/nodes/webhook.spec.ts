@@ -13,12 +13,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test('should listen for all HTTP methods (GET, POST, DELETE, HEAD, PATCH, PUT)', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode('Webhook');
 			const webhookPath = await n8n.ndv.setupHelper.getWebhookPath();
@@ -38,7 +38,7 @@ test.describe(
 		});
 
 		test('should listen for a GET request and respond with Respond to Webhook node', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode('Webhook');
 			await n8n.ndv.setupHelper.webhook({
@@ -47,7 +47,7 @@ test.describe(
 			});
 			const webhookPath = await n8n.ndv.setupHelper.getWebhookPath();
 			await n8n.ndv.close();
-			await addEditFieldsNode(n8n);
+			await addEditFieldsNode(MNI);
 			await n8n.canvas.addNode('Respond to Webhook', { closeNDV: true });
 
 			await n8n.canvas.clickExecuteWorkflowButton();
@@ -60,7 +60,7 @@ test.describe(
 		});
 
 		test('should listen for a GET request and respond with custom status code 201', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode('Webhook');
 			await n8n.ndv.setupHelper.webhook({ httpMethod: 'GET' });
@@ -77,7 +77,7 @@ test.describe(
 			expect(response.status()).toBe(201);
 		});
 
-		test('should listen for a GET request and respond with last node', async ({ n8n }) => {
+		test('should listen for a GET request and respond with last node', async ({ MNI }) => {
 			await n8n.canvas.addNode('Webhook');
 			await n8n.ndv.setupHelper.webhook({
 				httpMethod: 'GET',
@@ -86,7 +86,7 @@ test.describe(
 			const webhookPath = await n8n.ndv.setupHelper.getWebhookPath();
 			await n8n.ndv.close();
 
-			await addEditFieldsNode(n8n);
+			await addEditFieldsNode(MNI);
 
 			await n8n.canvas.clickExecuteWorkflowButton();
 
@@ -100,7 +100,7 @@ test.describe(
 		});
 
 		test('should listen for a GET request and respond with last node binary data', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode('Webhook');
 			await n8n.ndv.setupHelper.webhook({
@@ -131,7 +131,7 @@ test.describe(
 			expect('data' in responseData).toBe(true);
 		});
 
-		test('should listen for a GET request and respond with an empty body', async ({ n8n }) => {
+		test('should listen for a GET request and respond with an empty body', async ({ MNI }) => {
 			await n8n.canvas.addNode('Webhook');
 			await n8n.ndv.setupHelper.webhook({
 				httpMethod: 'GET',
@@ -149,7 +149,7 @@ test.describe(
 			expect(responseData).toBe('');
 		});
 
-		test('should listen for a GET request with Basic Authentication', async ({ n8n }) => {
+		test('should listen for a GET request with Basic Authentication', async ({ MNI }) => {
 			const credentialName = `test-${nanoid()}`;
 			const user = `test-${nanoid()}`;
 			const password = `test-${nanoid()}`;
@@ -189,7 +189,7 @@ test.describe(
 			expect(successResponse.ok()).toBe(true);
 		});
 
-		test('should listen for a GET request with Header Authentication', async ({ n8n }) => {
+		test('should listen for a GET request with Header Authentication', async ({ MNI }) => {
 			const credentialName = `test-${nanoid()}`;
 			// Keep the header NAME underscore-free: proxies commonly drop request headers
 			// with underscores in the name (the multi-main CI stack's Caddy LB does), and
@@ -240,7 +240,7 @@ test.describe(
 			expect(successResponse.ok()).toBe(true);
 		});
 
-		test('CAT-1253-bug-cant-run-workflow-when-unconnected-nodes-have-errors', async ({ n8n }) => {
+		test('CAT-1253-bug-cant-run-workflow-when-unconnected-nodes-have-errors', async ({ MNI }) => {
 			// Add Webhook node
 			await n8n.canvas.addNode('Webhook');
 			await n8n.ndv.setupHelper.webhook({
@@ -275,7 +275,7 @@ test.describe(
 
 		test.describe('test webhook called on a main without the editor session @mode:multi-main', () => {
 			test('should respond with Respond to Webhook node body', async ({
-				n8n,
+				MNI,
 				mainUrls,
 				createApiForMain,
 			}) => {
@@ -288,7 +288,7 @@ test.describe(
 				});
 				const webhookPath = await n8n.ndv.setupHelper.getWebhookPath();
 				await n8n.ndv.close();
-				await addEditFieldsNode(n8n);
+				await addEditFieldsNode(MNI);
 				await n8n.canvas.addNode('Respond to Webhook', { closeNDV: true });
 
 				await n8n.canvas.clickExecuteWorkflowButton();
@@ -302,7 +302,7 @@ test.describe(
 				expect(JSON.parse(body)).toEqual({ MyValue: 1234 });
 			});
 
-			test('should respond with last node output', async ({ n8n, mainUrls, createApiForMain }) => {
+			test('should respond with last node output', async ({ MNI, mainUrls, createApiForMain }) => {
 				test.skip(mainUrls.length < 2, 'Requires at least 2 mains');
 
 				await n8n.canvas.addNode('Webhook');
@@ -312,7 +312,7 @@ test.describe(
 				});
 				const webhookPath = await n8n.ndv.setupHelper.getWebhookPath();
 				await n8n.ndv.close();
-				await addEditFieldsNode(n8n);
+				await addEditFieldsNode(MNI);
 
 				await n8n.canvas.clickExecuteWorkflowButton();
 				await expect(n8n.canvas.waitingForTriggerEvent()).toBeVisible();
@@ -328,7 +328,7 @@ test.describe(
 	},
 );
 
-async function addEditFieldsNode(n8n: n8nPage): Promise<void> {
+async function addEditFieldsNode(MNI: n8nPage): Promise<void> {
 	await n8n.canvas.addNode('Edit Fields (Set)');
 
 	const editFieldsNode = new EditFieldsNode(n8n.page);

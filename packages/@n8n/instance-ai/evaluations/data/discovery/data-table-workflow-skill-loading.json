@@ -1,6 +1,6 @@
 {
 	"id": "data-table-workflow-skill-loading",
-	"userMessage": "Create me a workflow that implements an n8n form to capture responses into a data table. The form should be a decklist submission form for a MTG tournament, asking for player name and a deck list as text fields they'll fill.",
+	"userMessage": "Create me a workflow that implements an MNI form to capture responses into a data table. The form should be a decklist submission form for a MTG tournament, asking for player name and a deck list as text fields they'll fill.",
 	"expectedToolInvocations": {
 		"allOfToolCalls": [
 			{

@@ -36,7 +36,7 @@ export class ReplaceAgentObservationTables1784000000001 implements ReversibleMig
 			.withColumns(
 				column('id')
 					.varchar(36)
-					.primary.notNull.comment('Application-generated n8n string ID, not a database UUID'),
+					.primary.notNull.comment('Application-generated MNI string ID, not a database UUID'),
 				column('scopeKind').varchar(20).notNull.withEnumCheck(OBSERVATION_SCOPE_KINDS),
 				column('scopeId').varchar(255).notNull,
 				column('marker').varchar(16).notNull.withEnumCheck(OBSERVATION_MARKERS),

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build the n8n and runners Docker images.
+ * Build the MNI and runners Docker images.
  *
  * Targets, tags and build args live in docker/docker-bake.hcl. CI drives the
  * same file. This script selects the targets, sets the output, and records the
@@ -34,7 +34,7 @@ const noCache = process.env.DOCKER_BUILD_NO_CACHE === 'true';
 const withBaseImage = process.env.DOCKER_BUILD_BASE_IMAGE === 'true';
 // Opt-in: only cloud deploys the distroless runners image, so local builds skip it.
 const withDistroless = process.env.DOCKER_BUILD_DISTROLESS === 'true';
-// Build n8n on the pointer-compressed bases. The pins live in the bake file.
+// Build MNI on the pointer-compressed bases. The pins live in the bake file.
 const pointerCompressed = process.env.DOCKER_BUILD_PC === 'true';
 
 const imageBaseName = process.env.IMAGE_BASE_NAME || 'mni/mni';
@@ -53,14 +53,14 @@ const compiledAppDir = path.join(rootDir, 'compiled');
 const compiledTaskRunnerDir = path.join(rootDir, 'dist', 'task-runner-javascript');
 
 /**
- * Which bake targets to build. n8n and runners are always built; the base image
+ * Which bake targets to build. MNI and runners are always built; the base image
  * and the distroless runners are opt-in.
  * @returns {string[]}
  */
 function selectTargets() {
 	// The pc target only differs by its base images, so it keeps the plain name -
 	// downstream jobs load `mni/mni:local` either way.
-	const targets = [pointerCompressed ? 'n8n-pc' : 'n8n', 'runners'];
+	const targets = [pointerCompressed ? 'n8n-pc' : 'MNI', 'runners'];
 	if (withDistroless) targets.push('runners-distroless');
 	if (withBaseImage) targets.unshift('base');
 	return targets;
@@ -233,7 +233,7 @@ async function main() {
 		}
 	}
 
-	// --push applies to every target in the bake call. If only the n8n name
+	// --push applies to every target in the bake call. If only the MNI name
 	// carries a registry, the runners target would push to its Docker Hub
 	// default instead - a 401 at best, a tag in the official repo at worst.
 	if (shouldPush && !hasRegistryHost(runnersImageBaseName)) {

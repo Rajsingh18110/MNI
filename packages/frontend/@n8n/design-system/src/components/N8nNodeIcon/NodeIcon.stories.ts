@@ -67,7 +67,7 @@ Hoverable.args = {
 	name: 'home',
 	color: 'red',
 	size: 200,
-	nodeTypeName: 'We ❤️ n8n',
+	nodeTypeName: 'We ❤️ MNI',
 	showTooltip: true,
 };
 

@@ -30,7 +30,7 @@ Use data persistence when you need to:
 
 Advantages:
 - No credentials or external configuration required
-- Built directly into n8n
+- Built directly into MNI
 - Fast and reliable for small to medium datasets
 - Ideal for prototyping and internal workflows
 - No additional costs or external dependencies

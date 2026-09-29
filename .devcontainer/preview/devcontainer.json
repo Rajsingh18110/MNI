@@ -1,6 +1,6 @@
 {
-	"name": "n8n (PR preview)",
-	// No compose: a preview needs no Postgres sidecar. n8n defaults to sqlite
+	"name": "MNI (PR preview)",
+	// No compose: a preview needs no Postgres sidecar. MNI defaults to sqlite
 	// (packages/@n8n/config/src/configs/database.config.ts), which is what a
 	// throwaway instance wants. Context is .devcontainer/ so the Dockerfile can
 	// reuse the token-rotation shims in codespaces/ instead of copying them.
@@ -9,7 +9,7 @@
 		"context": ".."
 	},
 	// Codespaces clones the repo into /workspaces/<repo>
-	"workspaceFolder": "/workspaces/n8n",
+	"workspaceFolder": "/workspaces/MNI",
 	// The floor, so the 2-core machine stays available. This config exists mainly to
 	// ask for less than the agent one: the measured footprint is ~15gb, the
 	// editor-ui build peaks near 3gb, and scripts/agent-setup.mjs already builds the
@@ -42,7 +42,7 @@
 			"description": "Sandbox licence key. The preview:enterprise label decides whether it reaches n8n."
 		},
 		"CODESPACE_ENV_URL": {
-			"description": "n8n webhook that returns extra environment for a preview, as a flat JSON object"
+			"description": "MNI webhook that returns extra environment for a preview, as a flat JSON object"
 		},
 		"CODESPACE_ENV_USER": {
 			"description": "Basic auth user for CODESPACE_ENV_URL. Defaults to `preview`."

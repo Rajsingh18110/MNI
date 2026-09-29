@@ -6,7 +6,7 @@ import { Service } from '@n8n/di';
  * With no provider registered, every hook is a no-op.
  *
  * Distinct from the `workflow.afterArchive` / `workflow.afterDelete` external
- * hooks, which notify code outside n8n rather than modules inside it.
+ * hooks, which notify code outside MNI rather than modules inside it.
  *
  * No hook may throw: the `after*` hooks observe an already-committed mutation
  * with nothing left to abort, and `beforeWorkflowDeleted` only captures state —

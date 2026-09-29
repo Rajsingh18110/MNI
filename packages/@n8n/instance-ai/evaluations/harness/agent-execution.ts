@@ -237,7 +237,7 @@ export function buildAgentVerificationArtifact(
 		workflowContext: [
 			'## Agent under test',
 			'',
-			'This scenario ran against a first-class n8n Agent, not a workflow. The agent reasoned with its real configured model; every outbound HTTP request its tools made was intercepted and served by the eval mock layer.',
+			'This scenario ran against a first-class MNI Agent, not a workflow. The agent reasoned with its real configured model; every outbound HTTP request its tools made was intercepted and served by the eval mock layer.',
 			'',
 			agentContext,
 		].join('\n'),

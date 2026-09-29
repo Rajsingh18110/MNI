@@ -13,7 +13,7 @@ import { ContextModule } from '@/features/settings/context/module.descriptor';
 import { TypeAvailabilityPoliciesModule } from '@n8n/frontend-module-type-availability-policies';
 
 /**
- * The static list is the design, not a placeholder (design §9). n8n self-hosted
+ * The static list is the design, not a placeholder (design §9). MNI self-hosted
  * ships one artifact, and module availability is enforced by the backend — the
  * `licenseFlag` plus the `isModuleActive` route middleware — so a disabled
  * module's code on disk is inert bytes, not a leak. Fetching module bundles at

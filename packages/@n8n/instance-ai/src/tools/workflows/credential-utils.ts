@@ -26,7 +26,7 @@ export const AI_GATEWAY_CREDENTIAL: AiGatewayCredential = {
 
 /**
  * A credential ready to write onto a node during setup — a stored credential
- * (`{ id, name }`) or the n8n Connect managed marker. Distinct from the
+ * (`{ id, name }`) or the MNI Connect managed marker. Distinct from the
  * resolver-output `ResolvedCredential` in `resolved-credential.schema`, which
  * additionally carries the credential `type` key.
  */

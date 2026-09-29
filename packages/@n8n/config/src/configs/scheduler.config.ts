@@ -214,7 +214,7 @@ export class SchedulerConfig {
 	 * interval. For example, with 0.1 a check configured to run every 10 seconds
 	 * actually runs every 9 to 11 seconds. Defaults to 0.1.
 	 *
-	 * Without this variation, several n8n instances started at the same time
+	 * Without this variation, several MNI instances started at the same time
 	 * (for example during a rolling deploy) would all query the database at the
 	 * same moments; the randomness spreads those queries out.
 	 *
@@ -262,7 +262,7 @@ export class SchedulerConfig {
 
 	/**
 	 * Whether nodes that poll on a schedule (e.g. checking an inbox or API on an
-	 * interval) are scheduled by the durable scheduler instead of n8n's
+	 * interval) are scheduled by the durable scheduler instead of MNI's
 	 * in-process timer. Off by default; requires {@link enabled} to also be on.
 	 */
 	@Env('N8N_SCHEDULER_POLL_TRIGGERS_ENABLED')
@@ -303,13 +303,13 @@ export class SchedulerConfig {
 	durableCursorsEnabled: boolean = false;
 
 	/**
-	 * Whether n8n's internal maintenance jobs (for example pruning old executions,
+	 * Whether MNI's internal maintenance jobs (for example pruning old executions,
 	 * compacting insights data, or renewing the license) are scheduled by the
-	 * durable scheduler instead of n8n's in-process timers. Off by default;
+	 * durable scheduler instead of MNI's in-process timers. Off by default;
 	 * requires {@link enabled} to also be on.
 	 *
 	 * In a multi-instance setup, only turn this on once every instance runs a
-	 * version of n8n that supports it. While older and newer versions run side by
+	 * version of MNI that supports it. While older and newer versions run side by
 	 * side (for example during a rolling deploy), the older instances still run
 	 * these jobs on their own timers, so the same job could run twice at the
 	 * same time.
@@ -325,7 +325,7 @@ export class SchedulerConfig {
 	 * be on.
 	 *
 	 * In a multi-instance setup, turn this on only when every instance runs a
-	 * version of n8n that supports it. While older and newer versions run side by
+	 * version of MNI that supports it. While older and newer versions run side by
 	 * side (for example during a rolling deploy), the older leader still runs
 	 * these tasks on its own timer. Then the same task can run twice.
 	 *

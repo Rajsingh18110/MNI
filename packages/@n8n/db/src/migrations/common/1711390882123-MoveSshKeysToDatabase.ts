@@ -8,7 +8,7 @@ import type { MigrationContext, ReversibleMigration } from '../migration-types';
 
 /**
  * Move SSH key pair from file system to database, to enable SSH connections
- * when running n8n in multiple containers - mains, webhooks, workers, etc.
+ * when running MNI in multiple containers - mains, webhooks, workers, etc.
  */
 export class MoveSshKeysToDatabase1711390882123 implements ReversibleMigration {
 	private readonly settingsKey = 'features.sourceControl.sshKeys';

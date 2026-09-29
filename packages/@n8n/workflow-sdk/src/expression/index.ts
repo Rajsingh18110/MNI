@@ -3,7 +3,7 @@ import { FROM_AI_AUTO_GENERATED_MARKER } from 'n8n-workflow';
 import type { FromAIArgumentType, NodeInstance } from '../types/base';
 
 /**
- * Parse n8n expression string to extract the inner expression
+ * Parse MNI expression string to extract the inner expression
  * @param expr - Expression string like '={{ $json.name }}'
  * @returns The inner expression or original string if not an expression
  */
@@ -13,14 +13,14 @@ export function parseExpression(expr: string): string {
 }
 
 /**
- * Check if a string is an n8n expression
+ * Check if a string is an MNI expression
  */
 export function isExpression(value: unknown): boolean {
 	return typeof value === 'string' && value.startsWith('={{') && value.endsWith('}}');
 }
 
 /**
- * Mark a string as an n8n expression by adding the required '=' prefix.
+ * Mark a string as an MNI expression by adding the required '=' prefix.
  *
  * Use this for any parameter value that contains {{ }} expression syntax.
  * Strips any existing leading '=' to prevent double-equals from LLM output,

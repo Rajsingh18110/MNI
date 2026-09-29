@@ -1,7 +1,7 @@
 import { ElNotification, type NotificationHandle } from 'element-plus';
 
 // Storybook-only support for the settings stories (imported by *.stories.ts files only, not part
-// of the library build). Save confirmations reuse n8n's existing app-wide notification — the
+// of the library build). Save confirmations reuse MNI's existing app-wide notification — the
 // bottom-right Element Plus notification themed by the design system's `notification.scss` (the
 // same component `useToast().showMessage` shows in the app) — instead of introducing a new toast
 // pattern. The stories call it exactly the way the app does on a successful save.

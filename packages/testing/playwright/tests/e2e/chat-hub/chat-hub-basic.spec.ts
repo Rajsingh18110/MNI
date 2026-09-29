@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Chat' }],
 	},
 	() => {
-		test('new chat with pre-configured credentials', async ({ n8n, anthropicCredential: _ }) => {
+		test('new chat with pre-configured credentials', async ({ MNI, anthropicCredential: _ }) => {
 			await n8n.navigate.toChatHub();
 			await n8n.chatHubChat.dismissWelcomeScreen();
 
@@ -26,7 +26,7 @@ test.describe(
 
 		// Test with a different user to avoid race condition on credentials
 		test('new chat without pre-configured credentials @auth:member', async ({
-			n8n,
+			MNI,
 			anthropicApiKey,
 		}) => {
 			await n8n.navigate.toChatHub();
@@ -58,7 +58,7 @@ test.describe(
 			await expect(n8n.chatHubChat.sidebar.getConversations().first()).toBeVisible();
 		});
 
-		test('conversation flow', async ({ n8n, anthropicCredential: _ }) => {
+		test('conversation flow', async ({ MNI, anthropicCredential: _ }) => {
 			await n8n.navigate.toChatHub();
 			await n8n.chatHubChat.dismissWelcomeScreen();
 			await expect(n8n.chatHubChat.getModelSelectorButton()).toContainText(/claude/i); // auto-select a model

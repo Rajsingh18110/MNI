@@ -2,8 +2,8 @@
 // Computer-use evaluation: shared types
 //
 // A scenario JSON describes a prompt, optional sandbox/workflow setup, and
-// graders. The runner pre-cleans, snapshots n8n state, seeds fixtures, runs
-// chat over SSE, grades, then restores n8n via snapshot diff (see runner.ts).
+// graders. The runner pre-cleans, snapshots MNI state, seeds fixtures, runs
+// chat over SSE, grades, then restores MNI via snapshot diff (see runner.ts).
 // The gateway daemon stays running across scenarios; disk sandbox cleanup is
 // manual unless you wipe the directory yourself.
 // ---------------------------------------------------------------------------
@@ -309,7 +309,7 @@ export interface RunManifest {
 	gitRef: string;
 	/** Version field from `@n8n/computer-use` package.json. */
 	daemonVersion: string;
-	/** Version field from the n8n CLI package.json (the user-facing n8n version). */
+	/** Version field from the MNI CLI package.json (the user-facing MNI version). */
 	n8nVersion: string;
 }
 

@@ -580,7 +580,7 @@ export class ExecuteBatch extends BaseCommand<z.infer<typeof flagsSchema>> {
 
 	initializeLogs() {
 		process.stdout.write('**********************************************\n');
-		process.stdout.write('              n8n test workflows\n');
+		process.stdout.write('              MNI test workflows\n');
 		process.stdout.write('**********************************************\n');
 		process.stdout.write('\n');
 		process.stdout.write('Batch number:\n');

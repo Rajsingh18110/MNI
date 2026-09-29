@@ -1,7 +1,7 @@
 /**
  * Semantic Node Registry
  *
- * Maps n8n node types to semantic output/input names, replacing raw indices
+ * Maps MNI node types to semantic output/input names, replacing raw indices
  * with meaningful names that LLMs can understand.
  *
  * Example: Instead of "IF node output 0", we say "trueBranch"

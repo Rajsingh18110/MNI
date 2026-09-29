@@ -49,7 +49,7 @@ ruleTester.run('node-registration-complete', NodeRegistrationCompleteRule, {
 		{
 			name: 'all node files are registered',
 			filename: packageJsonPath,
-			code: '{ "name": "n8n-nodes-example", "n8n": { "nodes": ["dist/nodes/Foo/Foo.node.js", "dist/nodes/Bar/Bar.node.js"] } }',
+			code: '{ "name": "n8n-nodes-example", "MNI": { "nodes": ["dist/nodes/Foo/Foo.node.js", "dist/nodes/Bar/Bar.node.js"] } }',
 		},
 		{
 			name: 'non-package.json file is ignored',
@@ -62,7 +62,7 @@ ruleTester.run('node-registration-complete', NodeRegistrationCompleteRule, {
 			// by that entry file and must not be flagged as unregistered.
 			name: 'versioned node registered via its entry file does not flag its version implementations',
 			filename: packageJsonPath,
-			code: '{ "name": "n8n-nodes-example", "n8n": { "nodes": ["dist/nodes/SoterGuard/SoterGuard.node.js"] } }',
+			code: '{ "name": "n8n-nodes-example", "MNI": { "nodes": ["dist/nodes/SoterGuard/SoterGuard.node.js"] } }',
 			before() {
 				setup([versionedEntryNode, versionedV1Node, versionedV2Node], [versionedEntryNode]);
 			},
@@ -72,7 +72,7 @@ ruleTester.run('node-registration-complete', NodeRegistrationCompleteRule, {
 		{
 			name: 'one node file is not registered',
 			filename: packageJsonPath,
-			code: '{ "name": "n8n-nodes-example", "n8n": { "nodes": ["dist/nodes/Foo/Foo.node.js"] } }',
+			code: '{ "name": "n8n-nodes-example", "MNI": { "nodes": ["dist/nodes/Foo/Foo.node.js"] } }',
 			before() {
 				setup([fooNode, barNode], [fooNode]);
 			},
@@ -86,7 +86,7 @@ ruleTester.run('node-registration-complete', NodeRegistrationCompleteRule, {
 		{
 			name: 'multiple node files are not registered',
 			filename: packageJsonPath,
-			code: '{ "name": "n8n-nodes-example", "n8n": { "nodes": [] } }',
+			code: '{ "name": "n8n-nodes-example", "MNI": { "nodes": [] } }',
 			before() {
 				setup([fooNode, barNode], []);
 			},
@@ -101,7 +101,7 @@ ruleTester.run('node-registration-complete', NodeRegistrationCompleteRule, {
 			// and must still be reported.
 			name: 'unregistered sibling in a registered node directory is still flagged',
 			filename: packageJsonPath,
-			code: '{ "name": "n8n-nodes-example", "n8n": { "nodes": ["dist/nodes/Foo/Foo.node.js"] } }',
+			code: '{ "name": "n8n-nodes-example", "MNI": { "nodes": ["dist/nodes/Foo/Foo.node.js"] } }',
 			before() {
 				setup([fooNode, fooSiblingNode], [fooNode]);
 			},
@@ -110,7 +110,7 @@ ruleTester.run('node-registration-complete', NodeRegistrationCompleteRule, {
 			],
 		},
 		{
-			name: 'node files exist on disk but there is no n8n object',
+			name: 'node files exist on disk but there is no MNI object',
 			filename: packageJsonPath,
 			code: '{ "name": "n8n-nodes-example" }',
 			before() {

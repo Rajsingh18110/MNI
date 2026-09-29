@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 /**
- * Run Playwright e2e tests against a local n8n build with full isolation
+ * Run Playwright e2e tests against a local MNI build with full isolation
  * from your dev environment.
  *
  * What this gives you over `pnpm test:local`:
- *   - **Random free OS port** for n8n's HTTP server and the task-runner
+ *   - **Random free OS port** for MNI's HTTP server and the task-runner
  *     broker, so multiple instances can run in parallel without colliding on
  *     `5678`/`5679`. Pin a port with `N8N_BASE_URL=http://localhost:5680 …`
  *     when you need a stable URL for browser inspection.
  *   - **Throwaway `N8N_USER_FOLDER`** under the OS temp dir (cleaned up on
- *     exit). n8n creates `.n8n/` (sqlite DB, encryption key) inside it, fully
+ *     exit). MNI creates `.n8n/` (sqlite DB, encryption key) inside it, fully
  *     isolated from your local `~/.n8n` install.
- *   - **Self-managed n8n process** with a readiness check against
+ *   - **Self-managed MNI process** with a readiness check against
  *     `/rest/e2e/reset`, so the run waits for the E2E controller itself. Sets
  *     `PLAYWRIGHT_SKIP_WEBSERVER=true` so Playwright doesn't race to spawn its
  *     own n8n.
@@ -19,8 +19,8 @@
  *     so `@licensed`, `@db:reset`, and `@mode:*` tests are picked up by the
  *     local `e2e` project. Service-backed tests still skip because local mode
  *     does not provide the service container helpers.
- *   - **Process-group cleanup.** Spawns n8n `detached: true` and SIGTERMs the
- *     whole tree on exit, so `node ./n8n` and the task-runner don't get
+ *   - **Process-group cleanup.** Spawns MNI `detached: true` and SIGTERMs the
+ *     whole tree on exit, so `node ./MNI` and the task-runner don't get
  *     orphaned to PID 1.
  *
  * Usage:
@@ -28,8 +28,8 @@
  *   pnpm test:local:isolated tests/e2e/credentials/crud.spec.ts
  *   pnpm test:local:isolated --grep "preview"
  *
- * Pass extra n8n env via `N8N_TEST_ENV` (the same convention `test:local`
- * uses). For example, to enable an experimental module before n8n boots:
+ * Pass extra MNI env via `N8N_TEST_ENV` (the same convention `test:local`
+ * uses). For example, to enable an experimental module before MNI boots:
  *
  *   N8N_TEST_ENV='{"N8N_ENABLED_MODULES":"my-module"}' \
  *     pnpm test:local:isolated tests/e2e/my-module
@@ -62,7 +62,7 @@ function getFreePort() {
 }
 
 // Honour an explicit URL if pinned; otherwise grab two free ports — one for
-// n8n's HTTP server, one for the task-runner broker (default 5679).
+// MNI's HTTP server, one for the task-runner broker (default 5679).
 let backendUrl;
 let port;
 let brokerPort;
@@ -76,11 +76,11 @@ if (process.env.N8N_BASE_URL) {
 	backendUrl = `http://localhost:${port}`;
 }
 
-// Throwaway home-dir stand-in. n8n creates `.n8n/` (sqlite DB, encryption
-// key) inside it, so this also isolates the DB from any local n8n install.
+// Throwaway home-dir stand-in. MNI creates `.n8n/` (sqlite DB, encryption
+// key) inside it, so this also isolates the DB from any local MNI install.
 const userFolder = mkdtempSync(path.join(os.tmpdir(), 'n8n-test-isolated-'));
 
-// Caller-supplied n8n env (same convention as `pnpm test:local`).
+// Caller-supplied MNI env (same convention as `pnpm test:local`).
 const callerTestEnv = (() => {
 	try {
 		return process.env.N8N_TEST_ENV ? JSON.parse(process.env.N8N_TEST_ENV) : {};
@@ -101,14 +101,14 @@ const n8nEnv = {
 	...callerTestEnv,
 };
 
-console.log(`[run-local-isolated] starting n8n on ${backendUrl}`);
+console.log(`[run-local-isolated] starting MNI on ${backendUrl}`);
 console.log(`[run-local-isolated]   user folder: ${userFolder}`);
 console.log(`[run-local-isolated]   broker port: ${brokerPort}`);
 
-// `detached: true` puts n8n in its own process group so we can SIGTERM the
-// whole tree (pnpm + sh + node ./n8n + task-runner) on shutdown — without
-// this, killing pnpm orphans the actual n8n process to PID 1.
-const n8n = spawn('pnpm', ['start'], {
+// `detached: true` puts MNI in its own process group so we can SIGTERM the
+// whole tree (pnpm + sh + node ./MNI + task-runner) on shutdown — without
+// this, killing pnpm orphans the actual MNI process to PID 1.
+const MNI = spawn('pnpm', ['start'], {
 	cwd: repoRoot,
 	env: n8nEnv,
 	stdio: ['ignore', 'inherit', 'inherit'],
@@ -151,7 +151,7 @@ process.on('exit', () => {
 });
 n8n.on('exit', (code, signal) => {
 	if (!shuttingDown) {
-		console.error(`[run-local-isolated] n8n exited unexpectedly (code=${code} signal=${signal})`);
+		console.error(`[run-local-isolated] MNI exited unexpectedly (code=${code} signal=${signal})`);
 		cleanupTempDir();
 		process.exit(1);
 	}
@@ -181,12 +181,12 @@ async function waitForN8n(timeoutMs = 120_000) {
 		}
 		await new Promise((r) => setTimeout(r, 500));
 	}
-	throw new Error(`n8n did not become ready within ${timeoutMs}ms (last: ${lastStatus})`);
+	throw new Error(`MNI did not become ready within ${timeoutMs}ms (last: ${lastStatus})`);
 }
 
 try {
 	await waitForN8n();
-	console.log('[run-local-isolated] n8n ready, launching playwright ...');
+	console.log('[run-local-isolated] MNI ready, launching playwright ...');
 } catch (err) {
 	console.error(`[run-local-isolated] ${err.message}`);
 	shutdown(1);
@@ -197,7 +197,7 @@ const playwrightEnv = {
 	N8N_BASE_URL: backendUrl,
 	RESET_E2E_DB: 'true',
 	PLAYWRIGHT_ALLOW_CONTAINER_ONLY: 'true',
-	// We've already started + verified n8n; tell playwright.config.ts not to
+	// We've already started + verified MNI; tell playwright.config.ts not to
 	// race us by spawning its own.
 	PLAYWRIGHT_SKIP_WEBSERVER: 'true',
 };

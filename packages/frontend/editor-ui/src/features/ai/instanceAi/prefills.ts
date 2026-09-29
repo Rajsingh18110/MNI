@@ -13,7 +13,7 @@ import {
  * pieces only the editor needs and re-exports the vocabulary so call sites have
  * one import.
  *
- * A pre-fill is message text n8n wrote, not text the user typed. It is reported
+ * A pre-fill is message text MNI wrote, not text the user typed. It is reported
  * on `User sent builder message` so analytics no longer has to recover the type
  * by string-matching the message body.
  *

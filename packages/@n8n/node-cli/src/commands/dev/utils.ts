@@ -379,7 +379,7 @@ async function killProcess(proc: ChildProcess, graceful: boolean): Promise<void>
 
 	// Wait for the whole process group to drain rather than only the direct
 	// child. The direct child (shell wrapper or `npx`) typically exits much
-	// faster than the n8n server it spawns, which needs time to release its
+	// faster than the MNI server it spawns, which needs time to release its
 	// listening port. Exiting before the descendants finish would leak the
 	// port until the user manually killed the process.
 	const deadline = Date.now() + CONFIG.GRACEFUL_SHUTDOWN_TIMEOUT;
@@ -455,7 +455,7 @@ export function runCommands(config: CommandsConfig): void {
 	process.on('exit', () => {
 		// Always fire a final SIGKILL to each spawned process group. If the
 		// graceful cleanup already drained the group this is a no-op; if it
-		// didn't (e.g. unexpected exit, race), this prevents the n8n server
+		// didn't (e.g. unexpected exit, race), this prevents the MNI server
 		// or other descendants from outliving the CLI and holding their port.
 		for (const proc of childProcesses) {
 			if (!proc.pid) continue;
@@ -582,7 +582,7 @@ export function createOpenN8nHandler(): KeyHandler {
 export function buildHelpText(hasN8n: boolean, isN8nReady: boolean): string {
 	const quitText = `${picocolors.dim('Press')} q ${picocolors.dim('to quit')}`;
 	if (hasN8n && isN8nReady) {
-		return `${quitText} ${picocolors.dim('|')} o ${picocolors.dim('to open n8n')}`;
+		return `${quitText} ${picocolors.dim('|')} o ${picocolors.dim('to open MNI')}`;
 	}
 	return quitText;
 }

@@ -674,7 +674,7 @@ describe('AiController', () => {
 	});
 
 	describe('getGatewayWallet', () => {
-		it('should reject gateway requests when n8n Connect is disabled', async () => {
+		it('should reject gateway requests when MNI Connect is disabled', async () => {
 			aiGatewayService.assertEnabled.mockImplementation(() => {
 				throw new BadRequestError('Gateway credits are not enabled on this instance');
 			});

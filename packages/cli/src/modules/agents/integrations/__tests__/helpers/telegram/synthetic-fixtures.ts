@@ -11,7 +11,7 @@ const DEFAULT_DATE = 1_719_000_000;
 export const telegramBot = (overrides: Partial<TelegramUserFixture> = {}): TelegramUserFixture => ({
 	id: 777000,
 	is_bot: true,
-	first_name: 'n8n Agent',
+	first_name: 'MNI Agent',
 	username: 'n8n_agent_bot',
 	...overrides,
 });

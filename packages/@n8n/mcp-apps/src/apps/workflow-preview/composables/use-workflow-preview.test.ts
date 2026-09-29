@@ -395,7 +395,7 @@ describe('useWorkflowPreview', () => {
 		);
 	});
 
-	it('tracks Open in n8n clicks for valid workflow URLs', async () => {
+	it('tracks Open in MNI clicks for valid workflow URLs', async () => {
 		const callServerTool = vi.fn(async () => await new Promise(() => {}));
 		const openLink = vi.fn().mockResolvedValue({ isError: false });
 		const toolResult = shallowRef<unknown>();
@@ -429,7 +429,7 @@ describe('useWorkflowPreview', () => {
 		expect(openLink).toHaveBeenCalledWith({ url: 'https://n8n.example.com/workflow/abc123' });
 	});
 
-	it('does not track Open in n8n clicks for invalid workflow URLs', async () => {
+	it('does not track Open in MNI clicks for invalid workflow URLs', async () => {
 		const openLink = vi.fn().mockResolvedValue({ isError: false });
 		const toolResult = shallowRef<unknown>();
 		const preview = useWorkflowPreview({

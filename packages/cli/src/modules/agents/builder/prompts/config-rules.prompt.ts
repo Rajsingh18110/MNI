@@ -12,7 +12,7 @@ const BuilderPromptMemoryWorkerModelSchema = z.object({
 
 const BuilderPromptMemoryConfigSchema = z.object({
 	enabled: z.boolean(),
-	storage: z.literal('n8n'),
+	storage: z.literal('MNI'),
 	observationalMemory: z
 		.object({
 			enabled: z.boolean().optional(),

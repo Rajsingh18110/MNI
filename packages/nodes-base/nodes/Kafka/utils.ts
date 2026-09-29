@@ -190,7 +190,7 @@ export function resolveKafkaSsl(credentials: KafkaCredentials): ConnectionOption
 }
 
 /**
- * Creates Kafka client configuration from n8n credentials
+ * Creates Kafka client configuration from MNI credentials
  * @param ctx - The trigger function context
  * @returns Kafka configuration object with authentication settings
  */
@@ -283,7 +283,7 @@ export function createConsumerConfig(
  * @param logger - Logger instance for warnings
  * @param registry - Optional schema registry for message decoding
  * @param prepareBinaryData - Helper function to prepare binary data
- * @returns Async function that parses Kafka messages into n8n execution data
+ * @returns Async function that parses Kafka messages into MNI execution data
  */
 export function configureMessageParser(
 	options: KafkaTriggerOptions,

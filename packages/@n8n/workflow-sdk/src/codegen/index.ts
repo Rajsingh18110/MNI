@@ -1,7 +1,7 @@
 /**
  * Codegen Module
  *
- * Generates LLM-friendly SDK code from n8n workflow JSON.
+ * Generates LLM-friendly SDK code from MNI workflow JSON.
  *
  * Pipeline:
  * 1. Build Semantic Graph - transform index-based connections to semantic names

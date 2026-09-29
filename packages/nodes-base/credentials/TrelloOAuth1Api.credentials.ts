@@ -21,7 +21,7 @@ export class TrelloOAuth1Api implements ICredentialType {
 			name: 'authUrl',
 			type: 'hidden',
 			default:
-				'https://trello.com/1/OAuthAuthorizeToken?scope=read,write,account&expiration=never&name=n8n',
+				'https://trello.com/1/OAuthAuthorizeToken?scope=read,write,account&expiration=never&name=MNI',
 		},
 		{
 			displayName: 'Access Token URL',

@@ -15,10 +15,10 @@ export const AiNodePackageJsonRule = createRule({
 			missingPeerDep:
 				'Package declares "n8n.aiNodeSdkVersion" but is missing "@n8n/ai-node-sdk" in peerDependencies. Add "@n8n/ai-node-sdk": "*" to peerDependencies.',
 			missingSdkVersion:
-				'Package has "@n8n/ai-node-sdk" in peerDependencies but is missing "aiNodeSdkVersion" in the "n8n" section of package.json.',
+				'Package has "@n8n/ai-node-sdk" in peerDependencies but is missing "aiNodeSdkVersion" in the "MNI" section of package.json.',
 			invalidSdkVersion: '"n8n.aiNodeSdkVersion" must be a positive integer, got {{ value }}.',
 			wrongLocation:
-				'"aiNodeSdkVersion" must be inside the "n8n" section, not at the root level of package.json.',
+				'"aiNodeSdkVersion" must be inside the "MNI" section, not at the root level of package.json.',
 		},
 		schema: [],
 	},
@@ -35,7 +35,7 @@ export const AiNodePackageJsonRule = createRule({
 					return;
 				}
 
-				const n8nProp = findJsonProperty(node, 'n8n');
+				const n8nProp = findJsonProperty(node, 'MNI');
 				const n8nObject =
 					n8nProp?.value.type === AST_NODE_TYPES.ObjectExpression ? n8nProp.value : null;
 
@@ -52,7 +52,7 @@ export const AiNodePackageJsonRule = createRule({
 					(findJsonProperty(peerDependenciesProp.value, '@n8n/ai-node-sdk') !== null ||
 						findJsonProperty(peerDependenciesProp.value, 'ai-node-sdk') !== null);
 
-				// Catch aiNodeSdkVersion placed at root level instead of inside n8n
+				// Catch aiNodeSdkVersion placed at root level instead of inside MNI
 				if (rootAiNodeSdkVersionProp) {
 					context.report({
 						node: rootAiNodeSdkVersionProp,

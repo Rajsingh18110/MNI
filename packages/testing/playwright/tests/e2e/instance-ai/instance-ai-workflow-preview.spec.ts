@@ -11,7 +11,7 @@ test.describe(
 	() => {
 		test.describe.configure({ timeout: 180_000 });
 
-		test('should auto-open preview panel when workflow is built', async ({ n8n }) => {
+		test('should auto-open preview panel when workflow is built', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage(
@@ -38,7 +38,7 @@ test.describe(
 			await expect(n8n.instanceAi.getBackgroundTaskIndicator()).toBeHidden();
 		});
 
-		test('should display canvas nodes in preview iframe', async ({ n8n }) => {
+		test('should display canvas nodes in preview iframe', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage(
@@ -53,7 +53,7 @@ test.describe(
 			await n8n.instanceAi.waitForResponseComplete();
 		});
 
-		test('should mark all nodes as success after execution completes', async ({ n8n }) => {
+		test('should mark all nodes as success after execution completes', async ({ MNI }) => {
 			// End-to-end: plan + approve + build + execute + final assertions take >60s
 			// when recording against the real Anthropic API.
 			test.setTimeout(180_000);
@@ -80,7 +80,7 @@ test.describe(
 			await expect(n8n.instanceAi.getPreviewRunningNodes()).toHaveCount(0);
 		});
 
-		test('should close preview panel via close button', async ({ n8n }) => {
+		test('should close preview panel via close button', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage(

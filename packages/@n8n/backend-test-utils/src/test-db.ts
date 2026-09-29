@@ -139,7 +139,7 @@ export async function initTemplateDb(templateName: string): Promise<void> {
  * and return its file path. Called from Vitest globalSetup before the workers
  * start. Each worker's `init()` then copies the file instead of migrating.
  *
- * Some migrations read the n8n folder, so the config must already point at
+ * Some migrations read the MNI folder, so the config must already point at
  * `n8nFolder`. The function refuses to migrate a database outside that folder.
  */
 export async function initSqliteTemplateDb(n8nFolder: string): Promise<string> {

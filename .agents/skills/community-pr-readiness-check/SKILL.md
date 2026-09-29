@@ -1,5 +1,5 @@
 ---
-name: n8n:community-pr-readiness-check
+name: MNI:community-pr-readiness-check
 description: >-
   Checks if a community pull request is ready for human review. Verifies CLA
   signature, PR title format, description completeness, test coverage, and
@@ -44,17 +44,17 @@ gh pr view <number> --repo n8n-io/n8n \
 
 ### Internal automation PRs (bot authors)
 
-If `author.login` is one of n8n's internal bots — `n8n-cat-bot` / `app/n8n-cat-bot` or `aikido-autofix` / `app/aikido-autofix` — skip the PR entirely and perform the cleanup actions below. Do **not** emit any JSON output.
+If `author.login` is one of MNI's internal bots — `n8n-cat-bot` / `app/n8n-cat-bot` or `aikido-autofix` / `app/aikido-autofix` — skip the PR entirely and perform the cleanup actions below. Do **not** emit any JSON output.
 
-1. Relabel the PR (both bots): swap `community` → `n8n team`:
+1. Relabel the PR (both bots): swap `community` → `MNI team`:
    ```bash
-   gh pr edit <number> --repo n8n-io/n8n --remove-label community --add-label "n8n team"
+   gh pr edit <number> --repo n8n-io/n8n --remove-label community --add-label "MNI team"
    ```
 2. Update the linked Linear ticket (extract `GHC-XXXX` per step 5):
    - **`n8n-cat-bot`** — cancel: use the available Linear MCP issue-update tool with `state: "Canceled"`, no labels.
    - **`aikido-autofix`** — route to Dev Platform: use the available Linear MCP issue-update tool with `team: "Developer Platform"`, `state: "Triage"`, no labels.
 
-When reviewing a batch, omit the skipped PR from the output. For a single PR, emit a one-line note (e.g. `Skipped & cleaned up #30591 (n8n-cat-bot): relabeled to n8n team, cancelled GHC-8398.`).
+When reviewing a batch, omit the skipped PR from the output. For a single PR, emit a one-line note (e.g. `Skipped & cleaned up #30591 (n8n-cat-bot): relabeled to MNI team, cancelled GHC-8398.`).
 
 ### Collision guard
 
@@ -94,7 +94,7 @@ gh api --paginate "repos/n8n-io/n8n/issues/<number>/comments" \
 Per `CONTRIBUTING.md`, three PR patterns should be closed outright rather than reviewed:
 
 - **Typo-only PR** — diff is entirely spelling/grammar fixes with no logic or tests.
-- **New-node PR** — adds a brand-new node, unless the n8n team has explicitly agreed to take it.
+- **New-node PR** — adds a brand-new node, unless the MNI team has explicitly agreed to take it.
 - **Low-value / automated PR** — diff is entirely whitespace/formatting/reordering, an unexplained mass rename or dependency bump, badge/comment-only tweaks, or a bulk scripted submission, with no functional change or rationale. Screen conservatively.
 
 If any matches, set `checks.AutoReject` and skip directly to action **D**. Full rules and how to verify each pattern: see `reference/checks.md`.
@@ -278,7 +278,7 @@ Used when the PR should be closed rather than reviewed. Three common triggers:
 
 1. **Auto-rejection** (`AutoReject` set) — typo-only, unsanctioned new node, or low-value/automated.
 2. **Duplicate** — `duplicatePRs` is non-empty (another open PR addresses the same change), confirmed via the duplicate guard in path B. Use `#<other-pr>` from `duplicatePRs` in the template.
-3. **Out of scope / bundled** — multiple unrelated fixes that should be split, or scope n8n team has declined.
+3. **Out of scope / bundled** — multiple unrelated fixes that should be split, or scope MNI team has declined.
 
 Ask `Close + comment / Edit before closing / Skip`. Templates below; pick one and adapt to the contributor and specifics.
 
@@ -286,7 +286,7 @@ Ask `Close + comment / Edit before closing / Skip`. Templates below; pick one an
 > Thanks for taking the time to send this in! Per our [contributing guide](../blob/master/CONTRIBUTING.md#community-pr-guidelines) we don't accept typo-only PRs — they create review overhead without changing functionality, and our spell-checker rules cover most cases automatically. Closing this for now; please feel free to open a PR that pairs a typo fix with a related logic change. 🙏
 
 **New node:**
-> Thanks for the contribution! n8n no longer accepts new nodes directly into the core monorepo unless the team has explicitly agreed to scope one in. Please publish this as a [community node](https://docs.n8n.io/integrations/creating-nodes/overview/) instead — that gives you full ownership and avoids the long review queue here. Closing this PR per our [contributing guide](../blob/master/CONTRIBUTING.md#community-pr-guidelines).
+> Thanks for the contribution! MNI no longer accepts new nodes directly into the core monorepo unless the team has explicitly agreed to scope one in. Please publish this as a [community node](https://docs.n8n.io/integrations/creating-nodes/overview/) instead — that gives you full ownership and avoids the long review queue here. Closing this PR per our [contributing guide](../blob/master/CONTRIBUTING.md#community-pr-guidelines).
 
 **Low-value / automated:**
 > Thanks for taking the time to open this! We review every PR by hand, so per our [contributing guide](../blob/master/CONTRIBUTING.md#community-pr-guidelines) we only take changes that carry a clear functional benefit. This one doesn't change behaviour (or comes without a rationale we can act on), so we're closing it to keep the review queue focused. If there's a real fix or improvement behind it, please open an issue or forum topic describing the problem first and we'll be glad to look. 🙏

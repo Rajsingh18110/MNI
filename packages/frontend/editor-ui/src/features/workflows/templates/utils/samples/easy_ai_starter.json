@@ -1,5 +1,5 @@
 {
-	"name": "Demo: My first AI Agent in n8n",
+	"name": "Demo: My first AI Agent in MNI",
 	"meta": { "templateId": "self-building-ai-agent" },
 	"nodes": [
 		{

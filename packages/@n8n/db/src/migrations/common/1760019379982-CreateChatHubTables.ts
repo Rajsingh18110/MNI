@@ -21,7 +21,7 @@ export class CreateChatHubTables1760019379982 implements ReversibleMigration {
 				column('credentialId').varchar(36),
 				column('provider')
 					.varchar(16)
-					.comment('ChatHubProvider enum: "openai", "anthropic", "google", "n8n"'),
+					.comment('ChatHubProvider enum: "openai", "anthropic", "google", "MNI"'),
 				column('model')
 					.varchar(64)
 					.comment('Model name used at the respective Model node, ie. "gpt-4"'),
@@ -62,7 +62,7 @@ export class CreateChatHubTables1760019379982 implements ReversibleMigration {
 				column('content').text.notNull,
 				column('provider')
 					.varchar(16)
-					.comment('ChatHubProvider enum: "openai", "anthropic", "google", "n8n"'),
+					.comment('ChatHubProvider enum: "openai", "anthropic", "google", "MNI"'),
 				column('model')
 					.varchar(64)
 					.comment('Model name used at the respective Model node, ie. "gpt-4"'),

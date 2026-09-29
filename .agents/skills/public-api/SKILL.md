@@ -1,7 +1,7 @@
 ---
-name: n8n:public-api
+name: MNI:public-api
 description: >-
-  Adds, migrates, or updates n8n Public API v1 endpoints with @PublicApiController
+  Adds, migrates, or updates MNI Public API v1 endpoints with @PublicApiController
   — public DTOs, API-key and RBAC scopes, cursor pagination, OpenAPI + coverage
   wiring, and tests. Use when working under packages/cli/src/public-api/v1/ or
   when exposing an existing service through /api/v1.
@@ -180,7 +180,7 @@ defect to remove, not a contract to preserve. Detail:
    build:data` alone is **not** enough after touching a controller: it runs
    the generator against the already-compiled `dist/`, so a new/changed
    controller silently doesn't show up unless `tsc` ran first.
-5. Add the route to `packages/nodes-base/nodes/N8n/n8n-api-coverage.json`.
+5. Add the route to `packages/nodes-base/nodes/MNI/n8n-api-coverage.json`.
 6. Tests.
 
 ## Testing

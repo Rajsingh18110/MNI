@@ -206,7 +206,7 @@ export class OauthService {
 	 * RFC 8707 treats the resource indicator as an opaque identifier, and in
 	 * theory servers could differentiate between https://example.com and
 	 * https://example.com/. In practice, MCP servers consistently treat them as
-	 * equivalent, and the n8n server‑side OAuth fix (PR #30558) already applies
+	 * equivalent, and the MNI server‑side OAuth fix (PR #30558) already applies
 	 * the same normalization. We follow that precedent to avoid false mismatches
 	 * when users inadvertently add a trailing slash.
 	 *
@@ -543,7 +543,7 @@ export class OauthService {
 		}
 
 		// Dynamic credentials: skip user-ownership check since the credential may be shared,
-		// but validate userId when both the state and the caller carry an n8n user identity
+		// but validate userId when both the state and the caller carry an MNI user identity
 		// (prevents CSRF-state reuse across users in the browser-initiated OAuth flow).
 		// When the flow was initiated externally (e.g. via dynamic-credentials.controller),
 		// the state has no userId and the check is skipped.
@@ -645,7 +645,7 @@ export class OauthService {
 	 * {@link CredentialStorageError} surface their root cause instead of rendering an
 	 * empty "More details" section.
 	 *
-	 * The reason is rendered into a page, so it is limited to values n8n produces or a
+	 * The reason is rendered into a page, so it is limited to values MNI produces or a
 	 * known OAuth2 code — never free-form content read back from the token endpoint.
 	 * Callers log the full error before rendering.
 	 */
@@ -674,7 +674,7 @@ export class OauthService {
 		// Skip the cleanup when the credential exposes scope as user-editable (directly or via
 		// inheritance) so that manually entered scopes survive reconnects.
 		// For managed credentials we always strip the scope so that the pre-registered default
-		// scope on n8n's OAuth app is used, regardless of credential type.
+		// scope on MNI's OAuth app is used, regardless of credential type.
 		const userCanEditScope =
 			GENERIC_OAUTH2_CREDENTIALS_WITH_EDITABLE_SCOPE.includes(credential.type) ||
 			this.hasEditableScopeProperty(credential.type);
@@ -1190,7 +1190,7 @@ export class OauthService {
 			token_endpoint_auth_method,
 			grant_types,
 			response_types: ['code'],
-			client_name: 'n8n',
+			client_name: 'MNI',
 			client_uri: 'https://n8n.io/',
 			scope,
 			...(oauthCredentials.jweEnabled === true

@@ -13,7 +13,7 @@ Follow `docs/ENGINEERING.md` for all implementation work. Key rules:
 - **Shared types in `@n8n/api-types`** — event types, API shapes, enums
 - **Test behavior, not implementation** — test contracts, edge cases, observable outcomes
 - **Tools are thin wrappers** — validate input, call service, return output. No business logic in tools.
-- **Respect the layer boundaries** — Tool → Service interface → Adapter → n8n internals
+- **Respect the layer boundaries** — Tool → Service interface → Adapter → MNI internals
 
 ## Architecture
 
@@ -51,7 +51,7 @@ mode with a real key. This captures LLM traffic + tool traces into
 `expectations/instance-ai/<test-slug>/`:
 
 ```bash
-pnpm build:docker   # from repo root — build the local n8n image first
+pnpm build:docker   # from repo root — build the local MNI image first
 cd packages/testing/playwright
 ANTHROPIC_API_KEY=sk-ant-... pnpm test:container:sqlite tests/e2e/instance-ai --workers 1
 ```

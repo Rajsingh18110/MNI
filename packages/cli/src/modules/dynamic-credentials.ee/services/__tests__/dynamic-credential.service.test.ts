@@ -79,7 +79,7 @@ describe('DynamicCredentialService', () => {
 		shouldSucceed = true,
 		shouldThrowDataNotFound = false,
 		customData?: ICredentialDataDecryptedObject,
-		/** Set for resolvers that key on n8n users, as the real n8n resolver does. */
+		/** Set for resolvers that key on MNI users, as the real MNI resolver does. */
 		keysOnN8nUser = false,
 	): Mocked<ICredentialResolver> => ({
 		metadata: {
@@ -338,7 +338,7 @@ describe('DynamicCredentialService', () => {
 					return { credentialsEntity, executionContext };
 				};
 
-				it('surfaces the owning user id from a resolver that maps to an n8n user', async () => {
+				it('surfaces the owning user id from a resolver that maps to an MNI user', async () => {
 					const resolver = {
 						...createMockResolver(),
 						resolveOwningUserId: vi.fn().mockResolvedValue('user-789'),
@@ -356,7 +356,7 @@ describe('DynamicCredentialService', () => {
 					expect(result.resolvedUserId).toBe('user-789');
 				});
 
-				it('leaves resolvedUserId undefined for a resolver that does not map to an n8n user', async () => {
+				it('leaves resolvedUserId undefined for a resolver that does not map to an MNI user', async () => {
 					// External-identity resolvers (Slack, OAuth) do not implement resolveOwningUserId.
 					const resolver = createMockResolver();
 					const { credentialsEntity, executionContext } = setupDynamicResolution(resolver);
@@ -505,10 +505,10 @@ describe('DynamicCredentialService', () => {
 				);
 			});
 
-			it('refuses to hand an n8n identity to an external-subject resolver', async () => {
+			it('refuses to hand an MNI identity to an external-subject resolver', async () => {
 				const credentialsEntity = createMockCredentialsMetadata();
 				// Default resolver type is an external (non-n8n) resolver: its identifier reads
-				// `context.identity` as a token its own provider issued, so giving it an n8n
+				// `context.identity` as a token its own provider issued, so giving it an MNI
 				// session token would send that token to the provider.
 				const resolverEntity = createMockResolverEntity();
 				const mockResolver = createMockResolver();
@@ -559,7 +559,7 @@ describe('DynamicCredentialService', () => {
 				);
 			});
 
-			it('n8n private-credential resolver throws CredentialResolverDataNotFoundError surfaces the not-connected message', async () => {
+			it('MNI private-credential resolver throws CredentialResolverDataNotFoundError surfaces the not-connected message', async () => {
 				const credentialsEntity = createMockCredentialsMetadata();
 				const resolverEntity = createMockResolverEntity({ type: SYSTEM_RESOLVER_TYPE });
 				const mockResolver = createMockResolver(false, true, undefined, true);
@@ -585,12 +585,12 @@ describe('DynamicCredentialService', () => {
 				);
 			});
 
-			it('n8n private-credential resolver surfaces the not-connected message regardless of trigger source', async () => {
+			it('MNI private-credential resolver surfaces the not-connected message regardless of trigger source', async () => {
 				const credentialsEntity = createMockCredentialsMetadata();
 				const resolverEntity = createMockResolverEntity({ type: SYSTEM_RESOLVER_TYPE });
 				const mockResolver = createMockResolver(false, true, undefined, true);
 				const executionContext = createMockExecutionContext('encrypted-credentials');
-				// Chat-hub triggered run still resolves to an n8n user, so the message applies
+				// Chat-hub triggered run still resolves to an MNI user, so the message applies
 				const credentialContext = createMockCredentialContext({ source: 'chat-hub-injected' });
 				const additionalData = createMockAdditionalData('exec-123', {}, executionContext);
 
@@ -1333,7 +1333,7 @@ describe('DynamicCredentialService', () => {
 	});
 
 	describe('resolveOwningUserIdForAuthorization', () => {
-		it('returns unbound when the resolver does not map to an n8n user', async () => {
+		it('returns unbound when the resolver does not map to an MNI user', async () => {
 			mockResolverRepository.findOneBy.mockResolvedValue(createMockResolverEntity());
 			// External-identity resolvers (Slack, OAuth) do not implement resolveOwningUserId.
 			mockResolverRegistry.getResolverByTypename.mockReturnValue(createMockResolver());
@@ -1357,7 +1357,7 @@ describe('DynamicCredentialService', () => {
 			expect(result).toEqual({ status: 'unbound' });
 		});
 
-		it('returns bound with the user id when the resolver maps to an n8n user', async () => {
+		it('returns bound with the user id when the resolver maps to an MNI user', async () => {
 			mockResolverRepository.findOneBy.mockResolvedValue(createMockResolverEntity());
 			mockCipher.decryptV2.mockResolvedValue('{}');
 			mockResolverRegistry.getResolverByTypename.mockReturnValue({

@@ -364,7 +364,7 @@ describe('DiscordIntegration', () => {
 	});
 
 	describe('createAdapter logger', () => {
-		it('forwards adapter initialization through the n8n logger without metadata', async () => {
+		it('forwards adapter initialization through the MNI logger without metadata', async () => {
 			const adapter = (await integration.createAdapter(connectionContext())) as {
 				initialize: (chat: unknown) => Promise<void>;
 			};
@@ -391,7 +391,7 @@ describe('DiscordIntegration', () => {
 					const path = new URL(url).pathname.replace(/^\/api\/v\d+/, '');
 					const apiCall = { method: path, body: {} };
 					if (path === '/users/@me/guilds') {
-						return { apiCall, responseBody: [{ id: GUILD_ID, name: 'n8n Test Server' }] };
+						return { apiCall, responseBody: [{ id: GUILD_ID, name: 'MNI Test Server' }] };
 					}
 					return {
 						apiCall,

@@ -71,7 +71,7 @@ description: INodeTypeDescription = {
     there is specific reason to have something else** (e.g. a node like
     `If` that has a `true` and `false` outputs).
 - `usableAsTool`
-  - Set to `true` to allow n8n to use this node as a tool for the AI
+  - Set to `true` to allow MNI to use this node as a tool for the AI
     agent.
   - Set to `false` or omit this if node works heavily with **binary
     data** which tools don't support
@@ -155,7 +155,7 @@ export const postFields: INodeProperties[] = [
   **real names** from the target API.
 - Do not reuse these exact WordPress-specific field names unless the
   node is actually for WordPress.
-- Remember that these examples are **incomplete** and n8n provides a lot
+- Remember that these examples are **incomplete** and MNI provides a lot
   of options for defining properties. Refer to their docs, when in doubt
 
 ## General guidelines

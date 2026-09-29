@@ -18,7 +18,7 @@ export function assertPlainObject(input: unknown, fnName: string, hint: string):
 }
 
 /**
- * Check if a value contains an n8n expression
+ * Check if a value contains an MNI expression
  */
 export function containsExpression(value: unknown): boolean {
 	if (typeof value !== 'string') {
@@ -128,7 +128,7 @@ export function findMissingExpressionPrefixes(
 		// Skip placeholder markers — their embedded hint is documentation, not an expression.
 		if (isPlaceholderValue(value)) return issues;
 		// If string starts with '=', it's already an expression - {{ }} is valid template syntax inside
-		// Otherwise check if it contains {{ $ pattern (n8n variable reference without = prefix)
+		// Otherwise check if it contains {{ $ pattern (MNI variable reference without = prefix)
 		if (!value.startsWith('=') && value.includes('{{ $')) {
 			issues.push({ path, value });
 		}

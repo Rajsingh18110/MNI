@@ -56,7 +56,7 @@ export const generationFields: INodeProperties[] = [
 
 /**
  * Wraps the Oracle embeddings implementation so we can always borrow
- * a connection from n8n's pooled Oracle client right before each call.
+ * a connection from MNI's pooled Oracle client right before each call.
  * This keeps connection lifecycle aligned with the existing pool manager.
  */
 class PooledOracleEmbeddings extends Embeddings {

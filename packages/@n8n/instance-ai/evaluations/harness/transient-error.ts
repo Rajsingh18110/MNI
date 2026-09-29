@@ -2,7 +2,7 @@
 // Transient-error classification for scenario execution
 //
 // Both scenario-execution paths — the direct harness loop (`runTestCase`) and
-// the LangSmith-traced loop (`cli/index.ts`) — call the running n8n instance
+// the LangSmith-traced loop (`cli/index.ts`) — call the running MNI instance
 // over HTTP. Network-level failures there (a dropped socket, a DNS blip, the
 // long `execute-with-llm-mock` request stalling) are infrastructure problems,
 // not builder or mock defects. Sharing the detection + message extraction keeps
@@ -48,7 +48,7 @@ export const MAX_TIMEOUT_ATTEMPTS = 2;
 
 /**
  * True when a scenario execution died on the client-side abort timeout
- * (`AbortSignal.timeout` in the n8n REST client surfaces as TimeoutError:
+ * (`AbortSignal.timeout` in the MNI REST client surfaces as TimeoutError:
  * "The operation was aborted due to timeout").
  */
 export function isExecutionTimeout(message: string): boolean {
@@ -124,7 +124,7 @@ export function classifyScenarioExecutionError(errorMessage: string): {
 // ---------------------------------------------------------------------------
 // Provider outages (TRUST-374)
 //
-// A model-provider 5xx/529 during the BUILD is upstream of the n8n instance:
+// A model-provider 5xx/529 during the BUILD is upstream of the MNI instance:
 // the lane stays healthy and the socket never breaks, so none of the checks
 // above see it. Left unclassified it reads as "the agent built it wrong" — and
 // because it fails in seconds rather than minutes, a 15-minute outage let each

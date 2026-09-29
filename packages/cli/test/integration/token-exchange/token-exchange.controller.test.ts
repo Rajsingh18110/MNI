@@ -55,7 +55,7 @@ function makeExternalJwt(
 		{
 			sub: `ext-${randomUUID().slice(0, 8)}`,
 			iss: ISSUER,
-			aud: 'n8n',
+			aud: 'MNI',
 			iat: now,
 			exp: now + 300,
 			jti: randomUUID(),
@@ -90,7 +90,7 @@ beforeAll(async () => {
 			algorithms: ['RS256'],
 			key: publicKey,
 			issuer: ISSUER,
-			expectedAudience: 'n8n',
+			expectedAudience: 'MNI',
 			allowedRoles: ['global:member', 'global:admin'],
 		},
 		{
@@ -99,7 +99,7 @@ beforeAll(async () => {
 			algorithms: ['RS256'],
 			key: publicKey,
 			issuer: ISSUER_B,
-			expectedAudience: 'n8n',
+			expectedAudience: 'MNI',
 			allowedRoles: ['global:member', 'global:admin'],
 		},
 	]);

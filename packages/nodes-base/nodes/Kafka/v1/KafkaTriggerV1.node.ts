@@ -550,7 +550,7 @@ export class KafkaTriggerV1 implements INodeType {
 			await startConsumer();
 			return { closeFunction };
 		} else {
-			// The "manualTriggerFunction" function gets called by n8n
+			// The "manualTriggerFunction" function gets called by MNI
 			// when a user is in the workflow editor and starts the
 			// workflow manually. So the function has to make sure that
 			// the emit() gets called with similar data like when it

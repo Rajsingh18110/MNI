@@ -5,7 +5,7 @@ test.use({ capability: 'external-secrets' });
 // LocalStack can take time to start up, and connection tests add latency
 test.setTimeout(180_000);
 
-// LocalStack test credentials (AWS_ENDPOINT_URL in the n8n container redirects all SDK calls to LocalStack)
+// LocalStack test credentials (AWS_ENDPOINT_URL in the MNI container redirects all SDK calls to LocalStack)
 const LOCALSTACK_AWS_SETTINGS = {
 	region: 'us-east-1',
 	authMethod: 'iamUser',
@@ -21,7 +21,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Lifecycle & Governance' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await n8n.api.enableFeature('externalSecrets');
 			await services.localstack.secretsManager.clear();
 		});
@@ -32,7 +32,7 @@ test.describe(
 		 * the provider, then deletes the connection through the UI delete flow.
 		 */
 		test('should create a global connection via UI and reference it in a credential', async ({
-			n8n,
+			MNI,
 			services,
 		}) => {
 			const providerName = 'awsGlobal';
@@ -111,7 +111,7 @@ test.describe(
 		 * Scopes it to a project and verifies that the connection appears in the project settings and can be referenced from a project credential.
 		 */
 		test('should create a connection, recover a wrong setting, scope it to a project, and use it in a project credential', async ({
-			n8n,
+			MNI,
 			services,
 		}) => {
 			const providerName = 'awsGlobalRecovery';

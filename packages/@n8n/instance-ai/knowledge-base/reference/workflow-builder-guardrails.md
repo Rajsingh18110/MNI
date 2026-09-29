@@ -26,7 +26,7 @@ and create failure records with explicit source fields only on real error paths.
 
 ## Preserve Node Identity
 
-`config.id` is a node's stable identity in n8n, not a cosmetic field. Two nodes may
+`config.id` is a node's stable identity in MNI, not a cosmetic field. Two nodes may
 never share one `id`; `build-workflow` rejects the save with `DUPLICATE_NODE_ID`
 when they do, and the fix is to delete the `id` line from the node you added, not to
 invent a new value.
@@ -55,7 +55,7 @@ synthetic failure records for the same source/effect.
 
 ## Preserve List Semantics
 
-HTTP and app nodes may return one n8n item per record, a top-level array, or an
+HTTP and app nodes may return one MNI item per record, a top-level array, or an
 envelope such as `records`, `body`, or `data`. Before per-record filtering,
 upserting, or posting, check the actual item shape. Preserve itemized flow or
 split arrays into one item per record; do not collapse to no work because
@@ -153,7 +153,7 @@ producer (trigger → ensure-target → produce data → write), or have B refer
 
 ## Code Nodes
 
-When a Code node is necessary, use real n8n item APIs such as `$input.all()` /
+When a Code node is necessary, use real MNI item APIs such as `$input.all()` /
 `$input.item` and return explicit `json` objects. Prefer arrays joined with a
 runtime separator (e.g. `const LF = String.fromCharCode(10);`) over escape-heavy
 multi-line string construction.

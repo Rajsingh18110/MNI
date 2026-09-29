@@ -4162,7 +4162,7 @@ describe('createWorkflowAdapter', () => {
 	});
 
 	it('normalizes the managed tag written as a credential id into the runtime sentinel on save', async () => {
-		// The builder may write `newCredential('n8n credits', '__AI_GATEWAY_MANAGED__')`,
+		// The builder may write `newCredential('MNI credits', '__AI_GATEWAY_MANAGED__')`,
 		// which reaches update as `{ id: '__AI_GATEWAY_MANAGED__', name }`. It must be
 		// converted to the null-id sentinel so the runtime never treats the tag as a
 		// real, DB-resolvable credential id.
@@ -4178,7 +4178,7 @@ describe('createWorkflowAdapter', () => {
 					position: [0, 0],
 					parameters: {},
 					credentials: {
-						googlePalmApi: { id: AI_GATEWAY_MANAGED_TAG, name: 'n8n credits' },
+						googlePalmApi: { id: AI_GATEWAY_MANAGED_TAG, name: 'MNI credits' },
 					},
 				},
 			],
@@ -4189,7 +4189,7 @@ describe('createWorkflowAdapter', () => {
 
 		const updateData = mockWorkflowService.update.mock.calls[0]?.[1] as { nodes: INode[] };
 		expect(updateData.nodes[0].credentials).toEqual({
-			googlePalmApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+			googlePalmApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 		});
 	});
 
@@ -5691,7 +5691,7 @@ function createAdapterWithGatewayMock(
 		isEnabled: vi.fn().mockReturnValue(overrides?.enabled !== false),
 		getWallet: overrides?.getWallet ?? vi.fn(),
 		assertEnabled: vi.fn().mockImplementation(() => {
-			if (overrides?.enabled === false) throw new Error('n8n Connect is disabled');
+			if (overrides?.enabled === false) throw new Error('MNI Connect is disabled');
 		}),
 	};
 	const args = Array.from(
@@ -6163,7 +6163,7 @@ describe('createExecutionAdapter runStep()', () => {
 		const runStep = harness.adapter.runStep as NonNullable<typeof harness.adapter.runStep>;
 
 		await expect(runStep('wf-1', 'Send', { mockInput: [{}] })).rejects.toThrow(
-			'the mock leaves a Loop Over Items node unfinished, and n8n would restart it and execute these nodes for real (Loop)',
+			'the mock leaves a Loop Over Items node unfinished, and MNI would restart it and execute these nodes for real (Loop)',
 		);
 		expect(harness.mockWorkflowRunner.run).not.toHaveBeenCalled();
 	});
@@ -6667,7 +6667,7 @@ describe('createExecutionAdapter runStep()', () => {
 			// The engine has no Tool Executor path for a model, so the run would fail
 			// with "connect a trigger" and teach the model nothing.
 			await expect(runStep('wf-1', 'OpenAI Chat Model', undefined)).rejects.toThrow(
-				'cannot run on its own — n8n runs it as part of "Agent"',
+				'cannot run on its own — MNI runs it as part of "Agent"',
 			);
 
 			expect(harness.mockWorkflowRunner.run).not.toHaveBeenCalled();
@@ -6740,7 +6740,7 @@ describe('getGatewayConfigOrNull', () => {
 		await expect(callGet(adapter)).resolves.toBeNull();
 	});
 
-	it('returns null without calling the service when n8n Connect is disabled', async () => {
+	it('returns null without calling the service when MNI Connect is disabled', async () => {
 		const getGatewayConfig = vi.fn().mockResolvedValue({
 			nodes: ['openAi'],
 			credentialTypes: ['openAiApi'],
@@ -6794,7 +6794,7 @@ describe('trackGatewayAvailability', () => {
 	});
 });
 
-describe('createNodeAdapter — n8n Connect annotations', () => {
+describe('createNodeAdapter — MNI Connect annotations', () => {
 	type GatewayConfigLike = {
 		nodes: string[];
 		credentialTypes: string[];

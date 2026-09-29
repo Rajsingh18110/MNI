@@ -34,8 +34,8 @@ const config = { request: 'some value' };
 // Other objects with helpers property should not trigger
 const otherObject = {
 	helpers: {
-		request: () => 'not n8n',
-		requestWithAuthentication: () => 'not n8n'
+		request: () => 'not MNI',
+		requestWithAuthentication: () => 'not MNI'
 	}
 };
 const result2 = otherObject.helpers.request();`,

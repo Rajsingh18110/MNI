@@ -71,7 +71,7 @@ jobs:
           pattern: benchmark-*-shard-*
           path: /tmp/benchmark-reports/
 
-      # The aggregator auto-detects n8n version and commit SHA from the repo
+      # The aggregator auto-detects MNI version and commit SHA from the repo
       # (anchored to its own file location), so no path/version glue is needed.
       - name: Aggregate sizing matrix
         working-directory: packages/testing/playwright

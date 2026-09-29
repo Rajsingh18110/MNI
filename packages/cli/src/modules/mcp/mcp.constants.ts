@@ -72,7 +72,7 @@ export const INSTALL_COMMUNITY_NODE_TOOL = {
  * so the two cannot drift. Stored without a leading word; each caller supplies its own.
  */
 export const MCP_USER_PREFERENCES_TRIGGER_CLAUSE =
-	'you create or modify anything in n8n — a workflow, an Agent, a data table, a folder —';
+	'you create or modify anything in MNI — a workflow, an Agent, a data table, a folder —';
 export const MCP_CALL_AGENT_TOOL_NAME = 'call_agent';
 export const MCP_CREATE_AGENT_TOOL_NAME = 'create_agent';
 

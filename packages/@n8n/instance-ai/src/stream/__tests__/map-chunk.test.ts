@@ -549,7 +549,7 @@ describe('mapAgentChunkToEvent', () => {
 					requestId: 'request-1',
 					inputType: 'continue',
 					message: 'Continue after reviewing results',
-					webSearch: { query: 'n8n agents deferred tools' },
+					webSearch: { query: 'MNI agents deferred tools' },
 				},
 			}),
 		).toEqual({
@@ -564,7 +564,7 @@ describe('mapAgentChunkToEvent', () => {
 				severity: 'warning',
 				message: 'Continue after reviewing results',
 				inputType: 'continue',
-				webSearch: { query: 'n8n agents deferred tools' },
+				webSearch: { query: 'MNI agents deferred tools' },
 			},
 		});
 	});
@@ -782,12 +782,12 @@ describe('mapAgentChunkToEvent', () => {
 	});
 
 	it('surfaces the gateway error message from an ai-sdk error wrapped in error.cause', () => {
-		// The n8n Connect gateway returns an actionable message; the ai-sdk APICallError
+		// The MNI Connect gateway returns an actionable message; the ai-sdk APICallError
 		// reaches the stream wrapped, so the details live on error.cause.
 		const responseBody = JSON.stringify({
 			error: {
 				message:
-					"n8n Connect doesn't currently support this operation. Switch to using your own credential to continue.",
+					"MNI Connect doesn't currently support this operation. Switch to using your own credential to continue.",
 				type: 'ai_gateway_request_error',
 			},
 		});
@@ -800,7 +800,7 @@ describe('mapAgentChunkToEvent', () => {
 			agentId,
 			payload: {
 				content:
-					"n8n Connect doesn't currently support this operation. Switch to using your own credential to continue.",
+					"MNI Connect doesn't currently support this operation. Switch to using your own credential to continue.",
 				technicalDetails: responseBody,
 				// Unwrapped from the same cause as the body — a wrapped error must not lose it.
 				statusCode: 400,

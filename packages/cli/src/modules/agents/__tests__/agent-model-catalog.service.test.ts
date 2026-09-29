@@ -107,7 +107,7 @@ describe('AgentModelCatalogService', () => {
 		expect(result.defaultModelId).toBe('claude-sonnet-4-6');
 	});
 
-	it('verifies against the gateway allowlist for the n8n Connect managed tag', async () => {
+	it('verifies against the gateway allowlist for the MNI Connect managed tag', async () => {
 		const { service, lookupService } = makeService();
 		// Gateway serves only Sonnet — the retired/unsupported Opus must be pruned.
 		lookupService.lookup.mockResolvedValue({

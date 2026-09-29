@@ -14,7 +14,7 @@ export interface ServiceStackOptions {
 }
 
 /**
- * Creates a stack with only services (no n8n containers).
+ * Creates a stack with only services (no MNI containers).
  * Useful for integration tests that need databases/services but not full n8n.
  *
  * @example
@@ -66,7 +66,7 @@ export function collectExternalEnv(
 /**
  * Path to the .env file that `pnpm dev` / `pnpm start` reads. `pnpm start`
  * runs `os-normalize.mjs` which `cd`s into `packages/cli/bin` before launching
- * n8n, and dotenv loads from cwd.
+ * MNI, and dotenv loads from cwd.
  */
 export function devEnvFilePath(): string {
 	return resolve(__dirname, '../../..', 'packages/cli/bin/.env');

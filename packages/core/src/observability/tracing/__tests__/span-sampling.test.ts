@@ -89,7 +89,7 @@ describe('buildBeforeSendTransaction', () => {
 		expect(filterSpans([errored])).toEqual([errored]);
 	});
 
-	it('keeps http.server, custom n8n, and op-less spans', () => {
+	it('keeps http.server, custom MNI, and op-less spans', () => {
 		const kept = [
 			span({ op: 'http.server', durationMs: 1, status: 'ok' }),
 			span({ op: 'trigger.poll', durationMs: 1 }),

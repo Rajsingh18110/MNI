@@ -77,7 +77,7 @@ export async function apiRequestAllItems(
 }
 
 /**
- * Get a cursor-based paginator to use with n8n 'getAll' type endpoints.
+ * Get a cursor-based paginator to use with MNI 'getAll' type endpoints.
  *
  * It will look up a 'nextCursor' in the response and if the node has
  * 'returnAll' set to true, will consecutively include it as the 'cursor' query

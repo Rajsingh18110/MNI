@@ -14,7 +14,7 @@ function typeLocator() {
 	};
 }
 
-const MANIFEST = '{\n    "display_information": {\n        "name": "n8n"\n    }\n}';
+const MANIFEST = '{\n    "display_information": {\n        "name": "MNI"\n    }\n}';
 
 describe('PlaywrightAdapter.type', () => {
 	describe('paste mode', () => {

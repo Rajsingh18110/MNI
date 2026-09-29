@@ -45,7 +45,7 @@ export type AiConnectionTypesAreExhaustive = AssertNever<
 >;
 
 /**
- * Metadata about how a node is reachable via the AI Gateway (n8n Connect).
+ * Metadata about how a node is reachable via the AI Gateway (MNI Connect).
  * Attached to node results only when the instance is licensed for the gateway
  * AND the node is listed in the gateway config. Absence means either
  * "not licensed" or "not supported"; consumers treat both the same.
@@ -154,6 +154,6 @@ export interface NodeSearchResult {
 	builderHintMessage?: string;
 	/** Subnode requirements extracted from builderHint.inputs */
 	subnodeRequirements?: SubnodeRequirement[];
-	/** Present when the node is reachable via n8n Connect on this instance. */
+	/** Present when the node is reachable via MNI Connect on this instance. */
 	aiGateway?: AiGatewayNodeMeta;
 }

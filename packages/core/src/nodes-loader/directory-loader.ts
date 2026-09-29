@@ -54,7 +54,7 @@ type Codex = {
 export type Types = { nodes: INodeTypeDescription[]; credentials: ICredentialType[] };
 
 /**
- * Base class for loading n8n nodes and credentials from a directory.
+ * Base class for loading MNI nodes and credentials from a directory.
  * Handles the common functionality for resolving paths, loading classes, and managing node and credential types.
  */
 export abstract class DirectoryLoader implements NodeLoader {

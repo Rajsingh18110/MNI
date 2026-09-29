@@ -17,7 +17,7 @@ const restrictedGlobals = [
 	'__filename',
 ];
 
-// Nudge toward the n8n-workflow alternatives that work under n8n Cloud's restrictions
+// Nudge toward the n8n-workflow alternatives that work under MNI cloud's restrictions
 const restrictedGlobalHints: Record<string, string> = {
 	setTimeout: "Use the 'sleep' helper from 'n8n-workflow' instead.",
 	clearTimeout: "Use 'sleepWithAbort' from 'n8n-workflow' with an AbortSignal instead.",

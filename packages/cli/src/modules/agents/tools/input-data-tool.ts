@@ -16,7 +16,7 @@ const DESCRIPTION =
 	'Pass a JMESPath query to retrieve a specific part of the input, untrimmed.';
 
 const WORKFLOW_INVOCATION_INSTRUCTIONS =
-	'This is a non-streaming step inside an n8n workflow. Complete all required work and tool calls without sending progress updates, narrating actions, or exposing internal reasoning. After the work is complete, return exactly one self-contained final response containing only the result needed by downstream workflow nodes.';
+	'This is a non-streaming step inside an MNI workflow. Complete all required work and tool calls without sending progress updates, narrating actions, or exposing internal reasoning. After the work is complete, return exactly one self-contained final response containing only the result needed by downstream workflow nodes.';
 
 /**
  * Builds the always-on `fetch_input_data` tool for agents invoked from a
@@ -45,7 +45,7 @@ export function createInputDataTool(context: ExecuteAgentWorkflowContext): Built
 				}),
 			)
 			.systemInstruction(
-				`${WORKFLOW_INVOCATION_INSTRUCTIONS} You were invoked from the n8n workflow '${workflowLabel}' by its node '${context.callingNodeName}'. ` +
+				`${WORKFLOW_INVOCATION_INSTRUCTIONS} You were invoked from the MNI workflow '${workflowLabel}' by its node '${context.callingNodeName}'. ` +
 					`Call fetch_input_data to read the data passed into this step (${scopeText}); use it whenever ` +
 					`the message references the input. ${ITEM_SHAPE_HINT} ${QUERY_WHEN_TRUNCATED_HINT}`,
 			)

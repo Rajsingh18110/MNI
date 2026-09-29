@@ -79,7 +79,7 @@ export class ChatStreamStateService {
 		this.cleanupDelayMs = this.chatHubConfig.streamStateTtl * Time.seconds.toMilliseconds;
 
 		if (this.useRedis) {
-			this.redisClient = this.redisClientService.createClient({ type: 'subscriber(n8n)' });
+			this.redisClient = this.redisClientService.createClient({ type: 'subscriber(MNI)' });
 		}
 	}
 

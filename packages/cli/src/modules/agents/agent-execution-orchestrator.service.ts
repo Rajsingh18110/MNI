@@ -101,7 +101,7 @@ interface ChatExecutionCallbacks {
 
 export interface ExecuteForChatConfig extends ChatExecutionInput, ChatExecutionCallbacks {
 	/**
-	 * The calling n8n user — used to gate node/workflow tools by their access,
+	 * The calling MNI user — used to gate node/workflow tools by their access,
 	 * and for RBAC / credential resolution and telemetry attribution. Always
 	 * present: the in-app test chat only runs behind an authenticated session
 	 * (`AgentChatController.chat` always has `req.user`).
@@ -129,8 +129,8 @@ export interface ExecuteForChatPublishedConfig extends ChatExecutionInput {
 	integrationType?: string;
 	sandboxPrincipalHash: AgentSandboxPrincipalHash;
 	// No `user` field here: a published chat integration (Slack, Telegram, …)
-	// run is triggered by an inbound platform event, not an interactive n8n
-	// session — there is no n8n `User` to attach. The admin who published the
+	// run is triggered by an inbound platform event, not an interactive MNI
+	// session — there is no MNI `User` to attach. The admin who published the
 	// agent is the one who approved its
 	// tools, and Layer A's node denylist (`EphemeralNodeExecutor`) still
 	// applies regardless.
@@ -157,7 +157,7 @@ export interface ResumeForChatConfig extends ChatExecutionCallbacks {
 	/** Identifies the surface that resumed the execution. */
 	source?: string;
 	/**
-	 * The calling n8n user for in-app preview chat resumes — used to gate
+	 * The calling MNI user for in-app preview chat resumes — used to gate
 	 * node/workflow tools by their access. Absent for published/integration
 	 * resumes, which keep today's project-scoped behavior.
 	 */
@@ -191,7 +191,7 @@ export interface ExecuteForTaskPublishedConfig extends AgentExecutionInput {
 
 export interface ExecuteForTaskNowConfig extends AgentExecutionInput {
 	/**
-	 * The calling n8n user — used to gate node/workflow tools by their
+	 * The calling MNI user — used to gate node/workflow tools by their
 	 * access, and for RBAC / credential resolution and recorded on the
 	 * session. Always present: manual "Run now" is triggered by an authenticated
 	 * `AgentTasksController.runTaskNow` request, threaded down via
@@ -433,7 +433,7 @@ export class AgentExecutionOrchestratorService {
 			resume.source === N8N_CHAT_PRODUCTION_SOURCE &&
 			!(await this.agentRepository.isN8nChatPublished(resume.agentId, resume.projectId))
 		) {
-			throw new UserError('This agent is not available in n8n Chat');
+			throw new UserError('This agent is not available in MNI Chat');
 		}
 		const checkpoint = await this.loadResumeCheckpoint(resume);
 		yield* this.withRuntimeLease(
@@ -482,7 +482,7 @@ export class AgentExecutionOrchestratorService {
 		} = config;
 		await this.externalHooks.run('agent.preExecute', [agentId]);
 
-		// Published integration runtimes have no n8n user but are isolated by
+		// Published integration runtimes have no MNI user but are isolated by
 		// their external caller's hashed workspace principal.
 		yield* this.withRuntimeLease(
 			async () =>
@@ -570,7 +570,7 @@ export class AgentExecutionOrchestratorService {
 			sessionMode = 'new',
 		} = config;
 		if (!(await this.agentRepository.isN8nChatPublished(agentId, projectId))) {
-			throw new UserError('This agent is not available in n8n Chat');
+			throw new UserError('This agent is not available in MNI Chat');
 		}
 		if (
 			memory.resourceId !== productionChatMemoryResourceId(user.id) ||
@@ -653,7 +653,7 @@ export class AgentExecutionOrchestratorService {
 		const { agentId, projectId, message, memory, taskId, taskVersionId } = config;
 		await this.externalHooks.run('agent.preExecute', [agentId]);
 
-		// Cron-fired runs have no n8n user and reuse the scheduled task's scope.
+		// Cron-fired runs have no MNI user and reuse the scheduled task's scope.
 		const sandboxPrincipalHash = hashAgentSandboxPrincipal({ type: 'scheduled-task', taskId });
 		yield* this.withRuntimeLease(
 			async () =>

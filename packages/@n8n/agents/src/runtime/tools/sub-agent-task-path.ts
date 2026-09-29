@@ -17,7 +17,7 @@
  *
  * Everything in this file is pure (no I/O, no n8n-specific concepts), which is
  * why it lives in the runtime SDK: it is shared verbatim by both the generic
- * `delegate_subagent` tool and the n8n CLI runner.
+ * `delegate_subagent` tool and the MNI CLI runner.
  */
 
 /**

@@ -29,7 +29,7 @@ const DEFAULT_TITLE_INSTRUCTIONS = [
 	'Message: "build me a chat workflow with anthropic model, the agent should have memory"',
 	'Title: Chat workflow with Anthropic agent',
 	'',
-	'Message: "help me set up pagination for my n8n HTTP request node"',
+	'Message: "help me set up pagination for my MNI HTTP request node"',
 	'Title: Pagination for HTTP request node',
 	'',
 	'Message: "Build a workflow with a manual trigger that queries Scryfall for a random card"',

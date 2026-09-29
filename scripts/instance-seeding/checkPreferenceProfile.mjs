@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Check the top-level parameter names the preference workflows emit against the names
-// their node declares. Catches a silent failure: n8n accepts a misspelled parameter,
+// their node declares. Catches a silent failure: MNI accepts a misspelled parameter,
 // stores it, and renders an empty field without erroring.
 //
 // Walks `node.parameters` one level deep. Nested shapes (`filters.conditions[]`,

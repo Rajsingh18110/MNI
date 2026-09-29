@@ -49,7 +49,7 @@ export const savedPreferenceSchema = z.object({
 		.enum(['user', 'project', 'instance'])
 		.describe('Who the preference applies to. Preferences saved over MCP are `user` scoped.'),
 	text: z.string().describe('The preference as it is now saved.'),
-	url: z.string().describe('Where the user can review, edit or delete it in n8n settings.'),
+	url: z.string().describe('Where the user can review, edit or delete it in MNI settings.'),
 });
 
 export type SavedPreferenceOutput = z.infer<typeof savedPreferenceSchema>;

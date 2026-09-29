@@ -8,7 +8,7 @@ test.describe(
 	() => {
 		const FOLDER_CREATED_NOTIFICATION = 'Folder created';
 		test('should create folder from the workflows page using addResource dropdown', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromNewProject();
 			const folderName = await n8n.workflows.addFolder();
@@ -16,7 +16,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getFolders()).toHaveCount(1);
 		});
 
-		test('should create folder from inside a folder', async ({ n8n }) => {
+		test('should create folder from inside a folder', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const folder = await n8n.api.projects.createFolder(projectId);
 			const folderName = folder.name;
@@ -25,7 +25,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getFolder(childFolderName)).toBeVisible();
 		});
 
-		test('should create a folder from breadcrumbs', async ({ n8n }) => {
+		test('should create a folder from breadcrumbs', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const folder = await n8n.api.projects.createFolder(projectId);
 			const folderName = folder.name;
@@ -40,7 +40,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getFolder(childFolderName)).toBeVisible();
 		});
 
-		test('should create a folder from the card dropdown', async ({ n8n }) => {
+		test('should create a folder from the card dropdown', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const folder = await n8n.api.projects.createFolder(projectId);
 			const folderName = folder.name;
@@ -53,7 +53,7 @@ test.describe(
 		});
 
 		test('should navigate from nested folder back to project root via breadcrumbs', async ({
-			n8n,
+			MNI,
 		}) => {
 			const projectId = await n8n.start.fromNewProject();
 			const parentFolder = await n8n.api.projects.createFolder(projectId);
@@ -85,7 +85,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getFolder(parentFolder.name)).toBeVisible();
 		});
 
-		test('should find nested folders through search from project root', async ({ n8n }) => {
+		test('should find nested folders through search from project root', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const rootFolder = await n8n.api.projects.createFolder(projectId, 'Root Test Folder');
 			const childFolder = await n8n.api.projects.createFolder(
@@ -119,7 +119,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getFolder(grandChildFolder.name)).toBeHidden(); // Grandchild is inside child
 		});
 
-		test('should create workflow in a folder', async ({ n8n }) => {
+		test('should create workflow in a folder', async ({ MNI }) => {
 			const { id: projectId } = await n8n.api.projects.createProject();
 			const folder = await n8n.api.projects.createFolder(projectId);
 			await n8n.navigate.toFolder(folder.id, projectId);
@@ -132,7 +132,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getWorkflows()).toBeVisible();
 		});
 
-		test('should not create folders with invalid names in the UI', async ({ n8n }) => {
+		test('should not create folders with invalid names in the UI', async ({ MNI }) => {
 			await n8n.start.fromNewProject();
 			const invalidNames = ['folder[test]', 'folder/test'];
 			const errorMessage = 'Folder name cannot contain the following characters';
@@ -156,7 +156,7 @@ test.describe(
 			await expect(n8n.modal.getText(dotsErrorMessage)).toBeVisible();
 		});
 
-		test('should navigate to a folder using card actions', async ({ n8n }) => {
+		test('should navigate to a folder using card actions', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const folder = await n8n.api.projects.createFolder(projectId);
 			const folderName = folder.name;
@@ -166,7 +166,7 @@ test.describe(
 			await expect(n8n.breadcrumbs.getCurrentBreadcrumb()).toContainText(folderName);
 		});
 
-		test('should navigate to a folder using notification', async ({ n8n }) => {
+		test('should navigate to a folder using notification', async ({ MNI }) => {
 			await n8n.start.fromNewProject();
 			const folderName = await n8n.workflows.addFolder();
 			await n8n.notifications

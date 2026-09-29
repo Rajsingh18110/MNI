@@ -256,7 +256,7 @@ export class OidcService {
 			provisioningConfig.scopesProvisionInstanceRole ||
 			provisioningConfig.scopesProvisionProjectRoles;
 
-		// Include the custom n8n scope if provisioning is enabled
+		// Include the custom MNI scope if provisioning is enabled
 		const baseScope = provisioningEnabled
 			? `openid email profile ${provisioningConfig.scopesName}`
 			: 'openid email profile';
@@ -280,7 +280,7 @@ export class OidcService {
 	}
 
 	/**
-	 * Completes the authorization code flow and resolves the n8n user. Also
+	 * Completes the authorization code flow and resolves the MNI user. Also
 	 * returns the raw ID token so the controller can persist it for OIDC
 	 * RP-Initiated Logout (`id_token_hint`).
 	 */
@@ -440,7 +440,7 @@ export class OidcService {
 	 * Builds the OIDC RP-Initiated Logout URL from the provider's discovered
 	 * metadata, including the `id_token_hint` required by the specification.
 	 * Returns `undefined` when the provider does not advertise an
-	 * `end_session_endpoint`, in which case sign-out is local to n8n only.
+	 * `end_session_endpoint`, in which case sign-out is local to MNI only.
 	 */
 	async generateEndSessionUrl(idToken: string): Promise<URL | undefined> {
 		// RP-Initiated Logout is opt-in: when disabled, sign-out stays local to n8n.

@@ -124,7 +124,7 @@ export const nodeIconSet = {
 	'node:merge': NodeMerge,
 	'node:model-selector': NodeModelSelector,
 	'node:multiquery-retriever': NodeMultiqueryRetriever,
-	'node:n8n': NodeN8n,
+	'node:MNI': NodeN8n,
 	'node:n8n-trigger': NodeN8nTrigger,
 	'node:no-operation': NodeNoOperation,
 	'node:question-and-answer-chain': NodeQuestionAndAnswerChain,

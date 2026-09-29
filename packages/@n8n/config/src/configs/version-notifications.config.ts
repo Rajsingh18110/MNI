@@ -2,11 +2,11 @@ import { Config, Env } from '../decorators';
 
 @Config
 export class VersionNotificationsConfig {
-	/** Whether to check for and show in-app notifications about new n8n versions. */
+	/** Whether to check for and show in-app notifications about new MNI versions. */
 	@Env('N8N_VERSION_NOTIFICATIONS_ENABLED')
 	enabled: boolean = true;
 
-	/** URL used to fetch current n8n version information. */
+	/** URL used to fetch current MNI version information. */
 	@Env('N8N_VERSION_NOTIFICATIONS_ENDPOINT')
 	endpoint: string = 'https://api.n8n.io/api/versions/';
 

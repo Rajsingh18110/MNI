@@ -183,7 +183,7 @@ export class AgentPublishService {
 	 * current draft is not enough when a specific historical `versionId` is
 	 * being republished — that snapshot's schema/tool/skill bodies must be
 	 * checked instead. Credential-backed integrations use the current draft.
-	 * The n8n Chat entry is saved in the published schema.
+	 * The MNI Chat entry is saved in the published schema.
 	 */
 	private async assertPublishable(
 		agent: Agent,
@@ -459,7 +459,7 @@ export class AgentPublishService {
 
 	/**
 	 * A revert restores the schema but leaves draft integrations unchanged.
-	 * The published n8n Chat entry is removed from the restored draft schema.
+	 * The published MNI Chat entry is removed from the restored draft schema.
 	 * Sidecar body flags cover tool/skill/task bodies restored outside the schema.
 	 */
 	private async recordRevert(

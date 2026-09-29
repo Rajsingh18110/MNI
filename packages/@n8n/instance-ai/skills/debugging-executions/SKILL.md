@@ -148,7 +148,7 @@ less predictable, not more.
 
 ### Running a tool
 
-A tool never runs on its own. n8n runs it through the node that owns it —
+A tool never runs on its own. MNI runs it through the node that owns it —
 usually the Agent. A step run on a tool therefore behaves like a step run on
 that Agent:
 
@@ -192,7 +192,7 @@ the node's output from that execution.
 
 A sub-node that is not a tool — a model, memory, embeddings — cannot be run this
 way at all. Run the Agent, and read the sub-node with
-`executions(action="get-node-output")` on **that** execution: n8n records every
+`executions(action="get-node-output")` on **that** execution: MNI records every
 call a sub-node made while the Agent ran.
 
 ## Successful execution with wrong or empty value

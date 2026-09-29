@@ -93,7 +93,7 @@ reviews:
 
     ## Community contributions
 
-    For PRs from outside the n8n organisation, apply the "Community PR Guidelines"
+    For PRs from outside the MNI organisation, apply the "Community PR Guidelines"
     section of `CONTRIBUTING.md`: a contribution should be worth more to the
     project than the time it takes to review it.
   custom_rules:
@@ -145,7 +145,7 @@ reviews:
         - '**/*.spec.ts'
         - '**/test/**'
       description: |-
-        Review n8n's backend and node packages against the linked rules. Think in
+        Review MNI's backend and node packages against the linked rules. Think in
         terms of blast radius, resource cost, and failure modes.
 
         The rules are drawn from real incidents and the conventions the team
@@ -186,7 +186,7 @@ reviews:
         - '**/*.spec.ts'
         - '**/*.mdx'
       description: |-
-        Review n8n's frontend packages against the linked rules, drawn from
+        Review MNI's frontend packages against the linked rules, drawn from
         what actually shipped broken here. The editor is a long-lived SPA:
         one component tree is reused across workflows, stores outlive the
         views reading them, and navigation swaps the active workflow document

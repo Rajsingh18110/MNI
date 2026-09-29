@@ -28,6 +28,6 @@
 	"outcomeExpectations": [
 		"A Schedule Trigger runs the workflow on a recurring morning cadence.",
 		"A scraping / web-search node covered by Gateway credits fetches the competitor pricing page and the web results — its credential entry has `id: null` and `__aiGatewayManaged: true` (the managed option), not a service that requires the user's own API key.",
-		"The fetched results are written to an n8n Data Table."
+		"The fetched results are written to an MNI Data Table."
 	]
 }

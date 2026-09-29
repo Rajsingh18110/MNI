@@ -1,6 +1,6 @@
 {
 	"id": "data-table-skill-loading",
-	"userMessage": "Use the data-table-manager skill to list my n8n Data Tables and summarize what tables are available. This is standalone data-table work; do not build or modify a workflow.",
+	"userMessage": "Use the data-table-manager skill to list my MNI Data Tables and summarize what tables are available. This is standalone data-table work; do not build or modify a workflow.",
 	"expectedToolInvocations": {
 		"allOfToolCalls": [
 			{

@@ -46,7 +46,7 @@ test.fixme(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.page.route('**/rest/login', async (route) => {
 				const response = await route.fetch();
 				const originalJson = await response.json();
@@ -74,7 +74,7 @@ test.fixme(
 		});
 
 		test('shows nps survey to recently activated user and can submit feedback', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(getNpsTestRequirements);
@@ -88,7 +88,7 @@ test.fixme(
 			expect(await n8n.npsSurvey.getRatingButtonCount()).toBe(11);
 
 			await n8n.npsSurvey.clickRating(0);
-			await n8n.npsSurvey.fillFeedback('n8n is the best');
+			await n8n.npsSurvey.fillFeedback('MNI is the best');
 			await n8n.npsSurvey.clickSubmitButton();
 
 			await n8n.canvas.visitWithTimestamp(NOW + ONE_DAY);
@@ -107,7 +107,7 @@ test.fixme(
 		});
 
 		test('allows user to ignore survey 3 times before stopping to show until 6 months later', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(getNpsTestRequirements);

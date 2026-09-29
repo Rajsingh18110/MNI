@@ -147,7 +147,7 @@ export const createGetInstanceActivityTool = (
 	config: {
 		description:
 			'Read the instance activity log — what has recently been created, changed, published, ' +
-			'or deleted in this n8n instance, and who did it. Use it to pick up work already in ' +
+			'or deleted in this MNI instance, and who did it. Use it to pick up work already in ' +
 			'progress: when the user is vague ("fix it", "carry on", "what should I look at"), the ' +
 			'answer is usually the most recent thing here. Returns log entries, not live records — ' +
 			'each entry carries the id to pass to search_workflows, get_workflow_details or ' +

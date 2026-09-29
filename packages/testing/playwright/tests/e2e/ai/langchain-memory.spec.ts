@@ -10,7 +10,7 @@ import type { n8nPage } from '../../../pages/n8nPage';
 
 // Helper functions for common operations
 async function addOpenAILanguageModelWithCredentials(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	parentNode: string,
 	options: { exactMatch?: boolean; closeNDV?: boolean } = { exactMatch: true, closeNDV: false },
 ) {
@@ -27,18 +27,18 @@ async function addOpenAILanguageModelWithCredentials(
 	await n8n.ndv.clickBackToCanvasButton();
 }
 
-async function waitForWorkflowSuccess(n8n: n8nPage, timeout = 3000) {
+async function waitForWorkflowSuccess(MNI: n8nPage, timeout = 3000) {
 	await n8n.notifications.waitForNotificationAndClose('Workflow executed successfully', {
 		timeout,
 	});
 }
 
-async function executeChatAndWaitForResponse(n8n: n8nPage, message: string) {
+async function executeChatAndWaitForResponse(MNI: n8nPage, message: string) {
 	await n8n.canvas.logsPanel.sendManualChatMessage(message);
-	await waitForWorkflowSuccess(n8n);
+	await waitForWorkflowSuccess(MNI);
 }
 
-async function verifyChatMessages(n8n: n8nPage, expectedCount: number, inputMessage?: string) {
+async function verifyChatMessages(MNI: n8nPage, expectedCount: number, inputMessage?: string) {
 	const messages = n8n.canvas.getManualChatMessages();
 	await expect(messages).toHaveCount(expectedCount);
 	if (inputMessage) {
@@ -55,7 +55,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 			await services.proxy.loadExpectations('langchain');
 			await n8n.canvas.openNewWorkflow();
@@ -66,7 +66,7 @@ test.describe(
 			test.fixme();
 
 			// Helper function to set up the agent workflow with Postgres error configuration
-			async function setupAgentWorkflowWithPostgresError(n8n: n8nPage) {
+			async function setupAgentWorkflowWithPostgresError(MNI: n8nPage) {
 				await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
 				// Add Calculator Tool (required for OpenAI model)
@@ -94,13 +94,13 @@ test.describe(
 				await n8n.ndv.clickBackToCanvasButton();
 
 				// Add and configure OpenAI Language Model
-				await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+				await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 
 				await n8n.canvas.clickZoomToFitButton();
 			}
 
 			// Helper function to assert logs tab is active
-			async function assertLogsTabIsActive(n8n: n8nPage) {
+			async function assertLogsTabIsActive(MNI: n8nPage) {
 				await expect(n8n.ndv.getOutputDataContainer()).toBeVisible();
 				await expect(n8n.ndv.getAiOutputModeToggle()).toBeVisible();
 
@@ -110,22 +110,22 @@ test.describe(
 			}
 
 			// Helper function to assert error message is visible
-			async function assertErrorMessageVisible(n8n: n8nPage) {
+			async function assertErrorMessageVisible(MNI: n8nPage) {
 				await expect(n8n.ndv.outputPanel.getErrorMessage()).toBeVisible();
 				await expect(n8n.ndv.outputPanel.getErrorMessage()).toContainText('Error in sub-node');
 			}
 
-			test('should open logs tab by default when there was an error', async ({ n8n }) => {
-				await setupAgentWorkflowWithPostgresError(n8n);
+			test('should open logs tab by default when there was an error', async ({ MNI }) => {
+				await setupAgentWorkflowWithPostgresError(MNI);
 
 				const inputMessage = 'Test the code tool';
 
 				// Execute workflow with chat trigger
 				await n8n.canvas.clickManualChatButton();
-				await executeChatAndWaitForResponse(n8n, inputMessage);
+				await executeChatAndWaitForResponse(MNI, inputMessage);
 
 				// Check that messages and logs are displayed
-				const messages = await verifyChatMessages(n8n, 2, inputMessage);
+				const messages = await verifyChatMessages(MNI, 2, inputMessage);
 				await expect(messages.last()).toContainText(
 					'[ERROR: The service refused the connection - perhaps it is offline]',
 				);
@@ -143,11 +143,11 @@ test.describe(
 				await n8n.canvas.openNode(AGENT_NODE_NAME);
 
 				// Assert that logs tab is active and error is displayed
-				await assertLogsTabIsActive(n8n);
-				await assertErrorMessageVisible(n8n);
+				await assertLogsTabIsActive(MNI);
+				await assertErrorMessageVisible(MNI);
 			});
 
-			test('should switch to logs tab on error, when NDV is already opened', async ({ n8n }) => {
+			test('should switch to logs tab on error, when NDV is already opened', async ({ MNI }) => {
 				// Remove the auto-added chat trigger
 				await n8n.canvas.addNode(MANUAL_CHAT_TRIGGER_NODE_NAME, { closeNDV: false });
 
@@ -157,18 +157,18 @@ test.describe(
 				await n8n.ndv.close();
 
 				// Set up the same workflow components but with manual trigger
-				await setupAgentWorkflowWithPostgresError(n8n);
+				await setupAgentWorkflowWithPostgresError(MNI);
 
 				// Open the AI Agent node
 				await n8n.canvas.openNode(AGENT_NODE_NAME);
 				await n8n.ndv.selectOptionInParameterDropdown('promptType', 'Define below');
 				await n8n.ndv.getParameterTextarea('text').fill('Some text');
 				await n8n.ndv.execute();
-				await waitForWorkflowSuccess(n8n);
+				await waitForWorkflowSuccess(MNI);
 
 				// Assert that logs tab is active and error is displayed
-				await assertLogsTabIsActive(n8n);
-				await assertErrorMessageVisible(n8n);
+				await assertLogsTabIsActive(MNI);
+				await assertErrorMessageVisible(MNI);
 			});
 		});
 	},

@@ -133,7 +133,7 @@ export async function cleanupBuild(
 
 	// A workflow that is already gone is the state this wants, not a failure: the
 	// end-of-run retry re-runs this on the same build, so every id a first pass
-	// took comes back gone. n8n reports that as 403 to the eval user, who holds
+	// took comes back gone. MNI reports that as 403 to the eval user, who holds
 	// `workflow:delete` globally, and as 404 to a member. `deleteWorkflow`
 	// swallows both already. The check is repeated here because any client that
 	// does not would deadlock the folders below, which wait on this flag. Only a

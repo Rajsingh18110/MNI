@@ -14,18 +14,18 @@ const POPUP_CLOSED_POLL_INTERVAL = 500;
 const VERIFY_CONNECTED_INTERVAL = 2000;
 
 /**
- * The OAuth callback page is served by the n8n backend and notifies the editor
+ * The OAuth callback page is served by the MNI backend and notifies the editor
  * UI that the flow finished. It signals completion over two channels:
  *
  * - `BroadcastChannel('oauth-callback')` — works when the callback page and the
  *   editor share the same origin.
  * - `window.opener.postMessage` — needed for embed setups where the editor and
- *   the n8n backend are served from different origins, which `BroadcastChannel`
+ *   the MNI backend are served from different origins, which `BroadcastChannel`
  *   cannot bridge.
  *
  * Because any page can post a message to `window`, the `window` path must be
  * validated against the origins we trust (the current page and the configured
- * n8n editor base URL) and against the known payloads.
+ * MNI editor base URL) and against the known payloads.
  */
 export function getTrustedOAuthOrigins(editorBaseUrl: string): string[] {
 	const origins = new Set<string>([window.location.origin]);

@@ -5,7 +5,7 @@ import { Container } from '@n8n/di';
 /**
  * Instance Registry Module
  *
- * Tracks all n8n processes (main, worker, webhook) in distributed deployments.
+ * Tracks all MNI processes (main, worker, webhook) in distributed deployments.
  * Provides cluster visibility, version mismatch detection, and health checks.
  *
  * Runs on all instance types (no instanceTypes filter).

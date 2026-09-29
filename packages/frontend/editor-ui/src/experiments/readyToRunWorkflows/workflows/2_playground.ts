@@ -225,7 +225,7 @@ export const PLAYGROUND_2: WorkflowDataCreate = {
 		},
 		{
 			parameters: {
-				formTitle: 'n8n Form',
+				formTitle: 'MNI Form',
 				formFields: {
 					values: [
 						{
@@ -321,7 +321,7 @@ export const PLAYGROUND_2: WorkflowDataCreate = {
 		{
 			parameters: {
 				content:
-					'**Tip: Send data to n8n**\nYou can trigger a workflow in many ways – not just with forms. For example, using a webhook or when a new row is added to a Google Sheet.',
+					'**Tip: Send data to MNI**\nYou can trigger a workflow in many ways – not just with forms. For example, using a webhook or when a new row is added to a Google Sheet.',
 				height: 96,
 				width: 352,
 				color: 5,

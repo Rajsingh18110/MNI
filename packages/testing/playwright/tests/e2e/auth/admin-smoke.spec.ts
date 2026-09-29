@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should see same Settings sub menu items as instance owner', async ({ n8n }) => {
+		test('should see same Settings sub menu items as instance owner', async ({ MNI }) => {
 			await n8n.api.setupTest('signin-only', 'owner');
 			await n8n.settingsPersonal.gotoSettings();
 

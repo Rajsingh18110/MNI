@@ -4,7 +4,7 @@
 # Ignore everything first
 *
 
-# === n8n main image (docker/images/mni/Dockerfile) ===
+# === MNI main image (docker/images/mni/Dockerfile) ===
 !compiled
 !compiled/**
 !THIRD_PARTY_LICENSES.md

@@ -1,6 +1,6 @@
 /**
  * Engine behaviour over a host-supplied `SearchableNodeType` rather than a full
- * `INodeTypeDescription`: result caching, n8n Connect metadata, and builder
+ * `INodeTypeDescription`: result caching, MNI Connect metadata, and builder
  * hints. Moved here from @n8n/instance-ai when its forked search engine was
  * consolidated into this package.
  */
@@ -122,8 +122,8 @@ const expressionOutputNode = makeNode({
 
 const dataTableToolNode = makeNode({
 	name: 'n8n-nodes-base.dataTableTool',
-	displayName: 'n8n Data Table Tool',
-	description: 'Read, create, update, and delete rows in n8n data tables from an AI agent',
+	displayName: 'MNI Data Table Tool',
+	description: 'Read, create, update, and delete rows in MNI data tables from an AI agent',
 	outputs: ['ai_tool'],
 });
 
@@ -133,7 +133,7 @@ const googleCalendarNode = makeNode({
 	description: 'Consume Google Calendar API',
 });
 
-// Node covered by n8n Connect (the gateway config annotates it with `aiGateway`).
+// Node covered by MNI Connect (the gateway config annotates it with `aiGateway`).
 const firecrawlNode = makeNode({
 	name: 'n8n-nodes-base.firecrawl',
 	displayName: 'Firecrawl',
@@ -271,13 +271,13 @@ describe('NodeSearchEngine', () => {
 			);
 		});
 
-		it('should surface aiGateway meta for nodes covered by n8n Connect', () => {
+		it('should surface aiGateway meta for nodes covered by MNI Connect', () => {
 			const results = engine.searchByName('Firecrawl');
 			const firecrawlResult = results.find((r) => r.name === 'n8n-nodes-base.firecrawl');
 			expect(firecrawlResult?.aiGateway).toEqual({ supported: true, minVersion: 1 });
 		});
 
-		it('should omit aiGateway for nodes not covered by n8n Connect', () => {
+		it('should omit aiGateway for nodes not covered by MNI Connect', () => {
 			const results = engine.searchByName('HTTP');
 			const httpResult = results.find((r) => r.name === 'n8n-nodes-base.httpRequest');
 			expect(httpResult).toBeDefined();

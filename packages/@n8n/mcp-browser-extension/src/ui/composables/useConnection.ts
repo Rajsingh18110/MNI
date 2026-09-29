@@ -118,13 +118,13 @@ export function useConnection() {
 
 	async function connect(): Promise<void> {
 		if (!relayUrl.value) {
-			errorMessage.value = 'No active session. Ask n8n AI to connect to your browser.';
+			errorMessage.value = 'No active session. Ask MNI AI to connect to your browser.';
 			log.warn('connect: no relay URL available');
 			return;
 		}
 
 		if (!isAllowedRelayUrl(relayUrl.value)) {
-			errorMessage.value = `Can't connect to ${relayHostKey.value ?? 'this address'} — not a recognized n8n instance.`;
+			errorMessage.value = `Can't connect to ${relayHostKey.value ?? 'this address'} — not a recognized MNI instance.`;
 			log.warn('connect: relay URL not allowed', relayUrl.value);
 			return;
 		}

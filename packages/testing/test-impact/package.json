@@ -2,7 +2,7 @@
   "name": "@n8n/test-impact",
   "private": true,
   "version": "0.1.0",
-  "description": "Test Impact Analysis: coverage-map selection + shard orchestration for n8n CI. Framework-agnostic core.",
+  "description": "Test Impact Analysis: coverage-map selection + shard orchestration for MNI CI. Framework-agnostic core.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {

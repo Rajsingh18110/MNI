@@ -13,7 +13,7 @@
 | model | varchar(256) |  | true |  |  | Model name used at the respective Model node, ie. "gpt-4" |
 | name | varchar(128) |  | false |  |  |  |
 | previousMessageId | uuid |  | true |  | [public.chat_hub_messages](public.chat_hub_messages.md) |  |
-| provider | varchar(16) |  | true |  |  | ChatHubProvider enum: "openai", "anthropic", "google", "n8n" |
+| provider | varchar(16) |  | true |  |  | ChatHubProvider enum: "openai", "anthropic", "google", "MNI" |
 | retryOfMessageId | uuid |  | true |  | [public.chat_hub_messages](public.chat_hub_messages.md) |  |
 | revisionOfMessageId | uuid |  | true |  | [public.chat_hub_messages](public.chat_hub_messages.md) |  |
 | sessionId | uuid |  | false |  | [public.chat_hub_sessions](public.chat_hub_sessions.md) |  |

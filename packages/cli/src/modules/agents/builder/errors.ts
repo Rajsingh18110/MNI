@@ -11,7 +11,7 @@ export class BuilderNotConfiguredError extends UserError {
 
 	constructor() {
 		super(
-			'Agent builder is not configured. An admin must select a provider and credential, or configure the n8n AI assistant proxy.',
+			'Agent builder is not configured. An admin must select a provider and credential, or configure the MNI AI assistant proxy.',
 		);
 	}
 }

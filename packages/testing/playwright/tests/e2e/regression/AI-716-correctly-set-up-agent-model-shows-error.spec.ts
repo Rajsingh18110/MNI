@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test('should not show error when adding a sub-node with credential set-up', async ({ n8n }) => {
+		test('should not show error when adding a sub-node with credential set-up', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 
 			await n8n.canvas.addNode('AI Agent');

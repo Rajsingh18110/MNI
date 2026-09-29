@@ -15,7 +15,7 @@ test.describe(
 	() => {
 		test.describe.configure({ mode: 'serial' });
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			// Enable features required for project workflows and moving resources
 			await n8n.api.enableFeature('sharing');
 			await n8n.api.enableFeature('folders');
@@ -65,7 +65,7 @@ test.describe(
 			await n8n.goHome();
 		});
 
-		test('should move the workflow to expected projects @auth:owner', async ({ n8n }) => {
+		test('should move the workflow to expected projects @auth:owner', async ({ MNI }) => {
 			// Move workflow from Personal to Project 2
 			await n8n.sideBar.clickPersonalMenuItem();
 			await expect(n8n.workflows.cards.getWorkflows()).toHaveCount(1);
@@ -92,7 +92,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getWorkflows()).toHaveCount(2);
 		});
 
-		test('should move the credential to expected projects @auth:owner', async ({ n8n }) => {
+		test('should move the credential to expected projects @auth:owner', async ({ MNI }) => {
 			// Move credential from Project 1 to Project 2
 			await n8n.sideBar.clickProjectMenuItem('Project 1');
 			await n8n.sideBar.clickCredentialsLink();

@@ -9,7 +9,7 @@ describe('Test HTTP Request Node', () => {
 	beforeAll(async () => {
 		// User-Agent: default resolution applies when no override is set
 		nock(uaBaseUrl)
-			.matchHeader('user-agent', 'n8n')
+			.matchHeader('user-agent', 'MNI')
 			.get('/default')
 			.reply(200, { ok: true, seen: 'default' });
 

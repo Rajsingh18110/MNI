@@ -56,7 +56,7 @@ test.describe(
 			test.skip(mainUrls.length < 2, 'requires a multi-main cluster (2+ mains)');
 			// Needs real containers to stop one; skipped against a local instance.
 			// eslint-disable-next-line playwright/no-skipped-test -- container-only guard, not a disabled test
-			test.skip(!n8nContainer, 'container-only: requires stoppable n8n containers');
+			test.skip(!n8nContainer, 'container-only: requires stoppable MNI containers');
 
 			const workflowId = await expectScheduleTriggerFires(api, makeScheduleTriggerWorkflow());
 

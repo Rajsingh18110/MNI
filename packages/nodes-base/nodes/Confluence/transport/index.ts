@@ -16,7 +16,7 @@ import { getAtlassianApiBaseUrl, resolveAtlassianCloudId } from '@utils/atlassia
 export const CONFLUENCE_CREDENTIAL_NAME = 'confluenceCloudOAuth2Api';
 export const SERVICE_ACCOUNT_CREDENTIAL_NAME = 'atlassianServiceAccountApi';
 
-// The gateway answers 403/404 for an expired token, not the 401 n8n's credential-refresh
+// The gateway answers 403/404 for an expired token, not the 401 MNI's credential-refresh
 // helpers look for (ENT-408). 401 stays, since a revoked token still gets one, and
 // `skipRefreshWhileTokenIsFresh` keeps a genuinely missing page from paying for a refresh.
 // The two credentials take different refresh paths, hence the two option names.

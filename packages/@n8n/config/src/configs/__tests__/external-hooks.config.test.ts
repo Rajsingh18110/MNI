@@ -29,9 +29,9 @@ describe('ExternalHooksConfig', () => {
 		expect(
 			getExternalHookFiles({
 				EXTERNAL_HOOK_FILES_SEPARATOR: ';',
-				EXTERNAL_HOOK_FILES: 'C:\\Github\\n8n\\hooks.js;C:\\Other\\hooks.js',
+				EXTERNAL_HOOK_FILES: 'C:\\Github\\MNI\\hooks.js;C:\\Other\\hooks.js',
 			}),
-		).toEqual(['C:\\Github\\n8n\\hooks.js', 'C:\\Other\\hooks.js']);
+		).toEqual(['C:\\Github\\MNI\\hooks.js', 'C:\\Other\\hooks.js']);
 	});
 
 	it('should handle Windows absolute paths with colon when separator is ;', () => {

@@ -525,7 +525,7 @@
 				"color": 4,
 				"width": 540,
 				"height": 1200,
-				"content": "## Was this helpful? Let me know!\n[![clic](https://supastudio.ia2s.app/storage/v1/object/public/assets/n8n/clic_down_lucas.gif)](https://api.ia2s.app/form/templates/academy)\n\nI really hope this tutorial helped you understand APIs better. Your feedback is incredibly valuable and helps me create better resources for the n8n community.\n\n### **Have Feedback, a Question, or a Project Idea?**\n\nI've streamlined the way we connect. It all starts with one simple form that takes less than 10 seconds. After that, you'll chat with my AI assistant who will gather the key details and pass them directly on to me.\n\n#### ➡️ **[Click here to start the conversation](https://api.ia2s.app/form/templates/academy)**\n\nUse this single link for anything you need:\n\n*   **Give Feedback:** Share your thoughts on this template—whether you found a typo, encountered an unexpected error, have a suggestion, or just want to say thanks!\n\n*   **n8n Coaching:** Get personalized, one-on-one guidance to master n8n. We can work together to get you launched with confidence or help you reach an expert level.\n\n*   **n8n Consulting:** Have a complex business challenge or need a custom workflow built from scratch? Let's partner on a powerful automation solution tailored to your specific needs.\n\n---\n\nHappy Automating!\nLucas Peyrin | [n8n Academy](https://n8n.ac)"
+				"content": "## Was this helpful? Let me know!\n[![clic](https://supastudio.ia2s.app/storage/v1/object/public/assets/MNI/clic_down_lucas.gif)](https://api.ia2s.app/form/templates/academy)\n\nI really hope this tutorial helped you understand APIs better. Your feedback is incredibly valuable and helps me create better resources for the MNI community.\n\n### **Have Feedback, a Question, or a Project Idea?**\n\nI've streamlined the way we connect. It all starts with one simple form that takes less than 10 seconds. After that, you'll chat with my AI assistant who will gather the key details and pass them directly on to me.\n\n#### ➡️ **[Click here to start the conversation](https://api.ia2s.app/form/templates/academy)**\n\nUse this single link for anything you need:\n\n*   **Give Feedback:** Share your thoughts on this template—whether you found a typo, encountered an unexpected error, have a suggestion, or just want to say thanks!\n\n*   **MNI Coaching:** Get personalized, one-on-one guidance to master n8n. We can work together to get you launched with confidence or help you reach an expert level.\n\n*   **MNI Consulting:** Have a complex business challenge or need a custom workflow built from scratch? Let's partner on a powerful automation solution tailored to your specific needs.\n\n---\n\nHappy Automating!\nLucas Peyrin | [MNI Academy](https://n8n.ac)"
 			},
 			"typeVersion": 1
 		},
@@ -580,7 +580,7 @@
 				"color": 3,
 				"width": 304,
 				"height": 496,
-				"content": "### ⚠️ **Security Best Practice**\n\nFor this tutorial, we are putting the API key directly in the header. \n\n**In a real project, NEVER do this!**\n\nAlways use n8n's built-in **Credentials** system to store and manage secret keys. You would create a \"Header Auth\" credential and select it in the HTTP Request node's \"Authentication\" parameter. This keeps your secrets safe and out of your workflow JSON."
+				"content": "### ⚠️ **Security Best Practice**\n\nFor this tutorial, we are putting the API key directly in the header. \n\n**In a real project, NEVER do this!**\n\nAlways use MNI's built-in **Credentials** system to store and manage secret keys. You would create a \"Header Auth\" credential and select it in the HTTP Request node's \"Authentication\" parameter. This keeps your secrets safe and out of your workflow JSON."
 			},
 			"typeVersion": 1
 		},
@@ -744,7 +744,7 @@
 				"headers": {
 					"host": "your-n8n-instance.com",
 					"accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-					"user-agent": "n8n",
+					"user-agent": "MNI",
 					"accept-encoding": "gzip, deflate, br",
 					"x-forwarded-for": "192.168.1.1",
 					"x-forwarded-host": "your-n8n-instance.com",
@@ -763,7 +763,7 @@
 				"headers": {
 					"host": "your-n8n-instance.com",
 					"accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-					"user-agent": "n8n",
+					"user-agent": "MNI",
 					"accept-encoding": "gzip, deflate, br",
 					"x-forwarded-for": "192.168.1.1",
 					"x-forwarded-host": "your-n8n-instance.com",
@@ -783,7 +783,7 @@
 				"headers": {
 					"host": "your-n8n-instance.com",
 					"accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-					"user-agent": "n8n",
+					"user-agent": "MNI",
 					"content-type": "application/json",
 					"content-length": "49",
 					"accept-encoding": "gzip, deflate, br",
@@ -803,7 +803,7 @@
 					"host": "your-n8n-instance.com",
 					"accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
 					"x-api-key": "super-secret-key",
-					"user-agent": "n8n",
+					"user-agent": "MNI",
 					"accept-encoding": "gzip, deflate, br",
 					"x-forwarded-for": "192.168.1.1",
 					"x-forwarded-host": "your-n8n-instance.com",
@@ -820,7 +820,7 @@
 				"headers": {
 					"host": "your-n8n-instance.com",
 					"accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-					"user-agent": "n8n",
+					"user-agent": "MNI",
 					"accept-encoding": "gzip, deflate, br",
 					"x-forwarded-for": "192.168.1.1",
 					"x-forwarded-host": "your-n8n-instance.com",

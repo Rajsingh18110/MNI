@@ -21,7 +21,7 @@ function extractFunctionBody(fn: Function): string {
 			body = `return ${body};`;
 		}
 
-		// Replace parameter name with $ for n8n
+		// Replace parameter name with $ for MNI
 		// ctx.$ -> $
 		// ctx('NodeName') -> $('NodeName')
 		body = body.replace(new RegExp(`${paramName}\\.\\$`, 'g'), '$');

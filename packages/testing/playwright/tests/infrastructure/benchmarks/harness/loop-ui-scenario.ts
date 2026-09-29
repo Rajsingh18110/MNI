@@ -6,18 +6,18 @@ export interface UiScenarioResult {
 }
 
 export interface LoopUiScenarioOptions {
-	n8n: n8nPage;
-	scenario: (n8n: n8nPage) => Promise<void>;
+	MNI: n8nPage;
+	scenario: (MNI: n8nPage) => Promise<void>;
 	repeats: number;
 }
 
 export async function loopUiScenario(options: LoopUiScenarioOptions): Promise<UiScenarioResult> {
-	const { n8n, scenario, repeats } = options;
+	const { MNI, scenario, repeats } = options;
 	console.log(`[UI] Running ${repeats} iterations`);
 	const latenciesMs: number[] = [];
 	for (let i = 0; i < repeats; i++) {
 		const t0 = Date.now();
-		await scenario(n8n);
+		await scenario(MNI);
 		latenciesMs.push(Date.now() - t0);
 	}
 	return { kind: 'ui-scenario', latenciesMs };

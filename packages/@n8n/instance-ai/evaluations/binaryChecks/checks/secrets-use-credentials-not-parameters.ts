@@ -111,7 +111,7 @@ const JSON_STRING_FIELDS = [
 ] as const satisfies ReadonlyArray<{ field: string; location: Location }>;
 
 /** `"name": "value"` pairs. Regex, not JSON.parse — these strings are routinely
- *  n8n expressions (`={"k": "{{ $json.x }}"}`) that aren't valid JSON. */
+ *  MNI expressions (`={"k": "{{ $json.x }}"}`) that aren't valid JSON. */
 const QUOTED_PAIR_RE = /"([^"\\]+)"\s*:\s*"((?:[^"\\]|\\.)*)"/g;
 
 function getPlaceholderLabel(value: unknown): string | undefined {

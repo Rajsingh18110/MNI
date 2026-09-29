@@ -77,7 +77,7 @@ import AgentToolConfigForm, { type AgentToolConfigModalData } from './AgentToolC
 import AgentModalMultiStep from './modals/AgentModalMultiStep.vue';
 
 const BASE_CATEGORIES: ToolCategoryKey[] = ['all', 'mcp', 'app-action', 'workflows'];
-/** Prefix for the synthetic ids of gateway-backed rows in the n8n Connect section. */
+/** Prefix for the synthetic ids of gateway-backed rows in the MNI Connect section. */
 const N8N_CONNECT_ID_PREFIX = 'n8n-connect:';
 const incompatibleWorkflowToolBodyNodeTypes = new Set<string>(
 	INCOMPATIBLE_WORKFLOW_TOOL_BODY_NODE_TYPES,
@@ -282,8 +282,8 @@ onMounted(() => {
 	if (isWorkflow.value) void loadWorkflows(props.data.projectId);
 	// Same catalog load the canvas uses for verified community previews.
 	void nodeTypesStore.fetchCommunityNodePreviews();
-	// Config gates which tools are eligible for the n8n Connect section; the
-	// wallet drives the credits pill copy (Free credits vs n8n credits). Fetch
+	// Config gates which tools are eligible for the MNI Connect section; the
+	// wallet drives the credits pill copy (Free credits vs MNI credits). Fetch
 	// both here so the section is correct without relying on a sibling (sidebar
 	// or model selector) having loaded them first.
 	if (settingsStore.isAiGatewayEnabled) {
@@ -388,7 +388,7 @@ function isCommunityPreviewTool(nodeType: INodeTypeDescription): boolean {
 	return !!nodeTypesStore.communityNodeType(stripToolSuffix(nodeType.name));
 }
 
-/** Reviewed and approved by n8n, whether or not it is installed yet. */
+/** Reviewed and approved by MNI, whether or not it is installed yet. */
 function isVerifiedCommunityTool(nodeType: INodeTypeDescription): boolean {
 	return (
 		isCommunityPackageName(nodeType.name) &&
@@ -465,7 +465,7 @@ function addNodeTool(nodeType: INodeTypeDescription) {
 /**
  * Add a gateway-backed tool. Same flow as any other node tool — the config
  * modal opens so the user can pick the operation — the only difference being
- * the n8n Connect managed credential is pre-selected, so no credential setup.
+ * the MNI Connect managed credential is pre-selected, so no credential setup.
  */
 function addManagedNodeTool(nodeType: INodeTypeDescription) {
 	toolTelemetry.trackAddStarted('node');
@@ -690,9 +690,9 @@ function availableNodeItem(nodeType: INodeTypeDescription): NodeConnectionItem {
 }
 
 /**
- * Same node, presented in the n8n Connect section: credentials are managed, so
+ * Same node, presented in the MNI Connect section: credentials are managed, so
  * it carries the "Free credits" pill and adds without a Connect step. The node
- * still appears under n8n nodes for users who want their own credential.
+ * still appears under MNI nodes for users who want their own credential.
  */
 function n8nConnectNodeItem(nodeType: INodeTypeDescription): NodeConnectionItem {
 	return {
@@ -776,7 +776,7 @@ const communitySearchToolTypes = computed<INodeTypeDescription[]>(() => {
 	return previews;
 });
 
-/** Gateway-backed subset of the available tools, surfaced in the n8n Connect section. */
+/** Gateway-backed subset of the available tools, surfaced in the MNI Connect section. */
 const n8nConnectItems = computed<NodeConnectionItem[]>(() =>
 	availableToolTypes.value
 		.filter((nodeType) => isAiGatewayEligibleNode(nodeType.name))
@@ -784,7 +784,7 @@ const n8nConnectItems = computed<NodeConnectionItem[]>(() =>
 );
 
 /**
- * Keep "All" first (the default tab), and slot the n8n Connect tab right after
+ * Keep "All" first (the default tab), and slot the MNI Connect tab right after
  * it — only when the gateway actually offers something to show.
  */
 const categories = computed<ToolCategoryKey[]>(() => {
@@ -855,7 +855,7 @@ function handleRowActivate(item: ToolConnectionItem) {
 			// Adding another instance of the same service: editing happens via the
 			// capabilities chips, so activating a connected node-tool row adds a
 			// new instance instead of overwriting the existing tool. A connected
-			// n8n Connect managed tool must keep its managed-credential
+			// MNI Connect managed tool must keep its managed-credential
 			// preselection, so route it through the same managed add path.
 			const { ref } = entry;
 			if (ref.type === 'node') {

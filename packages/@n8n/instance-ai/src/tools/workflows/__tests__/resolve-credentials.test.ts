@@ -114,7 +114,7 @@ describe('resolveCredentials', () => {
 		});
 	});
 
-	describe('n8n Connect auto-wiring', () => {
+	describe('MNI Connect auto-wiring', () => {
 		function makeSlackNode() {
 			return {
 				id: '1',
@@ -126,7 +126,7 @@ describe('resolveCredentials', () => {
 			};
 		}
 
-		it('attaches the n8n Connect managed credential when the type is gateway-supported and no stored credential exists', async () => {
+		it('attaches the MNI Connect managed credential when the type is gateway-supported and no stored credential exists', async () => {
 			const json = makeWorkflow({ nodes: [makeSlackNode()] });
 			const ctx = createMockContext();
 			(ctx.credentialService.list as Mock).mockResolvedValue([]);
@@ -151,15 +151,15 @@ describe('resolveCredentials', () => {
 		});
 
 		it("honors the managed tag written as the credential id, ahead of the user's own stored credential", async () => {
-			// The builder copied the n8n credits entry's id (the managed tag) from the
+			// The builder copied the MNI credits entry's id (the managed tag) from the
 			// credentials list, exactly as it copies a stored credential id. Even though
-			// the user owns a Slack credential, the explicit tag must win and n8n credits
+			// the user owns a Slack credential, the explicit tag must win and MNI credits
 			// must be attached — not the stored credential.
 			const json = makeWorkflow({
 				nodes: [
 					{
 						...makeSlackNode(),
-						credentials: { slackApi: { id: '__AI_GATEWAY_MANAGED__', name: 'n8n credits' } },
+						credentials: { slackApi: { id: '__AI_GATEWAY_MANAGED__', name: 'MNI credits' } },
 					},
 				],
 			});
@@ -181,19 +181,19 @@ describe('resolveCredentials', () => {
 			expect(result.resolvedCredentialsByNode).toEqual({
 				Slack: [{ type: 'slackApi', id: null, name: 'Gateway credits', __aiGatewayManaged: true }],
 			});
-			// n8n credits is connected — the own credential was not auto-attached over it.
+			// MNI credits is connected — the own credential was not auto-attached over it.
 			expect(result.mockedCredentialsByNode).toEqual({});
 		});
 
 		it('does not attach an unusable managed credential when the tag is written for an unsupported type', async () => {
 			// The tag is written for a type the gateway can't serve and there's no
-			// supported sibling: don't persist an unusable n8n credits credential —
+			// supported sibling: don't persist an unusable MNI credits credential —
 			// fall through to normal resolution (here: mock / route to setup).
 			const json = makeWorkflow({
 				nodes: [
 					{
 						...makeSlackNode(),
-						credentials: { slackApi: { id: '__AI_GATEWAY_MANAGED__', name: 'n8n credits' } },
+						credentials: { slackApi: { id: '__AI_GATEWAY_MANAGED__', name: 'MNI credits' } },
 					},
 				],
 			});
@@ -205,15 +205,15 @@ describe('resolveCredentials', () => {
 
 			const result = await resolveCredentials(json, undefined, ctx, makeCredentialMap([]));
 
-			// Not attached as n8n credits; routed to setup instead.
+			// Not attached as MNI credits; routed to setup instead.
 			expect(json.nodes[0].credentials).toEqual({});
 			expect(result.resolvedCredentialsByNode).toEqual({});
 			expect(result.mockedCredentialsByNode).toEqual({ Slack: ['slackApi'] });
 		});
 
-		it('switches the node auth to the attached n8n credits credential type', async () => {
+		it('switches the node auth to the attached MNI credits credential type', async () => {
 			// The LLM wrote the API-key credential slot but left auth at the OAuth2
-			// default; attaching n8n credits must switch auth so the slot is active.
+			// default; attaching MNI credits must switch auth so the slot is active.
 			const json = makeWorkflow({
 				nodes: [
 					{
@@ -251,7 +251,7 @@ describe('resolveCredentials', () => {
 
 		it('falls back to a supported sibling type when the written slot type is not gateway-supported', async () => {
 			// The LLM wrote the slot matching the node's default auth (OAuth2), which
-			// n8n credits doesn't cover — the sibling API-key type is attached instead
+			// MNI credits doesn't cover — the sibling API-key type is attached instead
 			// and auth is switched to it, rather than mocking the node into a setup card.
 			const json = makeWorkflow({
 				nodes: [
@@ -298,7 +298,7 @@ describe('resolveCredentials', () => {
 			expect(result.mockedCredentialsByNode).toEqual({});
 		});
 
-		it('attaches n8n credits to a supported sibling type for a credential-less node whose auth type is unsupported', async () => {
+		it('attaches MNI credits to a supported sibling type for a credential-less node whose auth type is unsupported', async () => {
 			// No `credentials` key at all and auth left at the unsupported OAuth2
 			// default — the second pass switches auth to the supported sibling.
 			const json = makeWorkflow({
@@ -345,7 +345,7 @@ describe('resolveCredentials', () => {
 
 		it('does not rewrite a parameter that already activates the attached credential type', async () => {
 			// The credential is shown for several auth values and the node already
-			// uses the second one — attaching n8n credits must not flip it to the first.
+			// uses the second one — attaching MNI credits must not flip it to the first.
 			const json = makeWorkflow({
 				nodes: [
 					{
@@ -383,7 +383,7 @@ describe('resolveCredentials', () => {
 			expect(json.nodes[0].parameters).toEqual({ authentication: 'apiKeyLegacy' });
 		});
 
-		it('attaches n8n credits to a credential-less node requiring a gateway-supported type', async () => {
+		it('attaches MNI credits to a credential-less node requiring a gateway-supported type', async () => {
 			// The LLM omitted the credential slot entirely — no `credentials` key at all.
 			const json = makeWorkflow({
 				nodes: [
@@ -407,7 +407,7 @@ describe('resolveCredentials', () => {
 
 			const result = await resolveCredentials(json, undefined, ctx);
 
-			// Silently configured with n8n credits — no setup card will surface for it.
+			// Silently configured with MNI credits — no setup card will surface for it.
 			expect(json.nodes[0].credentials).toEqual({
 				pdfcoApi: { id: null, name: 'Gateway credits', __aiGatewayManaged: true },
 			});
@@ -420,7 +420,7 @@ describe('resolveCredentials', () => {
 			expect(result.mockedCredentialsByNode).toEqual({});
 		});
 
-		it('auto-applies n8n credits to a credential-less default-parameter node when the type is covered', async () => {
+		it('auto-applies MNI credits to a credential-less default-parameter node when the type is covered', async () => {
 			// LlamaParse persists no explicit operation (relies on defaults). Auto-apply
 			// is gated on credential-type coverage only, so a covered type is applied
 			// without a setup card regardless of parameter shape.
@@ -486,7 +486,7 @@ describe('resolveCredentials', () => {
 			expect(result.mockedNodeNames).toEqual([]);
 		});
 
-		it('does not auto-attach n8n credits to a credential-less node when the user has a stored credential', async () => {
+		it('does not auto-attach MNI credits to a credential-less node when the user has a stored credential', async () => {
 			const json = makeWorkflow({
 				nodes: [
 					{
@@ -516,7 +516,7 @@ describe('resolveCredentials', () => {
 			expect(result.resolvedCredentialsByNode).toEqual({});
 		});
 
-		it('prefers the sole stored credential over n8n Connect', async () => {
+		it('prefers the sole stored credential over MNI Connect', async () => {
 			const json = makeWorkflow({ nodes: [makeSlackNode()] });
 			const ctx = createMockContext();
 			(
@@ -622,7 +622,7 @@ describe('resolveCredentials', () => {
 			expect(result.mockedCredentialsByNode).toEqual({ Notion: ['notionApi'] });
 		});
 
-		it('prefers n8n credits over a managed-OAuth sibling', async () => {
+		it('prefers MNI credits over a managed-OAuth sibling', async () => {
 			const json = makeWorkflow({ nodes: [makeNotionNode()] });
 			const ctx = createMockContext();
 			(ctx.credentialService.list as Mock).mockResolvedValue([]);
@@ -1771,7 +1771,7 @@ describe('resolveCredentials with preferNewCredentialTypes', () => {
 		expect(result.mockedCredentialsByNode).toEqual({ Slack: ['slackApi'] });
 	});
 
-	it('does not answer the slot with n8n credits', async () => {
+	it('does not answer the slot with MNI credits', async () => {
 		const json = makeWorkflow({ nodes: [makeSlackNode()] });
 		const ctx = createMockContext();
 		(
@@ -1947,8 +1947,8 @@ describe('buildCredentialResolutionNote', () => {
 		});
 
 		expect(note).toContain('Gateway credits');
-		expect(note).not.toContain('n8n Connect');
-		expect(note).not.toContain('n8n credits');
+		expect(note).not.toContain('MNI Connect');
+		expect(note).not.toContain('MNI credits');
 		expect(note).toContain('switch to their own key');
 		expect(note).toContain('work out of the box');
 	});
@@ -1969,8 +1969,8 @@ describe('buildCredentialResolutionNote', () => {
 		expect(note).toContain('own key');
 		expect(note).toContain('Do not offer a live test');
 		expect(note).not.toContain('work out of the box');
-		expect(note).not.toContain('n8n Connect');
-		expect(note).not.toContain('n8n credits');
+		expect(note).not.toContain('MNI Connect');
+		expect(note).not.toContain('MNI credits');
 	});
 });
 

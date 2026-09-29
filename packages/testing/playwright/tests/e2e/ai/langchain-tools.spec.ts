@@ -9,7 +9,7 @@ import type { n8nPage } from '../../../pages/n8nPage';
 
 // Helper functions for common operations
 async function addOpenAILanguageModelWithCredentials(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	parentNode: string,
 	options: { exactMatch?: boolean; closeNDV?: boolean } = { exactMatch: true, closeNDV: false },
 ) {
@@ -26,18 +26,18 @@ async function addOpenAILanguageModelWithCredentials(
 	await n8n.ndv.clickBackToCanvasButton();
 }
 
-async function waitForWorkflowSuccess(n8n: n8nPage, timeout = 3000) {
+async function waitForWorkflowSuccess(MNI: n8nPage, timeout = 3000) {
 	await n8n.notifications.waitForNotificationAndClose('Workflow executed successfully', {
 		timeout,
 	});
 }
 
-async function executeChatAndWaitForResponse(n8n: n8nPage, message: string) {
+async function executeChatAndWaitForResponse(MNI: n8nPage, message: string) {
 	await n8n.canvas.logsPanel.sendManualChatMessage(message);
-	await waitForWorkflowSuccess(n8n);
+	await waitForWorkflowSuccess(MNI);
 }
 
-async function setupBasicAgentWorkflow(n8n: n8nPage, additionalNodes: string[] = []) {
+async function setupBasicAgentWorkflow(MNI: n8nPage, additionalNodes: string[] = []) {
 	await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
 	// Add additional nodes if specified
@@ -48,7 +48,7 @@ async function setupBasicAgentWorkflow(n8n: n8nPage, additionalNodes: string[] =
 	}
 
 	// Always add OpenAI Language Model
-	await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+	await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 }
 
 test.use({ capability: 'proxy' });
@@ -58,7 +58,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 			await services.proxy.loadExpectations('langchain');
 			await n8n.canvas.openNewWorkflow();
@@ -69,14 +69,14 @@ test.describe(
 			test.fixme();
 
 			test('should show tool info notice if no existing tools were used during execution', async ({
-				n8n,
+				MNI,
 			}) => {
-				await setupBasicAgentWorkflow(n8n, [AI_TOOL_CALCULATOR_NODE_NAME]);
+				await setupBasicAgentWorkflow(MNI, [AI_TOOL_CALCULATOR_NODE_NAME]);
 				await n8n.canvas.openNode(AGENT_NODE_NAME);
 
 				const inputMessage = 'Hello!';
 				await n8n.ndv.execute();
-				await executeChatAndWaitForResponse(n8n, inputMessage);
+				await executeChatAndWaitForResponse(MNI, inputMessage);
 
 				await n8n.canvas.closeManualChatModal();
 				await n8n.canvas.openNode(AGENT_NODE_NAME);
@@ -84,14 +84,14 @@ test.describe(
 				await expect(n8n.ndv.getRunDataInfoCallout()).toBeVisible();
 			});
 			test('should not show tool info notice if tools were used during execution', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.addNode(MANUAL_CHAT_TRIGGER_NODE_NAME, { closeNDV: true });
 				await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: false });
 				await expect(n8n.ndv.getRunDataInfoCallout()).toBeHidden();
 				await n8n.ndv.clickBackToCanvasButton();
 
-				await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+				await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 
 				await n8n.canvas.addSupplementalNodeToParent(
 					AI_TOOL_CALCULATOR_NODE_NAME,
@@ -102,7 +102,7 @@ test.describe(
 
 				const inputMessage = 'What is 1000 * 10?';
 				await n8n.canvas.clickManualChatButton();
-				await executeChatAndWaitForResponse(n8n, inputMessage);
+				await executeChatAndWaitForResponse(MNI, inputMessage);
 
 				await n8n.canvas.closeManualChatModal();
 				await n8n.canvas.openNode(AGENT_NODE_NAME);

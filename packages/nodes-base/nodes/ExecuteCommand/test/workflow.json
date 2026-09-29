@@ -15,7 +15,7 @@
 					"string": [
 						{
 							"name": "data[0]",
-							"value": "n8n"
+							"value": "MNI"
 						},
 						{
 							"name": "data[1]",
@@ -70,7 +70,7 @@
 				"json": {
 					"exitCode": 0,
 					"stderr": "",
-					"stdout": "n8n"
+					"stdout": "MNI"
 				}
 			}
 		],
@@ -79,7 +79,7 @@
 				"json": {
 					"exitCode": 0,
 					"stderr": "",
-					"stdout": "n8n"
+					"stdout": "MNI"
 				}
 			},
 			{

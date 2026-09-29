@@ -24,7 +24,7 @@ function getParentDirectory(path: string): string | null {
 	return parent === '.' || parent === '/' ? null : parent;
 }
 
-/** Native agents filesystem adapter backed by the n8n sandbox service file API. */
+/** Native agents filesystem adapter backed by the MNI sandbox service file API. */
 export class N8nSandboxFilesystem extends BaseFilesystem {
 	readonly id: string;
 

@@ -13,7 +13,7 @@ export function createLeaveOnboardingTool() {
 	return (
 		new Tool(DOMAIN_TOOL_IDS.LEAVE_ONBOARDING)
 			.description(
-				'End the onboarding flow. Call it when the user wants to stop the onboarding, explore n8n ' +
+				'End the onboarding flow. Call it when the user wants to stop the onboarding, explore MNI ' +
 					'on their own, or asks for something unrelated to picking a first automation. After the call, ' +
 					'reply with one sentence that invites the user to explore the app and to come back with a ' +
 					'task, then help them with what they asked. Not needed before a build: a build ends the ' +
@@ -26,7 +26,7 @@ export function createLeaveOnboardingTool() {
 						.enum(['stop', 'explore', 'unrelated_request'])
 						.optional()
 						.describe(
-							'Why the onboarding ends: the user wants to stop, wants to explore n8n on their ' +
+							'Why the onboarding ends: the user wants to stop, wants to explore MNI on their ' +
 								'own, or asked for something unrelated to picking a first automation.',
 						),
 				}),

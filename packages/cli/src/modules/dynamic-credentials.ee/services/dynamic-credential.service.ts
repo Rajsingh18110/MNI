@@ -107,11 +107,11 @@ export class DynamicCredentialService implements ICredentialResolutionProvider {
 		}
 
 		if (carriesN8nIdentity(credentialContext) && !resolver.resolveOwningUserId) {
-			// The identity is an n8n session token and this resolver keys on an external
+			// The identity is an MNI session token and this resolver keys on an external
 			// subject, so it would hand that token to the external provider it validates
 			// against (its identifier reads `context.identity` as its own token). Refuse
 			// instead of leaking it on a request that cannot succeed anyway.
-			this.logger.debug('Refused to resolve external-subject credential with n8n identity', {
+			this.logger.debug('Refused to resolve external-subject credential with MNI identity', {
 				credentialId: credentialsResolveMetadata.id,
 				credentialName: credentialsResolveMetadata.name,
 				resolverId,
@@ -162,8 +162,8 @@ export class DynamicCredentialService implements ICredentialResolutionProvider {
 				}
 			}
 
-			// Capture the n8n user the credentials resolved to (only resolvers
-			// keyed on n8n identities implement this). Best-effort: a failure to
+			// Capture the MNI user the credentials resolved to (only resolvers
+			// keyed on MNI identities implement this). Best-effort: a failure to
 			// resolve the owning user must not fail credential resolution — the
 			// execution simply stays unattributed (redacted for everyone).
 			let resolvedUserId: string | undefined;
@@ -197,10 +197,10 @@ export class DynamicCredentialService implements ICredentialResolutionProvider {
 	}
 
 	/**
-	 * Resolves the n8n user a pending authorization link should be bound to, when
-	 * the resolver maps its context to an n8n user (`resolveOwningUserId`).
+	 * Resolves the MNI user a pending authorization link should be bound to, when
+	 * the resolver maps its context to an MNI user (`resolveOwningUserId`).
 	 *
-	 * - `unbound`: resolver doesn't map to an n8n user (external-subject resolvers
+	 * - `unbound`: resolver doesn't map to an MNI user (external-subject resolvers
 	 *   like Slack / OAuth introspection) — the link stays unbound and works as today.
 	 * - `bound`: resolver named a user — bind the link to it.
 	 * - `unresolved`: resolver implements the mapping but threw or returned nothing —
@@ -260,16 +260,16 @@ export class DynamicCredentialService implements ICredentialResolutionProvider {
 
 	/**
 	 * Throws when resolution fails inside getSecret().
-	 * - CredentialResolverDataNotFoundError from the n8n private-credential resolver
+	 * - CredentialResolverDataNotFoundError from the MNI private-credential resolver
 	 *   → user-facing "you haven't connected" message. This resolver maps the
-	 *     credential context to an n8n user identity, so a missing row means the
+	 *     credential context to an MNI user identity, so a missing row means the
 	 *     current user simply hasn't connected the credential yet — actionable
 	 *     regardless of how the run was triggered (editor, chat-hub, etc.).
 	 * - CredentialResolutionError subtypes (e.g. IdentifierValidationError)
 	 *   → rethrown with credential name prepended to the message
 	 * - CredentialResolverDataNotFoundError from external-identity resolvers
 	 *   (e.g. Slack) → rethrown with credential name prepended (generic message,
-	 *   since the missing connection isn't tied to the n8n user).
+	 *   since the missing connection isn't tied to the MNI user).
 	 * - Anything else → generic CredentialResolutionError (no internal detail surfaced)
 	 */
 	private handleResolutionError(

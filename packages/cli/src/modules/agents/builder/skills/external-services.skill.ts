@@ -36,7 +36,7 @@ export function externalServicesSkill(): RuntimeSkill {
 
 Use this to connect the target agent to external products across chat
 integrations (the \`integrations\` array), MCP servers (\`mcpServers\`), and
-n8n node tools. Decide the right surface first. For a node tool, load
+MNI node tools. Decide the right surface first. For a node tool, load
 \`agent-builder-node-tools\` and follow that skill.
 
 ## Integration vs Callable Tool Decision

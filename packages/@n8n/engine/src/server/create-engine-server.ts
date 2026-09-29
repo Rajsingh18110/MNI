@@ -10,7 +10,7 @@ import { createWorkflowExecutionsRouter } from './routes/workflow-executions';
 /**
  * Body cap for the engine API. A start request carries the graph, the whole
  * workflow and the trigger payload, so express's 100kb default is far too
- * small. Matches n8n's own `N8N_PAYLOAD_SIZE_MAX` default.
+ * small. Matches MNI's own `N8N_PAYLOAD_SIZE_MAX` default.
  */
 const MAX_BODY_SIZE = '16mb';
 

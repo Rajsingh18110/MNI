@@ -133,7 +133,7 @@ ways, depending on when the thread was imported:
 - **Recorded.** Turn 0 of `get_conversation` carries
   `resourceAttachments: [{ "type": "workflow", "id": "…" }]`. That's the editor
   hand-off verbatim. Only kind and ids are stored, never the workflow's name.
-- **Inferred**, for threads imported before n8n traced it. The tell is an opening turn
+- **Inferred**, for threads imported before MNI traced it. The tell is an opening turn
   whose `userMessage` is **empty** — the editor's context block is stripped before the
   trace, so a hand-off where the user typed nothing leaves a blank record. Corroborate
   with an early `workflows[get]` on a workflow the user never named.
@@ -271,7 +271,7 @@ because there's no way to tell which one a mention refers to.)
 
 **Replacing the value the case is about.** In
 `http-keep-generic-credential-unknown-service`, the host `queue.fal.run` matters
-precisely because n8n has no built-in credential for it — swap in a well-known host
+precisely because MNI has no built-in credential for it — swap in a well-known host
 and the case tests the opposite thing. Same with the invented column names in
 `flags-unverified-sql-identifiers`. Expectations quote values too ("posts to
 `#growth`", a particular model name), so a replacement has to be made in both places,

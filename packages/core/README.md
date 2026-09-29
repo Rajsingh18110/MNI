@@ -2,7 +2,7 @@
 
 # n8n-core
 
-Core components for n8n
+Core components for MNI
 
 ```
 npm install n8n-core

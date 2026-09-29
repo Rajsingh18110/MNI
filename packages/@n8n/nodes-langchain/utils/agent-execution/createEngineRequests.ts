@@ -200,7 +200,7 @@ function extractThinkingMetadata(
 
 /**
  * Creates engine requests from tool calls.
- * Maps tool call information to the format expected by the n8n engine
+ * Maps tool call information to the format expected by the MNI engine
  * for executing tool nodes.
  *
  * This is a generalized version that can be used across different agent types

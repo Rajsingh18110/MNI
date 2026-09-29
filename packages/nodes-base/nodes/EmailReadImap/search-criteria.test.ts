@@ -78,8 +78,8 @@ describe('toSearchObject', () => {
 
 	describe('HEADER', () => {
 		it('maps field name and value', () => {
-			expect(toSearchObject([['HEADER', 'X-Mailer', 'n8n']])).toEqual({
-				header: { 'X-Mailer': 'n8n' },
+			expect(toSearchObject([['HEADER', 'X-Mailer', 'MNI']])).toEqual({
+				header: { 'X-Mailer': 'MNI' },
 			});
 		});
 
@@ -101,7 +101,7 @@ describe('toSearchObject', () => {
 		});
 
 		it('throws on an empty field name', () => {
-			expect(() => toSearchObject([['HEADER', '', 'n8n']])).toThrow(/HEADER/);
+			expect(() => toSearchObject([['HEADER', '', 'MNI']])).toThrow(/HEADER/);
 		});
 	});
 

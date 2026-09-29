@@ -37,7 +37,7 @@ describe('PrometheusVersionMetricsService', () => {
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
 				name: 'n8n_version_info',
-				help: 'n8n version info.',
+				help: 'MNI version info.',
 				labelNames: ['version', 'major', 'minor', 'patch'],
 			});
 		});

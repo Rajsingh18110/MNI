@@ -127,7 +127,7 @@ export function createEmptyCanvasRenderData(
 }
 
 /**
- * Maps multiple legacy n8n connections to VueFlow connections
+ * Maps multiple legacy MNI connections to VueFlow connections
  */
 export function mapLegacyConnectionsToCanvasConnections(
 	legacyConnections: IConnections,
@@ -200,7 +200,7 @@ export function mapLegacyConnectionsToCanvasConnections(
 }
 
 /**
- * Maps a single legacy n8n connection to a VueFlow connection
+ * Maps a single legacy MNI connection to a VueFlow connection
  */
 export function mapLegacyConnectionToCanvasConnection(
 	sourceNode: INodeUi,
@@ -295,7 +295,7 @@ export function resolveCanonicalConnection(
 }
 
 /**
- * Maps a VueFlow connection to a legacy n8n connection
+ * Maps a VueFlow connection to a legacy MNI connection
  */
 export function mapCanvasConnectionToLegacyConnection(
 	sourceNode: INodeUi,
@@ -329,7 +329,7 @@ export function mapCanvasConnectionToLegacyConnection(
 }
 
 /**
- * Maps legacy n8n node inputs to VueFlow connection handles
+ * Maps legacy MNI node inputs to VueFlow connection handles
  */
 export function mapLegacyEndpointsToCanvasConnectionPort(
 	endpoints: INodeTypeDescription['inputs'],

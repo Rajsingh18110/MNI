@@ -38,7 +38,7 @@ export async function setup() {
 	const { Container } = await import('@n8n/di');
 	try {
 		// `global-setup.ts` already created the config classes with the default
-		// n8n folder. Reset them, so they read the template folder set above.
+		// MNI folder. Reset them, so they read the template folder set above.
 		Container.reset();
 		process.env.N8N_TEST_SQLITE_TEMPLATE = await testDb.initSqliteTemplateDb(
 			join(templateDir, '.n8n'),

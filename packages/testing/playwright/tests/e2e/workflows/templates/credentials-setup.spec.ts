@@ -69,7 +69,7 @@ test.describe(
 			await setupRequirements(createTemplateRequirements());
 		});
 
-		test('can be opened from template collection page', async ({ n8n }) => {
+		test('can be opened from template collection page', async ({ MNI }) => {
 			await n8n.navigate.toTemplateCollection(COLLECTION_ID);
 			await n8n.templates.clickUseWorkflowButton('Promote new Shopify products');
 
@@ -78,7 +78,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('has all the elements on page', async ({ n8n }) => {
+		test('has all the elements on page', async ({ MNI }) => {
 			await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 
 			await expect(
@@ -110,7 +110,7 @@ test.describe(
 			}
 		});
 
-		test('can skip template creation', async ({ n8n }) => {
+		test('can skip template creation', async ({ MNI }) => {
 			await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 
 			await n8n.templateCredentialSetup.getSkipLink().click();
@@ -118,7 +118,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(3);
 		});
 
-		test('can create credentials and workflow from the template', async ({ n8n }) => {
+		test('can create credentials and workflow from the template', async ({ MNI }) => {
 			await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 
 			await expect(n8n.templateCredentialSetup.getContinueButton()).toBeDisabled();
@@ -154,7 +154,7 @@ test.describe(
 		});
 
 		test('should work with a template that has no credentials (ADO-1603)', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements({
@@ -221,7 +221,7 @@ test.describe(
 
 		test.describe('Credential setup from workflow editor', () => {
 			test('should allow credential setup from workflow editor if user skips it during template setup', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 				await n8n.templateCredentialSetup.getSkipLink().click();
@@ -230,7 +230,7 @@ test.describe(
 			});
 
 			test('should allow credential setup from workflow editor if user fills in credentials partially during template setup', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 				await n8n.templatesComposer.fillDummyCredentialForApp('Shopify', {
@@ -246,7 +246,7 @@ test.describe(
 				await expect(n8n.canvas.getSetupWorkflowCredentialsButton()).toBeVisible();
 			});
 
-			test('should fill credentials from workflow editor', async ({ n8n }) => {
+			test('should fill credentials from workflow editor', async ({ MNI }) => {
 				await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 				await n8n.templateCredentialSetup.getSkipLink().click();
 

@@ -43,7 +43,7 @@ describe('MultiMainSetup', () => {
 	const client = mock<LeaderElectionClient>();
 
 	const globalConfig = mock<GlobalConfig>({
-		redis: { prefix: 'n8n' },
+		redis: { prefix: 'MNI' },
 		multiMainSetup: { ttl: 10, interval: 3, enabled: true },
 	});
 

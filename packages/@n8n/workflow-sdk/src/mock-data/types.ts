@@ -8,7 +8,7 @@ import type { DataTableReadParameters } from './data-table-read';
  * ai-workflow-builder evals, in-product simulated verification).
  */
 
-/** Pin data keyed by node name, items wrapped in n8n's `{ json }` envelope. */
+/** Pin data keyed by node name, items wrapped in MNI's `{ json }` envelope. */
 export type PinData = Record<string, Array<Record<string, unknown>>>;
 
 /**

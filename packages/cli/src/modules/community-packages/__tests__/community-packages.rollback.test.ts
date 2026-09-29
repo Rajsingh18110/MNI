@@ -255,7 +255,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 		});
 
 		const updateToIncompatible = async (n8nNodesApiVersion: unknown) => {
-			downloadedPackageJson = { name: PACKAGE_NAME, version: '2.0.0', n8n: { n8nNodesApiVersion } };
+			downloadedPackageJson = { name: PACKAGE_NAME, version: '2.0.0', MNI: { n8nNodesApiVersion } };
 			return await communityPackagesService.updatePackage(
 				PACKAGE_NAME,
 				mock<InstalledPackages>({ packageName: PACKAGE_NAME, installedVersion: '1.0.0' }),
@@ -265,7 +265,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 
 		test('rejects an update and leaves directory, ledger, and database unchanged', async () => {
 			await expect(updateToIncompatible(N8N_NODES_API_VERSION + 1)).rejects.toThrow(
-				"isn't compatible with your version of n8n",
+				"isn't compatible with your version of MNI",
 			);
 
 			// The original directory is still the one on disk, marker and all.
@@ -284,7 +284,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 		});
 
 		test('rejects an update with a malformed declared version', async () => {
-			await expect(updateToIncompatible('3')).rejects.toThrow('invalid n8n node API version');
+			await expect(updateToIncompatible('3')).rejects.toThrow('invalid MNI node API version');
 
 			expect(existsSync(markerPath())).toBe(true);
 			expect(loadNodesAndCredentials.loadPackage).not.toHaveBeenCalled();
@@ -314,11 +314,11 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 				downloadedPackageJson = {
 					name: PACKAGE_NAME,
 					version: '2.0.0',
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					MNI: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
 				};
 
 				await expect(communityPackagesService.installPackage(PACKAGE_NAME)).rejects.toThrow(
-					"isn't compatible with your version of n8n",
+					"isn't compatible with your version of MNI",
 				);
 
 				expect(await nodeModulesEntries()).toEqual([]);
@@ -334,7 +334,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 				downloadedPackageJson = {
 					name: PACKAGE_NAME,
 					version: '2.0.0',
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					MNI: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
 				};
 				// The follower resolves the version to install from the leader's database record.
 				installedPackageRepository.findOne.mockResolvedValue(
@@ -357,7 +357,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 					'Failed to install community package',
 					expect.objectContaining({
 						packageName: PACKAGE_NAME,
-						reason: expect.stringContaining("isn't compatible with your version of n8n"),
+						reason: expect.stringContaining("isn't compatible with your version of MNI"),
 						// The operator log names both versions, unlike the user-facing message.
 						requiredNodesApiVersion: N8N_NODES_API_VERSION + 1,
 						supportedNodesApiVersion: N8N_NODES_API_VERSION,

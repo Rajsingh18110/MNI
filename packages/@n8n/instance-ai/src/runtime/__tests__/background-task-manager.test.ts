@@ -170,7 +170,7 @@ describe('BackgroundTaskManager', () => {
 				);
 
 				expect(result.status).toBe('limit-reached');
-				expect(onLimitReached).toHaveBeenCalledWith(expect.stringContaining('this n8n instance'));
+				expect(onLimitReached).toHaveBeenCalledWith(expect.stringContaining('this MNI instance'));
 			});
 
 			it('is unlimited when the ceiling is -1', () => {

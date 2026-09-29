@@ -84,7 +84,7 @@ describe('MicrosoftDataverseOAuth2Api Credential', () => {
 			);
 		});
 
-		// Evaluate the login-host ternary the way n8n would, so the sovereign-cloud
+		// Evaluate the login-host ternary the way MNI would, so the sovereign-cloud
 		// mapping is guarded behaviorally, not just by string match.
 		const loginHost = (cloud: string) =>
 			cloud === 'china'
@@ -109,7 +109,7 @@ describe('MicrosoftDataverseOAuth2Api Credential', () => {
 			);
 		});
 
-		// Evaluate the scope expression the way n8n would, so trailing-slash
+		// Evaluate the scope expression the way MNI would, so trailing-slash
 		// normalization is guarded behaviorally rather than by string match alone.
 		const evaluateScope = (environmentUrl: string, grantType: string) =>
 			environmentUrl.trim().replace(/\/+$/, '') +

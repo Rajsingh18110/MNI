@@ -166,7 +166,7 @@ export abstract class AbstractServer {
 		this.app.use((_req, res, next) => {
 			if (connectionState.connected) {
 				if (connectionState.migrated) next();
-				else res.send('n8n is starting up. Please wait');
+				else res.send('MNI is starting up. Please wait');
 			} else sendErrorResponse(res, new ServiceUnavailableError('Database is not ready!'));
 		});
 	}
@@ -195,7 +195,7 @@ export abstract class AbstractServer {
 			if (error.code === 'EADDRINUSE') {
 				// EADDRINUSE is thrown when the port is already in use
 				this.logger.error(
-					`n8n's port ${port} is already in use. Do you have another instance of n8n running already?`,
+					`MNI's port ${port} is already in use. Do you have another instance of MNI running already?`,
 				);
 			} else if (error.code === 'EACCES') {
 				// EACCES is thrown when the process is not allowed to use the port
@@ -203,21 +203,21 @@ export abstract class AbstractServer {
 				// or when the port is reserved by the system, for example Windows reserves random ports
 				// for NAT for Hyper-V and other virtualization software.
 				this.logger.error(
-					`n8n does not have permission to use port ${port}. Please run n8n with a different port.`,
+					`MNI does not have permission to use port ${port}. Please run MNI with a different port.`,
 				);
 			} else if (error.code === 'EAFNOSUPPORT') {
 				// EAFNOSUPPORT is thrown when the address is not available
 				this.logger.error(
-					`n8n's address '${address}' is not available. Please run n8n with a different address, provide correct address in the environment variables N8N_LISTEN_ADDRESS and/or N8N_WORKER_SERVER_ADDRESS.`,
+					`MNI's address '${address}' is not available. Please run MNI with a different address, provide correct address in the environment variables N8N_LISTEN_ADDRESS and/or N8N_WORKER_SERVER_ADDRESS.`,
 				);
 			} else {
 				// Other errors are unexpected and should be logged
-				this.logger.error('n8n webserver failed, exiting', {
+				this.logger.error('MNI webserver failed, exiting', {
 					message: error.message,
 					code: error.code,
 				});
 			}
-			// we always exit on error, so that n8n does not run in an inconsistent state
+			// we always exit on error, so that MNI does not run in an inconsistent state
 			process.exit(1);
 		});
 
@@ -227,7 +227,7 @@ export abstract class AbstractServer {
 
 		this.setupHealthCheck();
 
-		this.logger.info(`n8n ready on ${address}, port ${port}`);
+		this.logger.info(`MNI ready on ${address}, port ${port}`);
 	}
 
 	async start(): Promise<void> {

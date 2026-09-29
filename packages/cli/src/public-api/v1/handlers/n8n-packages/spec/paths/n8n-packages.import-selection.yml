@@ -4,7 +4,7 @@ post:
   x-eov-operation-handler: v1/handlers/n8n-packages/n8n-packages.handler
   tags:
     - N8nPackage
-  summary: 'Beta: Import a selected subset of workflows from an n8n package'
+  summary: 'Beta: Import a selected subset of workflows from an MNI package'
   description: |
     **Beta** — breaking changes may still occur without major version bump.
 

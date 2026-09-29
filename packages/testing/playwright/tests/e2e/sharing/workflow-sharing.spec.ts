@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should share workflow with another user via UI', async ({ n8n, api }) => {
+		test('should share workflow with another user via UI', async ({ MNI, api }) => {
 			const member = await api.publicApi.createUser({
 				email: `member-${nanoid()}@test.com`,
 				firstName: 'Test',
@@ -62,7 +62,7 @@ test.describe(
 			expect(sharedWorkflow?.name).toBe(workflow.name);
 		});
 
-		test('should allow shared user to edit shared workflow', async ({ n8n, api }) => {
+		test('should allow shared user to edit shared workflow', async ({ MNI, api }) => {
 			const member = await api.publicApi.createUser({
 				email: `member-${nanoid()}@test.com`,
 				firstName: 'Test',

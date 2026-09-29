@@ -74,7 +74,7 @@ describe('SecurityConfig', () => {
 			consoleWarnSpy.mockRestore();
 		});
 
-		test("warns and keeps n8n's own policy when the report-only policy is unservable", () => {
+		test("warns and keeps MNI's own policy when the report-only policy is unservable", () => {
 			const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
 			process.env = { N8N_CONTENT_SECURITY_POLICY_REPORT_ONLY: unservable };

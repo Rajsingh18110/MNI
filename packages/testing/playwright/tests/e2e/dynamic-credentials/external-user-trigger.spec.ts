@@ -23,7 +23,7 @@ test.use({ capability: 'dynamic-credentials' });
  *   3. Get Keycloak access token (ROPC — identifies the external user)
  *   4. Call execution-status → credential reports "missing" → extract authorizationUrl
  *   5. POST to authorizationUrl → Keycloak login page → complete authorization code flow
- *   6. n8n callback stores user's tokens in dynamic_credential_entry
+ *   6. MNI callback stores user's tokens in dynamic_credential_entry
  *   7. Verify execution-status now reports credential as "configured"
  *   8. Activate the workflow (webhook + HTTP Request node using the credential)
  *   9. Trigger the production webhook with the bearer token
@@ -43,7 +43,7 @@ test.describe(
 
 			// Derive Keycloak endpoint URLs from the discovery URL.
 			// authUrl: EXTERNAL URL — the test machine visits this for the authorization redirect.
-			// accessTokenUrl: INTERNAL URL — n8n exchanges the auth code server-to-server.
+			// accessTokenUrl: INTERNAL URL — MNI exchanges the auth code server-to-server.
 			const externalBase = keycloak.discoveryUrl.replace('/.well-known/openid-configuration', '');
 			const internalBase = keycloak.internalDiscoveryUrl.replace(
 				'/.well-known/openid-configuration',
@@ -155,7 +155,7 @@ test.describe(
 
 			// Step 1: Check execution-status before authorization.
 			// The credential is not yet configured → status is "missing".
-			// The response includes an authorizationUrl pointing to the n8n authorize endpoint.
+			// The response includes an authorizationUrl pointing to the MNI authorize endpoint.
 			const initialStatus = await api.dynamicCredentials.getExecutionStatus(workflowId, {
 				bearerToken: accessToken,
 				endpointToken: DYNAMIC_CRED_ENDPOINT_TOKEN,
@@ -168,16 +168,16 @@ test.describe(
 			const n8nAuthorizeUrl = initialStatus.credentials![0].authorizationUrl!;
 			expect(n8nAuthorizeUrl).toBeTruthy();
 
-			// POST to the n8n authorize endpoint → returns the Keycloak authorization page URL
+			// POST to the MNI authorize endpoint → returns the Keycloak authorization page URL
 			const keycloakAuthUrl = await api.dynamicCredentials.startAuthorizationFromStatusUrl(
 				n8nAuthorizeUrl,
 				accessToken,
 			);
 
 			// Step 3: Complete the Keycloak authorization code flow for the test user.
-			// Navigates Keycloak's login form and returns the n8n callback URL (with code + state).
+			// Navigates Keycloak's login form and returns the MNI callback URL (with code + state).
 			const n8nCallbackUrl = await keycloak.completeAuthorizationCodeFlow(keycloakAuthUrl);
-			// GET the n8n callback with the owner session: n8n exchanges the code and stores tokens
+			// GET the MNI callback with the owner session: MNI exchanges the code and stores tokens
 			await api.dynamicCredentials.completeAuthorizationCallback(n8nCallbackUrl);
 
 			// Activate the workflow to register the production webhook URL
@@ -193,7 +193,7 @@ test.describe(
 				expect(status.credentials![0].credentialStatus).toBe('configured');
 
 				// Trigger the production webhook with the bearer token.
-				// n8n extracts the token from the Authorization header for credential resolution.
+				// MNI extracts the token from the Authorization header for credential resolution.
 				const webhookResponse = await api.webhooks.trigger(`/webhook/${webhookPath!}`, {
 					method: 'GET',
 					headers: {

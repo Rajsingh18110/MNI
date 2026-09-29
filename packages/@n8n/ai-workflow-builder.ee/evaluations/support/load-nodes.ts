@@ -65,7 +65,7 @@ export function loadNodesFromFile(): INodeTypeDescription[] {
 	if (!existsSync(nodesPath)) {
 		throw new Error(
 			`nodes.json not found at ${nodesPath}. ` +
-				'Run n8n and export node definitions to evaluations/.data/nodes.json',
+				'Run MNI and export node definitions to evaluations/.data/nodes.json',
 		);
 	}
 

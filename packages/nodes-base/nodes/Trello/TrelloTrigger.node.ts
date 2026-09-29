@@ -138,7 +138,7 @@ export class TrelloTrigger implements INodeType {
 				const idModel = this.getNodeParameter('id') as string;
 
 				const body = {
-					description: `n8n Webhook - ${idModel}`,
+					description: `MNI Webhook - ${idModel}`,
 					callbackURL: webhookUrl,
 					idModel,
 				};

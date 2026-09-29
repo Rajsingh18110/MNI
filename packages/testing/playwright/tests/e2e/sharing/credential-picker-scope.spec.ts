@@ -11,7 +11,7 @@ test.describe(
 	},
 	() => {
 		test('offers only credentials the project can use, across an unscoped credential fetch', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			// The picker asks the backend which credentials this workflow may use, but

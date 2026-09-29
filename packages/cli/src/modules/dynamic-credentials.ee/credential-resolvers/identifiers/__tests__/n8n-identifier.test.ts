@@ -605,7 +605,7 @@ describe('N8NIdentifier', () => {
 			expect(userId).toBe('user-123');
 		});
 
-		it('returns undefined for metadata that is not an n8n identity', async () => {
+		it('returns undefined for metadata that is not an MNI identity', async () => {
 			const userId = await identifier.identify({
 				identity: 'token',
 				version: 1,
@@ -638,8 +638,8 @@ describe('carriesN8nIdentity', () => {
 		expect(carriesN8nIdentity({ identity: 'token', version: 1, metadata: { source } })).toBe(true);
 	});
 
-	it('recognises an n8n source even when the rest of the metadata is missing', () => {
-		// Fail-safe: an incomplete `cookie-source` context still carries an n8n token, and
+	it('recognises an MNI source even when the rest of the metadata is missing', () => {
+		// Fail-safe: an incomplete `cookie-source` context still carries an MNI token, and
 		// must not be waved through to a resolver that would treat it as an external one.
 		expect(
 			carriesN8nIdentity({ identity: 'token', version: 1, metadata: { source: 'cookie-source' } }),
@@ -656,7 +656,7 @@ describe('carriesN8nIdentity', () => {
 
 	it('covers every source the identifier accepts', () => {
 		// Guards against a source being added to the schema but not to the list, which
-		// would silently hand an n8n token to an external-subject resolver.
+		// would silently hand an MNI token to an external-subject resolver.
 		expect(N8NIdentifierMetadataSchema.options).toHaveLength(3);
 	});
 });

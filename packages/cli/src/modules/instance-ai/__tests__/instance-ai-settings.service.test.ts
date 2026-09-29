@@ -284,7 +284,7 @@ describe('InstanceAiSettingsService', () => {
 				operationContext,
 			);
 			expect(instanceCredentialBroker.assignForUse).toHaveBeenCalledWith(
-				expect.objectContaining({ id: 'instance-ai:sandbox:n8n' }),
+				expect.objectContaining({ id: 'instance-ai:sandbox:MNI' }),
 				'sandbox-cred',
 				operationContext,
 			);
@@ -313,7 +313,7 @@ describe('InstanceAiSettingsService', () => {
 			);
 		});
 
-		it('should reject an n8n sandbox credential whose header name is not x-api-key', async () => {
+		it('should reject an MNI sandbox credential whose header name is not x-api-key', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
 			await service.updateAdminSettings({
 				n8nSandboxServiceUrl: 'http://sandbox-api:8080',
@@ -330,7 +330,7 @@ describe('InstanceAiSettingsService', () => {
 			).rejects.toThrow(/x-api-key/);
 		});
 
-		it('should accept an n8n sandbox credential with the x-api-key header', async () => {
+		it('should accept an MNI sandbox credential with the x-api-key header', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
 			await service.updateAdminSettings({
 				n8nSandboxServiceUrl: 'http://sandbox-api:8080',
@@ -372,7 +372,7 @@ describe('InstanceAiSettingsService', () => {
 					expect.objectContaining({
 						type: 'openAiApi',
 						usageScope: 'instance',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 					}),
 					adminUser,
 					operationContext,
@@ -394,7 +394,7 @@ describe('InstanceAiSettingsService', () => {
 					order.push('hooks');
 					return {
 						id: '',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: 'encrypted',
 					} as never;
@@ -414,7 +414,7 @@ describe('InstanceAiSettingsService', () => {
 				expect(order.slice(0, 2)).toEqual(['hooks', 'transaction']);
 				expect(credentialsService.runInstanceCredentialHooks).toHaveBeenCalledWith('create', {
 					id: null,
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'k' },
 				});
@@ -423,7 +423,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should run the update hook when the connection targets the current credential', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValue({
 					id: 'cred-1',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'k2' },
 				});
@@ -435,7 +435,7 @@ describe('InstanceAiSettingsService', () => {
 
 				expect(credentialsService.runInstanceCredentialHooks).toHaveBeenCalledWith('update', {
 					id: 'cred-1',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'k2' },
 				});
@@ -444,7 +444,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should unredact updates before running credential hooks', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValue({
 					id: 'cred-1',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'saved-key' },
 				});
@@ -473,13 +473,13 @@ describe('InstanceAiSettingsService', () => {
 				instanceCredentialBroker.resolveForUse
 					.mockResolvedValueOnce({
 						id: 'cred-1',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'k1' },
 					})
 					.mockResolvedValueOnce({
 						id: 'cred-2',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'k2' },
 					});
@@ -497,7 +497,7 @@ describe('InstanceAiSettingsService', () => {
 				instanceCredentialBroker.resolveForUse
 					.mockResolvedValueOnce({
 						id: 'cred-1',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'saved-key' },
 					})
@@ -524,13 +524,13 @@ describe('InstanceAiSettingsService', () => {
 				instanceCredentialBroker.resolveForUse
 					.mockResolvedValueOnce({
 						id: 'cred-1',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'old-key' },
 					})
 					.mockResolvedValueOnce({
 						id: 'cred-1',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'new-key' },
 					});
@@ -565,7 +565,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should update the existing credential in place when the type is unchanged', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValue({
 					id: 'cred-1',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'k2' },
 				});
@@ -578,7 +578,7 @@ describe('InstanceAiSettingsService', () => {
 					adminUser,
 					'cred-1',
 					{
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'k2' },
 					},
@@ -599,7 +599,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should replace the assignment without deleting the reusable old credential', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValue({
 					id: 'old-cred',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'k' },
 				});
@@ -622,12 +622,12 @@ describe('InstanceAiSettingsService', () => {
 
 			it('should switch the sandbox provider and clear the other slot', async () => {
 				instanceCredentialBroker.resolveForUse.mockImplementation(async (policy) =>
-					policy.id === 'instance-ai:sandbox:n8n'
-						? { id: 'old-n8n', name: 'n8n Assistant sandbox', type: 'httpHeaderAuth', data: {} }
+					policy.id === 'instance-ai:sandbox:MNI'
+						? { id: 'old-n8n', name: 'MNI Assistant sandbox', type: 'httpHeaderAuth', data: {} }
 						: null,
 				);
 				instanceCredentialBroker.getAssignedCredentialId.mockImplementation(async (policy) =>
-					policy.id === 'instance-ai:sandbox:n8n' ? 'old-n8n' : null,
+					policy.id === 'instance-ai:sandbox:MNI' ? 'old-n8n' : null,
 				);
 				credentialsService.createInstanceCredential.mockResolvedValue({
 					id: 'new-daytona',
@@ -649,7 +649,7 @@ describe('InstanceAiSettingsService', () => {
 					operationContext,
 				);
 				expect(instanceCredentialBroker.clearForUse).toHaveBeenCalledWith(
-					expect.objectContaining({ id: 'instance-ai:sandbox:n8n' }),
+					expect.objectContaining({ id: 'instance-ai:sandbox:MNI' }),
 					operationContext,
 				);
 				expect(result).toMatchObject({ sandboxEnabled: true, sandboxProvider: 'daytona' });
@@ -696,7 +696,7 @@ describe('InstanceAiSettingsService', () => {
 				);
 			});
 
-			it('should reject an n8n sandbox connection with a wrong header name', async () => {
+			it('should reject an MNI sandbox connection with a wrong header name', async () => {
 				await expect(
 					service.updateAdminSettings(
 						{
@@ -749,7 +749,7 @@ describe('InstanceAiSettingsService', () => {
 					.mockRejectedValueOnce(new UnprocessableRequestError('not valid'))
 					.mockResolvedValue({
 						id: 'new-cred',
-						name: 'n8n Assistant model',
+						name: 'MNI Assistant model',
 						type: 'openAiApi',
 						data: { apiKey: 'k' },
 					});
@@ -772,7 +772,7 @@ describe('InstanceAiSettingsService', () => {
 				instanceCredentialBroker.getAssignedCredentialId.mockImplementation(async (policy) =>
 					policy.id === 'instance-ai:sandbox:daytona'
 						? 'old-daytona'
-						: policy.id === 'instance-ai:sandbox:n8n'
+						: policy.id === 'instance-ai:sandbox:MNI'
 							? 'old-n8n'
 							: null,
 				);
@@ -784,7 +784,7 @@ describe('InstanceAiSettingsService', () => {
 					operationContext,
 				);
 				expect(instanceCredentialBroker.clearForUse).toHaveBeenCalledWith(
-					expect.objectContaining({ id: 'instance-ai:sandbox:n8n' }),
+					expect.objectContaining({ id: 'instance-ai:sandbox:MNI' }),
 					operationContext,
 				);
 				expect(instanceCredentialBroker.resolveForUse).not.toHaveBeenCalled();
@@ -793,7 +793,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should reject an inline model connection whose saved data fails validation', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValueOnce(null).mockResolvedValue({
 					id: 'new-cred',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'anthropicApi',
 					data: {},
 				});
@@ -926,7 +926,7 @@ describe('InstanceAiSettingsService', () => {
 				expect(credentialsService.runInstanceCredentialHooks).not.toHaveBeenCalled();
 			});
 
-			it('should clear the inactive Daytona slot when selecting n8n Sandbox behind the proxy', async () => {
+			it('should clear the inactive Daytona slot when selecting MNI Sandbox behind the proxy', async () => {
 				aiService.isProxyEnabled.mockReturnValue(true);
 				globalConfig.instanceAi.n8nSandboxServiceUrl = 'http://sandbox-api:8080';
 				service = createService();
@@ -947,13 +947,13 @@ describe('InstanceAiSettingsService', () => {
 					operationContext,
 				);
 				expect(instanceCredentialBroker.assignForUse).toHaveBeenCalledWith(
-					expect.objectContaining({ id: 'instance-ai:sandbox:n8n' }),
+					expect.objectContaining({ id: 'instance-ai:sandbox:MNI' }),
 					'sandbox-cred',
 					operationContext,
 				);
 			});
 
-			it('should accept n8n Sandbox connections on proxy deployments', async () => {
+			it('should accept MNI Sandbox connections on proxy deployments', async () => {
 				aiService.isProxyEnabled.mockReturnValue(true);
 				globalConfig.instanceAi.n8nSandboxServiceUrl = 'http://sandbox-api:8080';
 				service = createService();
@@ -1013,7 +1013,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should reject incomplete Daytona credentials', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValue({
 					id: 'daytona-cred',
-					name: 'n8n Assistant sandbox',
+					name: 'MNI Assistant sandbox',
 					type: 'daytonaApi',
 					data: { apiUrl: 'https://daytona.example.com', apiKey: ' ' },
 				});
@@ -1029,7 +1029,7 @@ describe('InstanceAiSettingsService', () => {
 			it('should reject invalid SearXNG URLs', async () => {
 				instanceCredentialBroker.resolveForUse.mockResolvedValue({
 					id: 'search-cred',
-					name: 'n8n Assistant web search',
+					name: 'MNI Assistant web search',
 					type: 'searXngApi',
 					data: { apiUrl: 'not-a-url' },
 				});
@@ -1040,7 +1040,7 @@ describe('InstanceAiSettingsService', () => {
 			});
 		});
 
-		it('should reject n8n sandbox selection without a service URL', async () => {
+		it('should reject MNI sandbox selection without a service URL', async () => {
 			globalConfig.instanceAi.sandboxEnabled = true;
 			globalConfig.instanceAi.n8nSandboxServiceUrl = '';
 			service = createService();
@@ -1066,7 +1066,7 @@ describe('InstanceAiSettingsService', () => {
 				/apiKey/,
 			],
 			[
-				'n8n Sandbox',
+				'MNI Sandbox',
 				INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
 				{ type: 'httpHeaderAuth', data: { name: 'Authorization', value: 'k' } },
 				/x-api-key/,
@@ -1158,7 +1158,7 @@ describe('InstanceAiSettingsService', () => {
 			).resolves.toBeDefined();
 		});
 
-		it('should allow unrelated admin updates when existing n8n sandbox URL is missing', async () => {
+		it('should allow unrelated admin updates when existing MNI sandbox URL is missing', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
 			settingsRepository.upsert.mockResolvedValue(undefined as never);
 			globalConfig.instanceAi.sandboxEnabled = true;
@@ -1172,7 +1172,7 @@ describe('InstanceAiSettingsService', () => {
 			});
 		});
 
-		it('should expose workflow builder as unavailable when n8n sandbox URL is missing', () => {
+		it('should expose workflow builder as unavailable when MNI sandbox URL is missing', () => {
 			globalConfig.instanceAi.sandboxEnabled = true;
 			globalConfig.instanceAi.sandboxProvider = 'n8n-sandbox';
 			globalConfig.instanceAi.n8nSandboxServiceUrl = '';
@@ -1743,7 +1743,7 @@ describe('InstanceAiSettingsService', () => {
 		});
 	});
 
-	describe('n8n sandbox credential', () => {
+	describe('MNI sandbox credential', () => {
 		it('uses environment settings without resolving the stored credential', async () => {
 			Object.assign(globalConfig.instanceAi, {
 				n8nSandboxServiceUrl: 'http://sandbox-api:8080',
@@ -2052,7 +2052,7 @@ describe('InstanceAiSettingsService', () => {
 			});
 		});
 
-		it('falls back to GOOGLE_VERTEX_LOCATION when the n8n Vertex location env is empty', async () => {
+		it('falls back to GOOGLE_VERTEX_LOCATION when the MNI Vertex location env is empty', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
 			vi.stubEnv('N8N_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
 			vi.stubEnv('GOOGLE_VERTEX_LOCATION', 'us-east5');
@@ -2195,7 +2195,7 @@ describe('InstanceAiSettingsService', () => {
 		it('reads service credential selections from broker assignments', async () => {
 			const assignments: Record<string, string> = {
 				'instance-ai:sandbox:daytona': 'daytona-cred',
-				'instance-ai:sandbox:n8n': 'sandbox-cred',
+				'instance-ai:sandbox:MNI': 'sandbox-cred',
 				'instance-ai:search': 'search-cred',
 			};
 			instanceCredentialBroker.getAssignedCredentialId.mockImplementation(async (credentialUse) => {
@@ -2228,11 +2228,11 @@ describe('InstanceAiSettingsService', () => {
 			});
 		});
 
-		it('exposes n8n Sandbox assignments when the assistant proxy is enabled', async () => {
+		it('exposes MNI Sandbox assignments when the assistant proxy is enabled', async () => {
 			aiService.isProxyEnabled.mockReturnValue(true);
 			instanceCredentialBroker.getAssignedCredentialId.mockResolvedValue('sandbox-cred');
 			instanceCredentialBroker.listForUse.mockResolvedValue([
-				{ id: 'sandbox-cred', name: 'n8n Sandbox', type: 'httpHeaderAuth' },
+				{ id: 'sandbox-cred', name: 'MNI Sandbox', type: 'httpHeaderAuth' },
 			] as never);
 
 			await expect(service.getAdminSettings()).resolves.toMatchObject({
@@ -2241,7 +2241,7 @@ describe('InstanceAiSettingsService', () => {
 				searchCredentialId: null,
 			});
 			await expect(service.listInstanceServiceCredentials()).resolves.toEqual([
-				{ id: 'sandbox-cred', name: 'n8n Sandbox', type: 'httpHeaderAuth' },
+				{ id: 'sandbox-cred', name: 'MNI Sandbox', type: 'httpHeaderAuth' },
 			]);
 			expect(instanceCredentialBroker.listForUse).toHaveBeenCalledOnce();
 			expect(instanceCredentialBroker.listForUse).toHaveBeenCalledWith(

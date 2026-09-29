@@ -13,7 +13,7 @@
  * accident does nothing.
  *
  * Calling /rest/login rather than AuthService keeps this working across changes to
- * n8n's internals, and means it can never grant more than a real login would.
+ * MNI's internals, and means it can never grant more than a real login would.
  *
  * Two things make the route reachable:
  *  - `n8n.ready` fires after configure(), so the SPA catch-all is already
@@ -24,7 +24,7 @@
 const ROUTE = '/preview-signin';
 
 module.exports = {
-	n8n: {
+	MNI: {
 		ready: [
 			async function previewSignin(server) {
 				if (process.env.N8N_PREVIEW_SIGNIN !== '1') return;

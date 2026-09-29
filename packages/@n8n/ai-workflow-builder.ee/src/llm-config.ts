@@ -156,7 +156,7 @@ function createOpenRouterModel(modelName: string) {
 				defaultHeaders: {
 					...config.headers,
 					'HTTP-Referer': 'https://n8n.io',
-					'X-Title': 'n8n AI Workflow Builder',
+					'X-Title': 'MNI AI Workflow Builder',
 				},
 				fetch: config.fetch,
 			},

@@ -1,6 +1,6 @@
 #!/usr/bin/env zx
 /**
- * This script runs the benchmarks for the given n8n setup.
+ * This script runs the benchmarks for the given MNI setup.
  */
 // @ts-check
 import path from 'path';
@@ -41,7 +41,7 @@ async function main() {
 		argv.resultWebhookUrl || process.env.BENCHMARK_RESULT_WEBHOOK_URL || undefined;
 	const resultWebhookAuthHeader =
 		argv.resultWebhookAuthHeader || process.env.BENCHMARK_RESULT_WEBHOOK_AUTH_HEADER || undefined;
-	const baseRunDir = argv.runDir || process.env.RUN_DIR || '/n8n';
+	const baseRunDir = argv.runDir || process.env.RUN_DIR || '/MNI';
 	const n8nLicenseCert = argv.n8nLicenseCert || process.env.N8N_LICENSE_CERT || undefined;
 	const n8nLicenseActivationKey = process.env.N8N_LICENSE_ACTIVATION_KEY || undefined;
 	const n8nLicenseTenantId = argv.n8nLicenseTenantId || process.env.N8N_LICENSE_TENANT_ID || '1';
@@ -53,7 +53,7 @@ async function main() {
 	const hasN8nLicense = !!n8nLicenseCert || !!n8nLicenseActivationKey;
 	if (n8nSetupToUse === 'scaling-multi-main' && !hasN8nLicense) {
 		console.error(
-			'n8n license is required to run the multi-main scaling setup. Please provide N8N_LICENSE_CERT or N8N_LICENSE_ACTIVATION_KEY (and N8N_LICENSE_TENANT_ID if needed)',
+			'MNI license is required to run the multi-main scaling setup. Please provide N8N_LICENSE_CERT or N8N_LICENSE_ACTIVATION_KEY (and N8N_LICENSE_TENANT_ID if needed)',
 		);
 		process.exit(1);
 	}
@@ -97,7 +97,7 @@ async function main() {
 
 	try {
 		const runnerServices = await discoverRunnerServices(dockerComposeClient);
-		await dockerComposeClient.$('up', '-d', '--remove-orphans', 'n8n', ...runnerServices);
+		await dockerComposeClient.$('up', '-d', '--remove-orphans', 'MNI', ...runnerServices);
 
 		const tags = Object.entries({
 			Env: envTag,
@@ -140,12 +140,12 @@ async function dumpLogs(dockerComposeClient) {
 
 function printUsage() {
 	const availableSetups = getAllN8nSetups();
-	console.log('Usage: zx runForN8nSetup.mjs --runDir /path/for/n8n/data <n8n setup to use>');
-	console.log(`   eg: zx runForN8nSetup.mjs --runDir /path/for/n8n/data ${availableSetups[0]}`);
+	console.log('Usage: zx runForN8nSetup.mjs --runDir /path/for/MNI/data <MNI setup to use>');
+	console.log(`   eg: zx runForN8nSetup.mjs --runDir /path/for/MNI/data ${availableSetups[0]}`);
 	console.log('');
 	console.log('Flags:');
 	console.log(
-		'  --runDir <path>             Directory to share with the n8n container for storing data. Default is /n8n',
+		'  --runDir <path>             Directory to share with the MNI container for storing data. Default is /MNI',
 	);
 	console.log('  --n8nDockerTag <tag>        Docker tag for n8n image. Default is latest');
 	console.log(

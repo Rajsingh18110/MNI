@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-Community nodes run inside the n8n runtime, often on shared infrastructure. Functions that execute arbitrary code from strings or spawn operating-system processes are a primary vector for remote code execution and command injection, and have no legitimate use in a community node. This rule bans them outright:
+Community nodes run inside the MNI runtime, often on shared infrastructure. Functions that execute arbitrary code from strings or spawn operating-system processes are a primary vector for remote code execution and command injection, and have no legitimate use in a community node. This rule bans them outright:
 
 - **`eval(...)`** — executes arbitrary code from a string.
 - **`Function(...)` / `new Function(...)`** — the `Function` constructor is an `eval` equivalent that builds a callable from a string body.
@@ -14,7 +14,7 @@ Community nodes run inside the n8n runtime, often on shared infrastructure. Func
 
 The `child_process` functions are detected only when they originate from the `child_process` / `node:child_process` module (via `import` or `require`), so unrelated methods such as `RegExp.prototype.exec` are not affected.
 
-This complements [`no-restricted-imports`](no-restricted-imports.md) (which blocks the `child_process` module entirely on n8n Cloud) and [`no-restricted-globals`](no-restricted-globals.md), providing a clear, specific error and defense-in-depth that also applies when the import restrictions are relaxed.
+This complements [`no-restricted-imports`](no-restricted-imports.md) (which blocks the `child_process` module entirely on MNI cloud) and [`no-restricted-globals`](no-restricted-globals.md), providing a clear, specific error and defense-in-depth that also applies when the import restrictions are relaxed.
 
 ## Examples
 
@@ -36,6 +36,6 @@ exec(`rm -rf ${userInput}`);
 // Parse data instead of evaluating it.
 const value = JSON.parse(rawJson);
 
-// Use n8n helpers and well-scoped library APIs instead of spawning processes.
+// Use MNI helpers and well-scoped library APIs instead of spawning processes.
 const response = await this.helpers.httpRequest({ url });
 ```

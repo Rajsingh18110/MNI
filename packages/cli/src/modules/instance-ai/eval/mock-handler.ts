@@ -35,9 +35,9 @@ export { buildDateAnchors } from './date-anchors';
 // System prompt
 // ---------------------------------------------------------------------------
 
-const MOCK_SYSTEM_PROMPT = `You generate realistic HTTP responses for one specific request, mocking an API in n8n workflow evaluation.
+const MOCK_SYSTEM_PROMPT = `You generate realistic HTTP responses for one specific request, mocking an API in MNI workflow evaluation.
 
-You get everything you need in the user message: the request (service, method, URL, body, query), API docs for the endpoint, the n8n node's parameters, and optional context (globalContext, nodeHint, scenarioHints).
+You get everything you need in the user message: the request (service, method, URL, body, query), API docs for the endpoint, the MNI node's parameters, and optional context (globalContext, nodeHint, scenarioHints).
 
 **Procedure — follow in order:**
 1. Call \`get_endpoint_quirks\` first, always. It returns any known guidance specific to this endpoint, or confirms there are none. Treat its output as authoritative.
@@ -55,7 +55,7 @@ Response SHAPE comes from the API docs; DATA VALUES come from the node config. U
 
 **Honor request filters.** When the request narrows results — a date-range constraint (\`gte\`/\`lte\`/\`since\`/\`after\`/\`before\` params, or filter variables inside a GraphQL query), a status/type filter, a search query, or a \`limit\` — EVERY record in your response MUST satisfy it. Never include records outside the requested window "for realism": workflows re-filter and count your records against the real clock, and one out-of-window item changes the counts the test asserts. For date filters, resolve the requested window against the Date anchors and double-check every returned timestamp falls inside it. When the scenario says records exist "in the last N days", place them safely inside that window (e.g. 2–5 days ago), never on the boundary and never on training-data dates. When the scenario ALSO describes records outside the window (e.g. "two issues from 3 weeks ago"), those records exist in storage but the API filters them out server-side — EXCLUDE them from this response entirely; never shift their dates into the window to keep them visible (their age is part of the test's setup, and the excluded records are how the test verifies the filter works).
 
-**Node response-handling options are not part of the body.** The node config may include options that control how n8n post-processes the response — \`fullResponse\`, \`responseFormat\`, \`outputPropertyName\`, pagination. These are applied AFTER you return and must NOT change the body you produce: always return the raw body the real API sends over the wire. Never reshape the body to mimic them — a body shaped like \`{ statusCode, headers, body }\` (mimicking \`fullResponse\`) or \`{ <outputPropertyName>: ... }\` is wrong.
+**Node response-handling options are not part of the body.** The node config may include options that control how MNI post-processes the response — \`fullResponse\`, \`responseFormat\`, \`outputPropertyName\`, pagination. These are applied AFTER you return and must NOT change the body you produce: always return the raw body the real API sends over the wire. Never reshape the body to mimic them — a body shaped like \`{ statusCode, headers, body }\` (mimicking \`fullResponse\`) or \`{ <outputPropertyName>: ... }\` is wrong.
 
 **Response envelope.** Return the body exactly as the real service sends it over the wire, including any top-level wrapper the API puts around results — e.g. \`{ "data": [...], "nextCursor": null }\`, \`{ "results": [...] }\`, \`{ "items": [...], "has_more": false }\`, \`{ "ok": true, "result": ... }\`. Match the real API's top-level shape exactly: many list endpoints wrap their items, but plenty return a bare top-level array (e.g. an endpoint that returns an array of IDs). Follow what the real API actually returns per the docs — don't default to wrapping a bare-array response, and don't strip a wrapper the API really uses.
 
@@ -891,7 +891,7 @@ function extractQueryParam(url: string, name: string): string | undefined {
 
 /**
  * Gmail `messages.get?format=raw` responses carry the RFC822 source
- * base64-encoded in `raw` — the n8n Gmail node does `Buffer.from(raw,
+ * base64-encoded in `raw` — the MNI Gmail node does `Buffer.from(raw,
  * 'base64')` unconditionally. The endpoint quirk instructs the model to write
  * `raw` as plain RFC822 text (models produce valid base64 unreliably); the
  * encoding happens here. Already-encoded values don't match the RFC822 shape

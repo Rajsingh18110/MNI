@@ -1,6 +1,6 @@
-# Publishes this n8n community node package to npm on every version tag push.
+# Publishes this MNI community node package to npm on every version tag push.
 #
-# Starting May 1 2026, n8n requires all community nodes to be published via
+# Starting May 1 2026, MNI requires all community nodes to be published via
 # GitHub Actions with npm provenance statements. This workflow satisfies that
 # requirement. Provenance lets anyone cryptographically verify that a package
 # was built by this exact workflow, from this exact repository and commit.

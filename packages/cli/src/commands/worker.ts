@@ -31,7 +31,7 @@ const flagsSchema = z.object({
 
 @Command({
 	name: 'worker',
-	description: 'Starts a n8n worker',
+	description: 'Starts a MNI worker',
 	examples: ['--concurrency=5'],
 	flagsSchema,
 })
@@ -55,7 +55,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 	override seedsInstanceIdentity = true;
 
 	/**
-	 * Stop n8n in a graceful way.
+	 * Stop MNI in a graceful way.
 	 * Make for example sure that all the webhooks from third party services
 	 * get removed.
 	 */
@@ -109,7 +109,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 		}
 		await this.initCrashJournal();
 
-		this.logger.debug('Starting n8n worker...');
+		this.logger.debug('Starting MNI worker...');
 		this.logger.debug(`Host ID: ${this.instanceSettings.hostId}`);
 
 		await this.setConcurrency();

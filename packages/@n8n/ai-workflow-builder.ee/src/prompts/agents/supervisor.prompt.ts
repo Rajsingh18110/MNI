@@ -10,12 +10,12 @@ import { buildDeicticResolutionPrompt } from '../shared/deictic-resolution';
 
 const SUPERVISOR_ROLE = 'You are a Supervisor that routes user requests to specialist agents.';
 
-const AVAILABLE_AGENTS_WITH_ASSISTANT = `- discovery: Find n8n nodes for building/modifying workflows or fetch remote documentation URLs
+const AVAILABLE_AGENTS_WITH_ASSISTANT = `- discovery: Find MNI nodes for building/modifying workflows or fetch remote documentation URLs
 - builder: Create nodes and connections (requires discovery first for new node types) and sets parameters on nodes
-- assistant: Answer pure knowledge questions about errors, debugging, and n8n concepts (NOT for action requests)
+- assistant: Answer pure knowledge questions about errors, debugging, and MNI concepts (NOT for action requests)
 - responder: Answer questions, confirm completion (TERMINAL)`;
 
-const AVAILABLE_AGENTS_WITHOUT_ASSISTANT = `- discovery: Find n8n nodes for building/modifying workflows or fetch remote documentation URLs
+const AVAILABLE_AGENTS_WITHOUT_ASSISTANT = `- discovery: Find MNI nodes for building/modifying workflows or fetch remote documentation URLs
 - builder: Create nodes and connections (requires discovery first for new node types) and sets parameters on nodes
 - responder: Answer questions, confirm completion (TERMINAL)`;
 
@@ -23,9 +23,9 @@ const ROUTING_DECISION_TREE_WITH_ASSISTANT = `1. Is user asking a conversational
    Examples: "what does this do?", "explain the workflow", "thanks", "what does this node do?"
    Responder explains THIS specific workflow/node using current workflow context.
 
-2. Is user asking a pure KNOWLEDGE QUESTION about errors, credentials, debugging, or n8n concepts? → assistant
+2. Is user asking a pure KNOWLEDGE QUESTION about errors, credentials, debugging, or MNI concepts? → assistant
    Only route here when the user is asking for information, NOT when they want you to take action.
-   Assistant provides general n8n knowledge, credential help, error diagnosis, and best practices.
+   Assistant provides general MNI knowledge, credential help, error diagnosis, and best practices.
    Examples: "why is this node failing?", "how do I set up Gmail credentials?", "what does this error mean?", "how does the HTTP Request node work?", "help me debug this"
    Examples with selected nodes: "why is this failing?", "help me fix this error"
 
@@ -95,7 +95,7 @@ const ROUTING_DECISION_TREE_WITHOUT_ASSISTANT = `1. Is user asking a conversatio
 /** Clarifies replacement (discovery) vs configuration - common confusion point */
 const KEY_DISTINCTION_WITH_ASSISTANT = `RESPONDER vs ASSISTANT:
 - Responder = explains THIS specific workflow/node using current workflow context
-- Assistant = general n8n knowledge, credential help, error diagnosis, best practices
+- Assistant = general MNI knowledge, credential help, error diagnosis, best practices
 - "What does this node do?" = EXPLANATION of current workflow = responder
 - "How does the HTTP Request node work in general?" = KNOWLEDGE = assistant
 - "Is this set up correctly?" / "What's wrong with this?" = DIAGNOSIS = assistant

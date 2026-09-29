@@ -598,7 +598,7 @@ export const configureActivityCallback = (
 						);
 					}
 
-					invokeAgentScope.recordOutputMessages([`n8n Agent Response: ${response}`]);
+					invokeAgentScope.recordOutputMessages([`MNI Agent Response: ${response}`]);
 
 					await turnContext.sendActivity(response);
 				} finally {

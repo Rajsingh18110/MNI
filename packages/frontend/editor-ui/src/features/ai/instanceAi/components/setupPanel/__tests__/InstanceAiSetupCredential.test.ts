@@ -766,7 +766,7 @@ describe('InstanceAiSetupCredential', () => {
 		expect(rendered.emitted<[unknown, string]>('bindCredential')?.[0][1]).toBe(savedCredential.id);
 	});
 
-	it.each(['', JSON.stringify({ headers: { 'X-Client': 'n8n' } })])(
+	it.each(['', JSON.stringify({ headers: { 'X-Client': 'MNI' } })])(
 		'opens Advanced setup directly when the custom-auth template has no input markers: %s',
 		async (template) => {
 			form.credentialData.value.template = template;

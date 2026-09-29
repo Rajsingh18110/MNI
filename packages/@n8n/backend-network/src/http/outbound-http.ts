@@ -66,11 +66,11 @@ export interface HttpTransportOptions {
 export type TypedHttpFullResponse<T> = Omit<IN8nHttpFullResponse, 'body'> & { body: T };
 
 /**
- * Engine for outbound HTTP requests made on behalf of n8n: you hand it a request
+ * Engine for outbound HTTP requests made on behalf of MNI: you hand it a request
  * descriptor and it performs the call and returns the response.
  *
  * Carries this client's SSRF policy. Proxy routing stays **per request** (read
- * from `options.proxy` / the environment), because n8n requests choose their
+ * from `options.proxy` / the environment), because MNI requests choose their
  * proxy per call rather than per client — so there is no proxy option here.
  */
 export interface HttpRequestClient {
@@ -161,7 +161,7 @@ export interface HttpTransport {
  *
  * Injectable via `@n8n/di`. Pick by intent, not by transport library:
  *
- * - {@link requests}: you make a request and get a response (n8n request pipeline).
+ * - {@link requests}: you make a request and get a response (MNI request pipeline).
  * - {@link transport}: you obtain transport primitives to hand to a third-party SDK.
  *
  * Every client and transport enforces the instance's outbound network policy by

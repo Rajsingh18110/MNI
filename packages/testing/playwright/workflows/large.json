@@ -10,7 +10,7 @@
 		},
 		{
 			"parameters": {
-				"jsCode": "// The array to hold our user data\nconst items = [];\nconst numberOfItems = Number($input.first().json.itemCount)\n\n// Loop 500 times to create 500 user objects\nfor (let i = 1; i <= numberOfItems; i++) {\n  const user = {\n    id: i,\n    firstName: 'User',\n    lastName: `${i}`,\n    email: `user.${i}@example.com`,\n  };\n  items.push(user);\n}\n\n// Return the data in the format n8n expects.\n// Each object in the array becomes a separate item in the n8n workflow.\nreturn items.map(item => ({ json: item }));"
+				"jsCode": "// The array to hold our user data\nconst items = [];\nconst numberOfItems = Number($input.first().json.itemCount)\n\n// Loop 500 times to create 500 user objects\nfor (let i = 1; i <= numberOfItems; i++) {\n  const user = {\n    id: i,\n    firstName: 'User',\n    lastName: `${i}`,\n    email: `user.${i}@example.com`,\n  };\n  items.push(user);\n}\n\n// Return the data in the format MNI expects.\n// Each object in the array becomes a separate item in the MNI workflow.\nreturn items.map(item => ({ json: item }));"
 			},
 			"type": "n8n-nodes-base.code",
 			"typeVersion": 2,

@@ -1461,7 +1461,7 @@ describe('Git Node', () => {
 				.mockReturnValueOnce('https://github.com/test/repo.git');
 
 			await expect(gitNode.execute.call(mockExecuteFunctions)).rejects.toThrow(
-				'Cannot clone to a path on a different filesystem than the n8n data directory',
+				'Cannot clone to a path on a different filesystem than the MNI data directory',
 			);
 			expect(pinnedClose).toHaveBeenCalled();
 		});
@@ -1728,7 +1728,7 @@ describe('Git Node', () => {
 			);
 
 			await expect(gitNode.execute.call(mockExecuteFunctions)).rejects.toThrow(
-				'Cannot clone to a path on a different filesystem than the n8n data directory',
+				'Cannot clone to a path on a different filesystem than the MNI data directory',
 			);
 
 			const stagingPath = mockGit.clone.mock.calls[0][1] as unknown as string;

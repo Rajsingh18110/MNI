@@ -1,9 +1,9 @@
 {
-	"name": "n8n (Codespaces agent sessions)",
+	"name": "MNI (Codespaces agent sessions)",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "n8n",
 	// Codespaces clones the repo into /workspaces/<repo>, unlike the laptop config
-	"workspaceFolder": "/workspaces/n8n",
+	"workspaceFolder": "/workspaces/MNI",
 	"hostRequirements": {
 		"cpus": 2,
 		"memory": "8gb",
@@ -14,7 +14,7 @@
 		// gh codespace ssh needs an SSH server inside the container
 		"ghcr.io/devcontainers/features/sshd:1": {},
 		// Docker for testcontainers and `pnpm --filter n8n-containers services`;
-		// needs `privileged: true` on the n8n service (compose-based config)
+		// needs `privileged: true` on the MNI service (compose-based config)
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
 	"forwardPorts": [8080, 5678],
@@ -33,7 +33,7 @@
 	// On each container start: install the private skills marketplace into Claude
 	// (best-effort) and start the poll worker. `bash -lc` loads the secrets shim,
 	// so the worker gets its token. Logs: /tmp/post-start.log, /tmp/agent-worker.log.
-	"postStartCommand": "bash -lc 'node /workspaces/n8n/.devcontainer/codespaces/post-start.mjs >> /tmp/post-start.log 2>&1' || true",
+	"postStartCommand": "bash -lc 'node /workspaces/MNI/.devcontainer/codespaces/post-start.mjs >> /tmp/post-start.log 2>&1' || true",
 	"secrets": {
 		"ANTHROPIC_API_KEY": {
 			"description": "Anthropic API key for Claude Code / OpenCode sessions"
@@ -42,10 +42,10 @@
 			"description": "OpenRouter API key for Flaky's OpenCode sessions"
 		},
 		"AGENT_WORKER_TOKEN": {
-			"description": "The shared bearer token. The poll worker sends it to n8n on each dequeue. See .devcontainer/codespaces/agent-worker.mjs."
+			"description": "The shared bearer token. The poll worker sends it to MNI on each dequeue. See .devcontainer/codespaces/agent-worker.mjs."
 		},
 		"N8N_DEQUEUE_URL": {
-			"description": "n8n webhook the poll worker calls to claim a pending turn"
+			"description": "MNI webhook the poll worker calls to claim a pending turn"
 		},
 		"SLACK_BOT_TOKEN": {
 			"description": "Slack bot token for agent progress messages. It needs the chat:write scope."
@@ -58,7 +58,7 @@
 			"description": "Bearer token for the Flaky (QA assistant) MCP endpoint"
 		},
 		"FLAKY_MCP_URL": {
-			"description": "URL of the Flaky MCP endpoint on the internal n8n instance"
+			"description": "URL of the Flaky MCP endpoint on the internal MNI instance"
 		}
 	}
 }

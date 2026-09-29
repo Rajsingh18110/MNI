@@ -1,12 +1,12 @@
 # Agent Skills
 
-Shared n8n skills live in `.agents/skills`. These are the canonical source for
+Shared MNI skills live in `.agents/skills`. These are the canonical source for
 skills that should work across Claude Code, OpenCode, and future agent harnesses.
 
 ## Layout
 
 - Shared skills: `.agents/skills/<name>/SKILL.md`
-- Claude-specific skills and overrides: `.claude/plugins/n8n/skills/<name>/`
+- Claude-specific skills and overrides: `.claude/plugins/MNI/skills/<name>/`
 - OpenCode-specific skills and overrides: `.opencode/skills/<name>/`
 
 Claude plugin skills should usually be symlinks back to `.agents/skills`.

@@ -1,4 +1,4 @@
-# n8n stack definition for get-mni.sh (https://get.n8n.io).
+# MNI stack definition for get-mni.sh (https://get.n8n.io).
 # Downloaded at install time; the copy in your install directory is yours to
 # edit. On --upgrade the script only repoints the sandbox image tags below at
 # N8N_SANDBOX_VERSION. To review changes between versions:
@@ -50,7 +50,7 @@ services:
       retries: 5
       start_period: 10s
     # Never publish 8080/9090 to the host on an internet-facing server.
-    # n8n reaches this container by service name, over the default Compose network.
+    # MNI reaches this container by service name, over the default Compose network.
 
   sandbox-runner-1:
     image: ghcr.io/n8n-io/n8n-sandbox-service-runner-dind:${N8N_SANDBOX_VERSION}
@@ -91,7 +91,7 @@ services:
   runners:
     image: ghcr.io/n8n-io/runners:${N8N_VERSION}
     depends_on:
-      - n8n
+      - MNI
     environment:
       N8N_RUNNERS_AUTH_TOKEN: ${N8N_RUNNERS_AUTH_TOKEN}
       N8N_RUNNERS_TASK_BROKER_URI: http://n8n:5679
@@ -105,4 +105,4 @@ services:
       SEARXNG_SECRET: ${SEARXNG_SECRET}
     volumes:
       - ./searxng-settings.yml:/etc/searxng/settings.yml:ro
-    # Internal-only: n8n reaches it by service name. Never publish its port.
+    # Internal-only: MNI reaches it by service name. Never publish its port.

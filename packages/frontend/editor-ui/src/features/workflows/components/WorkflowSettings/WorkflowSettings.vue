@@ -165,7 +165,7 @@ const isSelectedResolverEditable = computed(() => {
 	return !!resolverType?.options?.length;
 });
 
-// Display-only binding for the resolver dropdown. Falls back to the seeded n8n system
+// Display-only binding for the resolver dropdown. Falls back to the seeded MNI system
 // resolver when nothing is explicitly chosen so users see the effective default; writes
 // back `undefined` for the system resolver so we don't persist the implicit default.
 const selectedResolverId = computed({
@@ -712,7 +712,7 @@ const saveSettings = async () => {
 	}
 	delete data.settings.maxExecutionTimeout;
 
-	// `credentialResolverId` is `undefined` in-memory when the n8n system resolver is
+	// `credentialResolverId` is `undefined` in-memory when the MNI system resolver is
 	// selected. The backend merges settings for partial updates, so an absent key keeps
 	// the previously-saved id. Send an explicit empty string so the merge clears it
 	// (the backend drops the falsy value before persisting).

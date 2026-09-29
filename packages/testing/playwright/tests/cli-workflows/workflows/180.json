@@ -323,7 +323,7 @@
 			"parameters": {
 				"group": "internet",
 				"tool": "getUrlShareableLinks",
-				"text": "n8n rocks!",
+				"text": "MNI rocks!",
 				"url": "https://n8n.io/",
 				"additionalOptions": {}
 			},
@@ -497,7 +497,7 @@
 				"group": "internet",
 				"tool": "checkUrlContains",
 				"url": "104.21.37.3",
-				"regex": "n8n",
+				"regex": "MNI",
 				"additionalOptions": {}
 			},
 			"name": "uProc26",

@@ -12,7 +12,7 @@
  *
  *   assistant{tool-call}  →  tool{tool-result}  →  user{interim}  →  assistant{reply}
  *
- * The tool-result is always adjacent to its tool-call regardless of what n8n
+ * The tool-result is always adjacent to its tool-call regardless of what MNI
  * messages come after it in the list.
  *
  * This test drives the full scenario end-to-end and asserts that:

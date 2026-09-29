@@ -43,7 +43,7 @@ const cloudTrialRequirements: TestRequirements = {
 };
 
 const setupCloudTest = async (
-	n8n: n8nPage,
+	MNI: n8nPage,
 	setupRequirements: (requirements: TestRequirements) => Promise<void>,
 	requirements: TestRequirements,
 ) => {
@@ -59,10 +59,10 @@ test.describe(
 	() => {
 		test.describe('Trial Upgrade', () => {
 			test('should render trial banner for opt-in cloud user', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
-				await setupCloudTest(n8n, setupRequirements, cloudTrialRequirements);
+				await setupCloudTest(MNI, setupRequirements, cloudTrialRequirements);
 				await n8n.start.fromBlankCanvas();
 				await n8n.sideBar.expand();
 
@@ -71,8 +71,8 @@ test.describe(
 		});
 
 		test.describe('Admin Home', () => {
-			test('should show admin button', async ({ n8n, setupRequirements }) => {
-				await setupCloudTest(n8n, setupRequirements, cloudTrialRequirements);
+			test('should show admin button', async ({ MNI, setupRequirements }) => {
+				await setupCloudTest(MNI, setupRequirements, cloudTrialRequirements);
 				await n8n.start.fromBlankCanvas();
 				await n8n.sideBar.expand();
 
@@ -82,10 +82,10 @@ test.describe(
 
 		test.describe('Public API', () => {
 			test('should show upgrade CTA for Public API if user is trialing', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
-				await setupCloudTest(n8n, setupRequirements, cloudTrialRequirements);
+				await setupCloudTest(MNI, setupRequirements, cloudTrialRequirements);
 				await n8n.navigate.toApiSettings();
 
 				await n8n.page.waitForLoadState();

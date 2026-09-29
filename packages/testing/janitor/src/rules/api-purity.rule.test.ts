@@ -12,7 +12,7 @@ describe('ApiPurityRule', () => {
 			`
 import { test } from '../fixtures/base';
 
-test('creates workflow', async ({ n8n, api }) => {
+test('creates workflow', async ({ MNI, api }) => {
 	await api.workflows.create({ name: 'Test' });
 	await api.credentials.list();
 });

@@ -101,7 +101,7 @@ export const NestedBackLabel: Story = {
 const tablePage = `
 	<N8nSettingsPageHeader
 		title="API keys"
-		description="Use your API keys to control n8n programmatically."
+		description="Use your API keys to control MNI programmatically."
 		docs-url="https://docs.n8n.io/api/"
 	/>
 	<N8nSettingsSection>

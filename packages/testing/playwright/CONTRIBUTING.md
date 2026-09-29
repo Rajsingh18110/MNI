@@ -1,4 +1,4 @@
-# n8n Playwright Test Contribution Guide
+# MNI Playwright Test Contribution Guide
 
 > For running tests, see [README.md](./README.md)
 
@@ -6,7 +6,7 @@
 
 ### Prerequisites
 - **VS Code/Cursor Extension**: Install "Playwright Test for VSCode"
-- **Local n8n Instance**: Local server or Docker
+- **Local MNI instance**: Local server or Docker
 
 ### Configuration
 Add to your `/.vscode/settings.json`:
@@ -305,7 +305,7 @@ export class ProjectComposer {
 #### E2E Tests
 ```typescript
 // ✅ GOOD: From workflows/list/workflows.spec.ts
-test('should create a new workflow using add workflow button', async ({ n8n }) => {
+test('should create a new workflow using add workflow button', async ({ MNI }) => {
   await n8n.workflows.addResource.workflow();
 
   const workflowName = `Test Workflow ${Date.now()}`;
@@ -315,7 +315,7 @@ test('should create a new workflow using add workflow button', async ({ n8n }) =
 });
 
 // ✅ GOOD: From workflows/editor/execution/debug.spec.ts - Using helper functions
-async function createBasicWorkflow(n8n, url = URLS.FAILING) {
+async function createBasicWorkflow(MNI, url = URLS.FAILING) {
   await n8n.navigate.toWorkflow('new');
   await n8n.canvas.addNode('Manual Trigger');
   await n8n.canvas.addNode('HTTP Request');
@@ -324,10 +324,10 @@ async function createBasicWorkflow(n8n, url = URLS.FAILING) {
   await n8n.ndv.close();
 }
 
-test('should enter debug mode for failed executions', async ({ n8n }) => {
-  await createBasicWorkflow(n8n, URLS.FAILING);
+test('should enter debug mode for failed executions', async ({ MNI }) => {
+  await createBasicWorkflow(MNI, URLS.FAILING);
   await n8n.workflowComposer.executeWorkflowAndWaitForNotification(NOTIFICATIONS.PROBLEM_IN_NODE);
-  await importExecutionForDebugging(n8n);
+  await importExecutionForDebugging(MNI);
   expect(n8n.page.url()).toContain('/debug');
 });
 ```
@@ -549,7 +549,7 @@ export class ProjectComposer {
 }
 
 // 3. Test (projects/projects.spec.ts)
-test('should filter credentials by project ID', async ({ n8n, api }) => {
+test('should filter credentials by project ID', async ({ MNI, api }) => {
   const { projectName, projectId } = await n8n.projectComposer.createProject();
   await n8n.projectComposer.addCredentialToProject(
     projectName,

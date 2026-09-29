@@ -103,7 +103,7 @@ type Props = {
 	projectId?: string;
 	/** Pre-fill the credential name when creating a new credential. */
 	suggestedCredentialName?: string;
-	/** Hide the "Ask n8n AI" assistant button inside the credential editor.
+	/** Hide the "Ask MNI AI" assistant button inside the credential editor.
 	 *  Used by surfaces (e.g. agents) where the assistant flow isn't wired up. */
 	hideAskAssistant?: boolean;
 	/** Agent-supplied Templated Custom Auth recipe (Instance AI setup surfaces) —
@@ -364,9 +364,9 @@ async function onDisconnectFromRow(credentialType: string): Promise<void> {
 }
 
 // The connect / connected callout is only relevant when the workflow uses the
-// default (system) resolver, where resolution maps to the n8n user's own
+// default (system) resolver, where resolution maps to the MNI user's own
 // connection. With a custom resolver (e.g. Slack, OAuth) the runtime account is
-// chosen by the resolver, not the n8n user, so their own connection state is
+// chosen by the resolver, not the MNI user, so their own connection state is
 // irrelevant and we don't surface it.
 const isDefaultResolver = computed(() => {
 	const resolverId = workflowDocumentStore?.value.settings?.credentialResolverId;
@@ -465,7 +465,7 @@ watch(
 
 		// No credentials available to select — auto-enable AI Gateway for supported
 		// types, but only on the initial setup so a later action change doesn't
-		// redirect the user onto n8n credits.
+		// redirect the user onto MNI credits.
 		if (aiGateway.isEnabled.value && isInitialEvaluation) {
 			for (const { type } of types) {
 				// Same rule as showAiGatewaySelector: supported type, or a sibling fallback.
@@ -847,7 +847,7 @@ function isAiGatewayManagedCredentials(credentialType: string): boolean {
 	return aiGateway.isEnabled.value && selected.value[credentialType]?.__aiGatewayManaged === true;
 }
 
-// Credential type + activation parameters n8n credits should use for this row:
+// Credential type + activation parameters MNI credits should use for this row:
 // the shown type if supported, else a supported sibling (whose auth the node
 // switches to). See `resolveSupportedCredentialActivation`.
 //
@@ -904,7 +904,7 @@ function applyActivationParameters(parameters: INodeParameters): void {
 function onAiGatewaySelector(credentialType: string, enable: boolean, isUserAction = true): void {
 	const credentials = { ...(props.node.credentials ?? {}) };
 
-	// When enabling n8n credits, the managed slot goes on the supported credential
+	// When enabling MNI credits, the managed slot goes on the supported credential
 	// type — the shown one, or a supported sibling whose auth we switch the node to.
 	const activation = enable ? resolveGatewayActivation(credentialType) : undefined;
 	const effectiveType = activation?.credentialType ?? credentialType;
@@ -912,7 +912,7 @@ function onAiGatewaySelector(credentialType: string, enable: boolean, isUserActi
 	// Track the credential kind actually assigned, or null when the slot is cleared
 	// (toggle-off with no credential to restore) so no false assignment is recorded.
 	let assignedKind: 'n8n_connect' | 'own' | null = null;
-	// The stored credential restored on toggle-off; n8n Connect slots have none.
+	// The stored credential restored on toggle-off; MNI Connect slots have none.
 	let assignedCredentialId: string | null = null;
 
 	if (enable) {
@@ -945,7 +945,7 @@ function onAiGatewaySelector(credentialType: string, enable: boolean, isUserActi
 	}
 
 	if (isUserAction) {
-		telemetry.track('User toggled n8n connect credential', {
+		telemetry.track('User toggled MNI connect credential', {
 			credential_type: effectiveType,
 			node_type: props.node.type,
 			mode: enable ? 'n8n_connect' : 'own',
@@ -1143,7 +1143,7 @@ function buildCredentialRows(options: CredentialDropdownOption[]): CredentialRow
 	return rows;
 }
 
-// The n8n credits option's value is UI-only select state: selecting it routes
+// The MNI credits option's value is UI-only select state: selecting it routes
 // to the managed-slot path, which owns the persisted
 // `{ id: null, name: '', __aiGatewayManaged: true }` shape.
 function showN8nCreditsOption(credentialType: string): boolean {
@@ -1160,7 +1160,7 @@ function isBalanceIndicatorMuted(credentialType: string): boolean {
 	return openCredentialSelectType.value === credentialType;
 }
 
-/** @param credentialIdOrTag a credential id, or `AI_GATEWAY_MANAGED_TAG` from the n8n credits option */
+/** @param credentialIdOrTag a credential id, or `AI_GATEWAY_MANAGED_TAG` from the MNI credits option */
 function onCredentialOptionSelected(
 	type: INodeCredentialDescription,
 	credentialIdOrTag: string,
@@ -1216,7 +1216,7 @@ function showStandardEmptyState(type: INodeCredentialDescription): boolean {
 }
 
 // Empty-slot layouts, only when the type has no stored credentials and isn't on
-// n8n credits: the quick-connect invitation, else the standard picker.
+// MNI credits: the quick-connect invitation, else the standard picker.
 function showQuickConnectSlot(
 	type: INodeCredentialDescription,
 	options: CredentialDropdownOption[],

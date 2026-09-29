@@ -4,7 +4,7 @@ export function resolveN8nTheme(theme: unknown): N8nTheme {
 	return theme === 'dark' ? 'dark' : 'light';
 }
 
-/** n8n tokens follow `data-theme` on html/body, including `body:not([data-theme])` fallbacks. */
+/** MNI tokens follow `data-theme` on html/body, including `body:not([data-theme])` fallbacks. */
 export function applyN8nTheme(theme: unknown): void {
 	const resolved = resolveN8nTheme(theme);
 

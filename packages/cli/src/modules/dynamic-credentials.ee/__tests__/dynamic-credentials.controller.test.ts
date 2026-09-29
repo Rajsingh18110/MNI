@@ -61,7 +61,7 @@ describe('DynamicCredentialsController', () => {
 			metadata: {},
 		});
 
-		// Default: resolver does not map the link to an n8n user (link stays unbound).
+		// Default: resolver does not map the link to an MNI user (link stays unbound).
 		dynamicCredentialService.resolveOwningUserIdForAuthorization.mockResolvedValue({
 			status: 'unbound',
 		});
@@ -1153,7 +1153,7 @@ describe('DynamicCredentialsController', () => {
 			expect(externalSubjectResolver.deleteSecret).not.toHaveBeenCalled();
 		});
 
-		it('allows authorize when the resolver maps the identity to an n8n user', async () => {
+		it('allows authorize when the resolver maps the identity to an MNI user', async () => {
 			resolverRegistry.getResolverByTypename.mockReturnValue({
 				...externalSubjectResolver,
 				resolveOwningUserId: vi.fn().mockResolvedValue('user-1'),

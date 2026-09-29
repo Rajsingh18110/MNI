@@ -2,7 +2,7 @@ import { createLlmCheck } from './create-llm-check';
 
 export const fulfillsUserRequest = createLlmCheck({
 	name: 'fulfills_user_request',
-	systemPrompt: `You are a strict evaluator checking whether an n8n workflow fulfills a user's request.
+	systemPrompt: `You are a strict evaluator checking whether an MNI workflow fulfills a user's request.
 
 For each feature the user explicitly asked for, check:
 1. Is there a node of the correct TYPE for that feature? (e.g., YouTube node for YouTube operations)

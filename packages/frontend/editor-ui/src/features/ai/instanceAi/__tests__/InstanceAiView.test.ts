@@ -81,12 +81,12 @@ describe('InstanceAiView', () => {
 		set('My conversation');
 
 		setDocumentTitle('Previewed workflow', 'IDLE');
-		expect(document.title).toBe('My conversation - n8n');
+		expect(document.title).toBe('My conversation - MNI');
 
 		// Leaving the feature hands the tab title back to the workflow editor
 		unmount();
 		setDocumentTitle('Previewed workflow', 'IDLE');
-		expect(document.title).toBe('▶️ Previewed workflow - n8n');
+		expect(document.title).toBe('▶️ Previewed workflow - MNI');
 	});
 
 	it('opens a new thread with Ctrl/Cmd+Shift+O', () => {

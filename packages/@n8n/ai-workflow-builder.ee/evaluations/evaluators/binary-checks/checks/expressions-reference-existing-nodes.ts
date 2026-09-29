@@ -1,7 +1,7 @@
 import type { BinaryCheck, SimpleWorkflow } from '../types';
 
 /**
- * Regex patterns to extract node names from n8n expression syntaxes.
+ * Regex patterns to extract node names from MNI expression syntaxes.
  * Mirrors ACCESS_PATTERNS from packages/workflow/src/node-reference-parser-utils.ts.
  *
  * Quoted patterns capture at group index 2; dot-notation captures at group index 1.

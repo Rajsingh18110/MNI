@@ -10,7 +10,7 @@ test.describe(
 		test(
 			'should display empty state for new conversation',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				await n8n.navigate.toInstanceAi();
 
 				await expect(n8n.instanceAi.getChatInput()).toBeVisible();
@@ -18,7 +18,7 @@ test.describe(
 			},
 		);
 
-		test('should send message and receive assistant response', async ({ n8n }) => {
+		test('should send message and receive assistant response', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage('Hello, what can you help me with?');
@@ -28,7 +28,7 @@ test.describe(
 			await expect(n8n.instanceAi.getAssistantMessages().first()).toBeVisible();
 		});
 
-		test('should display user and assistant messages in timeline', async ({ n8n }) => {
+		test('should display user and assistant messages in timeline', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage('Say hello back to me');
@@ -38,7 +38,7 @@ test.describe(
 			await expect(n8n.instanceAi.getAssistantMessages().first()).toBeVisible();
 		});
 
-		test('should persist messages after page reload', async ({ n8n }) => {
+		test('should persist messages after page reload', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage('Remember this persistence message');

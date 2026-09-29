@@ -11,7 +11,7 @@ describe('NoPageInFlowRule', () => {
 			'/composables/WorkflowComposer.ts',
 			`
 export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async createWorkflow() {
 		await this.n8n.canvas.openNewWorkflow();
@@ -31,7 +31,7 @@ export class WorkflowComposer {
 			'/composables/WorkflowComposer.ts',
 			`
 export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async clickButton() {
 		await this.n8n.page.getByTestId('button').click();
@@ -51,7 +51,7 @@ export class WorkflowComposer {
 			'/composables/WorkflowComposer.ts',
 			`
 export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async findElement() {
 		return this.n8n.page.locator('.my-class');
@@ -70,7 +70,7 @@ export class WorkflowComposer {
 			'/composables/WorkflowComposer.ts',
 			`
 export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async navigate() {
 		await this.n8n.page.goto('/workflows');
@@ -90,7 +90,7 @@ export class WorkflowComposer {
 			'/composables/WorkflowComposer.ts',
 			`
 export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async doStuff() {
 		await this.n8n.page.getByTestId('a').click();
@@ -110,7 +110,7 @@ export class WorkflowComposer {
 		const file = createFile(
 			'/composables/WorkflowComposer.ts',
 			`export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async method() {
 		// line 5
@@ -131,7 +131,7 @@ export class WorkflowComposer {
 			'/composables/WorkflowComposer.ts',
 			`
 export class WorkflowComposer {
-	constructor(private n8n: any) {}
+	constructor(private MNI: any) {}
 
 	async method() {
 		await this.n8n.page.getByTestId('x').click();

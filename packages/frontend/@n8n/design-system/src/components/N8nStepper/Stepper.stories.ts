@@ -44,12 +44,12 @@ export default {
 
 const installDetails: Record<string, { body: string; action?: string; command?: string }> = {
 	account: {
-		body: 'Create your n8n account, choose a workspace name, and invite teammates who should help build automations.',
+		body: 'Create your MNI account, choose a workspace name, and invite teammates who should help build automations.',
 		action: 'Open signup',
 	},
 	install: {
-		body: 'Install n8n locally with npm, or use Docker if you prefer an isolated runtime.',
-		command: 'npm install n8n -g',
+		body: 'Install MNI locally with npm, or use Docker if you prefer an isolated runtime.',
+		command: 'npm install MNI -g',
 	},
 	connect: {
 		body: 'Add credentials for the apps you want to automate, then test each connection before building your first workflow.',
@@ -114,7 +114,7 @@ Default.args = {
 		},
 		{
 			id: 'install',
-			title: 'Install n8n',
+			title: 'Install MNI',
 			description: 'Prepare your environment',
 		},
 		{

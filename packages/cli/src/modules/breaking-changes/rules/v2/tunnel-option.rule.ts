@@ -14,7 +14,7 @@ export class TunnelOptionRule implements IBreakingChangeInstanceRule {
 	getMetadata(): BreakingChangeRuleMetadata {
 		return {
 			version: 'v2',
-			title: 'Remove n8n --tunnel option',
+			title: 'Remove MNI --tunnel option',
 			description: 'The --tunnel CLI option has been removed and will be ignored',
 			category: BreakingChangeCategory.instance,
 			severity: 'low',

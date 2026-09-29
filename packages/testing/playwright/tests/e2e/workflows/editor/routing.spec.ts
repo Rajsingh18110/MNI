@@ -10,7 +10,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('should ask to save unsaved changes before leaving route', async ({ n8n }) => {
+		test('should ask to save unsaved changes before leaving route', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('manual-trigger-with-code.json');
 			await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: true });
 
@@ -24,7 +24,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(/home\/workflows/);
 		});
 
-		test('should correct route after cancelling saveChangesModal', async ({ n8n }) => {
+		test('should correct route after cancelling saveChangesModal', async ({ MNI }) => {
 			await n8n.goHome();
 			await n8n.sideBar.addWorkflowFromUniversalAdd('Personal');
 
@@ -42,7 +42,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(/workflow/);
 		});
 
-		test('should correct route when opening and closing NDV', async ({ n8n }) => {
+		test('should correct route when opening and closing NDV', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('manual-trigger-with-code.json');
 
 			const baselineUrl = n8n.page.url();
@@ -56,7 +56,7 @@ test.describe(
 			expect(n8n.page.url()).toBe(baselineUrl);
 		});
 
-		test('should open ndv via URL', async ({ n8n }) => {
+		test('should open ndv via URL', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('manual-trigger-with-code.json');
 
 			await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: false });
@@ -73,7 +73,7 @@ test.describe(
 		});
 
 		test('should open show warning and drop nodeId from URL if it contained an unknown nodeId', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('manual-trigger-with-code.json');
 
@@ -93,7 +93,7 @@ test.describe(
 			expect(n8n.page.url()).toBe(urlWithoutNodeId);
 		});
 
-		test('should load existing workflow when navigating with ?new=true', async ({ n8n }) => {
+		test('should load existing workflow when navigating with ?new=true', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 
 			// Create and save a workflow with a node

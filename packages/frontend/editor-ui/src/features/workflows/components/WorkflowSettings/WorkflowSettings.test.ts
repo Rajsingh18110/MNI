@@ -846,7 +846,7 @@ describe('WorkflowSettingsVue', () => {
 			},
 			{
 				id: SYSTEM_RESOLVER_ID,
-				name: 'N8n Resolver',
+				name: 'MNI Resolver',
 				type: 'n8n-internal-type',
 				config: '{}',
 				createdAt: new Date(),
@@ -899,7 +899,7 @@ describe('WorkflowSettingsVue', () => {
 			expect(dropdownItems).toHaveLength(3);
 			expect(dropdownItems[0]).toHaveTextContent('Test Resolver 1');
 			expect(dropdownItems[1]).toHaveTextContent('Test Resolver 2');
-			expect(dropdownItems[2]).toHaveTextContent('N8n Resolver');
+			expect(dropdownItems[2]).toHaveTextContent('MNI Resolver');
 		});
 
 		it('should show "New" button for creating a new resolver', async () => {
@@ -911,7 +911,7 @@ describe('WorkflowSettingsVue', () => {
 			});
 		});
 
-		it('should not show "Edit" button when the default n8n system resolver is selected', async () => {
+		it('should not show "Edit" button when the default MNI system resolver is selected', async () => {
 			const { queryByTestId } = createComponent({ pinia });
 			await flushPromises();
 
@@ -961,7 +961,7 @@ describe('WorkflowSettingsVue', () => {
 			expect(dropdownItems).toHaveLength(3);
 			expect(dropdownItems[0]).toHaveTextContent('Test Resolver 1');
 			expect(dropdownItems[1]).toHaveTextContent('Test Resolver 2');
-			expect(dropdownItems[2]).toHaveTextContent('N8n Resolver');
+			expect(dropdownItems[2]).toHaveTextContent('MNI Resolver');
 
 			await userEvent.click(dropdownItems[0]);
 			await flushPromises();
@@ -1059,13 +1059,13 @@ describe('WorkflowSettingsVue', () => {
 				expect(restApiClient.getCredentialResolvers).toHaveBeenCalled();
 			});
 
-			// Open the dropdown and pick the n8n system resolver
+			// Open the dropdown and pick the MNI system resolver
 			const resolverContainer = getByTestId('workflow-settings-credential-resolver');
 			await userEvent.click(within(resolverContainer).getByRole('combobox'));
 
 			await waitFor(async () => {
 				const options = within(document.body as HTMLElement).getAllByRole('option');
-				const systemResolver = options.find((o) => o.textContent?.includes('N8n Resolver'));
+				const systemResolver = options.find((o) => o.textContent?.includes('MNI Resolver'));
 				expect(systemResolver).toBeTruthy();
 				await userEvent.click(systemResolver!);
 			});
@@ -1129,13 +1129,13 @@ describe('WorkflowSettingsVue', () => {
 				expect(restApiClient.getCredentialResolvers).toHaveBeenCalled();
 			});
 
-			// The stale ID is cleared and the n8n system resolver is selected as the default.
+			// The stale ID is cleared and the MNI system resolver is selected as the default.
 			const dropdown = getByTestId('workflow-settings-credential-resolver');
 			const input = dropdown.querySelector('input') as HTMLInputElement;
-			expect(input.value).toBe('N8n Resolver');
+			expect(input.value).toBe('MNI Resolver');
 		});
 
-		it('should default to the n8n system resolver when no resolver is selected', async () => {
+		it('should default to the MNI system resolver when no resolver is selected', async () => {
 			const { getByTestId } = createComponent({ pinia });
 			await flushPromises();
 
@@ -1145,7 +1145,7 @@ describe('WorkflowSettingsVue', () => {
 
 			const dropdown = getByTestId('workflow-settings-credential-resolver');
 			const input = dropdown.querySelector('input') as HTMLInputElement;
-			expect(input.value).toBe('N8n Resolver');
+			expect(input.value).toBe('MNI Resolver');
 		});
 	});
 

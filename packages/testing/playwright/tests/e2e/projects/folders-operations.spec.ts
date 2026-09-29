@@ -7,7 +7,7 @@ test.describe(
 	},
 	() => {
 		test.describe('Rename and delete folders', () => {
-			test('should rename folder from breadcrumb dropdown', async ({ n8n }) => {
+			test('should rename folder from breadcrumb dropdown', async ({ MNI }) => {
 				await n8n.start.fromNewProject();
 				const folderName = await n8n.workflows.addFolder();
 				const folderCard = n8n.workflows.cards.getFolder(folderName);
@@ -18,7 +18,7 @@ test.describe(
 				await expect(n8n.workflows.cards.getFolder('Renamed')).toBeVisible();
 			});
 
-			test('should rename folder from card dropdown', async ({ n8n }) => {
+			test('should rename folder from card dropdown', async ({ MNI }) => {
 				await n8n.start.fromNewProject();
 				const folderName = await n8n.workflows.addFolder();
 				const folderCard = n8n.workflows.cards.getFolder(folderName);
@@ -28,14 +28,14 @@ test.describe(
 				await expect(n8n.workflows.cards.getFolder('Renamed')).toBeVisible();
 			});
 
-			test('should delete empty folder from card dropdown', async ({ n8n }) => {
+			test('should delete empty folder from card dropdown', async ({ MNI }) => {
 				await n8n.start.fromNewProject();
 				const folderName = await n8n.workflows.addFolder();
 				await n8n.workflows.cards.deleteFolder(folderName);
 				await expect(n8n.workflows.cards.getFolder(folderName)).toBeHidden();
 			});
 
-			test('should delete empty folder from breadcrumb dropdown', async ({ n8n }) => {
+			test('should delete empty folder from breadcrumb dropdown', async ({ MNI }) => {
 				await n8n.start.fromNewProject();
 				const folderName = await n8n.workflows.addFolder();
 				await n8n.workflows.cards.openFolder(folderName);
@@ -45,7 +45,7 @@ test.describe(
 			});
 
 			test('should warn before deleting non-empty folder from breadcrumb dropdown', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const folder = await n8n.api.projects.createFolder(projectId);
@@ -59,7 +59,7 @@ test.describe(
 				await expect(n8n.workflows.deleteModalConfirmButton()).toBeDisabled();
 			});
 
-			test('should warn before deleting non-empty folder from card dropdown', async ({ n8n }) => {
+			test('should warn before deleting non-empty folder from card dropdown', async ({ MNI }) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const folder = await n8n.api.projects.createFolder(projectId);
 				await n8n.api.workflows.createInProject(projectId, {
@@ -74,7 +74,7 @@ test.describe(
 			});
 
 			test('should transfer contents when deleting non-empty folder - from card dropdown', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const folderToDelete = await n8n.api.projects.createFolder(projectId);
@@ -104,7 +104,7 @@ test.describe(
 
 		test.describe('Move folders and workflows', () => {
 			test('should move empty folder to another folder - from folder card action', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const sourceFolder = await n8n.api.projects.createFolder(projectId);
@@ -130,7 +130,7 @@ test.describe(
 			});
 
 			test('should move folder with contents to another folder - from folder card action', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const sourceFolder = await n8n.api.projects.createFolder(projectId);
@@ -162,7 +162,7 @@ test.describe(
 			});
 
 			test('should move empty folder to another folder - from list breadcrumbs', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const sourceFolder = await n8n.api.projects.createFolder(projectId);
@@ -182,7 +182,7 @@ test.describe(
 			});
 
 			test('should move folder with contents to another folder - from list dropdown', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const sourceFolder = await n8n.api.projects.createFolder(projectId);
@@ -207,7 +207,7 @@ test.describe(
 				await expect(n8n.workflows.cards.getWorkflows()).toBeVisible();
 			});
 
-			test('should move folder to project root - from folder card action', async ({ n8n }) => {
+			test('should move folder to project root - from folder card action', async ({ MNI }) => {
 				const project = await n8n.api.projects.createProject();
 				const parentFolder = await n8n.api.projects.createFolder(project.id);
 				const childFolderName = 'Child Folder';
@@ -238,7 +238,7 @@ test.describe(
 				await expect(n8n.workflows.cards.getFolder(childFolder.name)).toBeVisible();
 			});
 
-			test('should move workflow from project root to folder', async ({ n8n }) => {
+			test('should move workflow from project root to folder', async ({ MNI }) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const destinationFolder = await n8n.api.projects.createFolder(projectId);
 
@@ -263,7 +263,7 @@ test.describe(
 				await expect(n8n.workflows.cards.getWorkflows()).toBeVisible();
 			});
 
-			test('should move workflow to another folder', async ({ n8n }) => {
+			test('should move workflow to another folder', async ({ MNI }) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const sourceFolder = await n8n.api.projects.createFolder(projectId);
 				const destinationFolder = await n8n.api.projects.createFolder(projectId);

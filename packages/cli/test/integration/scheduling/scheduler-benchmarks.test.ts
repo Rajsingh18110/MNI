@@ -37,9 +37,9 @@ import { selfOwned } from './shared/job-factory';
  * this file:
  *
  *   # SQLite (single-writer)
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:sqlite scheduler-benchmarks
+ *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks
  *   # Postgres (SKIP LOCKED, dead-tuple churn) via testcontainers
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:postgres:integration:tc scheduler-benchmarks
+ *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc scheduler-benchmarks
  *
  * Workload sizes and thresholds are overridable via env for beefier hosts
  * (see the constants below).

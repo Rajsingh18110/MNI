@@ -1861,7 +1861,7 @@ describe('CredentialsHelper', () => {
 				name: 'system resolver',
 				credentialResolverId: undefined,
 				expectedMessage:
-					"End-user credentials aren't supported by this workflow's trigger. Supported triggers: Manual, Sub-workflow, Chat available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, Form, or Webhook with n8n user authentication. To use another trigger, switch this credential to Fixed.",
+					"End-user credentials aren't supported by this workflow's trigger. Supported triggers: Manual, Sub-workflow, Chat available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, Form, or Webhook with MNI user authentication. To use another trigger, switch this credential to Fixed.",
 			},
 			{
 				name: 'custom resolver',

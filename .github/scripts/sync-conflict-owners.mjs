@@ -15,7 +15,7 @@
  * reviewer: the PR body and the Slack post name both sides, and the resolver picks
  * themselves.
  *
- * git log gives only the author name/email, and ~2/3 of n8n authors commit with a
+ * git log gives only the author name/email, and ~2/3 of MNI authors commit with a
  * non-noreply email that carries no GitHub username. So the conflicted files → commit
  * analysis is done locally, and a SINGLE GraphQL call maps those few SHAs to GitHub
  * logins. Bot- and unlinked-account commits resolve to a null user and are skipped.

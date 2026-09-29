@@ -20,7 +20,7 @@ export type ChatModelFailureKind =
  *
  * Keeping this gap narrow is the whole point. An unbounded gap matches any
  * message that merely mentions a model somewhere before an unrelated
- * not-found detail — and n8n node errors routinely do, because chat-model
+ * not-found detail — and MNI node errors routinely do, because chat-model
  * nodes are named "... Chat Model" ("Problem in node 'Google Gemini Chat
  * Model': the Notion page does not exist"). Callers act on `invalid_model` by
  * telling the user to replace the model, so a false positive sends them after

@@ -15,7 +15,7 @@ test.describe(
 	},
 	() => {
 		test('should preserve changes to parameters after closing NDV when focus panel is open', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(requirements);

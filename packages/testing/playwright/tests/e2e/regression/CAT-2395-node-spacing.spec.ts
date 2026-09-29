@@ -16,7 +16,7 @@ test.describe(
 	{ annotation: [{ type: 'owner', description: 'Catalysts' }] },
 	() => {
 		test('keeps the canonical gap when adding a node off a default node, unchanged by Tidy-up', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(HTTP_REQUEST_NODE_NAME, { closeNDV: true });

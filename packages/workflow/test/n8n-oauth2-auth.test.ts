@@ -57,7 +57,7 @@ describe('n8nOAuth2Auth', () => {
 			validation: { valid: true, user: USER },
 		});
 
-		const result = await n8nOAuth2Auth(context, { realm: 'n8n Webhook' });
+		const result = await n8nOAuth2Auth(context, { realm: 'MNI Webhook' });
 
 		expect(validateN8nOAuth2Token).toHaveBeenCalledWith('good-token', WEBHOOK_URL);
 		expect(result).toEqual({
@@ -74,7 +74,7 @@ describe('n8nOAuth2Auth', () => {
 		});
 
 		// mixed-case input is canonicalised to the upper-cased `method` selector
-		const result = await n8nOAuth2Auth(context, { realm: 'n8n Webhook', method: 'post' });
+		const result = await n8nOAuth2Auth(context, { realm: 'MNI Webhook', method: 'post' });
 
 		const expectedResource = `${WEBHOOK_URL}?method=POST`;
 		expect(validateN8nOAuth2Token).toHaveBeenCalledWith('good-token', expectedResource);
@@ -89,7 +89,7 @@ describe('n8nOAuth2Auth', () => {
 	it('advertises the method-qualified metadata URL in WWW-Authenticate', async () => {
 		const { context, response } = buildContext({});
 
-		await n8nOAuth2Auth(context, { realm: 'n8n Webhook', method: 'GET' });
+		await n8nOAuth2Auth(context, { realm: 'MNI Webhook', method: 'GET' });
 
 		expect(response.writeHead).toHaveBeenCalledWith(401, {
 			'WWW-Authenticate': expect.stringContaining(
@@ -101,12 +101,12 @@ describe('n8nOAuth2Auth', () => {
 	it('responds 401 without WWW-Authenticate error when no bearer token is present', async () => {
 		const { context, response, validateN8nOAuth2Token } = buildContext({});
 
-		const result = await n8nOAuth2Auth(context, { realm: 'n8n Webhook' });
+		const result = await n8nOAuth2Auth(context, { realm: 'MNI Webhook' });
 
 		expect(result).toBe('handled');
 		expect(validateN8nOAuth2Token).not.toHaveBeenCalled();
 		expect(response.writeHead).toHaveBeenCalledWith(401, {
-			'WWW-Authenticate': expect.stringContaining('realm="n8n Webhook"'),
+			'WWW-Authenticate': expect.stringContaining('realm="MNI Webhook"'),
 		});
 	});
 
@@ -120,7 +120,7 @@ describe('n8nOAuth2Auth', () => {
 			validation: { valid: false, reason },
 		});
 
-		const result = await n8nOAuth2Auth(context, { realm: 'n8n MCP Server' });
+		const result = await n8nOAuth2Auth(context, { realm: 'MNI MCP Server' });
 
 		expect(result).toBe('handled');
 		expect(response.writeHead).toHaveBeenCalledWith(code, {
@@ -134,7 +134,7 @@ describe('n8nOAuth2Auth', () => {
 			validation: { valid: false, reason: 'verifier_unavailable' },
 		});
 
-		const result = await n8nOAuth2Auth(context, { realm: 'n8n Webhook' });
+		const result = await n8nOAuth2Auth(context, { realm: 'MNI Webhook' });
 
 		expect(result).toBe('handled');
 		expect(response.status).toHaveBeenCalledWith(503);
@@ -147,7 +147,7 @@ describe('n8nOAuth2Auth', () => {
 			otherHeaders: { 'x-tenant-id': 'acme' },
 		});
 
-		await n8nOAuth2Auth(context, { realm: 'n8n Webhook' });
+		await n8nOAuth2Auth(context, { realm: 'MNI Webhook' });
 
 		expect(request.headers).toEqual({
 			authorization: 'Bearer good-token',
@@ -166,7 +166,7 @@ describe('n8nOAuth2Auth', () => {
 			validation: { valid: false, reason: 'invalid_token' },
 		});
 
-		await n8nOAuth2Auth(context, { realm: 'n8n Webhook' });
+		await n8nOAuth2Auth(context, { realm: 'MNI Webhook' });
 
 		expect(redactedHeaders(request)).toEqual({ authorization: 'Bearer bad-token' });
 	});
@@ -174,7 +174,7 @@ describe('n8nOAuth2Auth', () => {
 	it('throws when the webhook URL is unavailable', async () => {
 		const { context } = buildContext({ webhookUrl: undefined });
 
-		await expect(n8nOAuth2Auth(context, { realm: 'n8n Webhook' })).rejects.toThrow(
+		await expect(n8nOAuth2Auth(context, { realm: 'MNI Webhook' })).rejects.toThrow(
 			'Webhook URL is not available',
 		);
 	});
@@ -192,7 +192,7 @@ describe('n8nOAuth2Auth', () => {
 				const { context, response } = buildContext({ otherHeaders: { accept: 'text/html' } });
 
 				const result = await n8nOAuth2Auth(context, {
-					realm: 'n8n Webhook',
+					realm: 'MNI Webhook',
 					method: 'GET',
 					browserFlow,
 				});
@@ -200,7 +200,7 @@ describe('n8nOAuth2Auth', () => {
 				expect(result).toBe('handled');
 				expect(context.beginN8nOAuth2Flow).not.toHaveBeenCalled();
 				expect(response.writeHead).toHaveBeenCalledWith(401, {
-					'WWW-Authenticate': expect.stringContaining('realm="n8n Webhook"'),
+					'WWW-Authenticate': expect.stringContaining('realm="MNI Webhook"'),
 				});
 			},
 		);
@@ -209,7 +209,7 @@ describe('n8nOAuth2Auth', () => {
 			const { context, response } = buildContext({ otherHeaders: { accept: 'application/json' } });
 
 			const result = await n8nOAuth2Auth(context, {
-				realm: 'n8n Webhook',
+				realm: 'MNI Webhook',
 				method: 'GET',
 				browserFlow: 'browser',
 			});
@@ -225,7 +225,7 @@ describe('n8nOAuth2Auth', () => {
 			context.validateN8nOAuth2Token.mockResolvedValue({ valid: true, user: USER });
 
 			const result = await n8nOAuth2Auth(context, {
-				realm: 'n8n Webhook',
+				realm: 'MNI Webhook',
 				method: 'GET',
 				browserFlow: 'auto',
 			});

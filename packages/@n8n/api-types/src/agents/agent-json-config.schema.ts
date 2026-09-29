@@ -65,7 +65,7 @@ const EpisodicMemoryConfigSchema = z.discriminatedUnion('enabled', [
 
 const MemoryConfigSchema = z.object({
 	enabled: z.boolean(),
-	storage: z.enum(['n8n']),
+	storage: z.enum(['MNI']),
 	observationalMemory: ObservationalMemoryConfigSchema.optional(),
 	episodicMemory: EpisodicMemoryConfigSchema.optional(),
 });
@@ -295,7 +295,7 @@ export const McpServerConfigSchema = z
 
 export const AGENT_VECTOR_STORE_PROVIDERS = ['pinecone', 'supabase', 'qdrant', 'postgres'] as const;
 
-/** n8n credential type each vector store provider's connection credential must have. */
+/** MNI credential type each vector store provider's connection credential must have. */
 export const AGENT_VECTOR_STORE_CREDENTIAL_TYPES = {
 	pinecone: 'pineconeApi',
 	supabase: 'supabaseApi',
@@ -487,7 +487,7 @@ export const AgentJsonConfigBaseSchema = z.object({
 		.refine(
 			(integrations) => integrations.filter((entry) => entry.type === 'n8n_chat').length <= 1,
 			{
-				message: 'Only one n8n Chat channel is allowed',
+				message: 'Only one MNI Chat channel is allowed',
 			},
 		)
 		.optional(),

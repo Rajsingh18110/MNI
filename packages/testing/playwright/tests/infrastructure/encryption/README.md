@@ -28,7 +28,7 @@ The stack capabilities this test leans on: `createN8NStack` accepts an
 `image`, a `userHomeHostDir` bind mount (the user folder — settings file and
 sqlite database — outlives the container), a `user` override so the mounted
 files stay host-owned, and a `startupTimeoutMs` for old-release migrations;
-`stack.replaceN8N({ image, env })` then swaps the running n8n main for a
+`stack.replaceN8N({ image, env })` then swaps the running MNI main for a
 different image while the database service, network, user folder, and host
 port stay alive. One stack lives through every phase; only the image changes.
 
@@ -41,7 +41,7 @@ before.
 
 | Phase | Image | Checks |
 |---|---|---|
-| P1 seed | `FROM_IMAGE` (pinned `n8nio/n8n:2.37.10`; bump deliberately) | owner + credential created, decrypt round-trip, scheduled workflow seeded and executing |
+| P1 seed | `FROM_IMAGE` (pinned `n8nio/MNI:2.37.10`; bump deliberately) | owner + credential created, decrypt round-trip, scheduled workflow seeded and executing |
 | P2 upgrade | `TO_IMAGE`, rotation flag **off** | old credential decrypts; a new write is byte-compatible legacy format (`U2FsdGVkX1…`); key store seeded with exactly 2 rows; the newer release re-activates and executes the workflow the old release wrote |
 | P3 downgrade | `FROM_IMAGE` again, same data | the value written by the **newer** instance decrypts on the **older** one; the old release still activates and executes on the migrated-forward database |
 | P4 write-on | `TO_IMAGE`, flag **on** | mixed data decrypts; new write is `<activeKeyId>:…`; rotation via `POST /rest/encryption/keys` moves the write key immediately; all four data generations decrypt |
@@ -92,7 +92,7 @@ samples land in `<work root>/<backend>/metrics.csv`.
 Any failed check throws and fails the Playwright test: a loud block prints
 the `FAIL` line with the expected/actual details, the current container's
 docker log is appended to `<backend>/n8n.log`, the last 40 log lines print
-inline, and the stack (n8n, database, network) is torn down. The log and
+inline, and the stack (MNI, database, network) is torn down. The log and
 `metrics.csv` are attached to the test. In CI the job summary shows
 **Result: FAIL** with the last 80 run-log lines, the artifacts still upload,
 and a failed scheduled run notifies Slack. Without docker (or without the
@@ -105,8 +105,8 @@ where `ENCRYPTION_CYCLE_REQUIRED=true` turns that into a failure.
 |---|---|---|
 | `MODE` | `upgrade` | `upgrade` (full cycle) or `rotation` (standalone rotation test) |
 | `DB` | `both` | database backends to run: `sqlite`, `postgres`, or `both` |
-| `FROM_IMAGE` | `n8nio/n8n:2.37.10` (pinned) | the "old" release to seed on and downgrade to (upgrade mode only) |
-| `TO_IMAGE` | `n8nio/n8n:local` | the image under test (`pnpm build:docker` output) |
+| `FROM_IMAGE` | `n8nio/MNI:2.37.10` (pinned) | the "old" release to seed on and downgrade to (upgrade mode only) |
+| `TO_IMAGE` | `n8nio/MNI:local` | the image under test (`pnpm build:docker` output) |
 | `TEST_IMAGE_POSTGRES` | stack default | the postgres container image |
 | `WORK_ROOT` | `mktemp -d` | where the home dirs, logs, and metrics land |
 

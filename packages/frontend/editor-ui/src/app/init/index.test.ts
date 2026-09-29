@@ -164,7 +164,7 @@ describe('Init', () => {
 
 			expect(showToast).toHaveBeenCalledWith(
 				expect.objectContaining({
-					title: 'Error connecting to n8n',
+					title: 'Error connecting to MNI',
 					type: 'error',
 				}),
 			);

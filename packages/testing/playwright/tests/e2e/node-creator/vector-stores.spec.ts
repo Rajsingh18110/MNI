@@ -7,12 +7,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 		});
 
-		test('should show vector stores actions', async ({ n8n }) => {
+		test('should show vector stores actions', async ({ MNI }) => {
 			const expectedActions = [
 				'Get ranked documents from vector store',
 				'Add documents to vector store',
@@ -35,14 +35,14 @@ test.describe(
 			await expect(n8n.canvas.nodeCreator.getNodeItems().first()).toBeVisible();
 		});
 
-		test('should find vector store nodes in creator', async ({ n8n }) => {
+		test('should find vector store nodes in creator', async ({ MNI }) => {
 			await n8n.canvas.clickNodePlusEndpoint(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
 			await n8n.canvas.nodeCreator.searchFor('Vector Store');
 
 			await expect(n8n.canvas.nodeCreator.getNodeItems().first()).toBeVisible();
 		});
 
-		test('should search for specific vector store nodes', async ({ n8n }) => {
+		test('should search for specific vector store nodes', async ({ MNI }) => {
 			await n8n.canvas.clickNodePlusEndpoint(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
 			await n8n.canvas.nodeCreator.searchFor('Simple Vector Store');
 

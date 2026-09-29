@@ -39,7 +39,7 @@ import type {
 } from 'n8n-workflow';
 import type { z } from 'zod';
 
-// Service interfaces — dependency inversion so the package stays decoupled from n8n internals.
+// Service interfaces — dependency inversion so the package stays decoupled from MNI internals.
 // The backend module provides concrete implementations via InstanceAiAdapterService.
 
 import type { WorkflowCodeSnapshotInput } from './debug/run-debug-buffer';
@@ -221,7 +221,7 @@ export interface StepExecutionResult extends ExecutionResult {
 	 * memory). The engine runs a sub-node from the node that owns it, so the
 	 * input came from that node's input, and `mockInput` fed that node.
 	 *
-	 * A tool wired to several agents lists them all: n8n runs the step through
+	 * A tool wired to several agents lists them all: MNI runs the step through
 	 * one of them, and which one is the engine's choice, not this caller's.
 	 * A step run refuses a tool when one of its agents runs above another.
 	 */
@@ -372,7 +372,7 @@ export interface NodeSummary {
 	description: string;
 	group: string[];
 	version: number;
-	/** Present when the node is reachable via n8n Connect on this instance. */
+	/** Present when the node is reachable via MNI Connect on this instance. */
 	aiGateway?: AiGatewayNodeMeta;
 }
 
@@ -744,7 +744,7 @@ export interface InstanceAiExecuteNodeService {
 export interface CredentialTypeSearchResult {
 	type: string;
 	displayName: string;
-	/** The type's own n8n docs page, so a scope/setup answer can be grounded in one
+	/** The type's own MNI docs page, so a scope/setup answer can be grounded in one
 	 *  `n8n-docs` lookup instead of recalled. Absent when the class won't load. */
 	documentationUrl?: string;
 }
@@ -807,7 +807,7 @@ export interface InstanceAiCredentialService {
 	isAiGatewayCredentialType?(credType: string): Promise<boolean>;
 	/** Current AI Gateway wallet, or `null` when Connect is off or the fetch failed. */
 	getAiGatewayWallet?(): Promise<{ balance: number } | null>;
-	/** List all credential types supported by n8n Connect on this instance. */
+	/** List all credential types supported by MNI Connect on this instance. */
 	listAiGatewayCredentialTypes?(): Promise<string[]>;
 	/** Whether the credential type is an OAuth type whose client the instance
 	 *  provides via credential overwrites (managed OAuth) — the editor offers
@@ -941,7 +941,7 @@ export interface InstanceAiNodeService {
 	): Promise<NodeDescription>;
 	/** Return all node types with the richer fields needed by NodeSearchEngine. */
 	listSearchable(): Promise<SearchableNodeDescription[]>;
-	/** Return the TypeScript type definition for a node, resolved by the host n8n instance. */
+	/** Return the TypeScript type definition for a node, resolved by the host MNI instance. */
 	getNodeTypeDefinition?(
 		nodeType: string,
 		options?: {
@@ -1175,7 +1175,7 @@ export interface InstanceAiDataTableService {
 export type EvaluationConfigMetricPreset = 'correctness' | 'helpfulness';
 
 /** A single LLM-judge metric on a config-based eval. `actualAnswer`/`userQuery`/
- *  `expectedAnswer` are n8n expressions resolved against the eval run. */
+ *  `expectedAnswer` are MNI expressions resolved against the eval run. */
 export interface EvaluationConfigMetricInput {
 	name: string;
 	preset: EvaluationConfigMetricPreset;
@@ -1611,7 +1611,7 @@ export interface InstanceAiContext {
 	 *  agent is built, which is also when its MCP tools are attached, so it always
 	 *  matches what this agent can actually call. */
 	connectedMcpServices?: ConnectedMcpService[];
-	/** The target n8n Agent being built/edited via the build-agent sub-agent tool. */
+	/** The target MNI Agent being built/edited via the build-agent sub-agent tool. */
 	agentBuilderTarget?: { agentId: string; projectId: string; name?: string; ref?: string };
 	/** Narrow builder delegate for the build-agent sub-agent tool (agents module active only). */
 	builderDelegate?: InstanceAiBuilderDelegate;
@@ -2236,7 +2236,7 @@ export interface OrchestrationContext {
 	 * concrete workspace target so already-materialized paths are not copied.
 	 */
 	runtimeSkillCatalog?: RuntimeSkillSource;
-	/** OAuth2 callback URL for the n8n instance (e.g. http://localhost:5678/rest/oauth2-credential/callback) */
+	/** OAuth2 callback URL for the MNI instance (e.g. http://localhost:5678/rest/oauth2-credential/callback) */
 	oauth2CallbackUrl?: string;
 	/** Cancel a running background task by its ID */
 	cancelBackgroundTask?: (taskId: string) => Promise<void>;
@@ -2265,7 +2265,7 @@ export interface OrchestrationContext {
 	/** When isCheckpointFollowUp is true, the task ID of the checkpoint being executed.
 	 *  Used by the post-run deadlock fallback in the service. */
 	checkpointTaskId?: string;
-	/** The domain context — gives sub-agent tools access to n8n services */
+	/** The domain context — gives sub-agent tools access to MNI services */
 	domainContext?: InstanceAiContext;
 	/** Thread-scoped iteration log for accumulating attempt history across retries */
 	iterationLog?: IterationLog;

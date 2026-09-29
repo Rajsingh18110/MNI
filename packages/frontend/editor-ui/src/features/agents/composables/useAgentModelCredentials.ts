@@ -37,7 +37,7 @@ export function useAgentModelCredentials(userId: string, projectId: MaybeRefOrGe
 	const aiGatewayStore = useAiGatewayStore();
 	const settingsStore = useSettingsStore();
 
-	// Providers covered by n8n Connect default to the managed "n8n credits" credential
+	// Providers covered by MNI Connect default to the managed "MNI credits" credential
 	// so building works with zero configuration.
 	function supportsManagedCredits(provider: AgentModelProvider): boolean {
 		if (!settingsStore.isAiGatewayEnabled) return false;
@@ -90,8 +90,8 @@ export function useAgentModelCredentials(userId: string, projectId: MaybeRefOrGe
 			const providerCredentials = getCredentialsForProvider(provider);
 			const selectedCredentialId = selectedCredentials.value[provider] ?? null;
 
-			// The n8n Connect managed tag is a valid selection with no matching stored
-			// credential — preserve it while n8n Connect still serves the provider,
+			// The MNI Connect managed tag is a valid selection with no matching stored
+			// credential — preserve it while MNI Connect still serves the provider,
 			// otherwise fall through to a real credential (license off / provider removed).
 			credentials[provider] =
 				selectedCredentialId === AI_GATEWAY_MANAGED_TAG && supportsManagedCredits(provider)
@@ -99,7 +99,7 @@ export function useAgentModelCredentials(userId: string, projectId: MaybeRefOrGe
 					: selectedCredentialId &&
 							providerCredentials.some((credential) => credential.id === selectedCredentialId)
 						? selectedCredentialId
-						: // Nothing selected: default to n8n credits where supported, else the
+						: // Nothing selected: default to MNI credits where supported, else the
 							// first existing credential.
 							supportsManagedCredits(provider)
 							? AI_GATEWAY_MANAGED_TAG

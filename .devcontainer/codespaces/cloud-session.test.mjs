@@ -103,7 +103,7 @@ test('starts a named OpenCode session in a worktree', () => {
 	assert.match(command, /export N8N_AGENT_RUNTIME=sandbox; unset N8N_AGENT_PROFILE/);
 	assert.match(
 		command,
-		/git -C \/workspaces\/n8n fetch origin master; git -C \/workspaces\/n8n worktree add --no-track -b "session\/fix-flaky" "\/workspaces\/wt-fix-flaky" origin\/master/,
+		/git -C \/workspaces\/MNI fetch origin master; git -C \/workspaces\/MNI worktree add --no-track -b "session\/fix-flaky" "\/workspaces\/wt-fix-flaky" origin\/master/,
 	);
 	assert.match(command, /cd "\/workspaces\/wt-fix-flaky" && opencode --auto --model test/);
 	assert.doesNotMatch(command, /unset OPENROUTER_API_KEY/);
@@ -114,7 +114,7 @@ test('forwards legacy flags without a workspace name to the main checkout', () =
 	for (const flags of [['--help'], ['--model', 'test']]) {
 		const command = remoteCommand(['--opencode', '--legacy', ...flags]);
 		assert.match(command, /tmux new -As agent-opencode/);
-		assert.ok(command.includes(`cd /workspaces/n8n && opencode --auto ${flags.join(' ')}`));
+		assert.ok(command.includes(`cd /workspaces/MNI && opencode --auto ${flags.join(' ')}`));
 		assert.doesNotMatch(command, /git .*worktree add/);
 	}
 });
@@ -145,6 +145,6 @@ test('keeps the existing Claude session behavior', () => {
 	assert.match(command, /tmux new -As agent/);
 	assert.match(command, /unset OPENROUTER_API_KEY/);
 	assert.match(command, /claude plugin marketplace add/);
-	assert.match(command, /cd \/workspaces\/n8n && claude --model test/);
+	assert.match(command, /cd \/workspaces\/MNI && claude --model test/);
 	assert.doesNotMatch(command, /OPENCODE_CONFIG_CONTENT|N8N_SKIP_CODESPACE_SECRETS/);
 });

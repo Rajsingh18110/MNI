@@ -49,7 +49,7 @@ describe('Form Node', () => {
 	describe('node description', () => {
 		it('should offer an option to hide the attribution footer on the Form Ending page', () => {
 			// The Form Trigger exposes `appendAttribution` so builders can drop the
-			// "Form automated with n8n" footer, but the Form Ending page has no
+			// "Form automated with MNI" footer, but the Form Ending page has no
 			// equivalent toggle — it always renders the footer.
 			const completionOptions = form.description.properties.find(
 				(property) =>

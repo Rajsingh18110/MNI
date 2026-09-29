@@ -37,7 +37,7 @@ export class ErrorTrigger implements INodeType {
 	};
 
 	async trigger(this: ITriggerFunctions): Promise<ITriggerResponse> {
-		// ErrorTrigger is triggered by n8n's error handling system
+		// ErrorTrigger is triggered by MNI's error handling system
 		// No setup or teardown is required, as the triggering is handled externally
 		return {};
 	}

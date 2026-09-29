@@ -407,7 +407,7 @@ function generateResourceLocatorZodSchema(prop: NodeProperty): string {
 /**
  * Primitive element schema token for a given base type.
  * When `allowExpression` is true, returns the `*OrExpression` helper that accepts
- * both the literal value and n8n expression strings; otherwise returns the plain
+ * both the literal value and MNI expression strings; otherwise returns the plain
  * Zod primitive. Callers embed this token inside larger schemas (arrays, unions).
  */
 function primitiveElement(base: 'string' | 'number' | 'boolean', allowExpression: boolean): string {
@@ -660,7 +660,7 @@ function generateNestedSchemaPropertyLines(properties: NodeProperty[]): string[]
 }
 
 /**
- * Map n8n property type to Zod schema code string
+ * Map MNI property type to Zod schema code string
  *
  * This function parallels mapPropertyType() but returns Zod schema code
  * that validates the runtime representation of values (where expressions

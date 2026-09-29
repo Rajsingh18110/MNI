@@ -357,7 +357,7 @@ describe('toggleOptionInGroup', () => {
 		expect(input).toEqual([...manageAll.scopes]);
 	});
 
-	describe('settings "Manage all settings" acts as a select-all over MCP/n8n Assistant', () => {
+	describe('settings "Manage all settings" acts as a select-all over MCP/MNI Assistant', () => {
 		const settingsGroup = INSTANCE_SCOPE_GROUP_LIST.find((g) => g.resource === 'settings')!;
 		const manageAllSettings = settingsGroup.options.find((o) => o.key === 'Manage')!;
 		const mcpUse = settingsGroup.options.find((o) => o.key === 'Mcp use')!;
@@ -365,7 +365,7 @@ describe('toggleOptionInGroup', () => {
 		const aiAssistantUse = settingsGroup.options.find((o) => o.key === 'AiAssistant use')!;
 		const aiAssistantManage = settingsGroup.options.find((o) => o.key === 'AiAssistant manage')!;
 
-		it('checking "Manage all settings" checks MCP and n8n Assistant use/manage too', () => {
+		it('checking "Manage all settings" checks MCP and MNI Assistant use/manage too', () => {
 			const scopes = toggleOptionInGroup([], manageAllSettings, settingsGroup.options);
 			expect(getOptionState(scopes, mcpUse.scopes)).toBe('checked');
 			expect(getOptionState(scopes, mcpManage.scopes)).toBe('checked');
@@ -508,7 +508,7 @@ describe('baseline instance scopes in the editor', () => {
 	});
 });
 
-describe('MCP and n8n Assistant use/manage tiering', () => {
+describe('MCP and MNI Assistant use/manage tiering', () => {
 	const settingsGroup = INSTANCE_SCOPE_GROUP_LIST.find((g) => g.resource === 'settings')!;
 	const manageAllSettings = settingsGroup.options.find((o) => o.key === 'Manage')!;
 	const mcpUse = settingsGroup.options.find((o) => o.key === 'Mcp use')!;
@@ -543,7 +543,7 @@ describe('MCP and n8n Assistant use/manage tiering', () => {
 		).toEqual(new Set(aiAssistantUse.scopes));
 	});
 
-	it('lets "Manage all settings" cover the four MCP/n8n Assistant options without implying them', () => {
+	it('lets "Manage all settings" cover the four MCP/MNI Assistant options without implying them', () => {
 		expect(
 			getCoveredOptions(manageAllSettings, settingsGroup.options)
 				.map((o) => o.key)
@@ -594,7 +594,7 @@ describe('system roles', () => {
 		expect(optionsInState(GLOBAL_MEMBER_SCOPES, 'indeterminate')).toEqual(['tag: Manage']);
 	});
 
-	it('Member fully grants MCP use, n8n Assistant use, Users View, Tags View, Variables View and API keys Manage own, and nothing else', () => {
+	it('Member fully grants MCP use, MNI Assistant use, Users View, Tags View, Variables View and API keys Manage own, and nothing else', () => {
 		expect(optionsInState(GLOBAL_MEMBER_SCOPES, 'checked').sort()).toEqual([
 			'apiKey: Manage own',
 			'settings: AiAssistant use',
@@ -796,7 +796,7 @@ describe('two-rung groups are unchanged by the shared ladder', () => {
 	);
 
 	it('leaves "Manage all settings" untiered', () => {
-		// The select-all covers the four MCP / n8n Assistant options by plain scope
+		// The select-all covers the four MCP / MNI Assistant options by plain scope
 		// superset, not by implication, so unchecking it downgrades to nothing. The
 		// tiering inside each of those pairs is covered above.
 		const group = INSTANCE_SCOPE_GROUP_LIST.find((g) => g.resource === 'settings')!;

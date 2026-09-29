@@ -41,7 +41,7 @@ async function credentialNameById(
 export interface FinishSetupToolDeps extends CredentialSetupDeps, ChannelSetupDeps {
 	/**
 	 * Credential types whose every required node-tool slot is already served by an
-	 * n8n Connect managed credential — a card for these is redundant. A type still
+	 * MNI Connect managed credential — a card for these is redundant. A type still
 	 * empty on any tool is excluded, so an uncovered node/operation keeps prompting.
 	 */
 	listAiGatewayManagedCredentialTypes?: () => Promise<string[]>;
@@ -169,7 +169,7 @@ function validateCredentialTypes(input: FinishSetupInput, deps: FinishSetupToolD
 	for (const request of input.credentialRequests ?? []) {
 		if (deps.isCredentialTypeKnown && !deps.isCredentialTypeKnown(request.credentialType)) {
 			throw new Error(
-				`Unknown credential type "${request.credentialType}". Use an exact n8n credential type name.`,
+				`Unknown credential type "${request.credentialType}". Use an exact MNI credential type name.`,
 			);
 		}
 	}
@@ -210,7 +210,7 @@ async function computeInitialPlan(
 	const collected: Collected = {};
 	const pendingSlots: CredentialSlotInput[] = [];
 
-	// Drop requests for slots the server already covers with an n8n Connect
+	// Drop requests for slots the server already covers with an MNI Connect
 	// managed credential — they need no user setup, so never show a card.
 	const aiGatewayManagedTypes = new Set((await deps.listAiGatewayManagedCredentialTypes?.()) ?? []);
 	const credentialRequests = (input.credentialRequests ?? []).filter(

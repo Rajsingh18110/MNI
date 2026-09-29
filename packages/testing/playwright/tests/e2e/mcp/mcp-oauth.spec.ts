@@ -434,7 +434,7 @@ test.describe(
 		});
 
 		test.describe('Consent screen', () => {
-			test('should let the user approve access from the consent screen', async ({ n8n, api }) => {
+			test('should let the user approve access from the consent screen', async ({ MNI, api }) => {
 				const redirectUri = `http://localhost/${CALLBACK_PATH}`;
 				const state = nanoid();
 				const pkce = api.mcpOauth.createPkcePair();
@@ -490,7 +490,7 @@ test.describe(
 			});
 
 			test('should only expose read tools when the user grants read-only scopes', async ({
-				n8n,
+				MNI,
 				api,
 			}) => {
 				const redirectUri = `http://localhost/${CALLBACK_PATH}`;

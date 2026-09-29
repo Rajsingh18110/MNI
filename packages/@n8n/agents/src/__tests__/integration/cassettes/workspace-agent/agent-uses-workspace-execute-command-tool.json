@@ -18,7 +18,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Run the command: echo \"n8n workspace test\""
+							"text": "Run the command: echo \"MNI workspace test\""
 						}
 					]
 				}
@@ -375,7 +375,7 @@
 			}
 		},
 		"status": 200,
-		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011Ceii5FDDMcsarcnmyPcRz\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"tool_use\",\"id\":\"toolu_015hXViah7qhNtrdWPmw4jgt\",\"name\":\"workspace_execute_command\",\"input\":{\"command\":\"echo \\\"n8n workspace test\\\"\"},\"caller\":{\"type\":\"direct\"}}],\"stop_reason\":\"tool_use\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":2846,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":63,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
+		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011Ceii5FDDMcsarcnmyPcRz\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"tool_use\",\"id\":\"toolu_015hXViah7qhNtrdWPmw4jgt\",\"name\":\"workspace_execute_command\",\"input\":{\"command\":\"echo \\\"MNI workspace test\\\"\"},\"caller\":{\"type\":\"direct\"}}],\"stop_reason\":\"tool_use\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":2846,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":63,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
 		"rawHeaders": {
 			"anthropic-ratelimit-input-tokens-limit": "10000000",
 			"anthropic-ratelimit-input-tokens-remaining": "9998000",
@@ -423,7 +423,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Run the command: echo \"n8n workspace test\""
+							"text": "Run the command: echo \"MNI workspace test\""
 						}
 					]
 				},
@@ -435,7 +435,7 @@
 							"id": "toolu_015hXViah7qhNtrdWPmw4jgt",
 							"name": "workspace_execute_command",
 							"input": {
-								"command": "echo \"n8n workspace test\""
+								"command": "echo \"MNI workspace test\""
 							},
 							"caller": {
 								"type": "direct"
@@ -449,7 +449,7 @@
 						{
 							"type": "tool_result",
 							"tool_use_id": "toolu_015hXViah7qhNtrdWPmw4jgt",
-							"content": "{\"success\":true,\"exitCode\":0,\"stdout\":\"n8n workspace test\\n\",\"stderr\":\"\",\"executionTimeMs\":1}"
+							"content": "{\"success\":true,\"exitCode\":0,\"stdout\":\"MNI workspace test\\n\",\"stderr\":\"\",\"executionTimeMs\":1}"
 						}
 					]
 				}

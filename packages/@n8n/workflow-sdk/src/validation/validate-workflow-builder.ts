@@ -70,7 +70,7 @@ const UNCHECKED_ALWAYS = [
 	// other node types still need a full nodeTypesProvider.
 	'input/output index bounds for non-control-flow nodes',
 	'AI input type / required-input support',
-	'n8n credits aiGateway constraints (needs Instance AI metadata)',
+	'MNI credits aiGateway constraints (needs Instance AI metadata)',
 ] as const;
 
 const UNCHECKED_WITHOUT_SCHEMAS =

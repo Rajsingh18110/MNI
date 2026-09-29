@@ -14,7 +14,7 @@ const serializedModel: Serialized = {
 	kwargs: {
 		configuration: {
 			defaultHeaders: {
-				'User-Agent': 'n8n',
+				'User-Agent': 'MNI',
 				authorization: 'Bearer My_secret_API_key123456789',
 				'x-secret-header': 'My_secret_API_key123456789',
 			},
@@ -66,7 +66,7 @@ describe('ModelSelector Node header handling', () => {
 		]);
 
 		expect(persistedHeaders['x-secret-header']).toBe('**********');
-		expect(persistedHeaders['User-Agent']).toBe('n8n');
+		expect(persistedHeaders['User-Agent']).toBe('MNI');
 	});
 
 	it('should mask the header values declared by a model that attaches its own tracer type', async () => {

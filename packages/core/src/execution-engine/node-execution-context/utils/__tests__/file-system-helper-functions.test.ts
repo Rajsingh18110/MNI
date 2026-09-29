@@ -142,7 +142,7 @@ describe('isFilePathBlocked', () => {
 		expect(isFilePathBlocked(await resolvePath(pwResetPath))).toBe(true);
 	});
 
-	it('should block access to n8n files if restrict and block are set', async () => {
+	it('should block access to MNI files if restrict and block are set', async () => {
 		const homeVarName = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
 		const userHome = process.env.N8N_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
 
@@ -694,7 +694,7 @@ describe('getFileSystemHelperFunctions', () => {
 			expect(base).toBe('/allowed/real');
 		});
 
-		it('falls back to the n8n folder when no path restriction is configured', async () => {
+		it('falls back to the MNI folder when no path restriction is configured', async () => {
 			securityConfig.restrictFileAccessTo = '';
 
 			const base = await helperFunctions.resolveStagingBaseForTarget(

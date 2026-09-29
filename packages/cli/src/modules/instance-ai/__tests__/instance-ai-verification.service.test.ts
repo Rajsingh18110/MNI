@@ -187,7 +187,7 @@ describe('InstanceAiVerificationService', () => {
 	});
 
 	describe('verifySandbox', () => {
-		it('verifies an n8n Sandbox draft and destroys the workspace', async () => {
+		it('verifies an MNI Sandbox draft and destroys the workspace', async () => {
 			const timeoutSpy = vi.spyOn(AbortSignal, 'timeout');
 			const connection = { type: 'httpHeaderAuth', data: { value: '__redacted__' } };
 			settingsService.resolveSandboxConnectionForVerification.mockResolvedValue({
@@ -291,7 +291,7 @@ describe('InstanceAiVerificationService', () => {
 			);
 		});
 
-		it('uses saved n8n Sandbox settings when no draft is provided', async () => {
+		it('uses saved MNI Sandbox settings when no draft is provided', async () => {
 			settingsService.resolveN8nSandboxConfig.mockResolvedValue({
 				serviceUrl: 'https://saved.sandbox',
 				apiKey: 'saved-key',
@@ -374,7 +374,7 @@ describe('InstanceAiVerificationService', () => {
 
 			expect(braveSearchMock).toHaveBeenCalledWith(
 				'saved-key',
-				'n8n workflow automation',
+				'MNI workflow automation',
 				expect.objectContaining({ maxResults: 10 }),
 			);
 			expect(searxngSearchMock).not.toHaveBeenCalled();
@@ -390,7 +390,7 @@ describe('InstanceAiVerificationService', () => {
 
 			expect(searxngSearchMock).toHaveBeenCalledWith(
 				'https://saved.searxng',
-				'n8n workflow automation',
+				'MNI workflow automation',
 				expect.objectContaining({ maxResults: 10 }),
 			);
 		});

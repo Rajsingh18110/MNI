@@ -592,7 +592,7 @@ describe('useCredentialOAuth', () => {
 		it('should resolve true when the callback posts success via window.opener from a trusted origin', async () => {
 			const credentialsStore = mockedStore(useCredentialsStore);
 			credentialsStore.oAuth2Authorize.mockResolvedValue('https://oauth.example.com/auth');
-			// Embed setup: editor and n8n backend live on different origins, so the
+			// Embed setup: editor and MNI backend live on different origins, so the
 			// BroadcastChannel never delivers and we rely on window.opener.
 			useRootStore().setUrlBaseEditor('https://integration-app.brevo.com');
 			MockBroadcastChannel.noopEventListener = true;

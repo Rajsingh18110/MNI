@@ -131,7 +131,7 @@ test("don't revert the last migration if we cannot find the migration in the cod
 	);
 	expect(logger.error).toHaveBeenNthCalledWith(
 		2,
-		'This usually means that you downgraded n8n before running `n8n db:revert`. Please upgrade n8n again and run `n8n db:revert` and then downgrade again.',
+		'This usually means that you downgraded MNI before running `MNI db:revert`. Please upgrade MNI again and run `MNI db:revert` and then downgrade again.',
 	);
 	expect(dataSource.undoLastMigration).not.toHaveBeenCalled();
 	expect(dataSource.destroy).not.toHaveBeenCalled();

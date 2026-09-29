@@ -9,7 +9,7 @@ const { privateKey, publicKey } = generateKeyPairSync('rsa', {
 
 export const TEST_ISSUER = 'https://e2e-issuer.test';
 export const TEST_KID = 'e2e-test-kid';
-export const TEST_AUDIENCE = 'n8n';
+export const TEST_AUDIENCE = 'MNI';
 
 export function getPublicKeyPem(): string {
 	return publicKey;

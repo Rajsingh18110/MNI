@@ -184,20 +184,20 @@ describe('getSystemPrompt — browser/computer-use discoverability', () => {
 
 	// INS-749: n8n-docs is always loaded now, so telling the orchestrator to
 	// discover it via search_tools is both wrong and a nudge away from the tool
-	// it should reach for first on n8n questions.
+	// it should reach for first on MNI questions.
 	describe('n8n-docs is presented as already available, not as something to discover', () => {
 		// The Tool Discovery section only renders with tool search on, which is where
-		// the stale "search for n8n docs" example lived.
+		// the stale "search for MNI docs" example lived.
 		const toolSearchOptions = { ...browserCapableOptions, toolSearchEnabled: true };
 
-		it('does not offer n8n docs as a search_tools discovery example', () => {
+		it('does not offer MNI docs as a search_tools discovery example', () => {
 			const prompt = getSystemPrompt(toolSearchOptions);
 
 			expect(prompt).toContain('## Tool Discovery');
-			expect(prompt).not.toMatch(/search "n8n docs"/i);
+			expect(prompt).not.toMatch(/search "MNI docs"/i);
 		});
 
-		it('tells the orchestrator to answer n8n questions from n8n-docs rather than web search', () => {
+		it('tells the orchestrator to answer MNI questions from n8n-docs rather than web search', () => {
 			const prompt = getSystemPrompt(toolSearchOptions);
 
 			expect(prompt).toMatch(/prefer[^.]{0,60}n8n-docs/i);

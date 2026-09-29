@@ -47,7 +47,7 @@ export class BuilderModelLiveLookupService {
 
 	/**
 	 * Returns `{ name, value }` pairs (value = the provider's model id, exactly
-	 * as the provider API expects it). For the n8n Connect managed tag, resolves
+	 * as the provider API expects it). For the MNI Connect managed tag, resolves
 	 * the synthetic gateway credential (so discovery hits the gateway's
 	 * allowlisted `/models`); otherwise the credential must be usable by the user
 	 * in the project, its type must match, and the provider must support discovery.
@@ -126,7 +126,7 @@ export class BuilderModelLiveLookupService {
 	}
 
 	/**
-	 * Looks up the chat models n8n Connect (AI Gateway) allows for a provider.
+	 * Looks up the chat models MNI Connect (AI Gateway) allows for a provider.
 	 * Gateway resolution or discovery failures are returned as managed-policy
 	 * unavailability so `list` can preserve its throwing behavior.
 	 */

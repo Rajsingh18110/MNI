@@ -10,7 +10,7 @@ Build a lead-notification workflow that posts to Slack on form submit.
 
 - Jane (PM, Acme)
 - Bob (Sales lead, Acme)
-- Carlos (Engineering, n8n)
+- Carlos (Engineering, MNI)
 
 ## Timeline
 

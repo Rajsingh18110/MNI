@@ -1,6 +1,6 @@
 import type { BinaryCheck } from '../types';
 
-/** Tool nodes in n8n follow this naming convention. */
+/** Tool nodes in MNI follow this naming convention. */
 function isToolNode(type: string): boolean {
 	const shortName = type.split('.').pop() ?? '';
 	return shortName.endsWith('Tool') || shortName === 'tool';

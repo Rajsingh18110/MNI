@@ -7,17 +7,17 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should open node creator on trigger tab if no trigger is on canvas', async ({ n8n }) => {
+		test('should open node creator on trigger tab if no trigger is on canvas', async ({ MNI }) => {
 			await n8n.canvas.clickCanvasPlusButton();
 			await expect(n8n.canvas.nodeCreator.getRoot()).toBeVisible();
 			await expect(n8n.canvas.nodeCreator.getTriggerText()).toBeVisible();
 		});
 
-		test('should navigate subcategory and return', async ({ n8n }) => {
+		test('should navigate subcategory and return', async ({ MNI }) => {
 			await n8n.canvas.nodeCreator.open();
 
 			await n8n.canvas.nodeCreator.navigateToSubcategory('On app event');
@@ -27,7 +27,7 @@ test.describe(
 			await expect(n8n.canvas.nodeCreator.getActiveSubcategory()).not.toContainText('On app event');
 		});
 
-		test('should search for nodes with various queries', async ({ n8n }) => {
+		test('should search for nodes with various queries', async ({ MNI }) => {
 			await n8n.canvas.nodeCreator.open();
 
 			// Assert by identity rather than exact count
@@ -65,7 +65,7 @@ test.describe(
 			await expect(n8n.canvas.nodeCreator.getItem('Edit Image')).toBeHidden();
 		});
 
-		test('should check correct view panels after adding manual trigger', async ({ n8n }) => {
+		test('should check correct view panels after adding manual trigger', async ({ MNI }) => {
 			await n8n.canvas.clickCanvasPlusButton();
 			await expect(n8n.canvas.nodeCreator.getTriggerText()).toBeVisible();
 			await n8n.canvas.nodeCreator.close();

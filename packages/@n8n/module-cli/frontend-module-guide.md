@@ -674,7 +674,7 @@ reverses the design proposal, on purpose (Alex, 2026-08-05).
 workspace **runtime** dependency. The repository publishes `n8n-editor-ui`, and that package
 depends on every module at run time.
 
-**Caution:** do not mark a module private. `npm install n8n` then fails, because the install graph
+**Caution:** do not mark a module private. `npm install MNI` then fails, because the install graph
 points at packages that nobody published.
 
 Keep `"license": "LicenseRef-n8n-sustainable-use"`. Do not add `private`.

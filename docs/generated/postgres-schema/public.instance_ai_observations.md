@@ -5,7 +5,7 @@
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
 | createdAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |
-| id | varchar(36) |  | false | [public.instance_ai_observations](public.instance_ai_observations.md) |  | Application-generated n8n string ID, not a database UUID |
+| id | varchar(36) |  | false | [public.instance_ai_observations](public.instance_ai_observations.md) |  | Application-generated MNI string ID, not a database UUID |
 | marker | varchar(16) |  | false |  |  |  |
 | observationScopeId | uuid |  | false |  | [public.instance_ai_threads](public.instance_ai_threads.md) | instance_ai_threads.id source stream for this observation log |
 | parentId | varchar(36) |  | true |  | [public.instance_ai_observations](public.instance_ai_observations.md) |  |

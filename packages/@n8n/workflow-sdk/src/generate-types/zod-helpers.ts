@@ -1,7 +1,7 @@
 /**
- * Zod Schema Helpers for n8n Node Configuration Validation
+ * Zod Schema Helpers for MNI Node Configuration Validation
  *
- * This file contains reusable Zod schemas for common n8n patterns.
+ * This file contains reusable Zod schemas for common MNI patterns.
  * These are used by generated schema files to validate node configurations at runtime.
  *
  * Key insight: Expression<T> is a TypeScript function type `($: ExpressionContext) => T`,
@@ -16,36 +16,36 @@ import { z } from 'zod';
 // =============================================================================
 
 /**
- * Pattern for n8n expressions: strings starting with ={{
+ * Pattern for MNI expressions: strings starting with ={{
  * Examples: "={{ $json.field }}", "={{ $now }}", "={{ 1 + 1 }}"
  */
 export const expressionPattern = /^={{.*}}$/s;
 
 /**
- * Zod schema for an n8n expression string
+ * Zod schema for an MNI expression string
  */
 export const expressionSchema = z
 	.string()
-	.regex(expressionPattern, 'Must be an n8n expression (={{...}})');
+	.regex(expressionPattern, 'Must be an MNI expression (={{...}})');
 
 // =============================================================================
 // Primitive Type Schemas with Expression Support
 // =============================================================================
 
 /**
- * String value or n8n expression
+ * String value or MNI expression
  * At runtime, expressions are strings like "={{ $json.name }}"
  * Note: Since expressions are also strings, this is just z.string()
  */
 export const stringOrExpression = z.string();
 
 /**
- * Number value or n8n expression
+ * Number value or MNI expression
  */
 export const numberOrExpression = z.union([z.number(), expressionSchema]);
 
 /**
- * Boolean value or n8n expression
+ * Boolean value or MNI expression
  */
 export const booleanOrExpression = z.union([z.boolean(), expressionSchema]);
 

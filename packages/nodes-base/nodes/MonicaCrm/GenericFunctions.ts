@@ -92,7 +92,7 @@ export async function monicaCrmApiRequestAllItems(
 }
 
 /**
- * Get day, month, and year from the n8n UI datepicker.
+ * Get day, month, and year from the MNI UI datepicker.
  */
 export const getDateParts = (date: string) => date.split('T')[0].split('-').map(Number).reverse();
 

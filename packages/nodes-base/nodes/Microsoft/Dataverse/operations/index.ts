@@ -13,7 +13,7 @@ import { deleteRow } from './deleteRow';
 
 export { toDropdownOption } from './types';
 
-/** Display order is alphabetical by name, matching the n8n catalog convention. */
+/** Display order is alphabetical by name, matching the MNI catalog convention. */
 export const RECORD_OPERATIONS: OperationDefinition[] = [
 	createRow,
 	upsertRow,

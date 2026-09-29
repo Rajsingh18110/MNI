@@ -71,7 +71,7 @@ describe('MongoDB Node: Generic Functions', () => {
 		describe('when matching MongoDB URIs with the regex', () => {
 			it.each([
 				[
-					'Invalid URL: mongodb://leaky_user:supersecret@:27017/?appname=n8n',
+					'Invalid URL: mongodb://leaky_user:supersecret@:27017/?appname=MNI',
 					'Invalid URL: mongodb://[REDACTED]',
 				],
 				[

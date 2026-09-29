@@ -520,7 +520,7 @@ describe('TelegramTrigger', () => {
 		});
 
 		test('preserves a reverse-proxy path prefix instead of forwarding to the origin root', async () => {
-			// e.g. n8n served under https://example.com/n8n-instance/ : the own webhook URL
+			// e.g. MNI served under https://example.com/n8n-instance/ : the own webhook URL
 			// carries that prefix before the live-webhook segment, and it must survive.
 			Container.set(
 				GlobalConfig,

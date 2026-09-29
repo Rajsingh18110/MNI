@@ -66,7 +66,7 @@ export class AiGatewayService {
 	) {}
 
 	/**
-	 * Whether this instance is licensed and configured for n8n Connect.
+	 * Whether this instance is licensed and configured for MNI Connect.
 	 */
 	isEnabled(): boolean {
 		return (
@@ -387,7 +387,7 @@ export class AiGatewayService {
 	}
 
 	/**
-	 * Returns `{ available: true, config }` when n8n Connect is enabled, licensed,
+	 * Returns `{ available: true, config }` when MNI Connect is enabled, licensed,
 	 * and its config fetches successfully; `{ available: false }` otherwise.
 	 * Never propagates gateway or config errors.
 	 */
@@ -440,10 +440,10 @@ export class AiGatewayService {
 	}
 
 	/**
-	 * Resolves the n8n credential type the gateway serves for a model-provider
-	 * prefix (e.g. `openai` → `openAiApi`). Returns `undefined` when n8n Connect
+	 * Resolves the MNI credential type the gateway serves for a model-provider
+	 * prefix (e.g. `openai` → `openAiApi`). Returns `undefined` when MNI Connect
 	 * is unlicensed or the gateway does not serve that provider. This is the
-	 * authoritative n8n Connect provider → credential-type support gate.
+	 * authoritative MNI Connect provider → credential-type support gate.
 	 */
 	async getCredentialTypeForProvider(provider: string): Promise<string | undefined> {
 		if (!this.isEnabled()) return undefined;
@@ -470,14 +470,14 @@ export class AiGatewayService {
 	}
 
 	/**
-	 * Matches a model-provider prefix (e.g. `openai`) to the n8n credential type
+	 * Matches a model-provider prefix (e.g. `openai`) to the MNI credential type
 	 * the gateway serves it under: the provider's credential types, in preference
 	 * order, filtered to those the gateway holds a `providerConfig` entry for (the
 	 * same entry `getSyntheticCredential` needs to mint a credential). Returns
 	 * `undefined` when the gateway does not serve it.
 	 *
 	 * Deliberately not derived from `gatewayPath`: that made the mapping depend on
-	 * the gateway's URL slugs happening to equal n8n's own provider ids, which
+	 * the gateway's URL slugs happening to equal MNI's own provider ids, which
 	 * they need not (e.g. Moonshot serves Kimi under the `moonshot` slug).
 	 */
 	private static matchCredentialTypeForProvider(

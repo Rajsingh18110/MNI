@@ -138,10 +138,10 @@ export abstract class TaskRunner extends EventEmitter {
 				['ECONNREFUSED', 'ENOTFOUND'].some((code) => code === error.code)
 			) {
 				console.error(
-					`Error: Failed to connect to n8n task broker. Please ensure n8n task broker is reachable at: ${taskBrokerHost}`,
+					`Error: Failed to connect to MNI task broker. Please ensure MNI task broker is reachable at: ${taskBrokerHost}`,
 				);
 			} else {
-				console.error(`Error: Failed to connect to n8n task broker at ${taskBrokerHost}`);
+				console.error(`Error: Failed to connect to MNI task broker at ${taskBrokerHost}`);
 				console.error('Details:', event.message || 'Unknown error');
 			}
 

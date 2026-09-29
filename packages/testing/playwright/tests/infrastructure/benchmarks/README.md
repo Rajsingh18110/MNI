@@ -29,7 +29,7 @@ The architectural ceiling. No queue tax, no worker dispatch. What's the absolute
 
 ### Actual — `1m + 1wp + 1w queue mode`
 
-The production-canonical queue-mode topology: dedicated `n8n webhook` proc fronted by Caddy path-routing, with one worker draining the queue. What does a real production setup actually deliver?
+The production-canonical queue-mode topology: dedicated `MNI webhook` proc fronted by Caddy path-routing, with one worker draining the queue. What does a real production setup actually deliver?
 
 | Trigger | Spec | Question |
 |---------|------|----------|
@@ -67,9 +67,9 @@ Cost specs run the same workload as the `Actual` baseline with one config knob f
 | **Scaling** | 1 | 2 | 1–2 | main 4GB/2 vCPU, webhook 4GB/2 vCPU, worker 2GB/1 vCPU |
 | **Cost** | matches the baseline | matches the baseline | matches the baseline | matches the baseline |
 
-Webhook-trigger specs in **Actual** and **Scaling** use the production-canonical topology (dedicated `n8n webhook` proc fronted by Caddy path-routing). Kafka-trigger specs in **Actual** use 1m + 1w queue mode (kafka doesn't ingress via HTTP — no dedicated webhook proc applicable).
+Webhook-trigger specs in **Actual** and **Scaling** use the production-canonical topology (dedicated `MNI webhook` proc fronted by Caddy path-routing). Kafka-trigger specs in **Actual** use 1m + 1w queue mode (kafka doesn't ingress via HTTP — no dedicated webhook proc applicable).
 
-All specs share a single env profile aligned with internal n8n production defaults — connection-pool, lock-duration, and Bull/Redis tuning from real deployments. See `BENCHMARK_CONFIG` in `playwright-projects.ts`.
+All specs share a single env profile aligned with internal MNI production defaults — connection-pool, lock-duration, and Bull/Redis tuning from real deployments. See `BENCHMARK_CONFIG` in `playwright-projects.ts`.
 
 ### Runtime comparison profiles
 
@@ -94,7 +94,7 @@ The engine v2 Kafka comparisons report partial completion without enforcing a co
 ## Running
 
 ```bash
-# Build n8n image first (skip if you only changed test code).
+# Build MNI image first (skip if you only changed test code).
 pnpm build:docker
 
 # Full suite — all 21 specs sequentially (each spawns its own container).

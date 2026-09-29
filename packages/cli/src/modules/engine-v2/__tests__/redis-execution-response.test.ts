@@ -12,7 +12,7 @@ import {
 	type RedisResponsePublisher,
 } from '../response-channel/redis-execution-response-sender';
 
-const channelPrefix = 'n8n:engine-v2-responses';
+const channelPrefix = 'MNI:engine-v2-responses';
 const getChannelName = (executionId: string) => `${channelPrefix}:${executionId}`;
 const executionChannel = `${channelPrefix}:exec-1`;
 

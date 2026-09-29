@@ -74,7 +74,7 @@ export const INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY: InstanceCredentialUse = {
 };
 
 export const INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY: InstanceCredentialUse = {
-	id: 'instance-ai:sandbox:n8n',
+	id: 'instance-ai:sandbox:MNI',
 	credentialTypes: ['httpHeaderAuth'],
 	validate: parseSandboxServiceCredential,
 };
@@ -148,7 +148,7 @@ export class SandboxSettingsService {
 		};
 		const resolved = await this.resolveServiceCredential(
 			INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
-			'n8n Sandbox',
+			'MNI Sandbox',
 			ctx,
 		);
 		if (!resolved) return envConfig;
@@ -158,7 +158,7 @@ export class SandboxSettingsService {
 			return { serviceUrl: n8nSandboxServiceUrl || undefined, apiKey };
 		} catch (error) {
 			this.warnCredentialFallback(
-				'n8n Sandbox',
+				'MNI Sandbox',
 				INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY.id,
 				ensureError(error).message,
 			);

@@ -63,7 +63,7 @@ describe('isNodesApiVersionError', () => {
 		expect(isNodesApiVersionError(incompatibleNodesApiVersionError(null))).toBe(true);
 		// The same copy without the metadata is a generic error.
 		expect(
-			isNodesApiVersionError(new Error('This community node requires n8n node API version 3.')),
+			isNodesApiVersionError(new Error('This community node requires MNI node API version 3.')),
 		).toBe(false);
 		// Other 400s must not match.
 		expect(

@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, api }) => {
+		test.beforeEach(async ({ MNI, api }) => {
 			await api.enableFeature('sharing');
 			await api.enableFeature('folders');
 			await api.enableFeature('advancedPermissions');
@@ -19,7 +19,7 @@ test.describe(
 		});
 
 		test('Should correctly render project data tables in project and everything in overview', async ({
-			n8n,
+			MNI,
 		}) => {
 			const TEST_PROJECTS = [
 				{
@@ -52,7 +52,7 @@ test.describe(
 		});
 
 		test('Should create data table in personal project when created from Overview', async ({
-			n8n,
+			MNI,
 		}) => {
 			const TEST_DATA_TABLE_NAME = `Data Table ${nanoid(8)}`;
 
@@ -75,7 +75,7 @@ test.describe(
 			await expect(dataTableBreadcrumb).toContainText(TEST_DATA_TABLE_NAME);
 		});
 
-		test('Should create data table from project empty state', async ({ n8n }) => {
+		test('Should create data table from project empty state', async ({ MNI }) => {
 			const TEST_PROJECT_NAME = `Project ${nanoid(8)}`;
 			const TEST_DATA_TABLE_NAME = `Data Table ${nanoid(8)}`;
 
@@ -88,7 +88,7 @@ test.describe(
 			await expect(n8n.dataTable.getDataTableCardByName(TEST_DATA_TABLE_NAME)).toBeVisible();
 		});
 
-		test('Should create project data table from header dropdown', async ({ n8n }) => {
+		test('Should create project data table from header dropdown', async ({ MNI }) => {
 			const TEST_PROJECT_NAME = `Project ${nanoid(8)}`;
 			const TEST_DATA_TABLE_NAME = `Data Table ${nanoid(8)}`;
 
@@ -101,7 +101,7 @@ test.describe(
 			await expect(n8n.dataTable.getDataTableCardByName(TEST_DATA_TABLE_NAME)).toBeVisible();
 		});
 
-		test('Should create data table from workflows tab', async ({ n8n }) => {
+		test('Should create data table from workflows tab', async ({ MNI }) => {
 			const TEST_PROJECT_NAME = `Project ${nanoid(8)}`;
 			const TEST_DATA_TABLE_NAME = `Data Table ${nanoid(8)}`;
 
@@ -115,7 +115,7 @@ test.describe(
 			await expect(n8n.dataTable.getDataTableCardByName(TEST_DATA_TABLE_NAME)).toBeVisible();
 		});
 
-		test('Should delete data table from card actions', async ({ n8n }) => {
+		test('Should delete data table from card actions', async ({ MNI }) => {
 			const TEST_PROJECT_NAME = `Project ${nanoid(8)}`;
 			const TEST_DATA_TABLE_NAME = `Data Table ${nanoid(8)}`;
 
@@ -134,7 +134,7 @@ test.describe(
 			await expect(n8n.dataTable.getDataTableCardByName(TEST_DATA_TABLE_NAME)).toBeHidden();
 		});
 
-		test('Should paginate data table list correctly', async ({ n8n }) => {
+		test('Should paginate data table list correctly', async ({ MNI }) => {
 			const TEST_PROJECT_NAME = `Project ${nanoid(8)}`;
 			const TOTAL_DATA_TABLES = 11;
 			const PAGE_SIZE = 10;

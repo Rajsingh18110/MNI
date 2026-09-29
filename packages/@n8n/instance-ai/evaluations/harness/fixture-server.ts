@@ -5,7 +5,7 @@
 // Same species as `packages/cli/.../eval/llm-wire-server.ts`: a loopback
 // listener on an OS-assigned port, started and stopped around ONE case, never
 // instance-wide. The difference is who is fooled — the wire server intercepts
-// vendor SDK calls from the n8n process, this one serves page loads to the
+// vendor SDK calls from the MNI process, this one serves page loads to the
 // eval browser.
 //
 // Interception is NOT proxy-based. The browser is launched with
@@ -38,8 +38,8 @@ const execFileAsync = promisify(execFile);
 /**
  * Bind + advertise addresses. Loopback by default: on a dev laptop the fixture
  * must not be reachable from the LAN. A CONTAINERISED run needs both overridden
- * — the fixture lives in the dispatcher container while n8n lives in another,
- * so n8n cannot reach the dispatcher's loopback. Leaving them unset there is
+ * — the fixture lives in the dispatcher container while MNI lives in another,
+ * so MNI cannot reach the dispatcher's loopback. Leaving them unset there is
  * safe: the credential test simply reports itself unverifiable.
  */
 function envHost(name: string): string {
@@ -67,7 +67,7 @@ const FIXTURES_DIR = join(__dirname, '..', 'fixtures', 'providers');
  */
 export const providerFixtureManifestSchema = z
 	.object({
-		/** n8n credential type this fixture stands in for, e.g. `anthropicApi`.
+		/** MNI credential type this fixture stands in for, e.g. `anthropicApi`.
 		 *  Fixture selection is derived from the case's credential type through
 		 *  this field — deliberately NOT a case-schema field. */
 		credentialType: z.string().min(1),
@@ -82,12 +82,12 @@ export const providerFixtureManifestSchema = z
 		 *  redirect liberally; a 404 would strand the agent for the wrong reason. */
 		defaultRoute: z.string().min(1),
 		/** OPTIONAL provider-API stand-in, used to prove the SAVED credential really
-		 *  authenticates. n8n runs the credential's own test request against this
+		 *  authenticates. MNI runs the credential's own test request against this
 		 *  instead of the real provider, and only the minted key is accepted — so a
 		 *  pass proves the stored value without anyone ever reading it back.
 		 *
 		 *  Plain HTTP on its own port, deliberately: the browser-facing listener is
-		 *  HTTPS-with-a-self-signed-cert so it can impersonate a hostname, and n8n's
+		 *  HTTPS-with-a-self-signed-cert so it can impersonate a hostname, and MNI's
 		 *  HTTP client would (correctly) reject that cert. Omit the block entirely
 		 *  and the check reports itself unverifiable rather than failing. */
 		//  A UNION, not three optionals: the secret arrives in a header or a query
@@ -156,7 +156,7 @@ export interface FixtureEvent {
 
 export interface FixtureServer {
 	port: number;
-	/** Base URL n8n should point the credential's test request at, when this
+	/** Base URL MNI should point the credential's test request at, when this
 	 *  fixture stands in for the provider API. Undefined when the fixture
 	 *  declares no `verify` block — the value check then reports itself
 	 *  unverifiable instead of failing. */
@@ -164,10 +164,10 @@ export interface FixtureServer {
 	/** True once the verify endpoint accepted the minted key — evidence the
 	 *  check actually exercised the provider path. */
 	verifiedOk: boolean;
-	/** How many credential-test requests reached the stand-in. ZERO means n8n
+	/** How many credential-test requests reached the stand-in. ZERO means MNI
 	 *  never got here (unreachable across a container boundary, say), which is a
 	 *  harness limitation — NOT a wrong credential. The classifier keys on this
-	 *  rather than on n8n's error prose. */
+	 *  rather than on MNI's error prose. */
 	verifyAttempts: number;
 	hosts: string[];
 	/** The exact secret this run's page will hand out — the ledger the
@@ -361,7 +361,7 @@ export async function startFixtureServer(
 		`  Fixture ${fixture.id} serving ${manifest.hosts.join(', ')} on ${BIND_HOST}:${port}`,
 	);
 
-	// Provider-API stand-in for the credential test. n8n calls this, not the
+	// Provider-API stand-in for the credential test. MNI calls this, not the
 	// browser, so it is plain HTTP on its own port (see the manifest comment).
 	let verifyServer: HttpServer | undefined;
 	let verifyBaseUrl: string | undefined;
@@ -437,7 +437,7 @@ export async function startFixtureServer(
 		},
 		async close() {
 			// `close()` only stops NEW connections; it resolves when the last live
-			// one ends. n8n's HTTP client keep-alives against the verify listener,
+			// one ends. MNI's HTTP client keep-alives against the verify listener,
 			// so one retained socket would hang this forever — and it is awaited
 			// from buildWorkflow's `finally`, so that hangs the whole run, not just
 			// the case. Drop the sockets explicitly.

@@ -110,7 +110,7 @@ export abstract class BaseCommand<F = never> {
 	 */
 	protected seedsInstanceIdentity = false;
 
-	/** Whether this command runs the main server process (`n8n start`). */
+	/** Whether this command runs the main server process (`MNI start`). */
 	protected readonly isMainServer: boolean = false;
 
 	async init(): Promise<void> {
@@ -231,7 +231,7 @@ export abstract class BaseCommand<F = never> {
 		}
 
 		// Ensures that when a CLI command has a check for "instanceSettings.isMultiMainEnabled"
-		// that it reflects the configuration of the n8n instance running on the server.
+		// that it reflects the configuration of the MNI instance running on the server.
 		const isMultiMainEnabled =
 			this.globalConfig.executions.mode === 'queue' && this.globalConfig.multiMainSetup.enabled;
 		this.instanceSettings.setMultiMainEnabled(isMultiMainEnabled);

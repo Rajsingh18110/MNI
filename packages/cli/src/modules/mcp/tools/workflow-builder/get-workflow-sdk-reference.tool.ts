@@ -35,7 +35,7 @@ const outputSchema = {
 } satisfies z.ZodRawShape;
 
 /**
- * MCP tool that returns the n8n Workflow SDK reference documentation.
+ * MCP tool that returns the MNI Workflow SDK reference documentation.
  * This should be called first when building workflows to learn the SDK patterns and syntax.
  */
 export const createGetWorkflowSdkReferenceTool = (

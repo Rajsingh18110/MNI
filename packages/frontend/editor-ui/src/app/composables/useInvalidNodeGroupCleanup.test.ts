@@ -179,7 +179,7 @@ describe('useInvalidNodeGroupCleanup', () => {
 				type: 'warning',
 				title: 'Groups removed',
 				message:
-					'The following groups are incompatible with your n8n version and have been removed: <ul style="list-style-position: inside"><li>Group 1</li></ul>',
+					'The following groups are incompatible with your MNI version and have been removed: <ul style="list-style-position: inside"><li>Group 1</li></ul>',
 			}),
 		);
 		expect(trackSpy).toHaveBeenCalledWith(

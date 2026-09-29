@@ -182,7 +182,7 @@ export const buildWorkflowInputSchema = z
 			.string()
 			.optional()
 			.describe(
-				'Real n8n workflow id from a prior build-workflow or workflows() tool result, used to bind this file on the first update. ' +
+				'Real MNI workflow id from a prior build-workflow or workflows() tool result, used to bind this file on the first update. ' +
 					'Never pass the first argument of workflow(slug, name). Once bound, omit this on retries. ' +
 					'Omit to create a new workflow. Missing and inaccessible ids look the same — confirm with workflows() before inventing one.',
 			),
@@ -1185,7 +1185,7 @@ export function createBuildWorkflowTool(context: InstanceAiContext) {
 			// Deterministic backstop for a builder that never checked credentials:
 			// a chat-model node for a provider the user has no credential for gets
 			// flagged with the LLM credentials they do have. Nodes the resolver
-			// covered with n8n credits are exempt — they run as built.
+			// covered with MNI credits are exempt — they run as built.
 			const chatModelBlocking: ValidationWarning[] = [];
 			for (const message of buildChatModelProviderMismatchWarnings(
 				(json.nodes ?? []).filter((node) => !node.disabled),

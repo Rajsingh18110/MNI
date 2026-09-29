@@ -2,11 +2,11 @@ type: object
 properties:
   clientId:
     type: string
-    description: The client ID issued when registering n8n with the OIDC provider.
+    description: The client ID issued when registering MNI with the OIDC provider.
     example: n8n-client
   clientSecret:
     type: string
-    description: The client secret issued when registering n8n with the OIDC provider. Redacted on read when set; never echoed back in plaintext.
+    description: The client secret issued when registering MNI with the OIDC provider. Redacted on read when set; never echoed back in plaintext.
     example: '**hidden**'
   discoveryEndpoint:
     type: string
@@ -37,7 +37,7 @@ properties:
       - pwd
   additionalScopes:
     type: string
-    description: Additional scopes to request, space separated. n8n always requests `openid`, `profile` and `email`.
+    description: Additional scopes to request, space separated. MNI always requests `openid`, `profile` and `email`.
     example: groups roles
   emailVerifiedRequired:
     type: boolean
@@ -45,7 +45,7 @@ properties:
     example: false
   rpInitiatedLogoutEnabled:
     type: boolean
-    description: Whether signing out of n8n also ends the session at the OIDC provider via RP-Initiated Logout. When disabled, sign-out is local to n8n only.
+    description: Whether signing out of MNI also ends the session at the OIDC provider via RP-Initiated Logout. When disabled, sign-out is local to MNI only.
     example: false
 required:
   - clientId

@@ -114,7 +114,7 @@ export class MemoryMongoDbChat implements INodeType {
 			const authString = user && password ? `${user}:${password}@` : '';
 			const tls = credentials.tls;
 
-			connectionString = `mongodb://${authString}${host}:${port}/?appname=n8n`;
+			connectionString = `mongodb://${authString}${host}:${port}/?appname=MNI`;
 			if (tls) {
 				connectionString += '&ssl=true';
 			}

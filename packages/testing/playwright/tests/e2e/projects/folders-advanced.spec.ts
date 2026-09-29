@@ -8,7 +8,7 @@ test.describe(
 	() => {
 		test.describe('Duplicate workflows', () => {
 			test('should duplicate workflow within root folder from personal projects', async ({
-				n8n,
+				MNI,
 			}) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const { name: workflowName } = await n8n.api.workflows.createInProject(projectId);
@@ -25,7 +25,7 @@ test.describe(
 				await expect(duplicatePage.workflows.cards.getWorkflow(duplicatedName)).toBeVisible();
 			});
 
-			test('should duplicate workflow within a folder from personal projects', async ({ n8n }) => {
+			test('should duplicate workflow within a folder from personal projects', async ({ MNI }) => {
 				const projectId = await n8n.start.fromNewProject();
 				const folder = await n8n.api.projects.createFolder(projectId);
 				const { name: workflowName } = await n8n.api.workflows.createInProject(projectId, {
@@ -46,7 +46,7 @@ test.describe(
 				await expect(duplicatePage.workflows.cards.getWorkflow(duplicatedName)).toBeVisible();
 			});
 
-			test('should duplicate workflow within a folder from workflow page', async ({ n8n }) => {
+			test('should duplicate workflow within a folder from workflow page', async ({ MNI }) => {
 				const { id: projectId } = await n8n.api.projects.createProject();
 				const folder = await n8n.api.projects.createFolder(projectId);
 				const { name: workflowName, id: workflowId } = await n8n.api.workflows.createInProject(
@@ -69,7 +69,7 @@ test.describe(
 		});
 
 		test.describe('Drag and drop', () => {
-			test('should drag and drop folders into folders', async ({ n8n }) => {
+			test('should drag and drop folders into folders', async ({ MNI }) => {
 				const { id: projectId } = await n8n.api.projects.createProject('Drag and Drop Test');
 				await n8n.navigate.toProject(projectId);
 				const targetFolder = await n8n.api.projects.createFolder(projectId, 'Drag me');
@@ -95,7 +95,7 @@ test.describe(
 				await expect(n8n.workflows.cards.getFolder(targetFolder.name)).toBeVisible();
 			});
 
-			test('should drag and drop folders into project root breadcrumb', async ({ n8n }) => {
+			test('should drag and drop folders into project root breadcrumb', async ({ MNI }) => {
 				const project = await n8n.api.projects.createProject('Drag to root test');
 				await n8n.navigate.toProject(project.id);
 				const parentFolder = await n8n.api.projects.createFolder(project.id, 'Parent Folder');
@@ -124,7 +124,7 @@ test.describe(
 				await expect(n8n.workflows.cards.getFolder(targetFolder.name)).toBeVisible();
 			});
 
-			test('should drag and drop workflows into folders', async ({ n8n }) => {
+			test('should drag and drop workflows into folders', async ({ MNI }) => {
 				const { id: projectId } = await n8n.api.projects.createProject('Drag and Drop WF Test');
 				const { name: workflowName } = await n8n.api.workflows.createInProject(projectId, {});
 				const destinationFolder = await n8n.api.projects.createFolder(projectId);

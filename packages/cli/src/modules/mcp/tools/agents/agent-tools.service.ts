@@ -467,7 +467,7 @@ export class McpAgentToolsService {
 		registerResource({
 			name: 'agent-builder-reference',
 			uri: AGENT_BUILDER_REFERENCE_URI,
-			config: { description: 'Reference for creating and managing n8n Agents through MCP.' },
+			config: { description: 'Reference for creating and managing MNI Agents through MCP.' },
 			read: () => ({
 				contents: [
 					{
@@ -560,7 +560,7 @@ export class McpAgentToolsService {
 			name: MCP_CREATE_AGENT_TOOL_NAME,
 			config: {
 				description:
-					'Create an Agent draft, optionally with its initial model, credential, instructions, and ordinary tool configuration. Returns its n8n editor URL. Use mutate_agent afterward for skills, tasks, and custom tools.',
+					'Create an Agent draft, optionally with its initial model, credential, instructions, and ordinary tool configuration. Returns its MNI editor URL. Use mutate_agent afterward for skills, tasks, and custom tools.',
 				inputSchema: createAgentInput,
 				annotations: {
 					title: 'Create Agent',
@@ -701,7 +701,7 @@ export class McpAgentToolsService {
 			name: 'validate_agent',
 			config: {
 				description:
-					'Validate an Agent draft, sidecar references, and user-accessible credentials. Returns its n8n editor URL.',
+					'Validate an Agent draft, sidecar references, and user-accessible credentials. Returns its MNI editor URL.',
 				inputSchema: agentIdentityShape,
 				annotations: {
 					title: 'Validate Agent',

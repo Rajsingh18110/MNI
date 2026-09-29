@@ -559,7 +559,7 @@ describe('TestWebhooks', () => {
 					});
 
 					await expect(promise).rejects.toThrow(
-						"Because of limitations in Telegram Trigger, n8n can't listen for test executions at the same time as listening for production ones. Unpublish the workflow to execute.",
+						"Because of limitations in Telegram Trigger, MNI can't listen for test executions at the same time as listening for production ones. Unpublish the workflow to execute.",
 					);
 				} else {
 					const needsWebhook = await testWebhooks.needsWebhook({

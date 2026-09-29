@@ -253,7 +253,7 @@ export class CustomerIoTrigger implements INodeType {
 				const endpoint = '/reporting_webhooks';
 
 				const body = {
-					name: `n8n webhook - ${webhookUrl}`,
+					name: `MNI webhook - ${webhookUrl}`,
 					endpoint: webhookUrl,
 					events: events.map(toApiEventName),
 				};

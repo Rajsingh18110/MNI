@@ -15,7 +15,7 @@ import type { INodeUi } from '@/Interface';
  * Removes node groups that this instance's backend would reject on save
  * (`validateWorkflowNodeGroups`), using the same shared validator.
  *
- * Newer n8n versions may allow group shapes this version rejects (e.g. new
+ * Newer MNI versions may allow group shapes this version rejects (e.g. new
  * groupable node types or looser connectivity rules). When such a workflow is
  * saved here, the backend rejects every save attempt and autosave gets stuck
  * in a retry loop of error toasts. Ungrouping the offending groups up front

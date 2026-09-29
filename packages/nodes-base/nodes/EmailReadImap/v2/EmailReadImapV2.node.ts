@@ -358,7 +358,7 @@ export class EmailReadImapV2 implements INodeType {
 			this.logger.debug(`IMAP connection experienced an error: (${imapErrorCode(error)})`, {
 				error,
 			});
-			// Held back until the workflow is active, else n8n is unhappy about an early error
+			// Held back until the workflow is active, else MNI is unhappy about an early error
 			void returnedPromise.promise.then(() => this.emitError(error));
 		});
 

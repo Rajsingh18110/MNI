@@ -227,7 +227,7 @@ describe('chat trigger test webhooks', () => {
 		await Container.get(TestWebhooks).cancelWebhook(workflow.id);
 	});
 
-	test('requires an n8n session for user-authenticated test webhooks', async () => {
+	test('requires an MNI session for user-authenticated test webhooks', async () => {
 		const trigger = chatTriggerNode({ authentication: 'n8nUserAuth' });
 		const workflow = await createChatWorkflow(trigger);
 

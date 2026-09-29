@@ -143,12 +143,12 @@ describe('finish_setup tool', () => {
 		});
 	});
 
-	it('drops credential slots already covered by an n8n Connect managed credential', async () => {
+	it('drops credential slots already covered by an MNI Connect managed credential', async () => {
 		const credentialService = makeCredentialService([]);
 		const tool = buildFinishSetupTool({
 			...BASE_DEPS,
 			credentialService,
-			// The agent's node tools already run pdfcoApi on n8n credits.
+			// The agent's node tools already run pdfcoApi on MNI credits.
 			listAiGatewayManagedCredentialTypes: async () => ['pdfcoApi'],
 		});
 		const ctx = makeCtx();

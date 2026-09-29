@@ -6,7 +6,7 @@ import { toPackagesError } from './package-error';
 import { BaseCommand } from '../../base-command';
 
 export default class PackageImport extends BaseCommand {
-	static override description = 'Import an n8n package (.n8np) into a project';
+	static override description = 'Import an MNI package (.n8np) into a project';
 
 	static override examples = [
 		'<%= config.bin %> package import --file=export.n8np',

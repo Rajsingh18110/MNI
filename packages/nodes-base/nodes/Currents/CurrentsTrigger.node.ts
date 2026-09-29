@@ -157,7 +157,7 @@ export class CurrentsTrigger implements INodeType {
 				const workflow = this.getWorkflow();
 
 				const webhookSecret = generateWebhookSecret();
-				const label = `n8n workflow ${workflow.id ?? 'unknown'}`;
+				const label = `MNI workflow ${workflow.id ?? 'unknown'}`;
 				const headers = JSON.stringify({
 					'x-webhook-secret': webhookSecret,
 				});

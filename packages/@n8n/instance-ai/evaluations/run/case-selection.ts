@@ -26,13 +26,13 @@ export function selectCases(
 		: undefined;
 	if (prebuiltManifest) {
 		// Multi-lane is for distributing the orchestrator build phase across
-		// n8n instances. Prebuilt workflows live on a single instance — fetching
+		// MNI instances. Prebuilt workflows live on a single instance — fetching
 		// them from any other lane's URL would 404 — and prebuilt mode skips
 		// builds anyway, so multi-lane buys nothing. Refuse the combination
 		// rather than silently fetching from one lane and ignoring the rest.
 		if (args.baseUrls.length > 1) {
 			throw new Error(
-				'--prebuilt-workflows is incompatible with multiple --base-url values. Prebuilt workflows live on a single n8n instance; pass exactly one --base-url.',
+				'--prebuilt-workflows is incompatible with multiple --base-url values. Prebuilt workflows live on a single MNI instance; pass exactly one --base-url.',
 			);
 		}
 		const slugCount = Object.keys(prebuiltManifest).length;

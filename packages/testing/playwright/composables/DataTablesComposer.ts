@@ -1,7 +1,7 @@
 import type { n8nPage } from '../pages/n8nPage';
 
 export class DataTableComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	async createNewDataTable(name: string) {
 		const nameInput = this.n8n.dataTable.getNewDataTableNameInput();

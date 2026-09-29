@@ -68,7 +68,7 @@ export class EngineDataPlaneClient implements EngineDataPlaneProvider {
 			body: request,
 			json: true,
 			returnFullResponse: true,
-			// Inspect the status here so engine failures map onto n8n error types
+			// Inspect the status here so engine failures map onto MNI error types
 			// instead of surfacing as a generic request error.
 			ignoreHttpStatusErrors: true,
 			// The identity token must reach the configured data plane and nowhere

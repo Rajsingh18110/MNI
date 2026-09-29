@@ -97,7 +97,7 @@ export function getSdkReferenceContent(section?: SdkReferenceSection): string {
 	}
 
 	return [
-		'# n8n Workflow SDK Reference',
+		'# MNI Workflow SDK Reference',
 		'',
 		SECTIONS.import,
 		'',

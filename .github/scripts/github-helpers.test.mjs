@@ -90,7 +90,7 @@ describe('updateCommentById', () => {
 		assert.equal(paginate.mock.calls.length, 0);
 		assert.deepEqual(updateComment.mock.calls[0].arguments[0], {
 			owner: 'n8n-io',
-			repo: 'n8n',
+			repo: 'MNI',
 			comment_id: 42,
 			body: 'next body',
 		});
@@ -129,13 +129,13 @@ describe('postOrUpdateComment', () => {
 		assert.equal(createComment.mock.calls.length, 1);
 		assert.deepEqual(createComment.mock.calls[0].arguments[0], {
 			owner: 'n8n-io',
-			repo: 'n8n',
+			repo: 'MNI',
 			issue_number: 123,
 			body: 'new body',
 		});
 		assert.deepEqual(paginate.mock.calls[0].arguments[1], {
 			owner: 'n8n-io',
-			repo: 'n8n',
+			repo: 'MNI',
 			issue_number: 123,
 			per_page: 100,
 		});
@@ -162,7 +162,7 @@ describe('postOrUpdateComment', () => {
 		assert.equal(updateComment.mock.calls.length, 1);
 		assert.deepEqual(updateComment.mock.calls[0].arguments[0], {
 			owner: 'n8n-io',
-			repo: 'n8n',
+			repo: 'MNI',
 			comment_id: 42,
 			body: 'updated body',
 		});
@@ -226,7 +226,7 @@ describe('initGithub', () => {
 
 		assert.equal(result.octokit, injected);
 		assert.equal(result.owner, 'n8n-io');
-		assert.equal(result.repo, 'n8n');
+		assert.equal(result.repo, 'MNI');
 	});
 
 	it('builds a client from GITHUB_TOKEN when nothing is injected', () => {

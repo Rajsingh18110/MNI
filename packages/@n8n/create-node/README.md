@@ -1,10 +1,10 @@
 # @n8n/create-node
 
-A powerful scaffolding tool to quickly create custom n8n community nodes with best practices built-in.
+A powerful scaffolding tool to quickly create custom MNI community nodes with best practices built-in.
 
 ## 🚀 Quick Start
 
-Create a new n8n node in seconds:
+Create a new MNI node in seconds:
 
 ```bash
 npm create @n8n/node@latest # or pnpm/yarn/...
@@ -90,15 +90,15 @@ npm run dev
 ```
 
 This command:
-- Starts n8n in development mode on `http://localhost:5678`
+- Starts MNI in development mode on `http://localhost:5678`
 - Enables hot reload for your node changes
-- Automatically includes your node in the n8n instance
+- Automatically includes your node in the MNI instance
 - Links your node to `~/.n8n-node-cli/.n8n/custom` for development
 - Watches for file changes and rebuilds automatically
 
 ### 3. Test your node
 
-- Open n8n at `http://localhost:5678`
+- Open MNI at `http://localhost:5678`
 - Create a new workflow
 - Find your node in the node panel
 - Test parameters and functionality in real-time
@@ -156,7 +156,7 @@ npm run lint
 
 Validates:
 - Code style and formatting
-- n8n node conventions
+- MNI node conventions
 - Common integration issues
 - Cloud publication readiness
 
@@ -166,7 +166,7 @@ Validates:
 npx n8n-node cloud-support
 ```
 
-Manage n8n Cloud publication eligibility. In strict mode, your node must use the default ESLint config and pass all community node rules to be eligible for n8n Cloud publication.
+Manage MNI cloud publication eligibility. In strict mode, your node must use the default ESLint config and pass all community node rules to be eligible for MNI cloud publication.
 
 Fix issues automatically:
 
@@ -217,7 +217,7 @@ The CLI reads configuration from your `package.json`:
 ```json
 {
   "name": "n8n-nodes-my-awesome-node",
-  "n8n": {
+  "MNI": {
     "n8nNodesApiVersion": 1,
     "nodes": [
       "dist/nodes/MyAwesomeApi/MyAwesomeApi.node.js"
@@ -242,9 +242,9 @@ Choose the right template for your use case:
 
 ### Common Issues
 
-**Node not appearing in n8n:**
+**Node not appearing in MNI:**
 ```bash
-# Clear n8n node cli cache and restart
+# Clear MNI node cli cache and restart
 rm -rf ~/.n8n-node-cli/.n8n/custom
 npm run dev
 ```
@@ -272,9 +272,9 @@ npm run dev
 
 ## 🔧 Advanced Usage
 
-### Using External n8n Instance
+### Using External MNI instance
 
-If you prefer to use your own n8n installation:
+If you prefer to use your own MNI installation:
 
 ```bash
 npm run dev --external-n8n
@@ -282,7 +282,7 @@ npm run dev --external-n8n
 
 ### Custom User Folder
 
-Specify a custom location for n8n user data:
+Specify a custom location for MNI user data:
 
 ```bash
 npm run dev --custom-user-folder /path/to/custom/folder
@@ -298,7 +298,7 @@ npm run dev --custom-user-folder /path/to/custom/folder
 
 ## 🤝 Contributing
 
-Found a bug or want to contribute? Check out the [n8n repository](https://github.com/n8n-io/n8n) and join our community!
+Found a bug or want to contribute? Check out the [MNI repository](https://github.com/n8n-io/n8n) and join our community!
 
 ---
 

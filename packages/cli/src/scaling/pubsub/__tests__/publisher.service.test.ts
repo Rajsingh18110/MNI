@@ -16,7 +16,7 @@ describe('Publisher', () => {
 	const instanceSettings = mock<InstanceSettings>({ hostId });
 	const redisClientService = mock<RedisClientService>({ createClient: () => client });
 	const executionsConfig = mockInstance(ExecutionsConfig, { mode: 'queue' });
-	const globalConfig = mockInstance(GlobalConfig, { redis: { prefix: 'n8n' } });
+	const globalConfig = mockInstance(GlobalConfig, { redis: { prefix: 'MNI' } });
 
 	describe('constructor', () => {
 		it('should init Redis client in scaling mode', () => {
@@ -89,7 +89,7 @@ describe('Publisher', () => {
 			await publisher.publishCommand(msg);
 
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				JSON.stringify({ ...msg, senderId: hostId, selfSend: false, debounce: true }),
 			);
 		});
@@ -107,7 +107,7 @@ describe('Publisher', () => {
 			await publisher.publishCommand(msg);
 
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				JSON.stringify({
 					...msg,
 					_isMockObject: true,
@@ -134,7 +134,7 @@ describe('Publisher', () => {
 			await publisher.publishCommand(msg);
 
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				JSON.stringify({
 					...msg,
 					_isMockObject: true,
@@ -158,7 +158,7 @@ describe('Publisher', () => {
 			await publisher.publishCommand(msg);
 
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				JSON.stringify({
 					...msg,
 					_isMockObject: true,
@@ -192,7 +192,7 @@ describe('Publisher', () => {
 			await publisher.publishCommand(msg);
 
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				JSON.stringify({
 					...msg,
 					_isMockObject: true,
@@ -219,7 +219,7 @@ describe('Publisher', () => {
 
 			await publisher.publishWorkerResponse(msg);
 
-			expect(client.publish).toHaveBeenCalledWith('n8n:n8n.worker-response', JSON.stringify(msg));
+			expect(client.publish).toHaveBeenCalledWith('MNI:n8n.worker-response', JSON.stringify(msg));
 		});
 	});
 
@@ -255,7 +255,7 @@ describe('Publisher', () => {
 
 			await publisher.publishMcpRelay(msg);
 
-			expect(client.publish).toHaveBeenCalledWith('n8n:n8n.mcp-relay', JSON.stringify(msg));
+			expect(client.publish).toHaveBeenCalledWith('MNI:n8n.mcp-relay', JSON.stringify(msg));
 		});
 
 		it('should apply configured prefix to MCP relay channel', async () => {

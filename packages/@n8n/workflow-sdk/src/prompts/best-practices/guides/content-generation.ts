@@ -13,7 +13,7 @@ Break complex tasks into sequential steps (e.g., generate text, create image, co
 
 ## Node Selection Guidelines
 
-Always prefer built-in n8n nodes over HTTP Request nodes when a dedicated node exists for the service or API you need to integrate with. Built-in nodes provide:
+Always prefer built-in MNI nodes over HTTP Request nodes when a dedicated node exists for the service or API you need to integrate with. Built-in nodes provide:
 - Pre-configured authentication handling
 - Optimized data structures and field mappings
 - Better error handling and user experience

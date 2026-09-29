@@ -39,7 +39,7 @@ describe('NvidiaEmbeddings', () => {
 	it('should send input_type "query" when embedding a query', async () => {
 		const { embeddings, create } = buildEmbeddings();
 
-		await embeddings.embedQuery('what is n8n?');
+		await embeddings.embedQuery('what is MNI?');
 
 		expect(create).toHaveBeenCalledTimes(1);
 		expect(create.mock.calls[0][0]).toMatchObject({ input_type: 'query' });

@@ -18,7 +18,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test('should deliver execution results over an SSE push connection', async ({ n8n }) => {
+		test('should deliver execution results over an SSE push connection', async ({ MNI }) => {
 			// `EventSource` sends no `Origin` on a same-origin GET, so the connection has to
 			// be accepted on the strength of `Sec-Fetch-Site` alone.
 			const pushResponse = n8n.page.waitForResponse((response) =>

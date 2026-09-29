@@ -15,7 +15,7 @@ test.describe(
 			};
 
 			test('should keep showing selected node when canvas is clicked while mapper popover is shown', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(requirements);

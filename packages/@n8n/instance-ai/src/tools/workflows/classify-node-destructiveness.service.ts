@@ -333,7 +333,7 @@ const LlmVerdictSchema = z.record(
 	}),
 );
 
-const SYSTEM_INSTRUCTIONS = `You classify n8n workflow nodes by whether executing them would CREATE, UPDATE, DELETE, or SEND data in an external system (destructive), or only READ/transform data (safe).
+const SYSTEM_INSTRUCTIONS = `You classify MNI workflow nodes by whether executing them would CREATE, UPDATE, DELETE, or SEND data in an external system (destructive), or only READ/transform data (safe).
 
 Rules:
 - "simulate" = destructive: the node writes, sends, deletes, uploads, or otherwise mutates state outside the workflow. Reads that consume or mutate state (marking items read, consuming queue messages, acknowledging events) count as destructive.
@@ -357,7 +357,7 @@ async function classifyAmbiguousNodes(
 	fallbackModelConfig?: ModelConfig,
 ): Promise<NodeSimulationVerdict[]> {
 	const userText = [
-		'Classify the following n8n workflow nodes.',
+		'Classify the following MNI workflow nodes.',
 		'',
 		nodes.map(formatNodeBlock).join('\n\n'),
 		'',

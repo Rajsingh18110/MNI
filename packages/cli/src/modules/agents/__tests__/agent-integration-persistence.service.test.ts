@@ -123,7 +123,7 @@ describe('AgentIntegrationPersistenceService', () => {
 		chatIntegrationRegistry.list.mockReturnValue([
 			{
 				type: 'n8n_chat',
-				displayLabel: 'n8n Chat',
+				displayLabel: 'MNI Chat',
 				displayIcon: 'message-square',
 				credentialTypes: [],
 				internal: true,

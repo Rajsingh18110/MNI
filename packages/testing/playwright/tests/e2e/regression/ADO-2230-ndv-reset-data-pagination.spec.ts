@@ -7,7 +7,7 @@ test.describe(
 	},
 	() => {
 		test('should reset pagination if data size changes to less than current page', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('NDV-debug-generate-data.json');
 

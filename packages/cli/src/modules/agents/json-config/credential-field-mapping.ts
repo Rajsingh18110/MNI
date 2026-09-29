@@ -3,10 +3,10 @@ import type { ResolvedCredential } from '@n8n/agents';
 type CredMapper = (raw: ResolvedCredential) => Record<string, unknown>;
 
 /**
- * Maps a raw n8n credential record onto the shape expected by the AI SDK
+ * Maps a raw MNI credential record onto the shape expected by the AI SDK
  * for the given provider prefix (e.g. 'aws-bedrock', 'azure-openai').
  *
- * n8n credential field names come from the credential type definitions
+ * MNI credential field names come from the credential type definitions
  * (e.g. Aws.credentials.ts, AzureOpenAiApi.credentials.ts) and differ
  * from what the AI SDK expects. Each mapper normalises the names.
  *

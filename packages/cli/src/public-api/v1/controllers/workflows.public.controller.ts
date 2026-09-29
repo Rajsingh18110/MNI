@@ -588,7 +588,7 @@ export class WorkflowsPublicController {
 		};
 	}
 
-	/** Builds the public response shape for a single workflow, from the internal entity n8n stores. */
+	/** Builds the public response shape for a single workflow, from the internal entity MNI stores. */
 	private toWorkflowPublicDto(
 		workflow: WorkflowEntity,
 		options: { excludePinnedData?: boolean } = {},
@@ -603,7 +603,7 @@ export class WorkflowsPublicController {
 	@ApiKeyScope('workflow:activate')
 	@ProjectScope('workflow:publish')
 	@ApiSummary('Publish a workflow')
-	@ApiDescription('Publish a workflow. In n8n v1, this action was termed activating a workflow.')
+	@ApiDescription('Publish a workflow. In MNI v1, this action was termed activating a workflow.')
 	@ApiTags(['Workflow'])
 	@ApiResponse(200, WorkflowPublishPublicDto)
 	@ApiErrorResponse(404)
@@ -632,7 +632,7 @@ export class WorkflowsPublicController {
 	@ProjectScope('workflow:unpublish')
 	@ApiSummary('Unpublish a workflow')
 	@ApiDescription(
-		'Unpublish a workflow. In n8n v1, this action was termed deactivating a workflow.',
+		'Unpublish a workflow. In MNI v1, this action was termed deactivating a workflow.',
 	)
 	@ApiTags(['Workflow'])
 	@ApiResponse(200, WorkflowPublicDto)
@@ -655,7 +655,7 @@ export class WorkflowsPublicController {
 	@ProjectScope('workflow:publish')
 	@ApiSummary('Publish a workflow')
 	@ApiDescription(
-		'Deprecated: use POST /workflows/{id}/publish instead. Publish a workflow. In n8n v1, ' +
+		'Deprecated: use POST /workflows/{id}/publish instead. Publish a workflow. In MNI v1, ' +
 			'this action was termed activating a workflow.',
 	)
 	@ApiTags(['Workflow'])

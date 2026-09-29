@@ -10,7 +10,7 @@ describe('parseDistributionMatrix', () => {
 					{
 						shard: 1,
 						specs: 'a.spec.ts b.spec.ts',
-						images: 'n8n proxy',
+						images: 'MNI proxy',
 						capabilities: ['proxy'],
 						services: ['proxy'],
 						fixturePools: ['pool-a'],
@@ -23,7 +23,7 @@ describe('parseDistributionMatrix', () => {
 			{
 				shard: 1,
 				specs: ['a.spec.ts', 'b.spec.ts'],
-				images: ['n8n', 'proxy'],
+				images: ['MNI', 'proxy'],
 				capabilities: ['proxy'],
 				services: ['proxy'],
 				fixturePools: ['pool-a'],
@@ -52,7 +52,7 @@ describe('parseDistributionMatrix', () => {
 
 	it('rejects missing distribution metadata', () => {
 		expect(() =>
-			parseDistributionMatrix(JSON.stringify([{ shard: 1, specs: 'a.spec.ts', images: 'n8n' }])),
+			parseDistributionMatrix(JSON.stringify([{ shard: 1, specs: 'a.spec.ts', images: 'MNI' }])),
 		).toThrow('The distributor did not return distribution metadata');
 	});
 });
@@ -67,7 +67,7 @@ describe('summarizeDistribution', () => {
 				modeledStackStarts: 1,
 				stackStarts: 2,
 				extraStackStarts: 1,
-				images: ['n8n', 'proxy'],
+				images: ['MNI', 'proxy'],
 			},
 			{
 				runnableSpecs: 1,
@@ -75,7 +75,7 @@ describe('summarizeDistribution', () => {
 				modeledStackStarts: 1,
 				stackStarts: 1,
 				extraStackStarts: 0,
-				images: ['n8n'],
+				images: ['MNI'],
 			},
 		];
 
@@ -90,7 +90,7 @@ describe('summarizeDistribution', () => {
 			stackStarts: 3,
 			extraStackStarts: 1,
 			declaredImageLoads: 3,
-			images: { n8n: 2, proxy: 1 },
+			images: { MNI: 2, proxy: 1 },
 		});
 	});
 });

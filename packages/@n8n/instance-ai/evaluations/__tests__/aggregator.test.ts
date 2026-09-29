@@ -248,14 +248,14 @@ describe('aggregateResults — build expectations as units', () => {
 				expectationRun([
 					{ expectation: 'asks before building', pass: true },
 					{ expectation: 'workflow has a trigger', pass: true },
-					{ expectation: 'A anthropicApi credential is created in n8n', pass: true },
+					{ expectation: 'A anthropicApi credential is created in MNI', pass: true },
 				]),
 			],
 			[
 				expectationRun([
 					{ expectation: 'asks before building', pass: true },
 					{ expectation: 'workflow has a trigger', pass: true },
-					{ expectation: 'A anthropicApi credential is created in n8n', pass: false },
+					{ expectation: 'A anthropicApi credential is created in MNI', pass: false },
 				]),
 			],
 		];
@@ -267,7 +267,7 @@ describe('aggregateResults — build expectations as units', () => {
 		expect(units.map((u) => u.expectation)).toEqual([
 			'asks before building',
 			'workflow has a trigger',
-			'A anthropicApi credential is created in n8n',
+			'A anthropicApi credential is created in MNI',
 		]);
 		expect(units[2]).toMatchObject({ evaluatedCount: 2, passCount: 1 });
 	});

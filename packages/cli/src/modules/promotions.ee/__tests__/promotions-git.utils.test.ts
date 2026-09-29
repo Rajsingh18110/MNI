@@ -90,12 +90,12 @@ describe('promotions-git.utils', () => {
 
 		it('normalizes Windows-style backslash paths to POSIX', () => {
 			const command = buildSshCommand({
-				privateKeyPath: 'C:\\n8n\\.ssh\\private-key',
-				knownHostsPath: 'C:\\n8n\\.ssh\\known_hosts',
+				privateKeyPath: 'C:\\MNI\\.ssh\\private-key',
+				knownHostsPath: 'C:\\MNI\\.ssh\\known_hosts',
 			});
 
 			expect(command).toBe(
-				"ssh -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -o UserKnownHostsFile='C:/n8n/.ssh/known_hosts' -o StrictHostKeyChecking=accept-new -i 'C:/n8n/.ssh/private-key'",
+				"ssh -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -o UserKnownHostsFile='C:/MNI/.ssh/known_hosts' -o StrictHostKeyChecking=accept-new -i 'C:/MNI/.ssh/private-key'",
 			);
 		});
 
@@ -112,15 +112,15 @@ describe('promotions-git.utils', () => {
 
 	describe('generateSshKeyPair', () => {
 		it('generates a parseable ed25519 key pair carrying the comment', async () => {
-			const keyPair = await generateSshKeyPair('ed25519', 'n8n promotions');
+			const keyPair = await generateSshKeyPair('ed25519', 'MNI promotions');
 
 			expect(keyPair.privateKey).toContain('BEGIN OPENSSH PRIVATE KEY');
 			expect(keyPair.publicKey).toContain('ssh-ed25519');
-			expect(keyPair.publicKey).toContain('n8n promotions');
+			expect(keyPair.publicKey).toContain('MNI promotions');
 		});
 
 		it('generates a parseable rsa key pair', async () => {
-			const keyPair = await generateSshKeyPair('rsa', 'n8n promotions');
+			const keyPair = await generateSshKeyPair('rsa', 'MNI promotions');
 
 			expect(keyPair.privateKey).toContain('BEGIN OPENSSH PRIVATE KEY');
 			expect(keyPair.publicKey).toContain('ssh-rsa');

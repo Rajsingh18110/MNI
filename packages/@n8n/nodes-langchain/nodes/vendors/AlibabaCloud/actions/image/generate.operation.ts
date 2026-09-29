@@ -322,7 +322,7 @@ async function downloadImageAsDataUri(
 		encoding: 'arraybuffer',
 		returnFullResponse: true,
 		headers: {
-			'User-Agent': 'n8n (https://n8n.io)',
+			'User-Agent': 'MNI (https://n8n.io)',
 		},
 	});
 	const contentType =

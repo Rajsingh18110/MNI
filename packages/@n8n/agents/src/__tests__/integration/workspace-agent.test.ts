@@ -50,7 +50,7 @@ describe('workspace agent integration', () => {
 			.workspace(workspace);
 
 		const result = await agent.generate(
-			'Write "Hello from n8n!" to /greeting.txt, then read it back and tell me the contents. You MUST call both tools',
+			'Write "Hello from MNI!" to /greeting.txt, then read it back and tell me the contents. You MUST call both tools',
 		);
 
 		expect(result.finishReason).toBe('stop');
@@ -69,10 +69,10 @@ describe('workspace agent integration', () => {
 		expect(readResult).toBeDefined();
 		expect(readResult!.state).toBe('resolved');
 		expect((readResult as unknown as { output: { content: string } }).output.content).toContain(
-			'Hello from n8n!',
+			'Hello from MNI!',
 		);
 
-		expect(memFs.getFileContent('/greeting.txt')).toBe('Hello from n8n!');
+		expect(memFs.getFileContent('/greeting.txt')).toBe('Hello from MNI!');
 	});
 
 	it('agent uses workspace_execute_command tool', async () => {
@@ -92,7 +92,7 @@ describe('workspace agent integration', () => {
 			)
 			.workspace(workspace);
 
-		const result = await agent.generate('Run the command: echo "n8n workspace test"');
+		const result = await agent.generate('Run the command: echo "MNI workspace test"');
 
 		expect(result.finishReason).toBe('stop');
 		expect(result.error).toBeUndefined();

@@ -28,8 +28,8 @@ import { selfOwned } from './shared/job-factory';
  * is a judgement call. Hard assertions cover only correctness and a loose latency
  * ceiling that trips on a catastrophic regression.
  *
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:sqlite scheduler-query-benchmarks
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:postgres:integration:tc scheduler-query-benchmarks
+ *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-query-benchmarks
+ *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc scheduler-query-benchmarks
  */
 
 const runBenchmarks = process.env.N8N_SCHEDULER_BENCHMARK === '1';

@@ -11,7 +11,7 @@
 | ruleId | varchar(128) |  | false |  |  | Id of the breaking-change rule that produced the finding. |
 | status | varchar(32) | 'open'::character varying | false |  |  | MigrationFindingStatus enum: "open", "notified", "fixed", "fixed_unpublished", "wont_fix". |
 | statusChangedAt | timestamp(3) with time zone |  | false |  |  | When `status` last changed. Set on insert. |
-| targetVersion | varchar(16) |  | false |  |  | BreakingChangeVersion enum: the n8n major version the finding applies to. |
+| targetVersion | varchar(16) |  | false |  |  | BreakingChangeVersion enum: the MNI major version the finding applies to. |
 | updatedAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |
 | workflowId | varchar(36) |  | false |  | [public.workflow_entity](public.workflow_entity.md) |  |
 

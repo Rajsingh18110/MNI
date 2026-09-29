@@ -999,7 +999,7 @@ export type UseDefaultSsrfPolicy = 'safe' | 'enforced' | 'unsafe';
 
 /**
  * Egress filter exposed to nodes whose embedded HTTP clients cannot go through
- * `httpRequest`. Mirrors the layers n8n's own egress uses: a pre-flight URL
+ * `httpRequest`. Mirrors the layers MNI's own egress uses: a pre-flight URL
  * validation, a connect-time secure DNS lookup, and per-redirect validation.
  */
 export interface NodeEgressFilter {
@@ -1599,7 +1599,7 @@ export interface IWebhookFunctions extends FunctionsBaseWithRequiredKeys<'getMod
 	 *
 	 * These let a trigger run a workflow as the *caller* — resolving that user's own
 	 * private (per-user) credentials instead of a shared/static credential — by
-	 * proving the caller's n8n identity against the internal Authorization Server (AS)
+	 * proving the caller's MNI identity against the internal Authorization Server (AS)
 	 * and binding it to the execution. The shape is acquire → verify → bind:
 	 *
 	 * - Browser-facing triggers (Form) acquire a token interactively:
@@ -1610,10 +1610,10 @@ export interface IWebhookFunctions extends FunctionsBaseWithRequiredKeys<'getMod
 	 */
 
 	/**
-	 * Starts the interactive authorization-code + PKCE flow against n8n's internal AS
+	 * Starts the interactive authorization-code + PKCE flow against MNI's internal AS
 	 * for `resourceUrl` (the trigger's own protected-resource URL). Returns the
 	 * `/oauth/authorize` URL to redirect the browser to; the AS identifies the
-	 * already-logged-in user from their n8n session (no login prompt for the
+	 * already-logged-in user from their MNI session (no login prompt for the
 	 * first-party trigger client) and redirects back to the trigger URL with a code.
 	 * Used on the initial GET of a browser-facing trigger. Pair with
 	 * `completeN8nOAuth2Flow`.
@@ -1694,7 +1694,7 @@ export interface IWebhookFunctions extends FunctionsBaseWithRequiredKeys<'getMod
 	isChatSessionTest(): boolean;
 	validateCookieAuth(cookieValue: string): Promise<IUser>;
 	/**
-	 * The n8n user who started this test run, recorded on the webhook registration.
+	 * The MNI user who started this test run, recorded on the webhook registration.
 	 * Only test webhooks carry it, so this resolves to `undefined` in production.
 	 *
 	 * Optional so hosts that implement this interface themselves are not forced to
@@ -1711,7 +1711,7 @@ export interface INodeCredentialsDetails {
 	id: string | null;
 	name: string;
 	/**
-	 * Set automatically when the credential slot is managed by the n8n AI Gateway.
+	 * Set automatically when the credential slot is managed by the MNI AI Gateway.
 	 * Not intended to be set or modified manually.
 	 */
 	__aiGatewayManaged?: boolean;
@@ -2365,7 +2365,7 @@ export interface DynamicCredentialsUsage {
 	usedDynamicCredentials?: boolean;
 	/** True when the run attempted to resolve a private credential (telemetry superset of `usedDynamicCredentials`). */
 	attemptedDynamicCredentials?: boolean;
-	/** The n8n user a resolved private credential belonged to; keeps the parent execution revealable to that user. */
+	/** The MNI user a resolved private credential belonged to; keeps the parent execution revealable to that user. */
 	dynamicCredentialsResolvedUserId?: string;
 }
 
@@ -3019,7 +3019,7 @@ export type ExpressionString = `={{${string}}}`;
 
 export type NodeDefaults = Partial<{
 	/**
-	 * @deprecated Use {@link INodeTypeBaseDescription.iconColor|iconColor} instead. `iconColor` supports dark mode and uses preset colors from n8n's design system.
+	 * @deprecated Use {@link INodeTypeBaseDescription.iconColor|iconColor} instead. `iconColor` supports dark mode and uses preset colors from MNI's design system.
 	 */
 	color: string;
 	name: string;
@@ -3476,10 +3476,10 @@ export interface RelatedAgentRun {
 	 * resume on the runtime they started on.
 	 */
 	previewChat?: boolean;
-	/** The published n8n Chat channel owns this run. */
+	/** The published MNI Chat channel owns this run. */
 	publishedN8nChat?: boolean;
 	/**
-	 * The interactive n8n user, when there is one. The preview chat resumes the draft
+	 * The interactive MNI user, when there is one. The preview chat resumes the draft
 	 * agent version, which gates node and workflow tools by this user's access.
 	 */
 	userId?: string;
@@ -3983,8 +3983,8 @@ export interface IWorkflowExecuteAdditionalData {
 	 */
 	currentNodeAttemptedDynamicCredentials?: boolean;
 	/**
-	 * The n8n user a dynamically-resolved private credential belongs to, set during
-	 * credential resolution when the resolver maps the execution's identity to an n8n
+	 * The MNI user a dynamically-resolved private credential belongs to, set during
+	 * credential resolution when the resolver maps the execution's identity to an MNI
 	 * user. Execution-scoped (one identity per execution), so it is not reset per node.
 	 * The execution engine copies it onto `runtimeData.executedByUserId` for the
 	 * redaction layer.
@@ -4197,7 +4197,7 @@ export interface INodeGraphItem {
 	ai_model?: string; // AI model for model nodes and standalone AI nodes
 	ai_input_tokens?: number; // AI input (prompt) tokens for model nodes
 	ai_output_tokens?: number; // AI output (completion) tokens for model nodes
-	ai_gateway_credentials?: boolean; // true if node used n8n Connect / AI Gateway managed credentials
+	ai_gateway_credentials?: boolean; // true if node used MNI Connect / AI Gateway managed credentials
 }
 
 export interface INodeNameIndex {

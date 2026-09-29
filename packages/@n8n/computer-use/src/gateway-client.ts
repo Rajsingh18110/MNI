@@ -82,7 +82,7 @@ interface GatewayDisconnectEvent {
 }
 
 /**
- * Client that connects to the n8n gateway via SSE and
+ * Client that connects to the MNI gateway via SSE and
  * handles tool requests by executing MCP tool calls locally.
  */
 export class GatewayClient {
@@ -319,7 +319,7 @@ export class GatewayClient {
 		}
 
 		// If the server returned a session key, switch to it for all subsequent requests
-		// n8n wraps controller responses in { data: ... }
+		// MNI wraps controller responses in { data: ... }
 		const body = (await response.json()) as { data: { ok: boolean; sessionKey?: string } };
 		if (body.data.sessionKey) {
 			this.sessionKey = body.data.sessionKey;

@@ -65,7 +65,7 @@ describe('registryQueryTerms', () => {
 	});
 
 	test('drops words that appear in most package names', () => {
-		expect(registryQueryTerms('n8n nodes for the slack api')).toEqual(['slack']);
+		expect(registryQueryTerms('MNI nodes for the slack api')).toEqual(['slack']);
 	});
 
 	test('de-duplicates repeated terms', () => {

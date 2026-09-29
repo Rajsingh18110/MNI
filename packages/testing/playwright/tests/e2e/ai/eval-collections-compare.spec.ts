@@ -54,7 +54,7 @@ test.describe(
 	() => {
 		let workflowId: string;
 
-		test.beforeEach(async ({ n8n, setupRequirements }) => {
+		test.beforeEach(async ({ MNI, setupRequirements }) => {
 			await setupRequirements(requirements);
 
 			const workflow = await n8n.api.workflows.createWorkflow({
@@ -164,7 +164,7 @@ test.describe(
 		});
 
 		test('renders the hero and cases table, and drills into per-version outputs', async ({
-			n8n,
+			MNI,
 		}) => {
 			const compare = n8n.evaluationCompare;
 			await compare.goto(workflowId, COLLECTION_ID);
@@ -184,7 +184,7 @@ test.describe(
 			await expect(compare.getOutputsTab()).toContainText('The capital of France is Paris.');
 		});
 
-		test('surfaces a dataset-mismatch banner when run case counts diverge', async ({ n8n }) => {
+		test('surfaces a dataset-mismatch banner when run case counts diverge', async ({ MNI }) => {
 			// Re-stub run-b with a single case so the counts diverge (2 vs 1). A
 			// later route registration takes precedence in Playwright.
 			await n8n.page.route(

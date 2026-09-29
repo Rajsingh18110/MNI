@@ -287,7 +287,7 @@ describe('Data Transformation Functions', () => {
 		test('.isEmail should work on a string', () => {
 			expect(evaluate('={{ "test@example.com".isEmail() }}')).toEqual(true);
 			expect(evaluate('={{ "aaaaaaaa".isEmail() }}')).toEqual(false);
-			expect(evaluate('={{ "test @ n8n".isEmail() }}')).toEqual(false);
+			expect(evaluate('={{ "test @ MNI".isEmail() }}')).toEqual(false);
 		});
 
 		test('.toDateTime should work on a variety of formats', () => {
@@ -350,11 +350,11 @@ describe('Data Transformation Functions', () => {
 		});
 
 		test('.base64Encode should work on a string', () => {
-			expect(evaluate('={{ "n8n test".base64Encode() }}')).toBe('bjhuIHRlc3Q=');
+			expect(evaluate('={{ "MNI test".base64Encode() }}')).toBe('bjhuIHRlc3Q=');
 		});
 
 		test('.base64Decode should work on a string', () => {
-			expect(evaluate('={{ "bjhuIHRlc3Q=".base64Decode() }}')).toBe('n8n test');
+			expect(evaluate('={{ "bjhuIHRlc3Q=".base64Decode() }}')).toBe('MNI test');
 		});
 	});
 });

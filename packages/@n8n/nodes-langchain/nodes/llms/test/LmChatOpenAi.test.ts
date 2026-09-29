@@ -714,7 +714,7 @@ describe('LmChatOpenAi', () => {
 					textOptions: [{ type: 'json_object', verbosity: 'high' }],
 				},
 				promptConfig: {
-					promptOptions: [{ promptId: 'p_1', version: '1', variables: '{"name":"n8n"}' }],
+					promptOptions: [{ promptId: 'p_1', version: '1', variables: '{"name":"MNI"}' }],
 				},
 			};
 

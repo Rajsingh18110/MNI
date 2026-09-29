@@ -16,7 +16,7 @@
 		{
 			"parameters": {
 				"group": "audio",
-				"text": "n8n rocks!",
+				"text": "MNI rocks!",
 				"gender": "female",
 				"language": "american",
 				"additionalOptions": {}
@@ -37,7 +37,7 @@
 			"parameters": {
 				"group": "audio",
 				"tool": "getAudioSpeechByText",
-				"text": "n8n rocks!",
+				"text": "MNI rocks!",
 				"gender": "female",
 				"language": "american",
 				"additionalOptions": {}
@@ -229,7 +229,7 @@
 				"group": "company",
 				"tool": "getCompanyByName",
 				"country": "DE",
-				"name": "n8n",
+				"name": "MNI",
 				"additionalOptions": {}
 			},
 			"name": "uProc19",

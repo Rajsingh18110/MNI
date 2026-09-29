@@ -6,7 +6,7 @@ export const WORKFLOW_PREVIEW_TELEMETRY_EVENTS = {
 	PREVIEW_RENDER_FAILED: 'workflow-preview app render failed',
 	PREVIEW_TOOL_CALL_COMPLETED: 'workflow-preview app tool call completed',
 	PREVIEW_TOOL_CALL_REQUESTED: 'workflow-preview app tool call requested',
-	OPEN_IN_N8N_CLICKED: 'User clicked Open in n8n button',
+	OPEN_IN_N8N_CLICKED: 'User clicked Open in MNI button',
 } as const;
 
 export const WORKFLOW_PREVIEW_OPEN_IN_N8N_SOURCES = {

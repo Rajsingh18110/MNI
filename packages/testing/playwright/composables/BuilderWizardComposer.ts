@@ -9,7 +9,7 @@ import type { n8nPage } from '../pages/n8nPage';
  * Handles stream mocking, workflow generation, autosave, and follow-up messages.
  */
 export class BuilderWizardComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Intercept the builder streaming endpoint and respond with mock workflow data.

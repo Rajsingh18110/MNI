@@ -2003,7 +2003,7 @@ export class WorkflowExecute {
 	}
 
 	/**
-	 * Record the n8n user a dynamically-resolved private credential belongs to onto the
+	 * Record the MNI user a dynamically-resolved private credential belongs to onto the
 	 * execution context, so the redaction layer can grant that user access to their own
 	 * data. The identity is execution-scoped, so this is the same value across nodes.
 	 */

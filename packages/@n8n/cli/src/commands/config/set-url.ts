@@ -3,7 +3,7 @@ import { Args, Command } from '@oclif/core';
 import { readConfig, writeConfig } from '../../config';
 
 export default class ConfigSetUrl extends Command {
-	static override description = 'Set the n8n instance URL';
+	static override description = 'Set the MNI instance URL';
 
 	static override examples = [
 		'<%= config.bin %> config set-url https://my-n8n.app.n8n.cloud',
@@ -11,7 +11,7 @@ export default class ConfigSetUrl extends Command {
 	];
 
 	static override args = {
-		url: Args.string({ description: 'n8n instance URL', required: true }),
+		url: Args.string({ description: 'MNI instance URL', required: true }),
 	};
 
 	async run(): Promise<void> {

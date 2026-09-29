@@ -103,7 +103,7 @@ interface AgentSubgraph {
 }
 
 /**
- * Builder class for generating Mermaid flowchart diagrams from n8n workflows
+ * Builder class for generating Mermaid flowchart diagrams from MNI workflows
  */
 class MermaidBuilder {
 	private readonly nodes: WorkflowNode[];

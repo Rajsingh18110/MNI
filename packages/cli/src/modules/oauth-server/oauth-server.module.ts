@@ -12,7 +12,7 @@ import { InstanceSettings } from 'n8n-core';
  * `ProtectedResourceRegistry` (e.g. the instance MCP server).
  */
 // Loaded on workers too: in queue mode an MCP trigger tool call executes on a
-// worker, where resolving the caller's private credentials verifies the n8n
+// worker, where resolving the caller's private credentials verifies the MNI
 // OAuth token through `OAuthTokenVerifierProxy`. Without the module the verifier
 // provider is unregistered and resolution fails with `verifier_not_registered`.
 @BackendModule({ name: 'oauth-server', instanceTypes: ['main', 'webhook', 'worker'] })

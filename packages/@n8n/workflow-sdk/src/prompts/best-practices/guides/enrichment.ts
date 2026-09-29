@@ -228,7 +228,7 @@ export class EnrichmentBestPractices implements BestPracticesDocument {
 
 **Problem**: Hard-coded API keys in workflows
 - **Solution**: Use credentials and environment variables
-- Store sensitive data in n8n credentials system
+- Store sensitive data in MNI credentials system
 - Never commit credentials in workflow JSON
 
 **Problem**: No monitoring or logging of enrichment quality

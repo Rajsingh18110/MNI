@@ -77,7 +77,7 @@ async function main(): Promise<void> {
 	if (serialiseForBrowserLane(browserCases.length, args.iterations) && args.concurrency !== 1) {
 		args.concurrency = 1;
 		logger.info(
-			`  ${String(browserCases.length)} browser-lane case(s) selected: serialised, because the n8n relay is instance-wide.`,
+			`  ${String(browserCases.length)} browser-lane case(s) selected: serialised, because the MNI relay is instance-wide.`,
 		);
 	}
 

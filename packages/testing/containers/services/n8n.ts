@@ -75,7 +75,7 @@ export interface N8NInstancesOptions {
 	attemptId?: string;
 	mains: number;
 	workers: number;
-	/** Dedicated `n8n webhook` procs. Forces queue mode when > 0. */
+	/** Dedicated `MNI webhook` procs. Forces queue mode when > 0. */
 	webhooks?: number;
 	projectName: string;
 	network: StartedNetwork;
@@ -100,7 +100,7 @@ export interface N8NInstancesOptions {
 	registerContainer?: (container: StartedTestContainer) => void;
 	startupDeadline: StartupDeadline;
 	/**
-	 * Override the n8n image for these instances (default: the process-wide
+	 * Override the MNI image for these instances (default: the process-wide
 	 * TEST_IMAGE_N8N resolution). Lets one process boot different releases in
 	 * sequence — the upgrade/downgrade cycles swap images over the same data.
 	 */
@@ -300,11 +300,11 @@ async function createContainer(
 	}
 
 	if (coverageHostDir) {
-		// Per-container host dir → /cov; n8n flushes V8 here on graceful stop.
+		// Per-container host dir → /cov; MNI flushes V8 here on graceful stop.
 		// Reuse must stay off so the process actually exits and flushes.
 		const hostCoverageDir = join(coverageHostDir, name);
 		mkdirSync(hostCoverageDir, { recursive: true });
-		// The n8n container runs as `node` (uid 1000); on Linux CI the bind mount
+		// The MNI container runs as `node` (uid 1000); on Linux CI the bind mount
 		// is direct (no Docker Desktop uid mapping), so make the dir writable by
 		// the container or NODE_V8_COVERAGE silently fails to flush.
 		chmodSync(hostCoverageDir, 0o777);
@@ -507,7 +507,7 @@ export async function createN8NInstances(
 	];
 
 	if (instances.length === 0) {
-		log('No n8n instances requested (service-only mode)');
+		log('No MNI instances requested (service-only mode)');
 		return { containers, environment, diagnostics };
 	}
 
@@ -519,7 +519,7 @@ export async function createN8NInstances(
 
 	const rethrowWithDiagnostics = (error: unknown): never => {
 		const message =
-			error instanceof Error ? error.message : `n8n instances failed to start: ${String(error)}`;
+			error instanceof Error ? error.message : `MNI instances failed to start: ${String(error)}`;
 		throw new N8NStartupError(message, diagnostics, error);
 	};
 

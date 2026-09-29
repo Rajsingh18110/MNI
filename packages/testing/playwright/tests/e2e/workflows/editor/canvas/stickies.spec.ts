@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('adds sticky to canvas with default text and position', async ({ n8n }) => {
+		test('adds sticky to canvas with default text and position', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await expect(n8n.canvas.sticky.getAddButton()).toBeVisible();
 
@@ -32,7 +32,7 @@ test.describe(
 			await expect(guideLink).toHaveAttribute('href');
 		});
 
-		test('opens the color picker from the right-click context menu', async ({ n8n }) => {
+		test('opens the color picker from the right-click context menu', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.sticky.addSticky();
 

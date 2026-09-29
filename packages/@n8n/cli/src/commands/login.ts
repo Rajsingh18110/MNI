@@ -15,7 +15,7 @@ async function prompt(question: string): Promise<string> {
 }
 
 export default class Login extends Command {
-	static override description = 'Connect to an n8n instance (saves URL and API key)';
+	static override description = 'Connect to an MNI instance (saves URL and API key)';
 
 	static override examples = ['<%= config.bin %> login'];
 
@@ -28,7 +28,7 @@ export default class Login extends Command {
 			? ` (${existing.apiKey.slice(0, 12)}...${existing.apiKey.slice(-4)})`
 			: '';
 
-		const url = (await prompt(`n8n instance URL${urlDefault}: `)) || existing.url;
+		const url = (await prompt(`MNI instance URL${urlDefault}: `)) || existing.url;
 		const apiKey = (await prompt(`API key${keyHint}: `)) || existing.apiKey;
 
 		if (!url) {

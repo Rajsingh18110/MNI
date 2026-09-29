@@ -9,7 +9,7 @@ export class StoragePathError extends UserError {
 
 	static taken(oldPath: string, newPath: string) {
 		return new StoragePathError(
-			`Failed to migrate ${oldPath} to ${newPath} because ${newPath} already exists. Please rename ${newPath} so n8n can migrate ${oldPath} to this path.`,
+			`Failed to migrate ${oldPath} to ${newPath} because ${newPath} already exists. Please rename ${newPath} so MNI can migrate ${oldPath} to this path.`,
 		);
 	}
 }

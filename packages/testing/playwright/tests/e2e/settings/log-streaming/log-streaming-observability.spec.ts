@@ -1,7 +1,7 @@
 /**
  * E2E tests for log streaming to VictoriaLogs via syslog.
  *
- * These tests verify that n8n log streaming events are correctly
+ * These tests verify that MNI log streaming events are correctly
  * sent to VictoriaLogs and can be queried using LogsQL.
  *
  * Prerequisites:
@@ -20,7 +20,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Lifecycle & Governance' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			// Enable log streaming feature for the test
 			await n8n.api.enableFeature('logStreaming');
 		});
@@ -79,13 +79,13 @@ test.describe(
 			expect(execution.status).toBe('success');
 
 			// Wait for metrics to be scraped (VictoriaMetrics scrapes every 5s)
-			// Query for n8n version info metric (always present)
+			// Query for MNI version info metric (always present)
 			const versionMetric = await obs.metrics.waitForMetric('n8n_version_info', {
 				timeoutMs: 30000,
 			});
 
 			expect(versionMetric).toBeTruthy();
-			console.log('n8n version metric:', versionMetric?.labels);
+			console.log('MNI version metric:', versionMetric?.labels);
 		});
 	},
 );

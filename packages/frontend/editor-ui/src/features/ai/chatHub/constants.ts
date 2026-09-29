@@ -32,7 +32,7 @@ export const providerDisplayNames: Record<ChatHubProvider, string> = {
 	cohere: 'Cohere',
 	mistralCloud: 'Mistral Cloud',
 	nvidia: 'NVIDIA Nemotron',
-	n8n: 'Workflow agent',
+	MNI: 'Workflow agent',
 	'custom-agent': 'Personal agent',
 };
 

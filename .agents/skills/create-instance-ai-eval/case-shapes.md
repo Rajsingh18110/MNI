@@ -498,7 +498,7 @@ becoming a message the transcript builder would silently drop.
 
 #### `agents` — "here's an agent you already built, now change it"
 
-An n8n **Agent** is not a workflow, so it has its own slot: a project-scoped
+An MNI **Agent** is not a workflow, so it has its own slot: a project-scoped
 resource with a config *plus authored skill bodies*. Declare it and the restore
 creates it at its pinned id in the thread's project, with its skills, before the
 live turn:
@@ -608,7 +608,7 @@ Things worth knowing:
   are created first. The `folderPath` for a nested folder is `Parent/Child`, so a folder
   name cannot contain `/`.
 - **Rules are checked at case load**: ids of at least 8 characters, unique; every
-  `parentFolderId` names a declared folder; no cycles; trimmed names that pass n8n's
+  `parentFolderId` names a declared folder; no cycles; trimmed names that pass MNI's
   folder-name rules; at most 20 folders.
 - **Needs a licensed instance** (`feat:folders`) with
   `N8N_INSTANCE_AI_FOLDER_EXPLORATION_ENABLED=true`. An unlicensed instance fails the
@@ -669,7 +669,7 @@ nothing else. The builder's own runs are never mocked, and Code, Set, IF, Filter
 and Merge run for real. So:
 
 - **The fault must fail in n8n.** A Code node that returns a plain object does not
-  fail; n8n wraps it as one item. Return an array of plain values, reference a
+  fail; MNI wraps it as one item. Return an array of plain values, reference a
   node that does not exist (`$('Missing')`), or throw.
 - **The fault fires before any external call.** The builder's rerun reaches a
   fixture host and dies there (DNS, 401), so a fault behind an HTTP node is never

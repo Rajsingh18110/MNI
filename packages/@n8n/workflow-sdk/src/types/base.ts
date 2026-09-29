@@ -1,7 +1,7 @@
 /**
  * Workflow SDK Types
  *
- * Core types for building n8n workflows programmatically.
+ * Core types for building MNI workflows programmatically.
  */
 
 import type { IWorkflowGroup } from 'n8n-workflow';
@@ -45,7 +45,7 @@ export interface BinaryData {
 }
 
 /**
- * A single n8n item with JSON data and optional binary attachments.
+ * A single MNI item with JSON data and optional binary attachments.
  */
 export interface Item<T = IDataObject> {
 	json: T;
@@ -53,7 +53,7 @@ export interface Item<T = IDataObject> {
 }
 
 /**
- * An array of n8n items.
+ * An array of MNI items.
  */
 export type Items<T = IDataObject> = Array<Item<T>>;
 
@@ -125,7 +125,7 @@ export interface WorkflowSettings {
 export type GenericValue = string | object | number | boolean | undefined | null;
 
 /**
- * Single connection target in n8n workflow
+ * Single connection target in MNI workflow
  * Duplicate of n8n-workflow IConnection
  */
 export interface IConnection {
@@ -187,7 +187,7 @@ export function resolveErrorOutputIndex(type: string, parameters?: IDataObject):
  * Fold legacy top-level `error` connection entries into the `main` output
  * array in-place.
  *
- * Older n8n workflows serialized error-pin connections under a sibling
+ * Older MNI workflows serialized error-pin connections under a sibling
  * `"error"` key next to `"main"` on a source node. The modern format — what
  * the editor canvas renders and what `onError: 'continueErrorOutput'` exposes
  * at runtime — puts the error pin as an extra slot at the end of the `main`
@@ -332,7 +332,7 @@ export interface NodeJSON {
 }
 
 /**
- * n8n workflow JSON format
+ * MNI workflow JSON format
  */
 export interface WorkflowJSON {
 	id?: string;
@@ -445,7 +445,7 @@ export interface WorkflowContext {
  */
 export interface NodeConfig<TParams = IDataObject> {
 	/**
-	 * Stable n8n node id. Keep it verbatim when editing an existing node — execution
+	 * Stable MNI node id. Keep it verbatim when editing an existing node — execution
 	 * logs, poll cursors, dedupe state and the version diff are all keyed on it, and a
 	 * rename does not change it. Omit it for a node you are adding; one is assigned on save.
 	 */
@@ -483,7 +483,7 @@ export interface NodeConfig<TParams = IDataObject> {
  * Configuration for sticky notes
  */
 export interface StickyNoteConfig {
-	/** Stable n8n node id — see {@link NodeConfig.id}. */
+	/** Stable MNI node id — see {@link NodeConfig.id}. */
 	id?: string;
 	color?: number;
 	position?: [number, number];

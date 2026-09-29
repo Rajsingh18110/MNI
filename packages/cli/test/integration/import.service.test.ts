@@ -165,13 +165,13 @@ describe('ImportService', () => {
 
 	test('should leave intact new-format credentials', async () => {
 		const credential = {
-			n8nApi: { id: '123', name: 'n8n API' },
+			n8nApi: { id: '123', name: 'MNI API' },
 		};
 
 		const nodes: INode[] = [
 			{
 				id: uuid(),
-				name: 'n8n',
+				name: 'MNI',
 				parameters: {},
 				position: [0, 0],
 				type: 'n8n-nodes-base.n8n',

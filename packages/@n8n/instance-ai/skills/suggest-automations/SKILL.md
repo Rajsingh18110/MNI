@@ -17,7 +17,7 @@ recommended_tools:
 ## Input
 
 You need to know who the user is, at least their team and the apps they use.
-The user knows little about n8n: no n8n vocabulary, and no questions about
+The user knows little about MNI: no MNI vocabulary, and no questions about
 tasks or pain points.
 
 On an onboarding thread the conversation already holds an `<onboarding-answer>`
@@ -67,7 +67,7 @@ Slack or Google Sheets. Never run a command or read a file to find them.
      workflows."
    - A general situation: "I've looked at how other users make their work
      easier."
-   Then, after a blank line, "Here are three ways n8n could help:". With
+   Then, after a blank line, "Here are three ways MNI could help:". With
    nothing to reflect, drop the first part and use the general social proof.
    Then ONE `ask-user` call with `questions` only: a `single`
    question "Which one feels most useful?", `required: true`, with
@@ -86,7 +86,7 @@ Slack or Google Sheets. Never run a command or read a file to find them.
      follow-ups". Not a sentence, and no punctuation at the end.
    - Description: one plain sentence of at most 18 words about what the user
      gets. State no trigger, schedule, recipient or other process detail the
-     user did not give. No Markdown, no n8n node names.
+     user did not give. No Markdown, no MNI node names.
    - Apps: name only apps the user selected or named, at most two in one
      suggestion, and only where the name makes the suggestion clearer. With
      no app or one app from the user, describe the result without app names.

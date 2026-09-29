@@ -28,7 +28,7 @@ import { UserManagementMailer } from '@/user-management/email';
 import { JwtService } from './jwt.service';
 
 export const API_KEY_AUDIENCE: ApiKeyAudience = 'public-api';
-export const API_KEY_ISSUER = 'n8n';
+export const API_KEY_ISSUER = 'MNI';
 const REDACT_API_KEY_REVEAL_COUNT = 4;
 const REDACT_API_KEY_MAX_LENGTH = 10;
 export const PREFIX_LEGACY_API_KEY = 'n8n_api_';

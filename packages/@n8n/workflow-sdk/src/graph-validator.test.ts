@@ -951,7 +951,7 @@ describe('graph validation', () => {
 			expect(warning).toBeUndefined();
 		});
 
-		test('returns no warning for {{ someVar }} without n8n variable', () => {
+		test('returns no warning for {{ someVar }} without MNI variable', () => {
 			const wf = workflow('test-id', 'Test Workflow')
 				.add(
 					trigger({

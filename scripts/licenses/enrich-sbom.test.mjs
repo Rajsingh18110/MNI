@@ -13,7 +13,7 @@ import {
 } from './enrich-sbom.mjs';
 import { loadSpdxIds, checkSbom } from './check-sbom-licenses.mjs';
 
-const LICENSE_TEXT = '# n8n Sustainable Use License\n\nfull text here';
+const LICENSE_TEXT = '# MNI Sustainable Use License\n\nfull text here';
 const ctx = (over = {}) => ({
 	overrides: {},
 	elections: {},
@@ -211,7 +211,7 @@ describe('isPhantomNpm (cdxgen image-scan noise)', () => {
 				group: '@google',
 				version: 'UNKNOWN',
 				purl: 'pkg:npm/%40google/genai%2Fnode',
-				...syftSrc('/usr/local/lib/node_modules/n8n/node_modules/@google/genai/node/package.json'),
+				...syftSrc('/usr/local/lib/node_modules/MNI/node_modules/@google/genai/node/package.json'),
 			}),
 			true,
 		);
@@ -221,7 +221,7 @@ describe('isPhantomNpm (cdxgen image-scan noise)', () => {
 				group: '@linear',
 				version: 'UNKNOWN',
 				purl: 'pkg:npm/%40linear/sdk%2Fwebhooks',
-				...syftSrc('/usr/local/lib/node_modules/n8n/node_modules/@linear/sdk/webhooks/package.json'),
+				...syftSrc('/usr/local/lib/node_modules/MNI/node_modules/@linear/sdk/webhooks/package.json'),
 			}),
 			true,
 		);
@@ -234,7 +234,7 @@ describe('isPhantomNpm (cdxgen image-scan noise)', () => {
 				group: '@google',
 				version: '1.19.0',
 				purl: 'pkg:npm/%40google/genai@1.19.0',
-				...syftSrc('/usr/local/lib/node_modules/n8n/node_modules/@google/genai/package.json'),
+				...syftSrc('/usr/local/lib/node_modules/MNI/node_modules/@google/genai/package.json'),
 			}),
 			false,
 		);

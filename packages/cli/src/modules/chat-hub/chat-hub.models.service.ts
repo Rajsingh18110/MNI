@@ -54,7 +54,7 @@ export class ChatHubModelsService {
 				async (provider: ChatHubProvider) => {
 					const credentials: INodeCredentials = {};
 
-					if (provider !== 'n8n' && provider !== 'custom-agent') {
+					if (provider !== 'MNI' && provider !== 'custom-agent') {
 						const credentialId = credentialIds[provider];
 						if (!credentialId) {
 							return [provider, { models: [] }];
@@ -162,7 +162,7 @@ export class ChatHubModelsService {
 				const rawModels = await this.fetchNvidiaModels(credentials, additionalData);
 				return { models: this.transformAndFilterModels(rawModels, 'nvidia') };
 			}
-			case 'n8n':
+			case 'MNI':
 				return { models: await this.fetchAgentWorkflowsAsModels(user) };
 			case 'custom-agent':
 				return { models: await this.chatHubAgentService.getAgentsByUserIdAsModels(user.id) };
@@ -774,7 +774,7 @@ export class ChatHubModelsService {
 			description: chatTriggerParams.agentDescription ?? null,
 			icon: chatTriggerParams.agentIcon ?? null,
 			model: {
-				provider: 'n8n',
+				provider: 'MNI',
 				workflowId: id,
 			},
 			createdAt: activeVersion.createdAt ? activeVersion.createdAt.toISOString() : null,

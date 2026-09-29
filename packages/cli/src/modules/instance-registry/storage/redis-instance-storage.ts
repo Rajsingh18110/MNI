@@ -26,7 +26,7 @@ export class RedisInstanceStorage implements InstanceStorage {
 		this.logger = logger.scoped(['instance-registry', 'redis']);
 		this.redisPrefix = globalConfig.redis.prefix;
 		this.redisClient = redisClientService.createClient({
-			type: 'registry(n8n)',
+			type: 'registry(MNI)',
 			extraOptions: { commandTimeout: REGISTRY_CONSTANTS.OPERATION_TIMEOUT_MS },
 		});
 	}

@@ -16,7 +16,7 @@ test.describe(
 	},
 	() => {
 		test('should create and attach tags via the modal, then add more incrementally', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.saveNewWorkflow(`Tags test ${nanoid(6)}`);
@@ -49,7 +49,7 @@ test.describe(
 			await expect(n8n.canvas.getTagPills()).toHaveCount(3);
 		});
 
-		test('should create tags via modal without attaching them', async ({ n8n }) => {
+		test('should create tags via modal without attaching them', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.saveNewWorkflow(`Tags test ${nanoid(6)}`);
 
@@ -83,7 +83,7 @@ test.describe(
 );
 
 test.describe('Workflow tags - Tag operations', () => {
-	test('should delete all tags via modal with confirmation', async ({ n8n, api }) => {
+	test('should delete all tags via modal with confirmation', async ({ MNI, api }) => {
 		const tags = await Promise.all([
 			api.tags.create(`del-${nanoid(6)}`),
 			api.tags.create(`del-${nanoid(6)}`),
@@ -113,7 +113,7 @@ test.describe('Workflow tags - Tag operations', () => {
 		await expect(n8n.canvas.getTagPills()).toHaveCount(0);
 	});
 
-	test('should detach tag by clicking X in dropdown', async ({ n8n, api }) => {
+	test('should detach tag by clicking X in dropdown', async ({ MNI, api }) => {
 		const tags = await Promise.all([
 			api.tags.create(`detach-x-${nanoid(6)}`),
 			api.tags.create(`detach-x-${nanoid(6)}`),
@@ -143,7 +143,7 @@ test.describe('Workflow tags - Tag operations', () => {
 		await expect(n8n.canvas.getTagPills()).toHaveCount(4);
 	});
 
-	test('should detach tag by clicking selected item in dropdown', async ({ n8n, api }) => {
+	test('should detach tag by clicking selected item in dropdown', async ({ MNI, api }) => {
 		const tags = await Promise.all([
 			api.tags.create(`toggle-${nanoid(6)}`),
 			api.tags.create(`toggle-${nanoid(6)}`),
@@ -173,7 +173,7 @@ test.describe('Workflow tags - Tag operations', () => {
 		await expect(n8n.canvas.getTagPills()).toHaveCount(4);
 	});
 
-	test('should show correct tag count when reopening after save', async ({ n8n, api }) => {
+	test('should show correct tag count when reopening after save', async ({ MNI, api }) => {
 		const tags = await Promise.all([
 			api.tags.create(`reopen-${nanoid(6)}`),
 			api.tags.create(`reopen-${nanoid(6)}`),
@@ -199,7 +199,7 @@ test.describe('Workflow tags - Tag operations', () => {
 		await expect(n8n.canvas.getTagPills()).toHaveCount(3);
 	});
 
-	test('should not show non-existing tag as selectable option', async ({ n8n, api }) => {
+	test('should not show non-existing tag as selectable option', async ({ MNI, api }) => {
 		const tags = await Promise.all([
 			api.tags.create(`exist-${nanoid(6)}`),
 			api.tags.create(`exist-${nanoid(6)}`),

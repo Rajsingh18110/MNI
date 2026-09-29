@@ -212,7 +212,7 @@ describe('resolve_llm tool', () => {
 			const modelLookup = makeModelLookup();
 			const freeCredits = makeFreeCredits(
 				() => true,
-				async () => ({ credentialId: 'free-1', credentialName: 'n8n free OpenAI API credits' }),
+				async () => ({ credentialId: 'free-1', credentialName: 'MNI free OpenAI API credits' }),
 			);
 			const tool = buildResolveLlmTool({ credentialProvider, modelLookup, freeCredits });
 			const result = await tool.handler!({}, {});
@@ -222,7 +222,7 @@ describe('resolve_llm tool', () => {
 				provider: 'openai',
 				model: 'gpt-5-mini',
 				credentialId: 'free-1',
-				credentialName: 'n8n free OpenAI API credits',
+				credentialName: 'MNI free OpenAI API credits',
 				claimedFreeOpenAiCredits: true,
 			});
 		});
@@ -235,7 +235,7 @@ describe('resolve_llm tool', () => {
 			]);
 			const freeCredits = makeFreeCredits(
 				() => true,
-				async () => ({ credentialId: 'free-1', credentialName: 'n8n free OpenAI API credits' }),
+				async () => ({ credentialId: 'free-1', credentialName: 'MNI free OpenAI API credits' }),
 			);
 			const tool = buildResolveLlmTool({ credentialProvider, modelLookup, freeCredits });
 			const result = await tool.handler!({}, {});
@@ -251,7 +251,7 @@ describe('resolve_llm tool', () => {
 			]);
 			const freeCredits = makeFreeCredits(
 				() => true,
-				async () => ({ credentialId: 'free-1', credentialName: 'n8n free OpenAI API credits' }),
+				async () => ({ credentialId: 'free-1', credentialName: 'MNI free OpenAI API credits' }),
 			);
 			const tool = buildResolveLlmTool({ credentialProvider, modelLookup, freeCredits });
 			const result = await tool.handler!({}, {});
@@ -270,7 +270,7 @@ describe('resolve_llm tool', () => {
 			});
 			const freeCredits = makeFreeCredits(
 				() => true,
-				async () => ({ credentialId: 'free-1', credentialName: 'n8n free OpenAI API credits' }),
+				async () => ({ credentialId: 'free-1', credentialName: 'MNI free OpenAI API credits' }),
 			);
 			const tool = buildResolveLlmTool({ credentialProvider, modelLookup, freeCredits });
 			const result = await tool.handler!({}, {});
@@ -316,7 +316,7 @@ describe('resolve_llm tool', () => {
 			const modelLookup = makeModelLookup();
 			const freeCredits = makeFreeCredits(
 				() => true,
-				async () => ({ credentialId: 'free-1', credentialName: 'n8n free OpenAI API credits' }),
+				async () => ({ credentialId: 'free-1', credentialName: 'MNI free OpenAI API credits' }),
 			);
 			const tool = buildResolveLlmTool({ credentialProvider, modelLookup, freeCredits });
 			const result = await tool.handler!({ provider: 'openai' }, {});
@@ -326,7 +326,7 @@ describe('resolve_llm tool', () => {
 				provider: 'openai',
 				model: 'gpt-5-mini',
 				credentialId: 'free-1',
-				credentialName: 'n8n free OpenAI API credits',
+				credentialName: 'MNI free OpenAI API credits',
 				claimedFreeOpenAiCredits: true,
 			});
 		});
@@ -767,8 +767,8 @@ describe('resolve_llm tool', () => {
 		});
 	});
 
-	describe('n8n Connect managed credentials', () => {
-		it('defaults to n8n Connect with the provider default when the gateway allowlists it', async () => {
+	describe('MNI Connect managed credentials', () => {
+		it('defaults to MNI Connect with the provider default when the gateway allowlists it', async () => {
 			const modelLookup = makeModelLookup(async () => [
 				{ name: 'Claude Sonnet 4.6', value: 'claude-sonnet-4-6' },
 				{ name: 'Claude Haiku 4.5', value: 'claude-haiku-4-5' },
@@ -849,7 +849,7 @@ describe('resolve_llm tool', () => {
 			});
 		});
 
-		it('does not offer n8n Connect for a provider the user already has credentials for', async () => {
+		it('does not offer MNI Connect for a provider the user already has credentials for', async () => {
 			const tool = buildResolveLlmTool({
 				credentialProvider: makeProvider([
 					{ id: 'cred-1', name: 'Anthropic A', type: 'anthropicApi' },
@@ -861,7 +861,7 @@ describe('resolve_llm tool', () => {
 			});
 			const result = await tool.handler!({ provider: 'anthropic' }, {});
 
-			// The user has Anthropic keys, so n8n Connect is not offered for Anthropic —
+			// The user has Anthropic keys, so MNI Connect is not offered for Anthropic —
 			// only their own credentials are ambiguous.
 			expect(result).toMatchObject({
 				ok: false,
@@ -873,7 +873,7 @@ describe('resolve_llm tool', () => {
 			});
 		});
 
-		it('additively appends n8n Connect options for gateway providers the user has no key for', async () => {
+		it('additively appends MNI Connect options for gateway providers the user has no key for', async () => {
 			const served = new Set(['openai', 'anthropic', 'google']);
 			const tool = buildResolveLlmTool({
 				credentialProvider: makeProvider([
@@ -899,7 +899,7 @@ describe('resolve_llm tool', () => {
 				type: 'anthropicApi',
 				provider: 'anthropic',
 			});
-			// n8n Connect options appended for supported providers without an own key (openai, google).
+			// MNI Connect options appended for supported providers without an own key (openai, google).
 			expect(creds).toContainEqual({
 				id: AI_GATEWAY_MANAGED_TAG,
 				name: 'Gateway credits',
@@ -912,7 +912,7 @@ describe('resolve_llm tool', () => {
 				type: 'googlePalmApi',
 				provider: 'google',
 			});
-			// No n8n Connect entry for Anthropic — the user already has a key for it.
+			// No MNI Connect entry for Anthropic — the user already has a key for it.
 			expect(
 				creds.filter((c) => c.provider === 'anthropic' && c.id === AI_GATEWAY_MANAGED_TAG),
 			).toHaveLength(0);
@@ -1058,7 +1058,7 @@ describe('resolve_llm tool', () => {
 				{ name: 'GPT-5 mini', value: 'gpt-5-mini' },
 			]);
 			const tool = buildResolveLlmTool({
-				// User has their own OpenAI key — the implicit path would suppress n8n
+				// User has their own OpenAI key — the implicit path would suppress MNI
 				// credits, but an explicit request wins.
 				credentialProvider: makeProvider([{ id: 'own-1', name: 'My OpenAI', type: 'openAiApi' }]),
 				modelLookup,

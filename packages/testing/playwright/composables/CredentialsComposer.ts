@@ -3,7 +3,7 @@ import type { CreateCredentialDto } from '@n8n/api-types';
 import type { n8nPage } from '../pages/n8nPage';
 
 export class CredentialsComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Create a credential through the Credentials list UI.

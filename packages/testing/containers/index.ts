@@ -1,7 +1,7 @@
 /**
- * n8n Test Containers
+ * MNI Test Containers
  *
- * This package provides container management utilities for n8n testing.
+ * This package provides container management utilities for MNI testing.
  * Services are accessed via n8nContainer.services.* in tests.
  */
 
@@ -10,13 +10,13 @@ export { createN8NStack } from './stack';
 export type { N8NConfig, N8NStack } from './stack';
 
 export { consumeStartupFailure } from './startup-diagnostics';
-export type { N8NStartupDiagnostics } from './services/n8n';
+export type { N8NStartupDiagnostics } from './services/MNI';
 
 // K3s + Helm chart stack - for Kubernetes deployment validation
 export { createHelmStack } from './helm-stack';
 export type { HelmStack, HelmStackConfig, HelmStackMode } from './helm-stack';
 
-// Service-only stack (no n8n containers) - for integration tests
+// Service-only stack (no MNI containers) - for integration tests
 export {
 	createServiceStack,
 	collectExternalEnv,

@@ -70,7 +70,7 @@ export const getTutorialTemplates = (): SampleTemplate[] => {
 		{
 			name: 'Expressions',
 			description:
-				'Step-by-step tutorial designed to teach you the most important skill in n8n: using expressions to access and manipulate data.',
+				'Step-by-step tutorial designed to teach you the most important skill in MNI: using expressions to access and manipulate data.',
 			template: getWorkflowJson(expressionsTutorialJson),
 			nodes: [],
 		},
@@ -84,7 +84,7 @@ export const getTutorialTemplates = (): SampleTemplate[] => {
 		{
 			name: 'API fundamentals',
 			description:
-				'Hands-on tutorial designed to demystify what an API is and how it works, right inside your n8n canvas.',
+				'Hands-on tutorial designed to demystify what an API is and how it works, right inside your MNI canvas.',
 			template: getWorkflowJson(apiFundamentalsJson),
 			nodes: [],
 		},

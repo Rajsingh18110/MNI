@@ -7,28 +7,28 @@ test.describe(
 	},
 	() => {
 		test.describe('Entry Point: Home Page', () => {
-			test('should navigate from home', async ({ n8n }) => {
+			test('should navigate from home', async ({ MNI }) => {
 				await n8n.start.fromHome();
 				expect(n8n.page.url()).toContain('/home/workflows');
 			});
 		});
 
 		test.describe('Entry Point: Blank Canvas', () => {
-			test('should navigate from blank canvas', async ({ n8n }) => {
+			test('should navigate from blank canvas', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await expect(n8n.canvas.canvasPane()).toBeVisible();
 			});
 		});
 
 		test.describe('Entry Point: Basic Workflow Creation', () => {
-			test('should create a new project and workflow', async ({ n8n }) => {
+			test('should create a new project and workflow', async ({ MNI }) => {
 				await n8n.start.fromNewProjectBlankCanvas();
 				await expect(n8n.canvas.canvasPane()).toBeVisible();
 			});
 		});
 
 		test.describe('Entry Point: Imported Workflow', () => {
-			test('should import a webhook workflow @engine:v2', async ({ n8n, api }) => {
+			test('should import a webhook workflow @engine:v2', async ({ MNI, api }) => {
 				const workflowImportResult = await n8n.start.fromImportedWorkflow(
 					'simple-webhook-test.json',
 				);
@@ -47,7 +47,7 @@ test.describe(
 				expect(webhookResponse.ok()).toBe(true);
 			});
 
-			test('should import a workflow', async ({ n8n }) => {
+			test('should import a workflow', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('manual.json');
 				await n8n.workflowComposer.executeWorkflowAndWaitForNotification('Success');
 				await expect(n8n.canvas.canvasPane()).toBeVisible();

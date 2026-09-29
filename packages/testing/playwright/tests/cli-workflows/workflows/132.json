@@ -38,7 +38,7 @@
 				"fromEmail": "=random{{Date.now()}}@email.test",
 				"toEmail": "=nodeqa{{Date.now()}}@email.test",
 				"options": {
-					"html": "=<h2>This is a the html email from n8n workflow</h2>"
+					"html": "=<h2>This is a the html email from MNI workflow</h2>"
 				}
 			},
 			"name": "Mandrill1",

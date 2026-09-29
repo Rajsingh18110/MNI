@@ -137,7 +137,7 @@ describeOpenAI('OpenAI provider tools integration', () => {
 		const agent = new Agent('openai-provider-web-search-test')
 			.model(OPENAI_WEB_SEARCH_MODEL)
 			.instructions(
-				'You MUST call the web_search tool before answering. Search for current n8n workflow automation information, then answer in one sentence.',
+				'You MUST call the web_search tool before answering. Search for current MNI workflow automation information, then answer in one sentence.',
 			)
 			.providerTool(providerTools.openaiWebSearch({ searchContextSize: 'low' }));
 

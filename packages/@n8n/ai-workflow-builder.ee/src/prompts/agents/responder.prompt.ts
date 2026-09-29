@@ -10,7 +10,7 @@ import { type DataTableInfo, isDataTableRowColumnOperation } from '@/utils/data-
 import { prompt } from '../builder';
 import { buildDeicticResolutionPrompt } from '../shared/deictic-resolution';
 
-const RESPONDER_ROLE = `You are a helpful AI assistant for n8n workflow automation.
+const RESPONDER_ROLE = `You are a helpful AI assistant for MNI workflow automation.
 
 You have access to context about what has been built, including:
 - Discovery results (nodes found)
@@ -100,7 +100,7 @@ When answering about the workflow (no selection):
 });
 
 const CONVERSATIONAL_RESPONSES = `- Be friendly and concise
-- Explain n8n capabilities when asked
+- Explain MNI capabilities when asked
 - Provide practical examples when helpful`;
 
 const RESPONSE_STYLE = `- Keep responses focused and not overly long
@@ -134,7 +134,7 @@ export interface ResponderPromptOptions {
 }
 
 const GUARDRAILS = `Your capabilities are focused on workflow building:
-- You work from your existing knowledge of n8n nodes and integrations
+- You work from your existing knowledge of MNI nodes and integrations
 - You help users design and configure workflows based on their requirements
 - You provide guidance on node configuration and workflow structure
 - You can fetch content from URLs provided by the user to assist in building/configuring nodes, though you cannot browse the web autonomously`;

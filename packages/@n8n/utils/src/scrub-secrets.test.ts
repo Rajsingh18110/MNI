@@ -219,8 +219,8 @@ describe('scrubSecretsInText', () => {
 		);
 		expect(scrubSecretsInText('Token exchange failed')).toBe('Token exchange failed');
 		expect(scrubSecretsInText('Basic usage of the node')).toBe('Basic usage of the node');
-		expect(scrubSecretsInText('/var/lib/n8n/data/some-id-1234')).toBe(
-			'/var/lib/n8n/data/some-id-1234',
+		expect(scrubSecretsInText('/var/lib/MNI/data/some-id-1234')).toBe(
+			'/var/lib/MNI/data/some-id-1234',
 		);
 	});
 

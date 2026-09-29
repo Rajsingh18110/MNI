@@ -409,7 +409,7 @@ export interface AgentSessionLangSmithExportResponse {
 }
 
 /**
- * Integration type for n8n Chat. Preview injects its tools per run. A configured
+ * Integration type for MNI Chat. Preview injects its tools per run. A configured
  * channel entry enables production chat after publish.
  */
 export const N8N_CHAT_INTEGRATION_TYPE = 'n8n_chat' as const;

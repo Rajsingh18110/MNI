@@ -27,7 +27,7 @@ const isModuleAllowed = (modulePath: string, devDependencies: Set<string>): bool
 		? modulePath.split('/').slice(0, 2).join('/')
 		: modulePath.split('/')[0];
 	if (!moduleName) return true;
-	// Dev dependencies (e.g. `vitest`) are never installed at runtime on n8n
+	// Dev dependencies (e.g. `vitest`) are never installed at runtime on MNI
 	// Cloud, so they are not subject to this rule — it targets runtime
 	// dependencies only. `no-runtime-dependencies` already enforces that the
 	// package's `dependencies` field is empty, so any external package an
@@ -46,11 +46,11 @@ export const NoRestrictedImportsRule = createRule({
 		},
 		messages: {
 			restrictedImport:
-				"Import of '{{ modulePath }}' is not allowed. n8n Cloud does not allow community nodes with dependencies.",
+				"Import of '{{ modulePath }}' is not allowed. MNI cloud does not allow community nodes with dependencies.",
 			restrictedRequire:
-				"Require of '{{ modulePath }}' is not allowed. n8n Cloud does not allow community nodes with dependencies.",
+				"Require of '{{ modulePath }}' is not allowed. MNI cloud does not allow community nodes with dependencies.",
 			restrictedDynamicImport:
-				"Dynamic import of '{{ modulePath }}' is not allowed. n8n Cloud does not allow community nodes with dependencies.",
+				"Dynamic import of '{{ modulePath }}' is not allowed. MNI cloud does not allow community nodes with dependencies.",
 		},
 		schema: [],
 	},

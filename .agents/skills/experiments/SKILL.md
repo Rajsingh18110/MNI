@@ -1,5 +1,5 @@
 ---
-name: n8n:experiments
+name: MNI:experiments
 description: >-
   Guides work on `packages/frontend/editor-ui` experiments. Use when creating,
   extending, wiring, testing, reviewing, or retiring editor-ui experiments,
@@ -20,4 +20,4 @@ Start with the relevant mode in [reference.md](reference.md):
 - `Review` for auditing experiment changes.
 - `Retire` for cleaning up completed or abandoned experiments.
 
-When experiment work touches Vue components or user-facing copy, also follow `n8n:ui-design` and `n8n:content-design`.
+When experiment work touches Vue components or user-facing copy, also follow `MNI:ui-design` and `MNI:content-design`.

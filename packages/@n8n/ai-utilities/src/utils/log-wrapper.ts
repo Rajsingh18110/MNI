@@ -345,7 +345,7 @@ export function logWrapper<
 				}
 			}
 
-			// ========== N8n Loaders Process All ==========
+			// ========== MNI Loaders Process All ==========
 			if (
 				originalInstance instanceof N8nJsonLoader ||
 				originalInstance instanceof N8nBinaryLoader

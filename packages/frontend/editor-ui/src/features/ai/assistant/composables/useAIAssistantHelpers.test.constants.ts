@@ -65,7 +65,7 @@ export const SUPPORT_CHAT_TEST_PAYLOAD: ChatRequest.RequestPayload = {
 			currentView: {
 				name: VIEWS.WORKFLOW,
 				description:
-					'The user is currently looking at the current workflow in n8n editor, without any specific node selected.',
+					'The user is currently looking at the current workflow in MNI editor, without any specific node selected.',
 			},
 			activeNodeInfo: {
 				node: {
@@ -101,7 +101,7 @@ export const SUPPORT_CHAT_TEST_PAYLOAD: ChatRequest.RequestPayload = {
 						name: 'NodeOperationError',
 						message: "Referenced node doesn't exist",
 						stack:
-							"NodeOperationError: Referenced node doesn't exist\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/n8n/packages/nodes-base/nodes/Set/v2/manual.mode.ts:256:9)\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/n8n/packages/nodes-base/nodes/Set/v2/SetV2.node.ts:351:48)\n    at WorkflowExecute.runNode (/Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:1097:31)\n    at /Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:1505:38\n    at /Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:2066:11",
+							"NodeOperationError: Referenced node doesn't exist\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/MNI/packages/nodes-base/nodes/Set/v2/manual.mode.ts:256:9)\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/MNI/packages/nodes-base/nodes/Set/v2/SetV2.node.ts:351:48)\n    at WorkflowExecute.runNode (/Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:1097:31)\n    at /Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:1505:38\n    at /Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:2066:11",
 					},
 				},
 				referencedNodes: [],
@@ -379,7 +379,7 @@ export const SUPPORT_CHAT_TEST_PAYLOAD: ChatRequest.RequestPayload = {
 								messages: [],
 								message: "Referenced node doesn't exist",
 								stack:
-									"NodeOperationError: Referenced node doesn't exist\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/n8n/packages/nodes-base/nodes/Set/v2/manual.mode.ts:256:9)\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/n8n/packages/nodes-base/nodes/Set/v2/SetV2.node.ts:351:48)\n    at WorkflowExecute.runNode (/Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:1097:31)\n    at /Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:1505:38\n    at /Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:2066:11",
+									"NodeOperationError: Referenced node doesn't exist\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/MNI/packages/nodes-base/nodes/Set/v2/manual.mode.ts:256:9)\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/MNI/packages/nodes-base/nodes/Set/v2/SetV2.node.ts:351:48)\n    at WorkflowExecute.runNode (/Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:1097:31)\n    at /Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:1505:38\n    at /Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:2066:11",
 							},
 						},
 					],
@@ -425,7 +425,7 @@ export const SUPPORT_CHAT_TEST_PAYLOAD: ChatRequest.RequestPayload = {
 					messages: [],
 					message: "Referenced node doesn't exist",
 					stack:
-						"NodeOperationError: Referenced node doesn't exist\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/n8n/packages/nodes-base/nodes/Set/v2/manual.mode.ts:256:9)\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/n8n/packages/nodes-base/nodes/Set/v2/SetV2.node.ts:351:48)\n    at WorkflowExecute.runNode (/Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:1097:31)\n    at /Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:1505:38\n    at /Users/miloradfilipovic/workspace/n8n/packages/core/src/execution-engine/workflow-execute.ts:2066:11",
+						"NodeOperationError: Referenced node doesn't exist\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/MNI/packages/nodes-base/nodes/Set/v2/manual.mode.ts:256:9)\n    at ExecuteContext.execute (/Users/miloradfilipovic/workspace/MNI/packages/nodes-base/nodes/Set/v2/SetV2.node.ts:351:48)\n    at WorkflowExecute.runNode (/Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:1097:31)\n    at /Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:1505:38\n    at /Users/miloradfilipovic/workspace/MNI/packages/core/src/execution-engine/workflow-execute.ts:2066:11",
 				},
 				lastNodeExecuted: 'Edit Fields1',
 			},

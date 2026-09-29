@@ -101,7 +101,7 @@ function buildThreadScopedSandboxLabels(
  */
 const N8N_SANDBOX_THREAD_ID_NAMESPACE = '5e6c2f7a-93a1-4b0e-8f27-c1d6a3b9e514';
 
-/** The n8n sandbox service only accepts lowercase UUID ids, so hash the thread-scoped name into a stable UUIDv5. */
+/** The MNI sandbox service only accepts lowercase UUID ids, so hash the thread-scoped name into a stable UUIDv5. */
 function buildThreadScopedSandboxUuid(threadId: string): string {
 	return uuidv5(getThreadScopedSandboxName(threadId), N8N_SANDBOX_THREAD_ID_NAMESPACE);
 }
@@ -180,7 +180,7 @@ export type InstanceAiSandboxServiceOptions = {
  * Each conversation thread gets a single shared sandbox + workspace, created
  * lazily on first use and reused across runs and background tasks. Sandbox
  * identities are deterministic (derived from the thread ID — a name for
- * Daytona, a UUIDv5 for the n8n sandbox service) so a restarted process — or
+ * Daytona, a UUIDv5 for the MNI sandbox service) so a restarted process — or
  * another main in a multi-main deployment — reconnects to the same remote
  * sandbox instead of spawning a duplicate. An in-process TTL drops idle cache
  * entries so the map cannot grow without bound; the provider reclaims the

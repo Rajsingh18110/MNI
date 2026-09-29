@@ -1,6 +1,6 @@
 # @n8n/stylelint-config
 
-Stylelint configuration for n8n projects with custom CSS variable naming convention enforcement.
+Stylelint configuration for MNI projects with custom CSS variable naming convention enforcement.
 
 ## Features
 
@@ -11,7 +11,7 @@ Stylelint configuration for n8n projects with custom CSS variable naming convent
 
 ## Installation
 
-This package is already configured in n8n frontend packages. To use it in a new package:
+This package is already configured in MNI frontend packages. To use it in a new package:
 
 ```json
 {
@@ -57,7 +57,7 @@ The `@n8n/css-var-naming` rule enforces a structured naming pattern for CSS cust
 - `value`: Semantic name or scale value
 
 **Optional groups (in order):**
-- `namespace`: `n8n`, `chat`, or `p` (for primitives)
+- `namespace`: `MNI`, `chat`, or `p` (for primitives)
 - `component`: Component name (e.g., `button`, `input`)
 - `part`: Sub-component (e.g., `menu`, `tab`, `arrow`)
 - `variant`: Visual style (e.g., `solid`, `outline`, `ghost`)
@@ -342,7 +342,7 @@ export default {
 ## References
 
 - [Stylelint Documentation](https://stylelint.io/)
-- [n8n Design System](../frontend/@n8n/design-system/)
+- [MNI Design System](../frontend/@n8n/design-system/)
 
 ## Contributing
 

@@ -23,7 +23,7 @@ from src.config_loader import load_config
 def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
-        description="Compare n8n workflows using graph edit distance",
+        description="Compare MNI workflows using graph edit distance",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

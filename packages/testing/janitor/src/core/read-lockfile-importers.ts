@@ -26,7 +26,7 @@ type Lockfile = {
 };
 
 /**
- * Closure seed: `packages/cli` is the `n8n` package the E2E container runs;
+ * Closure seed: `packages/cli` is the `MNI` package the E2E container runs;
  * its workspace `link:` edges cover the rest. See {@link runtimeClosure} for
  * why this must not be "every importer".
  */

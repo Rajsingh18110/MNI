@@ -9,7 +9,7 @@ export const PackageNameConventionRule = createRule({
 	meta: {
 		type: 'problem',
 		docs: {
-			description: 'Enforce correct package naming convention for n8n community nodes',
+			description: 'Enforce correct package naming convention for MNI community nodes',
 		},
 		messages: {
 			renameTo: "Rename to '{{suggestedName}}'",

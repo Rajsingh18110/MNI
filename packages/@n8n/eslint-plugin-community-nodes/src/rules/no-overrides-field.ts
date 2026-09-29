@@ -12,7 +12,7 @@ export const NoOverridesFieldRule = createRule({
 		},
 		messages: {
 			overridesForbidden:
-				'The "overrides"/"resolutions" fields are not allowed in community node packages. Each community package installs into an isolated dependency tree, so overrides do not affect other nodes or n8n core — in practice they are copy-pasted boilerplate with no useful effect, and can silently force a transitive dependency to an arbitrary version or tarball. Use the helpers on the execute context (this.helpers.httpRequest, etc.) instead; most community nodes do not need third-party runtime libraries.',
+				'The "overrides"/"resolutions" fields are not allowed in community node packages. Each community package installs into an isolated dependency tree, so overrides do not affect other nodes or MNI core — in practice they are copy-pasted boilerplate with no useful effect, and can silently force a transitive dependency to an arbitrary version or tarball. Use the helpers on the execute context (this.helpers.httpRequest, etc.) instead; most community nodes do not need third-party runtime libraries.',
 		},
 		schema: [],
 	},

@@ -10,7 +10,7 @@ import type { RedisClientService } from '@/services/redis-client.service';
 
 import { RedisLockService } from '../redis-lock.service';
 
-const PREFIX = 'n8n';
+const PREFIX = 'MNI';
 const NS = LockNamespace.CREDENTIALS;
 
 const expectedKey = (key: string) =>
@@ -40,7 +40,7 @@ describe('RedisLockService', () => {
 	describe('constructor', () => {
 		it('should create a dedicated lock client with a command timeout', () => {
 			expect(redisClientService.createClient).toHaveBeenCalledWith({
-				type: 'lock(n8n)',
+				type: 'lock(MNI)',
 				extraOptions: { commandTimeout: 5_000 },
 			});
 		});

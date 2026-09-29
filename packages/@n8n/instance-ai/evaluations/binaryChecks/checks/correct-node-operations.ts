@@ -4,7 +4,7 @@ export const correctNodeOperations = createLlmCheck({
 	name: 'correct_node_operations',
 	description: 'Nodes use the correct resource and operation settings',
 	dimension: 'parameter_correctness',
-	systemPrompt: `You are an evaluator checking whether n8n workflow nodes use the correct resource and operation settings.
+	systemPrompt: `You are an evaluator checking whether MNI workflow nodes use the correct resource and operation settings.
 
 For each node that has resource/operation parameters, verify:
 1. The resource matches what the node SHOULD operate on given its name and the workflow's purpose

@@ -2,7 +2,7 @@ import { createLlmCheck } from './create-llm-check';
 
 export const responseMatchesWorkflowChanges = createLlmCheck({
 	name: 'response_matches_workflow_changes',
-	systemPrompt: `You are a strict evaluator checking whether an AI assistant's text response accurately describes the changes it made to an n8n workflow.
+	systemPrompt: `You are a strict evaluator checking whether an AI assistant's text response accurately describes the changes it made to an MNI workflow.
 
 You are given:
 - The workflow BEFORE the agent's turn (may be empty for new workflows)

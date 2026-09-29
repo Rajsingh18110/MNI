@@ -1,5 +1,5 @@
 """
-n8n Workflow Comparison Module
+MNI Workflow Comparison Module
 
 Graph-based workflow similarity comparison using NetworkX.
 """

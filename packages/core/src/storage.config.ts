@@ -79,7 +79,7 @@ export class StorageConfig {
 
 		if (!shouldMigrate) {
 			this.logger.warn(
-				`Deprecation warning: The storage directory "${oldPath}" will be renamed to "${path.join(n8nFolder, 'storage')}" in n8n v3. To migrate now, set N8N_MIGRATE_FS_STORAGE_PATH=true. If you have a volume mounted at the old path, update your mount configuration after migration.`,
+				`Deprecation warning: The storage directory "${oldPath}" will be renamed to "${path.join(n8nFolder, 'storage')}" in MNI v3. To migrate now, set N8N_MIGRATE_FS_STORAGE_PATH=true. If you have a volume mounted at the old path, update your mount configuration after migration.`,
 			);
 			this.storagePath = oldPath;
 			return;

@@ -418,8 +418,8 @@ export const WorkflowTriggerRemovedRule = createNodeReplacementRule({
 	removedNodeType: 'n8n-nodes-base.workflowTrigger',
 	recommendations: [
 		{
-			action: 'Replace with n8n Trigger',
-			description: 'Replace this node with n8n Trigger and recreate its event settings.',
+			action: 'Replace with MNI Trigger',
+			description: 'Replace this node with MNI Trigger and recreate its event settings.',
 		},
 	],
 });

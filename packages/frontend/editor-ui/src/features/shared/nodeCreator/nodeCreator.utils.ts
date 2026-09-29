@@ -187,7 +187,7 @@ export function matchesAliasForConnectBoost(query: string, aliases: string[]): b
 }
 
 /**
- * Whether the node is eligible for n8n Connect (AI Gateway)
+ * Whether the node is eligible for MNI Connect (AI Gateway)
  */
 export function isAiGatewayEligibleNode(nodeName: string): boolean {
 	if (!useSettingsStore().isAiGatewayEnabled) return false;
@@ -480,7 +480,7 @@ export const removePreviewToken = (key: string) =>
 export const isNodePreviewKey = (key = '') => key.includes(COMMUNITY_NODE_TYPE_PREVIEW_TOKEN);
 
 /**
- * Whether the given view stack should render the "n8n Connect" section at the
+ * Whether the given view stack should render the "MNI Connect" section at the
  * top. Never shown while searching — search results stay a flat ranked list.
  */
 export function showsAiGatewaySection(stack: ViewStack | undefined): boolean {
@@ -496,7 +496,7 @@ export function showsAiGatewaySection(stack: ViewStack | undefined): boolean {
 }
 
 /**
- * Splits AI gateway-supported nodes out of `items` into a dedicated "n8n Connect"
+ * Splits AI gateway-supported nodes out of `items` into a dedicated "MNI Connect"
  * section (rendered at the top with the wallet balance in its header).
  * Returns null when there is nothing to extract.
  */

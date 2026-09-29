@@ -27,7 +27,7 @@ export const askCredentialInputSchema = z.object({
 	nodeType: z
 		.string()
 		.optional()
-		.describe('The n8n node type requiring this credential, e.g. "n8n-nodes-base.slack"'),
+		.describe('The MNI node type requiring this credential, e.g. "n8n-nodes-base.slack"'),
 	credentialType: z.string().describe('The credential type name to request, e.g. "slackApi"'),
 	credentialSlot: z
 		.string()

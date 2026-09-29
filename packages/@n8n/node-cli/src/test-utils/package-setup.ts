@@ -10,7 +10,7 @@ export interface PackageSetupOptions {
 const DEFAULT_PACKAGE_CONFIG: N8nPackageJson = {
 	name: 'test-node',
 	version: '1.0.0',
-	n8n: {
+	MNI: {
 		nodes: ['dist/nodes/TestNode.node.js'],
 		strict: true,
 	},
@@ -26,7 +26,7 @@ export async function setupTestPackage(
 	const packageConfig = {
 		...DEFAULT_PACKAGE_CONFIG,
 		...options.packageJson,
-		n8n: {
+		MNI: {
 			...DEFAULT_PACKAGE_CONFIG.n8n,
 			...options.packageJson?.n8n,
 		},

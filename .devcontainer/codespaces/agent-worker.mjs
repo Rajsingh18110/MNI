@@ -77,7 +77,7 @@ export async function pollOnce(
 	}
 }
 
-// This limit expires before n8n's Wait node so that the user receives a specific error.
+// This limit expires before MNI's Wait node so that the user receives a specific error.
 const TURN_TIMEOUT_MS = posNum('TURN_TIMEOUT_MS', 25 * 60_000);
 function turnTimeoutMessage(timeout) {
 	const duration = timeout % 60_000 === 0 ? `${timeout / 60_000}-minute` : `${timeout}-millisecond`;
@@ -101,7 +101,7 @@ if (BOX_ID) TURN_ENV.CODESPACE_NAME = BOX_ID;
 if (GITHUB_USER) TURN_ENV.GITHUB_USER = GITHUB_USER;
 
 function safeCwd(cwd) {
-	const safeCwd = resolvePath(typeof cwd === 'string' && cwd ? cwd : `${ROOT}/n8n`);
+	const safeCwd = resolvePath(typeof cwd === 'string' && cwd ? cwd : `${ROOT}/MNI`);
 	if (safeCwd !== ROOT && !safeCwd.startsWith(ROOT + sep))
 		throw new Error(`cwd must be under ${ROOT}`);
 	return safeCwd;

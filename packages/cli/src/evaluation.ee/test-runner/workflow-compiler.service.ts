@@ -32,7 +32,7 @@ import { LlmJudgeProviderRegistry } from '../llm-judge-provider-registry';
 const RESERVED_PREFIX = '__eval_';
 const TRIGGER_NAME = '__eval_trigger';
 
-// Visual layout offsets (n8n canvas uses [x, y] positions in px)
+// Visual layout offsets (MNI canvas uses [x, y] positions in px)
 const NODE_STEP_X = 220;
 const MODEL_OFFSET_Y = 220;
 /** Gap between the rightmost user node and the first injected metric node. */
@@ -523,7 +523,7 @@ export class WorkflowCompilerService {
 		}
 		// The validator has already confirmed the credential's type matches one of
 		// the entry's accepted credentialTypes. The first entry is the primary
-		// credential type for the node — the same shape n8n uses everywhere else
+		// credential type for the node — the same shape MNI uses everywhere else
 		// when injecting credentials into a sub-node by id.
 		const credentialType = entry.credentialTypes[0].name;
 		return { [credentialType]: { id: credentialId, name: '' } };
@@ -595,7 +595,7 @@ export class WorkflowCompilerService {
 }
 
 /**
- * Retarget a dataset-sourced input's `$json` base to the eval trigger. Only n8n
+ * Retarget a dataset-sourced input's `$json` base to the eval trigger. Only MNI
  * expressions (leading `=`) reference the `$json` variable — a fixed literal is
  * returned unchanged so text that merely contains "$json" isn't corrupted. Within
  * an expression only the bare `$json` token is rewritten, so an explicit
@@ -607,7 +607,7 @@ function resolveDatasetSourcedInput(value: string): string {
 }
 
 /**
- * Wraps the contents of an n8n expression (`={{ ... }}`) with a truthy/falsy → 1/0
+ * Wraps the contents of an MNI expression (`={{ ... }}`) with a truthy/falsy → 1/0
  * coercion. If the input isn't a standard expression, wraps the whole thing verbatim.
  */
 function coerceBooleanExpression(expression: string): string {
@@ -621,7 +621,7 @@ function coerceBooleanExpression(expression: string): string {
  * `$items(...)` argument referencing `fromName` specifically — e.g.
  * `$( 'fromName' )` → `$('fromName')` — so a hand-typed expression with extra
  * spacing still matches `applyAccessPatterns`'s access patterns, which (like
- * n8n's own node-rename flow) expect the tight form. Whitespace in these
+ * MNI's own node-rename flow) expect the tight form. Whitespace in these
  * positions never changes what the expression evaluates to, so this is purely
  * cosmetic ahead of the actual rewrite. Scoped to `fromName` (rather than any
  * name) so it can't reshape an unrelated `$(...)`-shaped string literal that

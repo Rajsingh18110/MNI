@@ -104,7 +104,7 @@ properties:
       - Only webhook-triggered workflows can be exposed via MCP
 
       Security note: When a workflow is available in MCP, it can be discovered and executed
-      by any MCP client that has the appropriate API credentials for your n8n instance.
+      by any MCP client that has the appropriate API credentials for your MNI instance.
     example: false
   customTelemetryTags:
     type: array

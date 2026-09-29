@@ -24,14 +24,14 @@
 
 The local gateway involves three runtime processes:
 
-- **n8n server** — hosts the REST/SSE endpoints and orchestrates the AI agent.
+- **MNI server** — hosts the REST/SSE endpoints and orchestrates the AI agent.
 - **computer-use daemon or local-gateway app** — runs on the user's local machine; executes tool calls.
 - **Browser (frontend)** — initiates the connection and displays gateway status.
 
 ```mermaid
 graph LR
     FE[Browser / Frontend]
-    SRV[n8n Server]
+    SRV[MNI server]
     DAEMON[computer-use Daemon\nlocal machine]
 
     FE -- "POST /gateway/create-link\n(user auth)" --> SRV
@@ -65,7 +65,7 @@ connection.
 
 ### User-facing endpoints
 
-Standard n8n session or API-key auth (`@Authenticated` / `@GlobalScope`).
+Standard MNI session or API-key auth (`@Authenticated` / `@GlobalScope`).
 The `userId` is taken from `req.user.id`.
 
 ### Daemon-facing endpoints (`skipAuth: true`)
@@ -169,7 +169,7 @@ Response: `{ ok: true }` when reconnecting with an active session key.
 ```mermaid
 sequenceDiagram
     participant FE as Browser
-    participant SRV as n8n Server
+    participant SRV as MNI server
     participant D as computer-use Daemon
 
     FE->>SRV: POST /gateway/create-link (user auth)
@@ -196,7 +196,7 @@ On reconnect (e.g. after a transient network drop):
 ```mermaid
 sequenceDiagram
     participant D as computer-use Daemon
-    participant SRV as n8n Server
+    participant SRV as MNI server
 
     D->>SRV: POST /gateway/init (x-gateway-key: sess_...)
     Note over SRV: Session key found → userId<br/>initGateway(userId, capabilities), no token consumed
@@ -312,7 +312,7 @@ restarts.
 ```mermaid
 sequenceDiagram
     participant FE as Browser (Frontend)
-    participant SRV as n8n Server
+    participant SRV as MNI server
     participant DB as Database
     participant D as computer-use Daemon
 

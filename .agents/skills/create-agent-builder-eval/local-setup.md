@@ -34,7 +34,7 @@ N8N_EVAL_EMAIL=nathan@n8n.io
 N8N_EVAL_PASSWORD=PlaywrightTest123
 ```
 
-Use the n8n sandbox service instead of Daytona when it is available. Set
+Use the MNI sandbox service instead of Daytona when it is available. Set
 `N8N_INSTANCE_AI_SANDBOX_PROVIDER=n8n-sandbox`,
 `N8N_SANDBOX_SERVICE_URL`, and, when required,
 `N8N_SANDBOX_SERVICE_API_KEY`.

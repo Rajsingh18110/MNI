@@ -1,6 +1,6 @@
 ---
-name: n8n:create-issue
-description: Create Linear tickets or GitHub issues following n8n conventions. Use when the user asks to create a ticket, file a bug, open an issue, or says /create-issue.
+name: MNI:create-issue
+description: Create Linear tickets or GitHub issues following MNI conventions. Use when the user asks to create a ticket, file a bug, open an issue, or says /create-issue.
 argument-hint: "[linear|github] <description of the issue>"
 compatibility:
   requires:
@@ -68,7 +68,7 @@ Structure the description using markdown headers. Use the appropriate template:
 1. [Step-by-step reproduction]
 
 ## Additional context
-- n8n version: [version]
+- MNI version: [version]
 - Database: [SQLite/PostgreSQL]
 - Hosting: [cloud/self-hosted]
 ```
@@ -261,7 +261,7 @@ Verify `gh` CLI is authenticated: `gh auth status`
 
 ### Important Context
 
-The n8n GitHub issue tracker (`n8n-io/n8n`) is **bug-only**. Feature requests and questions are redirected to the [community forum](https://community.n8n.io). Blank issues are disabled — the bug template must be used.
+The MNI GitHub issue tracker (`n8n-io/n8n`) is **bug-only**. Feature requests and questions are redirected to the [community forum](https://community.n8n.io). Blank issues are disabled — the bug template must be used.
 
 ### Style Guide
 
@@ -293,13 +293,13 @@ GitHub issues **must** follow the bug report template structure:
 
 ### Debug Info
 
-[If available — output from Help > About n8n > Copy debug information]
+[If available — output from Help > About MNI > Copy debug information]
 
 ### Operating System
 
 [e.g., macOS 14.2, Ubuntu 22.04]
 
-### n8n Version
+### MNI version
 
 [e.g., 1.72.1]
 
@@ -317,7 +317,7 @@ main / queue
 
 ### Hosting
 
-n8n cloud / self hosted
+MNI cloud / self hosted
 ```
 
 **Guardrails:**

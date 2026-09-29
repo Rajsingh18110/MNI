@@ -17,9 +17,9 @@ export const instanceAiTestConfig = {
 } as const;
 
 export const test = base.extend<InstanceAiMemoryFixtures>({
-	instanceAiDriver: async ({ n8n, backendUrl }, use) => {
+	instanceAiDriver: async ({ MNI, backendUrl }, use) => {
 		const config: InstanceAiDriverConfig = {
-			n8n,
+			MNI,
 			baseUrl: backendUrl,
 		};
 

@@ -97,8 +97,8 @@ else
 fi
 check "compose.yml validates with generated .env" docker compose -f "$WORK/a/compose.yml" config -q
 case "$(env_value "$WORK/a" N8N_VERSION)" in
-[0-9]*.[0-9]*) pass "default install resolves a sane n8n version" ;;
-*) fail "default install resolves a sane n8n version" ;;
+[0-9]*.[0-9]*) pass "default install resolves a sane MNI version" ;;
+*) fail "default install resolves a sane MNI version" ;;
 esac
 
 # sandbox images follow one pin in .env; compose.yml carries no tags of its own
@@ -117,7 +117,7 @@ runner_key="$(env_value "$WORK/a" SANDBOX_RUNNER_API_KEYS)"
 [ -n "$runner_key" ] && [ "$runner_key" != "$api_key" ] && pass "runner key generated and distinct" ||
 	fail "runner key generated and distinct"
 [ "$(env_value "$WORK/a" N8N_SANDBOX_SERVICE_API_KEY)" = "$api_key" ] &&
-	pass "n8n sandbox key mirrors SANDBOX_API_KEYS" || fail "n8n sandbox key mirrors SANDBOX_API_KEYS"
+	pass "MNI sandbox key mirrors SANDBOX_API_KEYS" || fail "MNI sandbox key mirrors SANDBOX_API_KEYS"
 [ "$(env_value "$WORK/a" SANDBOX_API_RUNNER_API_KEY)" = "$runner_key" ] &&
 	pass "API-side runner key mirrors runner key" || fail "API-side runner key mirrors runner key"
 
@@ -133,8 +133,8 @@ rerun_out="$(env N8N_DIR="$WORK/a" sh "$SCRIPT" 2>&1)" && pass "re-run on existi
 	fail "re-run on existing install is a no-op"
 [ "$(cat "$WORK/a/.env" "$WORK/a/compose.yml" "$WORK/a/searxng-settings.yml")" = "$before" ] && pass "re-run leaves files untouched" ||
 	fail "re-run leaves files untouched"
-echo "$rerun_out" | grep -q 'http://localhost:5678' && pass "re-run tells the user where n8n runs" ||
-	fail "re-run tells the user where n8n runs"
+echo "$rerun_out" | grep -q 'http://localhost:5678' && pass "re-run tells the user where MNI runs" ||
+	fail "re-run tells the user where MNI runs"
 echo "$rerun_out" | grep -q 'To uninstall: docker compose' && pass "re-run shows the uninstall command" ||
 	fail "re-run shows the uninstall command"
 
@@ -305,7 +305,7 @@ if [ "$E2E" -eq 1 ]; then
 	trap 'teardown "$E2E_DIR"; rm -rf "$WORK"' EXIT INT TERM
 
 	# install the previous release from stack definition v1, so --upgrade below
-	# is a real n8n version change and a real sandbox migration (1.2.0 + http)
+	# is a real MNI version change and a real sandbox migration (1.2.0 + http)
 	legacy_compose "$COMPOSE_SRC" >"$WORK/e2e-legacy-compose.yml"
 	if env N8N_DIR="$E2E_DIR" N8N_COMPOSE_URL="$WORK/e2e-legacy-compose.yml" sh "$SCRIPT" --version 2.31.4; then
 		pass "fresh install boots and reaches /healthz"
@@ -320,15 +320,15 @@ if [ "$E2E" -eq 1 ]; then
 	echo "$ps_out" | grep -q '^sandbox-certs exited 0' && pass "sandbox-certs completed" || fail "sandbox-certs completed"
 	echo "$ps_out" | grep -q '^sandbox-api running' && pass "sandbox-api running" || fail "sandbox-api running"
 	echo "$ps_out" | grep -q '^sandbox-runner-1 running' && pass "sandbox-runner running" || fail "sandbox-runner running"
-	echo "$ps_out" | grep -q '^n8n running' && pass "n8n running" || fail "n8n running"
+	echo "$ps_out" | grep -q '^MNI running' && pass "MNI running" || fail "MNI running"
 	echo "$ps_out" | grep -q '^searxng running' && pass "searxng running" || fail "searxng running"
 	echo "$ps_out" | grep -q '^runners running' && pass "task runners running" || fail "task runners running"
 
-	check "n8n reaches sandbox-api" \
-		docker compose -f "$E2E_DIR/compose.yml" exec -T n8n wget -qO- http://sandbox-api:8080/healthz
-	docker compose -f "$E2E_DIR/compose.yml" exec -T n8n \
+	check "MNI reaches sandbox-api" \
+		docker compose -f "$E2E_DIR/compose.yml" exec -T MNI wget -qO- http://sandbox-api:8080/healthz
+	docker compose -f "$E2E_DIR/compose.yml" exec -T MNI \
 		wget -qO- 'http://searxng:8080/search?q=test&format=json' 2>/dev/null | grep -q '"results"' &&
-		pass "searxng serves JSON search to n8n" || fail "searxng serves JSON search to n8n"
+		pass "searxng serves JSON search to MNI" || fail "searxng serves JSON search to MNI"
 	docker compose -f "$E2E_DIR/compose.yml" logs sandbox-runner-1 2>/dev/null |
 		grep -q 'registration stream established' &&
 		pass "runner registered with sandbox-api" || fail "runner registered with sandbox-api"
@@ -351,8 +351,8 @@ if [ "$E2E" -eq 1 ]; then
 		fail "--upgrade changes only the version lines in .env"
 		cat "$WORK/env.diff" >&2
 	fi
-	docker compose -f "$E2E_DIR/compose.yml" ps n8n --format '{{.Image}}' | grep -q ":${target}\$" &&
-		pass "n8n container runs upgraded image" || fail "n8n container runs upgraded image"
+	docker compose -f "$E2E_DIR/compose.yml" ps MNI --format '{{.Image}}' | grep -q ":${target}\$" &&
+		pass "MNI container runs upgraded image" || fail "MNI container runs upgraded image"
 	for svc in sandbox-api sandbox-runner-1; do
 		docker compose -f "$E2E_DIR/compose.yml" ps "$svc" --format '{{.Image}}' | grep -q ":${SANDBOX_PIN}\$" &&
 			pass "${svc} runs the pinned sandbox image after upgrade" || fail "${svc} runs the pinned sandbox image after upgrade"
@@ -360,8 +360,8 @@ if [ "$E2E" -eq 1 ]; then
 	docker compose -f "$E2E_DIR/compose.yml" logs sandbox-runner-1 2>/dev/null |
 		grep -q 'registration stream established' &&
 		pass "runner re-registered after upgrade" || fail "runner re-registered after upgrade"
-	check "n8n reaches sandbox-api after upgrade" \
-		docker compose -f "$E2E_DIR/compose.yml" exec -T n8n wget -qO- http://sandbox-api:8080/healthz
+	check "MNI reaches sandbox-api after upgrade" \
+		docker compose -f "$E2E_DIR/compose.yml" exec -T MNI wget -qO- http://sandbox-api:8080/healthz
 else
 	trap 'rm -rf "$WORK"' EXIT INT TERM
 	echo "(e2e skipped — pass --e2e to boot the full stack)"

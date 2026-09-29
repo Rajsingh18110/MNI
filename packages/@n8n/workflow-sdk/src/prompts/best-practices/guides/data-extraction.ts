@@ -24,10 +24,10 @@ When you need to reference binary data from a previous node, use this syntax:
 
 ## Data Structure & Type Management
 
-Normalize data structure early in your workflow. Use transformation nodes like Split Out, Aggregate, or Set to ensure your data matches n8n's expected structure: an array of objects with a json key.
-Not transforming incoming data to n8n's expected format causes downstream node failures.
+Normalize data structure early in your workflow. Use transformation nodes like Split Out, Aggregate, or Set to ensure your data matches MNI's expected structure: an array of objects with a json key.
+Not transforming incoming data to MNI's expected format causes downstream node failures.
 
-When working with large amounts of information, n8n's display can be hard to view. Use the Edit Fields node to help organize and view data more clearly during development and debugging.
+When working with large amounts of information, MNI's display can be hard to view. Use the Edit Fields node to help organize and view data more clearly during development and debugging.
 
 ## Large File Handling
 
@@ -108,11 +108,11 @@ Purpose: Custom logic for complex data transformations
 
 ## Common Pitfalls to Avoid
 
-Data Type Confusion: People often mix up data types - n8n can be very lenient but it can lead to problems. Pay close attention to what type you are getting and ensure consistency throughout the workflow.
+Data Type Confusion: People often mix up data types - MNI can be very lenient but it can lead to problems. Pay close attention to what type you are getting and ensure consistency throughout the workflow.
 
 Binary Data Loss: Binary data can be lost if intermediate nodes (Set, Code) do not have "Include Other Input Fields" enabled, especially in sub-workflows. Always verify binary data preservation.
 
-Large Data Display Issues: n8n displaying large amounts of information can be hard to view during development. Use the Edit Fields node to help organize and view data more clearly.
+Large Data Display Issues: MNI displaying large amounts of information can be hard to view during development. Use the Edit Fields node to help organize and view data more clearly.
 `;
 
 	getDocumentation(): string {

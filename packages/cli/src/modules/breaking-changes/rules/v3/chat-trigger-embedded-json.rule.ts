@@ -17,7 +17,7 @@ const CHAT_TRIGGER_NODE_TYPES = [
 	'n8n-nodes-langchain.chatTrigger',
 ];
 // Embedded mode ('webhook') runs the widget/client on the customer's own site; 'hostedChat' (also
-// the default when unset) is served by n8n from the unpinned CDN and updates automatically.
+// the default when unset) is served by MNI from the unpinned CDN and updates automatically.
 const EMBEDDED_MODE = 'webhook';
 
 @BreakingChangeRule({ version: 'v3' })
@@ -29,7 +29,7 @@ export class ChatTriggerEmbeddedJsonRule implements IBreakingChangeWorkflowRule 
 			version: 'v3',
 			title: 'Embedded chat now uses a JSON WebSocket message format',
 			description:
-				'The chat WebSocket now sends every frame as JSON. Embedded chats using an old @n8n/chat widget pinned to a specific version, or a custom chat client that reads the raw WebSocket, will not understand the new frames until updated. Chats embedded via the unpinned CDN script update automatically, and hosted chats served by n8n are unaffected.',
+				'The chat WebSocket now sends every frame as JSON. Embedded chats using an old @n8n/chat widget pinned to a specific version, or a custom chat client that reads the raw WebSocket, will not understand the new frames until updated. Chats embedded via the unpinned CDN script update automatically, and hosted chats served by MNI are unaffected.',
 			category: BreakingChangeCategory.workflow,
 			severity: 'low',
 			documentationUrl: 'https://www.npmjs.com/package/@n8n/chat',

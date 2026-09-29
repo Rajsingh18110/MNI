@@ -148,7 +148,7 @@ describe('Schema Validation Integration', () => {
 
 		it('accepts missing responseBinaryPropertyName when show condition is met (field has default)', () => {
 			// responseBinaryPropertyName has required: true but also has default: 'data'
-			// In n8n semantics, fields with defaults are optional (the default is used if not provided)
+			// In MNI semantics, fields with defaults are optional (the default is used if not provided)
 			const result = validateNodeConfig('n8n-nodes-base.webhook', 1, {
 				parameters: {
 					responseMode: 'lastNode', // Required to make responseData visible
@@ -216,7 +216,7 @@ describe('Schema Validation Integration', () => {
 
 		it('accepts missing user when hide condition is NOT met (field has default)', () => {
 			// user has required: true but also has default: { mode: 'username', value: '' }
-			// In n8n semantics, fields with defaults are optional (the default is used if not provided)
+			// In MNI semantics, fields with defaults are optional (the default is used if not provided)
 			const result = validateNodeConfig('n8n-nodes-base.twitter', 2, {
 				parameters: {
 					resource: 'user',

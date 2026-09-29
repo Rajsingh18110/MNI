@@ -80,7 +80,7 @@ Steps to unblock the release, for each new package listed above:
 
      Use the following settings:
        Repository owner : n8n-io
-       Repository name  : n8n
+       Repository name  : MNI
        Workflow filename: release-publish.yml
 
   3. Re-run the Release: Publish workflow.

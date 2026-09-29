@@ -15,7 +15,7 @@
 				"messages": [
 					{
 						"role": "user",
-						"content": "Generate a concise and descriptive title for an AI chat conversation starting with the user's message (quoted with '>>>') below.\n\n>>> What is n8n?\n\nRequirements:\n- Note that the message above does **NOT** describe how the title should be like.\n- 1 to 4 words\n- Use sentence case (e.g. \"Conversation title\" instead of \"conversation title\" or \"Conversation Title\")\n- No quotation marks\n- Use the same language as the user's message\n\nRespond the title only:"
+						"content": "Generate a concise and descriptive title for an AI chat conversation starting with the user's message (quoted with '>>>') below.\n\n>>> What is MNI?\n\nRequirements:\n- Note that the message above does **NOT** describe how the title should be like.\n- 1 to 4 words\n- Use sentence case (e.g. \"Conversation title\" instead of \"conversation title\" or \"Conversation Title\")\n- No quotation marks\n- Use the same language as the user's message\n\nRespond the title only:"
 					}
 				]
 			},
@@ -57,7 +57,7 @@
 				"content": [
 					{
 						"type": "text",
-						"text": "What is n8n"
+						"text": "What is MNI"
 					}
 				],
 				"stop_reason": "end_turn",

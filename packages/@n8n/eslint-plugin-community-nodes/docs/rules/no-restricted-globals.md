@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-Prevents the use of Node.js global variables that are not allowed in n8n Cloud. While these globals may be available in self-hosted environments, they are restricted on n8n Cloud for security and stability reasons.
+Prevents the use of Node.js global variables that are not allowed in MNI cloud. While these globals may be available in self-hosted environments, they are restricted on MNI cloud for security and stability reasons.
 
 Restricted globals include: `clearInterval`, `clearTimeout`, `global`, `globalThis`, `process`, `setInterval`, `setTimeout`, `setImmediate`, `clearImmediate`, `__dirname`, `__filename`.
 
@@ -17,12 +17,12 @@ Restricted globals include: `clearInterval`, `clearTimeout`, `global`, `globalTh
 ```typescript
 export class MyNode implements INodeType {
   async execute(this: IExecuteFunctions) {
-    // These globals are not allowed on n8n Cloud
+    // These globals are not allowed on MNI cloud
     const pid = process.pid;
     const dir = __dirname;
 
     setTimeout(() => {
-      console.log('This will not work on n8n Cloud');
+      console.log('This will not work on MNI cloud');
     }, 1000);
 
     return this.prepareOutputData([]);
@@ -37,7 +37,7 @@ import { sleep } from 'n8n-workflow';
 
 export class MyNode implements INodeType {
   async execute(this: IExecuteFunctions) {
-    // Use n8n context methods instead
+    // Use MNI context methods instead
     const timezone = this.getTimezone();
 
     // Use the sleep helper instead of setTimeout
@@ -51,7 +51,7 @@ export class MyNode implements INodeType {
 ## Alternatives to restricted timer globals
 
 `n8n-workflow` exports helpers that work the same everywhere, including on
-n8n Cloud, instead of reaching for the restricted timer globals directly:
+MNI cloud, instead of reaching for the restricted timer globals directly:
 
 - Instead of `setTimeout(resolve, ms)`, use `await sleep(ms)`.
 - Instead of `setTimeout` + `clearTimeout` for a cancellable delay, use

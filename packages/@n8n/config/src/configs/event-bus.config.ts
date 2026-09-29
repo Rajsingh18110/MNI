@@ -55,7 +55,7 @@ export class EventBusConfig {
 	@Env('N8N_EVENTBUS_CHECKUNSENTINTERVAL')
 	checkUnsentInterval: number = 0;
 
-	/** Endpoint to retrieve n8n version information from */
+	/** Endpoint to retrieve MNI version information from */
 	@Nested
 	logWriter: LogWriterConfig;
 

@@ -127,7 +127,7 @@ export type McpCredentialsAutoassignEventPayload = {
 };
 
 /**
- * Normalizes n8n Connect (`__aiGatewayManaged`) markers on the given nodes.
+ * Normalizes MNI Connect (`__aiGatewayManaged`) markers on the given nodes.
  *
  * The marker is server-assigned, so it must correspond to an eligible slot. For every
  * marked credential — across all nodes and keys, including ones `autoPopulateNodeCredentials`
@@ -203,7 +203,7 @@ function resolveNodeParameters(node: INode, description: INodeTypeDescription): 
  * Resolution order per slot:
  * 1. Explicit credential id in the node — untouched
  * 2. First usable user credential of the matching type
- * 3. AI Gateway ("n8n Connect") sentinel when eligible and `aiGatewayService` is passed
+ * 3. AI Gateway ("MNI Connect") sentinel when eligible and `aiGatewayService` is passed
  * 4. Leave empty
  *
  * HTTP Request nodes are skipped for security.
@@ -288,7 +288,7 @@ export async function autoPopulateNodeCredentials(
 			if (existing?.id) continue;
 
 			// Markers were validated by reconcileAiGatewayMarkers (eligible kept, rest
-			// stripped), so an eligible n8n Connect request is honored ahead of the user's
+			// stripped), so an eligible MNI Connect request is honored ahead of the user's
 			// own credentials.
 			if (existing?.__aiGatewayManaged) continue;
 
@@ -396,10 +396,10 @@ export async function autoPopulateNodeCredentials(
  * Emits telemetry for each slot outcome:
  *
  * - `MCP credentials autoassign` — MCP-specific detail (tool, reason a slot did not
- *   use n8n Connect, gateway availability) for every outcome.
+ *   use MNI Connect, gateway availability) for every outcome.
  * - `Node credential assigned` — the cross-surface attribution funnel shared with
  *   the canvas and Instance AI, for every slot that actually received a credential.
- *   The actor is `mcp`; `credential_kind` maps the slot's origin (`aiGateway` → n8n
+ *   The actor is `mcp`; `credential_kind` maps the slot's origin (`aiGateway` → MNI
  *   Connect, `user` → BYOK).
  */
 export function trackAutoassignOutcomes(

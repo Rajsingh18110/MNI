@@ -28,7 +28,7 @@
 				"color": 5,
 				"width": 640,
 				"height": 560,
-				"content": "# Tutorial - Mastering n8n Expressions\n\nWelcome! You know what JSON is. Now, let's learn how to **use it**. This workflow teaches you how to pull data from one node and use it in another using n8n's powerful expressions.\n\n**What is an Expression?**\nAn expression is a small piece of code inside double curly braces `{{ }}` that gets replaced with a dynamic value when the workflow runs. It's the \"glue\" that connects your nodes.\n\n**How to use this tutorial:**\n1.  The first node, **\"Source Data\"**, contains all the data we will use. Execute it once to see what's inside.\n2.  Follow the path from top to bottom. Each node is a new lesson.\n3.  Read the sticky note for each lesson, then look at the node's configuration and its output to understand the concept."
+				"content": "# Tutorial - Mastering MNI Expressions\n\nWelcome! You know what JSON is. Now, let's learn how to **use it**. This workflow teaches you how to pull data from one node and use it in another using MNI's powerful expressions.\n\n**What is an Expression?**\nAn expression is a small piece of code inside double curly braces `{{ }}` that gets replaced with a dynamic value when the workflow runs. It's the \"glue\" that connects your nodes.\n\n**How to use this tutorial:**\n1.  The first node, **\"Source Data\"**, contains all the data we will use. Execute it once to see what's inside.\n2.  Follow the path from top to bottom. Each node is a new lesson.\n3.  Read the sticky note for each lesson, then look at the node's configuration and its output to understand the concept."
 			},
 			"typeVersion": 1
 		},
@@ -66,7 +66,7 @@
 							"id": "fghij",
 							"name": "skills",
 							"type": "array",
-							"value": "[\"JavaScript\",\"Python\",\"n8n\"]"
+							"value": "[\"JavaScript\",\"Python\",\"MNI\"]"
 						},
 						{
 							"id": "klmno",
@@ -136,7 +136,7 @@
 				"color": 2,
 				"width": 500,
 				"height": 580,
-				"content": "## Lesson 1: Accessing a Simple Value\n\nThis is the most common thing you'll do in n8n.\n\n**The Goal:** Get the user's name from the \"Source Data\" node.\n\n**The Expression:** `{{ $('Source Data').item.json.name }}`\n\n**Breakdown:**\n- `{{ ... }}`: Tells n8n \"this is a dynamic expression\".\n- `$('Source Data')`: Selects the node we want data from.\n- `.item.json`: Narrows it down to the JSON data of the current item.\n- `.name`: Selects the specific **key** we want the value of.\n\n**Other Possibility:**\n`{{ $json.name }}` would also work in this case, as `$json` accesses the data from the previous node."
+				"content": "## Lesson 1: Accessing a Simple Value\n\nThis is the most common thing you'll do in n8n.\n\n**The Goal:** Get the user's name from the \"Source Data\" node.\n\n**The Expression:** `{{ $('Source Data').item.json.name }}`\n\n**Breakdown:**\n- `{{ ... }}`: Tells MNI \"this is a dynamic expression\".\n- `$('Source Data')`: Selects the node we want data from.\n- `.item.json`: Narrows it down to the JSON data of the current item.\n- `.name`: Selects the specific **key** we want the value of.\n\n**Other Possibility:**\n`{{ $json.name }}` would also work in this case, as `$json` accesses the data from the previous node."
 			},
 			"typeVersion": 1
 		},
@@ -364,7 +364,7 @@
 							"id": "12345",
 							"name": "final_summary",
 							"type": "string",
-							"value": "=User {{ $('2. The n8n Selectors').last().json.user_name_from_first }} is {{ $('Source Data').last().json.age }}.\n\nTheir best skill is {{ $('3. Working with Arrays').last().json.second_skill }}.\n\nTheir first project was {{ $('Source Data').last().json.projects[0].name }}, which is now {{ $('5. The Combo Move').last().json.first_project_status }}.\n\nAll skills: {{ $('9. The \"All Items\" View').last().json.all_skills_string }}."
+							"value": "=User {{ $('2. The MNI Selectors').last().json.user_name_from_first }} is {{ $('Source Data').last().json.age }}.\n\nTheir best skill is {{ $('3. Working with Arrays').last().json.second_skill }}.\n\nTheir first project was {{ $('Source Data').last().json.projects[0].name }}, which is now {{ $('5. The Combo Move').last().json.first_project_status }}.\n\nAll skills: {{ $('9. The \"All Items\" View').last().json.all_skills_string }}."
 						}
 					]
 				}
@@ -390,7 +390,7 @@
 		{
 			"id": "c3f2fd66-784d-4675-8cb3-72dd33e6ee4e",
 			"cid": "Ikx1Y2FzIFBleXJpbiI",
-			"name": "2. The n8n Selectors",
+			"name": "2. The MNI Selectors",
 			"type": "n8n-nodes-base.set",
 			"notes": "© 2025 Lucas Peyrin",
 			"creator": "Lucas Peyrin",
@@ -421,7 +421,7 @@
 			"parameters": {
 				"width": 680,
 				"height": 620,
-				"content": "## Lesson 2: The n8n Selectors (`.first()`, `.last()`, `.all()`)\n\nIn the last lesson, we used `.item`. When there is only one output item from a node, this is equivalent to `.last()`. Using `.last()` explicitly is often safer and clearer.\n\n**The Goal:** Get the user's name using the `.last()` selector.\n\n**The Expression:** `{{ $('Source Data').last().json.name }}`\n\n**Why is this better?**\nIf a node ever returns multiple items, `.last()` guarantees you only get data from the very last one.\n\nIf you ever need to match the selected data with the input items, this is where `.item` cannot be replaced.\n\n**Other Selectors:**\n- **`.first()`**: Gets the data from the first item.\n- **`.all()`**: Gets data from ALL items, returning it as an array of objects. (This is different from `$items`!)"
+				"content": "## Lesson 2: The MNI Selectors (`.first()`, `.last()`, `.all()`)\n\nIn the last lesson, we used `.item`. When there is only one output item from a node, this is equivalent to `.last()`. Using `.last()` explicitly is often safer and clearer.\n\n**The Goal:** Get the user's name using the `.last()` selector.\n\n**The Expression:** `{{ $('Source Data').last().json.name }}`\n\n**Why is this better?**\nIf a node ever returns multiple items, `.last()` guarantees you only get data from the very last one.\n\nIf you ever need to match the selected data with the input items, this is where `.item` cannot be replaced.\n\n**Other Selectors:**\n- **`.first()`**: Gets the data from the first item.\n- **`.all()`**: Gets data from ALL items, returning it as an array of objects. (This is different from `$items`!)"
 			},
 			"typeVersion": 1
 		},
@@ -535,7 +535,7 @@
 				"color": 3,
 				"width": 540,
 				"height": 1280,
-				"content": "## Was this helpful? Let me know!\n[![clic](https://supastudio.ia2s.app/storage/v1/object/public/assets/n8n/clic_down_lucas.gif)](https://n8n.ac)\n\nI really hope this tutorial helped you understand n8n Expressions better. Your feedback is incredibly valuable and helps me create better resources for the n8n community.\n\n### **Share Your Thoughts & Ideas**\n\nWhether you have a suggestion, found a typo, or just want to say thanks, I'd love to hear from you!\nHere's a simple n8n form built for this purpose:\n\n#### ➡️ **[Click here to give feedback](https://api.ia2s.app/form/templates/feedback?template=Expressions%20Tutorial)**\n\n### **Ready to Build Something Great?**\n\nIf you're looking to take your n8n skills or business automation to the next level, I can help.\n\n**🎓 n8n Coaching:** Want to become an n8n pro? I offer one-on-one coaching sessions to help you master workflows, tackle specific problems, and build with confidence.\n#### ➡️ **[Book a Coaching Session](https://api.ia2s.app/form/templates/coaching?template=Expressions%20Tutorial)**\n\n**💼 n8n Consulting:** Have a complex project, an integration challenge, or need a custom workflow built for your business? Let's work together to create a powerful automation solution.\n#### ➡️ **[Inquire About Consulting Services](https://api.ia2s.app/form/templates/consulting?template=Expressions%20Tutorial)**\n\n---\n\nHappy Automating!\nLucas Peyrin | [n8n Academy](https://n8n.ac)"
+				"content": "## Was this helpful? Let me know!\n[![clic](https://supastudio.ia2s.app/storage/v1/object/public/assets/MNI/clic_down_lucas.gif)](https://n8n.ac)\n\nI really hope this tutorial helped you understand MNI Expressions better. Your feedback is incredibly valuable and helps me create better resources for the MNI community.\n\n### **Share Your Thoughts & Ideas**\n\nWhether you have a suggestion, found a typo, or just want to say thanks, I'd love to hear from you!\nHere's a simple MNI form built for this purpose:\n\n#### ➡️ **[Click here to give feedback](https://api.ia2s.app/form/templates/feedback?template=Expressions%20Tutorial)**\n\n### **Ready to Build Something Great?**\n\nIf you're looking to take your MNI skills or business automation to the next level, I can help.\n\n**🎓 MNI Coaching:** Want to become an MNI pro? I offer one-on-one coaching sessions to help you master workflows, tackle specific problems, and build with confidence.\n#### ➡️ **[Book a Coaching Session](https://api.ia2s.app/form/templates/coaching?template=Expressions%20Tutorial)**\n\n**💼 MNI Consulting:** Have a complex project, an integration challenge, or need a custom workflow built for your business? Let's work together to create a powerful automation solution.\n#### ➡️ **[Inquire About Consulting Services](https://api.ia2s.app/form/templates/consulting?template=Expressions%20Tutorial)**\n\n---\n\nHappy Automating!\nLucas Peyrin | [MNI Academy](https://n8n.ac)"
 			},
 			"typeVersion": 1
 		},
@@ -551,7 +551,7 @@
 				"color": 6,
 				"width": 512,
 				"height": 408,
-				"content": "## [>> Go to Eval Workflow <<](https://n8n.io/workflows/6236)\n\nVerify your skills with a complete eval workflow to put your Expression Skills to the test.\n[![Test Skills](https://supastudio.ia2s.app/storage/v1/object/public/assets/n8n/test_your_skillls_button.gif)](https://n8n.io/workflows/6236)"
+				"content": "## [>> Go to Eval Workflow <<](https://n8n.io/workflows/6236)\n\nVerify your skills with a complete eval workflow to put your Expression Skills to the test.\n[![Test Skills](https://supastudio.ia2s.app/storage/v1/object/public/assets/MNI/test_your_skillls_button.gif)](https://n8n.io/workflows/6236)"
 			},
 			"typeVersion": 1
 		}
@@ -572,7 +572,7 @@
 			"main": [
 				[
 					{
-						"node": "2. The n8n Selectors",
+						"node": "2. The MNI Selectors",
 						"type": "main",
 						"index": 0
 					}
@@ -634,7 +634,7 @@
 				]
 			]
 		},
-		"2. The n8n Selectors": {
+		"2. The MNI Selectors": {
 			"main": [
 				[
 					{

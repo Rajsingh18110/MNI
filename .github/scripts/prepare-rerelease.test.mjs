@@ -70,22 +70,22 @@ describe('computeRereleaseVersion', () => {
 
 describe('isPublished', () => {
 	it('reports 200 as published', async () => {
-		assert.equal(await isPublished('n8n', '2.27.2', fakeFetch({ '2.27.2': 200 })), true);
+		assert.equal(await isPublished('MNI', '2.27.2', fakeFetch({ '2.27.2': 200 })), true);
 	});
 
 	it('reports 404 as not published', async () => {
-		assert.equal(await isPublished('n8n', '2.27.3', fakeFetch({ '2.27.3': 404 })), false);
+		assert.equal(await isPublished('MNI', '2.27.3', fakeFetch({ '2.27.3': 404 })), false);
 	});
 
 	it('returns null on an unexpected status', async () => {
-		assert.equal(await isPublished('n8n', '2.27.3', fakeFetch({ '2.27.3': 500 })), null);
+		assert.equal(await isPublished('MNI', '2.27.3', fakeFetch({ '2.27.3': 500 })), null);
 	});
 
 	it('returns null when the registry is unreachable', async () => {
 		const failing = async () => {
 			throw new Error('ENOTFOUND');
 		};
-		assert.equal(await isPublished('n8n', '2.27.3', failing), null);
+		assert.equal(await isPublished('MNI', '2.27.3', failing), null);
 	});
 
 	it('encodes a scoped package name', async () => {

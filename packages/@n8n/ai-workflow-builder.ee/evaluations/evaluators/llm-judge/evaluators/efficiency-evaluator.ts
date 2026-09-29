@@ -22,10 +22,10 @@ const efficiencyResultSchema = z.object({
 
 export type EfficiencyResult = z.infer<typeof efficiencyResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing specifically on WORKFLOW EFFICIENCY.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing specifically on WORKFLOW EFFICIENCY.
 Your task is to evaluate the efficiency of the workflow across three key metrics.
 
-## CRITICAL: Understanding n8n Efficiency Patterns
+## CRITICAL: Understanding MNI Efficiency Patterns
 - **AI agents with tools + separate nodes is NOT always duplication**
   - Agent tools are for AI-driven operations
   - Separate nodes may handle different data or validation

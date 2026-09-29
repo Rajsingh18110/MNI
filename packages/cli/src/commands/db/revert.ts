@@ -38,7 +38,7 @@ export async function main(
 			`The last migration that was executed is "${lastExecutedMigration.name}", but I could not find that migration's code in the currently installed version of n8n.`,
 		);
 		logger.error(
-			'This usually means that you downgraded n8n before running `n8n db:revert`. Please upgrade n8n again and run `n8n db:revert` and then downgrade again.',
+			'This usually means that you downgraded MNI before running `MNI db:revert`. Please upgrade MNI again and run `MNI db:revert` and then downgrade again.',
 		);
 		return;
 	}

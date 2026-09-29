@@ -542,7 +542,7 @@ describe('SubAgentRunner', () => {
 		);
 	});
 
-	it('uses the saved n8n agent id as memory owner and records parent linkage', async () => {
+	it('uses the saved MNI agent id as memory owner and records parent linkage', async () => {
 		sourceResolver.resolveForRuntime.mockResolvedValue({
 			...runtimeSource,
 			source: {
@@ -550,7 +550,7 @@ describe('SubAgentRunner', () => {
 				versionId: 'version-1',
 				config: {
 					...runnableConfig,
-					memory: { enabled: true, storage: 'n8n' },
+					memory: { enabled: true, storage: 'MNI' },
 				},
 			},
 		});
@@ -663,7 +663,7 @@ describe('SubAgentRunner', () => {
 			model: 'openai/gpt-4o-mini',
 			credential: 'parent-credential',
 			instructions: 'Parent instructions.',
-			memory: { enabled: true, storage: 'n8n' },
+			memory: { enabled: true, storage: 'MNI' },
 			tools: [{ type: 'custom', id: 'tool_1' }],
 			skills: [{ type: 'skill', id: 'skill_1' }],
 			config: { webSearch: { enabled: true } },

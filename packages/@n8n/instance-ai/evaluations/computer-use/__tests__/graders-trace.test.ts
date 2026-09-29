@@ -243,7 +243,7 @@ describe('trace.finalTextMatches mustNotMatch', () => {
 		const t = trace([]);
 		const midStream = 'Let me try a different approach - using JavaScript instead. ';
 		const closingSummary =
-			'I extracted the scenario blueprint from the network response. The Make.com scenario has two modules: a Webhooks trigger and an HTTP GET request. Would you like me to recreate this in n8n? '.repeat(
+			'I extracted the scenario blueprint from the network response. The Make.com scenario has two modules: a Webhooks trigger and an HTTP GET request. Would you like me to recreate this in MNI? '.repeat(
 				20,
 			);
 		t.finalText = midStream + closingSummary;

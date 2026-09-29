@@ -45,7 +45,7 @@ export class VersionMismatchCheck implements IClusterCheck {
 			previousFingerprint: previous.fingerprint,
 			code: CHECK_CODE,
 			severity: 'error',
-			message: `Detected multiple n8n versions in the cluster: ${versions.join(', ')}`,
+			message: `Detected multiple MNI versions in the cluster: ${versions.join(', ')}`,
 			context: { versions },
 			auditDetected: AUDIT_DETECTED,
 			auditResolved: AUDIT_RESOLVED,

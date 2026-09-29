@@ -201,7 +201,7 @@ describe('affectedPackages', () => {
 			patterns: ['packages/*', 'packages/@n8n/*'],
 			packages: {
 				'packages/@n8n/db': { name: '@n8n/db' },
-				'packages/cli': { name: 'n8n' },
+				'packages/cli': { name: 'MNI' },
 				'packages/unrelated': { name: 'unrelated' },
 			},
 		});
@@ -210,14 +210,14 @@ describe('affectedPackages', () => {
 				rootDir,
 				changedFiles: ['packages/@n8n/db/src/entities/user.entity.ts'],
 			}),
-		).toEqual(['@n8n/db', 'n8n', 'unrelated']);
+		).toEqual(['@n8n/db', 'MNI', 'unrelated']);
 	});
 
 	it('handles turbo extra-inputs pointing at another package', () => {
 		const rootDir = makeFixture({
 			patterns: ['packages/*'],
 			packages: {
-				'packages/cli': { name: 'n8n' },
+				'packages/cli': { name: 'MNI' },
 				'packages/nodes-base': { name: 'n8n-nodes-base' },
 			},
 			turboTasks: [
@@ -229,7 +229,7 @@ describe('affectedPackages', () => {
 				rootDir,
 				changedFiles: ['packages/cli/src/public-api/v1/openapi.yml'],
 			}),
-		).toEqual(['n8n', 'n8n-nodes-base']);
+		).toEqual(['MNI', 'n8n-nodes-base']);
 	});
 
 	it('parses a JSONC turbo.json (comments) for extra-inputs', () => {
@@ -238,7 +238,7 @@ describe('affectedPackages', () => {
 		const rootDir = makeFixture({
 			patterns: ['packages/*'],
 			packages: {
-				'packages/cli': { name: 'n8n' },
+				'packages/cli': { name: 'MNI' },
 				'packages/nodes-base': { name: 'n8n-nodes-base' },
 			},
 			turboJsonRaw: `{
@@ -256,7 +256,7 @@ describe('affectedPackages', () => {
 				rootDir,
 				changedFiles: ['packages/cli/src/public-api/v1/openapi.yml'],
 			}),
-		).toEqual(['n8n', 'n8n-nodes-base']);
+		).toEqual(['MNI', 'n8n-nodes-base']);
 	});
 
 	it('matches nested workspace patterns (frontend/**)', () => {

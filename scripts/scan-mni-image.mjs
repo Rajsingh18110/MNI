@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * This script is used to scan the n8n docker image for vulnerabilities.
+ * This script is used to scan the MNI docker image for vulnerabilities.
  * It uses Trivy to scan the image.
  */
 
@@ -73,7 +73,7 @@ const printSummary = (status, time, message) => {
 
 // #region ===== Main Process =====
 (async () => {
-	printHeader('Trivy Security Scan for n8n Image');
+	printHeader('Trivy Security Scan for MNI Image');
 
 	try {
 		await $`command -v docker`;

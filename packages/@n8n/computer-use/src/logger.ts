@@ -303,7 +303,7 @@ export function printAuthFailure(): void {
 export function printInvalidToken(url: string): void {
 	logger.error(`\n  ${pc.red('✗')} Connection token invalid`);
 	logger.error(
-		`    ${pc.dim(`Go to ${url} and reconnect n8n Computer Use using a new connection token`)}\n`,
+		`    ${pc.dim(`Go to ${url} and reconnect MNI Computer Use using a new connection token`)}\n`,
 	);
 }
 

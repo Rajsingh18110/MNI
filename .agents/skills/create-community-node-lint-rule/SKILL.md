@@ -1,5 +1,5 @@
 ---
-name: n8n:create-community-node-lint-rule
+name: MNI:create-community-node-lint-rule
 description: >-
   Create new ESLint rules for the @n8n/eslint-plugin-community-nodes package.
   Use when adding a lint rule, creating a community node lint, or working on
@@ -152,7 +152,7 @@ export const rules = {
 
 ### 4b. Add to `src/plugin.ts` configs
 
-Add to **both** config objects (unless the rule depends on n8n cloud features):
+Add to **both** config objects (unless the rule depends on MNI cloud features):
 
 ```typescript
 '@n8n/community-nodes/rule-name': 'error',  // or 'warn'

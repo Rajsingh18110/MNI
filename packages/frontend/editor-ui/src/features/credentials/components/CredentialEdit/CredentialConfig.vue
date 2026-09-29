@@ -241,7 +241,7 @@ const isConnectedOAuth = computed(
 const isStale = computed(() => isConnectedOAuth.value && !!props.authError);
 
 // The connected account label — always the provider account the token belongs to,
-// never the n8n account. For end-user creds it comes from the caller's own per-user
+// never the MNI account. For end-user creds it comes from the caller's own per-user
 // connection, for fixed creds from the token stored on the credential. Many
 // providers return no identity at all (Gmail asks for no identity scope), so an
 // absent value is normal and falls back to a generic "Account connected" message.

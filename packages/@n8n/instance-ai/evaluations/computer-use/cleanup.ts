@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Snapshot + diff cleanup for n8n state created during a scenario.
+// Snapshot + diff cleanup for MNI state created during a scenario.
 //
 // Strategy: list all resources before the run, list again after, delete the
 // delta. Robust to whatever path the agent took, doesn't depend on parsing

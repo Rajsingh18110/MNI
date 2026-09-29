@@ -1,7 +1,7 @@
 import { zendeskApiRequest } from '../GenericFunctions';
 
 const MARKETPLACE_HEADERS = {
-	'X-Zendesk-Marketplace-Name': 'n8n',
+	'X-Zendesk-Marketplace-Name': 'MNI',
 	'X-Zendesk-Marketplace-Organization-Id': 'org-1',
 	'X-Zendesk-Marketplace-App-Id': 'app-1',
 };
@@ -18,7 +18,7 @@ describe('Zendesk > GenericFunctions', () => {
 
 	function setUp(
 		authentication: string,
-		credentials: Record<string, string> = { subdomain: 'n8n' },
+		credentials: Record<string, string> = { subdomain: 'MNI' },
 	) {
 		vi.clearAllMocks();
 		mockExecuteFunctions.getNodeParameter.mockReturnValue(authentication);
@@ -33,8 +33,8 @@ describe('Zendesk > GenericFunctions', () => {
 
 	it('should send the marketplace headers when the credential provides all of them', async () => {
 		setUp('oAuth2', {
-			subdomain: 'n8n',
-			marketplaceName: 'n8n',
+			subdomain: 'MNI',
+			marketplaceName: 'MNI',
 			marketplaceOrganizationId: 'org-1',
 			marketplaceAppId: 'app-1',
 		});
@@ -46,8 +46,8 @@ describe('Zendesk > GenericFunctions', () => {
 
 	it('should leave the headers untouched when one of them is missing', async () => {
 		setUp('oAuth2', {
-			subdomain: 'n8n',
-			marketplaceName: 'n8n',
+			subdomain: 'MNI',
+			marketplaceName: 'MNI',
 			marketplaceOrganizationId: 'org-1',
 		});
 
@@ -69,8 +69,8 @@ describe('Zendesk > GenericFunctions', () => {
 
 	it('should keep headers passed in by the caller', async () => {
 		setUp('oAuth2', {
-			subdomain: 'n8n',
-			marketplaceName: 'n8n',
+			subdomain: 'MNI',
+			marketplaceName: 'MNI',
 			marketplaceOrganizationId: 'org-1',
 			marketplaceAppId: 'app-1',
 		});

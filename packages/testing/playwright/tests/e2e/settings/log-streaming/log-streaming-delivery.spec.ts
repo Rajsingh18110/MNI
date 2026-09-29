@@ -16,7 +16,7 @@ import { nanoid } from 'nanoid';
 import { test, expect } from '../../../../fixtures/base';
 import type { ApiHelpers } from '../../../../services/api-helper';
 
-// n8n reaches the proxy container via its internal docker network alias.
+// MNI reaches the proxy container via its internal docker network alias.
 const PROXY_INTERNAL_URL = 'http://proxyserver:1080';
 
 test.use({ capability: 'proxy' });
@@ -126,7 +126,7 @@ test.describe(
 		});
 
 		test('should deliver configured method and custom headers set via the UI', async ({
-			n8n,
+			MNI,
 			services,
 		}) => {
 			const { path } = await makeSink(services.proxy, 'PUT');
@@ -212,7 +212,7 @@ test.describe(
 				.toEqual(
 					expect.arrayContaining([
 						expect.objectContaining({
-							eventName: expect.stringMatching(/^n8n\.workflow\./),
+							eventName: expect.stringMatching(/^MNI\.workflow\./),
 						}),
 					]),
 				);
@@ -263,7 +263,7 @@ test.describe(
 		});
 
 		test('should stop delivering once a destination is toggled off', async ({
-			n8n,
+			MNI,
 			api,
 			services,
 		}) => {

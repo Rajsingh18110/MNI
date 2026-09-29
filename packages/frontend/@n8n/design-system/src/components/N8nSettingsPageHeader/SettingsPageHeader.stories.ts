@@ -36,7 +36,7 @@ export const Default: Story = {
 	args: {
 		title: 'This instance',
 		description:
-			'Plan, usage, version, updates, instance details, resources, and support for this n8n instance.',
+			'Plan, usage, version, updates, instance details, resources, and support for this MNI instance.',
 		docsUrl: 'https://docs.n8n.io',
 	},
 };
@@ -49,7 +49,7 @@ export const CustomLeadingCopy: Story = {
 	}),
 	args: {
 		title: 'API keys',
-		description: 'Use your API keys to control n8n programmatically.',
+		description: 'Use your API keys to control MNI programmatically.',
 		docsLeadingText: 'Read the ',
 		docsLabel: 'API reference',
 		docsUrl: 'https://docs.n8n.io/api/',

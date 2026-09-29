@@ -1,6 +1,6 @@
 # promotions
 
-Move projects between n8n instances through a Git repository. One instance
+Move projects between MNI instances through a Git repository. One instance
 **promotes** its projects to a branch. Another instance **applies** that branch
 to itself.
 
@@ -70,7 +70,7 @@ Create a provider from JSON. Read the JSON from stdin or from a file. Secrets
 stay out of the command line this way.
 
 ```bash
-# SSH. n8n generates the key pair and returns the public key.
+# SSH. MNI generates the key pair and returns the public key.
 echo '{"name":"GitHub","type":"git","auth":{"authType":"ssh-key","keyType":"ed25519"}}' \
   | n8n-cli promotion-provider create --stdin
 

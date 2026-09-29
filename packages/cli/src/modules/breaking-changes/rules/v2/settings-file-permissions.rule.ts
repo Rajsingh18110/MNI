@@ -19,7 +19,7 @@ export class SettingsFilePermissionsRule implements IBreakingChangeInstanceRule 
 			version: 'v2',
 			title: 'Enforce settings file permissions',
 			description:
-				'n8n now enforces stricter permissions on configuration files for improved security',
+				'MNI now enforces stricter permissions on configuration files for improved security',
 			category: BreakingChangeCategory.infrastructure,
 			severity: 'low',
 			documentationUrl:
@@ -53,7 +53,7 @@ export class SettingsFilePermissionsRule implements IBreakingChangeInstanceRule 
 				{
 					title: 'Settings file permissions will be enforced',
 					description:
-						'n8n will now enforce chmod 600 permissions on configuration files. This may affect Docker/Kubernetes setups with volume mounts.',
+						'MNI will now enforce chmod 600 permissions on configuration files. This may affect Docker/Kubernetes setups with volume mounts.',
 					level: 'warning',
 				},
 			],

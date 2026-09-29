@@ -210,7 +210,7 @@ export class AgentWorkflowExecutionService {
 					ok: false,
 					error:
 						`Agent declares ${plural ? 'tools' : 'a tool'} named ${names}, ` +
-						`which ${plural ? 'are' : 'is'} reserved by n8n for workflow data access. ` +
+						`which ${plural ? 'are' : 'is'} reserved by MNI for workflow data access. ` +
 						`Rename the agent ${plural ? 'tools' : 'tool'} to avoid the collision.`,
 				};
 			}
@@ -239,7 +239,7 @@ export class AgentWorkflowExecutionService {
 		try {
 			// No `user`: this path runs an agent invoked from inside a workflow
 			// execution (AI Agent node, or a "Message an Agent" tool call from
-			// another workflow) — there is no interactive n8n user, only a bare
+			// another workflow) — there is no interactive MNI user, only a bare
 			// telemetry id (see `executeForWorkflow`'s `telemetryUserId`), and for
 			// webhook/trigger-fired executions even that can be absent. This
 			// runtime also isn't cached (see the docstring above), so there's no
@@ -828,7 +828,7 @@ export class AgentWorkflowExecutionService {
 					...config,
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						observationalMemory: { enabled: false },
 						episodicMemory: { enabled: false },
 					},
@@ -842,7 +842,7 @@ export class AgentWorkflowExecutionService {
 		// inline config comes straight from a workflow node parameter and never
 		// passes the agent-config write path that reconciles persisted agents — so
 		// re-earn it here, or a workflow author could forge one for a node/action
-		// n8n Connect doesn't cover and mint a managed credential regardless.
+		// MNI Connect doesn't cover and mint a managed credential regardless.
 		const accessibleCredentials = await credentialProvider.list();
 		await this.nodeToolAiGatewayService.assignManagedCredentials(
 			runtimeConfig.tools,

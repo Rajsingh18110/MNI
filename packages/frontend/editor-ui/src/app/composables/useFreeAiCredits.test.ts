@@ -76,7 +76,7 @@ describe('useFreeAiCredits', () => {
 		const { useFreeAiCredits } = await import('./useFreeAiCredits');
 		const claimedCredential = {
 			id: 'free-openai-credential',
-			name: 'n8n free OpenAI API credits',
+			name: 'MNI free OpenAI API credits',
 			type: 'openAiApi',
 		};
 		credentialsStore.claimFreeAiCredits.mockResolvedValueOnce(claimedCredential);

@@ -21,7 +21,7 @@ flowchart LR
 ### Importer rules
 - Importers **plan and decide**; they must never touch a repository directly. All persistence and
   lookups go through a **service**.
-- Prefer an **existing** domain service from the main n8n codebase (`FolderService`, `ProjectService`,
+- Prefer an **existing** domain service from the main MNI codebase (`FolderService`, `ProjectService`,
   `WorkflowService`, …). When the importer needs a capability the service lacks — reusing a source id,
   or a fetch-by-ids for matching — **extend that existing service with a general method** rather than
   reaching for the repository or spinning up an import-only service. Canonical examples:

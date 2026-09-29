@@ -1,7 +1,7 @@
 /**
  * Store Version Operation
  *
- * This module handles storing and retrieving the n8n version
+ * This module handles storing and retrieving the MNI version
  * in the local SQLite database metadata table.
  */
 
@@ -11,10 +11,10 @@ import { execWithParams, queryWithParams } from './query';
 const VERSION_KEY = 'version';
 
 /**
- * Store the n8n version in the database
+ * Store the MNI version in the database
  *
  * @param state - The data worker state
- * @param version - The n8n version string (e.g., "1.75.0")
+ * @param version - The MNI version string (e.g., "1.75.0")
  */
 export async function storeVersion(state: DataWorkerState, version: string): Promise<void> {
 	console.log('[DataWorker] storeVersion:', version);
@@ -33,7 +33,7 @@ export async function storeVersion(state: DataWorkerState, version: string): Pro
 }
 
 /**
- * Get the stored n8n version from the database
+ * Get the stored MNI version from the database
  *
  * @param state - The data worker state
  * @returns The stored version string or null if not found

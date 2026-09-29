@@ -7,7 +7,7 @@ import { BaseCommand } from '../../base-command';
 
 export default class PackageImportSelection extends BaseCommand {
 	static override description =
-		'Import a chosen subset of workflows from an n8n project package (.n8np)';
+		'Import a chosen subset of workflows from an MNI project package (.n8np)';
 
 	static override examples = [
 		'<%= config.bin %> package import-selection --file=export.n8np --selected-project-id=<id> --selected-workflow-ids=<id1>,<id2>',

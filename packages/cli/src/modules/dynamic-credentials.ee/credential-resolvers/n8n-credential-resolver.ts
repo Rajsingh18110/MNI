@@ -14,7 +14,7 @@ import { DynamicCredentialUserEntryStorage } from './storage/dynamic-credential-
 
 /**
  * N8N JWT-based credential resolver.
- * Resolves user identity via n8n JWT authentication and stores credentials
+ * Resolves user identity via MNI JWT authentication and stores credentials
  * encrypted in the database per user.
  */
 @CredentialResolver()
@@ -119,7 +119,7 @@ export class N8NCredentialResolver implements ICredentialResolver {
 	}
 
 	/**
-	 * The identity this resolver keys on IS the n8n user id, so the owning user
+	 * The identity this resolver keys on IS the MNI user id, so the owning user
 	 * is the resolved identifier.
 	 */
 	async resolveOwningUserId(

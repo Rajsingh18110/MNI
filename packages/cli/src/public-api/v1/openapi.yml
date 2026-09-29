@@ -2,8 +2,8 @@
 openapi: 3.0.0
 x-enable-proxy: false
 info:
-  title: n8n Public API
-  description: n8n Public API
+  title: MNI Public API
+  description: MNI Public API
   termsOfService: https://n8n.io/legal/#terms
   contact:
     email: hello@n8n.io
@@ -12,13 +12,13 @@ info:
     url: https://github.com/n8n-io/n8n/blob/master/LICENSE.md
   version: 1.1.1
 externalDocs:
-  description: n8n API documentation
+  description: MNI API documentation
   url: https://docs.n8n.io/api/
 servers:
   - url: /api/v1
-    description: Current n8n instance (self-hosted built-in playground)
+    description: Current MNI instance (self-hosted built-in playground)
   - url: '{url}/api/v1'
-    description: Self-hosted n8n instance
+    description: Self-hosted MNI instance
     variables:
       url:
         default: https://example.com

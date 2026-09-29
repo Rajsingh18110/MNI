@@ -197,8 +197,8 @@ describe('computeScope', () => {
 				packageDir: 'packages/cli',
 				rootDir,
 				changedFiles: ['packages/@n8n/api-types/src/agents/agent-json-config.schema.ts'],
-				packageName: 'n8n',
-				affectedPackages: ['@n8n/api-types', 'n8n'],
+				packageName: 'MNI',
+				affectedPackages: ['@n8n/api-types', 'MNI'],
 			});
 			expect(result.kind).toBe('full');
 			expect(formatScope(result)).toBe('RUN_FULL');
@@ -210,7 +210,7 @@ describe('computeScope', () => {
 				packageDir: 'packages/cli',
 				rootDir,
 				changedFiles: ['packages/@n8n/some-unrelated/src/x.ts'],
-				packageName: 'n8n',
+				packageName: 'MNI',
 				affectedPackages: ['@n8n/some-unrelated'],
 			});
 			expect(result.kind).toBe('skip');
@@ -222,7 +222,7 @@ describe('computeScope', () => {
 				packageDir: 'packages/cli',
 				rootDir,
 				changedFiles: ['packages/@n8n/api-types/src/agents/agent-json-config.schema.ts'],
-				packageName: 'n8n',
+				packageName: 'MNI',
 			});
 			expect(result.kind).toBe('skip');
 		});
@@ -233,8 +233,8 @@ describe('computeScope', () => {
 				packageDir: 'packages/cli',
 				rootDir,
 				changedFiles: ['packages/cli/src/a.ts'],
-				packageName: 'n8n',
-				affectedPackages: ['@n8n/api-types', 'n8n'],
+				packageName: 'MNI',
+				affectedPackages: ['@n8n/api-types', 'MNI'],
 			});
 			expect(result).toEqual({ kind: 'scoped', files: ['packages/cli/src/a.ts'] });
 		});

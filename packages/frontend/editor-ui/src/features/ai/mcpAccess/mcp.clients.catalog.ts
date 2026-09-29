@@ -42,17 +42,17 @@ export interface McpClientCategoryGroup {
 export function getMcpClientCatalog(serverUrl: string): McpClientCategoryGroup[] {
 	const claudeSnippet = `{
   "mcpServers": {
-    "n8n": {
+    "MNI": {
       "type": "http",
       "url": "${serverUrl}"
     }
   }
 }`;
-	// Cursor treats a bare `url` as SSE; n8n's endpoint is streamable HTTP, so the
+	// Cursor treats a bare `url` as SSE; MNI's endpoint is streamable HTTP, so the
 	// transport must be stated explicitly.
 	const cursorSnippet = `{
   "mcpServers": {
-    "n8n": {
+    "MNI": {
       "type": "streamable-http",
       "url": "${serverUrl}"
     }
@@ -67,28 +67,28 @@ experimental_use_rmcp_client = true
 url = "${serverUrl}"`;
 	const geminiSnippet = `{
   "mcpServers": {
-    "n8n": {
+    "MNI": {
       "httpUrl": "${serverUrl}"
     }
   }
 }`;
 	const vscodeSnippet = `{
   "servers": {
-    "n8n": {
+    "MNI": {
       "type": "http",
       "url": "${serverUrl}"
     }
   }
 }`;
-	const windsurfSnippet = `{\n  "mcpServers": {\n    "n8n": {\n      "serverUrl": "${serverUrl}"\n    }\n  }\n}`;
+	const windsurfSnippet = `{\n  "mcpServers": {\n    "MNI": {\n      "serverUrl": "${serverUrl}"\n    }\n  }\n}`;
 
 	// One-click deep links, exactly as each editor expects: Cursor takes base64 of
 	// `{"url": …}` in a `config` query param, VS Code a URL-encoded JSON object.
-	const cursorDeepLink = `cursor://anysphere.cursor-deeplink/mcp/install?name=n8n&config=${btoa(
+	const cursorDeepLink = `cursor://anysphere.cursor-deeplink/mcp/install?name=MNI&config=${btoa(
 		`{"url":"${serverUrl}"}`,
 	)}`;
 	const vscodeDeepLink = `vscode:mcp/install?${encodeURIComponent(
-		`{"name":"n8n","type":"http","url":"${serverUrl}"}`,
+		`{"name":"MNI","type":"http","url":"${serverUrl}"}`,
 	)}`;
 
 	return [
@@ -100,7 +100,7 @@ url = "${serverUrl}"`;
 					name: 'Claude Code',
 					category: 'cli',
 					icon: ClaudeIcon,
-					installCommand: `claude mcp add --transport http n8n ${serverUrl}`,
+					installCommand: `claude mcp add --transport http MNI ${serverUrl}`,
 					configSnippet: claudeSnippet,
 				},
 				{
@@ -108,16 +108,16 @@ url = "${serverUrl}"`;
 					name: 'Codex',
 					category: 'cli',
 					icon: CodexIcon,
-					installCommand: `codex mcp add n8n --url "${serverUrl}"`,
+					installCommand: `codex mcp add MNI --url "${serverUrl}"`,
 					configSnippet: codexSnippet,
-					authCommand: 'codex mcp login n8n',
+					authCommand: 'codex mcp login MNI',
 				},
 				{
 					id: 'gemini-cli',
 					name: 'Gemini CLI',
 					category: 'cli',
 					icon: GeminiIcon,
-					installCommand: `gemini mcp add --transport http n8n ${serverUrl}`,
+					installCommand: `gemini mcp add --transport http MNI ${serverUrl}`,
 					configSnippet: geminiSnippet,
 				},
 			],
@@ -147,9 +147,9 @@ url = "${serverUrl}"`;
 					name: 'Mistral Vibe',
 					category: 'web',
 					icon: MistralIcon,
-					// Opens Vibe's built-in n8n connector template with the server URL prefilled,
+					// Opens Vibe's built-in MNI connector template with the server URL prefilled,
 					// so the user only has to click Connect.
-					addUrl: `https://chat.mistral.ai/connections/marketplace?search=n8n&template=n8n&server_url=${encodeURIComponent(
+					addUrl: `https://chat.mistral.ai/connections/marketplace?search=MNI&template=MNI&server_url=${encodeURIComponent(
 						serverUrl,
 					)}`,
 				},

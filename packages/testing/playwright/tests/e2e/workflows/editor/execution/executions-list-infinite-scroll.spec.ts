@@ -25,12 +25,12 @@ test.describe(
 		const TOTAL_EXECUTIONS = 25;
 		const TALL_VIEWPORT = { width: 1920, height: 2000 };
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_4_executions_view.json');
 		});
 
 		test('should auto-load remaining executions when the sidebar fits without a scrollbar', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.executionsComposer.createExecutions(TOTAL_EXECUTIONS);
 			await n8n.canvas.clickExecutionsTab();
@@ -49,7 +49,7 @@ test.describe(
 			});
 		});
 
-		test('should keep loading on manual scroll on a tall viewport', async ({ n8n }) => {
+		test('should keep loading on manual scroll on a tall viewport', async ({ MNI }) => {
 			await n8n.executionsComposer.createExecutions(TOTAL_EXECUTIONS);
 			await n8n.canvas.clickExecutionsTab();
 			await n8n.page.setViewportSize(TALL_VIEWPORT);

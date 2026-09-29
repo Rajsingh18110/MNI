@@ -38,7 +38,7 @@ test.describe(
 			}
 		});
 
-		test('image attachment', async ({ n8n, anthropicCredential: _ }) => {
+		test('image attachment', async ({ MNI, anthropicCredential: _ }) => {
 			await n8n.navigate.toChatHub();
 			await n8n.chatHubChat.dismissWelcomeScreen();
 			await expect(n8n.chatHubChat.getModelSelectorButton()).toContainText(/claude/i); // auto-select a model
@@ -66,7 +66,7 @@ test.describe(
 			await newPage.close();
 		});
 
-		test('text file attachment', async ({ n8n, anthropicCredential: _ }) => {
+		test('text file attachment', async ({ MNI, anthropicCredential: _ }) => {
 			await n8n.navigate.toChatHub();
 			await n8n.chatHubChat.dismissWelcomeScreen();
 			await expect(n8n.chatHubChat.getModelSelectorButton()).toContainText(/claude/i);
@@ -82,7 +82,7 @@ test.describe(
 			await expect(n8n.chatHubChat.getChatMessages().nth(1)).toContainText('I am a file');
 		});
 
-		test('reference attachment in subsequent message', async ({ n8n, anthropicCredential: _ }) => {
+		test('reference attachment in subsequent message', async ({ MNI, anthropicCredential: _ }) => {
 			await n8n.navigate.toChatHub();
 			await n8n.chatHubChat.dismissWelcomeScreen();
 			await expect(n8n.chatHubChat.getModelSelectorButton()).toContainText(/claude/i);

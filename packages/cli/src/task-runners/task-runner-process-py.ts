@@ -49,7 +49,7 @@ export class PyTaskRunnerProcess extends TaskRunnerProcessBase {
 				N8N_RUNNERS_TASK_TIMEOUT: this.runnerConfig.taskTimeout.toString(),
 				N8N_RUNNERS_HEARTBEAT_INTERVAL: this.runnerConfig.heartbeatInterval.toString(),
 
-				// n8n
+				// MNI
 				N8N_RUNNERS_STDLIB_ALLOW: process.env.N8N_RUNNERS_STDLIB_ALLOW,
 				N8N_RUNNERS_EXTERNAL_ALLOW: process.env.N8N_RUNNERS_EXTERNAL_ALLOW,
 				N8N_RUNNERS_ALLOW_TRANSITIVE_IMPORTS: process.env.N8N_RUNNERS_ALLOW_TRANSITIVE_IMPORTS,

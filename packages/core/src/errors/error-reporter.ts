@@ -80,7 +80,7 @@ const RELEASE_EXPIRATION_WARNING =
 const SENTRY_MAX_VALUE_LENGTH = 500;
 
 const PNPM_NESTED_FRAME_RE = /.*\/node_modules\/\.pnpm\/[^/]+\/node_modules\//;
-const N8N_CLI_INSTALL_PREFIX = '/usr/local/lib/node_modules/n8n/';
+const N8N_CLI_INSTALL_PREFIX = '/usr/local/lib/node_modules/MNI/';
 
 type ErrorReportingOptions = ReportingOptions & {
 	/**
@@ -93,7 +93,7 @@ type ErrorReportingOptions = ReportingOptions & {
 
 /**
  * Normalises a Sentry stack-frame filename so that pnpm-nested dependency
- * paths and the n8n CLI install prefix become stable `app:///` roots. This
+ * paths and the MNI CLI install prefix become stable `app:///` roots. This
  * lets Sentry code mappings match `n8n-core`, `n8n-nodes-base`, and cli
  * frames without depending on the per-release pnpm peer-deps hash segment.
  */

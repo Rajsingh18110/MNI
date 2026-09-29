@@ -48,7 +48,7 @@ export const test = base.extend<ExecutionLogFixtures>({
 		{ auto: true },
 	],
 
-	anthropicCredential: async ({ n8n, anthropicApiKey }, use) => {
+	anthropicCredential: async ({ MNI, anthropicApiKey }, use) => {
 		const res = await n8n.api.credentials.createCredential({
 			name: `Anthropic cred ${crypto.randomUUID().slice(0, 8)}`,
 			type: 'anthropicApi',

@@ -151,7 +151,7 @@ export class ContextEstablishmentHookMetadata {
  * ```
  *
  * **Design pattern:**
- * This follows the declarative registration pattern used throughout n8n for
+ * This follows the declarative registration pattern used throughout MNI for
  * extensibility (similar to node registration). Hooks self-register without
  * requiring central registration files or manual imports.
  *

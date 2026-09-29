@@ -37,7 +37,7 @@ function isNodeExecutionData(data: unknown): data is INodeExecutionData[] {
 
 /**
 	Main class for creating the Workflow tool
-	Processes the node parameters and creates AI Agent tool capable of executing n8n workflows
+	Processes the node parameters and creates AI Agent tool capable of executing MNI workflows
 */
 export class WorkflowToolService {
 	// Determines if we should use input schema when creating the tool

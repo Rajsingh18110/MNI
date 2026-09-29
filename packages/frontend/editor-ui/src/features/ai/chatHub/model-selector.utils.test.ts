@@ -23,7 +23,7 @@ const mockSettings = createChatHubModuleSettings();
 
 const mockN8nAgent = createMockAgent({
 	name: 'Workflow Agent',
-	model: { provider: 'n8n', workflowId: 'wf-123' },
+	model: { provider: 'MNI', workflowId: 'wf-123' },
 	groupName: 'Project A',
 });
 
@@ -51,9 +51,9 @@ const buildMenuOptions: BuildMenuItemsOptions = {
 };
 
 describe(buildModelSelectorMenuItems, () => {
-	it('should include n8n agents only when includeCustomAgents is true', () => {
+	it('should include MNI agents only when includeCustomAgents is true', () => {
 		const agents = createMockModelsResponse({
-			n8n: { models: [mockN8nAgent] },
+			MNI: { models: [mockN8nAgent] },
 			'custom-agent': { models: [mockPersonalAgent] },
 		});
 
@@ -72,20 +72,20 @@ describe(buildModelSelectorMenuItems, () => {
 	it('should group workflow agents by project when multiple projects exist', () => {
 		const agent1 = createMockAgent({
 			name: 'Agent 1',
-			model: { provider: 'n8n', workflowId: 'wf-1' },
+			model: { provider: 'MNI', workflowId: 'wf-1' },
 			groupName: 'Project A',
 			groupIcon: { type: 'emoji', value: '🚀' },
 		});
 
 		const agent2 = createMockAgent({
 			name: 'Agent 2',
-			model: { provider: 'n8n', workflowId: 'wf-2' },
+			model: { provider: 'MNI', workflowId: 'wf-2' },
 			groupName: 'Project B',
 			groupIcon: { type: 'emoji', value: '🎯' },
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2] },
+			MNI: { models: [agent1, agent2] },
 		});
 
 		const result = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -107,21 +107,21 @@ describe(buildModelSelectorMenuItems, () => {
 		expect(projectB?.children?.[0].label).toBe('Agent 2');
 	});
 
-	it('should not group n8n agents when only one project exists', () => {
+	it('should not group MNI agents when only one project exists', () => {
 		const agent1 = createMockAgent({
 			name: 'Agent 1',
-			model: { provider: 'n8n', workflowId: 'wf-1' },
+			model: { provider: 'MNI', workflowId: 'wf-1' },
 			groupName: 'Project A',
 		});
 
 		const agent2 = createMockAgent({
 			name: 'Agent 2',
-			model: { provider: 'n8n', workflowId: 'wf-2' },
+			model: { provider: 'MNI', workflowId: 'wf-2' },
 			groupName: 'Project A',
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2] },
+			MNI: { models: [agent1, agent2] },
 		});
 
 		const result = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -262,7 +262,7 @@ describe(buildModelSelectorMenuItems, () => {
 	});
 
 	it('should show empty state for workflow agents', () => {
-		const agents = createMockModelsResponse({ n8n: { models: [] } });
+		const agents = createMockModelsResponse({ MNI: { models: [] } });
 
 		const result = buildModelSelectorMenuItems(agents, buildMenuOptions);
 
@@ -271,7 +271,7 @@ describe(buildModelSelectorMenuItems, () => {
 		);
 		expect(workflowAgentsGroup).toBeDefined();
 		expect(workflowAgentsGroup?.children).toHaveLength(1);
-		expect(workflowAgentsGroup?.children?.[0].id).toBe('n8n::no-agents');
+		expect(workflowAgentsGroup?.children?.[0].id).toBe('MNI::no-agents');
 		expect(workflowAgentsGroup?.children?.[0].label).toBe('chatHub.workflowAgents.empty.noAgents');
 		expect(workflowAgentsGroup?.children?.[0].disabled).toBe(true);
 	});
@@ -303,28 +303,28 @@ describe(applySearch, () => {
 		expect(result[0].data?.parts).toEqual(['OpenAI', 'GPT-4']);
 	});
 
-	it('should flatten nested groups in search results for n8n agents with project groups', () => {
+	it('should flatten nested groups in search results for MNI agents with project groups', () => {
 		// Create agents from different projects
 		const agent1 = createMockAgent({
 			name: 'Agent 1',
-			model: { provider: 'n8n', workflowId: 'wf-1' },
+			model: { provider: 'MNI', workflowId: 'wf-1' },
 			groupName: 'ProjectA',
 		});
 
 		const agent2 = createMockAgent({
 			name: 'Agent 2',
-			model: { provider: 'n8n', workflowId: 'wf-2' },
+			model: { provider: 'MNI', workflowId: 'wf-2' },
 			groupName: 'ProjectB',
 		});
 
 		const agent3 = createMockAgent({
 			name: 'Agent 3',
-			model: { provider: 'n8n', workflowId: 'wf-3' },
+			model: { provider: 'MNI', workflowId: 'wf-3' },
 			groupName: 'ProjectB',
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2, agent3] },
+			MNI: { models: [agent1, agent2, agent3] },
 		});
 
 		const menuItems = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -342,17 +342,17 @@ describe(applySearch, () => {
 	it('should not group workflow agents if all matched agents belong to the same group', () => {
 		const agent1 = createMockAgent({
 			name: 'My Agent',
-			model: { provider: 'n8n', workflowId: 'wf-1' },
+			model: { provider: 'MNI', workflowId: 'wf-1' },
 			groupName: 'g',
 		});
 		const agent2 = createMockAgent({
 			name: 'Another Agent',
-			model: { provider: 'n8n', workflowId: 'wf-2' },
+			model: { provider: 'MNI', workflowId: 'wf-2' },
 			groupName: 'g',
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2] },
+			MNI: { models: [agent1, agent2] },
 		});
 
 		const menuItems = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -369,12 +369,12 @@ describe(applySearch, () => {
 		const agentModels = Array.from({ length: 12 }, (_, i) =>
 			createMockAgent({
 				name: `Agent ${i}`,
-				model: { provider: 'n8n', workflowId: `wf-${i}` },
+				model: { provider: 'MNI', workflowId: `wf-${i}` },
 			}),
 		);
 
 		const agents = createMockModelsResponse({
-			n8n: { models: agentModels },
+			MNI: { models: agentModels },
 		});
 
 		const menuItems = buildModelSelectorMenuItems(agents, buildMenuOptions);

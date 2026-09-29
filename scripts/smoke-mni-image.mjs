@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Verifies the built n8n image still works for the ways n8n-cloud launches
+// Verifies the built MNI image still works for the ways n8n-cloud launches
 // it. The container spec is pulled live from n8n-cloud's helm chart so this
 // test stays in sync with what cloud actually deploys.
 
@@ -24,19 +24,19 @@ const RUNNERS_IMAGES = process.env.SMOKE_RUNNERS_IMAGES
 			...(process.env.DOCKER_BUILD_DISTROLESS === 'true' ? ['n8nio/runners:local-distroless'] : []),
 		];
 const TIMEOUT = '45s';
-// Matches an n8n runtime image ref (e.g. `mni/mni:2.4.4`, `ghcr.io/n8n-io/n8n@sha256:…`)
-// but not sidecars like `n8nio/runners:…` or controller images that happen to contain "n8n".
-const N8N_IMAGE_REF = /\/n8n(:|@)/;
-// `bin/n8n` short-circuits on `--version` regardless of subcommand
-// (checks process.argv.slice(-1)[0]), so this works for `n8n` and `n8n worker` alike.
+// Matches an MNI runtime image ref (e.g. `mni/mni:2.4.4`, `ghcr.io/n8n-io/n8n@sha256:…`)
+// but not sidecars like `n8nio/runners:…` or controller images that happen to contain "MNI".
+const N8N_IMAGE_REF = /\/MNI(:|@)/;
+// `bin/MNI` short-circuits on `--version` regardless of subcommand
+// (checks process.argv.slice(-1)[0]), so this works for `MNI` and `MNI worker` alike.
 const VERSION_FLAG = '--version';
 const VERSION_OUTPUT = /^\d+\.\d+\.\d+/m;
 const CLOUD = {
 	repo: 'n8n-io/n8n-cloud',
 	ref: process.env.CLOUD_CHART_REF || 'main',
 	// Owned by n8n-cloud — override via env if cloud reorganises. Cross-reference:
-	// n8n-cloud:packages/instance-controller/charts/n8napp/{n8n,values-v1.yaml}
-	chartPath: process.env.CLOUD_CHART_PATH || 'packages/instance-controller/charts/n8napp/n8n',
+	// n8n-cloud:packages/instance-controller/charts/n8napp/{MNI,values-v1.yaml}
+	chartPath: process.env.CLOUD_CHART_PATH || 'packages/instance-controller/charts/n8napp/MNI',
 	valuesPath:
 		process.env.CLOUD_CHART_VALUES || 'packages/instance-controller/charts/n8napp/values-v1.yaml',
 };
@@ -89,7 +89,7 @@ async function runWorkspaceDedupCheck() {
 	try {
 		const { stdout } = await $({
 			timeout: TIMEOUT,
-		})`docker run --rm --entrypoint ls ${IMAGE} /usr/local/lib/node_modules/n8n/node_modules/.pnpm`;
+		})`docker run --rm --entrypoint ls ${IMAGE} /usr/local/lib/node_modules/MNI/node_modules/.pnpm`;
 		const variants = new Map();
 		for (const entry of stdout.split('\n')) {
 			// pnpm names an injected workspace package after its `file:` path, which the
@@ -240,7 +240,7 @@ async function run({ name, user, entrypoint, args }) {
 
 const cloud = process.env.SMOKE_SKIP_CLOUD === 'true' ? [] : await fetchCloudInvocations();
 if (process.env.SMOKE_SKIP_CLOUD !== 'true' && cloud.length === 0) {
-	echo(chalk.red('Cloud chart rendered no n8n containers — chart structure may have moved.'));
+	echo(chalk.red('Cloud chart rendered no MNI containers — chart structure may have moved.'));
 	echo(
 		chalk.dim('  Check CLOUD_CHART_PATH / CLOUD_CHART_VALUES, or run with SMOKE_SKIP_CLOUD=true.'),
 	);
@@ -248,7 +248,7 @@ if (process.env.SMOKE_SKIP_CLOUD !== 'true' && cloud.length === 0) {
 }
 
 const invocations = [
-	{ name: 'n8n image default entrypoint', user: '1000', entrypoint: null, args: [VERSION_FLAG] },
+	{ name: 'MNI image default entrypoint', user: '1000', entrypoint: null, args: [VERSION_FLAG] },
 	...cloud,
 ];
 

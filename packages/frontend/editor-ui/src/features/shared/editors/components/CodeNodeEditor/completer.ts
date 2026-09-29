@@ -277,7 +277,7 @@ export const useCompleter = (
 	}
 
 	/**
-	 * Collect uses of variables pointing to n8n syntax if they have been extended.
+	 * Collect uses of variables pointing to MNI syntax if they have been extended.
 	 *
 	 * x.first().
 	 * x.first().json.

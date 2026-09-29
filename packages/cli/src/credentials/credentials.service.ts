@@ -2057,7 +2057,7 @@ export class CredentialsService {
 
 	/**
 	 * Create a new managed credential in user's account and return it along the scopes.
-	 * Managed credentials are managed by n8n and cannot be edited by the user.
+	 * Managed credentials are managed by MNI and cannot be edited by the user.
 	 */
 	async createManagedCredential(dto: CreateCredentialDto, user: User) {
 		return await this.createCredential({ ...dto, isManaged: true }, user);

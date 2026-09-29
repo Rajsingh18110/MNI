@@ -44,7 +44,7 @@ const props = withDefaults(
 		detailItem?: ToolConnectionItem | null;
 		detailMode?: 'detail' | 'settings';
 		hideBackButton?: boolean;
-		/** Dialog width. Consumers with more tabs (e.g. the n8n Connect section) can widen it. */
+		/** Dialog width. Consumers with more tabs (e.g. the MNI Connect section) can widen it. */
 		size?: DialogSize;
 		createAction?: PickerCreateAction;
 		createActionLoading?: boolean;
@@ -177,7 +177,7 @@ function categoryOf(item: ToolConnectionItem): ToolCategoryKey {
 }
 
 /**
- * "All" ranks connected tools first, then those backed by n8n credits, then the
+ * "All" ranks connected tools first, then those backed by MNI credits, then the
  * rest — so the most immediately usable tools sit on top. Lower rank sorts first.
  */
 function allSortRank(item: ToolConnectionItem): number {
@@ -261,7 +261,7 @@ const CATEGORY_I18N: Record<ToolCategoryKey, BaseTextKey> = {
 	'built-in': 'tools.connection.categories.builtIn',
 	mcp: 'tools.connection.categories.mcp',
 	ai: 'tools.connection.categories.ai',
-	n8n: 'tools.connection.categories.n8n',
+	MNI: 'tools.connection.categories.n8n',
 	'n8n-connect': 'tools.connection.categories.n8nConnect',
 	'app-action': 'tools.connection.categories.appAction',
 	community: 'tools.connection.categories.community',

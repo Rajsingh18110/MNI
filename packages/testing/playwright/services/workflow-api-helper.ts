@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 import { isTerminalExecutionStatus, type IWorkflowBase, type ExecutionSummary } from 'n8n-workflow';
 import { nanoid } from 'nanoid';
 
-// Type for execution responses from the n8n API
+// Type for execution responses from the MNI API
 // Couldn't find the exact type so I put these ones together
 
 interface ExecutionListResponse extends ExecutionSummary {

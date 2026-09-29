@@ -44,7 +44,7 @@ test.describe(
 				expect(user.role).toBe('global:member');
 			});
 
-			test('should maintain separate sessions for multiple users', async ({ n8n, api }) => {
+			test('should maintain separate sessions for multiple users', async ({ MNI, api }) => {
 				await n8n.navigate.toPersonalSettings();
 				const user = await api.users.create();
 
@@ -57,7 +57,7 @@ test.describe(
 				await memberN8n.navigate.toPersonalSettings();
 				await expect(memberN8n.settingsPersonal.getUserRole()).toHaveText('Member');
 
-				// n8n main should still have owner context
+				// MNI main should still have owner context
 				await n8n.page.reload();
 				await expect(n8n.settingsPersonal.getUserRole()).toHaveText('Owner');
 
@@ -104,7 +104,7 @@ test.describe(
 				expect(owner).toBeDefined();
 			});
 
-			test('should create multiple users and maintain separate sessions', async ({ n8n, api }) => {
+			test('should create multiple users and maintain separate sessions', async ({ MNI, api }) => {
 				// Create users via public API
 				const user1 = await api.publicApi.createUser({
 					email: `multi-user-1-${nanoid()}@test.com`,

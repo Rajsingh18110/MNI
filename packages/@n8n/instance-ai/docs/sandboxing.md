@@ -2,7 +2,7 @@
 
 Instance AI uses a remote sandbox workspace to build workflows from
 `@n8n/workflow-sdk` source. The sandbox keeps file writes and command execution
-off the n8n host. Workflow building is unavailable when sandboxing is disabled.
+off the MNI host. Workflow building is unavailable when sandboxing is disabled.
 
 Agent building is separate. `build-agent` delegates to
 `AgentsBuilderService` in the agents module and does not use the Instance AI
@@ -19,7 +19,7 @@ graph LR
     Shared --> Cmd[Workspace sandbox]
     FS --> Provider[Configured sandbox provider]
     Cmd --> Provider
-    Provider --> N8n[n8n sandbox service]
+    Provider --> MNI[MNI sandbox service]
     Provider --> Daytona[Daytona]
 ```
 
@@ -43,7 +43,7 @@ runtime filters the model-facing set to `CORE_WORKSPACE_TOOL_NAMES`.
 
 ## Providers
 
-### n8n sandbox service
+### MNI sandbox service
 
 `n8n-sandbox` is the default provider. The service manages remote sandbox
 containers through its HTTP API. Instance AI assigns each thread a stable
@@ -66,7 +66,7 @@ tokens from the managed AI service.
 
 In direct mode, Instance AI builds from the configured image. The default image
 is `daytonaio/sandbox:0.5.0`. In proxy mode, it uses an explicit snapshot or the
-versioned snapshot `n8n/instance-ai:<n8nVersion>`. Proxy mode cannot upload an
+versioned snapshot `MNI/instance-ai:<n8nVersion>`. Proxy mode cannot upload an
 image-build context. A missing or unusable snapshot therefore fails sandbox
 creation.
 
@@ -93,7 +93,7 @@ background tasks keep the entry alive. A TTL of `0` disables this cache
 eviction.
 
 Cache eviction does not destroy the remote sandbox. Daytona reclaims remote
-state through its configured lifecycle. Remote reclamation for the n8n sandbox
+state through its configured lifecycle. Remote reclamation for the MNI sandbox
 service is governed by that service's deployment policy, outside Instance AI.
 
 Explicit thread cleanup destroys a cached workspace. If no cache entry exists,
@@ -178,7 +178,7 @@ the provider does not respond. Compiler failures and timeouts preserve the
 original build errors. User cancellation still stops the build.
 
 The async API collects the native process exit status after normal completion.
-In n8n sandbox image 1.3.0, forced termination can leave exited native processes
+In MNI sandbox image 1.3.0, forced termination can leave exited native processes
 unreaped under PID 1. The provider stops execution, but its init process must
 also collect these exit records.
 
@@ -250,8 +250,8 @@ provider notifications or polling.
 | ----------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
 | `N8N_INSTANCE_AI_SANDBOX_ENABLED`               | `false`                   | Enable the sandbox-backed workspace                                           |
 | `N8N_INSTANCE_AI_SANDBOX_PROVIDER`              | `n8n-sandbox`             | Select `n8n-sandbox` or `daytona`                                             |
-| `N8N_SANDBOX_SERVICE_URL`                       | empty                     | n8n sandbox service URL                                                       |
-| `N8N_SANDBOX_SERVICE_API_KEY`                   | empty                     | n8n sandbox service API key                                                   |
+| `N8N_SANDBOX_SERVICE_URL`                       | empty                     | MNI sandbox service URL                                                       |
+| `N8N_SANDBOX_SERVICE_API_KEY`                   | empty                     | MNI sandbox service API key                                                   |
 | `DAYTONA_API_URL`                               | empty                     | Daytona API URL                                                               |
 | `DAYTONA_API_KEY`                               | empty                     | Daytona API key for direct mode                                               |
 | `N8N_INSTANCE_AI_SANDBOX_IMAGE`                 | `daytonaio/sandbox:0.5.0` | Daytona base image                                                            |

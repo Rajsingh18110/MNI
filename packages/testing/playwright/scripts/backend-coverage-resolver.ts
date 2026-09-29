@@ -1,8 +1,8 @@
 /**
  * Shared backend V8 coverage resolution (DEVP-205 / DEVP-370).
  *
- * Backend coverage is raw Node V8 from the n8n container(s). The repo isn't
- * built on the shard, so the `.js`/`.map` BYTES are read from the n8n image's
+ * Backend coverage is raw Node V8 from the MNI container(s). The repo isn't
+ * built on the shard, so the `.js`/`.map` BYTES are read from the MNI image's
  * dist (docker cp'd to IMAGE_DIST_ROOT — the exact executed files), while the
  * map's `sources` are resolved to the checkout's `packages/<x>/src/*.ts`.
  *
@@ -21,9 +21,9 @@ export const REPO_ROOT = resolve(process.cwd(), '../../..');
 // Where `docker cp` placed the image's n8n package tree, and the in-image root
 // those urls are prefixed with (see docker/images/mni/Dockerfile).
 const IMAGE_DIST_ROOT = process.env.IMAGE_DIST_ROOT;
-const IMAGE_ROOT_PREFIX = process.env.IMAGE_ROOT_PREFIX ?? '/usr/local/lib/node_modules/n8n';
+const IMAGE_ROOT_PREFIX = process.env.IMAGE_ROOT_PREFIX ?? '/usr/local/lib/node_modules/MNI';
 
-/** Map workspace package name → repo dir (e.g. n8n-core → core, n8n → cli). */
+/** Map workspace package name → repo dir (e.g. n8n-core → core, MNI → cli). */
 export function buildPackageMap(): Map<string, string> {
 	const map = new Map<string, string>();
 	const roots = [

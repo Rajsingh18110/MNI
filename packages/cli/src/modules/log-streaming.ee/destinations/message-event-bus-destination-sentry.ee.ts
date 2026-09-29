@@ -68,7 +68,7 @@ export class MessageEventBusDestinationSentry
 			scope.setTags({
 				event: msg.getEventName(),
 				logger: this.label ?? this.getId(),
-				app: 'n8n',
+				app: 'MNI',
 			});
 			if (this.sendPayload) {
 				scope.setExtras(payload);

@@ -62,19 +62,19 @@ describe('build command', () => {
 		expect(cancel).toHaveBeenCalledWith('TypeScript build failed');
 	});
 
-	tmpdirTest('invalid package - not an n8n node package', async ({ tmpdir }) => {
+	tmpdirTest('invalid package - not an MNI node package', async ({ tmpdir }) => {
 		await fs.writeFile(
 			`${tmpdir}/package.json`,
 			JSON.stringify({
 				name: 'regular-package',
 				version: '1.0.0',
-				// No n8n field - this makes it an invalid n8n package
+				// No MNI field - this makes it an invalid MNI package
 			}),
 		);
 
 		await expect(CommandTester.run('build')).rejects.toThrow('EEXIT: 1');
 
-		expect(cancel).toHaveBeenCalledWith('n8n-node build can only be run in an n8n node package');
+		expect(cancel).toHaveBeenCalledWith('n8n-node build can only be run in an MNI node package');
 	});
 
 	tmpdirTest('no static files - still completes successfully', async ({ tmpdir }) => {

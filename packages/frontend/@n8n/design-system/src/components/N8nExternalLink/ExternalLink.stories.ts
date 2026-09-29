@@ -38,7 +38,7 @@ Default.args = {
 	href: 'https://n8n.io',
 	size: 'medium',
 	newWindow: true,
-	default: 'Visit n8n',
+	default: 'Visit MNI',
 };
 
 export const IconOnly = Template.bind({});
@@ -64,7 +64,7 @@ SameWindow.args = {
 	href: 'https://n8n.io',
 	size: 'medium',
 	newWindow: false,
-	default: 'Visit n8n',
+	default: 'Visit MNI',
 };
 
 export const WithClickHandler = Template.bind({});

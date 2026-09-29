@@ -68,7 +68,7 @@ const SAFE_METHODS_SENTENCE =
 	`The only non-builder methods available are ${SAFE_JSON_METHOD_NAMES.map((n) => `\`JSON.${n}\``).join(', ')} ` +
 	`and the string methods ${SAFE_STRING_METHOD_NAMES.map((n) => `\`.${n}()\``).join(', ')}. ` +
 	'Native array/string methods such as `.join()`, `.map()`, `.filter()`, `.reduce()`, and `.split()` are NOT available in builder code. ' +
-	'This restriction applies to builder code only: n8n expressions (`{{ ... }}`) run full JavaScript at runtime, so all of these methods work inside an expression.';
+	'This restriction applies to builder code only: MNI expressions (`{{ ... }}`) run full JavaScript at runtime, so all of these methods work inside an expression.';
 
 /**
  * Node-groups documentation, shared by Instance AI and the MCP `get_sdk_reference` tool.
@@ -193,7 +193,7 @@ parsing, date math, regex) belongs in a node. Pick the native node first:
 - De-duplication: **Remove Duplicates**. Aggregation: **Aggregate** / **Summarize**.
 - Splitting an array into items: **Split Out**. Capping items: **Limit**. Joining branches: **Merge**.
 
-n8n expressions run full JavaScript at runtime, so \`.join()\`, \`.filter()\`,
+MNI expressions run full JavaScript at runtime, so \`.join()\`, \`.filter()\`,
 \`.map()\`, \`.split()\`, ternaries and \`||\` defaults all work inside a Set field
 value, for example \`{{ [$json.title, $json.category].filter(Boolean).join(' ') }}\`.
 The builder-code method restriction above does not apply to expressions. In

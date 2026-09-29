@@ -20,7 +20,7 @@ export type CreateNodeAsToolOptions = {
 	nodeType: INodeType;
 	handleToolInvocation: (toolArgs: IDataObject) => Promise<unknown>;
 	/**
-	 * Optional supply-data context used to resolve n8n expressions in the
+	 * Optional supply-data context used to resolve MNI expressions in the
 	 * user-provided `toolDescription` parameter against the upstream input data.
 	 * When omitted, the raw description value is used (no expression evaluation).
 	 */

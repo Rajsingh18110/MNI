@@ -11,7 +11,7 @@ services:
     restart: always
     user: root:root
     environment:
-      - POSTGRES_DB=n8n
+      - POSTGRES_DB=MNI
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - PGDATA=/var/lib/postgresql/data/pgdata
@@ -23,12 +23,12 @@ services:
       timeout: 5s
       retries: 5
 
-  n8n:
+  MNI:
     image: ghcr.io/n8n-io/n8n:${N8N_VERSION:-latest}
     user: root:root
     environment:
       - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_USER_FOLDER=/n8n
+      - N8N_USER_FOLDER=/MNI
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
       - DB_POSTGRESDB_PASSWORD=password
@@ -43,7 +43,7 @@ services:
     ports:
       - 5678:5678
     volumes:
-      - ${RUN_DIR}/n8n:/n8n
+      - ${RUN_DIR}/MNI:/MNI
     depends_on:
       postgres:
         condition: service_healthy
@@ -62,13 +62,13 @@ services:
       - N8N_RUNNERS_AUTH_TOKEN=test
       - NO_COLOR=1
     depends_on:
-      n8n:
+      MNI:
         condition: service_healthy
 
   benchmark:
     image: ghcr.io/n8n-io/n8n-benchmark:${N8N_BENCHMARK_VERSION:-latest}
     depends_on:
-      n8n:
+      MNI:
         condition: service_healthy
     environment:
       - N8N_BASE_URL=http://n8n:5678

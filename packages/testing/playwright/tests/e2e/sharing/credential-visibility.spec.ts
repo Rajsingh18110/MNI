@@ -10,7 +10,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should only show credentials from the same team project', async ({ n8n, api }) => {
+		test('should only show credentials from the same team project', async ({ MNI, api }) => {
 			await n8n.navigate.toCredentials();
 			const personalCredName = `Personal Credential ${nanoid()}`;
 			await n8n.credentialsComposer.createFromList(
@@ -54,7 +54,7 @@ test.describe(
 			await expect(n8n.ndv.credentials.getOptionByText(devCredName)).toBeHidden();
 		});
 
-		test('should show personal and shared credentials for members', async ({ n8n, api }) => {
+		test('should show personal and shared credentials for members', async ({ MNI, api }) => {
 			const member = await api.publicApi.createUser({
 				email: `member-${nanoid()}@test.com`,
 				firstName: 'Test',
@@ -97,7 +97,7 @@ test.describe(
 		});
 
 		test('should only show own credentials in shared workflow for members', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const member = await api.publicApi.createUser({
@@ -157,7 +157,7 @@ test.describe(
 		});
 
 		test('should show owner and workflow creator credentials for global owner in shared workflows', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const member = await api.publicApi.createUser({
@@ -213,7 +213,7 @@ test.describe(
 		});
 
 		test('should show all personal credentials for global owner in own workflows', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const member = await api.publicApi.createUser({

@@ -289,7 +289,7 @@ describe('SlackInteractionWebhooks', () => {
 		expect(isSlackInteractionRequest(routedReq)).toBe(true);
 	});
 
-	it('strips n8n auth and browserId cookies before routing into the shared resume', async () => {
+	it('strips MNI auth and browserId cookies before routing into the shared resume', async () => {
 		const reference = buildHitlCallbackReference('exec-1', 'a', TEST_HMAC_SECRET);
 		const req = createRequest(reference);
 		// Assign real cookie values after construction so the deep mock does not proxy them.

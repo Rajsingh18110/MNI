@@ -29,15 +29,15 @@ interface OnboardingOpening {
 
 // biome-ignore format: one app list per line reads as the table it is
 export const ONBOARDING_OPENING: OnboardingOpening = {
-	title: 'Welcome to n8n',
+	title: 'Welcome to MNI',
 	greeting: [
 		"Hi {{firstName}}, I'm your Assistant.",
-		'Think of me as your n8n expert.',
+		'Think of me as your MNI expert.',
 		"Two final questions, then I'll suggest automations that fit how you work.",
 	].join('\n\n'),
 	followUp: 'Got it. Finally, tell me a little about how you use {{apps}}.',
 	questions: [
-		// The n8n Cloud signup form's team labels, so the answers stay comparable with the Cloud
+		// The MNI cloud signup form's team labels, so the answers stay comparable with the Cloud
 		// metadata (`what_team_are_you_on`). The card hides options that start with "other"; its
 		// "Something else" field stands in for Other. A survey team answers this step, and the card
 		// then starts at the apps step with that team's list.
@@ -49,7 +49,7 @@ export const ONBOARDING_OPENING: OnboardingOpening = {
 			options: ['Executive/Owner', 'Support', 'Product & Design', 'Sales', 'IT', 'Engineering', 'Marketing'],
 		},
 		// Per team, the 3 tools most typical of that team in the Cloud onboarding data (tools with an
-		// n8n node only), then the 4 apps that lead every team: Google Sheets, Gmail, WhatsApp and
+		// MNI node only), then the 4 apps that lead every team: Google Sheets, Gmail, WhatsApp and
 		// Telegram. The team tools come first so the personalization shows. `options` shows when no
 		// team is known (a free-text team, the survey's "Other"): the 7 apps users without a team add
 		// most. The card's "Something else" row is the eighth option. `{{team}}` becomes the team from

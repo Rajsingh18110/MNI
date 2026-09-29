@@ -348,7 +348,7 @@ export class BaseExecuteContext extends NodeExecutionContext {
 
 	getInputSourceData(inputIndex = 0, connectionType = NodeConnectionTypes.Main): ISourceData {
 		if (this.executeData?.source === null) {
-			// Should never happen as n8n sets it automatically
+			// Should never happen as MNI sets it automatically
 			throw new UnexpectedError('Source data is missing');
 		}
 		return this.executeData.source[connectionType][inputIndex]!;

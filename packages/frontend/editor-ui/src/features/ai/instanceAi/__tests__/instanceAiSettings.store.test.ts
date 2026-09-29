@@ -525,17 +525,17 @@ describe('useInstanceAiSettingsStore', () => {
 	});
 
 	describe('provider credentials', () => {
-		it('refreshes n8n Sandbox credentials when the assistant proxy is enabled', async () => {
+		it('refreshes MNI Sandbox credentials when the assistant proxy is enabled', async () => {
 			setModuleSettings(settingsStore, { proxyEnabled: true, cloudManaged: false });
 			mockFetchServiceCredentials.mockResolvedValue([
-				{ id: 'sandbox-cred', name: 'n8n Sandbox', type: 'httpHeaderAuth' },
+				{ id: 'sandbox-cred', name: 'MNI Sandbox', type: 'httpHeaderAuth' },
 			]);
 
 			await store.refreshCredentials();
 
 			expect(mockFetchServiceCredentials).toHaveBeenCalledOnce();
 			expect(store.serviceCredentials).toEqual([
-				{ id: 'sandbox-cred', name: 'n8n Sandbox', type: 'httpHeaderAuth' },
+				{ id: 'sandbox-cred', name: 'MNI Sandbox', type: 'httpHeaderAuth' },
 			]);
 		});
 	});

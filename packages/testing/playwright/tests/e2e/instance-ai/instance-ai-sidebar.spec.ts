@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'instanceAI' }],
 	},
 	() => {
-		test('should create new thread via sidebar button', async ({ n8n }) => {
+		test('should create new thread via sidebar button', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			// Send a message to establish the current thread
@@ -38,7 +38,7 @@ test.describe(
 			await expect(n8n.instanceAi.sidebar.getThreadByTitle('Second thread message')).toBeVisible();
 		});
 
-		test('should switch between threads', async ({ n8n }) => {
+		test('should switch between threads', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			// Create first thread with a unique message
@@ -74,7 +74,7 @@ test.describe(
 			});
 		});
 
-		test('should rename thread via action menu', async ({ n8n }) => {
+		test('should rename thread via action menu', async ({ MNI }) => {
 			const thread = await n8n.api.createInstanceAiThread();
 			await n8n.api.renameInstanceAiThread(thread.id, 'Thread to rename');
 			await n8n.instanceAi.gotoThread(thread.id);
@@ -90,7 +90,7 @@ test.describe(
 			});
 		});
 
-		test('should delete thread via action menu', async ({ n8n }) => {
+		test('should delete thread via action menu', async ({ MNI }) => {
 			const thread = await n8n.api.createInstanceAiThread();
 			await n8n.api.renameInstanceAiThread(thread.id, 'Thread to delete');
 			await n8n.instanceAi.gotoThread(thread.id);

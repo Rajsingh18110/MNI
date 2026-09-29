@@ -217,7 +217,7 @@ describe('reclassifyMaskedStreamFailure', () => {
 		expect(resolved).toBeInstanceOf(QuotaExhaustedStreamError);
 	});
 
-	// The lock is read from the proxy, never inferred from n8n's own trigger state: a lock call
+	// The lock is read from the proxy, never inferred from MNI's own trigger state: a lock call
 	// that failed leaves the pool open, and an unrelated stream death must not become a paywall.
 	it('keeps the original error when the proxy reports the pool unlocked', async () => {
 		const service = createService(async () => ({

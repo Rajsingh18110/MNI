@@ -17,7 +17,7 @@ test.describe(
 		test.describe.configure({ mode: 'serial' });
 		test.describe('unlicensed', () => {
 			test('should show the unlicensed action box when the feature is disabled', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.api.disableFeature('variables');
 				await n8n.navigate.toVariables();
@@ -27,13 +27,13 @@ test.describe(
 		});
 
 		test.describe('licensed', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.api.enableFeature('variables');
 				await n8n.api.variables.deleteAllVariables();
 				await n8n.navigate.toVariables();
 			});
 
-			test('should create a new variable using empty state', async ({ n8n }) => {
+			test('should create a new variable using empty state', async ({ MNI }) => {
 				const key = `ENV_VAR_${generateValidId()}`;
 				const value = 'test_value';
 
@@ -45,7 +45,7 @@ test.describe(
 				await expect(n8n.variables.getVariablesRows()).toHaveCount(1);
 			});
 
-			test('should create multiple variables', async ({ n8n }) => {
+			test('should create multiple variables', async ({ MNI }) => {
 				const key1 = `ENV_VAR_NEW_${generateValidId()}`;
 				const value1 = 'test_value_1';
 				await n8n.variables.createVariableFromEmptyState(key1, value1);
@@ -66,7 +66,7 @@ test.describe(
 				await expect(variableRow2).toBeVisible();
 			});
 
-			test('should get validation errors and cancel variable creation', async ({ n8n }) => {
+			test('should get validation errors and cancel variable creation', async ({ MNI }) => {
 				await n8n.variables.createVariableFromEmptyState(
 					`ENV_BASE_${generateValidId()}`,
 					'base_value',
@@ -85,7 +85,7 @@ test.describe(
 				await expect(n8n.variables.getVariablesRows()).toHaveCount(initialCount);
 			});
 
-			test('should edit a variable', async ({ n8n }) => {
+			test('should edit a variable', async ({ MNI }) => {
 				const key = `ENV_VAR_EDIT_${generateValidId()}`;
 				const initialValue = 'initial_value';
 				await n8n.variables.createVariableFromEmptyState(key, initialValue);
@@ -99,7 +99,7 @@ test.describe(
 				await expect(variableRow).toBeVisible();
 			});
 
-			test('should delete a variable', async ({ n8n }) => {
+			test('should delete a variable', async ({ MNI }) => {
 				const key = `TO_DELETE_${generateValidId()}`;
 				const value = 'delete_test_value';
 
@@ -114,7 +114,7 @@ test.describe(
 				await expect(n8n.variables.getVariableRow(key)).toBeHidden();
 			});
 
-			test('should search for a variable', async ({ n8n }) => {
+			test('should search for a variable', async ({ MNI }) => {
 				const uniqueId = generateValidId();
 
 				const key1 = `SEARCH_VAR_${uniqueId}`;

@@ -102,7 +102,7 @@ export class KoBoToolboxTrigger implements INodeType {
 					method: 'POST',
 					url: `/api/v2/assets/${formId}/hooks/`,
 					body: {
-						name: `n8n webhook id ${workflow.id}: ${workflow.name}`,
+						name: `MNI webhook id ${workflow.id}: ${workflow.name}`,
 						endpoint: webhookUrl,
 						email_notification: true,
 					},

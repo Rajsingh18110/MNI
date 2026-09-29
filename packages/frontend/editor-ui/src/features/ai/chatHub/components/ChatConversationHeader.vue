@@ -46,13 +46,13 @@ const isLoadingAgents = ref(false);
 
 const showOpenWorkflow = computed(() => {
 	return (
-		selectedModel?.model.provider === 'n8n' &&
+		selectedModel?.model.provider === 'MNI' &&
 		selectedModel.metadata.scopes?.includes('workflow:read')
 	);
 });
 
 function onOpenWorkflow() {
-	if (selectedModel?.model.provider === 'n8n') {
+	if (selectedModel?.model.provider === 'MNI') {
 		emit('openWorkflow', selectedModel.model.workflowId);
 	}
 }

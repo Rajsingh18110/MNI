@@ -126,7 +126,7 @@ export function reconcileNodeToolGatewayCredentials(
  * for such a type is redundant and can be dropped.
  *
  * A type is EXCLUDED when any tool still has an empty required slot of it, even
- * if another tool runs it on n8n credits: coverage is per node/operation, so a
+ * if another tool runs it on MNI credits: coverage is per node/operation, so a
  * covered operation and an uncovered one can share a credential type, and the
  * uncovered one must keep prompting for a real credential.
  */

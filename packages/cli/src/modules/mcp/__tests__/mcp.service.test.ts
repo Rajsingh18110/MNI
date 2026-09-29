@@ -787,7 +787,7 @@ describe('McpService', () => {
 			it('keeps the preferences out of the initialize instructions', async () => {
 				const instructions = await initialize(mcpFeatureFlags({ aiPreferencesEnabled: true }));
 
-				expect(instructions).toContain('official MCP server for n8n');
+				expect(instructions).toContain('official MCP server for MNI');
 				expect(instructions).not.toContain('<ai-preferences>');
 				expect(instructions).not.toContain('Instance preferences');
 				expect(instructions).not.toContain('Personal preferences');
@@ -796,7 +796,7 @@ describe('McpService', () => {
 			it('keeps the preferences out of the server/discover instructions', async () => {
 				const instructions = await discover(mcpFeatureFlags({ aiPreferencesEnabled: true }));
 
-				expect(instructions).toContain('official MCP server for n8n');
+				expect(instructions).toContain('official MCP server for MNI');
 				expect(instructions).not.toContain('<ai-preferences>');
 			});
 
@@ -862,7 +862,7 @@ describe('McpService', () => {
 				const [message] = sseData(await res.text());
 				const result = (message as { result: Record<string, unknown> }).result;
 				expect(result.protocolVersion).toBe('2025-06-18');
-				expect(result.serverInfo).toMatchObject({ name: 'n8n MCP Server' });
+				expect(result.serverInfo).toMatchObject({ name: 'MNI MCP Server' });
 			});
 		});
 

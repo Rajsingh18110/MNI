@@ -3,7 +3,7 @@ import { Node, isNodeClassInstance } from '../src/interfaces';
 
 /**
  * `isNodeClassInstance` is a replacement for `instanceof Node`, which fails when n8n-workflow
- * is duplicated in the dependency tree in certain setups (namely, n8n installed via npm).
+ * is duplicated in the dependency tree in certain setups (namely, MNI installed via npm).
  */
 
 const description = {} as INodeTypeDescription;

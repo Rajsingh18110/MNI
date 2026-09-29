@@ -9,7 +9,7 @@ test.describe(
 	() => {
 		test.describe.configure({ timeout: 180_000 });
 
-		test('should display artifact card in timeline after workflow build', async ({ n8n }) => {
+		test('should display artifact card in timeline after workflow build', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage(
@@ -25,7 +25,7 @@ test.describe(
 			await n8n.instanceAi.waitForResponseComplete();
 		});
 
-		test('should open workflow preview when clicking artifact card', async ({ n8n }) => {
+		test('should open workflow preview when clicking artifact card', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.sendMessage(

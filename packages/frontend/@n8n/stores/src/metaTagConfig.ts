@@ -1,5 +1,5 @@
 function getTagName(configName: string): string {
-	return `n8n:config:${configName}`;
+	return `MNI:config:${configName}`;
 }
 
 /**
@@ -23,7 +23,7 @@ export function getConfigFromMetaTag(configName: string): string | null {
 		const content = atob(encodedContent);
 		return content;
 	} catch (error) {
-		console.warn(`Failed to read n8n config for "${tagName}":`, error);
+		console.warn(`Failed to read MNI config for "${tagName}":`, error);
 		return null;
 	}
 }
@@ -40,7 +40,7 @@ export function getAndParseConfigFromMetaTag<T>(configName: string): T | null {
 	try {
 		return JSON.parse(config) as T;
 	} catch (error) {
-		console.warn(`Failed to parse n8n config for "${getTagName(configName)}":`, error);
+		console.warn(`Failed to parse MNI config for "${getTagName(configName)}":`, error);
 		return null;
 	}
 }

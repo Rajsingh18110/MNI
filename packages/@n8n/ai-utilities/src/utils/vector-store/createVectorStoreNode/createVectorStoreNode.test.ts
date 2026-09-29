@@ -578,7 +578,7 @@ describe('createVectorStoreNode', () => {
 			expect(thrown).toBe(userError);
 		});
 
-		it('rethrows n8n errors from execute unchanged', async () => {
+		it('rethrows MNI errors from execute unchanged', async () => {
 			// ARRANGE
 			executeContext.getNodeParameter.mockImplementation(
 				(parameterName: string): NodeParameterValueType | object => loadParameters[parameterName],

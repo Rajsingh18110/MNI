@@ -758,17 +758,17 @@ describe('WorkflowPublicationApplier', () => {
 		expect(callOrder).toEqual(['remove', 'invalidate', 'advance', 'refresh', 'add']);
 	});
 
-	describe('n8n Trigger', () => {
+	describe('MNI Trigger', () => {
 		// Emits "Published Workflow Updated" from `trigger()` itself, so it only fires
 		// when re-registered: the diff must re-apply it on every version change.
-		const n8nTrigger = triggerNode('n8n', {
+		const n8nTrigger = triggerNode('MNI', {
 			type: 'n8n-nodes-base.n8nTrigger',
 			parameters: { events: ['update'] },
 		});
 
-		test('re-applies an unchanged n8n Trigger when the published version changes', async () => {
+		test('re-applies an unchanged MNI Trigger when the published version changes', async () => {
 			setTriggerSets([n8nTrigger], [{ ...n8nTrigger }]);
-			workflowTriggerActivator.activate.mockResolvedValue({ activated: ['n8n'], failures: [] });
+			workflowTriggerActivator.activate.mockResolvedValue({ activated: ['MNI'], failures: [] });
 
 			const result = await applier.apply(makeRecord(), abort);
 
@@ -776,19 +776,19 @@ describe('WorkflowPublicationApplier', () => {
 			expect(workflowTriggerActivator.deactivate).toHaveBeenCalledWith(
 				expect.objectContaining({ id: 'wf-1' }),
 				oldVersion,
-				new Set(['n8n']),
+				new Set(['MNI']),
 				abort,
 			);
 			expect(workflowTriggerActivator.activate).toHaveBeenCalledWith(
 				expect.objectContaining({ id: 'wf-1' }),
 				newVersion,
-				new Set(['n8n']),
+				new Set(['MNI']),
 				'update',
 				abort,
 			);
 		});
 
-		test('leaves an unchanged n8n Trigger running when the record targets the already-published version', async () => {
+		test('leaves an unchanged MNI Trigger running when the record targets the already-published version', async () => {
 			setTriggerSets([n8nTrigger], [{ ...n8nTrigger }]);
 			workflowRepository.findOneBy.mockResolvedValue(makeWorkflow({ activeVersionId: 'v-2' }));
 			workflowPublishedVersionRepository.findOne.mockResolvedValue(

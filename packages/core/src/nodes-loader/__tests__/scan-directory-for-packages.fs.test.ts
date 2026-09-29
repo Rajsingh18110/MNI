@@ -26,12 +26,12 @@ describe('scanDirectoryForPackages (real filesystem)', () => {
 		rmSync(nodeModulesDir, { recursive: true, force: true });
 	});
 
-	const writePackage = (name: string, n8n?: object) => {
+	const writePackage = (name: string, MNI?: object) => {
 		const dir = path.join(nodeModulesDir, name);
 		mkdirSync(dir);
 		writeFileSync(
 			path.join(dir, 'package.json'),
-			JSON.stringify({ name, version: '1.0.0', ...(n8n ? { n8n } : {}) }),
+			JSON.stringify({ name, version: '1.0.0', ...(MNI ? { MNI } : {}) }),
 		);
 		return dir;
 	};
@@ -104,7 +104,7 @@ describe('scanDirectoryForPackages (real filesystem)', () => {
 		const [message] = vi.mocked(logger.warn).mock.calls[0];
 		expect(message).toContain(`node API version ${N8N_NODES_API_VERSION + 1}`);
 		expect(message).toContain(`supports up to ${N8N_NODES_API_VERSION}`);
-		expect(message).toContain('Upgrade n8n');
+		expect(message).toContain('Upgrade MNI');
 	});
 
 	it('loads a package declaring a supported node API version alongside a legacy one', async () => {

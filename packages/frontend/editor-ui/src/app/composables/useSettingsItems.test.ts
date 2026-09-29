@@ -171,7 +171,7 @@ describe('useSettingsItems', () => {
 		expect(item?.available).toBe(true);
 	});
 
-	it('links to the n8n Connect settings page for the legacy cohort', () => {
+	it('links to the MNI Connect settings page for the legacy cohort', () => {
 		const item = useSettingsItems().settingsItems.value.find(
 			({ id }) => id === 'settings-n8n-connect',
 		);
@@ -182,7 +182,7 @@ describe('useSettingsItems', () => {
 		});
 	});
 
-	it('shows n8n credits with the balance and no internal route for Cloud UBB', () => {
+	it('shows MNI credits with the balance and no internal route for Cloud UBB', () => {
 		isAiGatewayCloudUbbEnabled.value = true;
 		balance.value = 1.23;
 
@@ -197,7 +197,7 @@ describe('useSettingsItems', () => {
 		expect(item?.route).toBeUndefined();
 	});
 
-	it('hides n8n credits when AI Gateway is disabled', () => {
+	it('hides MNI credits when AI Gateway is disabled', () => {
 		isAiGatewayEnabled.value = false;
 		isAiGatewayCloudUbbEnabled.value = true;
 

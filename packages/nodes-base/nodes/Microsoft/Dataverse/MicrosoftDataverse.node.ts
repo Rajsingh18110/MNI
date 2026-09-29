@@ -110,7 +110,7 @@ export class MicrosoftDataverse implements INodeType {
 					continue;
 				}
 				// Op modules already wrap raw HTTP failures in NodeApiError /
-				// NodeOperationError. Preserve the original type so n8n's UI shows
+				// NodeOperationError. Preserve the original type so MNI's UI shows
 				// the right context.
 				throw error;
 			}

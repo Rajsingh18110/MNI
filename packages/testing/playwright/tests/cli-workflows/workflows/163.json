@@ -75,7 +75,7 @@
 					"textValues": [
 						{
 							"pageObjectIds": ["p"],
-							"replaceText": "n8n",
+							"replaceText": "MNI",
 							"text": "Title"
 						}
 					]
@@ -146,7 +146,7 @@
 						{
 							"pageObjectIds": ["p"],
 							"replaceText": "Title",
-							"text": "n8n"
+							"text": "MNI"
 						}
 					]
 				},

@@ -30,7 +30,7 @@ describe('useUserRoleProvisioningForm', () => {
 	const mockProvisioningConfig = (config: Partial<ProvisioningConfig>) => {
 		const defaultConfig: ProvisioningConfig = {
 			scopesInstanceRoleClaimName: 'n8n_instance_role',
-			scopesName: 'n8n',
+			scopesName: 'MNI',
 			scopesProjectsRolesClaimName: 'n8n_projects',
 			scopesProvisionInstanceRole: false,
 			scopesProvisionProjectRoles: false,

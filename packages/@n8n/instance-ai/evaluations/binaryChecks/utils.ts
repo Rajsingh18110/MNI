@@ -52,7 +52,7 @@ interface ConnectionLink {
 
 /**
  * Iterate all connections in a workflow, calling `visitor` for each link.
- * Handles the n8n format: `{ [source]: { [connType]: [ [ { node, type, index } ] ] } }`
+ * Handles the MNI format: `{ [source]: { [connType]: [ [ { node, type, index } ] ] } }`
  */
 export function forEachConnection(
 	connections: Record<string, unknown>,

@@ -6,16 +6,16 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test('should append manual trigger when adding action node from canvas add button', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.clickCanvasPlusButton();
-			await n8n.canvas.nodeCreator.searchFor('n8n');
-			await n8n.canvas.nodeCreator.selectItem('n8n', { exact: true });
+			await n8n.canvas.nodeCreator.searchFor('MNI');
+			await n8n.canvas.nodeCreator.selectItem('MNI', { exact: true });
 			await n8n.canvas.nodeCreator.selectCategoryItem('Actions');
 			await n8n.canvas.nodeCreator.selectItem('Create a credential');
 			await n8n.page.keyboard.press('Escape');
@@ -25,11 +25,11 @@ test.describe(
 		});
 
 		test('should append manual trigger when adding action node from plus button', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.clickCanvasPlusButton();
-			await n8n.canvas.nodeCreator.searchFor('n8n');
-			await n8n.canvas.nodeCreator.selectItem('n8n', { exact: true });
+			await n8n.canvas.nodeCreator.searchFor('MNI');
+			await n8n.canvas.nodeCreator.selectItem('MNI', { exact: true });
 			await n8n.canvas.nodeCreator.selectCategoryItem('Actions');
 			await n8n.canvas.nodeCreator.selectItem('Create a credential');
 			await n8n.page.keyboard.press('Escape');

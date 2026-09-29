@@ -51,7 +51,7 @@ function printUsage(): void {
 ${pc.bold('Usage:')} workflow-to-mermaid <workflow.json> [options]
 
 ${pc.bold('Description:')}
-  Converts a n8n workflow JSON file to a Mermaid flowchart diagram.
+  Converts a MNI workflow JSON file to a Mermaid flowchart diagram.
   By default, outputs to a markdown file with the same name in the same directory.
 
 ${pc.bold('Options:')}

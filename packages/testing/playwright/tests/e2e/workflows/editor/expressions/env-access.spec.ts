@@ -21,7 +21,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, n8nContainer }) => {
+		test.beforeEach(async ({ MNI, n8nContainer }) => {
 			test.skip(
 				!n8nContainer,
 				'container-only: the backend must start with N8N_BLOCK_ENV_ACCESS_IN_NODE set',
@@ -29,7 +29,7 @@ test.describe(
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('does not report env access as denied when the instance allows it', async ({ n8n }) => {
+		test('does not report env access as denied when the instance allows it', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(HTTP_REQUEST_NODE_NAME, { closeNDV: false });
 

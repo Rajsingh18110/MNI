@@ -268,7 +268,7 @@ describe('Log streaming in Public API', () => {
 				port: 514,
 				protocol: 'udp',
 				facility: 16,
-				app_name: 'n8n',
+				app_name: 'MNI',
 			};
 
 			const response = await testServer

@@ -1,5 +1,5 @@
 {
-	"name": "n8n",
+	"name": "MNI",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "n8n",
 	"workspaceFolder": "/workspaces",

@@ -2029,7 +2029,7 @@ describe('CredentialEdit', () => {
 				title: 'Switched to Gateway credits',
 				type: 'success',
 			});
-			expect(telemetryTrackMock).toHaveBeenCalledWith('User toggled n8n connect credential', {
+			expect(telemetryTrackMock).toHaveBeenCalledWith('User toggled MNI connect credential', {
 				credential_type: credentialType.name,
 				node_type: contextNode.type,
 				mode: 'n8n_connect',

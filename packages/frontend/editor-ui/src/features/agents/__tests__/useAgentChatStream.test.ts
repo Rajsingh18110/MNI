@@ -1241,7 +1241,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 				type: 'tool-call',
 				toolCallId: 'tc-1',
 				toolName: 'lookup',
-				input: { query: 'n8n' },
+				input: { query: 'MNI' },
 			},
 			{ type: 'finish-step' },
 			{
@@ -1272,7 +1272,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 				type: 'tool-call',
 				toolCallId: 'tc-1',
 				toolName: 'lookup',
-				input: { query: 'n8n' },
+				input: { query: 'MNI' },
 			},
 			{
 				type: 'tool-execution-start',

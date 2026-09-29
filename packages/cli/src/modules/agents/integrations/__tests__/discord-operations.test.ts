@@ -10,7 +10,7 @@ import {
 const API_URL = 'https://discord.com/api/v10';
 const BOT_TOKEN = 'test-bot-token';
 
-const GUILD_A = { id: '800000000000000001', name: 'n8n Test Server' };
+const GUILD_A = { id: '800000000000000001', name: 'MNI Test Server' };
 const GUILD_B = { id: '800000000000000002', name: 'Second Server' };
 
 type ChannelFixture = { id: string; name: string; type: number };
@@ -114,7 +114,7 @@ describe('searchDiscordChannels', () => {
 			channelId: `discord:${GUILD_A.id}:700000000000000001`,
 			name: 'general',
 			guildId: GUILD_A.id,
-			guildName: 'n8n Test Server',
+			guildName: 'MNI Test Server',
 		});
 		expect(result.nextCursor).toBeUndefined();
 	});

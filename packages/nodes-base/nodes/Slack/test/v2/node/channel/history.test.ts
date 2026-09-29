@@ -10,7 +10,7 @@ const API_RESPONSE = {
 			ts: '1734322597.935429',
 			bot_id: 'B0382SHFM46',
 			app_id: 'A037UTP0Z39',
-			text: 'test message\n_Automated with this <http://localhost:5678/workflow/qJdEfiBgYLdfYOTs?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.slack_be251a83c052a9862eeac953816fbb1464f89dfbf79d7ac490a8e336a8cc8bfd|n8n workflow>_',
+			text: 'test message\n_Automated with this <http://localhost:5678/workflow/qJdEfiBgYLdfYOTs?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.slack_be251a83c052a9862eeac953816fbb1464f89dfbf79d7ac490a8e336a8cc8bfd|MNI workflow>_',
 			team: 'T0364MSFHV2',
 			bot_profile: {
 				id: 'B0382SHFM46',
@@ -47,7 +47,7 @@ const API_RESPONSE = {
 								{
 									type: 'link',
 									url: 'http://localhost:5678/workflow/qJdEfiBgYLdfYOTs?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.slack_be251a83c052a9862eeac953816fbb1464f89dfbf79d7ac490a8e336a8cc8bfd',
-									text: 'n8n workflow',
+									text: 'MNI workflow',
 									style: {
 										italic: true,
 									},
@@ -64,7 +64,7 @@ const API_RESPONSE = {
 			ts: '1734322341.161179',
 			bot_id: 'B0382SHFM46',
 			app_id: 'A037UTP0Z39',
-			text: 'test message\n_Automated with this <http://localhost:5678/workflow/qJdEfiBgYLdfYOTs?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.slack_be251a83c052a9862eeac953816fbb1464f89dfbf79d7ac490a8e336a8cc8bfd|n8n workflow>_',
+			text: 'test message\n_Automated with this <http://localhost:5678/workflow/qJdEfiBgYLdfYOTs?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.slack_be251a83c052a9862eeac953816fbb1464f89dfbf79d7ac490a8e336a8cc8bfd|MNI workflow>_',
 			team: 'T0364MSFHV2',
 			bot_profile: {
 				id: 'B0382SHFM46',
@@ -101,7 +101,7 @@ const API_RESPONSE = {
 								{
 									type: 'link',
 									url: 'http://localhost:5678/workflow/qJdEfiBgYLdfYOTs?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.slack_be251a83c052a9862eeac953816fbb1464f89dfbf79d7ac490a8e336a8cc8bfd',
-									text: 'n8n workflow',
+									text: 'MNI workflow',
 									style: {
 										italic: true,
 									},

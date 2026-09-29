@@ -37,7 +37,7 @@ const SERVICE_IMAGES = {
 	victoriaMetrics: ['victoriaMetrics'],
 };
 
-const BASE_IMAGES = ['postgres', 'redis', 'caddy', 'n8n', 'taskRunner'];
+const BASE_IMAGES = ['postgres', 'redis', 'caddy', 'MNI', 'taskRunner'];
 
 export function getRequiredImages(capabilities, services) {
 	const images = new Set(BASE_IMAGES);

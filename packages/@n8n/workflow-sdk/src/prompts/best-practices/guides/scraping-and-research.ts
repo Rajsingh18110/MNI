@@ -21,7 +21,7 @@ via environment variables for better resource management.
 ## Looping & Pagination
 
 Implement robust looping for paginated data. Use Set, IF, and Code nodes to manage page numbers and loop conditions,
-ensuring you don't miss data or create infinite loops. Leverage n8n's built-in mechanisms rather than manual approaches:
+ensuring you don't miss data or create infinite loops. Leverage MNI's built-in mechanisms rather than manual approaches:
 use the $runIndex variable to track iterations without additional code nodes, and employ workflow static data or node
 run indexes to maintain state across loop cycles.
 
@@ -103,7 +103,7 @@ Purpose: Introduces delays to respect rate limits and avoid overloading servers
 
 ### Data Tables (n8n-nodes-base.dataTable)
 
-Purpose: Stores scraped data in n8n's built-in persistent data storage
+Purpose: Stores scraped data in MNI's built-in persistent data storage
 
 ### Google Sheets (n8n-nodes-base.googleSheets)
 

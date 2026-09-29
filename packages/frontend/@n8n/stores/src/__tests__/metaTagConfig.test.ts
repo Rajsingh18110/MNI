@@ -11,7 +11,7 @@ describe('metaTagConfig', () => {
 	 */
 	function createMetaTag(configName: string, content?: string): void {
 		const metaTag = document.createElement('meta');
-		metaTag.setAttribute('name', `n8n:config:${configName}`);
+		metaTag.setAttribute('name', `MNI:config:${configName}`);
 
 		if (content !== undefined) {
 			metaTag.setAttribute('content', content);
@@ -81,7 +81,7 @@ describe('metaTagConfig', () => {
 
 			expect(result).toBeNull();
 			expect(consoleSpy).toHaveBeenCalledWith(
-				'Failed to read n8n config for "n8n:config:invalidConfig":',
+				'Failed to read MNI config for "MNI:config:invalidConfig":',
 				expect.any(Error),
 			);
 
@@ -160,7 +160,7 @@ describe('metaTagConfig', () => {
 
 			expect(result).toBeNull();
 			expect(consoleSpy).toHaveBeenCalledWith(
-				'Failed to parse n8n config for "n8n:config:invalidJsonConfig":',
+				'Failed to parse MNI config for "MNI:config:invalidJsonConfig":',
 				expect.any(Error),
 			);
 

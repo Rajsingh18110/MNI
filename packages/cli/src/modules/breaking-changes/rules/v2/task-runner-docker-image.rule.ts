@@ -17,9 +17,9 @@ export class TaskRunnerDockerImageRule implements IBreakingChangeInstanceRule {
 	getMetadata(): BreakingChangeRuleMetadata {
 		return {
 			version: 'v2',
-			title: 'Remove task runner from n8nio/n8n docker image',
+			title: 'Remove task runner from n8nio/MNI docker image',
 			description:
-				'Task runners are no longer included in the n8nio/n8n docker image and must use the separate n8nio/runners image',
+				'Task runners are no longer included in the n8nio/MNI docker image and must use the separate n8nio/runners image',
 			category: BreakingChangeCategory.infrastructure,
 			severity: 'medium',
 			documentationUrl:
@@ -43,7 +43,7 @@ export class TaskRunnerDockerImageRule implements IBreakingChangeInstanceRule {
 				{
 					title: 'Task runner removed from main Docker image',
 					description:
-						'The task runner is no longer bundled with the n8nio/n8n Docker image. If you are using task runners in Docker, you must use the separate n8nio/runners image.',
+						'The task runner is no longer bundled with the n8nio/MNI Docker image. If you are using task runners in Docker, you must use the separate n8nio/runners image.',
 					level: 'warning',
 				},
 			],
@@ -56,7 +56,7 @@ export class TaskRunnerDockerImageRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Configure external task runners',
 					description:
-						'Set up external task runners using the n8nio/runners image and configure n8n to connect to them using N8N_RUNNERS_MODE=external',
+						'Set up external task runners using the n8nio/runners image and configure MNI to connect to them using N8N_RUNNERS_MODE=external',
 				},
 				{
 					action: 'Review task runner documentation',

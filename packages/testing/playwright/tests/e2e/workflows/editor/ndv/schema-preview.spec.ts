@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('should show schema preview for regular nodes but not triggers', async ({ n8n }) => {
+		test('should show schema preview for regular nodes but not triggers', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 
 			await n8n.canvas.addNode('Gmail', { trigger: 'On message received' });

@@ -31,7 +31,7 @@ export const BENCHMARK_PROMPTS = [
 
 export interface InstanceAiDriverConfig {
 	/** n8nPage instance (primary tab) for navigation and auth context */
-	n8n: n8nPage;
+	MNI: n8nPage;
 	/** Backend base URL for REST API calls (GC, snapshots, thread management) */
 	baseUrl: string;
 }
@@ -62,7 +62,7 @@ export interface TabRunResult {
  * Prompts are crafted to avoid HITL, so no auto-approve loop needed.
  */
 export class InstanceAiDriver {
-	private readonly n8n: n8nPage;
+	private readonly MNI: n8nPage;
 	private readonly baseUrl: string;
 	private createdThreadIds: string[] = [];
 	private openedTabs: n8nPage[] = [];

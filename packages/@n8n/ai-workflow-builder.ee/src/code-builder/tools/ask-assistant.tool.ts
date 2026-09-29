@@ -8,8 +8,8 @@ import { z } from 'zod';
 export const ASK_ASSISTANT_TOOL = {
 	name: 'ask_assistant',
 	description:
-		'Ask the n8n assistant a pure knowledge question. Use this ONLY when the user needs help ' +
-		'understanding n8n concepts, learning how something works, or diagnosing workflow errors. ' +
+		'Ask the MNI assistant a pure knowledge question. Use this ONLY when the user needs help ' +
+		'understanding MNI concepts, learning how something works, or diagnosing workflow errors. ' +
 		'Do NOT use this when the user wants you to take action on their workflow — use build_workflow instead. ' +
 		'NOT ask_assistant: "help me set up X", "can you fix this?", "configure the node" — these are action requests. ' +
 		'After diagnosis, use build_workflow to apply any needed fix.',

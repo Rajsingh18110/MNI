@@ -69,7 +69,7 @@ describe('runtime skills integration', () => {
 		const agent = createSkillAgent([summarySkill()]);
 
 		const result = await agent.generate(
-			'The Summary marker skill applies. Load the relevant skill first, then summarize: n8n agents keep workflow context compact.',
+			'The Summary marker skill applies. Load the relevant skill first, then summarize: MNI agents keep workflow context compact.',
 		);
 
 		const toolNames = result.toolCalls?.map((toolCall) => toolCall.tool) ?? [];

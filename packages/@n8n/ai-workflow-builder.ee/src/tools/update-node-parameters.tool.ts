@@ -231,7 +231,7 @@ function isPropertyVisibleForContext(
 		return false;
 	}
 
-	// Resource/operation values in n8n are always strings
+	// Resource/operation values in MNI are always strings
 	const resource = currentValues.resource;
 	const operation = currentValues.operation;
 

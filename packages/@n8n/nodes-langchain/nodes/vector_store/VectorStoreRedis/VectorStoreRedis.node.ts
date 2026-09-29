@@ -178,7 +178,7 @@ export async function getRedisClient(
 		username: credentials.user as string,
 		password: credentials.password as string,
 		database: credentials.database as number,
-		clientInfoTag: 'n8n',
+		clientInfoTag: 'MNI',
 	};
 
 	if (!redisConfig.client || redisConfig.connectionString !== JSON.stringify(config)) {

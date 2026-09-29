@@ -23,7 +23,7 @@ export class MyApiCredential implements ICredentialType {
   // ...
 }
 
-// package.json: "n8n": { "credentials": ["dist/credentials/MyApiCredential.credentials.js"] }
+// package.json: "MNI": { "credentials": ["dist/credentials/MyApiCredential.credentials.js"] }
 
 export class MyNode implements INodeType {
   description: INodeTypeDescription = {
@@ -47,7 +47,7 @@ export class MyApiCredential implements ICredentialType {
   // ...
 }
 
-// package.json: "n8n": { "credentials": ["dist/credentials/MyApiCredential.credentials.js"] }
+// package.json: "MNI": { "credentials": ["dist/credentials/MyApiCredential.credentials.js"] }
 
 export class MyNode implements INodeType {
   description: INodeTypeDescription = {
@@ -69,7 +69,7 @@ Declare your credential files in `package.json` so the rule can resolve credenti
 ```json
 {
   "name": "n8n-nodes-my-service",
-  "n8n": {
+  "MNI": {
     "credentials": [
       "dist/credentials/MyApiCredential.credentials.js"
     ]

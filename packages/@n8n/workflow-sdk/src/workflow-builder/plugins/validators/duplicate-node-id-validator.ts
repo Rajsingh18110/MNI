@@ -3,7 +3,7 @@
  *
  * Validates that no two nodes declare the same `config.id`.
  *
- * A node id is the node's stable identity in n8n: execution logs pair a run against the
+ * A node id is the node's stable identity in MNI: execution logs pair a run against the
  * canvas by it, and `(workflowId, nodeId)` is the primary key for poll cursors, dedupe
  * records and publication status. Two nodes sharing one id therefore contend over the same
  * durable state. The usual cause is a node block copy-pasted together with its `id`, so

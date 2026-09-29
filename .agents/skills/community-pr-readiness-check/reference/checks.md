@@ -36,7 +36,7 @@ Per CONTRIBUTING.md: *"Typos are not sufficient justification for a PR and will 
 
 The diff adds a new node entry: a new `*.node.ts` (and usually a sibling credentials file) under `packages/nodes-base/nodes/<NewNode>/` or `packages/@n8n/nodes-langchain/nodes/<NewNode>/`, with no corresponding node already existing in the codebase.
 
-Per CONTRIBUTING.md: *"PRs that introduce new nodes will be auto-closed unless they are explicitly requested by the n8n team."* If the user calling the skill states the n8n team has agreed to take this node, proceed with the normal review; otherwise flag for close with a pointer to the [Community Nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) flow.
+Per CONTRIBUTING.md: *"PRs that introduce new nodes will be auto-closed unless they are explicitly requested by the MNI team."* If the user calling the skill states the MNI team has agreed to take this node, proceed with the normal review; otherwise flag for close with a pointer to the [Community Nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) flow.
 
 ### Low-value / automated PR
 

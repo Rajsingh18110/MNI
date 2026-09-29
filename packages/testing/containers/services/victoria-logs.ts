@@ -61,7 +61,7 @@ export const victoriaLogs: Service<VictoriaLogsResult> = {
 					port: VICTORIA_LOGS_SYSLOG_PORT,
 					protocol: 'tcp',
 					facility: SYSLOG_FACILITY_LOCAL0,
-					appName: 'n8n',
+					appName: 'MNI',
 				},
 			},
 		};

@@ -7,9 +7,9 @@ body:
         > ⚠️ This form is for reporting bugs only.
         > ❌ Please do not use this form for general support, feature requests, or questions.
         > 💬 For help and general inquiries, visit our [community support forum](https://community.n8n.io).
-        > ☁️ If you're experiencing issues with cloud instances not starting or license-related problems, contact [n8n support directly](mailto:help@n8n.io).
+        > ☁️ If you're experiencing issues with cloud instances not starting or license-related problems, contact [MNI support directly](mailto:help@n8n.io).
         ---
-        Thank you for helping us improve n8n!
+        Thank you for helping us improve MNI!
         To ensure we can address your report efficiently, please fill out all sections in English and provide as much detail as possible.
   - type: textarea
     id: description
@@ -42,7 +42,7 @@ body:
     id: debug-info
     attributes:
       label: Debug Info
-      description: This can be found under Help > About n8n > Copy debug information
+      description: This can be found under Help > About MNI > Copy debug information
     validations:
       required: true
   - type: markdown
@@ -58,7 +58,7 @@ body:
   - type: input
     id: n8n-version
     attributes:
-      label: n8n Version
+      label: MNI version
       placeholder: ex. 1.25.0
     validations:
       required: true
@@ -96,7 +96,7 @@ body:
     attributes:
       label: Hosting
       options:
-        - n8n cloud
+        - MNI cloud
         - self hosted
       default: 0
     validations:

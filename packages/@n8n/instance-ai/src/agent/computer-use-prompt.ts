@@ -32,8 +32,8 @@ const CAPABILITIES: Array<{
 	},
 	{
 		channel: 'browser',
-		compact: `*browser* (automate the user's real browser session; requires the "n8n Browser Use" Chrome extension: ${BROWSER_USE_EXTENSION_URL})`,
-		bullet: `- *browser* - Automate user's browser to access web pages and do tasks on user's behalf. Use it when you require access to user's browser session for example when creating credentials with user's accounts. Requires installing the "n8n Browser Use" Chrome extension from the Chrome Web Store: ${BROWSER_USE_EXTENSION_URL}`,
+		compact: `*browser* (automate the user's real browser session; requires the "MNI Browser Use" Chrome extension: ${BROWSER_USE_EXTENSION_URL})`,
+		bullet: `- *browser* - Automate user's browser to access web pages and do tasks on user's behalf. Use it when you require access to user's browser session for example when creating credentials with user's accounts. Requires installing the "MNI Browser Use" Chrome extension from the Chrome Web Store: ${BROWSER_USE_EXTENSION_URL}`,
 	},
 	{
 		channel: 'localComputer',
@@ -78,7 +78,7 @@ const SIGNALS: Array<{
 	{
 		channels: ['browser'],
 		bullet:
-			'- **Form / frontend testing** — user is building n8n forms or a web app with n8n as backend and wants end-to-end testing → *browser*',
+			'- **Form / frontend testing** — user is building MNI forms or a web app with MNI as backend and wants end-to-end testing → *browser*',
 	},
 	{
 		channels: ['localComputer'],
@@ -225,7 +225,7 @@ After the user confirms they're done, take a snapshot to verify before continuin
 
 #### Secrets and sensitive data
 
-**NEVER include passwords, API keys, tokens, or secrets in your chat messages** — even if visible on a page. Snapshots and other tool outputs replace secrets with numbered redaction markers like \`[REDACTED:openai_api_key:1]\`. Treat the marker as opaque — never try to read, decode, or echo the underlying value. To put a secret into an n8n credential, use the capture flow below; do not ask the user to copy it to chat.
+**NEVER include passwords, API keys, tokens, or secrets in your chat messages** — even if visible on a page. Snapshots and other tool outputs replace secrets with numbered redaction markers like \`[REDACTED:openai_api_key:1]\`. Treat the marker as opaque — never try to read, decode, or echo the underlying value. To put a secret into an MNI credential, use the capture flow below; do not ask the user to copy it to chat.
 
 If a visual tool (\`browser_screenshot\`, \`browser_evaluate\`, \`browser_pdf\`) refuses with \`reason: "sensitive_context"\`, the page has visible secrets — switch to \`browser_snapshot\`, which is always safe.
 
@@ -240,12 +240,12 @@ secrets; never ask the user to paste secret values into chat.
 #### When browser tools fail at runtime
 
 The browser_navigate tool requires a connected tab to already be open. For fresh browser connection or when browser_navigate fails use browser_tab_open to open the url in a new tab.
-If a browser_* tool call fails because the browser is unreachable (e.g. connection lost, extension not responding), ask the user to verify the **n8n Browser Use** Chrome extension is installed and connected. If needed, they can reinstall from the Chrome Web Store: ${BROWSER_USE_EXTENSION_URL}`);
+If a browser_* tool call fails because the browser is unreachable (e.g. connection lost, extension not responding), ask the user to verify the **MNI Browser Use** Chrome extension is installed and connected. If needed, they can reinstall from the Chrome Web Store: ${BROWSER_USE_EXTENSION_URL}`);
 	} else if (available.includes('browser')) {
 		promptParts.push(`
 ### Browser Automation (Disabled in Computer Use)
 
-Browser tools are not connected. If the user asks for browser automation, tell them to select the + button beside the chat input, select "Connect browser", and follow the setup instructions. The setup requires the n8n Browser Use Chrome extension from the Chrome Web Store: ${BROWSER_USE_EXTENSION_URL}`);
+Browser tools are not connected. If the user asks for browser automation, tell them to select the + button beside the chat input, select "Connect browser", and follow the setup instructions. The setup requires the MNI Browser Use Chrome extension from the Chrome Web Store: ${BROWSER_USE_EXTENSION_URL}`);
 	} else {
 		promptParts.push(`
 ### Browser Automation (Unavailable)

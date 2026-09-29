@@ -475,7 +475,7 @@ async function onWorkflowMenuSelect(action: WORKFLOW_MENU_ACTIONS | string): Pro
 			let name = props.name || 'unsaved_workflow';
 			name = sanitizeFilename(name);
 
-			// Inside the gate: an export abandoned via "Connect n8n" must not count as exported.
+			// Inside the gate: an export abandoned via "Connect MNI" must not count as exported.
 			await mcpJsonNudgeTrigger.gate('export', () => {
 				telemetry.track('User exported workflow', { workflow_id: workflowData.id });
 				saveAs(blob, name + '.json');

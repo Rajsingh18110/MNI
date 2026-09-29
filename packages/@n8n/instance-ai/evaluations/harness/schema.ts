@@ -251,7 +251,7 @@ const evalTestCaseObjectSchema = z
 	// `outcomeExpectaiton`, etc.) fails at case-load instead of being silently stripped.
 	.strict();
 
-/** The keys n8n's case schema accepts. Exported so non-harness emitters (the
+/** The keys MNI's case schema accepts. Exported so non-harness emitters (the
  *  lang-tracer normalizer) can WHITELIST an exported case down to exactly these —
  *  the schema is `.strict()`, so any extra key LangTracer attaches (id, name,
  *  suiteId, timestamps, …) fails the whole suite load. Whitelisting the allowed

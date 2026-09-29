@@ -18,7 +18,7 @@ async function lintCSS(code: string) {
 
 describe('css-var-naming rule', () => {
 	describe('namespace validation', () => {
-		it('should accept valid n8n namespace', async () => {
+		it('should accept valid MNI namespace', async () => {
 			const namespacePattern = `
 					:root {
 						--n8n--color--primary: #0d6efd;
@@ -95,7 +95,7 @@ describe('css-var-naming rule', () => {
 
 		it('should allow non-namespace first groups (components)', async () => {
 			// Note: The rule doesn't strictly enforce namespace validation
-			// It only recognizes 'n8n' and 'chat' as namespaces for property checking
+			// It only recognizes 'MNI' and 'chat' as namespaces for property checking
 			// Other first groups are treated as components, which is valid
 			const componentFirst = `
 				:root {

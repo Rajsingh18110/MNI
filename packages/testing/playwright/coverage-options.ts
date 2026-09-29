@@ -97,11 +97,11 @@ export function resolveSourcePath(filePath: string, index: WorkspaceIndex): stri
  * (`generate`) so both read/write the same outputDir + raw cache.
  */
 export const coverageOptions: CoverageReportOptions = {
-	name: 'n8n E2E Coverage (V8)',
+	name: 'MNI E2E Coverage (V8)',
 	outputDir: './coverage',
 	// 'v8' = interactive HTML; 'lcovonly' = lcov.info for Codecov; summary to stdout.
 	reports: ['v8', 'lcovonly', 'console-summary'],
-	// Frontend: keep app bundles served by n8n. Backend: keep n8n's own
+	// Frontend: keep app bundles served by n8n. Backend: keep MNI's own
 	// packages (the collect step rewrites their urls to repo dist paths).
 	entryFilter: (entry) =>
 		entry.url.includes('/assets/') || /\/packages\/[^/]+(?:\/[^/]+)?\/dist\//.test(entry.url),
@@ -138,7 +138,7 @@ export const BY_SPEC_DIR = bySpecDir();
 /**
  * Per-spec BACKEND raw coverage (DEVP-370), written by the backend coverage
  * fixture and read by emit-spec-backend-lcovs. Separate from BY_SPEC_DIR so the
- * frontend (browser `page.coverage`) and backend (n8n server V8 via the e2e
+ * frontend (browser `page.coverage`) and backend (MNI server V8 via the e2e
  * coverage hook) raws never collide. Like BY_SPEC_DIR it MUST be a sibling of
  * `outputDir`, never inside it (the shard report's generate() cleans outputDir).
  */

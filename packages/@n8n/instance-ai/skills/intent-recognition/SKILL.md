@@ -60,7 +60,7 @@ Two orthogonal decisions per request, or per part for compound requests:
   steps as bounded transformers (classify, extract, summarize, score, a
   single decision feeding fixed branches).
 - **agent-anchored**: an agent owns the flow; the LLM decides the next step
-  at runtime or owns an ongoing role that requires judgment. n8n Agents are not
+  at runtime or owns an ongoing role that requires judgment. MNI Agents are not
   chat-only: besides chat sessions, they run recurring objectives on a cron
   schedule (**tasks**) and keep memory across sessions and runs — so recurring
   or scheduled duties do not disqualify this anchor.
@@ -173,7 +173,7 @@ builder.
 8. **Degenerate-shell check.** If a workflow-anchored design reduces to a
    trigger plus a single open-ended agent step that does all the work — no
    deterministic steps earning the shell — the anchor is wrong: reclassify
-   **agent-anchored** and build an n8n Agent (an on-demand duty becomes the
+   **agent-anchored** and build an MNI Agent (an on-demand duty becomes the
    agent's chat use; a scheduled duty becomes a task on the agent). Re-run
    this check while building: when fixed nodes prove unusable and the work
    migrates into one embedded agent step, stop and re-anchor instead of
@@ -359,7 +359,7 @@ valid, apply the growth tiebreaker instead of asking a theoretical preference.
   a false friend in the other direction.
 - "Build me an agent that answers customer questions from our docs." ->
   **agent-anchored**, `embeds_other: false`: explicit agent artifact
-  request plus chat-shaped open-ended Q&A. The deliverable is an n8n Agent
+  request plus chat-shaped open-ended Q&A. The deliverable is an MNI Agent
   — not a workflow with a Chat Trigger and an AI Agent node.
 - "Give me a chat box where I paste a company name and it runs our
   enrichment steps and replies with the result." -> **workflow-anchored**,
@@ -433,7 +433,7 @@ valid, apply the growth tiebreaker instead of asking a theoretical preference.
   destination.
 - Never satisfy an **agent-anchored** classification with a workflow
   containing a Chat Trigger + AI Agent node. Agent-anchored requests
-  produce an n8n Agent artifact via the agent build path; the AI Agent
+  produce an MNI Agent artifact via the agent build path; the AI Agent
   *node* exists only for `embeds_other: true` steps inside a genuinely
   workflow-anchored pipeline. A Chat Trigger workflow is correct only when
   chat is merely the manual trigger for a fixed graph.
@@ -458,7 +458,7 @@ valid, apply the growth tiebreaker instead of asking a theoretical preference.
   be scripted and the result cannot be checked, the design is not ready.
 - Respect the current build context: an incremental request stays on the
   active primitive unless it carries its own anchor signal.
-- Keep n8n framing clear: agents operate inside workflow guardrails; they do
+- Keep MNI framing clear: agents operate inside workflow guardrails; they do
   not replace the workflow engine.
 
 ## Output Format
@@ -469,7 +469,7 @@ Return a concise classification and reason:
 Anchor: workflow-anchored | agent-anchored | needs-clarification | out-of-scope
 Embeds other: true | false | n/a
 Reason: <one or two sentences citing the deciding signals>
-Next step: <build workflow / build workflow with embedded agent step / build n8n Agent artifact (agent build path; recurring duties as scheduled tasks on the agent) / ask clarification / answer directly>
+Next step: <build workflow / build workflow with embedded agent step / build MNI Agent artifact (agent build path; recurring duties as scheduled tasks on the agent) / ask clarification / answer directly>
 ```
 
 For build requests, do not expose this format unless the user asks for

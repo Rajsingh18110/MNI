@@ -126,10 +126,10 @@ the cursor instead.
   this CLI keyless per case. The exact field set is pinned by
   `__tests__/eval-results-dispatcher-contract.test.ts`.
 
-  **The CLI is per case; the n8n instance is not.** The dispatcher never starts
-  n8n — it targets a long-lived container per slot, `restart: unless-stopped`,
+  **The CLI is per case; the MNI instance is not.** The dispatcher never starts
+  MNI — it targets a long-lived container per slot, `restart: unless-stopped`,
   booted once for the whole sweep and never reset between cases. The nightly
-  runs ~12 of them (runners x slots), so one n8n process serves dozens of cases
+  runs ~12 of them (runners x slots), so one MNI process serves dozens of cases
   back to back. Isolation is per-case *user* (`run/lane-users.ts`
   `provisionCaseBuildUser`), not per-case instance. Assume anything the backend
   holds in memory outlives the case that created it, and size it for a

@@ -18,7 +18,7 @@ test.use({ capability: 'dynamic-credentials' });
  *
  * Architecture under test:
  *   External user → GET /rest/workflows/:id/execution-status
- *     → X-Authorization authenticates the request to n8n
+ *     → X-Authorization authenticates the request to MNI
  *     → Bearer token extracted from Authorization header for credential context
  *     → Token validated against Keycloak (userinfo endpoint)
  *     → Credential status returned (missing / configured)
@@ -41,7 +41,7 @@ test.describe(
 			const keycloak = services.keycloak;
 
 			// Create an OAuth2 resolver that validates tokens via Keycloak's userinfo endpoint.
-			// Uses the internal URL so the n8n container can reach Keycloak directly.
+			// Uses the internal URL so the MNI container can reach Keycloak directly.
 			const resolver = await api.dynamicCredentials.createResolver({
 				name: `Keycloak Resolver ${nanoid()}`,
 				type: 'credential-resolver.oauth2-1.0',
@@ -100,7 +100,7 @@ test.describe(
 			);
 
 			// External (unauthenticated) call:
-			// - X-Authorization authenticates the request to n8n
+			// - X-Authorization authenticates the request to MNI
 			// - Authorization: Bearer provides the user identity for credential resolution
 			const status = await api.dynamicCredentials.getExecutionStatus(workflow.id, {
 				bearerToken: accessToken,
@@ -218,7 +218,7 @@ test.describe(
 				accessToken,
 			);
 			const n8nCallbackUrl = await keycloak.completeAuthorizationCodeFlow(keycloakAuthUrl);
-			// GET the n8n callback with the owner session: n8n exchanges the code and stores tokens
+			// GET the MNI callback with the owner session: MNI exchanges the code and stores tokens
 			await api.dynamicCredentials.completeAuthorizationCallback(n8nCallbackUrl);
 
 			// Credential is now configured for this user → readyToExecute should be true

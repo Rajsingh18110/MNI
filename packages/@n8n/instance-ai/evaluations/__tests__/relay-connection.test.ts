@@ -1,6 +1,6 @@
 // The extension refuses autoConnect unless the relay URL host is localhost
 // (relayAllowlist.ts). These tests pin the two shapes that matters: harness
-// beside n8n (leave everything alone) and harness in a separate container
+// beside MNI (leave everything alone) and harness in a separate container
 // (keep saying localhost, redirect at the DNS layer).
 
 import { describe, it, expect } from 'vitest';
@@ -23,7 +23,7 @@ function relayOf(url: string): string {
 }
 
 describe('planRelayConnection', () => {
-	it('changes nothing when the harness runs beside n8n', () => {
+	it('changes nothing when the harness runs beside MNI', () => {
 		const input = connectUrl('ws://localhost:5678/rest/x/extension/abc?token=t1');
 		const plan = planRelayConnection(input, 'http://localhost:5678');
 
@@ -32,8 +32,8 @@ describe('planRelayConnection', () => {
 	});
 
 	it('keeps the relay URL on localhost so the extension gate still passes', () => {
-		// n8n reports localhost (compose sets no editor base URL) but actually
-		// lives in another container. Rewriting the URL to say `n8n` would make
+		// MNI reports localhost (compose sets no editor base URL) but actually
+		// lives in another container. Rewriting the URL to say `MNI` would make
 		// the extension refuse autoConnect outright.
 		const plan = planRelayConnection(
 			connectUrl('ws://localhost:5678/rest/x/extension/abc?token=t1'),
@@ -41,7 +41,7 @@ describe('planRelayConnection', () => {
 		);
 
 		expect(new URL(relayOf(plan.connectUrl)).hostname).toBe('localhost');
-		expect(plan.hostResolverRule).toBe('MAP localhost:5678 n8n:5678');
+		expect(plan.hostResolverRule).toBe('MAP localhost:5678 MNI:5678');
 	});
 
 	it('preserves the relay path and token through the rewrite', () => {
@@ -66,13 +66,13 @@ describe('planRelayConnection', () => {
 		expect(plan.hostResolverRule).toMatch(/^MAP localhost:5678 /);
 	});
 
-	it("retargets the relay onto n8n's port when they disagree", () => {
+	it("retargets the relay onto MNI's port when they disagree", () => {
 		const plan = planRelayConnection(
 			connectUrl('ws://localhost:5678/rest/x/extension/abc?token=t1'),
 			'http://n8n:5679',
 		);
 		expect(new URL(relayOf(plan.connectUrl)).port).toBe('5679');
-		expect(plan.hostResolverRule).toBe('MAP localhost:5679 n8n:5679');
+		expect(plan.hostResolverRule).toBe('MAP localhost:5679 MNI:5679');
 	});
 
 	it('defaults the port from the scheme when the base URL omits it', () => {
@@ -101,8 +101,8 @@ describe('planRelayConnection', () => {
 });
 
 describe('planRelayConnection — port mismatches on the same host', () => {
-	it('retargets the port when n8n is published on a different one, with NO dns rule', () => {
-		// The common local shape: n8n in a container thinks it is on :5678 while
+	it('retargets the port when MNI is published on a different one, with NO dns rule', () => {
+		// The common local shape: MNI in a container thinks it is on :5678 while
 		// the host reaches it on the published :5680. Same host, so a MAP would
 		// be noise — only the port needs rewriting.
 		const plan = planRelayConnection(
@@ -129,7 +129,7 @@ describe('planRelayConnection — port mismatches on the same host', () => {
 			connectUrl('ws://localhost:5678/rest/x/extension/abc?token=t1'),
 			'http://n8n:5678',
 		);
-		expect(plan.hostResolverRule).toBe('MAP localhost:5678 n8n:5678');
+		expect(plan.hostResolverRule).toBe('MAP localhost:5678 MNI:5678');
 	});
 });
 
@@ -146,7 +146,7 @@ describe('fixtureInterceptionArgs', () => {
 		// The cert flag exists only for the fixture's self-signed cert. Local mode
 		// browses the real internet in the developer's own profile.
 		expect(fixtureInterceptionArgs(undefined, undefined)).toEqual([]);
-		expect(fixtureInterceptionArgs(undefined, 'MAP localhost:5680 n8n:5678')).not.toContain(
+		expect(fixtureInterceptionArgs(undefined, 'MAP localhost:5680 MNI:5678')).not.toContain(
 			'--ignore-certificate-errors',
 		);
 	});
@@ -158,12 +158,12 @@ describe('fixtureInterceptionArgs', () => {
 	});
 
 	it('passes ONE resolver flag — a second silently drops the first', () => {
-		const args = fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 n8n:5678');
+		const args = fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 MNI:5678');
 		expect(args.filter((a) => a.startsWith('--host-resolver-rules='))).toHaveLength(1);
 	});
 
 	it('orders the relay rule ahead of the catch-all, since first match wins', () => {
-		const rules = rulesOf(fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 n8n:5678'));
+		const rules = rulesOf(fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 MNI:5678'));
 		expect(rules.indexOf('MAP localhost:5680')).toBeLessThan(rules.indexOf('MAP *'));
 	});
 
@@ -180,7 +180,7 @@ describe('fixtureInterceptionArgs', () => {
 		// The relay MAP is PORT-scoped, so other loopback ports would still fall
 		// through to the wildcard without these. Neither spelling collides with a
 		// `MAP localhost:<port>` rule — exclusions match on hostname.
-		const rules = rulesOf(fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 n8n:5678'));
+		const rules = rulesOf(fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 MNI:5678'));
 		expect(rules).toContain('EXCLUDE 127.0.0.1');
 		expect(rules).toContain('EXCLUDE [::1]');
 	});
@@ -192,24 +192,24 @@ describe('fixtureInterceptionArgs', () => {
 		// alone, and stops applying in either order once the exclude is added).
 		// Emitting both left the extension resolving localhost inside its own
 		// container instead of reaching n8n.
-		const rules = rulesOf(fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 n8n:5678'));
+		const rules = rulesOf(fixtureInterceptionArgs(FIXTURE_RULES, 'MAP localhost:5680 MNI:5678'));
 		expect(rules).not.toContain('EXCLUDE localhost');
-		expect(rules).toContain('MAP localhost:5680 n8n:5678');
+		expect(rules).toContain('MAP localhost:5680 MNI:5678');
 	});
 });
 
 // The session cookie the launched browser is given. Same subject as the rest of
-// this file: which spelling of n8n the BROWSER ends up using, after the rewrite
+// this file: which spelling of MNI the BROWSER ends up using, after the rewrite
 // above. Get it wrong and the credential-setup flow dead-ends on /signin with
 // every provider-console expectation failing as though the agent misbehaved.
 describe('browserN8nOrigins', () => {
-	it('returns the single origin when n8n is already loopback', () => {
+	it('returns the single origin when MNI is already loopback', () => {
 		expect(browserN8nOrigins('http://localhost:5678')).toEqual(['http://localhost:5678']);
 	});
 
-	it('adds the localhost origin the relay MAP rule creates for a non-loopback n8n', () => {
-		// planRelayConnection rewrites a non-loopback n8n to localhost + a MAP rule,
-		// so in the split-container topology the browser knows n8n by THAT origin —
+	it('adds the localhost origin the relay MAP rule creates for a non-loopback MNI', () => {
+		// planRelayConnection rewrites a non-loopback MNI to localhost + a MAP rule,
+		// so in the split-container topology the browser knows MNI by THAT origin —
 		// a cookie on `http://n8n:5678` alone would never be sent.
 		expect(browserN8nOrigins('http://n8n:5678')).toEqual([
 			'http://n8n:5678',

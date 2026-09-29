@@ -1,4 +1,4 @@
-export const NATIVE_NODE_PREFERENCE = `Prefer native n8n nodes over Code node — native nodes provide better UX, visual debugging, and are easier for users to modify.
+export const NATIVE_NODE_PREFERENCE = `Prefer native MNI nodes over Code node — native nodes provide better UX, visual debugging, and are easier for users to modify.
 
 Native node mappings:
 - Remove duplicates -> Remove Duplicates (n8n-nodes-base.removeDuplicates)

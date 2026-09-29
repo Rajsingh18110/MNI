@@ -1,6 +1,6 @@
 # AI Workflow Builder Prompts
 
-Centralized prompts for the n8n AI Workflow Builder. This directory contains all prompts used by agents and chains.
+Centralized prompts for the MNI AI Workflow Builder. This directory contains all prompts used by agents and chains.
 
 ## Directory Structure
 
@@ -61,7 +61,7 @@ The `agents/` directory contains prompts for the multi-agent workflow builder sy
 | Agent | Purpose |
 |-------|---------|
 | **Supervisor** | Routes user requests to the appropriate specialist |
-| **Discovery** | Identifies relevant n8n nodes and categorizes techniques |
+| **Discovery** | Identifies relevant MNI nodes and categorizes techniques |
 | **Builder** | Creates workflow structure and configures node parameters |
 | **Responder** | Generates user-facing responses |
 

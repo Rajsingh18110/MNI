@@ -18,7 +18,7 @@ export interface N8nSandboxServiceSandboxOptions {
 	env?: Record<string, string>;
 }
 
-/** Native agents sandbox adapter backed by the n8n sandbox service HTTP API. */
+/** Native agents sandbox adapter backed by the MNI sandbox service HTTP API. */
 export class N8nSandboxServiceSandbox extends BaseSandbox {
 	readonly name = 'N8nSandboxServiceSandbox';
 

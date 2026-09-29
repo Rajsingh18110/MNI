@@ -19,7 +19,7 @@ import { FormTrigger } from '../FormTrigger.node';
 import { FormTriggerV2 } from '../v2/FormTriggerV2.node';
 
 const INBOUND_TRIGGER_AUTHENTICATION_BUILDER_HINT =
-	"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
+	"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
 
 describe('FormTrigger', () => {
 	beforeEach(() => {
@@ -28,10 +28,10 @@ describe('FormTrigger', () => {
 
 	it('should tell builders to keep inbound authentication disabled unless requested', () => {
 		const formTriggerV2 = new FormTriggerV2({
-			displayName: 'n8n Form Trigger',
+			displayName: 'MNI Form Trigger',
 			name: 'formTrigger',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in MNI and pass their responses to the workflow',
 			defaultVersion: 2.5,
 		});
 
@@ -52,10 +52,10 @@ describe('FormTrigger', () => {
 
 	it('should expose n8nUserAuth option only on typeVersion >= 2.6', () => {
 		const formTriggerV2 = new FormTriggerV2({
-			displayName: 'n8n Form Trigger',
+			displayName: 'MNI Form Trigger',
 			name: 'formTrigger',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in MNI and pass their responses to the workflow',
 			defaultVersion: 2.6,
 		});
 
@@ -79,10 +79,10 @@ describe('FormTrigger', () => {
 
 	describe('requireExecuteAccess', () => {
 		const formTriggerV2 = new FormTriggerV2({
-			displayName: 'n8n Form Trigger',
+			displayName: 'MNI Form Trigger',
 			name: 'formTrigger',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in MNI and pass their responses to the workflow',
 			defaultVersion: 2.6,
 		});
 
@@ -608,10 +608,10 @@ describe('FormTrigger', () => {
 	describe('sensitiveOutputFields', () => {
 		it('declares authorization and cookie headers as sensitive', () => {
 			const formTriggerV2 = new FormTriggerV2({
-				displayName: 'n8n Form Trigger',
+				displayName: 'MNI Form Trigger',
 				name: 'formTrigger',
 				group: ['trigger'],
-				description: 'Generate webforms in n8n and pass their responses to the workflow',
+				description: 'Generate webforms in MNI and pass their responses to the workflow',
 				defaultVersion: 2.5,
 			});
 			expect(formTriggerV2.description.sensitiveOutputFields).toContain('headers.authorization');
@@ -621,10 +621,10 @@ describe('FormTrigger', () => {
 
 		it('does not mark other headers as sensitive', () => {
 			const formTriggerV2 = new FormTriggerV2({
-				displayName: 'n8n Form Trigger',
+				displayName: 'MNI Form Trigger',
 				name: 'formTrigger',
 				group: ['trigger'],
-				description: 'Generate webforms in n8n and pass their responses to the workflow',
+				description: 'Generate webforms in MNI and pass their responses to the workflow',
 				defaultVersion: 2.5,
 			});
 			expect(formTriggerV2.description.sensitiveOutputFields).not.toContain('headers.content-type');

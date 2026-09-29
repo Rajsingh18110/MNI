@@ -17,7 +17,7 @@ const KEEP_ALIVE_AGENT_OPTIONS = { keepAlive: true, keepAliveMsecs: 30_000 };
 
 /**
  * Builds a Bedrock runtime SDK client shared by the chat and embeddings nodes.
- * The runtime plane bypasses n8n's credential `authenticate()` (the SDK does its own
+ * The runtime plane bypasses MNI's credential `authenticate()` (the SDK does its own
  * signing/transport), so the endpoint override is injected into the client config here.
  * Retries (`maxRetries`) and request `timeout` are also applied on the SDK client because
  * ChatBedrockConverse calls `client.send()` directly, bypassing LangChain's retrying AsyncCaller.

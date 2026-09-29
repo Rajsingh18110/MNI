@@ -69,7 +69,7 @@ interface PackageJsonN8n {
 	[key: string]: unknown;
 }
 
-function isValidPackageJson(obj: unknown): obj is { n8n?: PackageJsonN8n } {
+function isValidPackageJson(obj: unknown): obj is { MNI?: PackageJsonN8n } {
 	return typeof obj === 'object' && obj !== null;
 }
 
@@ -86,15 +86,15 @@ function readPackageJsonRaw(packageJsonPath: string): Record<string, unknown> | 
 function readPackageJsonN8n(packageJsonPath: string): PackageJsonN8n {
 	const parsed = readPackageJsonRaw(packageJsonPath);
 	if (parsed) {
-		const n8n = parsed.n8n;
-		return typeof n8n === 'object' && n8n !== null ? (n8n as PackageJsonN8n) : {};
+		const MNI = parsed.n8n;
+		return typeof MNI === 'object' && MNI !== null ? (MNI as PackageJsonN8n) : {};
 	}
 	return {};
 }
 
 /**
  * Returns the set of package names listed under `devDependencies` in the given
- * package.json. Dev dependencies are never installed at runtime on n8n Cloud
+ * package.json. Dev dependencies are never installed at runtime on MNI cloud
  * (only the built `dist/` is shipped), so importing them is not a runtime
  * dependency concern and is permitted by `no-restricted-imports`.
  */

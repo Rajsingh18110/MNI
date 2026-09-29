@@ -28,7 +28,7 @@ export interface GenerateAgentScenarioSeedOptions {
 	scenarioHints?: string;
 }
 
-const SYSTEM_PROMPT = `You are a test data planner for n8n AI agents. An agent (system prompt + tools) is exercised by sending it ONE opening user chat message; its tool calls are served by an API mock server. Your job is to produce that opening message, a consistent data context, and per-tool hints that guide the mock server to generate realistic, coherent responses.
+const SYSTEM_PROMPT = `You are a test data planner for MNI AI agents. An agent (system prompt + tools) is exercised by sending it ONE opening user chat message; its tool calls are served by an API mock server. Your job is to produce that opening message, a consistent data context, and per-tool hints that guide the mock server to generate realistic, coherent responses.
 
 RULES:
 1. Create a "globalContext" that defines the shared world — user IDs, entity names, channel names, email addresses, and relationships that ALL tool responses should reference consistently.

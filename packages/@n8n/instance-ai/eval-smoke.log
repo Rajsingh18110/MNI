@@ -1,11 +1,11 @@
 
-> @n8n/instance-ai@1.15.0 eval:instance-ai /Users/robin/Documents/n8n/packages/@n8n/instance-ai
+> @n8n/instance-ai@1.15.0 eval:instance-ai /Users/robin/Documents/MNI/packages/@n8n/instance-ai
 > tsx evaluations/cli/index.ts --filter contact-form-automation,workflow-scheduled-weather-and-agent --verbose
 
 2026-07-07T12:21:59.107Z [INFO] Authenticating with http://localhost:5678...
 2026-07-07T12:21:59.387Z [OK] Authenticated
 2026-07-07T12:21:59.388Z [INFO] Seeding MCP registry...
-2026-07-07T12:21:59.399Z [VERBOSE]   Skipping MCP registry seed: n8n API POST /rest/mcp-registry/test/seed failed (404): <!DOCTYPE html>
+2026-07-07T12:21:59.399Z [VERBOSE]   Skipping MCP registry seed: MNI API POST /rest/mcp-registry/test/seed failed (404): <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">

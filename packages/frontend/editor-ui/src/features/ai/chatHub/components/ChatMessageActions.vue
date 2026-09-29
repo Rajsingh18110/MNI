@@ -38,7 +38,7 @@ const executionUrl = computed(() => {
 	if (
 		workflowsStore.canViewWorkflows &&
 		message.type === 'ai' &&
-		message.provider === 'n8n' &&
+		message.provider === 'MNI' &&
 		message.executionId
 	) {
 		return router.resolve({

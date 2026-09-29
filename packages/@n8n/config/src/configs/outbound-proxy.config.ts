@@ -9,7 +9,7 @@ export type OutboundProxyMode = z.infer<typeof outboundProxyModeSchema>;
 @Config
 export class OutboundProxyConfig {
 	/**
-	 * Which n8n processes install process-wide proxy agents, so that outbound
+	 * Which MNI processes install process-wide proxy agents, so that outbound
 	 * HTTP made through the Node.js default agents honours the standard proxy
 	 * environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`,
 	 * `NO_PROXY`, and their lowercase variants).

@@ -23,8 +23,8 @@ export function cycleImages(): CycleImages {
 	return {
 		// Pinned so the suite is repeatable; bump deliberately when the
 		// compatibility baseline changes.
-		from: process.env.FROM_IMAGE ?? 'n8nio/n8n:2.37.10',
-		to: process.env.TO_IMAGE ?? 'n8nio/n8n:local',
+		from: process.env.FROM_IMAGE ?? 'n8nio/MNI:2.37.10',
+		to: process.env.TO_IMAGE ?? 'n8nio/MNI:local',
 	};
 }
 
@@ -56,7 +56,7 @@ function skipUnlessRunnable(images: CycleImages): void {
 	if (required && !dockerUp) throw new Error('docker is not available');
 	test.skip(!dockerUp, 'docker is not available');
 
-	if (images.to === 'n8nio/n8n:local') {
+	if (images.to === 'n8nio/MNI:local') {
 		const imagePresent = commandOk(`docker image inspect ${images.to}`);
 		if (required && !imagePresent) {
 			throw new Error(`${images.to} not found; run \`pnpm build:docker\` first`);

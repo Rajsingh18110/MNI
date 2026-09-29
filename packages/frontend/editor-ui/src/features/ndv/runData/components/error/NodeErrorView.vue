@@ -359,7 +359,7 @@ function copyErrorDetails() {
 
 	errorInfo.errorDetails = errorDetails;
 
-	//add n8n details
+	//add MNI details
 	const n8nDetails: IDataObject = {};
 
 	if (error.node) {

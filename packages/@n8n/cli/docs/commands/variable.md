@@ -1,6 +1,6 @@
 # variable
 
-Manage n8n environment variables.
+Manage MNI environment variables.
 
 ## `variable list`
 

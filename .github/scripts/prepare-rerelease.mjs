@@ -99,8 +99,8 @@ export async function isPublished(packageName, version, fetchImpl = fetch) {
  */
 export async function assertRereleaseIsWarranted(failedVersion, nextVersion, fetchImpl) {
 	const [failedIsPublished, nextIsPublished] = await Promise.all([
-		isPublished('n8n', failedVersion, fetchImpl),
-		isPublished('n8n', nextVersion, fetchImpl),
+		isPublished('MNI', failedVersion, fetchImpl),
+		isPublished('MNI', nextVersion, fetchImpl),
 	]);
 
 	if (failedIsPublished === null || nextIsPublished === null) {

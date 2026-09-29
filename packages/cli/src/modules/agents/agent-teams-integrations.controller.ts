@@ -88,7 +88,7 @@ export class AgentTeamsIntegrationsController {
 	}
 
 	/**
-	 * Carries no n8n session, so it authorises on the signed token in the query
+	 * Carries no MNI session, so it authorises on the signed token in the query
 	 * string instead. Rate limited because it is reachable by anyone and does a
 	 * database read once a token verifies.
 	 *

@@ -56,7 +56,7 @@ function makeClaims(overrides: Partial<ExternalTokenClaims> = {}): ExternalToken
 	return {
 		sub: 'external-user-1',
 		iss: 'https://issuer.example.com',
-		aud: 'n8n',
+		aud: 'MNI',
 		iat: 1_700_000_000,
 		exp: 1_700_000_030,
 		jti: 'unique-jti-1',

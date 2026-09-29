@@ -127,7 +127,7 @@ describe('PromotionsGitService', () => {
 
 			// git reads `C:\path` / `C:/path` as a local filesystem path only on
 			// Windows, where allowing it would clone off the host's disk.
-			it.each(['C:/Users/n8n/repo', 'C:\\Users\\n8n\\repo', 'c:repo'])(
+			it.each(['C:/Users/MNI/repo', 'C:\\Users\\MNI\\repo', 'c:repo'])(
 				'rejects %s on Windows',
 				(url) => {
 					setPlatform('win32');
@@ -137,7 +137,7 @@ describe('PromotionsGitService', () => {
 
 			// On other platforms git treats `c:path` as a scp-like remote to a
 			// one-character host, which is a legitimate SSH alias.
-			it.each(['C:/Users/n8n/repo', 'c:repo'])('accepts %s on non-Windows', (url) => {
+			it.each(['C:/Users/MNI/repo', 'c:repo'])('accepts %s on non-Windows', (url) => {
 				setPlatform('linux');
 				expect(() => service.validateRemoteUrl(url, 'ssh-key')).not.toThrow();
 			});

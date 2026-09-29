@@ -18,7 +18,7 @@ const MANIFEST_SCHEMA = `https://developer.microsoft.com/json-schemas/teams/v${M
 /** Matches the colour of the bundled icons. */
 const ACCENT_COLOR = '#EA4B71';
 
-const DEFAULT_APP_NAME = 'n8n Agent';
+const DEFAULT_APP_NAME = 'MNI Agent';
 
 /**
  * Fixed namespace for the manifest id, so the GUID for an agent never changes.
@@ -97,7 +97,7 @@ export class TeamsManifestService {
 			id: this.buildManifestId(options.agentId),
 			packageName: `io.n8n.agent.${this.buildManifestId(options.agentId)}`,
 			developer: {
-				name: this.truncate('n8n', LIMITS.developerName),
+				name: this.truncate('MNI', LIMITS.developerName),
 				websiteUrl: 'https://n8n.io',
 				privacyUrl: 'https://n8n.io/legal/privacy',
 				termsOfUseUrl: 'https://n8n.io/legal/terms',

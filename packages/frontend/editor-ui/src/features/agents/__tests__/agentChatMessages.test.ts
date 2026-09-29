@@ -223,7 +223,7 @@ describe('convertDbMessages — interactive turn synthesis', () => {
 		expect(chat[0].executionId).toBeUndefined();
 	});
 
-	it('preserves multiple resolved n8n chat cards from one persisted assistant message', () => {
+	it('preserves multiple resolved MNI chat cards from one persisted assistant message', () => {
 		const dbMessages: AgentPersistedMessageDto[] = [
 			{
 				id: 'm1',
@@ -280,7 +280,7 @@ describe('convertDbMessages — interactive turn synthesis', () => {
 		]);
 	});
 
-	it('preserves text and n8n chat card render order from persisted content', () => {
+	it('preserves text and MNI chat card render order from persisted content', () => {
 		const dbMessages: AgentPersistedMessageDto[] = [
 			{
 				id: 'm1',

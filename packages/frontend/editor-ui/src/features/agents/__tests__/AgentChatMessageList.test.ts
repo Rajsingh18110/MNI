@@ -665,7 +665,7 @@ describe('AgentChatMessageList', () => {
 		).toBeTruthy();
 	});
 
-	it('renders multiple n8n chat cards from one assistant message', () => {
+	it('renders multiple MNI chat cards from one assistant message', () => {
 		const wrapper = mount(AgentChatMessageList, {
 			props: {
 				messages: [
@@ -705,7 +705,7 @@ describe('AgentChatMessageList', () => {
 		expect(wrapper.findAll('[data-testid="interactive-card-stub"]')).toHaveLength(2);
 	});
 
-	it('clears an answered n8n chat card from the chat', () => {
+	it('clears an answered MNI chat card from the chat', () => {
 		const wrapper = mount(AgentChatMessageList, {
 			props: {
 				messages: [

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Cleanup GHCR images for n8n CI
+ * Cleanup GHCR images for MNI CI
  *
  * Modes:
  *   --tag <tag>     Delete exact tag (post-run cleanup)
@@ -16,7 +16,7 @@ import { promisify } from 'node:util';
 
 const execAsync = promisify(exec);
 const ORG = process.env.GHCR_ORG || 'n8n-io';
-const REPO = process.env.GHCR_REPO || 'n8n';
+const REPO = process.env.GHCR_REPO || 'MNI';
 const PACKAGES = [REPO, 'runners'];
 const [mode, rawValue] = process.argv.slice(2);
 

@@ -639,7 +639,7 @@ export class Github implements INodeType {
 						displayName: 'By Name',
 						name: 'name',
 						type: 'string',
-						placeholder: 'e.g. n8n',
+						placeholder: 'e.g. MNI',
 						validation: [
 							{
 								type: 'regex',
@@ -2546,7 +2546,7 @@ export class Github implements INodeType {
 						body.message = this.getNodeParameter('commitMessage', i) as string;
 
 						if (this.getNodeParameter('binaryData', i)) {
-							// Currently internally n8n uses base64 and also Github expects it base64 encoded.
+							// Currently internally MNI uses base64 and also Github expects it base64 encoded.
 							// If that ever changes the data has to get converted here.
 							const binaryPropertyName = this.getNodeParameter('binaryPropertyName', i);
 

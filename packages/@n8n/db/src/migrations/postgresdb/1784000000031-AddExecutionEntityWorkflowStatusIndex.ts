@@ -18,7 +18,7 @@ import type { MigrationContext, ReversibleMigration } from '../migration-types';
  * excluded and never appear in list queries.
  *
  * Postgres-only migration: partial functional indexes are a Postgres feature;
- * SQLite is not affected by this performance class of issue at n8n scale.
+ * SQLite is not affected by this performance class of issue at MNI scale.
  */
 export class AddExecutionEntityWorkflowStatusIndex1784000000031 implements ReversibleMigration {
 	async up({ schemaBuilder: { createIndex }, escape }: MigrationContext) {

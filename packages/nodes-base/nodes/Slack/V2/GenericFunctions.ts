@@ -42,7 +42,7 @@ function isDefined<T>(value: T | undefined | null | ''): value is NonNullable<T>
 	return value !== undefined && value !== null && value !== '';
 }
 
-// When an expression is wrapped in surrounding text/whitespace, n8n switches to
+// When an expression is wrapped in surrounding text/whitespace, MNI switches to
 // string interpolation and a multiOptions array is coerced to a comma-joined
 // string. Accept both shapes so the Slack node degrades gracefully.
 export function toMultiOptionsCsv(value: unknown): string {
@@ -410,7 +410,7 @@ export function getMessageContent(
 	const { id } = this.getWorkflow();
 	const automatedMessage = `_Automated with this <${this.getInstanceBaseUrl()}workflow/${id}?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
 		'n8n-nodes-base.slack',
-	)}${instanceId ? '_' + instanceId : ''}|n8n workflow>_`;
+	)}${instanceId ? '_' + instanceId : ''}|MNI workflow>_`;
 	const messageType = this.getNodeParameter('messageType', i) as string;
 
 	let content: IDataObject = {};
@@ -604,7 +604,7 @@ export function createSendAndWaitMessageBody(context: IExecuteFunctions) {
 			type: 'section',
 			text: {
 				type: 'mrkdwn',
-				text: `${attributionText} _<${link}|n8n>_`,
+				text: `${attributionText} _<${link}|MNI>_`,
 			},
 		});
 	}

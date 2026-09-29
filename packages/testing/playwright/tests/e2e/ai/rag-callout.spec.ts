@@ -7,7 +7,7 @@ test.describe(
 	},
 	() => {
 		test.describe('NDV callout', () => {
-			test('should show callout and open template on click', async ({ n8n }) => {
+			test('should show callout and open template on click', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.addNode('Zep Vector Store', {
 					action: 'Add documents to vector store',
@@ -27,7 +27,7 @@ test.describe(
 		});
 
 		test.describe('search callout', () => {
-			test('should show callout and open template on click', async ({ n8n }) => {
+			test('should show callout and open template on click', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.clickNodeCreatorPlusButton();
 				await n8n.canvas.fillNodeCreatorSearchBar('rag');

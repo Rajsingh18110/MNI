@@ -4,7 +4,7 @@
     "path": "/v1/messages",
     "body": {
       "type": "REGEX",
-      "regex": "[\\s\\S]*You are the n8n Instance Agent — an AI assistant embedded in an n8n instance\\. Yo[\\s\\S]*\"role\"\\s*:\\s*\"user\"[\\s\\S]{0,1500}\"type\"\\s*:\\s*\"tool_result\"[\\s\\S]{0,2000}\\\\\"name\\\\\":\\\\\"B3 Workflow Setup Subnode Grouping\\\\\"[\\s\\S]*"
+      "regex": "[\\s\\S]*You are the MNI instance Agent — an AI assistant embedded in an MNI instance\\. Yo[\\s\\S]*\"role\"\\s*:\\s*\"user\"[\\s\\S]{0,1500}\"type\"\\s*:\\s*\"tool_result\"[\\s\\S]{0,2000}\\\\\"name\\\\\":\\\\\"B3 Workflow Setup Subnode Grouping\\\\\"[\\s\\S]*"
     }
   },
   "httpResponse": {

@@ -43,7 +43,7 @@ export interface AgentChatIntegrationContext extends AgentChannelPreconditionCon
 	credential: Record<string, unknown>;
 	/** Whether this connection may receive events from the external platform. */
 	ingressEnabled: boolean;
-	/** Returns the inbound webhook URL this n8n instance exposes for the given platform. */
+	/** Returns the inbound webhook URL this MNI instance exposes for the given platform. */
 	webhookUrlFor: (platform: string) => string;
 }
 
@@ -234,7 +234,7 @@ export abstract class AgentChatIntegration {
 	 * Omit to signal that the platform has no rich card surface.
 	 * Typed by the shared list so a new component type must be added to
 	 * `RICH_CARD_COMPONENT_TYPES` in `@n8n/api-types` first — which in turn
-	 * forces the wire schema and the n8n chat renderer to handle it.
+	 * forces the wire schema and the MNI chat renderer to handle it.
 	 */
 	readonly supportedComponents?: readonly RichCardComponentType[];
 
@@ -297,7 +297,7 @@ export abstract class AgentChatIntegration {
 	readonly singleStreamedRunPerTurn: boolean = false;
 
 	/**
-	 * True when this integration is an internal channel (e.g. the in-app n8n
+	 * True when this integration is an internal channel (e.g. the in-app MNI
 	 * chat) that must not appear in the public integrations catalog or the
 	 * add-trigger UI.
 	 */
@@ -306,7 +306,7 @@ export abstract class AgentChatIntegration {
 	/**
 	 * True when this integration needs a platform Chat SDK instance (adapter +
 	 * credential) to execute actions and context queries. Internal channels
-	 * (e.g. the in-app n8n chat) set this to false — the executors then skip
+	 * (e.g. the in-app MNI chat) set this to false — the executors then skip
 	 * `getChatInstance` and delegate directly with `chat: undefined`.
 	 */
 	readonly requiresChatInstance: boolean = true;

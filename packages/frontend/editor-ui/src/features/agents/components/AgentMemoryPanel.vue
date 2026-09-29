@@ -44,7 +44,7 @@ function buildEnabledMemoryConfig() {
 	return {
 		...existingMemory,
 		enabled: true,
-		storage: 'n8n' as const,
+		storage: 'MNI' as const,
 	};
 }
 

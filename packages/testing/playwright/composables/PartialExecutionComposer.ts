@@ -7,7 +7,7 @@ import type { n8nPage } from '../pages/n8nPage';
  * complex multi-step scenarios across pages.
  */
 export class PartialExecutionComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Sets up partial execution version 2 in localStorage

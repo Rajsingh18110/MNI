@@ -126,10 +126,10 @@ async function countExecutionsForNode(
 }
 
 async function approveBuildPlanIfRequested({
-	n8n,
+	MNI,
 	nodeName,
 }: {
-	n8n: {
+	MNI: {
 		api: { workflows: WorkflowApiForAssertions };
 		instanceAi: { getPlanApproveButton(): Locator };
 	};
@@ -155,10 +155,10 @@ async function approveBuildPlanIfRequested({
 }
 
 async function expectApprovedExecutionComplete({
-	n8n,
+	MNI,
 	nodeName,
 }: {
-	n8n: ApprovalExecutionAssertionContext;
+	MNI: ApprovalExecutionAssertionContext;
 	nodeName: string;
 }): Promise<void> {
 	await expect
@@ -186,7 +186,7 @@ test.describe(
 
 		test('should list archived workflows and restore one via Instance AI', async ({
 			api,
-			n8n,
+			MNI,
 			n8nContainer,
 		}) => {
 			test.skip(!n8nContainer, 'LLM replay requires the container proxy harness');
@@ -249,7 +249,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n }, testInfo) => {
+			async ({ MNI }, testInfo) => {
 				test.skip(
 					testInfo.project.name.includes('multi-main'),
 					'Post-approval agent actions are not yet stable on the multi-main project',
@@ -261,11 +261,11 @@ test.describe(
 					'Create a plan to build and run a simple workflow with a manual trigger and a set node called "approval test". Show me the plan for approval before building it.',
 				);
 
-				await approveBuildPlanIfRequested({ n8n, nodeName: 'approval test' });
+				await approveBuildPlanIfRequested({ MNI, nodeName: 'approval test' });
 				await expect(n8n.instanceAi.getConfirmApproveButton()).toBeVisible({ timeout: 120_000 });
 				await n8n.instanceAi.getConfirmApproveButton().click();
 
-				await expectApprovedExecutionComplete({ n8n, nodeName: 'approval test' });
+				await expectApprovedExecutionComplete({ MNI, nodeName: 'approval test' });
 				await n8n.instanceAi.waitForResponseComplete();
 
 				await expect(n8n.instanceAi.getConfirmApproveButton()).not.toBeVisible();
@@ -284,14 +284,14 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				await n8n.navigate.toInstanceAi();
 
 				await n8n.instanceAi.sendMessage(
 					'Create a plan to build and run a simple workflow with a manual trigger and a set node called "deny test". Show me the plan for approval before building it.',
 				);
 
-				await approveBuildPlanIfRequested({ n8n, nodeName: 'deny test' });
+				await approveBuildPlanIfRequested({ MNI, nodeName: 'deny test' });
 				await expect(n8n.instanceAi.getConfirmDenyButton()).toBeVisible({ timeout: 120_000 });
 				// Build verification may already have run the workflow; denying must not add a run.
 				const executionsBeforeDeny = await countExecutionsForNode(n8n.api.workflows, 'deny test');
@@ -310,7 +310,7 @@ test.describe(
 		// converge on build-workflow with a workflowId before the update is saved.
 		test('should require approval before editing an existing workflow and apply after approval', async ({
 			api,
-			n8n,
+			MNI,
 		}, testInfo) => {
 			test.skip(
 				testInfo.project.name.includes('multi-main'),
@@ -364,7 +364,7 @@ test.describe(
 		});
 
 		test('should require approval before editing an existing workflow and keep it unchanged when denied', async ({
-			n8n,
+			MNI,
 		}) => {
 			const workflow = await n8n.api.workflows.createWorkflow({
 				id: DENY_EDIT_WORKFLOW_ID,

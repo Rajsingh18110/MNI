@@ -247,7 +247,7 @@ describe('createN8nDelegateSubAgentTool', () => {
 		expect(runner.run.mock.calls[0]?.[1]).not.toHaveProperty('telemetry');
 	});
 
-	it('selects a configured n8n agent source by subAgentId', async () => {
+	it('selects a configured MNI agent source by subAgentId', async () => {
 		const selectedSource: SubAgentSource = { agentId: 'agent-2' };
 		const tool = createN8nDelegateSubAgentTool({
 			parentAgentId,

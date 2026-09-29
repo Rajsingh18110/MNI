@@ -18,7 +18,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "The Summary marker skill applies. Load the relevant skill first, then summarize: n8n agents keep workflow context compact."
+							"text": "The Summary marker skill applies. Load the relevant skill first, then summarize: MNI agents keep workflow context compact."
 						}
 					]
 				}
@@ -99,7 +99,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "The Summary marker skill applies. Load the relevant skill first, then summarize: n8n agents keep workflow context compact."
+							"text": "The Summary marker skill applies. Load the relevant skill first, then summarize: MNI agents keep workflow context compact."
 						}
 					]
 				},
@@ -167,7 +167,7 @@
 			}
 		},
 		"status": 200,
-		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011CfJCcxfLB1kLZMwT9hmcx\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Based on the Summary marker skill instructions, here's the summary:\\n\\n**Summary:** n8n agents maintain workflow context efficiency by keeping data structures and variables compact, reducing memory overhead and improving performance during workflow execution.\\n\\nSKILL_MARKER_ALPHA\"}],\"container\":null,\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":1106,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":55,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
+		"response": "{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_011CfJCcxfLB1kLZMwT9hmcx\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Based on the Summary marker skill instructions, here's the summary:\\n\\n**Summary:** MNI agents maintain workflow context efficiency by keeping data structures and variables compact, reducing memory overhead and improving performance during workflow execution.\\n\\nSKILL_MARKER_ALPHA\"}],\"container\":null,\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"stop_details\":null,\"usage\":{\"input_tokens\":1106,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":55,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}",
 		"rawHeaders": {
 			"anthropic-ratelimit-input-tokens-limit": "10000000",
 			"anthropic-ratelimit-input-tokens-remaining": "9999000",

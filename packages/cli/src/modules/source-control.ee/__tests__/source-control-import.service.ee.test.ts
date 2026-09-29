@@ -125,7 +125,7 @@ describe('SourceControlImportService', () => {
 		credentialsService,
 		mock(),
 		folderRepository,
-		mock<InstanceSettings>({ n8nFolder: '/mock/n8n' }),
+		mock<InstanceSettings>({ n8nFolder: '/mock/MNI' }),
 		sourceControlContextFactory,
 		sourceControlScopedService,
 		workflowHistoryService,
@@ -3713,11 +3713,11 @@ describe('SourceControlImportService', () => {
 				expect(result).toHaveLength(2);
 				expect(result[0]).toMatchObject({
 					...mockProjectData1,
-					filename: `/mock/n8n/git/projects/${mockProjectData1.id}.json`,
+					filename: `/mock/MNI/git/projects/${mockProjectData1.id}.json`,
 				});
 				expect(result[1]).toMatchObject({
 					...mockProjectData2,
-					filename: `/mock/n8n/git/projects/${mockProjectData2.id}.json`,
+					filename: `/mock/MNI/git/projects/${mockProjectData2.id}.json`,
 				});
 			});
 
@@ -3743,7 +3743,7 @@ describe('SourceControlImportService', () => {
 				expect(result).toHaveLength(1);
 				expect(result[0]).toMatchObject({
 					...mockProjectData2,
-					filename: `/mock/n8n/git/projects/${mockProjectData2.id}.json`,
+					filename: `/mock/MNI/git/projects/${mockProjectData2.id}.json`,
 				});
 			});
 		});
@@ -3799,7 +3799,7 @@ describe('SourceControlImportService', () => {
 					name: mockProjectData1.name,
 					description: mockProjectData1.description,
 					icon: mockProjectData1.icon,
-					filename: `/mock/n8n/git/projects/${mockProjectData1.id}.json`,
+					filename: `/mock/MNI/git/projects/${mockProjectData1.id}.json`,
 					type: mockProjectData1.type,
 					owner: {
 						type: 'team',
@@ -3812,7 +3812,7 @@ describe('SourceControlImportService', () => {
 					name: mockProjectData2.name,
 					description: mockProjectData2.description,
 					icon: mockProjectData2.icon,
-					filename: `/mock/n8n/git/projects/${mockProjectData2.id}.json`,
+					filename: `/mock/MNI/git/projects/${mockProjectData2.id}.json`,
 					type: mockProjectData2.type,
 					owner: {
 						type: 'team',
@@ -3855,7 +3855,7 @@ describe('SourceControlImportService', () => {
 					name: mockProjectData1.name,
 					description: mockProjectData1.description,
 					icon: mockProjectData1.icon,
-					filename: `/mock/n8n/git/projects/${mockProjectData1.id}.json`,
+					filename: `/mock/MNI/git/projects/${mockProjectData1.id}.json`,
 					type: mockProjectData1.type,
 					owner: {
 						type: 'team',
@@ -4055,8 +4055,8 @@ describe('SourceControlImportService', () => {
 				};
 
 				globMock.mockResolvedValue([
-					'/mock/n8n/git/datatables/dt1.json',
-					'/mock/n8n/git/datatables/dt2.json',
+					'/mock/MNI/git/datatables/dt1.json',
+					'/mock/MNI/git/datatables/dt2.json',
 				]);
 				fsReadFile
 					.mockResolvedValueOnce(JSON.stringify(mockDataTable1) as any)
@@ -4068,7 +4068,7 @@ describe('SourceControlImportService', () => {
 				// Assert
 				expect(result).toEqual([mockDataTable1, mockDataTable2]);
 				expect(globMock).toHaveBeenCalledWith('*.json', {
-					cwd: '/mock/n8n/git/datatables',
+					cwd: '/mock/MNI/git/datatables',
 					absolute: true,
 				});
 			});
@@ -4096,8 +4096,8 @@ describe('SourceControlImportService', () => {
 				};
 
 				globMock.mockResolvedValue([
-					'/mock/n8n/git/datatables/dt1.json',
-					'/mock/n8n/git/datatables/invalid.json',
+					'/mock/MNI/git/datatables/dt1.json',
+					'/mock/MNI/git/datatables/invalid.json',
 				]);
 				fsReadFile
 					.mockResolvedValueOnce(JSON.stringify(mockDataTable) as any)
@@ -4138,9 +4138,9 @@ describe('SourceControlImportService', () => {
 				};
 
 				globMock.mockResolvedValue([
-					'/mock/n8n/git/datatables/dt1.json',
-					'/mock/n8n/git/datatables/dt2.json',
-					'/mock/n8n/git/datatables/dt3.json',
+					'/mock/MNI/git/datatables/dt1.json',
+					'/mock/MNI/git/datatables/dt2.json',
+					'/mock/MNI/git/datatables/dt3.json',
 				]);
 				fsReadFile
 					.mockResolvedValueOnce(JSON.stringify(authorizedDataTable) as any)
@@ -4332,7 +4332,7 @@ describe('SourceControlImportService', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/mock/n8n/git/datatables/dt1.json',
+				file: '/mock/MNI/git/datatables/dt1.json',
 				updatedAt: '2024-01-01T00:00:00.000Z',
 			};
 
@@ -4679,7 +4679,7 @@ describe('SourceControlImportService', () => {
 						...mockCandidate,
 						id: 'dt2',
 						name: 'Other Table',
-						file: '/mock/n8n/git/datatables/dt2.json',
+						file: '/mock/MNI/git/datatables/dt2.json',
 					};
 					fsReadFile.mockImplementation(async (file: any) =>
 						String(file).includes('dt2')

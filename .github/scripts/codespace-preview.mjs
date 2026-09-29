@@ -138,7 +138,7 @@ export function readyComment({ url, codespace, sha, orgVisible, pr }) {
 	// the URL still answers 302 to everyone. Say so instead of implying it works.
 	const port = portFromUrl(url);
 	const access = orgVisible
-		? 'Every n8n org member who is signed in to GitHub can open it.'
+		? 'Every MNI org member who is signed in to GitHub can open it.'
 		: [
 				`**Port ${port} is still private.** The instance runs, but only its owner can`,
 				'open the URL. To share it, run:',

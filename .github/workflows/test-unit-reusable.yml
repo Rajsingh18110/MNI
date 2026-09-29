@@ -76,7 +76,7 @@ jobs:
       # @n8n/vitest-config/node), peak forks ≈ 2 × 50% ≈ the core count, instead
       # of ~10 concurrent suites each spawning a core-sized pool and pegging CPU.
       - name: Test Unit (backend, except cli and nodes-base)
-        run: pnpm turbo test:unit --continue --concurrency=2 --filter='!./packages/frontend/**' --filter='!./packages/modules/*/frontend' --filter='!n8n' --filter='!n8n-nodes-base' --summarize
+        run: pnpm turbo test:unit --continue --concurrency=2 --filter='!./packages/frontend/**' --filter='!./packages/modules/*/frontend' --filter='!MNI' --filter='!n8n-nodes-base' --summarize
 
       - name: Send Test Stats
         if: ${{ !cancelled() }}
@@ -125,7 +125,7 @@ jobs:
           node-version: ${{ inputs.nodeVersion }}
 
       - name: Test Unit (cli, scoped)
-        run: pnpm turbo test:unit:changed --filter=n8n --only --summarize -- --shard=${{ matrix.shard }}/2 --maxWorkers=100% --passWithNoTests
+        run: pnpm turbo test:unit:changed --filter=MNI --only --summarize -- --shard=${{ matrix.shard }}/2 --maxWorkers=100% --passWithNoTests
 
       - name: Send Test Stats
         if: ${{ !cancelled() }}
@@ -180,7 +180,7 @@ jobs:
       # run serially to avoid cross-package interference. Unit jobs above
       # don't need this because they isolate per-process.
       - name: Test Integration (backend, except cli)
-        run: pnpm turbo test:integration --continue --concurrency=1 --filter='!./packages/frontend/**' --filter='!./packages/modules/*/frontend' --filter='!n8n' --summarize
+        run: pnpm turbo test:integration --continue --concurrency=1 --filter='!./packages/frontend/**' --filter='!./packages/modules/*/frontend' --filter='!MNI' --summarize
 
       - name: Send Test Stats
         if: ${{ !cancelled() }}
@@ -229,7 +229,7 @@ jobs:
           node-version: ${{ inputs.nodeVersion }}
 
       - name: Test Integration (cli, scoped)
-        run: pnpm turbo test:integration:changed --filter=n8n --only --summarize -- --shard=${{ matrix.shard }}/2 --maxWorkers=50% --passWithNoTests
+        run: pnpm turbo test:integration:changed --filter=MNI --only --summarize -- --shard=${{ matrix.shard }}/2 --maxWorkers=50% --passWithNoTests
 
       - name: Send Test Stats
         if: ${{ !cancelled() }}

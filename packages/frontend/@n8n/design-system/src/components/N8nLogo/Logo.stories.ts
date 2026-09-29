@@ -26,7 +26,7 @@ export default {
 
 	parameters: {
 		docs: {
-			description: { component: 'The n8n logo component in icon and wordmark variants.' },
+			description: { component: 'The MNI logo component in icon and wordmark variants.' },
 		},
 	},
 };

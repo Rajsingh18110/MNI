@@ -90,7 +90,7 @@ describe('MicrosoftDataverse Node', () => {
 		});
 	});
 
-	it('lists operations alphabetically by name, matching the n8n catalog convention', () => {
+	it('lists operations alphabetically by name, matching the MNI catalog convention', () => {
 		const instance = new MicrosoftDataverse();
 		const operation = instance.description.properties.find(
 			(property) => property.name === 'operation',

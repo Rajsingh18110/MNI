@@ -74,8 +74,8 @@ type InstanceScopeGroups = {
 
 export const GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS = {
 	settings: {
-		// Grants access to every instance Settings page, including MCP and n8n
-		// Assistant management. MCP and n8n Assistant also have their own narrower
+		// Grants access to every instance Settings page, including MCP and MNI
+		// Assistant management. MCP and MNI Assistant also have their own narrower
 		// use/manage options below so a role can be given just those without the
 		// rest of instance Settings — Manage's bundle is a strict superset of all
 		// four, so checking Manage checks them too, and unchecking any one of them
@@ -104,7 +104,7 @@ export const GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS = {
 			'aiPreference:delete',
 			'aiPreference:list',
 			'chatHub:manage', // Chat
-			'aiAssistant:manage', // n8n Assistant
+			'aiAssistant:manage', // MNI Assistant
 			'instanceAi:manage',
 			'instanceAi:message',
 			'instanceAi:gateway', // computer-use gateway pairing

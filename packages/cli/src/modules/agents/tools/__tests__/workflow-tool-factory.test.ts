@@ -776,7 +776,7 @@ describe('workflow tool → parentAgentRun stamping', () => {
 		expect(executionData?.parentAgentRun).toEqual(expect.objectContaining({ previewChat: true }));
 	});
 
-	it('stamps the production n8n Chat marker so the wake-up uses the published runtime', async () => {
+	it('stamps the production MNI Chat marker so the wake-up uses the published runtime', async () => {
 		const executionData = await runToolWith(
 			{
 				agentId: 'agent-1',

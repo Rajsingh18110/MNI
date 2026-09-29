@@ -1,9 +1,9 @@
 /**
  * Prepares and caches a Daytona Image descriptor with config files,
  * node_modules, and runtime skills pre-installed, and resolves a versioned
- * named snapshot (`n8n/instance-ai:<n8nVersion>`) for sandbox creation.
+ * named snapshot (`MNI/instance-ai:<n8nVersion>`) for sandbox creation.
  *
- * `snapshotName` derives the versioned snapshot name for the running n8n
+ * `snapshotName` derives the versioned snapshot name for the running MNI
  * version. CI is the producer of snapshots
  * (see `scripts/build-snapshot.cjs`); the sandbox-create request validates
  * existence and falls back to the declarative image when missing.
@@ -44,7 +44,7 @@ export interface CreateSnapshotOptions {
 	/**
 	 * Delete versioned snapshots not used within this many days
 	 * (`lastUsedAt`, falling back to `createdAt`). Snapshots still in use by
-	 * older n8n versions keep a fresh `lastUsedAt` and survive regardless of
+	 * older MNI versions keep a fresh `lastUsedAt` and survive regardless of
 	 * release cadence. Unset disables age pruning.
 	 */
 	maxAgeDays?: number;
@@ -57,7 +57,7 @@ const SNAPSHOT_WORKSPACE_LAYOUT_DIRS = ['src', 'chunks', 'node-types'] as const;
 const SNAPSHOT_BUILDING_STATES = new Set(['building', 'pending', 'pulling']);
 const SNAPSHOT_VERIFY_POLL_MS = 5_000;
 const DEFAULT_SNAPSHOT_VERIFY_TIMEOUT_S = 1_800;
-const SNAPSHOT_NAME_PREFIX = 'n8n/instance-ai:';
+const SNAPSHOT_NAME_PREFIX = 'MNI/instance-ai:';
 const MAX_TRANSIENT_CREATE_RETRIES = 3;
 const TRANSIENT_CREATE_RETRY_BACKOFF_MS = 5_000;
 /**
@@ -249,7 +249,7 @@ export class SnapshotManager {
 	}
 
 	/**
-	 * Create the versioned Daytona snapshot for the configured n8n version.
+	 * Create the versioned Daytona snapshot for the configured MNI version.
 	 * Treats 409 / "already exists" as success — re-runs against the same
 	 * version are idempotent. Retries transient gateway errors, prunes old
 	 * versioned snapshots on quota exhaustion (when `retention` is set), and
@@ -592,7 +592,7 @@ export class SnapshotManager {
 	 * `lastUsedAt`) is the primary policy; the `retention` count is a quota
 	 * backstop that evicts least-recently-used snapshots when the total still
 	 * exceeds it. Failed snapshots are always deleted. Only touches
-	 * `n8n/instance-ai:*` names, never the snapshot being published, never
+	 * `MNI/instance-ai:*` names, never the snapshot being published, never
 	 * in-progress states, and never the newest `MIN_KEEP_NEWEST_VERSIONS`
 	 * versions. Never throws: returns the snapshots actually deleted.
 	 */
@@ -740,13 +740,13 @@ export class SnapshotManager {
 	}
 
 	/**
-	 * Derive the versioned snapshot name for the running n8n version, or null
+	 * Derive the versioned snapshot name for the running MNI version, or null
 	 * when no version is configured. Existence is validated implicitly by the
 	 * subsequent `daytona.create({ snapshot })`.
 	 */
 	snapshotName(): string | null {
 		if (!this.n8nVersion) return null;
-		return `n8n/instance-ai:${this.n8nVersion}`;
+		return `MNI/instance-ai:${this.n8nVersion}`;
 	}
 
 	private async runtimeSkillBundle(): ReturnType<typeof buildRuntimeSkillWorkspaceBundle> {

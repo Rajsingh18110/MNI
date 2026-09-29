@@ -1,7 +1,7 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import nock from 'nock';
 
-describe('Test N8n Node', () => {
+describe('Test MNI Node', () => {
 	const baseUrl = 'https://test.app.n8n.cloud/api/v1';
 	const credentials = {
 		n8nApi: {

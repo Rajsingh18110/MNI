@@ -12,7 +12,7 @@ import { InstanceAiBrowserSessionService } from './instance-ai-browser-session.s
 
 /**
  * Serves the Browser Use relay WebSockets (`/browser-use/extension/:sessionId`
- * and `/browser-use/cdp/:sessionId`) over the main n8n server, so no extra port
+ * and `/browser-use/cdp/:sessionId`) over the main MNI server, so no extra port
  * is needed. Authentication is performed per endpoint by the session service.
  */
 @Service()

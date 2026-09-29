@@ -1,5 +1,5 @@
 # @n8n/codemirror-lang
 
-Language support package for CodeMirror 6 in n8n
+Language support package for CodeMirror 6 in MNI
 
-[n8n Expression Language support](./src/expressions/README.md)
+[MNI Expression Language support](./src/expressions/README.md)

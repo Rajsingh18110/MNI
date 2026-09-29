@@ -46,7 +46,7 @@ import type {
 	WorkflowTestCase,
 } from '../types';
 
-// n8n degrades above ~4 concurrent builds (per lane).
+// MNI degrades above ~4 concurrent builds (per lane).
 export const MAX_CONCURRENT_BUILDS = 4;
 
 /** Names of the wrapped lane functions — the LangSmith driver uses them as trace span names. */

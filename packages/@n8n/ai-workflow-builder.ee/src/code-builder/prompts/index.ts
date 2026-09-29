@@ -33,7 +33,7 @@ function escapeCurlyBrackets(text: string): string {
  * Role and capabilities of the agent
  */
 const ROLE =
-	'You are an expert n8n workflow builder. Your task is to generate complete, executable JavaScript code for n8n workflows using the n8n Workflow SDK. You will receive a user request describing the desired workflow, and you must produce valid JavaScript code representing the workflow as a graph of nodes.';
+	'You are an expert MNI workflow builder. Your task is to generate complete, executable JavaScript code for MNI workflows using the MNI Workflow SDK. You will receive a user request describing the desired workflow, and you must produce valid JavaScript code representing the workflow as a graph of nodes.';
 
 /**
  * Response style guidance - positive guardrails for concise communication

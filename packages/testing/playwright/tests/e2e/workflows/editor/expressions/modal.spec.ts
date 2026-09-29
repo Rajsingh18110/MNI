@@ -6,19 +6,19 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addInitialNodeToCanvas('Schedule Trigger');
 			await n8n.ndv.close();
 		});
 
 		test.describe('Keybinds', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.canvas.addNode('Hacker News', { action: 'Get many items' });
 				await n8n.ndv.openExpressionEditorModal('limit');
 			});
 
-			test('should save the workflow with save keybind', async ({ n8n }) => {
+			test('should save the workflow with save keybind', async ({ MNI }) => {
 				const input = n8n.ndv.getExpressionEditorModalInput();
 				await n8n.ndv.fillExpressionEditorModalInput('{{ "hello"');
 				await expect(n8n.ndv.getExpressionEditorModalOutput()).toContainText('hello');
@@ -31,12 +31,12 @@ test.describe(
 		});
 
 		test.describe('Static data', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.canvas.addNode('Hacker News', { action: 'Get many items' });
 				await n8n.ndv.openExpressionEditorModal('limit');
 			});
 
-			test('should resolve primitive resolvables', async ({ n8n }) => {
+			test('should resolve primitive resolvables', async ({ MNI }) => {
 				const output = n8n.ndv.getExpressionEditorModalOutput();
 
 				// Test number addition
@@ -52,7 +52,7 @@ test.describe(
 				await expect(output).toContainText(/^false$/);
 			});
 
-			test('should resolve object resolvables', async ({ n8n }) => {
+			test('should resolve object resolvables', async ({ MNI }) => {
 				const output = n8n.ndv.getExpressionEditorModalOutput();
 
 				// Test object creation
@@ -64,7 +64,7 @@ test.describe(
 				await expect(output).toContainText(/^1$/);
 			});
 
-			test('should resolve array resolvables', async ({ n8n }) => {
+			test('should resolve array resolvables', async ({ MNI }) => {
 				const output = n8n.ndv.getExpressionEditorModalOutput();
 
 				// Test array creation
@@ -78,7 +78,7 @@ test.describe(
 		});
 
 		test.describe('Dynamic data', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.canvas.openNode('Schedule Trigger');
 				await n8n.ndv.setPinnedData([{ myStr: 'Monday' }]);
 				await n8n.ndv.clickBackToCanvasButton();
@@ -87,13 +87,13 @@ test.describe(
 				await n8n.ndv.openExpressionEditorModal('limit');
 			});
 
-			test('should resolve $parameter[]', async ({ n8n }) => {
+			test('should resolve $parameter[]', async ({ MNI }) => {
 				const output = n8n.ndv.getExpressionEditorModalOutput();
 				await n8n.ndv.fillExpressionEditorModalInput('{{ $parameter["operation"] }}');
 				await expect(output).toHaveText('getAll');
 			});
 
-			test('should resolve input: $json,$input,$(nodeName)', async ({ n8n }) => {
+			test('should resolve input: $json,$input,$(nodeName)', async ({ MNI }) => {
 				const output = n8n.ndv.getExpressionEditorModalOutput();
 
 				// Previous nodes have not run, input is empty

@@ -40,8 +40,8 @@ export class UnpublishWorkflowCommand extends BaseCommand<z.infer<typeof flagsSc
 			this.logger.info('All workflows unpublished successfully');
 		}
 
-		this.logger.info('Note: Changes will not take effect if n8n is running.');
-		this.logger.info('Please restart n8n for changes to take effect if n8n is currently running.');
+		this.logger.info('Note: Changes will not take effect if MNI is running.');
+		this.logger.info('Please restart MNI for changes to take effect if MNI is currently running.');
 	}
 
 	async catch(error: Error) {

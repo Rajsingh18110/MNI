@@ -3174,7 +3174,7 @@ describe('TelemetryEventRelay', () => {
 
 			eventService.emit('n8n-package-imported', event);
 
-			expect(telemetry.track).toHaveBeenCalledWith('User imported n8n package', {
+			expect(telemetry.track).toHaveBeenCalledWith('User imported MNI package', {
 				user_id: 'user123',
 				workflow_conflict_policy: 'new-version',
 				workflow_id_policy: 'new',
@@ -3239,7 +3239,7 @@ describe('TelemetryEventRelay', () => {
 
 			eventService.emit('n8n-package-exported', event);
 
-			expect(telemetry.track).toHaveBeenCalledWith('User exported n8n package', {
+			expect(telemetry.track).toHaveBeenCalledWith('User exported MNI package', {
 				user_id: 'user123',
 				workflow_count: 3,
 				folder_count: 1,

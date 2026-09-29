@@ -51,7 +51,7 @@ const collectionField: INodeProperties = {
 	default: {
 		values: {
 			useCollection: false,
-			collectionName: 'n8n',
+			collectionName: 'MNI',
 			collectionTable: 'n8n_vector_collections',
 		},
 	},
@@ -72,7 +72,7 @@ const collectionField: INodeProperties = {
 					displayName: 'Collection Name',
 					name: 'collectionName',
 					type: 'string',
-					default: 'n8n',
+					default: 'MNI',
 					required: true,
 					displayOptions: { show: { useCollection: [true] } },
 				},

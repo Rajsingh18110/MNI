@@ -229,13 +229,13 @@ const ExecutionContextSchemaV1 = z.object({
 	redaction: RedactionSettingSchema.optional(),
 
 	/**
-	 * The n8n user the execution ran as. Stamped at context establishment by
+	 * The MNI user the execution ran as. Stamped at context establishment by
 	 * deriving the user from the identity carrier with the same identifier that
 	 * credential resolution uses, so the redaction owner cannot drift from the
 	 * resolved user. Dynamic credential resolution re-affirms it on success. Used
 	 * by the redaction layer to grant that user access to their own data, including
 	 * a run that failed before the credential resolved. Absent when the identity is
-	 * not an n8n user (external Slack/OAuth resolvers) or cannot be validated, so
+	 * not an MNI user (external Slack/OAuth resolvers) or cannot be validated, so
 	 * those executions stay redacted for everyone.
 	 */
 	executedByUserId: z.string().optional(),
@@ -269,7 +269,7 @@ export type IExecutionContext = z.output<typeof ExecutionContextSchema>;
 /**
  * Metadata shape for the `n8n-oauth` credential-context source.
  *
- * `subject` (the resolved n8n user id) and `executionPath` (the execution ids the
+ * `subject` (the resolved MNI user id) and `executionPath` (the execution ids the
  * seal is valid for) turn the carrier into a verify-once "sealed" identity: when a
  * subject is present, resolution trusts it and binds to `executionPath` instead of
  * re-verifying the stored token. Absent `subject` = the legacy token-verify carrier;

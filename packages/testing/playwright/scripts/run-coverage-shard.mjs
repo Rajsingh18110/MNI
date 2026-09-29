@@ -39,7 +39,7 @@ try {
 	// Extract the image's built dist (.js + .js.map) for backend source resolution.
 	const cid = execFileSync('docker', ['create', image]).toString().trim();
 	execFileSync('rm', ['-rf', 'img-dist']);
-	execFileSync('docker', ['cp', `${cid}:/usr/local/lib/node_modules/n8n`, './img-dist']);
+	execFileSync('docker', ['cp', `${cid}:/usr/local/lib/node_modules/MNI`, './img-dist']);
 	execFileSync('docker', ['rm', cid], { stdio: 'ignore' });
 	sh('pnpm', ['coverage:emit-shard'], {
 		IMAGE_DIST_ROOT: `${process.cwd()}/img-dist`,

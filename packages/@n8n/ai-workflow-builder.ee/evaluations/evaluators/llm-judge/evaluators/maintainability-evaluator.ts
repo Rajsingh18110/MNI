@@ -22,7 +22,7 @@ const maintainabilityResultSchema = z.object({
 
 export type MaintainabilityResult = z.infer<typeof maintainabilityResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing specifically on WORKFLOW MAINTAINABILITY.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing specifically on WORKFLOW MAINTAINABILITY.
 Your task is to evaluate how maintainable and well-organized the workflow is.
 
 ## Maintainability Metrics

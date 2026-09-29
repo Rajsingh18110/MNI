@@ -35,8 +35,8 @@ jobs:
         with:
           build-command: |
             pnpm build
-            ./packages/cli/bin/n8n export:entities --outputDir packages/cli/commands/export/outputs 
-            ./packages/cli/bin/n8n import:entities --inputDir packages/cli/commands/export/outputs --truncateTables
+            ./packages/cli/bin/MNI export:entities --outputDir packages/cli/commands/export/outputs 
+            ./packages/cli/bin/MNI import:entities --inputDir packages/cli/commands/export/outputs --truncateTables
   postgres-export-postgres-import:
     name: postgres export -> postgres import
     runs-on: blacksmith-2vcpu-ubuntu-2204
@@ -44,7 +44,7 @@ jobs:
       db_changed: ${{ fromJSON(steps.paths-filter.outputs.results).db }}
     env:
       DB_TYPE: postgresdb
-      DB_POSTGRESDB_DATABASE: n8n
+      DB_POSTGRESDB_DATABASE: MNI
       DB_POSTGRESDB_HOST: localhost
       DB_POSTGRESDB_PORT: 5432
       DB_POSTGRESDB_USER: postgres
@@ -84,7 +84,7 @@ jobs:
 
       - name: Export postgres
         if: fromJSON(steps.paths-filter.outputs.results).db
-        run: ./packages/cli/bin/n8n export:entities --outputDir packages/cli/commands/export/outputs
+        run: ./packages/cli/bin/MNI export:entities --outputDir packages/cli/commands/export/outputs
       - name: Import postgres
         if: fromJSON(steps.paths-filter.outputs.results).db
-        run: ./packages/cli/bin/n8n import:entities --inputDir packages/cli/commands/export/outputs --truncateTables
+        run: ./packages/cli/bin/MNI import:entities --inputDir packages/cli/commands/export/outputs --truncateTables

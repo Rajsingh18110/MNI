@@ -19,7 +19,7 @@ const WORKFLOW_DEMO_PATH_SUFFIX = '/workflows/demo';
  *
  * Returns `true` when the value parses as a `http(s)` URL with a non-empty
  * host. We deliberately do not enforce a specific origin: the iframe has no
- * trusted source of the expected n8n instance URL.
+ * trusted source of the expected MNI instance URL.
  */
 export function isAllowedWorkflowUrl(input: unknown): input is string {
 	if (typeof input !== 'string' || input.length === 0) return false;

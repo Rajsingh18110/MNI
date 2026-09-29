@@ -54,7 +54,7 @@ export interface TokenUsage {
 export interface CodeBuilderAgentConfig {
 	/** LLM for generation */
 	llm: BaseChatModel;
-	/** Parsed node types from n8n */
+	/** Parsed node types from MNI */
 	nodeTypes: INodeTypeDescription[];
 	/** Optional logger */
 	logger?: Logger;

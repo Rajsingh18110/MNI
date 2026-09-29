@@ -1,7 +1,7 @@
 /**
  * Lightweight workflow executor for evaluations.
  *
- * Executes a SimpleWorkflow with pin data using the n8n execution engine.
+ * Executes a SimpleWorkflow with pin data using the MNI execution engine.
  * Service/API nodes use pin data (skipping real API calls). Utility nodes
  * (Set, If, Code, etc.) actually execute using their compiled dist
  * implementations, validating the workflow structure end-to-end.
@@ -164,7 +164,7 @@ interface ResolvedImports {
 function getPaths(): { corePath: string; nodesBasePath: string; langchainPath: string } {
 	const repoRoot = findRepoRoot(__dirname);
 	if (!repoRoot) {
-		throw new Error('Cannot find monorepo root — workflow execution requires the n8n monorepo');
+		throw new Error('Cannot find monorepo root — workflow execution requires the MNI monorepo');
 	}
 	return {
 		corePath: path.join(repoRoot, 'packages', 'core'),

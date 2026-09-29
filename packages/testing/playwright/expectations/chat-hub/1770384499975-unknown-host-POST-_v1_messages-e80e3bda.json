@@ -35,7 +35,7 @@
 				"messages": [
 					{
 						"role": "user",
-						"content": "What is n8n?"
+						"content": "What is MNI?"
 					}
 				],
 				"system": "You are a helpful assistant.\n\n__e2e_system_prompt_placeholder__"

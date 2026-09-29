@@ -619,7 +619,7 @@ Receiver:
 5. Compare signatures (timing-safe)
 ```
 
-**Verifying in an n8n workflow:**
+**Verifying in an MNI workflow:**
 
 Use a Code node after the Webhook trigger:
 
@@ -632,7 +632,7 @@ const timestamp = $input.first().json.headers['x-timestamp'];
 const rawBody = $input.first().json.rawBody ?? $input.first().json.body;
 const body = typeof rawBody === 'string' ? rawBody : JSON.stringify(rawBody);
 
-// Your secret (use n8n credentials or environment variable)
+// Your secret (use MNI credentials or environment variable)
 const secret = $env.WEBHOOK_SECRET;
 
 // Verify timestamp (reject requests older than 5 minutes)

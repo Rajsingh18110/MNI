@@ -200,7 +200,7 @@ const createEndUserCredential = async () =>
 		{ project: teamProject, role: 'credential:owner' },
 	);
 
-/** What the connect flow stores: per-user data, encrypted, keyed by n8n user id. */
+/** What the connect flow stores: per-user data, encrypted, keyed by MNI user id. */
 const connect = async (credentialId: string, user: User, accessToken = PER_USER_ACCESS_TOKEN) => {
 	const encrypted = await Container.get(Cipher).encryptV2({
 		oauthTokenData: { access_token: accessToken, token_type: 'Bearer' },

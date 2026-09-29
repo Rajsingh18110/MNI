@@ -18,12 +18,12 @@ const sharedLookupFields = {
 		.describe(
 			'Docs lookup query. Include the product area, service, and task. Optional when credential or node context is provided.',
 		),
-	intent: intentSchema.optional().describe('The kind of n8n docs answer needed.'),
+	intent: intentSchema.optional().describe('The kind of MNI docs answer needed.'),
 	credentialType: z
 		.string()
 		.optional()
 		.describe(
-			'n8n credential type name, for example "gmailOAuth2". Always pass it for an auth question (scopes, permissions, setup steps) — the tool resolves that type\'s own docs page from it, so you do not need to look the URL up first.',
+			'MNI credential type name, for example "gmailOAuth2". Always pass it for an auth question (scopes, permissions, setup steps) — the tool resolves that type\'s own docs page from it, so you do not need to look the URL up first.',
 		),
 	credentialDisplayName: z
 		.string()
@@ -33,11 +33,11 @@ const sharedLookupFields = {
 		.string()
 		.url()
 		.optional()
-		.describe('Known n8n docs URL from credential or node metadata.'),
+		.describe('Known MNI docs URL from credential or node metadata.'),
 	nodeType: z
 		.string()
 		.optional()
-		.describe('n8n node type name, for example "n8n-nodes-base.gmail".'),
+		.describe('MNI node type name, for example "n8n-nodes-base.gmail".'),
 };
 
 const maxContentLengthField = z
@@ -53,13 +53,13 @@ const lookupAction = z.object({
 	action: z
 		.literal('lookup')
 		.describe(
-			'Search the n8n docs registry, read the best matching markdown pages, and return source material. When answering from returned documents, end with Source or Sources using the returned page titles and URLs.',
+			'Search the MNI docs registry, read the best matching markdown pages, and return source material. When answering from returned documents, end with Source or Sources using the returned page titles and URLs.',
 		),
 	...sharedLookupFields,
 	oauthRedirectUrl: z
 		.string()
 		.optional()
-		.describe('OAuth redirect URL currently shown in the n8n credential modal.'),
+		.describe('OAuth redirect URL currently shown in the MNI credential modal.'),
 	maxPages: z
 		.number()
 		.int()
@@ -72,7 +72,7 @@ const lookupAction = z.object({
 });
 
 const searchAction = z.object({
-	action: z.literal('search').describe('Search the n8n docs registry without reading pages.'),
+	action: z.literal('search').describe('Search the MNI docs registry without reading pages.'),
 	...sharedLookupFields,
 	maxResults: z
 		.number()
@@ -90,9 +90,9 @@ const readAction = z.object({
 	action: z
 		.literal('read')
 		.describe(
-			'Read one n8n docs markdown page from the registry. When answering from the returned document, end with Source using the returned page title and URL.',
+			'Read one MNI docs markdown page from the registry. When answering from the returned document, end with Source using the returned page title and URL.',
 		),
-	url: z.string().url().describe('n8n docs page URL. Must resolve to a docs registry entry.'),
+	url: z.string().url().describe('MNI docs page URL. Must resolve to a docs registry entry.'),
 	maxContentLength: maxContentLengthField,
 });
 

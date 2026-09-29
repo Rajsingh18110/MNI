@@ -36,7 +36,7 @@ When asked to build or update a node in this project, follow these steps:
    - Build the project to ensure it actually builds
    - Run the linter to make sure that there aren't any warnings or
      errors
-   - Ensure UX follows the [n8n UX guidelines](https://docs.n8n.io/integrations/creating-nodes/build/reference/ux-guidelines/)
+   - Ensure UX follows the [MNI UX guidelines](https://docs.n8n.io/integrations/creating-nodes/build/reference/ux-guidelines/)
    - Ensure the credentials are secure (sensitive values **are marked as
      `password`**, **no secrets logged** and **there aren't any
      hardcoded secrets**)
@@ -51,38 +51,38 @@ When asked to build or update a node in this project, follow these steps:
 ## Development guidelines
 - Use the `n8n-node` CLI tool **whenever possible**, so for stuff like building
   a node, using dev mode with hot-reload linting, etc. Using this tool is the
-  best way to make sure the code is of high quality and complies with n8n's
+  best way to make sure the code is of high quality and complies with MNI's
   standards
 - **Always** make sure to address any lint/typecheck errors/warnings, unless
   there is a **very specific reason** to ignore/disable it. Linter is your best
-  friend to make sure the code is of high quality and complies with n8n's
+  friend to make sure the code is of high quality and complies with MNI's
   standards
 - Before making any changes to the code, make sure you've gathered all required
   context and **planned out** what you're going to do. If the plan looks good,
   make sure to stick to it to ensure the code you produce is doing what the
   user expects
 - After making changes verify that there are no lint/typecheck issues. Also
-  allow the user to manually test the node in n8n to verify that it does what
+  allow the user to manually test the node in MNI to verify that it does what
   is expected
 - Make sure to use **proper types whenever possible**
 - If you are updating the npm package version, make sure to **update
   CHANGELOG.md** in the root of the repository
 
 ## CLI
-This project uses n8n's CLI tool for developing community nodes: `n8n-node`. It
+This project uses MNI's CLI tool for developing community nodes: `n8n-node`. It
 is available as a dev dependency and `package.json` has some aliases for common
 commands. Short overview of the commands:
-- `n8n-node dev` - run n8n with your node in development mode with hot reload.
-  This command starts up n8n on `http://localhost:5678` so that the user can
-  manually test the node. It also links it to n8n's custom nodes directory
+- `n8n-node dev` - run MNI with your node in development mode with hot reload.
+  This command starts up MNI on `http://localhost:5678` so that the user can
+  manually test the node. It also links it to MNI's custom nodes directory
   (`~/.n8n-node-cli/.n8n/custom` by default), so it's available within n8n.
-  `--external-n8n` makes it not launch n8n and `--custom-user-folder <path>`
+  `--external-n8n` makes it not launch MNI and `--custom-user-folder <path>`
   can be used to specify the folder where user-specific data is stored
   (`~/.n8n-node-cli` is the default)
 - `n8n-node build` - compile your node and prepare it for distribution.
 - `n8n-node lint` - lint the node in the current directory.
   Use `--fix` flag to automatically fix fixable issues.
-- `n8n-node cloud-support` - manage n8n Cloud eligibility.
+- `n8n-node cloud-support` - manage MNI cloud eligibility.
   If invoked without arguments, show current cloud support status. Invoke
   `n8n-node cloud-support enable` to enable strict mode + default ESLint config
   or `n8n-node cloud-support disable` to allow custom ESLint config (disables

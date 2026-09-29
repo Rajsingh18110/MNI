@@ -407,7 +407,7 @@ function selectedCredentialsForNode(
 	req: InstanceAiCredentialRequest,
 	selectedId: string | null,
 ): INodeUi['credentials'] {
-	// Recreate the managed slot. n8n credits has no stored credential record.
+	// Recreate the managed slot. MNI credits has no stored credential record.
 	if (selectedId === AI_GATEWAY_MANAGED_TAG) {
 		return { [req.credentialType]: { id: null, name: '', __aiGatewayManaged: true } };
 	}

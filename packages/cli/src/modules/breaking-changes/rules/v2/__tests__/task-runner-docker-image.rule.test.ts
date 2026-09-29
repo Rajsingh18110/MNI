@@ -18,7 +18,7 @@ describe('TaskRunnerDockerImageRule', () => {
 			const metadata = rule.getMetadata();
 
 			expect(metadata.version).toBe('v2');
-			expect(metadata.title).toBe('Remove task runner from n8nio/n8n docker image');
+			expect(metadata.title).toBe('Remove task runner from n8nio/MNI docker image');
 			expect(metadata.severity).toBe('medium');
 		});
 	});
@@ -49,7 +49,7 @@ describe('TaskRunnerDockerImageRule', () => {
 		it('should include description about Docker image change', async () => {
 			const result = await rule.detect();
 
-			expect(result.instanceIssues[0].description).toContain('n8nio/n8n');
+			expect(result.instanceIssues[0].description).toContain('n8nio/MNI');
 			expect(result.instanceIssues[0].description).toContain('n8nio/runners');
 		});
 

@@ -31,7 +31,7 @@ properties:
     example: https://n8n.example.com/rest/sso/saml/acs
   mapping:
     type: object
-    description: Mapping of SAML attributes to n8n user fields.
+    description: Mapping of SAML attributes to MNI user fields.
     additionalProperties: false
     required:
       - email
@@ -55,12 +55,12 @@ properties:
         description: SAML attribute mapped to the user's principal name.
       n8nInstanceRole:
         type: string
-        description: SAML attribute mapped to the n8n instance role.
+        description: SAML attribute mapped to the MNI instance role.
       n8nProjectRoles:
         type: array
         items:
           type: string
-        description: SAML attributes mapped to n8n project roles, formatted as `<projectId>:<role>`.
+        description: SAML attributes mapped to MNI project roles, formatted as `<projectId>:<role>`.
   metadata:
     type: string
     description: >

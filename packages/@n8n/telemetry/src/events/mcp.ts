@@ -33,7 +33,7 @@ export const MCP_TELEMETRY = defineTelemetryEvents({
 	MCP_NUDGE_CONNECT_CLICKED: {
 		name: 'User clicked connect in MCP nudge',
 		description:
-			'The user clicked "Connect n8n" in the MCP nudge. The app navigates to the MCP settings page and abandons the export or import that opened the nudge. Kept separate from the skip and dismiss events so the connect-to-export click ratio stays computable.',
+			'The user clicked "Connect MNI" in the MCP nudge. The app navigates to the MCP settings page and abandons the export or import that opened the nudge. Kept separate from the skip and dismiss events so the connect-to-export click ratio stays computable.',
 		properties: z.object({
 			surface: nudgeSurface,
 		}),

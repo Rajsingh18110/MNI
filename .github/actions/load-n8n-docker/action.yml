@@ -1,8 +1,8 @@
-# Restores the n8n + runners image tarball (produced by build-n8n-docker
+# Restores the MNI + runners image tarball (produced by build-n8n-docker
 # under the variant+SHA-derived cache key) and loads both images into the
 # local docker daemon.
 #
-# After this action runs, `n8nio/n8n:local` and `n8nio/runners:local` are
+# After this action runs, `n8nio/MNI:local` and `n8nio/runners:local` are
 # present on the runner.
 #
 # If the cache entry has been evicted (e.g. Blacksmith cache thrash between
@@ -10,8 +10,8 @@
 # build-n8n-docker, which leaves both images tagged in dockerd and re-saves
 # the tarball to cache as a side effect.
 
-name: 'Load n8n Docker images from cache'
-description: 'Restores the n8n + runners image tarballs from the variant+SHA-keyed GHA cache and loads both images into the local docker daemon. Falls back to rebuilding on cache miss.'
+name: 'Load MNI Docker images from cache'
+description: 'Restores the MNI + runners image tarballs from the variant+SHA-keyed GHA cache and loads both images into the local docker daemon. Falls back to rebuilding on cache miss.'
 
 inputs:
   build-variant:
@@ -33,7 +33,7 @@ runs:
         key: n8n-docker-image-v2-${{ inputs.build-variant }}-${{ inputs.cache-sha || github.sha }}
         path: /tmp/n8n-images
 
-    - name: Load n8n and runners images into docker
+    - name: Load MNI and runners images into docker
       if: steps.restore.outputs.cache-hit == 'true'
       shell: bash
       # A restore reports a hit whatever it wrote, and writes to the paths

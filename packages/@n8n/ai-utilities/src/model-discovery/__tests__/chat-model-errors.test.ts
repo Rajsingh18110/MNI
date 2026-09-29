@@ -48,7 +48,7 @@ describe('classifyChatModelFailure', () => {
 		});
 
 		// A model mentioned somewhere before an unrelated not-found detail must not
-		// be blamed. n8n node errors hit this constantly, because chat-model nodes
+		// be blamed. MNI node errors hit this constantly, because chat-model nodes
 		// are named "... Chat Model" — callers act on `invalid_model` by telling the
 		// user to replace the model, which would send them after the wrong thing.
 		it.each([

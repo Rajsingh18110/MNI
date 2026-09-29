@@ -29,8 +29,8 @@ import { useWorkflowReviewsFeature } from '@/features/workflow-reviews/composabl
 
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
-const PROJECTS_COLLAPSED_KEY = 'n8n:sidebar:projects-collapsed';
-const INSTANCE_AI_CHATS_COLLAPSED_KEY = 'n8n:sidebar:instance-ai-chats-collapsed';
+const PROJECTS_COLLAPSED_KEY = 'MNI:sidebar:projects-collapsed';
+const INSTANCE_AI_CHATS_COLLAPSED_KEY = 'MNI:sidebar:instance-ai-chats-collapsed';
 
 type Props = {
 	collapsed: boolean;
@@ -70,7 +70,7 @@ const hasMultipleVerifiedUsers = computed(
 );
 
 const FAVORITES_COLLAPSED_KEY = computed(
-	() => `n8n:sidebar:${usersStore.currentUser?.id ?? 'anonymous'}:favorites-collapsed`,
+	() => `MNI:sidebar:${usersStore.currentUser?.id ?? 'anonymous'}:favorites-collapsed`,
 );
 
 const favoritesCollapsed = ref(localStorage.getItem(FAVORITES_COLLAPSED_KEY.value) === 'true');

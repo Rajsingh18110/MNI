@@ -163,7 +163,7 @@ function createKafkaTriggerNode(options: {
 					sessionTimeout: 60000,
 					heartbeatInterval: 3000,
 					// Remove consumer-side bottlenecks so benchmarks measure
-					// n8n execution capacity, not Kafka ingestion rate.
+					// MNI execution capacity, not Kafka ingestion rate.
 					maxInFlightRequests: 0, // 0 = unlimited (node converts to null)
 					partitionsConsumedConcurrently: options.partitions,
 					// Batch offset commits — defaults (0/undefined) commit on every

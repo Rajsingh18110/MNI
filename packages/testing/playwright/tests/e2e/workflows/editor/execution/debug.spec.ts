@@ -25,12 +25,12 @@ test.describe(
 			DATA_NOT_IMPORTED: "Some execution data wasn't imported",
 		};
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.api.enableFeature('debugInEditor');
 		});
 
 		// Helper function to create basic workflow
-		async function createBasicWorkflow(n8n: n8nPage, url: string) {
+		async function createBasicWorkflow(MNI: n8nPage, url: string) {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('HTTP Request');
@@ -40,7 +40,7 @@ test.describe(
 		}
 
 		// Helper function to import the last failed execution for debugging
-		async function importLastExecutionForDebugging(n8n: n8nPage) {
+		async function importLastExecutionForDebugging(MNI: n8nPage) {
 			await n8n.canvas.clickExecutionsTab();
 			// Select the execution explicitly - the view only auto-selects one if the list
 			// is already populated when its first fetch resolves, and never retries.
@@ -52,14 +52,14 @@ test.describe(
 			// routes straight back out of /debug.
 			await n8n.page.waitForURL(/\/debug/);
 			// The route change lands before the import fetches the execution, so give the
-			// toast the same headroom the runs get: CI runs one n8n instance for as many
+			// toast the same headroom the runs get: CI runs one MNI instance for as many
 			// workers as there are cores.
 			await n8n.notifications.waitForNotificationAndClose(NOTIFICATIONS.EXECUTION_IMPORTED, {
 				timeout: 10_000,
 			});
 		}
 
-		test('should enter debug mode for failed executions', async ({ n8n }) => {
+		test('should enter debug mode for failed executions', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(FAILING_WORKFLOW);
 			await n8n.canvas.toggleNodeEnabled('Error');
 			await expect(n8n.canvas.disabledNodes()).toHaveCount(0);
@@ -68,7 +68,7 @@ test.describe(
 				NOTIFICATIONS.PROBLEM_IN_NODE,
 				{ timeout: 10_000 },
 			);
-			await importLastExecutionForDebugging(n8n);
+			await importLastExecutionForDebugging(MNI);
 			// The execution's data is now pinned onto the editor's canvas. Asserted on the
 			// badge rather than a one-shot read of every pinned name: the autosave that
 			// follows the import re-renders the canvas, so a snapshot taken mid-render can
@@ -76,7 +76,7 @@ test.describe(
 			await expect(n8n.canvas.getNodePinnedStatusIndicator(FAILING_WORKFLOW_TRIGGER)).toBeVisible();
 		});
 
-		test('should exit debug mode after successful execution', async ({ n8n }) => {
+		test('should exit debug mode after successful execution', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(FAILING_WORKFLOW);
 			await n8n.canvas.toggleNodeEnabled('Error');
 			await expect(n8n.canvas.disabledNodes()).toHaveCount(0);
@@ -85,7 +85,7 @@ test.describe(
 				NOTIFICATIONS.PROBLEM_IN_NODE,
 				{ timeout: 10_000 },
 			);
-			await importLastExecutionForDebugging(n8n);
+			await importLastExecutionForDebugging(MNI);
 
 			// Disable the failing node again so the next run succeeds
 			await n8n.canvas.toggleNodeEnabled('Error');
@@ -97,8 +97,8 @@ test.describe(
 			await expect(n8n.page).not.toHaveURL(/\/debug/);
 		});
 
-		test('should handle pinned data conflicts during execution import', async ({ n8n }) => {
-			await createBasicWorkflow(n8n, URLS.SUCCESS);
+		test('should handle pinned data conflicts during execution import', async ({ MNI }) => {
+			await createBasicWorkflow(MNI, URLS.SUCCESS);
 			// Generous timeouts: these runs wait on a real request to an external host
 			await n8n.workflowComposer.executeWorkflowAndWaitForNotification(NOTIFICATIONS.SUCCESSFUL, {
 				timeout: 10_000,
@@ -130,9 +130,9 @@ test.describe(
 			expect(pinnedNodeNames).toContain('When clicking ‘Execute workflow’');
 		});
 
-		test.fixme('should show error for pinned data mismatch', async ({ n8n }) => {
+		test.fixme('should show error for pinned data mismatch', async ({ MNI }) => {
 			// Create workflow, execute, and pin data
-			await createBasicWorkflow(n8n, URLS.SUCCESS);
+			await createBasicWorkflow(MNI, URLS.SUCCESS);
 			await n8n.workflowComposer.executeWorkflowAndWaitForNotification(NOTIFICATIONS.SUCCESSFUL);
 
 			await n8n.canvasComposer.pinNodeData('HTTP Request');
@@ -142,12 +142,12 @@ test.describe(
 			await n8n.canvas.deleteNodeByName('HTTP Request');
 
 			// Try to copy execution and verify error
-			await attemptCopyToEditor(n8n);
+			await attemptCopyToEditor(MNI);
 			await n8n.notifications.waitForNotificationAndClose(NOTIFICATIONS.DATA_NOT_IMPORTED);
 			expect(n8n.page.url()).toContain('/debug');
 		});
 
-		async function attemptCopyToEditor(n8n: n8nPage) {
+		async function attemptCopyToEditor(MNI: n8nPage) {
 			await n8n.canvas.clickExecutionsTab();
 			await n8n.executions.clickLastExecutionItem();
 			await n8n.executions.clickCopyToEditorButton();

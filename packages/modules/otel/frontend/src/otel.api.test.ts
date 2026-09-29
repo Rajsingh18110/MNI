@@ -17,7 +17,7 @@ const makeSettings = (overrides: Partial<OtelSettingsResponse> = {}): OtelSettin
 	exporterProtocol: 'http/protobuf',
 	exporterEndpoint: 'http://localhost:4318',
 	exporterTracingPath: '/v1/traces',
-	exporterServiceName: 'n8n',
+	exporterServiceName: 'MNI',
 	exporterHeaders: '',
 	tracesSampleRate: 1.0,
 	startupConnectivityTimeoutMs: 2000,
@@ -63,7 +63,7 @@ describe('otel.api', () => {
 			exporterProtocol: 'grpc',
 			exporterEndpoint: 'https://collector.io',
 			exporterTracingPath: '/v1/traces',
-			exporterServiceName: 'n8n',
+			exporterServiceName: 'MNI',
 			exporterHeaders: 'auth=token',
 			startupConnectivityTimeoutMs: 2000,
 		};

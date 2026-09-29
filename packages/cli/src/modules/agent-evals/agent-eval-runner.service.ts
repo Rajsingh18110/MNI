@@ -486,7 +486,7 @@ export class AgentEvalRunnerService {
 	 */
 	async cleanupInterruptedRuns(): Promise<void> {
 		// Runs are only ever created/executed on a single-main (non-queue)
-		// instance — `startRun` refuses queue mode, and n8n multi-main requires it.
+		// instance — `startRun` refuses queue mode, and MNI multi-main requires it.
 		// So on such an instance every incomplete run at startup is this instance's
 		// own leftover, safe to sweep. Skip entirely in queue mode so bringing up
 		// an additional main never touches runs owned by a different instance.

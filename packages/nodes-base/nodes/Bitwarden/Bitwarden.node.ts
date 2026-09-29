@@ -333,7 +333,7 @@ export class Bitwarden implements INodeType {
 						);
 					}
 
-					// set defaults for `name` and `accessAll`, required by Bitwarden but optional in n8n
+					// set defaults for `name` and `accessAll`, required by Bitwarden but optional in MNI
 
 					let { name, accessAll } = updateFields;
 

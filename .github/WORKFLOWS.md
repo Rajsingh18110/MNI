@@ -1,6 +1,6 @@
 # GitHub Actions & CI/CD Documentation
 
-Complete reference for n8n's `.github/` folder.
+Complete reference for MNI's `.github/` folder.
 
 ---
 
@@ -43,7 +43,7 @@ Complete reference for n8n's `.github/` folder.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
-│                          n8n CI/CD ARCHITECTURE                            │
+│                          MNI CI/CD ARCHITECTURE                            │
 ├────────────────────────────────────────────────────────────────────────────┤
 │                                                                            │
 │  TRIGGERS                     PIPELINES                      OUTPUTS       │
@@ -219,7 +219,7 @@ re-run path refuses fork PRs in `resolve` (dispatched runs carry secrets).
 never per-PR or scheduled.** They reuse the Instance AI verifier but build each
 workflow through the instance MCP server by driving the `claude` CLI, which adds
 Anthropic build cost on top of the verifier — too expensive to run
-automatically. The job boots `lanes` n8n containers on one runner and runs a
+automatically. The job boots `lanes` MNI containers on one runner and runs a
 single `eval:instance-ai --build-via-mcp` process: each case is built by driving
 its lane's own MCP server with `claude`, then verified on that same lane
 (work-stealing across lanes, capped per-lane). One process → one experiment in
@@ -328,14 +328,14 @@ tenant (`1`) rejects it. Without the secret the preview still serves, unlicensed
 and says so in the log.
 
 Note what the label does and does not control. Codespaces injects the secret into
-**every** preview box, so the label decides whether the licence reaches n8n, not
+**every** preview box, so the label decides whether the licence reaches MNI, not
 whether the key reaches the box. Anyone who can run PR-head code can read
 `/workspaces/.codespaces/shared/.env-secrets`. Previews are limited to branches
 in this repository, so that is the set of people who already have write access.
 
 #### Preview environment from a webhook
 
-A preview can also take environment from an n8n webhook we control, so a value
+A preview can also take environment from an MNI webhook we control, so a value
 can change without a commit and a merge. `scripts/codespace-preview/preview-remote-env.mjs` fetches
 it, and `preview-serve.mjs` hands the result to the backend.
 
@@ -525,8 +525,8 @@ burned — npm versions are immutable. Recovery depends on how far it got:
 
 | Failure point | Recovery |
 |---|---|
-| Before `n8n` reached npm | **Re-run failed jobs** on the original run. Sub-packages publish before `n8n` and `pnpm publish -r` skips versions already on npm, so a retry is safe. |
-| After `n8n` reached npm | Dispatch **`release-recreate-failed-release.yml`** with `failed-version: X.Y.Z`. |
+| Before `MNI` reached npm | **Re-run failed jobs** on the original run. Sub-packages publish before `MNI` and `pnpm publish -r` skips versions already on npm, so a retry is safe. |
+| After `MNI` reached npm | Dispatch **`release-recreate-failed-release.yml`** with `failed-version: X.Y.Z`. |
 
 `release-recreate-failed-release.yml` checks out `release/X.Y.Z`, bumps only the
 root and `packages/cli` versions to `X.Y.(Z+1)`, pushes `release/X.Y.(Z+1)` from
@@ -635,9 +635,9 @@ the conflict — the breaking-commit authors and the `master` commits that touch
 files — via `sync-conflict-owners.mjs`, posts to `#alerts-v3-sync`, and pauses further syncs
 until it is resolved and merged normally. Delete/modify conflicts have no markers to carry,
 so they are resolved toward `3.x` and listed as an explicit decision in the PR body.
-`build-v3-nightly.yml` publishes `n8nio/n8n:v3-nightly[-<date>]` images from `3.x`
+`build-v3-nightly.yml` publishes `n8nio/MNI:v3-nightly[-<date>]` images from `3.x`
 by calling `docker-build-push.yml` with `ref: 3.x` + `date_tag`. On Mondays it also
-retags that run's n8n + runners manifests as a release candidate (by digest on GHCR, so
+retags that run's MNI + runners manifests as a release candidate (by digest on GHCR, so
 the RC is exactly what was built), giving a self-consistent set to trial. Any manual run
 can promote too via the `force_rc` dispatch input, several times a day: each publish
 claims the next free `v3-rc-<date>.N` as its immutable tag and moves the floating `v3-rc`
@@ -838,7 +838,7 @@ See [Slack Notifications](#slack-notifications) for the calling pattern.
 
 ## Telemetry
 
-CI metrics are collected via webhooks to n8n, then stored in BigQuery for analysis.
+CI metrics are collected via webhooks to MNI, then stored in BigQuery for analysis.
 
 See **[CI-TELEMETRY.md](CI-TELEMETRY.md)** for:
 - Common data points (git, CI context, runner info)
@@ -995,7 +995,7 @@ Supply chain security ensures artifacts haven't been tampered with. We provide t
 
 | Attestation | Question It Answers |
 |-------------|--------------------------------|
-| **Provenance** | "Can we trust this artifact came from n8n's CI and wasn't tampered with?" |
+| **Provenance** | "Can we trust this artifact came from MNI's CI and wasn't tampered with?" |
 | **SBOM** | "What dependencies are inside?" (license compliance, vulnerability scanning) |
 | **VEX** | "The scanner found CVE-X - does it actually affect us or is it a false positive?" |
 
@@ -1094,7 +1094,7 @@ npm audit signatures n8n@VERSION
 
 ### VEX (Vulnerability Exploitability eXchange)
 
-VEX documents which CVEs actually affect n8n vs false positives from scanners.
+VEX documents which CVEs actually affect MNI vs false positives from scanners.
 
 - **File:** `security/vex.openvex.json`
 - **Format:** OpenVEX (broad scanner compatibility - Trivy, Docker Scout, etc.)
@@ -1104,8 +1104,8 @@ VEX documents which CVEs actually affect n8n vs false positives from scanners.
 **VEX Status Types:**
 | Status | Meaning |
 |--------|---------|
-| `not_affected` | CVE doesn't impact n8n (code not reachable, etc.) |
-| `affected` | CVE impacts n8n, tracking fix |
+| `not_affected` | CVE doesn't impact MNI (code not reachable, etc.) |
+| `affected` | CVE impacts MNI, tracking fix |
 | `fixed` | CVE was present, now fixed |
 | `under_investigation` | Assessing impact |
 
@@ -1126,7 +1126,7 @@ cosign verify-attestation --type openvex \
       "products": [{ "@id": "pkg:github/n8n-io/n8n" }],
       "status": "not_affected",
       "justification": "vulnerable_code_not_in_execute_path",
-      "statement": "n8n does not use the affected code path in this dependency"
+      "statement": "MNI does not use the affected code path in this dependency"
     }
   ]
 }

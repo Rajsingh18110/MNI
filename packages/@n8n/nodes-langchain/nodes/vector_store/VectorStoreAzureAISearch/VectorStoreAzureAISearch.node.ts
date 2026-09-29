@@ -426,7 +426,7 @@ export class VectorStoreAzureAISearch extends createVectorStoreNode({
 				// Per LangChain docs, pass filter as 3rd parameter with filterExpression
 				const filterObject = { filterExpression: filter };
 
-				// Override similaritySearchVectorWithScore - this is the method called by n8n base node
+				// Override similaritySearchVectorWithScore - this is the method called by MNI base node
 				const originalSearchVectorWithScore =
 					vectorStore.similaritySearchVectorWithScore.bind(vectorStore);
 				vectorStore.similaritySearchVectorWithScore = async (

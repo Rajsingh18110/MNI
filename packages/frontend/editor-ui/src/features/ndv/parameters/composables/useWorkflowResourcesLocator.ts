@@ -122,7 +122,7 @@ export function useWorkflowResourcesLocator(router: Router) {
 		if (
 			nodeName &&
 			(/^Execute Workflow\d*$/.test(nodeName) ||
-				/^Call n8n Workflow Tool\d*$/.test(nodeName) ||
+				/^Call MNI Workflow Tool\d*$/.test(nodeName) ||
 				(nodeName.startsWith("Call '") && nodeName.endsWith("'")))
 		) {
 			const baseName = getWorkflowBaseName(workflowId);

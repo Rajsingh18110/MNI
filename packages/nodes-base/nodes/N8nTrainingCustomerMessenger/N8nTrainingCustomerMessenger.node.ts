@@ -8,7 +8,7 @@ import {
 
 export class N8nTrainingCustomerMessenger implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Customer Messenger (n8n training)',
+		displayName: 'Customer Messenger (MNI training)',
 		name: 'n8nTrainingCustomerMessenger',
 		icon: {
 			light: 'file:n8nTrainingCustomerMessenger.svg',
@@ -16,9 +16,9 @@ export class N8nTrainingCustomerMessenger implements INodeType {
 		},
 		group: ['transform'],
 		version: 1,
-		description: 'Dummy node used for n8n training',
+		description: 'Dummy node used for MNI training',
 		defaults: {
-			name: 'Customer Messenger (n8n training)',
+			name: 'Customer Messenger (MNI training)',
 		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],

@@ -57,28 +57,28 @@ ENV SHELL=/bin/sh
 
 WORKDIR /home/node
 
-COPY --link ./compiled /usr/local/lib/node_modules/n8n
+COPY --link ./compiled /usr/local/lib/node_modules/MNI
 COPY --link docker/images/mni/docker-entrypoint.sh /
 
 # Do not use --link here. These destinations are pnpm symlinks. A --link copy
 # resolves the destination against an empty root. It replaces the symlink with
 # a directory, and the module does not load. The build still succeeds.
 COPY --from=native-builder /build/node_modules/sqlite3/build/Release/node_sqlite3.node \
-     /usr/local/lib/node_modules/n8n/node_modules/sqlite3/build/Release/node_sqlite3.node
+     /usr/local/lib/node_modules/MNI/node_modules/sqlite3/build/Release/node_sqlite3.node
 COPY --from=native-builder /build/isolated-vm/build/Release/isolated_vm.node \
-     /usr/local/lib/node_modules/n8n/node_modules/isolated-vm/build/Release/isolated_vm.node
+     /usr/local/lib/node_modules/MNI/node_modules/isolated-vm/build/Release/isolated_vm.node
 # kafka-javascript has no top-level symlink, and its pnpm directory name holds
 # a patch hash. The shell must expand this destination.
 COPY --from=native-builder /build/node_modules/@confluentinc/kafka-javascript/build/Release/confluent-kafka-javascript.node /tmp/
 
 # The base image keeps node in /usr/bin and has no /usr/local/bin.
 RUN set -e; \
-    N8N=/usr/local/lib/node_modules/n8n; \
+    N8N=/usr/local/lib/node_modules/MNI; \
     kafka=$(echo "$N8N"/node_modules/.pnpm/@confluentinc+kafka-javascript@*/node_modules/@confluentinc/kafka-javascript); \
     install -D /tmp/confluent-kafka-javascript.node "$kafka/build/Release/confluent-kafka-javascript.node"; \
     rm -rf "$N8N"/node_modules/.pnpm/isolated-vm@*/node_modules/isolated-vm/prebuilds; \
     mkdir -p /usr/local/bin; \
-    ln -s "$N8N/bin/n8n" /usr/local/bin/n8n; \
+    ln -s "$N8N/bin/MNI" /usr/local/bin/MNI; \
     mkdir -p /home/node/.n8n; \
     chown -R node:node /home/node; \
     rm -rf /root/.npm /tmp/*

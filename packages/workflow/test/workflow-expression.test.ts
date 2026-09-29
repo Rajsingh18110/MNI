@@ -34,7 +34,7 @@ describe('WorkflowExpression', () => {
 			expression.getParameterValue(value, null, 0, 0, 'node', [], 'manual', {});
 
 		it('should resolve $parameter["&key"] sibling reference within an object', () => {
-			// n8n uses the `&`-prefixed syntax internally (e.g. in node parameter definitions)
+			// MNI uses the `&`-prefixed syntax internally (e.g. in node parameter definitions)
 			// to reference sibling fields: `={{ $parameter["&key"].split("|")[1] }}`
 			// getParameterValue must pass the parent object as siblingParameters so these resolve.
 			const result = evaluate({

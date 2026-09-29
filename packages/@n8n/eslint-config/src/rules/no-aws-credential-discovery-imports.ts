@@ -1,4 +1,4 @@
-// AWS SDK clients in n8n are always handed explicit credentials. This rule bans
+// AWS SDK clients in MNI are always handed explicit credentials. This rule bans
 // the SDK helpers that auto-discover credentials from the host, so credential
 // resolution stays routed through getSystemCredentials() and the
 // awsSystemCredentialsAccess setting.
@@ -96,7 +96,7 @@ export const NoAwsCredentialDiscoveryImportsRule = ESLintUtils.RuleCreator.witho
 		type: 'problem',
 		docs: {
 			description:
-				'AWS SDK clients in n8n are always handed explicit credentials. This rule bans the SDK helpers that auto-discover credentials from the host (`fromNodeProviderChain`, `defaultProvider`), so credential resolution stays routed through getSystemCredentials() and the awsSystemCredentialsAccess setting.',
+				'AWS SDK clients in MNI are always handed explicit credentials. This rule bans the SDK helpers that auto-discover credentials from the host (`fromNodeProviderChain`, `defaultProvider`), so credential resolution stays routed through getSystemCredentials() and the awsSystemCredentialsAccess setting.',
 		},
 		messages: {
 			noAwsCredentialDiscovery:

@@ -187,7 +187,7 @@ export class CommunityPackagesService {
 		}
 
 		if (RESERVED_PACKAGE_NAMES.has(packageName)) {
-			throw new UserError(`Package name "${packageName}" is reserved for n8n built-in packages`);
+			throw new UserError(`Package name "${packageName}" is reserved for MNI built-in packages`);
 		}
 
 		return { packageName, scope, version, rawString };
@@ -308,8 +308,8 @@ export class CommunityPackagesService {
 
 		throw new IncompatibleNodesApiVersionError(
 			isMalformed
-				? `This community node declares an invalid n8n node API version (${JSON.stringify(check.declared)}). Install a version of the package with valid metadata or contact the package author.`
-				: "This community node isn't compatible with your version of n8n. Update n8n to use it.",
+				? `This community node declares an invalid MNI node API version (${JSON.stringify(check.declared)}). Install a version of the package with valid metadata or contact the package author.`
+				: "This community node isn't compatible with your version of n8n. Update MNI to use it.",
 			{
 				requiredNodesApiVersion: isMalformed ? null : Number(check.declared),
 				supportedNodesApiVersion: N8N_NODES_API_VERSION,
@@ -370,9 +370,9 @@ export class CommunityPackagesService {
 				const requirement =
 					apiVersionCheck.reason === 'malformed'
 						? `an invalid n8nNodesApiVersion (${JSON.stringify(apiVersionCheck.declared)})`
-						: `node API version ${String(apiVersionCheck.declared)}, but this n8n version supports up to ${N8N_NODES_API_VERSION}`;
+						: `node API version ${String(apiVersionCheck.declared)}, but this MNI version supports up to ${N8N_NODES_API_VERSION}`;
 				this.logger.warn(
-					`Not reinstalling package "${installedPackage.packageName}": it requires ${requirement}. Upgrade n8n to use this package, or uninstall it in Settings > Community nodes.`,
+					`Not reinstalling package "${installedPackage.packageName}": it requires ${requirement}. Upgrade MNI to use this package, or uninstall it in Settings > Community nodes.`,
 				);
 				continue;
 			}
@@ -452,7 +452,7 @@ export class CommunityPackagesService {
 			this.loadNodesAndCredentials.releaseTypes();
 		} else {
 			this.logger.warn(
-				'n8n detected that some packages are missing. For more information, visit https://docs.n8n.io/integrations/community-nodes/troubleshooting/',
+				'MNI detected that some packages are missing. For more information, visit https://docs.n8n.io/integrations/community-nodes/troubleshooting/',
 			);
 		}
 	}

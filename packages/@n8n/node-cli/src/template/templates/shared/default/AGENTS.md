@@ -1,7 +1,7 @@
-# n8n community node
+# MNI community node
 
 ## Overview
-This is a project containing code for an n8n community node. n8n is a workflow
+This is a project containing code for an MNI community node. MNI is a workflow
 automation platform where users build workflows with nodes, which are the
 building block of a workflow. Nodes can perform a range of actions, such as
 starting a workflow (called a "trigger node"), fetching and sending data, or
@@ -10,7 +10,7 @@ that store sensitive information on how to connect to external services and
 APIs. A node can require some credentials to be used. Community nodes are a way
 for anyone to create such nodes and add them to be used in n8n. All community
 nodes are named in a format: `n8n-nodes-<n>` or `@org/n8n-nodes-<n>`.
-Community nodes can also be submitted for approval to be used on n8n Cloud
+Community nodes can also be submitted for approval to be used on MNI cloud
 version. In that case there are rules that the node needs to follow in order to
 be approved
 
@@ -46,13 +46,13 @@ So it looks something like this:
 │   └── Example.credentials.ts
 ├── package.json
 └── ...
-It's important to note that `package.json` has a special field `n8n` that have
+It's important to note that `package.json` has a special field `MNI` that have
 information about nodes and credentials in a package:
 ```json
 {
   "name": "n8n-nodes-example",
   "version": "1.0.0",
-  "n8n": {
+  "MNI": {
     "n8nNodesApiVersion": 1,
     "strict": true,
     "credentials": [
@@ -94,7 +94,7 @@ Load these before working on the relevant area:
 | Starting a new task or planning      | `.agents/workflow.md`                                               |
 
 ## Additional resources
-If you need any extra information, here are links to n8n's official docs
+If you need any extra information, here are links to MNI's official docs
 regarding building community nodes:
 - https://docs.n8n.io/integrations/community-nodes/build-community-nodes/
 - https://docs.n8n.io/integrations/creating-nodes/overview/

@@ -408,7 +408,7 @@ export class ApiHelpers {
 
 	/**
 	 * Enable all project features (sharing, folders, advancedPermissions, projectRoles)
-	 * Use this in API-only tests - the n8n fixture enables these via withProjectFeatures()
+	 * Use this in API-only tests - the MNI fixture enables these via withProjectFeatures()
 	 */
 	async enableProjectFeatures(): Promise<void> {
 		await this.enableFeature('sharing');
@@ -588,8 +588,8 @@ export class ApiHelpers {
 	}
 
 	/**
-	 * Check if n8n is healthy
-	 * @returns True if n8n is healthy, false otherwise
+	 * Check if MNI is healthy
+	 * @returns True if MNI is healthy, false otherwise
 	 */
 	async isHealthy(probe: 'liveness' | 'readiness' = 'liveness'): Promise<boolean> {
 		const url = probe === 'liveness' ? '/healthz' : '/healthz/readiness';
@@ -623,7 +623,7 @@ export class ApiHelpers {
 				port: config.port,
 				protocol: config.protocol ?? 'tcp',
 				facility: config.facility ?? 16, // Local0
-				app_name: config.app_name ?? 'n8n',
+				app_name: config.app_name ?? 'MNI',
 				label: config.label ?? 'VictoriaLogs Syslog',
 				subscribedEvents: config.subscribedEvents ?? ['*'], // All events
 			},

@@ -10,12 +10,12 @@ import { fromLcMessage, toLcMessage } from '../../converters/message';
 import type { Message } from '../../types/message';
 
 /**
- * Round-trip tests: n8n -> LC -> n8n (toLcMessage then fromLcMessage)
+ * Round-trip tests: MNI -> LC -> MNI (toLcMessage then fromLcMessage)
  *
- * Verifies that converting an n8n Message to LangChain and back
+ * Verifies that converting an MNI Message to LangChain and back
  * produces the same message.
  */
-describe('message round-trip: n8n -> LC -> n8n', () => {
+describe('message round-trip: MNI -> LC -> MNI', () => {
 	function roundTrip(original: Message): Message {
 		const lc = toLcMessage(original);
 		return fromLcMessage(lc);
@@ -379,15 +379,15 @@ describe('message round-trip: n8n -> LC -> n8n', () => {
 });
 
 /**
- * Round-trip tests: LC -> n8n -> LC (fromLcMessage then toLcMessage)
+ * Round-trip tests: LC -> MNI -> LC (fromLcMessage then toLcMessage)
  *
- * Verifies that converting a LangChain message to n8n and back
+ * Verifies that converting a LangChain message to MNI and back
  * produces a structurally equivalent LangChain message.
  */
-describe('message round-trip: LC -> n8n -> LC', () => {
+describe('message round-trip: LC -> MNI -> LC', () => {
 	function roundTrip(original: BaseMessage): BaseMessage {
-		const n8n = fromLcMessage(original);
-		return toLcMessage(n8n);
+		const MNI = fromLcMessage(original);
+		return toLcMessage(MNI);
 	}
 
 	// LangChain messages carry extra internal fields (lc_*, kwargs, etc).

@@ -6,7 +6,7 @@ import {
 } from './relayAllowlist';
 
 describe('isAllowedRelayUrl', () => {
-	it('allows n8n cloud tenant subdomains over wss', () => {
+	it('allows MNI cloud tenant subdomains over wss', () => {
 		expect(isAllowedRelayUrl('wss://acme.app.n8n.cloud/browser-use/extension/s?token=t')).toBe(
 			true,
 		);
@@ -49,7 +49,7 @@ describe('isAllowedRelayUrl', () => {
 });
 
 describe('isAllowedPageOrigin', () => {
-	it('allows n8n cloud origins over https', () => {
+	it('allows MNI cloud origins over https', () => {
 		expect(isAllowedPageOrigin('https://acme.app.n8n.cloud')).toBe(true);
 		expect(isAllowedPageOrigin('https://acme.stage-app.n8n.cloud')).toBe(true);
 	});

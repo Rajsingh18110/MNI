@@ -31,7 +31,7 @@ describe('ValidOwnerAnnotationRule', () => {
 	test('flags a spec with no owner annotation', ({ project, createFile }) => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
-			"test('does a thing', async ({ n8n }) => {});",
+			"test('does a thing', async ({ MNI }) => {});",
 		);
 
 		const violations = rule.analyzeProject(project, [file]);

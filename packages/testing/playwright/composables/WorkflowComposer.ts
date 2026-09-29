@@ -6,7 +6,7 @@ import type { n8nPage } from '../pages/n8nPage';
  * A class for user interactions with workflows that go across multiple pages.
  */
 export class WorkflowComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Executes a successful workflow and waits for the notification to be closed.

@@ -4,8 +4,8 @@ import {
 	DEFAULT_OBSERVER_THRESHOLD_TOKENS,
 } from '../observation-log-observer';
 
-describe('n8n observation-log observer policy', () => {
-	it('uses the n8n observer defaults', () => {
+describe('MNI observation-log observer policy', () => {
+	it('uses the MNI observer defaults', () => {
 		expect(DEFAULT_OBSERVER_THRESHOLD_TOKENS).toBe(50_000);
 		expect(DEFAULT_OBSERVATION_LOG_TAIL_LIMIT).toBe(20);
 	});

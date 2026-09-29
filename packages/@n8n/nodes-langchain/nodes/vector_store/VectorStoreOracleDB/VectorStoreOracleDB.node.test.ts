@@ -405,7 +405,7 @@ describe('VectorStoreOracleDB.node', () => {
 
 	it('passes configuration to ExtendedOracleDBVectorStore.initialize', async () => {
 		const node = createNode();
-		const filter: OracleFilter = { project: 'n8n' };
+		const filter: OracleFilter = { project: 'MNI' };
 
 		const vectorStore = await node.getVectorStoreClient(context, filter, embeddings, 0);
 
@@ -428,7 +428,7 @@ describe('VectorStoreOracleDB.node', () => {
 		expect(initArgs).toMatchObject({
 			client: vectorStore.client,
 			tableName: 'n8n_vectors',
-			query: 'n8n vector store initialization text',
+			query: 'MNI vector store initialization text',
 			filter,
 			distanceStrategy: DistanceStrategyMock.DOT_PRODUCT,
 		});
@@ -505,7 +505,7 @@ describe('VectorStoreOracleDB.node', () => {
 		expect(callConfig).toEqual(
 			expect.objectContaining({
 				tableName: 'n8n_vectors',
-				query: 'n8n vector store initialization text',
+				query: 'MNI vector store initialization text',
 			}),
 		);
 
@@ -525,7 +525,7 @@ describe('VectorStoreOracleDB.node', () => {
 	it('merges stored filter with ad-hoc filter for similarity search', async () => {
 		const node = createNode();
 		const baseFilter: OracleFilter = {
-			$and: [{ project: 'n8n' }, { category: 'movies' }],
+			$and: [{ project: 'MNI' }, { category: 'movies' }],
 			nested: { flag: true },
 		};
 		const runtimeFilter: OracleFilter = {
@@ -539,7 +539,7 @@ describe('VectorStoreOracleDB.node', () => {
 		await vectorStore.similaritySearchVectorWithScore([0.1, 0.2], 3, runtimeFilter);
 
 		expect(similaritySearchSpy).toHaveBeenCalledWith([0.1, 0.2], 3, {
-			$and: [{ project: 'n8n' }, { category: 'movies' }, { language: 'en' }],
+			$and: [{ project: 'MNI' }, { category: 'movies' }, { language: 'en' }],
 			nested: { flag: true, rating: { $gte: 4.5 } },
 			author: 'Author1',
 		});

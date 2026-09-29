@@ -44,7 +44,7 @@ const COMPLETION_MESSAGE = 'Your response has been recorded';
 type Keycloak = ServiceHelpers['keycloak'];
 
 /** The OAuth endpoints the form's own flow runs through: authUrl is EXTERNAL (this
- * machine follows the redirect); the token URL is INTERNAL (n8n exchanges the code
+ * machine follows the redirect); the token URL is INTERNAL (MNI exchanges the code
  * server-to-server). */
 const oauthBases = (keycloak: Keycloak) => ({
 	externalBase: keycloak.discoveryUrl.replace('/.well-known/openid-configuration', ''),
@@ -55,7 +55,7 @@ const oauthBases = (keycloak: Keycloak) => ({
  * Everything a shell journey needs before the workflow exists: the OAuth endpoints
  * enabled, a team project (end-user credentials can only live in team projects), and
  * a resolvable credential on the seeded `system-n8n` resolver — it stores its tokens
- * per n8n user, so the form must know who submitted it before this can resolve.
+ * per MNI user, so the form must know who submitted it before this can resolve.
  */
 async function setupResolvableCredential(api: ApiHelpers, keycloak: Keycloak) {
 	await api.setMcpAccess(true);
@@ -101,7 +101,7 @@ async function waitForFormResource(api: ApiHelpers, formWebhookId: string) {
 
 /**
  * Connect the submitter's account out of band rather than through the popup the
- * shell's button opens: the link is bound to this user's session, so n8n redirects
+ * shell's button opens: the link is bound to this user's session, so MNI redirects
  * it to Keycloak and the callback stores their tokens against the resolver-keyed
  * credential. Reloads the form afterwards so the shell shows the connected row.
  */
@@ -170,7 +170,7 @@ test.describe(
 		test('should carry the submitter through the sandboxed frame across every form page @auth:owner', async ({
 			api,
 			services,
-			n8n,
+			MNI,
 			baseURL,
 		}) => {
 			const keycloak = services.keycloak;
@@ -247,7 +247,7 @@ test.describe(
 				const formUrl = `${baseURL}/form/${formWebhookId}`;
 				const formPage = await PublicFormPage.fromNewTab(n8n.page.context(), formUrl);
 
-				// The GET authenticates the submitter off this browser's n8n session — via a
+				// The GET authenticates the submitter off this browser's MNI session — via a
 				// one-time consent interstitial — and then the shell renders with the account
 				// still unconnected.
 				await formPage.allowOAuthConsentAndWaitForShell();
@@ -296,7 +296,7 @@ test.describe(
 		test("should hand the author's end-of-form redirect to the tab, not the sandboxed frame @auth:owner", async ({
 			api,
 			services,
-			n8n,
+			MNI,
 			baseURL,
 		}) => {
 			const keycloak = services.keycloak;

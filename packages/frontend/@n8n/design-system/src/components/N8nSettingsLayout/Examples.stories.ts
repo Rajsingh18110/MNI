@@ -244,7 +244,7 @@ const clientLogoComponents = markRaw<Record<string, Component>>({
 });
 
 // Animated client-logo cluster for the MCP empty states, mimicking the External Secrets empty
-// state (n8n PR #24685): a fanned trio of small bordered cards — the outer two tilted ±8°, the
+// state (MNI PR #24685): a fanned trio of small bordered cards — the outer two tilted ±8°, the
 // centre one raised and on top — where the static centre card carries the feature's own DS icon
 // (`icon` prop) and the two side cards cycle through the MCP client brand marks (Claude, VS Code,
 // Codex, Cursor, Gemini, ChatGPT/OpenAI) with the PR's staggered fade+blur swap: every 3s the left
@@ -748,7 +748,7 @@ export const SecurityAndLogin: Story = {
 							<template #visual><N8nIcon icon="globe" /></template>
 							<template #action><N8nButton variant="outline" size="medium" label="Revoke" @click="onRevoke" /></template>
 						</N8nSettingsRow>
-						<N8nSettingsRow title="n8n CLI" description="headless · last seen 3 days ago" show-visual hoverable reveal-actions-on-hover>
+						<N8nSettingsRow title="MNI CLI" description="headless · last seen 3 days ago" show-visual hoverable reveal-actions-on-hover>
 							<template #visual><N8nIcon icon="terminal" /></template>
 							<template #action><N8nButton variant="outline" size="medium" label="Revoke" @click="onRevoke" /></template>
 						</N8nSettingsRow>
@@ -821,7 +821,7 @@ export const ThisInstance: Story = {
 			<N8nSettingsLayout show-back @back="onBack">
 				<N8nSettingsPageHeader
 					title="This instance"
-					description="Plan, usage, version, updates, instance details, resources, and support for this n8n instance."
+					description="Plan, usage, version, updates, instance details, resources, and support for this MNI instance."
 					docs-url="https://docs.n8n.io"
 				/>
 
@@ -870,7 +870,7 @@ export const ApiKeys: Story = {
 		setup() {
 			const onBack = () => alert('Back');
 
-			// Real n8n data-table headers: `key` maps to the item field; the trailing
+			// Real MNI data-table headers: `key` maps to the item field; the trailing
 			// `actions` column has no underlying data so it uses a value accessor.
 			const headers = [
 				{ title: 'Label', key: 'label' },
@@ -921,7 +921,7 @@ export const ApiKeys: Story = {
 			<N8nSettingsLayout full-width show-back back-label="Back" @back="onBack">
 				<N8nSettingsPageHeader
 					title="API keys"
-					description="Use your API keys to control n8n programmatically."
+					description="Use your API keys to control MNI programmatically."
 					docs-url="https://docs.n8n.io/api/"
 				/>
 
@@ -1049,7 +1049,7 @@ export const ExampleSettingsPage: Story = {
 						</N8nSettingsRowGroup>
 					</N8nSettingsSection>
 
-					<N8nSettingsSection title="Logging" description="How much detail n8n writes to its logs.">
+					<N8nSettingsSection title="Logging" description="How much detail MNI writes to its logs.">
 						<N8nSettingsRowGroup>
 							<N8nSettingsRow title="Log level" description="Higher levels are noisier and write more to disk." :action-fill="true">
 								<template #action>
@@ -1432,21 +1432,21 @@ const mcpDocsUrl = 'https://docs.n8n.io/connect/connect-to-n8n-mcp-server';
 // Config snippets, computed once from the server URL. Most clients take the common `mcpServers`
 // JSON shape; Codex reads TOML, VS Code uses its `servers` map, Gemini an `httpUrl`, Windsurf a
 // `serverUrl` — so each client points at the snippet it needs.
-const mcpJsonSnippet = `{\n  "mcpServers": {\n    "n8n": {\n      "url": "${mcpServerUrl}"\n    }\n  }\n}`;
-const mcpClaudeSnippet = `{\n  "mcpServers": {\n    "n8n": {\n      "type": "http",\n      "url": "${mcpServerUrl}"\n    }\n  }\n}`;
+const mcpJsonSnippet = `{\n  "mcpServers": {\n    "MNI": {\n      "url": "${mcpServerUrl}"\n    }\n  }\n}`;
+const mcpClaudeSnippet = `{\n  "mcpServers": {\n    "MNI": {\n      "type": "http",\n      "url": "${mcpServerUrl}"\n    }\n  }\n}`;
 const mcpCodexSnippet = `[mcp_servers.n8n]\nurl = "${mcpServerUrl}"`;
-const mcpGeminiSnippet = `{\n  "mcpServers": {\n    "n8n": {\n      "httpUrl": "${mcpServerUrl}"\n    }\n  }\n}`;
-const mcpVscodeSnippet = `{\n  "servers": {\n    "n8n": {\n      "type": "http",\n      "url": "${mcpServerUrl}"\n    }\n  }\n}`;
-const mcpWindsurfSnippet = `{\n  "mcpServers": {\n    "n8n": {\n      "serverUrl": "${mcpServerUrl}"\n    }\n  }\n}`;
+const mcpGeminiSnippet = `{\n  "mcpServers": {\n    "MNI": {\n      "httpUrl": "${mcpServerUrl}"\n    }\n  }\n}`;
+const mcpVscodeSnippet = `{\n  "servers": {\n    "MNI": {\n      "type": "http",\n      "url": "${mcpServerUrl}"\n    }\n  }\n}`;
+const mcpWindsurfSnippet = `{\n  "mcpServers": {\n    "MNI": {\n      "serverUrl": "${mcpServerUrl}"\n    }\n  }\n}`;
 
 // One-click deep links, computed from the server URL exactly as each editor expects:
 //   • Cursor: base64 of `{"url":"<serverUrl>"}` passed in a `config` query param.
 //   • VS Code: a URL-encoded `{"name","type":"http","url"}` JSON object.
-const mcpCursorDeepLink = `cursor://anysphere.cursor-deeplink/mcp/install?name=n8n&config=${btoa(
+const mcpCursorDeepLink = `cursor://anysphere.cursor-deeplink/mcp/install?name=MNI&config=${btoa(
 	`{"url":"${mcpServerUrl}"}`,
 )}`;
 const mcpVscodeDeepLink = `vscode:mcp/install?${encodeURIComponent(
-	`{"name":"n8n","type":"http","url":"${mcpServerUrl}"}`,
+	`{"name":"MNI","type":"http","url":"${mcpServerUrl}"}`,
 )}`;
 
 type McpClientCategory = 'cli' | 'web' | 'ide';
@@ -1473,7 +1473,7 @@ const mcpClientCatalog: Record<string, McpClientSetup> = {
 		logo: 'claude',
 		icon: 'anthropic',
 		docsUrl: mcpDocsUrl,
-		installCommand: `claude mcp add --transport http n8n ${mcpServerUrl}`,
+		installCommand: `claude mcp add --transport http MNI ${mcpServerUrl}`,
 		configFilename: '~/.claude.json',
 		configSnippet: mcpClaudeSnippet,
 	},
@@ -1484,10 +1484,10 @@ const mcpClientCatalog: Record<string, McpClientSetup> = {
 		logo: 'codex',
 		icon: 'sparkles',
 		docsUrl: mcpDocsUrl,
-		installCommand: `codex mcp add n8n --url "${mcpServerUrl}"`,
+		installCommand: `codex mcp add MNI --url "${mcpServerUrl}"`,
 		configFilename: '~/.codex/config.toml',
 		configSnippet: mcpCodexSnippet,
-		authCommand: 'codex mcp login n8n',
+		authCommand: 'codex mcp login MNI',
 	},
 	gemini: {
 		id: 'gemini',
@@ -1496,7 +1496,7 @@ const mcpClientCatalog: Record<string, McpClientSetup> = {
 		logo: 'gemini',
 		icon: 'terminal',
 		docsUrl: mcpDocsUrl,
-		installCommand: `gemini mcp add --transport http n8n ${mcpServerUrl}`,
+		installCommand: `gemini mcp add --transport http MNI ${mcpServerUrl}`,
 		configFilename: '~/.gemini/settings.json',
 		configSnippet: mcpGeminiSnippet,
 	},
@@ -1571,7 +1571,7 @@ export const ModelContextProtocol: Story = {
 			// The client-led connect flow lives in a dialog opened from the "Your client" row's Connect
 			// button: the grouped picker + tailored setup steps, nothing else — no footer and no
 			// in-dialog consent, because granting access is the CLIENT's move: in reality the
-			// configured client initiates the OAuth flow against the instance and n8n's authorization
+			// configured client initiates the OAuth flow against the instance and MNI's authorization
 			// (consent) screen opens in a new tab. That consent screen is not part of this story set,
 			// so here closing the dialog is simply closing the dialog.
 			const showConnectDialog = ref(false);
@@ -1681,7 +1681,7 @@ export const ModelContextProtocol: Story = {
 				return items;
 			});
 
-			// Copy affordance. The contextual `message` follows n8n's existing "MCP URL copied" pattern
+			// Copy affordance. The contextual `message` follows MNI's existing "MCP URL copied" pattern
 			// ("Server URL copied", "Token copied", "Config copied", "Command copied") instead of a
 			// generic "Copied to clipboard".
 			const onCopy = (text: string, message = 'Copied') => {
@@ -1705,14 +1705,14 @@ export const ModelContextProtocol: Story = {
 			);
 			const authDescription = computed(() =>
 				activeClientDef.value?.authCommand
-					? 'Run this command, then log in to authorize n8n'
-					: `Run '/mcp' in ${activeClientDef.value?.name ?? ''} and select n8n to connect`,
+					? 'Run this command, then log in to authorize MNI'
+					: `Run '/mcp' in ${activeClientDef.value?.name ?? ''} and select MNI to connect`,
 			);
 			const webDescription = computed(
-				() => `Add n8n to ${activeClientDef.value?.name ?? ''} in one click, then approve access`,
+				() => `Add MNI to ${activeClientDef.value?.name ?? ''} in one click, then approve access`,
 			);
 			const ideDescription = computed(
-				() => `Open ${activeClientDef.value?.name ?? ''} and add the n8n server automatically`,
+				() => `Open ${activeClientDef.value?.name ?? ''} and add the MNI server automatically`,
 			);
 			const serverUrlDescription = computed(
 				() =>
@@ -1993,13 +1993,13 @@ export const ModelContextProtocol: Story = {
 				     per-category instructions below, wrapped in AutoHeight so switching between a short
 				     web client and a tall CLI/IDE animates the resize. Deliberately NO footer and NO
 				     in-dialog consent: like the real flow, granting access is the CLIENT's move — after
-				     setup the client initiates OAuth and n8n asks for consent in a new tab (outside this
+				     setup the client initiates OAuth and MNI asks for consent in a new tab (outside this
 				     story set). The large preset keeps it comfortably wide for snippets. -->
 				<N8nDialog
 					v-model:open="showConnectDialog"
 					size="large"
 					header="Connect a client"
-					description="Pick the client you want to connect, then follow the tailored setup steps. When your client connects, n8n asks you to grant it access in a new tab."
+					description="Pick the client you want to connect, then follow the tailored setup steps. When your client connects, MNI asks you to grant it access in a new tab."
 				>
 					<!-- Same structure the connect flow had on the page — ONE bordered N8nSettingsRowGroup
 					     with the "Your client" picker row on top (divider shown once a client is selected)
@@ -2070,7 +2070,7 @@ export const ModelContextProtocol: Story = {
 											<CopyInput :value="activeClientDef.installCommand" aria-label="Copy command" @copy="(text) => onCopy(text, 'Command copied')" />
 										</template>
 									</N8nSettingsRow>
-									<N8nSettingsRow layout="vertical" :show-divider="false" title="Configure" description="Add this to your config file to connect to n8n">
+									<N8nSettingsRow layout="vertical" :show-divider="false" title="Configure" description="Add this to your config file to connect to MNI">
 										<template #action>
 											<CopyInput multiline :value="activeClientDef.configSnippet" aria-label="Copy config" @copy="(text) => onCopy(text, 'Config copied')" />
 										</template>
@@ -2118,7 +2118,7 @@ export const ModelContextProtocol: Story = {
 											<CopyInput :value="authToken" aria-label="Copy authentication token" @copy="(text) => onCopy(text, 'Token copied')" />
 										</template>
 									</N8nSettingsRow>
-									<N8nSettingsRow layout="vertical" :show-divider="false" title="Configure" description="Add this to your config file to connect to n8n">
+									<N8nSettingsRow layout="vertical" :show-divider="false" title="Configure" description="Add this to your config file to connect to MNI">
 										<template #action>
 											<CopyInput multiline :value="activeClientDef.configSnippet" aria-label="Copy config" @copy="(text) => onCopy(text, 'Config copied')" />
 										</template>
@@ -2144,7 +2144,7 @@ export const ModelContextProtocol: Story = {
 		docs: {
 			description: {
 				story:
-					'The main **Instance level MCP** page, re-expressed from the current instance-level MCP screen into the native settings system. **Connection** drops the old "Preview" badge and replaces the master toggle with a single **MCP status** status-action control, shown only while MCP is enabled: an outline **"Enabled"** trigger — a **green, gently pulsing dot** + a `chevron-down` — that opens an `N8nDropdownMenu` whose single, danger-styled **"Disable"** item opens an **`N8nDialog` confirmation** ("…will disconnect N connected clients and revoke their access"). Enabling stays instant while disabling stays gated, because a toggle would imply an instant, low-stakes change for something that exposes the instance. **When disabled**, the whole page below the header collapses to a single **dashed-border empty state**, the sole enable affordance (an **animated fanned trio of logo cards** — the static `mcp` mark in the raised centre card, flanked by two tilted cards cycling through the client brand marks with a staggered 300ms fade+blur swap every 3s, mimicking the External Secrets empty state from n8n PR #24685 and static under `prefers-reduced-motion` — above "Connect AI assistants to build and run workflows", the subtext "Let MCP clients like Claude Code and Cursor build, run, and iterate on workflows in your instance", and a centered button row — a ghost **"Learn more"** docs button with a trailing `arrow-up-right` icon (opens the docs in a new tab) to the left of the primary **"Enable MCP access"** button wired to the instant-enable handler); enabling reveals the full page with a gentle entrance animation (honouring `prefers-reduced-motion`). The **"No clients connected yet"** empty state reuses the same animated cluster with the `plug-zap` mark in the centre. **Connection details** is **client-led**: the first row is a **"Your client"** picker — a searchable `N8nDropdownMenu` grouped into three uppercase categories (**AI Agent CLI**, **Web Clients**, **IDE**) via disabled header items + `divided` separators, each client showing its real brand mark in the `#item-leading` slot (Cursor near-black `#26251e`, Claude Code coral `#D97757`, Codex purple→blue, VS Code blue-ribbon, ChatGPT/Claude.ai marks; DS-icon fallbacks for Gemini CLI / Windsurf). The selected client drives a **dividerless group of official `N8nSettingsRow`s** (matching the Figma installation section — each row carries its own title/description, and a `CopyInput` — a readonly monospace `N8nInput` paired with an icon-only copy `N8nButton` in its `#append` slot — renders the command/snippet/value inside the row\'s `#action`): **CLIs** (Claude Code, Codex, Gemini CLI) get **Install** → **Configure** → **Authenticate** rows, where Authenticate is a copyable command (Codex `codex mcp login`; Claude Code / Gemini the in-app `/mcp` command); **Web clients** (Claude.ai, ChatGPT) get a single **One-click setup** row whose action is a branded **"Add to …"** button; **IDEs** (Cursor, VS Code) get a **One-click setup** deep-link button row followed by **Server URL**, **Authentication token**, and **Configure** rows. Copies confirm via the existing app notification with contextual messages ("Server URL copied", "Token copied", "Config copied", "Command copied"). The dialog is deliberately **footerless** — client selection + setup steps only, no Cancel/Continue and no in-dialog consent — because granting access is the **client\'s** move, not the dialog\'s: in the real flow the configured client initiates OAuth and n8n asks for consent in a new tab (that authorization screen is not part of this story set). **Access** summarizes the save-gated **Permissions** sub-page (`N8nSettingsRowConfigure` "4 of 7 allowed") and the **Workflows available** sub-page ("12 across 4 projects"); these rows and the **Connected clients** "View all" row lead to dedicated sub-pages that are likewise out of scope here, so their clicks stub the navigation. **Connected clients** previews a few rows inline — each carrying a third, muted **Access** line: the client\'s granted permissions as **plain truncated text** ("List workflows, Get workflow details +5", the first two plus a "+N" overflow computed from the array — never chips) that opens the **client details dialog** (brand mark + name header, Connected by / Connected on / Last active fields, the full grant as a vertical list grouped by Read-only / Write / Execute, and a destructive **Revoke access** footer that removes the client like the row\'s hover-revealed button).',
+					'The main **Instance level MCP** page, re-expressed from the current instance-level MCP screen into the native settings system. **Connection** drops the old "Preview" badge and replaces the master toggle with a single **MCP status** status-action control, shown only while MCP is enabled: an outline **"Enabled"** trigger — a **green, gently pulsing dot** + a `chevron-down` — that opens an `N8nDropdownMenu` whose single, danger-styled **"Disable"** item opens an **`N8nDialog` confirmation** ("…will disconnect N connected clients and revoke their access"). Enabling stays instant while disabling stays gated, because a toggle would imply an instant, low-stakes change for something that exposes the instance. **When disabled**, the whole page below the header collapses to a single **dashed-border empty state**, the sole enable affordance (an **animated fanned trio of logo cards** — the static `mcp` mark in the raised centre card, flanked by two tilted cards cycling through the client brand marks with a staggered 300ms fade+blur swap every 3s, mimicking the External Secrets empty state from MNI PR #24685 and static under `prefers-reduced-motion` — above "Connect AI assistants to build and run workflows", the subtext "Let MCP clients like Claude Code and Cursor build, run, and iterate on workflows in your instance", and a centered button row — a ghost **"Learn more"** docs button with a trailing `arrow-up-right` icon (opens the docs in a new tab) to the left of the primary **"Enable MCP access"** button wired to the instant-enable handler); enabling reveals the full page with a gentle entrance animation (honouring `prefers-reduced-motion`). The **"No clients connected yet"** empty state reuses the same animated cluster with the `plug-zap` mark in the centre. **Connection details** is **client-led**: the first row is a **"Your client"** picker — a searchable `N8nDropdownMenu` grouped into three uppercase categories (**AI Agent CLI**, **Web Clients**, **IDE**) via disabled header items + `divided` separators, each client showing its real brand mark in the `#item-leading` slot (Cursor near-black `#26251e`, Claude Code coral `#D97757`, Codex purple→blue, VS Code blue-ribbon, ChatGPT/Claude.ai marks; DS-icon fallbacks for Gemini CLI / Windsurf). The selected client drives a **dividerless group of official `N8nSettingsRow`s** (matching the Figma installation section — each row carries its own title/description, and a `CopyInput` — a readonly monospace `N8nInput` paired with an icon-only copy `N8nButton` in its `#append` slot — renders the command/snippet/value inside the row\'s `#action`): **CLIs** (Claude Code, Codex, Gemini CLI) get **Install** → **Configure** → **Authenticate** rows, where Authenticate is a copyable command (Codex `codex mcp login`; Claude Code / Gemini the in-app `/mcp` command); **Web clients** (Claude.ai, ChatGPT) get a single **One-click setup** row whose action is a branded **"Add to …"** button; **IDEs** (Cursor, VS Code) get a **One-click setup** deep-link button row followed by **Server URL**, **Authentication token**, and **Configure** rows. Copies confirm via the existing app notification with contextual messages ("Server URL copied", "Token copied", "Config copied", "Command copied"). The dialog is deliberately **footerless** — client selection + setup steps only, no Cancel/Continue and no in-dialog consent — because granting access is the **client\'s** move, not the dialog\'s: in the real flow the configured client initiates OAuth and MNI asks for consent in a new tab (that authorization screen is not part of this story set). **Access** summarizes the save-gated **Permissions** sub-page (`N8nSettingsRowConfigure` "4 of 7 allowed") and the **Workflows available** sub-page ("12 across 4 projects"); these rows and the **Connected clients** "View all" row lead to dedicated sub-pages that are likewise out of scope here, so their clicks stub the navigation. **Connected clients** previews a few rows inline — each carrying a third, muted **Access** line: the client\'s granted permissions as **plain truncated text** ("List workflows, Get workflow details +5", the first two plus a "+N" overflow computed from the array — never chips) that opens the **client details dialog** (brand mark + name header, Connected by / Connected on / Last active fields, the full grant as a vertical list grouped by Read-only / Write / Execute, and a destructive **Revoke access** footer that removes the client like the row\'s hover-revealed button).',
 			},
 		},
 	},

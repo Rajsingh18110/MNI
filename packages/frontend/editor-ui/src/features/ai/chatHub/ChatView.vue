@@ -162,7 +162,7 @@ const modelFromQuery = computed<ChatModelDto | null>(() => {
 	}
 
 	if (typeof workflowId === 'string') {
-		return chatStore.getAgent({ provider: 'n8n', workflowId });
+		return chatStore.getAgent({ provider: 'MNI', workflowId });
 	}
 
 	if (typeof provider === 'string' && typeof model === 'string') {
@@ -243,7 +243,7 @@ const { credentialsByProvider, selectCredential } = useChatCredentials(
 // Dynamic credentials
 const { isEnabled: privateCredentialsEnabled } = usePrivateCredentials();
 const dynamicCredsWorkflowId = computed(() =>
-	selectedModel.value?.model.provider === 'n8n' && privateCredentialsEnabled.value
+	selectedModel.value?.model.provider === 'MNI' && privateCredentialsEnabled.value
 		? selectedModel.value.model.workflowId
 		: null,
 );

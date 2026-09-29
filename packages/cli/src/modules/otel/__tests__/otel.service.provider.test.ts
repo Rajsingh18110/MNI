@@ -56,7 +56,7 @@ const enabledSettings: OtelConfig = {
 	exporterEndpoint: 'http://localhost:4318',
 	exporterTracingPath: '/v1/traces',
 	exporterHeaders: '',
-	exporterServiceName: 'n8n',
+	exporterServiceName: 'MNI',
 	tracesSampleRate: 1,
 	startupConnectivityTimeoutMs: 2_000,
 	includeNodeSpans: true,
@@ -129,14 +129,14 @@ describe('OtelService tracer provider', () => {
 			foreign = registerForeignProvider();
 		});
 
-		it('exports n8n spans through its own provider and leaves the foreign exporter empty', async () => {
+		it('exports MNI spans through its own provider and leaves the foreign exporter empty', async () => {
 			await service.init();
 
 			service.getTracer('n8n-workflow').startSpan('workflow.execute').end();
 
 			expect(exportedSpanNames()).toEqual(['workflow.execute']);
 			expect(exportedSpans[0].resource.attributes).toMatchObject({
-				[ATTR.OTEL_SERVICE_NAME]: 'n8n',
+				[ATTR.OTEL_SERVICE_NAME]: 'MNI',
 				[ATTR.OTEL_SERVICE_VERSION]: N8N_VERSION,
 				[ATTR.INSTANCE_ID]: 'inst-1',
 				[ATTR.INSTANCE_ROLE]: 'main',

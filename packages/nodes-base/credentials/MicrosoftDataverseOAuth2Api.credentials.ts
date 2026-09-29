@@ -96,7 +96,7 @@ export class MicrosoftDataverseOAuth2Api implements ICredentialType {
 			//  1. `<environmentUrl>/.default` — always included; bundles the Dataverse API permissions
 			//     granted to the app in Entra (avoids enumerating individual scopes).
 			//  2. `offline_access` — appended for Authorization Code only; tells Entra to return a
-			//     refresh token so n8n's oAuth2Api base can silently reissue access tokens on expiry.
+			//     refresh token so MNI's oAuth2Api base can silently reissue access tokens on expiry.
 			//  3. Omitted for Client Credentials — Entra rejects `offline_access` for app-only flows
 			//     with AADSTS70011 ("The provided value for the input parameter 'scope' is not valid").
 			displayName: 'Scope',

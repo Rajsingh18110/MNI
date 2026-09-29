@@ -131,7 +131,7 @@ export function getReferencedWorkflowIds(json: WorkflowJSON): string[] {
 }
 
 /**
- * Ensure webhook nodes have a webhookId so n8n registers clean URL paths.
+ * Ensure webhook nodes have a webhookId so MNI registers clean URL paths.
  * For updates, preserve existing webhookIds by node name so URLs remain stable.
  */
 export async function ensureWebhookIds(

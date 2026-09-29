@@ -40,7 +40,7 @@ test.describe(
 		];
 
 		const addColumnsAndGetIds = async (
-			n8n: n8nPage,
+			MNI: n8nPage,
 			method: 'header' | 'table',
 		): Promise<{
 			nameColumn: string;
@@ -75,7 +75,7 @@ test.describe(
 		};
 
 		const fillRowData = async (
-			n8n: n8nPage,
+			MNI: n8nPage,
 			rowIndex: number,
 			columnIds: {
 				nameColumn: string;
@@ -105,7 +105,7 @@ test.describe(
 		};
 
 		const verifyCellValues = async (
-			n8n: n8nPage,
+			MNI: n8nPage,
 			columnIds: {
 				nameColumn: string;
 				ageColumn: string;
@@ -143,7 +143,7 @@ test.describe(
 			expect(firstRowBirthdayValue).toContain(testData[0].birthday);
 		};
 
-		test.beforeEach(async ({ n8n, api }) => {
+		test.beforeEach(async ({ MNI, api }) => {
 			await api.enableFeature('sharing');
 			await api.enableFeature('folders');
 			await api.enableFeature('advancedPermissions');
@@ -159,7 +159,7 @@ test.describe(
 			await n8n.dataTableComposer.createNewDataTable(testDataTableName);
 		});
 
-		test('Should display empty state with default columns', async ({ n8n }) => {
+		test('Should display empty state with default columns', async ({ MNI }) => {
 			const dataTableDetailsContainer = n8n.dataTableDetails.getPageWrapper();
 			await expect(dataTableDetailsContainer).toBeVisible();
 
@@ -175,48 +175,48 @@ test.describe(
 		});
 
 		test('Should add columns of different types and rows from the header buttons', async ({
-			n8n,
+			MNI,
 		}) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
-			const columnIds = await addColumnsAndGetIds(n8n, 'header');
+			const columnIds = await addColumnsAndGetIds(MNI, 'header');
 			const testData = generateTestData();
 
 			await n8n.dataTableDetails.addRow();
 			await expect(n8n.dataTableDetails.getNoRowsMessage()).toBeHidden();
-			await fillRowData(n8n, 0, columnIds, testData[0], true);
+			await fillRowData(MNI, 0, columnIds, testData[0], true);
 
 			await n8n.dataTableDetails.addRow();
-			await fillRowData(n8n, 1, columnIds, testData[1], true);
+			await fillRowData(MNI, 1, columnIds, testData[1], true);
 
 			await n8n.dataTableDetails.addRow();
-			await fillRowData(n8n, 2, columnIds, testData[2], true);
+			await fillRowData(MNI, 2, columnIds, testData[2], true);
 
-			await verifyCellValues(n8n, columnIds, testData);
+			await verifyCellValues(MNI, columnIds, testData);
 		});
 
 		test('Should add columns of different types and rows from the table buttons', async ({
-			n8n,
+			MNI,
 		}) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
-			const columnIds = await addColumnsAndGetIds(n8n, 'table');
+			const columnIds = await addColumnsAndGetIds(MNI, 'table');
 			const testData = generateTestData();
 
 			await n8n.dataTableDetails.addRowFromTable();
 			await expect(n8n.dataTableDetails.getNoRowsMessage()).toBeHidden();
-			await fillRowData(n8n, 0, columnIds, testData[0], true);
+			await fillRowData(MNI, 0, columnIds, testData[0], true);
 
 			await n8n.dataTableDetails.addRowFromTable();
-			await fillRowData(n8n, 1, columnIds, testData[1], true);
+			await fillRowData(MNI, 1, columnIds, testData[1], true);
 
 			await n8n.dataTableDetails.addRowFromTable();
-			await fillRowData(n8n, 2, columnIds, testData[2], true);
+			await fillRowData(MNI, 2, columnIds, testData[2], true);
 
-			await verifyCellValues(n8n, columnIds, testData);
+			await verifyCellValues(MNI, columnIds, testData);
 		});
 
-		test('Should automatically move to second page when adding 21st row', async ({ n8n }) => {
+		test('Should automatically move to second page when adding 21st row', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			await n8n.dataTableDetails.addColumn(COLUMN_NAMES.name, 'string', 'header');
@@ -237,7 +237,7 @@ test.describe(
 			await expect(rowsOnPage2).toHaveCount(1);
 		});
 
-		test('Should select and delete rows', async ({ n8n }) => {
+		test('Should select and delete rows', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			await n8n.dataTableDetails.addColumn(COLUMN_NAMES.name, 'string', 'header');
@@ -280,7 +280,7 @@ test.describe(
 			expect(row2Value).toContain('Row 5');
 		});
 
-		test('Should clear selection', async ({ n8n }) => {
+		test('Should clear selection', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			await n8n.dataTableDetails.addColumn(COLUMN_NAMES.name, 'string', 'header');
@@ -310,18 +310,18 @@ test.describe(
 		});
 
 		test('Should add columns of each type with rows and then delete all columns', async ({
-			n8n,
+			MNI,
 		}) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
-			const columnIds = await addColumnsAndGetIds(n8n, 'header');
+			const columnIds = await addColumnsAndGetIds(MNI, 'header');
 			const testData = generateTestData().slice(0, 2);
 
 			await n8n.dataTableDetails.addRow();
-			await fillRowData(n8n, 0, columnIds, testData[0], true);
+			await fillRowData(MNI, 0, columnIds, testData[0], true);
 
 			await n8n.dataTableDetails.addRow();
-			await fillRowData(n8n, 1, columnIds, testData[1], true);
+			await fillRowData(MNI, 1, columnIds, testData[1], true);
 
 			const rows = n8n.dataTableDetails.getDataRows();
 			await expect(rows).toHaveCount(2);
@@ -346,7 +346,7 @@ test.describe(
 			await expect(rows).toHaveCount(2);
 		});
 
-		test('Should rename data table from breadcrumbs', async ({ n8n }) => {
+		test('Should rename data table from breadcrumbs', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			const nameBreadcrumb = n8n.dataTableDetails.getDataTableBreadcrumb();
@@ -361,7 +361,7 @@ test.describe(
 			expect(initialName).not.toEqual(newName);
 		});
 
-		test.fixme('Should filter correctly using column filters', async ({ n8n }) => {
+		test.fixme('Should filter correctly using column filters', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			await n8n.dataTableDetails.setPageSize('10');
@@ -453,7 +453,7 @@ test.describe(
 			await expect(n8n.dataTableDetails.getDataRows()).toHaveCount(4);
 		});
 
-		test('Should reorder columns using drag and drop', async ({ n8n }) => {
+		test('Should reorder columns using drag and drop', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			await n8n.dataTableDetails.addColumn(COLUMN_NAMES.name, 'string', 'header');
@@ -500,7 +500,7 @@ test.describe(
 			expect(birthdayFinalIndex).toBeLessThan(nameFinalIndex);
 		});
 
-		test('Should search and filter rows globally', async ({ n8n }) => {
+		test('Should search and filter rows globally', async ({ MNI }) => {
 			await expect(n8n.dataTableDetails.getPageWrapper()).toBeVisible();
 
 			await n8n.dataTableDetails.addColumn(COLUMN_NAMES.name, 'string', 'header');

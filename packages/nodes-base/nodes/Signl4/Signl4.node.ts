@@ -274,7 +274,7 @@ export class Signl4 implements INodeType {
 
 						data['X-S4-Status'] = 'new';
 
-						data['X-S4-SourceSystem'] = 'n8n';
+						data['X-S4-SourceSystem'] = 'MNI';
 
 						// Attachments
 						const attachments = additionalFields.attachmentsUi as IDataObject;
@@ -324,7 +324,7 @@ export class Signl4 implements INodeType {
 
 						data['X-S4-Status'] = 'resolved';
 
-						data['X-S4-SourceSystem'] = 'n8n';
+						data['X-S4-SourceSystem'] = 'MNI';
 
 						responseData = await SIGNL4ApiRequest.call(
 							this,

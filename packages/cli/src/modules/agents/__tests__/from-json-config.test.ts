@@ -178,7 +178,7 @@ describe('buildFromJson()', () => {
 		},
 		describe: vi
 			.fn()
-			.mockReturnValue({ name: 'n8n', constructorName: 'N8nMemory', connectionParams: null }),
+			.mockReturnValue({ name: 'MNI', constructorName: 'N8nMemory', connectionParams: null }),
 		close: vi.fn(),
 	});
 
@@ -289,7 +289,7 @@ describe('buildFromJson()', () => {
 		if (!tool?.handler || !tool.toMessage) throw new Error('Expected custom tool transforms');
 		expect(tool.outputTrust).toBe('untrusted');
 
-		const output = await tool.handler({ query: 'n8n' }, {} as never);
+		const output = await tool.handler({ query: 'MNI' }, {} as never);
 
 		expect(output).toEqual(rawOutput);
 		expect(await tool.toMessage(output)).toEqual({
@@ -980,7 +980,7 @@ describe('buildFromJson()', () => {
 		).rejects.toThrow('Web search is enabled but no search credential is configured.');
 	});
 
-	it('adds fallback web search tool for the n8n Connect managed credential (brave)', async () => {
+	it('adds fallback web search tool for the MNI Connect managed credential (brave)', async () => {
 		const agent = await buildFromJson(
 			makeConfig({
 				model: 'deepseek/deepseek-chat',
@@ -1137,7 +1137,7 @@ describe('buildFromJson()', () => {
 		const config = makeConfig({
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				observationalMemory: {
 					observerThresholdTokens: 4_000,
 					reflectorThresholdTokens: 12_000,
@@ -1175,7 +1175,7 @@ describe('buildFromJson()', () => {
 
 	it('uses synchronous title generation so the first message can sync the title', async () => {
 		const config = makeConfig({
-			memory: { enabled: true, storage: 'n8n' },
+			memory: { enabled: true, storage: 'MNI' },
 		});
 
 		const agent = await buildFromJson(
@@ -1204,7 +1204,7 @@ describe('buildFromJson()', () => {
 		const config = makeConfig({
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				observationalMemory: {
 					observerModel: { model: 'openai/gpt-4o-mini', credential: 'observer-key' },
 					reflectorModel: {
@@ -1241,7 +1241,7 @@ describe('buildFromJson()', () => {
 
 	it('enables observational memory by default when memory is enabled', async () => {
 		const config = makeConfig({
-			memory: { enabled: true, storage: 'n8n' },
+			memory: { enabled: true, storage: 'MNI' },
 		});
 
 		const agent = await buildFromJson(
@@ -1270,7 +1270,7 @@ describe('buildFromJson()', () => {
 		const config = makeConfig({
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				episodicMemory: {
 					enabled: true,
 					credential: 'openai-key',
@@ -1311,7 +1311,7 @@ describe('buildFromJson()', () => {
 		const config = makeConfig({
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				episodicMemory: {
 					enabled: true,
 					credential: 'managed',
@@ -1357,7 +1357,7 @@ describe('buildFromJson()', () => {
 		const config = makeConfig({
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				episodicMemory: {
 					enabled: true,
 					credential: 'embedding-key',
@@ -1396,7 +1396,7 @@ describe('buildFromJson()', () => {
 
 	it('can disable observational memory while keeping message memory', async () => {
 		const config = makeConfig({
-			memory: { enabled: true, storage: 'n8n', observationalMemory: { enabled: false } },
+			memory: { enabled: true, storage: 'MNI', observationalMemory: { enabled: false } },
 		});
 
 		const agent = await buildFromJson(
@@ -1416,7 +1416,7 @@ describe('buildFromJson()', () => {
 	});
 
 	it('skips memory when memory.enabled is false', async () => {
-		const config = makeConfig({ memory: { enabled: false, storage: 'n8n' } });
+		const config = makeConfig({ memory: { enabled: false, storage: 'MNI' } });
 
 		const memoryFactory = vi.fn();
 

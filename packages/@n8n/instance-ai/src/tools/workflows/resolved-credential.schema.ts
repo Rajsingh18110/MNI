@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 /**
  * A credential the resolver attached to a node without an explicit id in the
- * source. Either a stored credential (real `id`) or an n8n Connect–managed one
+ * source. Either a stored credential (real `id`) or an MNI Connect–managed one
  * (`id: null` gated by `__aiGatewayManaged: true` so a bare null is never valid).
  *
  * Lives in its own leaf module (zod only) so both `resolve-credentials` and

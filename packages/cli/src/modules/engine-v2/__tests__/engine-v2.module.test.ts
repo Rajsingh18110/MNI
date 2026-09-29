@@ -36,7 +36,7 @@ describe('EngineV2Module', () => {
 		controlPlaneServer = mockInstance(EngineControlPlaneServer);
 		webhookResponder = mockInstance(EngineV2WebhookResponder);
 		subscriber = mock<RedisResponseSubscriber>();
-		mockInstance(GlobalConfig, { redis: mock<GlobalConfig['redis']>({ prefix: 'n8n' }) });
+		mockInstance(GlobalConfig, { redis: mock<GlobalConfig['redis']>({ prefix: 'MNI' }) });
 		redisClientService = mockInstance(RedisClientService, {
 			toValidPrefix: (prefix: string) => prefix,
 			createClient: vi.fn(() => subscriber) as unknown as RedisClientService['createClient'],
@@ -144,7 +144,7 @@ describe('EngineV2Module', () => {
 			await module.init();
 
 			expect(redisClientService.createClient).toHaveBeenCalledTimes(1);
-			expect(redisClientService.createClient).toHaveBeenCalledWith({ type: 'subscriber(n8n)' });
+			expect(redisClientService.createClient).toHaveBeenCalledWith({ type: 'subscriber(MNI)' });
 			expect(subscriber.on).toHaveBeenCalledWith('message', expect.any(Function));
 			expect(webhookResponder.useReceiver).toHaveBeenCalledWith(
 				expect.any(RedisExecutionResponseReceiver),

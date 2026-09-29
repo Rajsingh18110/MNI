@@ -281,7 +281,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		settingsStore = mockedStore(useSettingsStore);
 		aiGatewayStore = mockedStore(useAiGatewayStore);
 
-		// The gateway is off by default, so the n8n Connect section stays out of
+		// The gateway is off by default, so the MNI Connect section stays out of
 		// the way of the tests that do not opt into it.
 		settingsStore.isAiGatewayEnabled = false;
 		aiGatewayStore.isNodeSupported = vi.fn().mockReturnValue(false);
@@ -423,7 +423,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		expect(modalAttrs.open).toBe(true);
 	});
 
-	it('puts native and other node tools in the n8n nodes category', async () => {
+	it('puts native and other node tools in the MNI nodes category', async () => {
 		const recommended: INodeTypeDescription = {
 			...WIKIPEDIA,
 			displayName: 'Gmail',
@@ -1069,7 +1069,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		});
 	});
 
-	describe('n8n Connect section', () => {
+	describe('MNI Connect section', () => {
 		beforeEach(() => {
 			// Only Slack is gateway-backed; Wikipedia stays a regular own-cred tool.
 			settingsStore.isAiGatewayEnabled = true;
@@ -1084,7 +1084,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			render();
 			await flushPromises();
 
-			// "All" stays the default tab; n8n Connect slots in right after it.
+			// "All" stays the default tab; MNI Connect slots in right after it.
 			expect((modalAttrs.categories as string[]).slice(0, 2)).toEqual(['all', 'n8n-connect']);
 
 			const gateway = getItems().find((item) => item.id === `n8n-connect:${SLACK.name}`);

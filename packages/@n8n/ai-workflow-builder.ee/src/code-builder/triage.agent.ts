@@ -97,7 +97,7 @@ function buildTriagePrompt(
 	return prompt()
 		.section(
 			'role',
-			'You are a triage agent for the n8n workflow builder. ' +
+			'You are a triage agent for the MNI workflow builder. ' +
 				'Your job is to classify each user message and route it to the right handler.',
 		)
 		.sectionIf(!!selectedNodesSummary, 'selected_nodes', () => selectedNodesSummary)
@@ -114,7 +114,7 @@ function buildTriagePrompt(
    the user asks to fetch the URL, references it as documentation, or provides it for context.
    You may include a brief transition before calling (e.g., "Let me build that for you.").
 
-2. **ask_assistant** — The user has a pure knowledge question about n8n concepts, needs help
+2. **ask_assistant** — The user has a pure knowledge question about MNI concepts, needs help
    understanding how something works, or needs to diagnose a workflow error.
    Only use this when the user is asking for information, NOT when they want you to take action.
    Never use for messages containing URLs — route those to build_workflow instead.

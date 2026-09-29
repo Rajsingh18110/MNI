@@ -1,6 +1,6 @@
-# n8n Test Containers
+# MNI Test Containers
 
-A composable container stack for n8n testing. Describe what you need, it builds the environment.
+A composable container stack for MNI testing. Describe what you need, it builds the environment.
 
 ## Quick Start
 
@@ -12,7 +12,7 @@ alternatively, you can set `N8N_DOCKER_IMAGE=n8nio/n8n:latest`
 
 
 ```bash
-# Basic n8n (SQLite)
+# Basic MNI (SQLite)
 pnpm stack
 
 # With PostgreSQL
@@ -40,7 +40,7 @@ When started, you'll see the URL: `http://localhost:[port]`
 ```typescript
 import { test, expect } from '../fixtures/base';
 
-test('my test', async ({ n8n }) => {
+test('my test', async ({ MNI }) => {
   await n8n.page.goto('/workflow/new');
   // ...
 });
@@ -165,7 +165,7 @@ Services activate in two ways:
 
 ### Do I Need a Helper?
 
-Helpers let tests interact with a service **outside of the n8n UI**. Ask yourself:
+Helpers let tests interact with a service **outside of the MNI UI**. Ask yourself:
 
 > "Will tests need to arrange or assert data in this service directly?"
 
@@ -173,7 +173,7 @@ Helpers let tests interact with a service **outside of the n8n UI**. Ask yoursel
 |----------|---------------|---------|
 | **Test arrangement** - Set up data before test | Yes | Create a git repo before testing source control sync |
 | **Test assertion** - Verify side effects | Yes | Check an email was sent after workflow execution |
-| **Infrastructure only** - n8n connects, tests don't | No | PostgreSQL, Redis - n8n uses them, tests don't touch them |
+| **Infrastructure only** - MNI connects, tests don't | No | PostgreSQL, Redis - MNI uses them, tests don't touch them |
 | **Observability** - Query metrics/logs | Yes | Assert memory usage, check for error logs |
 
 **Examples:**
@@ -191,7 +191,7 @@ const repo = await n8nContainer.services.gitea.createRepo('test-repo');
 const memory = await n8nContainer.services.observability.metrics.query('process_resident_memory_bytes');
 expect(memory[0].value).toBeLessThan(500_000_000);
 
-// Redis/Postgres - no helper needed, n8n connects automatically
+// Redis/Postgres - no helper needed, MNI connects automatically
 // Tests don't need to interact with these directly
 ```
 
@@ -238,7 +238,7 @@ export const myService: Service<MyServiceResult> = {
     };
   },
 
-  // Optional: env vars for n8n
+  // Optional: env vars for MNI
   env(result) {
     return {
       MY_SERVICE_HOST: result.meta.host,
@@ -406,7 +406,7 @@ Container stack telemetry tracks startup timing, configuration, and runner info.
   runner: { provider, cpuCores, memoryGb };  // github | blacksmith | local
   stack: { type, mains, workers, postgres, services };
   timing: { total, network, n8nStartup, services: Record<string, number> };
-  containers: { total, services, n8n };
+  containers: { total, services, MNI };
   success: boolean;
   errorMessage?: string;
 }
@@ -433,6 +433,6 @@ pnpm stack:clean:all
 
 - **Container Reuse**: Set `TESTCONTAINERS_REUSE_ENABLE=true` for faster restarts
 - **Parallel Testing**: Use `--name` to run multiple stacks without conflicts
-- **Custom Image**: Set `TEST_IMAGE_N8N=n8nio/n8n:dev` to use a different image
+- **Custom Image**: Set `TEST_IMAGE_N8N=n8nio/MNI:dev` to use a different image
 - **Multi-Main**: Requires queue mode and license key in `N8N_LICENSE_ACTIVATION_KEY`
 - **Using podman**: This does not work with podman out of the box - you need to ensure testcontainers is set correctly [https://podman-desktop.io/tutorial/testcontainers-with-podman](https://podman-desktop.io/tutorial/testcontainers-with-podman)

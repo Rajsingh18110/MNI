@@ -58,7 +58,7 @@ describe('useAgentModelCredentials — credentialsByProvider', () => {
 		aiGatewayState.supportedTypes = new Set<string>();
 	});
 
-	it('preserves the n8n Connect managed tag while it still serves the provider', () => {
+	it('preserves the MNI Connect managed tag while it still serves the provider', () => {
 		// No own Anthropic credential, but the managed tag is the stored selection.
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
@@ -69,7 +69,7 @@ describe('useAgentModelCredentials — credentialsByProvider', () => {
 		expect(credentialsByProvider.value?.anthropic).toBe(AI_GATEWAY_MANAGED_TAG);
 	});
 
-	it('drops a stale managed tag when n8n Connect no longer serves the provider, falling back to a credential', () => {
+	it('drops a stale managed tag when MNI Connect no longer serves the provider, falling back to a credential', () => {
 		// License off / provider removed → managed no longer supported, but a real credential exists.
 		aiGatewayState.isEnabled.value = false;
 		aiGatewayState.supportedTypes = new Set<string>();
@@ -121,7 +121,7 @@ describe('useAgentModelCredentials — credentialsByProvider', () => {
 		expect(credentialsByProvider.value?.anthropic).toBe('cred-2');
 	});
 
-	it('defaults to the managed tag when nothing is selected and n8n Connect supports the provider', () => {
+	it('defaults to the managed tag when nothing is selected and MNI Connect supports the provider', () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 

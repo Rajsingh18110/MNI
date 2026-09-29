@@ -1298,7 +1298,7 @@ export class WorkflowService {
 
 	/**
 	 * Publishes a new system-authored version of an already-active workflow,
-	 * without a user: inserts the `workflow_history` row (author `'n8n'`),
+	 * without a user: inserts the `workflow_history` row (author `'MNI'`),
 	 * advances `activeVersionId`, records publish history with a null user, and
 	 * enqueues the outbox record. The draft plane — `workflow_entity.nodes`,
 	 * `versionId`, `updatedAt` — stays untouched.
@@ -1359,7 +1359,7 @@ export class WorkflowService {
 				// missing row surfaces as a foreign-key violation on the update, which
 				// rolls the transaction back.
 				await this.workflowHistoryService.saveVersion(
-					'n8n',
+					'MNI',
 					{ versionId, ...versionData },
 					workflowId,
 					false,

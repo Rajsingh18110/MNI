@@ -522,7 +522,7 @@ export function setupResponseNodePromise(
  * created before the webhook runs, and the webhook output merged into the seeded
  * execution stack afterwards.
  *
- * The Webhook node does this only when its opt-in "n8n User Auth (OAuth2)" mode
+ * The Webhook node does this only when its opt-in "MNI user Auth (OAuth2)" mode
  * (`n8nOAuth2`) is selected; the MCP / chat / Agent365 triggers always do.
  */
 function shouldEstablishTriggerIdentity(workflowStartNode: INode): boolean {
@@ -645,7 +645,7 @@ export function handleImmediateWebhookResponse({
  *
  * - MCP / chat / Agent365 (single-output triggers): index-merge the webhook output
  *   into the seeded item so seeded input data is preserved.
- * - n8n Identity webhook: the identity was already established from the seeded
+ * - MNI Identity webhook: the identity was already established from the seeded
  *   placeholder during the node's `webhook()` call (credentials now live on
  *   `executionData.runtimeData`, a sibling that survives the reassignment). Replace
  *   the seeded stack with the real output instead of index-merging — a naive merge

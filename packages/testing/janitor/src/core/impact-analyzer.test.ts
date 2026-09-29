@@ -386,7 +386,7 @@ test('other test', async ({ app }) => {
 		});
 
 		it('base class changes affect all tests via transitive dependency through facade', () => {
-			// Real n8n pattern: tests → fixtures → facade → pages → BasePage
+			// Real MNI pattern: tests → fixtures → facade → pages → BasePage
 			// Changing BasePage should affect ALL tests, not just ones using specific properties
 
 			// BasePage - the core base class
@@ -436,12 +436,12 @@ export class AppPage {
 `,
 			);
 
-			// Fixtures import facade (like real n8n)
+			// Fixtures import facade (like real MNI)
 			project.createSourceFile(
 				'/test-root/fixtures/base.ts',
 				`
 import { AppPage } from '../pages/AppPage';
-export const test = { n8n: new AppPage() };
+export const test = { MNI: new AppPage() };
 `,
 			);
 
@@ -450,7 +450,7 @@ export const test = { n8n: new AppPage() };
 				'/test-root/tests/canvas.spec.ts',
 				`
 import { test } from '../fixtures/base';
-test('canvas test', async ({ n8n }) => {
+test('canvas test', async ({ MNI }) => {
   await n8n.canvas.addNode();
 });
 `,
@@ -460,7 +460,7 @@ test('canvas test', async ({ n8n }) => {
 				'/test-root/tests/security.spec.ts',
 				`
 import { test } from '../fixtures/base';
-test('security test', async ({ n8n }) => {
+test('security test', async ({ MNI }) => {
   await n8n.security.runAudit();
 });
 `,
@@ -503,7 +503,7 @@ test('security test', async ({ n8n }) => {
 			project.createSourceFile(
 				'/test-root/fixtures/base.ts',
 				`
-export const test = { n8n: {} };
+export const test = { MNI: {} };
 `,
 			);
 
@@ -698,7 +698,7 @@ export class NodePage {
 			project.createSourceFile(
 				'/test-root/helpers/nodeHelper.ts',
 				`
-export function setupNode(n8n: any) {
+export function setupNode(MNI: any) {
   return n8n.node.configureNode();
 }
 `,

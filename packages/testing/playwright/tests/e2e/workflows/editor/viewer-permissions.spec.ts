@@ -8,11 +8,11 @@ const MEMBER_EMAIL = INSTANCE_MEMBER_CREDENTIALS[0].email;
 
 // Helper to set up a project with a workflow and sign in as member with specified role
 async function setupProjectWithWorkflowAndSignInAsMember({
-	n8n,
+	MNI,
 	roleSlug,
 	nodeName,
 }: {
-	n8n: n8nPage;
+	MNI: n8nPage;
 	roleSlug: string;
 	nodeName: string;
 }): Promise<void> {
@@ -71,9 +71,9 @@ test.describe(
 			);
 		});
 
-		test('user without workflow:update scope cannot drag nodes @auth:owner', async ({ n8n }) => {
+		test('user without workflow:update scope cannot drag nodes @auth:owner', async ({ MNI }) => {
 			await setupProjectWithWorkflowAndSignInAsMember({
-				n8n,
+				MNI,
 				roleSlug: readOnlyRole.slug,
 				nodeName: 'Edit Fields (Set)',
 			});
@@ -91,9 +91,9 @@ test.describe(
 			expect(finalPosition?.y).toBe(initialPosition?.y);
 		});
 
-		test('user without workflow:update can copy but cannot paste @auth:owner', async ({ n8n }) => {
+		test('user without workflow:update can copy but cannot paste @auth:owner', async ({ MNI }) => {
 			await setupProjectWithWorkflowAndSignInAsMember({
-				n8n,
+				MNI,
 				roleSlug: readOnlyRole.slug,
 				nodeName: 'Edit Fields (Set)',
 			});
@@ -107,9 +107,9 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(nodeCountBefore);
 		});
 
-		test('user with workflow:update scope can drag and paste @auth:owner', async ({ n8n }) => {
+		test('user with workflow:update scope can drag and paste @auth:owner', async ({ MNI }) => {
 			await setupProjectWithWorkflowAndSignInAsMember({
-				n8n,
+				MNI,
 				roleSlug: editorRole.slug,
 				nodeName: 'Edit Fields (Set)',
 			});

@@ -31,7 +31,7 @@ export class CreateMigrationFindingTables1790598807675 implements ReversibleMigr
 				column('targetVersion')
 					.varchar(16)
 					.notNull.withEnumCheck(TARGET_VERSIONS)
-					.comment('BreakingChangeVersion enum: the n8n major version the finding applies to.'),
+					.comment('BreakingChangeVersion enum: the MNI major version the finding applies to.'),
 				column('ruleId')
 					.varchar(128)
 					.notNull.comment('Id of the breaking-change rule that produced the finding.'),

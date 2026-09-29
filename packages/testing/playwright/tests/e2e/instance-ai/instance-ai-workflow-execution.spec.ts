@@ -78,7 +78,7 @@ test.describe(
 	() => {
 		test.describe.configure({ timeout: 180_000 });
 
-		test('should show run workflow button in preview', async ({ n8n }) => {
+		test('should show run workflow button in preview', async ({ MNI }) => {
 			const workflowName = 'Run Button Visibility Workflow';
 			await n8n.api.workflows.createWorkflow(
 				seededExecutionWorkflow(workflowName, 'run button visibility test'),
@@ -102,7 +102,7 @@ test.describe(
 			});
 		});
 
-		test('should execute workflow from run button and show success indicators', async ({ n8n }) => {
+		test('should execute workflow from run button and show success indicators', async ({ MNI }) => {
 			test.setTimeout(180_000);
 			const workflowName = 'Full Execution Workflow';
 			const workflow = await n8n.api.workflows.createWorkflow(
@@ -146,7 +146,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				const workflowName = 'Run Button Visibility Workflow';
 				const setNodeName = 'run button visibility test';
 				await n8n.api.workflows.createWorkflow(seededExecutionWorkflow(workflowName, setNodeName));
@@ -183,7 +183,7 @@ test.describe(
 		);
 
 		test('should show execution results in NDV output panel when opening node after execution', async ({
-			n8n,
+			MNI,
 		}) => {
 			test.setTimeout(180_000);
 			const workflowName = 'NDV Output Workflow';
@@ -227,7 +227,7 @@ test.describe(
 			});
 		});
 
-		test('should allow re-running workflow after initial execution', async ({ n8n }) => {
+		test('should allow re-running workflow after initial execution', async ({ MNI }) => {
 			const workflowName = 'Re-run Execution Workflow';
 			const workflow = await n8n.api.workflows.createWorkflow(
 				seededExecutionWorkflow(workflowName, 're-run test'),

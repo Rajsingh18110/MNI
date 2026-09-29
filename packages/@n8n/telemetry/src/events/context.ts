@@ -136,7 +136,7 @@ export const CONTEXT_TELEMETRY = defineTelemetryEvents({
 	PREFERENCES_READ_OVER_MCP: {
 		name: 'Preferences read over MCP',
 		description:
-			'An MCP client called `get_user_preferences`. Kept apart from `Preferences applied to a turn` because an MCP read is not a turn: n8n hands the text over and never learns whether the client applied it, so the latency and token columns of the turn event would stay empty. Fires on a successful read, including one that found nothing.',
+			'An MCP client called `get_user_preferences`. Kept apart from `Preferences applied to a turn` because an MCP read is not a turn: MNI hands the text over and never learns whether the client applied it, so the latency and token columns of the turn event would stay empty. Fires on a successful read, including one that found nothing.',
 		properties: z.object({
 			count: z.number().describe('Preferences the read returned. 0 when none are saved'),
 			scope_types: z.array(scopeType).describe('Distinct scopes the returned preferences covered'),

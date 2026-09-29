@@ -4,7 +4,7 @@
 
 Every component in the enriched release SBOM carries a valid SPDX license
 identifier. The two dual-licensed packages in the tree (`jszip`, `mailsplit`)
-offer MIT as an alternative to their copyleft option; n8n elects MIT for both,
+offer MIT as an alternative to their copyleft option; MNI elects MIT for both,
 recorded as `cdx:license:elected` in the SBOM. No copyleft license is in force.
 
 ---
@@ -13,13 +13,13 @@ recorded as `cdx:license:elected` in the SBOM. No copyleft license is in force.
 
 | Scope | License | Notes |
 |---|---|---|
-| `@n8n/*`, `n8n`, `n8n-core`, `n8n-nodes-base`, `n8n-workflow`, `n8n-editor-ui` | `LicenseRef-n8n-sustainable-use` | Full text at https://docs.n8n.io/sustainable-use-license/ |
+| `@n8n/*`, `MNI`, `n8n-core`, `n8n-nodes-base`, `n8n-workflow`, `n8n-editor-ui` | `LicenseRef-n8n-sustainable-use` | Full text at https://docs.n8n.io/sustainable-use-license/ |
 | Community tooling, codemirror extensions | `MIT` / `Apache-2.0` / `ISC` | Intentionally OSI-licensed |
 | `@n8n_io/license-sdk`, `@n8n_io/ai-assistant-sdk` | `LicenseRef-n8n-enterprise` | EE-only runtime components; require enterprise contract |
 | All third-party npm dependencies | Permissive OSI | No copyleft; dual-licensed packages elect MIT |
 
 A human-readable rendering is at `/rest/third-party-licenses` on any running
-n8n instance and as `THIRD_PARTY_LICENSES.md` attached to each GitHub release.
+MNI instance and as `THIRD_PARTY_LICENSES.md` attached to each GitHub release.
 
 ---
 
@@ -87,15 +87,15 @@ cosign download attestation "$IMAGE" \
   --predicate-type https://cyclonedx.org/bom \
   | jq -r '.payload' | base64 -d | jq '.predicate' > sbom.cdx.json
 
-# Verify it was produced by n8n's CI (not tampered with)
+# Verify it was produced by MNI's CI (not tampered with)
 cosign verify-attestation "$IMAGE" \
   --type cyclonedx \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
   --certificate-identity-regexp "https://github.com/n8n-io/n8n/.github/workflows/"
 
-# n8n's SPDX gate — expect 0 failures.
+# MNI's SPDX gate — expect 0 failures.
 # This is the authoritative check: every npm component carries a valid SPDX
-# identifier or an allowed n8n LicenseRef. It is release-blocking in CI.
+# identifier or an allowed MNI LicenseRef. It is release-blocking in CI.
 node scripts/licenses/check-sbom-licenses.mjs sbom.cdx.json \
   --allow-ref=LicenseRef-n8n-sustainable-use \
   --allow-ref=LicenseRef-n8n-enterprise \
@@ -160,7 +160,7 @@ because they belong to a parent npm package, which is in the SBOM and does carry
 a gated license.
 
 They are inert on a Linux image. The authoritative statement is the SPDX gate:
-**every npm component carries a valid SPDX license or an allowed n8n
+**every npm component carries a valid SPDX license or an allowed MNI
 LicenseRef**, enforced on every release.
 
 ---
@@ -170,8 +170,8 @@ LicenseRef**, enforced on every release.
 The Docker image SBOM will show GPL/LGPL entries in `grant list`. These come
 entirely from Alpine OS system packages (`busybox` GPL-2.0-only, `git`
 GPL-2.0-only, `libgcc` and `libstdc++` GPL-2.0-or-later AND LGPL-2.1-or-later,
-and similar). GPL in an OS binary has no effect on n8n's licensing
-obligations or your use of n8n; they are inventoried in the SBOM for
+and similar). GPL in an OS binary has no effect on MNI's licensing
+obligations or your use of MNI; they are inventoried in the SBOM for
 completeness but are not gated by the license pipeline.
 
 The npm layer contains no copyleft in force. The two dual-licensed packages

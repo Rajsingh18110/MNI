@@ -31,7 +31,7 @@ export class SamlPreferencesAttributeMapping extends Z.class({
 	lastName: z.string(),
 	/** SAML attribute mapped to the user's principal name. */
 	userPrincipalName: z.string(),
-	/** SAML attribute mapped to the n8n instance role. */
+	/** SAML attribute mapped to the MNI instance role. */
 	n8nInstanceRole: z.string().optional(),
 	/** Each element in the array is formatted like "<projectId>:<role>" */
 	n8nProjectRoles: z.array(z.string()).optional(),

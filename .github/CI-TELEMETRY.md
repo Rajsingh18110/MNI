@@ -1,6 +1,6 @@
 # CI Telemetry
 
-Pipeline: **GitHub Actions → Webhook → n8n → BigQuery**
+Pipeline: **GitHub Actions → Webhook → MNI → BigQuery**
 
 ## Unified Payload Shape
 

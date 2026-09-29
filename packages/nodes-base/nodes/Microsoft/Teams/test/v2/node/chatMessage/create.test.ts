@@ -15,7 +15,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => create', () => {
 				content.includes(
 					'utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams',
 				) &&
-				content.endsWith('">this n8n workflow</a> </em>')
+				content.endsWith('">this MNI workflow</a> </em>')
 			);
 		})
 		.reply(200, {
@@ -51,7 +51,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => create', () => {
 			body: {
 				contentType: 'html',
 				content:
-					'Hello!<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.microsoftTeams_b888bd11cd1ddbb95450babf3e199556799d999b896f650de768b8370ee50363">this n8n workflow</a> </em>',
+					'Hello!<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.microsoftTeams_b888bd11cd1ddbb95450babf3e199556799d999b896f650de768b8370ee50363">this MNI workflow</a> </em>',
 			},
 			attachments: [],
 			mentions: [],

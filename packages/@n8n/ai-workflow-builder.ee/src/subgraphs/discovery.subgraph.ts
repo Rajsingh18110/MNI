@@ -89,7 +89,7 @@ const discoveryOutputSchema = z.object({
 					),
 			}),
 		)
-		.describe('List of n8n nodes identified as necessary for the workflow'),
+		.describe('List of MNI nodes identified as necessary for the workflow'),
 });
 
 type DiscoveryOutput = z.infer<typeof discoveryOutputSchema>;

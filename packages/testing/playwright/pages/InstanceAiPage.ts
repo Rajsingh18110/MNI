@@ -53,7 +53,7 @@ export class InstanceAiPage extends BasePage {
 	}
 
 	getOnboardingWizard(): Locator {
-		return this.page.getByRole('dialog', { name: 'Set up n8n Assistant' });
+		return this.page.getByRole('dialog', { name: 'Set up MNI Assistant' });
 	}
 
 	getWizardPrimaryButton(): Locator {
@@ -74,7 +74,7 @@ export class InstanceAiPage extends BasePage {
 
 	getOnboardingDoneHeading(): Locator {
 		return this.getOnboardingWizard().getByRole('heading', {
-			name: 'n8n Assistant is on for everyone on this instance',
+			name: 'MNI Assistant is on for everyone on this instance',
 		});
 	}
 
@@ -87,14 +87,14 @@ export class InstanceAiPage extends BasePage {
 	}
 
 	async enableInstanceAiIfPrompted(): Promise<void> {
-		const dialog = this.page.getByRole('dialog').filter({ hasText: 'Try new n8n Assistant' });
+		const dialog = this.page.getByRole('dialog').filter({ hasText: 'Try new MNI Assistant' });
 		try {
 			await dialog.waitFor({ state: 'visible', timeout: 3_000 });
 		} catch {
 			return;
 		}
 
-		await dialog.getByRole('button', { name: /Enable n8n Assistant on this instance/ }).click();
+		await dialog.getByRole('button', { name: /Enable MNI Assistant on this instance/ }).click();
 		await dialog.getByRole('button', { name: /^(Continue|Enable)$/ }).click();
 		await dialog.waitFor({ state: 'hidden' });
 	}

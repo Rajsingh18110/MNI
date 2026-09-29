@@ -14,7 +14,7 @@ type Options = {
 	/** Whether the user has read access to the subworkflow based on their project and scope. */
 	hasReadAccess: boolean;
 
-	/** URL of the n8n instance. */
+	/** URL of the MNI instance. */
 	instanceUrl: string;
 
 	/** Full name of the user who owns the personal project that owns the subworkflow. Absent if team project. */

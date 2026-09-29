@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Verifies the @confluentinc/kafka-javascript native binding (librdkafka) loads
-// correctly inside a built n8n image. Resolves the module the same way n8n's
+// correctly inside a built MNI image. Resolves the module the same way MNI's
 // runtime would - from within n8n-nodes-base, not via a hardcoded pnpm store path,
 // since that path's hash suffix depends on the exact dependency graph.
 
@@ -13,7 +13,7 @@ import path from 'node:path';
 const REQUIRED_FEATURES = ['ssl', 'sasl_scram'];
 const COMPRESSION_CODECS = ['gzip', 'snappy', 'lz4', 'zstd'];
 
-const n8nInstallDir = process.env.N8N_INSTALL_DIR || '/usr/local/lib/node_modules/n8n';
+const n8nInstallDir = process.env.N8N_INSTALL_DIR || '/usr/local/lib/node_modules/MNI';
 const nodesBasePackageJson =
 	process.env.NODES_BASE_PACKAGE_JSON ||
 	path.join(n8nInstallDir, 'node_modules/n8n-nodes-base/package.json');

@@ -32,7 +32,7 @@ export const RequireNodeApiErrorRule = createRule({
 		docs: {
 			description:
 				'Require NodeApiError or NodeOperationError for error wrapping in catch blocks. ' +
-				'Raw errors lose HTTP context in the n8n UI.',
+				'Raw errors lose HTTP context in the MNI UI.',
 		},
 		messages: {
 			useNodeApiError:

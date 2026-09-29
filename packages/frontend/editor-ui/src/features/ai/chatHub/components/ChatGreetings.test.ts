@@ -13,7 +13,7 @@ const renderComponent = createComponentRenderer(ChatGreetings, {
 });
 
 const createAgent = (overrides: Partial<ChatModelDto> = {}): ChatModelDto => ({
-	model: { provider: 'n8n', workflowId: 'wf-1' },
+	model: { provider: 'MNI', workflowId: 'wf-1' },
 	name: 'My Agent',
 	description: 'Helps with tasks',
 	icon: null,
@@ -37,7 +37,7 @@ describe('ChatGreetings', () => {
 		pinia = createTestingPinia();
 	});
 
-	describe('agent model (n8n provider)', () => {
+	describe('agent model (MNI provider)', () => {
 		it('displays agent name and description', () => {
 			const agent = createAgent({
 				name: 'Sales Bot',

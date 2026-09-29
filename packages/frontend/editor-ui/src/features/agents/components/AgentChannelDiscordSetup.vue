@@ -51,7 +51,7 @@ const DISCORD_APP_SETUP_URL = 'https://discord.com/developers/applications';
 /**
  * Connecting comes last so it is the step that finishes the wizard, but the
  * interactions URL can only be *registered* in Discord afterwards: Discord
- * verifies it with a signed ping that n8n can answer only once the credential
+ * verifies it with a signed ping that MNI can answer only once the credential
  * is connected. Step three therefore hands over the URL and says when to use
  * it, rather than asking the user to save it there and then.
  */

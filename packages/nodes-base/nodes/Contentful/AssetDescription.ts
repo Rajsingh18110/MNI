@@ -107,7 +107,7 @@ export const fields: INodeProperties[] = [
 				name: 'equal',
 				type: 'string',
 				default: '',
-				placeholder: 'fields.title=n8n',
+				placeholder: 'fields.title=MNI',
 				description:
 					'Search for all data that matches the condition: {attribute}={value}. Attribute can use dot notation.',
 			},
@@ -152,7 +152,7 @@ export const fields: INodeProperties[] = [
 				name: 'notEqual',
 				type: 'string',
 				default: '',
-				placeholder: 'fields.title[ne]=n8n',
+				placeholder: 'fields.title[ne]=MNI',
 				description:
 					'Search for all data that matches the condition: {attribute}[ne]={value}. Attribute can use dot notation.',
 			},

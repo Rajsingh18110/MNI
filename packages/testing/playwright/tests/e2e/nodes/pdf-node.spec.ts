@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test('Can read and write PDF files and extract text', async ({ n8n }) => {
+		test('Can read and write PDF files and extract text', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.importWorkflow('test_pdf_workflow.json', 'PDF Workflow');
 			await n8n.canvas.clickExecuteWorkflowButton();

@@ -45,7 +45,7 @@ describe('resourceUrlToWebhookPath', () => {
 	});
 
 	test('should reject a URL that omits the base URL path prefix', () => {
-		// without the `/n8n` prefix the URL is not actually served by this instance,
+		// without the `/MNI` prefix the URL is not actually served by this instance,
 		// so it must not resolve to the prefixed resource
 		expect(
 			resourceUrlToWebhookPath('https://host.example/mcp/abc', 'https://host.example/n8n/'),

@@ -42,7 +42,7 @@ export interface BaseConnectionItem {
 	category?: ToolCategoryKey;
 	/** Reviewed and approved by n8n. Drives the shield badge, install state irrelevant. */
 	verified?: boolean;
-	/** Backed by n8n Connect (AI Gateway): credentials are managed, shows a "Free credits" pill. */
+	/** Backed by MNI Connect (AI Gateway): credentials are managed, shows a "Free credits" pill. */
 	freeCredits?: boolean;
 	/** Not yet installed: swaps the Connect action for an Install one. */
 	communityPreview?: boolean;
@@ -136,7 +136,7 @@ export type ToolCategoryKey =
 	| 'built-in'
 	| 'mcp'
 	| 'ai'
-	| 'n8n'
+	| 'MNI'
 	| 'n8n-connect'
 	| 'app-action'
 	| 'community'
@@ -190,7 +190,7 @@ export const TOOL_CONNECTION_CREDENTIAL_ADAPTER_KEY = Symbol(
 
 /**
  * i18n key for the credits pill on gateway-backed rows: "Free credits" until an
- * allowance is used up, then "n8n credits". Injected by the consumer (from
+ * allowance is used up, then "MNI credits". Injected by the consumer (from
  * `aiGateway.store`) so the shared module stays free of editor-ui stores; rows
  * without `freeCredits` never read it.
  */

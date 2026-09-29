@@ -8,7 +8,7 @@ export function nodeToolsSkill(): RuntimeSkill {
 		id: 'agent-builder-node-tools',
 		name: 'Agent Builder Node Tools',
 		description:
-			'Use whenever adding, removing, or updating an n8n node-backed tool, including search_nodes/get_node_types discovery, nodeParameters, node credential slots, $fromAI usage, n8n expressions, and HTTP Request Tool configuration.',
+			'Use whenever adding, removing, or updating an MNI node-backed tool, including search_nodes/get_node_types discovery, nodeParameters, node credential slots, $fromAI usage, MNI expressions, and HTTP Request Tool configuration.',
 		recommendedTools: [
 			'agent-context',
 			'search_nodes',
@@ -31,7 +31,7 @@ export function nodeToolsSkill(): RuntimeSkill {
 ## Purpose
 
 Use this to discover, configure, and wire node tools into the target agent's
-\`tools[]\`, including \`nodeParameters\`, credentials, and n8n expressions.
+\`tools[]\`, including \`nodeParameters\`, credentials, and MNI expressions.
 
 ## Web Search vs Direct HTTP Requests
 
@@ -65,12 +65,12 @@ conventions. Never add an incomplete tool or use a placeholder URL.
   follow its MCP Servers section, and stop this node-tool workflow.
 - If it returns \`kind: "node"\`, use its returned node results and call
   \`get_node_types\`; do not repeat the same search with \`search_nodes\`.
-- Call \`search_nodes\` directly only when the user explicitly requests an n8n
+- Call \`search_nodes\` directly only when the user explicitly requests an MNI
   node, when refining node results, or when a verified MCP server lacks the
   requested capability.
 - Never guess node type names.
 - Use the tool node id from discovery, usually ending in \`Tool\`.
-- Put fixed values in \`nodeParameters\`; use complete n8n expressions for values the agent should decide at runtime:
+- Put fixed values in \`nodeParameters\`; use complete MNI expressions for values the agent should decide at runtime:
   \`={{ $fromAI('message', 'The message to send', 'string') }}\`.
 - \`n8n-nodes-base.httpRequestTool\` requires a fixed \`nodeParameters.url\`; it
   does not work with a dynamic or model-selected URL. Never use \`$fromAI\` in
@@ -82,15 +82,15 @@ conventions. Never add an incomplete tool or use a placeholder URL.
 - Do not include \`inputSchema\` or \`toolDescription\` for node tools.
 - Gateway credits cover many services, including some community nodes. Adding a node tool with its credential slot omitted triggers server-side assignment: for a covered service the server attaches the managed \`Gateway credits\` credential (\`{ id: null, name: "Gateway credits", __aiGatewayManaged: true }\`) to each required, eligible slot on write — but only when the project has no credential of that type; an existing credential of the type wins and the slot stays empty for the normal credential flow below. Add the tool with the credential slot omitted, then \`agent-context({ type: "config" })\`.
 - Exception — when the user explicitly asks to run a tool on Gateway credits, write \`{ "id": null, "name": "Gateway credits", "__aiGatewayManaged": true }\` into that credential slot yourself: the server keeps it when the service is covered (even if the user has their own credential of the type) and removes it when not covered — check \`agent-context({ type: "config" })\` after the write and resolve a real credential if it was removed.
-- The \`Gateway credits\` managed credential IS the real, working credential — the tool executes through n8n's gateway on Gateway credits, so NO separate API key is needed. It is NOT a placeholder and NOT "invalid for the service", even for a community node. For a slot \`agent-context({ type: "config" })\` shows populated with it: the slot is fully connected and the tool WILL run. Do NOT call \`ask_credential\` for it; do NOT include it in \`finish_setup\`; NEVER clear, remove, or replace it via \`patch_config\`; and NEVER seek a "real" API key to swap in for it. Report the tool as ready, running on Gateway credits — exactly like a managed model. Never tell the user the credential is "not connected"/"not set up" or that the tool "won't run until a credential is added".
+- The \`Gateway credits\` managed credential IS the real, working credential — the tool executes through MNI's gateway on Gateway credits, so NO separate API key is needed. It is NOT a placeholder and NOT "invalid for the service", even for a community node. For a slot \`agent-context({ type: "config" })\` shows populated with it: the slot is fully connected and the tool WILL run. Do NOT call \`ask_credential\` for it; do NOT include it in \`finish_setup\`; NEVER clear, remove, or replace it via \`patch_config\`; and NEVER seek a "real" API key to swap in for it. Report the tool as ready, running on Gateway credits — exactly like a managed model. Never tell the user the credential is "not connected"/"not set up" or that the tool "won't run until a credential is added".
 - Only for a required slot that \`agent-context({ type: "config" })\` shows still empty after the write (a service Gateway credits do not cover) do you resolve a real credential: call \`ask_credential\` once before the config mutation for an addition to an existing agent. ${INITIAL_BUILD_NOTE} After the trailing \`finish_setup\` resolves the credential, copy the returned credentials into \`node.credentials\` via \`patch_config\`; for resource-locator resolution follow \`agent-builder-resource-locators\` then. Pass the node's credential key as \`credentialSlot\`. On success, copy the returned \`credentials\` object directly to \`node.credentials\`. If skipped, still add the tool and omit only that credential slot.
 - When the agent already has a chat channel configured and the tool needs the same
   credential type, \`ask_credential\` reuses the channel's credential automatically —
   do not ask the user to pick a different one.
 
-## n8n Expressions
+## MNI Expressions
 
-Node tool parameters inside \`nodeParameters\` can use n8n expressions.
+Node tool parameters inside \`nodeParameters\` can use MNI expressions.
 Prefer \`$fromAI\` whenever the target agent should decide a value at runtime,
 except where this skill requires a fixed value, especially the HTTP Request
 Tool URL.

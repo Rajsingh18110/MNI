@@ -128,8 +128,8 @@ export interface JaegerTraceQuery {
 	/** Upper-bound timestamp; defaults to now. */
 	until?: Date;
 	/**
-	 * Service name(s) to fetch from Jaeger. n8n's OTEL exporter uses
-	 * `N8N_OTEL_EXPORTER_SERVICE_NAME` (default `n8n`). When unset, this method
+	 * Service name(s) to fetch from Jaeger. MNI's OTEL exporter uses
+	 * `N8N_OTEL_EXPORTER_SERVICE_NAME` (default `MNI`). When unset, this method
 	 * fetches every service Jaeger has seen.
 	 */
 	services?: string[];

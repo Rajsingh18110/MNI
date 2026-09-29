@@ -22,7 +22,7 @@ export class PrometheusVersionMetricsService implements PrometheusMetricsCollect
 		if (n8nVersion) {
 			const versionGauge = new promClient.Gauge({
 				name: `${this.config.prefix}version_info`,
-				help: 'n8n version info.',
+				help: 'MNI version info.',
 				labelNames: ['version', 'major', 'minor', 'patch'],
 			});
 

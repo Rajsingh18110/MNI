@@ -126,7 +126,7 @@ export class AgentsToolsService {
 	private buildSearchNodesTool(): BuiltTool {
 		return new Tool('search_nodes')
 			.description(
-				'Search for n8n nodes by name or service. Use this to find nodes that can be executed. ' +
+				'Search for MNI nodes by name or service. Use this to find nodes that can be executed. ' +
 					'Returns tool node IDs, display names, versions, and descriptions. ' +
 					'After finding a node, call get_node_types to get its parameter schema.',
 			)
@@ -141,7 +141,7 @@ export class AgentsToolsService {
 	private buildGetNodeTypesTool(): BuiltTool {
 		return new Tool('get_node_types')
 			.description(
-				'Get detailed parameter schema for specific n8n nodes. Use the node IDs from node ' +
+				'Get detailed parameter schema for specific MNI nodes. Use the node IDs from node ' +
 					'discovery results (search_nodes or agent-context integrations with kind "node"). Returns ' +
 					'parameter definitions needed to configure a node for execution. Use the tool node ' +
 					'IDs from discovery, usually ending in Tool. You can optionally filter by ' +

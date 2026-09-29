@@ -2,7 +2,7 @@ import { AgentIntegrationConfigSchema, AgentIntegrationSchema } from '../agent-i
 import { AgentJsonConfigSchema } from '../agent-json-config.schema';
 
 describe('AgentIntegrationSchema', () => {
-	it('accepts n8n Chat without a credential in agent configuration', () => {
+	it('accepts MNI Chat without a credential in agent configuration', () => {
 		expect(AgentIntegrationConfigSchema.parse({ type: 'n8n_chat' })).toEqual({
 			type: 'n8n_chat',
 			credentialId: '',
@@ -10,7 +10,7 @@ describe('AgentIntegrationSchema', () => {
 		expect(AgentIntegrationSchema.safeParse({ type: 'n8n_chat' }).success).toBe(false);
 	});
 
-	it('rejects duplicate n8n Chat channel entries', () => {
+	it('rejects duplicate MNI Chat channel entries', () => {
 		expect(
 			AgentJsonConfigSchema.safeParse({
 				name: 'Agent',

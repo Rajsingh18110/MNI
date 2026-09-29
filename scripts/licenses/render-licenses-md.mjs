@@ -134,9 +134,9 @@ function buildMarkdown(groups, texts) {
 
 	let doc = `# Third-Party Licenses
 
-This file lists third-party software components included in n8n and their respective license terms.
+This file lists third-party software components included in MNI and their respective license terms.
 
-The n8n software includes open source packages, libraries, and modules, each of which is subject to its own license. The following sections list those dependencies and provide required attributions and license texts.
+The MNI software includes open source packages, libraries, and modules, each of which is subject to its own license. The following sections list those dependencies and provide required attributions and license texts.
 
 `;
 
@@ -155,7 +155,7 @@ The n8n software includes open source packages, libraries, and modules, each of 
 The license text below is reproduced from a single representative package per license.
 Copyright notices identify the contributor of that representative package only; each
 listed component carries its own copyright. The verbatim LICENSE file of every package
-is distributed inside its \`node_modules/\` directory in the n8n release artefact.
+is distributed inside its \`node_modules/\` directory in the MNI release artefact.
 
 `;
 	for (const key of sortedKeys) {

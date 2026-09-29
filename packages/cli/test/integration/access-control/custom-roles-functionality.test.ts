@@ -501,7 +501,7 @@ describe('Custom Role Functionality Tests', () => {
 
 			// Test that delete-only role cannot actually delete due to system constraints
 			// Delete-only roles without read permissions cannot delete workflows
-			// because n8n requires reading the workflow to validate deletion
+			// because MNI requires reading the workflow to validate deletion
 			await member3Agent.delete(`/workflows/${workflow.id}`).expect(400);
 
 			// Skip creation test due to system constraints with delete-only roles

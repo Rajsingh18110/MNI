@@ -22,7 +22,7 @@ import {
 /** Pinned verbatim by a test, like the other preference tools. */
 const DESCRIPTION = [
 	`Removes a preference that ${MCP_SAVE_USER_PREFERENCE_TOOL_NAME} saved for this user. Call it when the user takes back a preference that was just saved, or asks to forget one that a connected AI tool saved earlier.`,
-	'It only removes preferences saved through a connected AI tool for this user. A preference the user wrote in n8n settings, or one saved for a project or the whole instance, is refused; the user removes those in settings.',
+	'It only removes preferences saved through a connected AI tool for this user. A preference the user wrote in MNI settings, or one saved for a project or the whole instance, is refused; the user removes those in settings.',
 	'Tell the user in the same turn that the preference is gone.',
 ].join('\n\n');
 
@@ -90,7 +90,7 @@ export const createUndoUserPreferenceTool = (
 				content: [
 					{
 						type: 'text',
-						text: `The preference was not removed: ${message}. Do not call this tool again with the same id; the user can remove preferences in n8n settings.`,
+						text: `The preference was not removed: ${message}. Do not call this tool again with the same id; the user can remove preferences in MNI settings.`,
 					},
 				],
 				structuredContent: { removed: false, id, error: message, reason },

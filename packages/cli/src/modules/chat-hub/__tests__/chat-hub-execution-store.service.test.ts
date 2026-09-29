@@ -22,7 +22,7 @@ const createContext = (overrides?: Partial<ChatHubExecutionContext>): ChatHubExe
 	userId: USER_ID,
 	messageId: MESSAGE_ID,
 	previousMessageId: PREV_MESSAGE_ID,
-	model: { provider: 'n8n', workflowId: WORKFLOW_ID },
+	model: { provider: 'MNI', workflowId: WORKFLOW_ID },
 	responseMode: 'lastNode',
 	awaitingResume: false,
 	createMessageOnResume: false,
@@ -45,7 +45,7 @@ describe('ChatHubExecutionStore', () => {
 
 		Object.defineProperty(instanceSettings, 'isMultiMain', { value: false, configurable: true });
 		executionsConfig.mode = 'regular';
-		globalConfig.redis = { prefix: 'n8n' } as GlobalConfig['redis'];
+		globalConfig.redis = { prefix: 'MNI' } as GlobalConfig['redis'];
 		chatHubConfig.executionContextTtl = 3600;
 	});
 
@@ -315,7 +315,7 @@ describe('ChatHubExecutionStore', () => {
 				redisClientService,
 			);
 
-			expect(redisClientService.createClient).toHaveBeenCalledWith({ type: 'subscriber(n8n)' });
+			expect(redisClientService.createClient).toHaveBeenCalledWith({ type: 'subscriber(MNI)' });
 
 			store.shutdown();
 		});
@@ -353,7 +353,7 @@ describe('ChatHubExecutionStore', () => {
 				await store.register(context);
 
 				expect(mockRedisClient.set).toHaveBeenCalledWith(
-					`n8n:chat-hub:exec:${EXECUTION_ID}`,
+					`MNI:chat-hub:exec:${EXECUTION_ID}`,
 					expect.stringContaining(`"executionId":"${EXECUTION_ID}"`),
 					'EX',
 					3600, // 1 hour TTL
@@ -379,7 +379,7 @@ describe('ChatHubExecutionStore', () => {
 
 				const result = await store.get(EXECUTION_ID);
 
-				expect(mockRedisClient.get).toHaveBeenCalledWith(`n8n:chat-hub:exec:${EXECUTION_ID}`);
+				expect(mockRedisClient.get).toHaveBeenCalledWith(`MNI:chat-hub:exec:${EXECUTION_ID}`);
 				expect(result).toEqual(context);
 
 				store.shutdown();
@@ -444,7 +444,7 @@ describe('ChatHubExecutionStore', () => {
 				await store.update(EXECUTION_ID, { awaitingResume: true });
 
 				expect(mockRedisClient.set).toHaveBeenCalledWith(
-					`n8n:chat-hub:exec:${EXECUTION_ID}`,
+					`MNI:chat-hub:exec:${EXECUTION_ID}`,
 					expect.stringContaining('"awaitingResume":true'),
 					'EX',
 					3600,
@@ -489,7 +489,7 @@ describe('ChatHubExecutionStore', () => {
 
 				await store.remove(EXECUTION_ID);
 
-				expect(mockRedisClient.del).toHaveBeenCalledWith(`n8n:chat-hub:exec:${EXECUTION_ID}`);
+				expect(mockRedisClient.del).toHaveBeenCalledWith(`MNI:chat-hub:exec:${EXECUTION_ID}`);
 
 				store.shutdown();
 			});

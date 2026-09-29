@@ -41,7 +41,7 @@ const mockSuggestions: WorkflowSuggestion[] = [
 		id: 'invoice-pipeline',
 		summary: 'Invoice processing pipeline',
 		prompt:
-			'Create an invoice parsing workflow using n8n forms. Extract key information and store in Airtable.',
+			'Create an invoice parsing workflow using MNI forms. Extract key information and store in Airtable.',
 	},
 	{
 		id: 'ai-news-digest',
@@ -322,7 +322,7 @@ RichTextMessage.args = {
 			id: '29083188',
 			type: 'text',
 			role: 'assistant',
-			content: 'Hello Kobi! How can I assist you with n8n today?',
+			content: 'Hello Kobi! How can I assist you with MNI today?',
 			read: true,
 		},
 		{
@@ -337,7 +337,7 @@ RichTextMessage.args = {
 			type: 'text',
 			role: 'assistant',
 			content:
-				"Sure: \n\nTo connect your Slack account to n8n, follow these steps:\n\n1. Open your [Slack API Apps](https://api.slack.com/apps) page.\n2. Select **Create New App > From scratch**.\n3. Enter an **App Name**.\n4. Select the **Workspace** where you'll be developing your app.\n5. Select **Create App**.\n6. In **Basic Information**, open the **App Credentials** section.\n7. Copy the **Client ID** and **Client Secret**. Paste these into the corresponding fields in n8n.\n8. In **Basic Information > Building Apps for Slack**, select **Add features and functionality**.\n9. Select **Permissions**.\n10. In the **Redirect URLs** section, select **Add New Redirect URL**.\n\nFor more details, you can refer to the [Slack API Quickstart](https://api.slack.com/quickstart) and the [Installing with OAuth](https://api.slack.com/authentication/oauth-v2) documentation.",
+				"Sure: \n\nTo connect your Slack account to MNI, follow these steps:\n\n1. Open your [Slack API Apps](https://api.slack.com/apps) page.\n2. Select **Create New App > From scratch**.\n3. Enter an **App Name**.\n4. Select the **Workspace** where you'll be developing your app.\n5. Select **Create App**.\n6. In **Basic Information**, open the **App Credentials** section.\n7. Copy the **Client ID** and **Client Secret**. Paste these into the corresponding fields in n8n.\n8. In **Basic Information > Building Apps for Slack**, select **Add features and functionality**.\n9. Select **Permissions**.\n10. In the **Redirect URLs** section, select **Add New Redirect URL**.\n\nFor more details, you can refer to the [Slack API Quickstart](https://api.slack.com/quickstart) and the [Installing with OAuth](https://api.slack.com/authentication/oauth-v2) documentation.",
 			codeSnippet: '',
 			read: true,
 		},
@@ -383,7 +383,7 @@ RichTextMessage.args = {
 			type: 'text',
 			role: 'assistant',
 			content:
-				"I'm glad you found the information helpful! If you have any more questions about n8n or need further assistance, feel free to ask.",
+				"I'm glad you found the information helpful! If you have any more questions about MNI or need further assistance, feel free to ask.",
 			read: true,
 		},
 		{
@@ -627,7 +627,7 @@ const SEARCH_FILES_TOOL_CALL_ERROR: ChatUI.AssistantMessage = {
 const SEARCH_FILES_TOOL_CALL_ERROR_2: ChatUI.AssistantMessage = {
 	...SEARCH_FILES_TOOL_CALL_COMPLETED,
 	status: 'error',
-	customDisplayTitle: 'Searching for n8n node',
+	customDisplayTitle: 'Searching for MNI node',
 };
 
 function getMessage(content: string): ChatUI.AssistantMessage {

@@ -83,7 +83,7 @@ export class IdentityResolutionService {
 	}
 
 	/**
-	 * Map external identity claims to a local n8n user, creating one if necessary.
+	 * Map external identity claims to a local MNI user, creating one if necessary.
 	 *
 	 * Resolution order:
 	 * 1. AuthIdentity lookup by sub + token-exchange provider

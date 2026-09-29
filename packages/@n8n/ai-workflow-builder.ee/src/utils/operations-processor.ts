@@ -47,7 +47,7 @@ function applyRemoveNodeOperation(
 
 	const nodesToRemove = new Set(operation.nodeIds);
 
-	// Build a set of node names to remove (connections are keyed by node name in n8n)
+	// Build a set of node names to remove (connections are keyed by node name in MNI)
 	const nodeNamesToRemove = new Set<string>();
 	for (const node of workflow.nodes) {
 		if (nodesToRemove.has(node.id)) {

@@ -230,7 +230,7 @@ describe('AgentRuntimeReconstructionService — per-user tool filtering', () => 
 		);
 	});
 
-	it('forwards the production n8n Chat marker to workflow tools', async () => {
+	it('forwards the production MNI Chat marker to workflow tools', async () => {
 		const { service } = makeService({});
 		setupN8nChatToolDependencies();
 		buildFromJsonResolvingTools([]);

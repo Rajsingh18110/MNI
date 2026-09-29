@@ -11,7 +11,7 @@ import type { AgentJsonToolRef } from '../types';
  * we want to add a new property everywhere (e.g. `agent_id`), there's a single
  * edit.
  *
- * Event names follow the existing n8n convention ("User did X", not
+ * Event names follow the existing MNI convention ("User did X", not
  * snake_case) — see `features/agents/views/AgentBuilderView.vue`.
  */
 

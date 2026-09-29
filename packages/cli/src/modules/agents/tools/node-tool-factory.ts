@@ -31,7 +31,7 @@ export interface NodeToolFactoryContext {
  * Shape the config's credential map for the executor. Both introspection (at
  * tool-registration time) and invocation (at LLM-call time) need to hand the
  * executor an `INodeCredentialsDetails` map, and both drop entries whose
- * credential hasn't been persisted yet (no id). n8n Connect managed slots have
+ * credential hasn't been persisted yet (no id). MNI Connect managed slots have
  * no stored id — the executor mints them per execution — so they are carried
  * through by their `__aiGatewayManaged` flag rather than by id.
  */

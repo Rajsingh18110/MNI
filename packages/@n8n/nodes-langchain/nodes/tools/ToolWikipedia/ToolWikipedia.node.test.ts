@@ -209,7 +209,7 @@ describe('ToolWikipedia', () => {
 			});
 		});
 
-		it('should rethrow n8n errors unchanged', async () => {
+		it('should rethrow MNI errors unchanged', async () => {
 			const node = new ToolWikipedia();
 			const inputData: INodeExecutionData[] = [{ json: { query: 'test' } }];
 

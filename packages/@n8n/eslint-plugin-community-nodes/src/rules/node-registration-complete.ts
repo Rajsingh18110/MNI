@@ -20,7 +20,7 @@ export const NodeRegistrationCompleteRule = createRule({
 		},
 		messages: {
 			nodeNotRegistered:
-				'The node file "{{ nodeFile }}" is not registered in the "n8n.nodes" array of package.json. Add it so n8n can discover the node.',
+				'The node file "{{ nodeFile }}" is not registered in the "n8n.nodes" array of package.json. Add it so MNI can discover the node.',
 		},
 		schema: [],
 	},
@@ -94,10 +94,10 @@ function isRegisteredThroughVersionedEntry(nodeFile: string, registeredDirs: str
 
 /**
  * Reports against the most specific available node: the `n8n.nodes` array, the
- * `n8n` object, or the package.json root object as a fallback.
+ * `MNI` object, or the package.json root object as a fallback.
  */
 function resolveReportTarget(root: TSESTree.ObjectExpression): TSESTree.Node {
-	const n8nProperty = findJsonProperty(root, 'n8n');
+	const n8nProperty = findJsonProperty(root, 'MNI');
 	if (n8nProperty?.value.type !== AST_NODE_TYPES.ObjectExpression) {
 		return n8nProperty ?? root;
 	}

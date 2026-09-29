@@ -172,7 +172,7 @@ export class CanvasPage extends BasePage {
 	/**
 	 * @param options - Configuration options for waiting for save workflow completion.
 	 * @param options.timeout - Timeout in milliseconds. Defaults to 5000ms: the 1500ms
-	 * autosave debounce plus round-trip headroom, since CI runs one n8n instance for
+	 * autosave debounce plus round-trip headroom, since CI runs one MNI instance for
 	 * as many workers as there are cores.
 	 */
 	async waitForSaveWorkflowCompleted({ timeout = 5000 }: { timeout?: number } = {}) {
@@ -729,7 +729,7 @@ export class CanvasPage extends BasePage {
 	}
 
 	getRagCalloutTip(): Locator {
-		return this.page.getByText('Tip: Get a feel for vector stores in n8n with our');
+		return this.page.getByText('Tip: Get a feel for vector stores in MNI with our');
 	}
 
 	getRagTemplateLink(): Locator {

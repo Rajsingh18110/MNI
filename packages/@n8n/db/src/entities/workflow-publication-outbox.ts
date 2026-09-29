@@ -23,7 +23,7 @@ export type WorkflowPublicationOutboxStatus =
 
 /**
  * Why a publication record was enqueued. The applier translates it into the
- * `WorkflowActivateMode` reported to trigger nodes, so e.g. the n8n Trigger's
+ * `WorkflowActivateMode` reported to trigger nodes, so e.g. the MNI Trigger's
  * "Instance Started" event fires only for the leader's startup pass.
  */
 export const WorkflowPublicationReason = {

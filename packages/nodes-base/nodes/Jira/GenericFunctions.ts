@@ -95,7 +95,7 @@ export async function jiraSoftwareCloudApiRequest(
 		delete options.qs;
 	}
 
-	// The gateway answers 403/404 for an expired token, not the 401 n8n's OAuth2 refresh looks
+	// The gateway answers 403/404 for an expired token, not the 401 MNI's OAuth2 refresh looks
 	// for (ENT-408). 401 stays, since a revoked token still gets one, and
 	// `skipRefreshWhileTokenIsFresh` keeps a genuinely missing issue from paying for a refresh.
 	// atlassianServiceAccountApi refreshes on its own, so it opts out.

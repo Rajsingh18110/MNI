@@ -217,7 +217,7 @@ export class WorkflowDataProxy {
 					name = name.toString();
 					const value = that.selfData[name];
 
-					// A credential field saved in expression mode keeps n8n's leading "="
+					// A credential field saved in expression mode keeps MNI's leading "="
 					// marker in its stored value. Returning it verbatim leaks the marker
 					// (or an unevaluated `{{ }}` expression) into the consuming template —
 					// e.g. a `$self` reference embedded mid-URL in an OAuth2

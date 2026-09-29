@@ -244,15 +244,15 @@ describe('ChatView', () => {
 						}),
 					],
 				},
-				n8n: {
+				MNI: {
 					models: [
 						createMockAgent({
 							name: 'My Workflow Agent',
-							model: { provider: 'n8n', workflowId: 'workflow-789' },
+							model: { provider: 'MNI', workflowId: 'workflow-789' },
 						}),
 						createMockAgent({
 							name: 'Another Workflow Agent',
-							model: { provider: 'n8n', workflowId: 'workflow-999' },
+							model: { provider: 'MNI', workflowId: 'workflow-999' },
 						}),
 					],
 				},
@@ -550,13 +550,13 @@ describe('ChatView', () => {
 			const textarea = await rendered.findByRole('textbox');
 
 			await user.click(textarea);
-			await user.type(textarea, 'What is n8n?');
+			await user.type(textarea, 'What is MNI?');
 			await user.click(rendered.getByRole('button', { name: /send/i }));
 
 			expect(chatApi.sendMessageApi).toHaveBeenCalledWith(
 				expect.anything(),
 				expect.objectContaining({
-					message: 'What is n8n?',
+					message: 'What is MNI?',
 					model: { provider: 'custom-agent', agentId: 'agent-123' },
 					sessionId: expect.any(String),
 					credentials: {},
@@ -572,7 +572,7 @@ describe('ChatView', () => {
 				sessionId: sessionIdFromApi,
 				messageId: messageIdFromApi,
 				previousMessageId: null,
-				content: 'What is n8n?',
+				content: 'What is MNI?',
 			});
 
 			simulateStreamChunk('begin', '', {
@@ -581,21 +581,21 @@ describe('ChatView', () => {
 			});
 
 			await vi.waitFor(() => expect(textarea).toHaveValue(''));
-			await rendered.findByText('What is n8n?');
+			await rendered.findByText('What is MNI?');
 
-			simulateStreamChunk('item', 'n8n is', {
+			simulateStreamChunk('item', 'MNI is', {
 				messageId: 'ai-message-123',
 				previousMessageId: messageIdFromApi,
 			});
 
-			expect(await rendered.findByText(/n8n is/)).toBeInTheDocument();
+			expect(await rendered.findByText(/MNI is/)).toBeInTheDocument();
 
 			simulateStreamChunk('item', ' a workflow', {
 				messageId: 'ai-message-123',
 				previousMessageId: messageIdFromApi,
 			});
 
-			expect(await rendered.findByText(/n8n is a workflow/)).toBeInTheDocument();
+			expect(await rendered.findByText(/MNI is a workflow/)).toBeInTheDocument();
 
 			simulateStreamChunk('item', ' automation tool.', {
 				messageId: 'ai-message-123',
@@ -609,7 +609,7 @@ describe('ChatView', () => {
 
 			simulateStreamDone();
 
-			expect(await rendered.findByText('n8n is a workflow automation tool.')).toBeInTheDocument();
+			expect(await rendered.findByText('MNI is a workflow automation tool.')).toBeInTheDocument();
 			expect(mockRouterPush).toHaveBeenCalledWith({
 				name: 'chat-conversation',
 				params: { id: sessionIdFromApi },
@@ -618,8 +618,8 @@ describe('ChatView', () => {
 			const messages = rendered.container.querySelectorAll('[data-message-id]');
 
 			expect(messages).toHaveLength(2);
-			expect(messages[0]).toHaveTextContent('What is n8n?');
-			expect(messages[1]).toHaveTextContent('n8n is a workflow automation tool.');
+			expect(messages[0]).toHaveTextContent('What is MNI?');
+			expect(messages[1]).toHaveTextContent('MNI is a workflow automation tool.');
 		});
 
 		it('sends message in existing session and displays both user and AI messages', async () => {
@@ -761,11 +761,11 @@ describe('ChatView', () => {
 
 			vi.mocked(chatApi.fetchChatModelsApi).mockResolvedValueOnce(
 				createMockModelsResponse({
-					n8n: {
+					MNI: {
 						models: [
 							createMockAgent({
 								name: 'Prompt Agent',
-								model: { provider: 'n8n', workflowId: 'workflow-with-prompts' },
+								model: { provider: 'MNI', workflowId: 'workflow-with-prompts' },
 								suggestedPrompts: [
 									{ text: 'Summarize this document' },
 									{ text: 'Translate to Spanish' },
@@ -794,11 +794,11 @@ describe('ChatView', () => {
 
 			vi.mocked(chatApi.fetchChatModelsApi).mockResolvedValueOnce(
 				createMockModelsResponse({
-					n8n: {
+					MNI: {
 						models: [
 							createMockAgent({
 								name: 'Multi Prompt Agent',
-								model: { provider: 'n8n', workflowId: 'workflow-with-prompts' },
+								model: { provider: 'MNI', workflowId: 'workflow-with-prompts' },
 								suggestedPrompts: [
 									{ text: 'Help me write an email' },
 									{ text: 'Explain this code' },

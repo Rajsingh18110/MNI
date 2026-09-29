@@ -19,8 +19,8 @@ export type WorkflowListPreferences = {
 };
 
 /**
- * Simple n8n wrapper around vueuse's useLocalStorage.
- * Provides util functions to read and write n8n values to local storage.
+ * Simple MNI wrapper around vueuse's useLocalStorage.
+ * Provides util functions to read and write MNI values to local storage.
  * Currently only used for workflow list user preferences.
  */
 export function useN8nLocalStorage() {

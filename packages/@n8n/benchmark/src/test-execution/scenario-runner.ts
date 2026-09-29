@@ -24,7 +24,7 @@ export class ScenarioRunner {
 	) {}
 
 	async runManyScenarios(scenarios: Scenario[]) {
-		console.log(`Waiting for n8n ${this.n8nClient.apiBaseUrl} to become online`);
+		console.log(`Waiting for MNI ${this.n8nClient.apiBaseUrl} to become online`);
 		await this.n8nClient.waitForInstanceToBecomeOnline();
 
 		console.log('Setting up owner');
@@ -67,7 +67,7 @@ export class ScenarioRunner {
 
 	/**
 	 * Forms a name for the scenario by combining prefix and scenario name.
-	 * The benchmarks are ran against different n8n setups, so we use the
+	 * The benchmarks are ran against different MNI setups, so we use the
 	 * prefix to differentiate between them.
 	 */
 	private formTestScenarioRunName(scenario: Scenario) {

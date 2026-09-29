@@ -88,7 +88,7 @@ interface DiscordChannel {
  * Call the Discord REST API directly rather than through the adapter.
  *
  * `@chat-adapter/discord` exposes no client or request helper (unlike the Slack
- * adapter, whose `client` backs Slack's channel search), so requests use n8n's
+ * adapter, whose `client` backs Slack's channel search), so requests use MNI's
  * outbound client directly.
  */
 async function discordApiGet<T>(

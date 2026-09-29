@@ -119,7 +119,7 @@ test.describe(
 		],
 	},
 	() => {
-		test('home page boots cleanly', async ({ n8n }) => {
+		test('home page boots cleanly', async ({ MNI }) => {
 			await navigateAndAssertNoErrors(n8n.page, 'home', async () => {
 				await n8n.start.fromHome();
 			});
@@ -128,7 +128,7 @@ test.describe(
 		// The dev frontend proxies REST calls to N8N_PORT. Assert that the browser
 		// makes same-origin requests to the frontend and receives successful responses
 		// from the backend via the proxy.
-		test('REST calls route through the dev server proxy to backend', async ({ n8n }) => {
+		test('REST calls route through the dev server proxy to backend', async ({ MNI }) => {
 			const restRequests: string[] = [];
 
 			n8n.page.on('request', (request) => {
@@ -149,13 +149,13 @@ test.describe(
 			expect(restRequests.length).toBeGreaterThan(0);
 		});
 
-		test('blank canvas boots cleanly', async ({ n8n }) => {
+		test('blank canvas boots cleanly', async ({ MNI }) => {
 			await navigateAndAssertNoErrors(n8n.page, 'blank-canvas', async () => {
 				await n8n.start.fromBlankCanvas();
 			});
 		});
 
-		test('credentials page boots cleanly', async ({ n8n }) => {
+		test('credentials page boots cleanly', async ({ MNI }) => {
 			await navigateAndAssertNoErrors(n8n.page, 'credentials', async () => {
 				await n8n.start.fromHome();
 				await n8n.navigate.toCredentials();

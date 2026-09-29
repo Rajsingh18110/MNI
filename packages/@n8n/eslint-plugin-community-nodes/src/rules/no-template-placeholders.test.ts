@@ -71,7 +71,7 @@ ruleTester.run('no-template-placeholders', NoTemplatePlaceholdersRule, {
 		{
 			name: 'angle bracket placeholder in description',
 			filename: 'package.json',
-			code: '{ "description": "An n8n community node for <SERVICE>" }',
+			code: '{ "description": "An MNI community node for <SERVICE>" }',
 			errors: [
 				{
 					messageId: 'unresolvedPlaceholder',
@@ -126,7 +126,7 @@ ruleTester.run('no-template-placeholders', NoTemplatePlaceholdersRule, {
 		{
 			name: 'placeholder in custom field',
 			filename: 'package.json',
-			code: '{ "n8n": { "n8nNodesApiVersion": 1, "credentials": ["<CREDENTIAL>"] } }',
+			code: '{ "MNI": { "n8nNodesApiVersion": 1, "credentials": ["<CREDENTIAL>"] } }',
 			errors: [
 				{
 					messageId: 'unresolvedPlaceholder',

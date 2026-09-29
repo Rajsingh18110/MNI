@@ -265,7 +265,7 @@ export const useUsersStore = defineStore(STORES.USERS, () => {
 			} catch {
 				// The OIDC logout endpoint may be unavailable (e.g. the license
 				// lapsed since login). Fall back to the standard logout so the
-				// n8n session is terminated in any case.
+				// MNI session is terminated in any case.
 				await standardLogout();
 			}
 		} else {

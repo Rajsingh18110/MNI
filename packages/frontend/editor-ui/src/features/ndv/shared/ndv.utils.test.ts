@@ -414,7 +414,7 @@ describe('parseFromExpression', () => {
 
 	// Repro for ADO-5517 (GH #33046): the HTTP Request node's "JSON Body" field is
 	// a `json` parameter. Toggling it into Expression mode and back to Fixed mode must
-	// drop n8n's internal "=" expression marker, otherwise the stored value stays
+	// drop MNI's internal "=" expression marker, otherwise the stored value stays
 	// `={...}` and later fails JSON.parse() with "not valid JSON". This is hit when the
 	// expression cannot be evaluated (e.g. it contains template variables and there is
 	// no input data), so the evaluated value is undefined and the raw value must be kept

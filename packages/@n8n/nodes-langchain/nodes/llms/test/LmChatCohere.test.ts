@@ -6,7 +6,7 @@ import type { Mocked } from 'vitest';
 import { LmChatCohere } from '../LmChatCohere/LmChatCohere.node';
 
 // Keep the real `@langchain/cohere` so the actual Cohere HTTP client runs and we can
-// observe which chat endpoint it targets. Only stub the n8n tracing helpers.
+// observe which chat endpoint it targets. Only stub the MNI tracing helpers.
 vi.mock('@n8n/ai-utilities', () => ({
 	// Regular function so it can be used as a constructor (`new N8nLlmTracing(...)`);
 	// the callback handler itself can be a no-op object for this test.

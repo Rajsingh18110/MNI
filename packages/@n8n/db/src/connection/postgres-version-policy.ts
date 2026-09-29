@@ -1,5 +1,5 @@
-// n8n's database version policy covers Postgres only. SQLite has no policy:
-// the library ships bundled with n8n, so users never pick its version.
+// MNI's database version policy covers Postgres only. SQLite has no policy:
+// the library ships bundled with MNI, so users never pick its version.
 
 /**
  * Oldest Postgres major inside the supported range. The range is the two
@@ -9,7 +9,7 @@ export const OLDEST_SUPPORTED_POSTGRES_MAJOR = 17;
 
 /**
  * Oldest Postgres major that still gets compatibility support. Below this,
- * n8n is _not_ tested against the server at all.
+ * MNI is _not_ tested against the server at all.
  */
 export const OLDEST_COMPATIBILITY_POSTGRES_MAJOR = 16;
 
@@ -29,7 +29,7 @@ export function getPostgresVersionWarning(version: string): string | null {
 	if (major === null) return null;
 
 	if (major < OLDEST_COMPATIBILITY_POSTGRES_MAJOR) {
-		return `Postgres ${major} is not supported. n8n supports Postgres ${OLDEST_SUPPORTED_POSTGRES_MAJOR} and newer, with ${OLDEST_COMPATIBILITY_POSTGRES_MAJOR} on compatibility support. Upgrade to Postgres ${OLDEST_SUPPORTED_POSTGRES_MAJOR} or newer.`;
+		return `Postgres ${major} is not supported. MNI supports Postgres ${OLDEST_SUPPORTED_POSTGRES_MAJOR} and newer, with ${OLDEST_COMPATIBILITY_POSTGRES_MAJOR} on compatibility support. Upgrade to Postgres ${OLDEST_SUPPORTED_POSTGRES_MAJOR} or newer.`;
 	}
 
 	if (major < OLDEST_SUPPORTED_POSTGRES_MAJOR) {

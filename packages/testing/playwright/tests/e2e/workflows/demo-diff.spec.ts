@@ -115,13 +115,13 @@ test.describe(
 			await setupRequirements(requirements);
 		});
 
-		test('shows waiting state initially', async ({ n8n }) => {
+		test('shows waiting state initially', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 			// Verify the waiting state message is shown
 			await expect(n8n.demo.getWaitingMessage()).toBeVisible();
 		});
 
-		test('renders diff view when receiving workflow data via postMessage', async ({ n8n }) => {
+		test('renders diff view when receiving workflow data via postMessage', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 
 			// Verify the waiting state is initially shown
@@ -140,7 +140,7 @@ test.describe(
 			await expect(n8n.demo.getChangesButton()).toBeVisible();
 		});
 
-		test('renders diff view with only new workflow (creation scenario)', async ({ n8n }) => {
+		test('renders diff view with only new workflow (creation scenario)', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 
 			// Wait for the page to be ready (component mounted with event listener active)
@@ -156,7 +156,7 @@ test.describe(
 			await expect(n8n.demo.getDiffHeading('Test Workflow - After')).toBeVisible();
 		});
 
-		test('renders diff view with only old workflow (deletion scenario)', async ({ n8n }) => {
+		test('renders diff view with only old workflow (deletion scenario)', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 
 			// Wait for the page to be ready (component mounted with event listener active)
@@ -172,7 +172,7 @@ test.describe(
 			await expect(n8n.demo.getDiffHeading('Test Workflow - Before')).toBeVisible();
 		});
 
-		test('applies tidy up when tidyUp option is true', async ({ n8n }) => {
+		test('applies tidy up when tidyUp option is true', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 
 			// Wait for the page to be ready (component mounted with event listener active)
@@ -191,7 +191,7 @@ test.describe(
 			await expect(n8n.demo.getChangesButton()).toBeVisible();
 		});
 
-		test('ignores malformed postMessage data', async ({ n8n }) => {
+		test('ignores malformed postMessage data', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 
 			// Verify initial waiting state
@@ -204,7 +204,7 @@ test.describe(
 			await expect(n8n.demo.getWaitingMessage()).toBeVisible();
 		});
 
-		test('ignores non-openDiff commands', async ({ n8n }) => {
+		test('ignores non-openDiff commands', async ({ MNI }) => {
 			await n8n.demo.gotoDiff();
 
 			// Verify initial waiting state
@@ -217,12 +217,12 @@ test.describe(
 			await expect(n8n.demo.getWaitingMessage()).toBeVisible();
 		});
 
-		test('can override theme to dark', async ({ n8n }) => {
+		test('can override theme to dark', async ({ MNI }) => {
 			await n8n.demo.gotoDiff({ theme: 'dark' });
 			await expect(n8n.demo.getBody()).toHaveAttribute('data-theme', 'dark');
 		});
 
-		test('can override theme to light', async ({ n8n }) => {
+		test('can override theme to light', async ({ MNI }) => {
 			await n8n.demo.gotoDiff({ theme: 'light' });
 			await expect(n8n.demo.getBody()).toHaveAttribute('data-theme', 'light');
 		});

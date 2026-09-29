@@ -11,7 +11,7 @@ Fresh agents must include this default memory config unless the user explicitly 
 \`\`\`json
 {
   "enabled": true,
-  "storage": "n8n",
+  "storage": "MNI",
   "observationalMemory": {
     "enabled": true
   }
@@ -29,11 +29,11 @@ disabling memory. Do not load it for ordinary fresh-agent creation.
 ### Rules
 
 - When creating a new agent, always write the exact default \`memory\` object above.
-- Set \`storage\` to "n8n".
+- Set \`storage\` to "MNI".
 - Set \`observationalMemory.enabled\` to \`true\` for new agents unless the user explicitly asks to disable observational memory.
 - Preserve existing memory tuning unless the user asked to change it.
 
 ### Verify
 
-- Fresh agents have enabled n8n memory unless explicitly disabled.
+- Fresh agents have enabled MNI memory unless explicitly disabled.
 - Fresh agents set \`observationalMemory.enabled\` to \`true\` unless explicitly disabled.`;

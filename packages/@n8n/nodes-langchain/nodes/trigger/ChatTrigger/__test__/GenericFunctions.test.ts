@@ -11,7 +11,7 @@ import {
 
 describe('validateAuth', () => {
 	const mockContext = mock<IWebhookFunctions>();
-	/** The n8n user every successful `n8nUserAuth` leg below resolves to. */
+	/** The MNI user every successful `n8nUserAuth` leg below resolves to. */
 	const authedUser = {
 		id: 'user-1',
 		email: 'user@example.com',
@@ -282,7 +282,7 @@ describe('establishChatSessionIdentity', () => {
 		vi.clearAllMocks();
 		mockContext.getResponseObject.mockReturnValue(mockRes());
 		mockContext.logger = { warn: vi.fn() } as never;
-		// Default: no current n8n session to compare a cached grant against, so tests
+		// Default: no current MNI session to compare a cached grant against, so tests
 		// that don't care about the session-mismatch check keep their prior behaviour
 		// regardless of what an earlier test left on this mock.
 		mockContext.getHeaderData.mockReturnValue({});
@@ -384,8 +384,8 @@ describe('establishChatSessionIdentity', () => {
 	});
 
 	// A grant issued to test@n8n.io must not keep authenticating this page after the
-	// browser's own n8n session has since logged in as someone else in another tab.
-	it('restarts the flow and discards the grant when the one-hop cookie belongs to a different user than the current n8n session', async () => {
+	// browser's own MNI session has since logged in as someone else in another tab.
+	it('restarts the flow and discards the grant when the one-hop cookie belongs to a different user than the current MNI session', async () => {
 		const expiresAt = Date.now() + 3_600_000;
 		const cookie = `${oauthCookie('as-token', expiresAt)}; n8n-auth=session.jwt`;
 		mockContext.getRequestObject.mockReturnValue({
@@ -494,7 +494,7 @@ describe('establishChatSessionIdentity', () => {
 
 	// Same identity-binding check on the refresh path: rotating the grant still
 	// resolves to test@n8n.io, but the browser is now logged in as someone else.
-	it('restarts the flow and discards the grant when the refreshed token belongs to a different user than the current n8n session', async () => {
+	it('restarts the flow and discards the grant when the refreshed token belongs to a different user than the current MNI session', async () => {
 		const cookie = 'n8n-chat-oauth-refresh=refresh-token; n8n-auth=session.jwt';
 		mockContext.getRequestObject.mockReturnValue({
 			query: {},
@@ -623,7 +623,7 @@ describe('handleChatTokenRefresh', () => {
 		vi.clearAllMocks();
 		mockContext.getResponseObject.mockReturnValue(mockRes());
 		mockContext.logger = { warn: vi.fn() } as never;
-		// Default: no current n8n session to compare the rotated grant against, so
+		// Default: no current MNI session to compare the rotated grant against, so
 		// tests that don't care about the session-mismatch check keep their prior
 		// behaviour regardless of what an earlier test left on this mock.
 		mockContext.getHeaderData.mockReturnValue({});
@@ -659,8 +659,8 @@ describe('handleChatTokenRefresh', () => {
 	});
 
 	// Mid-conversation background refresh must not keep minting tokens for a visitor
-	// who is no longer the one logged into this browser's n8n session.
-	it('discards the grant and answers 401 when the rotated token belongs to a different user than the current n8n session', async () => {
+	// who is no longer the one logged into this browser's MNI session.
+	it('discards the grant and answers 401 when the rotated token belongs to a different user than the current MNI session', async () => {
 		const cookie = 'n8n-chat-oauth-refresh=refresh-token; n8n-auth=session.jwt';
 		mockContext.getRequestObject.mockReturnValue({ headers: { cookie } } as never);
 		mockContext.getHeaderData.mockReturnValue({ cookie });

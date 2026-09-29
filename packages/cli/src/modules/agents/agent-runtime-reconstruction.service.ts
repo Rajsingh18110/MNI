@@ -136,7 +136,7 @@ export interface ReconstructAgentRuntimeParams extends AgentRuntimeAssets {
 	/** Top-level chat/integration runtimes only. */
 	credentialIntegrations?: AgentIntegrationConfig[];
 	/**
-	 * The interactive n8n user of the delegating parent run, when there is one.
+	 * The interactive MNI user of the delegating parent run, when there is one.
 	 * When present, node/workflow tool refs are filtered by this user's access
 	 * (same rules as reconstructFromAgentEntity). Absent for published/
 	 * integration parents, which keep the project-scoped trust boundary.
@@ -306,7 +306,7 @@ export class AgentRuntimeReconstructionService {
 			throw new UserError('Agent has no JSON config.');
 		}
 
-		// Published/integration runs have no interactive n8n user and keep
+		// Published/integration runs have no interactive MNI user and keep
 		// today's project-scoped trust boundary. When a user is present (in-app
 		// chat, resume, task-now), drop node/workflow tools the user can't
 		// execute or lacks credential/workflow access to before the runtime is
@@ -493,7 +493,7 @@ export class AgentRuntimeReconstructionService {
 	 * Build a sub-agent's runtime for a `delegate_subagent` call.
 	 *
 	 * When `params.user` is present (the delegating parent had an interactive
-	 * n8n user), node/workflow tool refs are filtered by that user's access —
+	 * MNI user), node/workflow tool refs are filtered by that user's access —
 	 * same rules as `reconstructFromAgentEntity`. Absent for published/
 	 * integration parents, which keep the project-scoped trust boundary. The
 	 * sub-agent also inherits the parent's `credentialProvider` (user-scoped
@@ -729,14 +729,14 @@ export class AgentRuntimeReconstructionService {
 
 	/**
 	 * `ownerId` is the proxy token subject — the proxy treats it as an opaque scope and
-	 * does not verify it against n8n users. Agent runtimes pass their project id; a user
+	 * does not verify it against MNI users. Agent runtimes pass their project id; a user
 	 * id works equally if a caller ever has one.
 	 */
 	private async resolveManagedEmbeddingProviderOptions(
 		ownerId: string,
 	): Promise<ManagedEmbeddingProviderOptions | null> {
 		if (!this.aiService.isProxyEnabled()) return null;
-		// TODO: switch to n8n connect endpoints, don't use ai-proxy endpoints
+		// TODO: switch to MNI connect endpoints, don't use ai-proxy endpoints
 		const client = await this.aiService.getClient();
 		const baseURL = client.getApiProxyBaseUrl().replace(/\/$/, '') + '/openai/';
 		const tokenManager = new ProxyTokenManager(async () => {

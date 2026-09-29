@@ -394,13 +394,13 @@ async function collectCredentialResolutionWarnings(
 			warnings.push({
 				code: 'PREFER_PREDEFINED_CREDENTIAL',
 				nodeName: node.name,
-				message: `This request targets a service with a dedicated n8n credential ("${resolution.credentialType}"). Use authentication: "predefinedCredentialType" with nodeCredentialType: "${resolution.credentialType}" instead of a generic credential.`,
+				message: `This request targets a service with a dedicated MNI credential ("${resolution.credentialType}"). Use authentication: "predefinedCredentialType" with nodeCredentialType: "${resolution.credentialType}" instead of a generic credential.`,
 			});
 		} else if (resolution.status === 'ambiguous') {
 			warnings.push({
 				code: 'PREFER_PREDEFINED_CREDENTIAL',
 				nodeName: node.name,
-				message: `This request targets a service with dedicated n8n credentials (${resolution.candidates.join(', ')}). Prefer authentication: "predefinedCredentialType" with the matching nodeCredentialType.`,
+				message: `This request targets a service with dedicated MNI credentials (${resolution.candidates.join(', ')}). Prefer authentication: "predefinedCredentialType" with the matching nodeCredentialType.`,
 			});
 		}
 	}

@@ -5,7 +5,7 @@ export const SUB_AGENT_MAX_CHILDREN_MAX = 20;
 export const SUB_AGENT_MAX_CHILDREN_DEFAULT = 10;
 
 /**
- * A saved n8n agent source. Unpinned sources resolve per run type — the
+ * A saved MNI agent source. Unpinned sources resolve per run type — the
  * current draft for test runs, the published version for production runs.
  * `versionId` pins resolution, so a resumed run continues on the exact
  * version it started with.

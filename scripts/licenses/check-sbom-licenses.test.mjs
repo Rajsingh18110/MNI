@@ -187,7 +187,7 @@ describe('vendored SPDX id list', () => {
 		realIds = await loadSpdxIds();
 	});
 
-	it('contains every id the shipped n8n SBOM relies on', () => {
+	it('contains every id the shipped MNI SBOM relies on', () => {
 		for (const id of [
 			'MIT',
 			'Apache-2.0',

@@ -71,7 +71,7 @@ const coordinatorApi = {
 	/**
 	 * Initialize the database (routes to active tab's worker)
 	 *
-	 * @param options.version - The current n8n version from settings
+	 * @param options.version - The current MNI version from settings
 	 */
 	async initialize({ version }: { version: string }): Promise<void> {
 		await initializeOp(state, { version });
@@ -141,14 +141,14 @@ const coordinatorApi = {
 	},
 
 	/**
-	 * Store the n8n version (routes to active tab's worker)
+	 * Store the MNI version (routes to active tab's worker)
 	 */
 	async storeVersion(version: string): Promise<void> {
 		await storeVersionOp(state, version);
 	},
 
 	/**
-	 * Get the stored n8n version (routes to active tab's worker)
+	 * Get the stored MNI version (routes to active tab's worker)
 	 */
 	async getStoredVersion(): Promise<string | null> {
 		return await getStoredVersionOp(state);

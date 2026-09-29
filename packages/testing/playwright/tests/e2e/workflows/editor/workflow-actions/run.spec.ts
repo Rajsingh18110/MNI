@@ -12,12 +12,12 @@ test.describe(
 	() => {
 		test.fixme();
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test('should keep endpoint click working when switching between execution and editor tab', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: true });
@@ -35,7 +35,7 @@ test.describe(
 			await expect(n8n.canvas.nodeCreatorSearchBar()).toBeVisible();
 		});
 
-		test('should run workflow on button click', async ({ n8n }) => {
+		test('should run workflow on button click', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 
 			await n8n.canvas.clickExecuteWorkflowButton();
@@ -44,7 +44,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('should run workflow using keyboard shortcut', async ({ n8n }) => {
+		test('should run workflow using keyboard shortcut', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 
 			await n8n.canvas.hitExecuteWorkflow();
@@ -53,7 +53,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('should not run empty workflows', async ({ n8n }) => {
+		test('should not run empty workflows', async ({ MNI }) => {
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(0);
 
 			await expect(n8n.canvas.getExecuteWorkflowButton()).not.toBeAttached();

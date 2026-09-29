@@ -1,5 +1,5 @@
 ---
-name: n8n:create-instance-ai-eval
+name: MNI:create-instance-ai-eval
 description: >-
   Authors a new Instance AI workflow or Agent eval case — written locally as
   JSON, calibrated against a real build, then pushed to the LangTracer suite CI
@@ -25,7 +25,7 @@ exhaustive field reference; this skill is the opinionated *how*.
 > approach.** Author the file locally (uncommitted), calibrate it against a real
 > build, then **push it to a lang-tracer suite** with `eval:langtracer-push`
 > (see [Push to a lang-tracer suite](#push-to-a-lang-tracer-suite)) —
-> `--suite baseline` for the consolidated corpus n8n CI runs, or a dedicated
+> `--suite baseline` for the consolidated corpus MNI CI runs, or a dedicated
 > capability suite like `agents`.
 > The suite is the home for the case; the eval CLI reads it back via
 > `--source langtracer`. You still write the JSON file — it's just the input to
@@ -122,7 +122,7 @@ either 404s for the driver or dumps JSON.
 
 Two links that are **not** lang-tracer and don't take this base: the built thread
 (`<base-url>/assistant/<threadId>`) and workflow (`<base-url>/workflow/<id>`) live
-on the **n8n instance** the eval ran against. When both are relevant — reviewing a
+on the **MNI instance** the eval ran against. When both are relevant — reviewing a
 calibration red, writing a capability-gap ticket — give both, labelled, so nobody
 has to guess which host a link points at.
 
@@ -593,7 +593,7 @@ What each piece is doing:
 
 The harness mocks by **intercepting outbound HTTP requests to external services**
 and having an LLM answer them from the node's config and API docs. It does **not**
-let you set a node's output directly, and it does **not** mock n8n internals
+let you set a node's output directly, and it does **not** mock MNI internals
 (Code/Set/Merge/IF/Switch run for real on the mocked data; triggers and DB
 nodes get LLM-generated pin data). So:
 
@@ -917,7 +917,7 @@ is the convention) — the description is the only field shown everywhere.
 
 ## Running
 
-You need a running n8n instance with Instance AI enabled and a working sandbox;
+You need a running MNI instance with Instance AI enabled and a working sandbox;
 point the eval at it. The harness runs in three modes — **direct loop** (no
 LangSmith; `eval-results.json` only), **LangSmith** (also records an experiment
 + regression comparison), and **prebuilt** (`--prebuilt-workflows`, score
@@ -935,6 +935,6 @@ Use the [`create-agent-builder-eval` skill](../create-agent-builder-eval/SKILL.m
 for standalone Agent cases. Three other harnesses have their own data dirs and
 CLIs: **`eval:subagent`** (workflow-build compatibility corpus,
 binary-check scored), **`eval:discovery`** (asserts first-hop tool/dispatch
-routing, no n8n server), **`eval:pairwise`** (head-to-head build comparison vs
+routing, no MNI server), **`eval:pairwise`** (head-to-head build comparison vs
 `ai-workflow-builder.ee`). Authoring them is out of scope here — see the README
 sections of the same names.

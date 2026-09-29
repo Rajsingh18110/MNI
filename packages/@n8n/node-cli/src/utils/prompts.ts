@@ -20,18 +20,18 @@ export const onCancel = (message = 'Cancelled', code = 0) => {
 export async function ensureN8nPackage(commandName: string) {
 	const isN8nNode = await isN8nNodePackage();
 	if (!isN8nNode) {
-		log.error(`Make sure you are in the root directory of your node package and your package.json contains the "n8n" field
+		log.error(`Make sure you are in the root directory of your node package and your package.json contains the "MNI" field
 
 For example:
 {
 	"name": "n8n-nodes-my-app",
 	"version": "0.1.0",
-	"n8n": {
+	"MNI": {
 		"nodes": ["dist/nodes/MyApp.node.js"]
 	}
 }
 `);
-		onCancel(`${commandName} can only be run in an n8n node package`, 1);
+		onCancel(`${commandName} can only be run in an MNI node package`, 1);
 		process.exit(1);
 	}
 }

@@ -312,7 +312,7 @@ export class Telemetry {
 
 		for (const bufferKey of keysToReport) {
 			// Agent-level aggregate window keyed by persisted agent ID, run type and optional
-			// n8n user ID. A resume-only window may legitimately report tokens or tools with
+			// MNI user ID. A resume-only window may legitimately report tokens or tools with
 			// message_count = 0.
 			const { agent_id, user_id, run_type, ...counts } = this.agentExecutionCountsBuffer[bufferKey];
 			this.track(TELEMETRY_EVENT.AGENTS.AGENT_EXECUTION_COUNT, {

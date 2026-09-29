@@ -68,7 +68,7 @@ describe('extractAgentCredentialIds', () => {
 						credentials: {
 							empty: { id: '', name: 'Empty' },
 							managed: { id: MANAGED_CREDENTIAL_TOKEN, name: 'Managed' },
-							gateway: { id: AI_GATEWAY_MANAGED_TAG, name: 'n8n Connect' },
+							gateway: { id: AI_GATEWAY_MANAGED_TAG, name: 'MNI Connect' },
 						},
 					},
 				},

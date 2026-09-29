@@ -344,7 +344,7 @@ export const adjustProductPayload = adjustCustomFields;
 // ----------------------------------------
 
 /**
- * Convert items in a Zoho CRM API response into n8n load options.
+ * Convert items in a Zoho CRM API response into MNI load options.
  */
 export const toLoadOptions = (items: ResourceItems, nameProperty: NameType) =>
 	items.map((item) => ({ name: item[nameProperty], value: item.id }));

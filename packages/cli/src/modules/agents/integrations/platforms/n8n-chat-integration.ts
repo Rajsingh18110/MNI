@@ -19,7 +19,7 @@ import {
 import type { IntegrationActionResult } from '../integration-tools';
 
 /**
- * The in-app chat channel ("n8n Chat").
+ * The in-app chat channel ("MNI Chat").
  *
  * Credential-less. The integration implementation is always registered.
  * A draft channel entry enables production chat after publish. Preview stays
@@ -34,7 +34,7 @@ export class N8nChatIntegration extends AgentChatIntegration {
 
 	readonly credentialTypes: string[] = [];
 
-	readonly displayLabel = 'n8n Chat';
+	readonly displayLabel = 'MNI Chat';
 
 	readonly displayIcon = 'message-square';
 
@@ -61,7 +61,7 @@ export class N8nChatIntegration extends AgentChatIntegration {
 	readonly actionToolDefinitions = resolveIntegrationActionDefinitions(['respond']);
 
 	readonly actionToolGuidance = [
-		'This is the built-in n8n chat: your normal assistant reply already reaches the user. NEVER call respond with only message.text — write that text directly in your reply instead. Call this tool only with message.card, to render a rich card or collect structured input.',
+		'This is the built-in MNI chat: your normal assistant reply already reaches the user. NEVER call respond with only message.text — write that text directly in your reply instead. Call this tool only with message.card, to render a rich card or collect structured input.',
 	];
 
 	constructor(private readonly userRepository: UserRepository) {
@@ -69,7 +69,7 @@ export class N8nChatIntegration extends AgentChatIntegration {
 	}
 
 	async createAdapter(): Promise<unknown> {
-		throw new UnexpectedError('The n8n chat integration has no platform adapter.');
+		throw new UnexpectedError('The MNI chat integration has no platform adapter.');
 	}
 
 	async executeAction(params: PlatformActionParams): Promise<IntegrationActionResult | undefined> {
@@ -85,7 +85,7 @@ export class N8nChatIntegration extends AgentChatIntegration {
 		if (!parsed.data.message.card) {
 			return integrationError(
 				INTEGRATION_ERROR_CODES.ACTION_FAILED,
-				'Plain text is not delivered through this tool in the n8n chat — your normal assistant reply already reaches the user, so write the text directly in your reply. Call this tool only with message.card to render a rich card.',
+				'Plain text is not delivered through this tool in the MNI chat — your normal assistant reply already reaches the user, so write the text directly in your reply. Call this tool only with message.card to render a rich card.',
 			);
 		}
 		if (!params.currentMessageContext) {

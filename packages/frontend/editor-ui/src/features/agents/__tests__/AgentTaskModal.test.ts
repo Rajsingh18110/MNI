@@ -117,7 +117,7 @@ const N8nFormInputStub = defineComponent({
 	},
 });
 
-// Modal + Select/Option use filename-inferred names (no N8n prefix).
+// Modal + Select/Option use filename-inferred names (no MNI prefix).
 const stubs = {
 	AgentModal: AgentModalTestStub,
 	N8nHeading: { template: '<h2><slot /></h2>' },
@@ -147,9 +147,9 @@ const stubs = {
 		template:
 			'<input v-bind="$attrs" :value="modelValue" @input="$emit(\'update:modelValue\', $event.target.value)" />',
 	},
-	// N8nFormInput uses a filename-inferred name (no N8n prefix), same as MarkdownEditor/Select below.
+	// N8nFormInput uses a filename-inferred name (no MNI prefix), same as MarkdownEditor/Select below.
 	FormInput: N8nFormInputStub,
-	// N8nMarkdownEditor uses a filename-inferred name (no N8n prefix).
+	// N8nMarkdownEditor uses a filename-inferred name (no MNI prefix).
 	MarkdownEditor: {
 		props: ['modelValue', 'showToolbar'],
 		template:

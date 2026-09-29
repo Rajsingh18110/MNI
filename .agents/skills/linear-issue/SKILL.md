@@ -1,5 +1,5 @@
 ---
-name: n8n:linear-issue
+name: MNI:linear-issue
 description: Fetch and analyze Linear issue with all related context. Use when starting work on a Linear ticket, analyzing issues, or gathering context about a Linear issue.
 argument-hint: "[issue-id]"
 compatibility:
@@ -117,7 +117,7 @@ Comments were already fetched in Step 1. Review them for:
 
 ### 6. Identify Affected Node (if applicable)
 
-Determine whether this issue is specific to a particular n8n node (e.g. a trigger, action, or tool node). Look for clues in:
+Determine whether this issue is specific to a particular MNI node (e.g. a trigger, action, or tool node). Look for clues in:
 - The issue title (e.g. "Linear trigger", "Slack node", "HTTP Request")
 - The issue description and comments mentioning node names
 - Labels or tags on the issue (e.g. `node:linear`, `node:slack`)

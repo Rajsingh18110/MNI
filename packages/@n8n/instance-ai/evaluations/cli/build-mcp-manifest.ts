@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build n8n workflows for each test case using `claude -p` driving an MCP
+// Build MNI workflows for each test case using `claude -p` driving an MCP
 // server, then write a manifest the eval CLI's --prebuilt-workflows flag
 // accepts. Validates the produced manifest against the same Zod schema the
 // loader uses, so shape regressions surface here rather than at eval time.
@@ -41,12 +41,12 @@ interface CliArgs {
 	/** When set, only build slugs whose `datasets` array includes this tier (mirrors eval --tier). */
 	tier?: string;
 	/** When set, instructs the model to pass `projectId` to
-	 *  `create_workflow_from_code` so workflows land in a specific n8n project.
+	 *  `create_workflow_from_code` so workflows land in a specific MNI project.
 	 *  When unset, workflows go to the user's personal project (MCP default). */
 	projectId?: string;
-	/** Override the test-case JSON directory. Defaults to the n8n repo's
+	/** Override the test-case JSON directory. Defaults to the MNI repo's
 	 *  evaluations/data/workflows/, derived via `git rev-parse`. Setting this
-	 *  lets the script run from outside the n8n repo. */
+	 *  lets the script run from outside the MNI repo. */
 	workflowDir?: string;
 	/** Working directory for the build subprocess. Lets the user spawn the
 	 *  builder from a project where they have skills/settings configured,
@@ -59,7 +59,7 @@ interface CliArgs {
 }
 
 const HELP = `
-Build n8n workflows for each test case using \`claude -p\` driving an MCP
+Build MNI workflows for each test case using \`claude -p\` driving an MCP
 server, write a manifest the eval CLI's --prebuilt-workflows flag accepts,
 plus a build-stats sidecar with per-cohort cost/turn/duration aggregates.
 
@@ -69,7 +69,7 @@ Prerequisites:
     under .projects[<repo-root>].mcpServers[<name>] or globally under
     .mcpServers[<name>]). Default name: "n8n-mcp (instance)" — override
     with --mcp-server.
-  * n8n instance reachable at the URL the MCP block points at.
+  * MNI instance reachable at the URL the MCP block points at.
 
 Usage:
   pnpm eval:build-mcp-manifest [flags] [slug ...]
@@ -88,7 +88,7 @@ Flags:
                           (default: claude-sonnet-4-6).
   --max-attempts N        Retries per build when WORKFLOW_ID is missing (default: 3).
   --mcp-timeout-ms N      MCP_TIMEOUT env passed to claude -p (default: 120000).
-  --project-id ID         n8n project to create the workflows in. Defaults
+  --project-id ID         MNI project to create the workflows in. Defaults
                           to the user's personal project.
   --source SRC            Test-case source: disk (default) or langtracer.
   --suite SLUG            lang-tracer suite slug (required with --source langtracer).
@@ -96,11 +96,11 @@ Flags:
                           TIER (e.g. "mcp"). Mirrors eval:instance-ai --tier.
                           Applies to discovered and positional slugs alike.
   --workflow-dir DIR      Test-case JSON directory. Defaults to
-                          evaluations/data/workflows/ derived from the n8n
+                          evaluations/data/workflows/ derived from the MNI
                           repo (via git). Set this to run from outside the
-                          n8n repo.
+                          MNI repo.
   --build-cwd DIR         Working directory for the build subprocess.
-                          Defaults to the n8n repo root when running inside
+                          Defaults to the MNI repo root when running inside
                           it, otherwise process.cwd(). Set this to spawn
                           the builder from a project where you have skills /
                           settings configured.
@@ -448,7 +448,7 @@ async function main(): Promise<void> {
 
 	// Repo root scopes the staged MCP config (cwd fallback). Best-effort: the disk
 	// source resolves/validates its own test-case dir below; langtracer pulls cases
-	// over MCP, so it needs no repo at all and can run outside the n8n checkout.
+	// over MCP, so it needs no repo at all and can run outside the MNI checkout.
 	let repoRoot: string | undefined;
 	try {
 		repoRoot = execSync('git rev-parse --show-toplevel', { stdio: ['ignore', 'pipe', 'ignore'] })
@@ -490,7 +490,7 @@ async function main(): Promise<void> {
 				: undefined);
 		if (!workflowDir) {
 			throw new Error(
-				'Disk source needs the n8n repo (run from inside it) or --workflow-dir; or use --source langtracer.',
+				'Disk source needs the MNI repo (run from inside it) or --workflow-dir; or use --source langtracer.',
 			);
 		}
 		let slugs = args.slugs.length > 0 ? args.slugs : discoverSlugs(workflowDir);

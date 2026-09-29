@@ -251,7 +251,7 @@ describe('OIDC service', () => {
 
 			const newMockConfiguration = new real_odic_client.Configuration(
 				{
-					issuer: 'https://newprovider.example.com/auth/realms/n8n',
+					issuer: 'https://newprovider.example.com/auth/realms/MNI',
 					client_id: 'new-client-id',
 					redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 					response_types: ['code'],

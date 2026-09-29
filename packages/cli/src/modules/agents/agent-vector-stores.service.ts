@@ -9,7 +9,7 @@ import { AgentsCredentialProvider } from './adapters/agents-credential-provider'
 import { resolveEmbeddingProviderOptionsFromCredential } from './json-config/embedding-credential';
 import { buildVectorStoreBackend } from './json-config/vector-store-factory';
 
-const TEST_QUERY = 'n8n connection test';
+const TEST_QUERY = 'MNI connection test';
 const TEST_TIMEOUT_MS = 15_000;
 const MAX_MESSAGE_LENGTH = 500;
 

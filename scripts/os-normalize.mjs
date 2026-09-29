@@ -4,8 +4,8 @@
  * Created to ease the running of binaries on cross-platform teams.
  * Enabled writing startup scripts once, but defaulting to platform specific runners.
  *
- * Usage: node scripts/os-normalize.mjs --dir packages/cli/bin n8n
- * Usage (with args): node scripts/os-normalize.mjs --dir packages/cli/bin -- n8n --help
+ * Usage: node scripts/os-normalize.mjs --dir packages/cli/bin MNI
+ * Usage (with args): node scripts/os-normalize.mjs --dir packages/cli/bin -- MNI --help
  * */
 
 import { $, argv, cd, chalk, echo, usePowerShell, fs } from 'zx';
@@ -58,7 +58,7 @@ try {
 	await $({ stdio: 'inherit' })`${cmd} ${args}`;
 } catch (err) {
 	// Forward signal-based exits silently (e.g. Playwright's globalTeardown
-	// SIGKILLs the n8n process, or the user Ctrl-C's `pnpm start`). Without
+	// SIGKILLs the MNI process, or the user Ctrl-C's `pnpm start`). Without
 	// this, zx logs an unhandled `_ProcessOutput` traceback as the parent
 	// is already shutting us down — pure noise.
 	if (err?.signal || err?.exitCode === 137 || err?.exitCode === 143) {

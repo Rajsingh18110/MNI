@@ -42,7 +42,7 @@
 					"description": "Test case description",
 					"severity": 2,
 					"status": "Open",
-					"tags": ["test", "n8n"],
+					"tags": ["test", "MNI"],
 					"tlp": 2,
 					"pap": 2,
 					"createdAt": 1698753600000,

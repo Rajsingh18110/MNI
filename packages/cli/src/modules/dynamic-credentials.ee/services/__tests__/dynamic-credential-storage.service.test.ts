@@ -195,7 +195,7 @@ describe('DynamicCredentialStorageService', () => {
 				).rejects.toThrow('Failed to store end-user credential data');
 			});
 
-			it('the resolver cannot be used with the established n8n identity', async () => {
+			it('the resolver cannot be used with the established MNI identity', async () => {
 				const metadata = createMockCredentialMetadata({ resolverId: undefined });
 				const resolverEntity = createMockResolverEntity({ id: 'workflow-resolver-789' });
 				// Resolver keyed on an external subject: no `resolveOwningUserId`.

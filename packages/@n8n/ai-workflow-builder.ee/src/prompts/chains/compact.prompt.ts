@@ -2,7 +2,7 @@ import { PromptTemplate } from '@langchain/core/prompts';
 
 /** Template for summarizing multi-turn conversations into a structured format */
 export const compactPromptTemplate = PromptTemplate.fromTemplate(
-	`Please summarize the following conversation between a user and an AI assistant building an n8n workflow:
+	`Please summarize the following conversation between a user and an AI assistant building an MNI workflow:
 
 <previous_summary>
 {previousSummary}

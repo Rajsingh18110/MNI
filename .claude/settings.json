@@ -22,7 +22,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "node .claude/plugins/n8n/scripts/track-skill-usage.mjs",
+						"command": "node .claude/plugins/MNI/scripts/track-skill-usage.mjs",
 						"timeout": 10,
 						"async": true
 					}
@@ -31,10 +31,10 @@
 		]
 	},
 	"extraKnownMarketplaces": {
-		"n8n": {
+		"MNI": {
 			"source": {
 				"source": "directory",
-				"path": "./.claude/plugins/n8n"
+				"path": "./.claude/plugins/MNI"
 			}
 		}
 	},

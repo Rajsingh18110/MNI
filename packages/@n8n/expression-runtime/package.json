@@ -1,7 +1,7 @@
 {
   "name": "@n8n/expression-runtime",
   "version": "0.32.0",
-  "description": "Secure, isolated expression evaluation runtime for n8n",
+  "description": "Secure, isolated expression evaluation runtime for MNI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -26,7 +26,7 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
-    "n8n",
+    "MNI",
     "expression",
     "evaluation",
     "isolated-vm",

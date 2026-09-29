@@ -49,7 +49,7 @@ describe('EngineControlPlaneTransport', () => {
 	};
 
 	describe('forScope', () => {
-		it('dials the control plane server on the loopback, not n8n main', () => {
+		it('dials the control plane server on the loopback, not MNI main', () => {
 			newTransport().forScope('lifecycle-events:write');
 
 			expect(clientOptions?.baseURL).toBe('http://127.0.0.1:3001');

@@ -3,7 +3,7 @@ services:
     image: ${TEST_IMAGE_POSTGRES:?set it from packages/testing/containers/postgres-versions.json}
     restart: always
     environment:
-      - POSTGRES_DB=n8n
+      - POSTGRES_DB=MNI
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:

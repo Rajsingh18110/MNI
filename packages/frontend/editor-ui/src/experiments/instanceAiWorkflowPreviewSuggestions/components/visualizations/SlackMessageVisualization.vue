@@ -11,7 +11,7 @@ const props = withDefaults(
 		message?: string;
 	}>(),
 	{
-		sender: 'n8n Bot',
+		sender: 'MNI Bot',
 		message: 'Urgent ticket: Login page broken',
 	},
 );

@@ -1,5 +1,5 @@
 ---
-name: n8n:telemetry
+name: MNI:telemetry
 description: >-
   Guides adding, changing, and reviewing telemetry through the `@n8n/telemetry`
   event registry. Use when working on telemetry, analytics, tracking, product
@@ -67,4 +67,4 @@ Do not retype event-name literals in tests:
 
 ## Related
 
-Experiment exposure and metric events follow `n8n:experiments` (`.agents/skills/experiments/SKILL.md`).
+Experiment exposure and metric events follow `MNI:experiments` (`.agents/skills/experiments/SKILL.md`).

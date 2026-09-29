@@ -104,7 +104,7 @@ describe('convertN8nRequestToAxios', () => {
 				url: 'https://example.com',
 				headers: expect.objectContaining({
 					'Custom-Header': 'test',
-					'User-Agent': 'n8n',
+					'User-Agent': 'MNI',
 				}) as Record<string, string>,
 				params: { param1: 'value1' },
 			}),
@@ -150,7 +150,7 @@ describe('convertN8nRequestToAxios', () => {
 				data: formData,
 				headers: expect.objectContaining({
 					...formData.getHeaders(),
-					'User-Agent': 'n8n',
+					'User-Agent': 'MNI',
 				}) as Record<string, string>,
 			}),
 		);
@@ -430,7 +430,7 @@ describe('httpRequest', () => {
 	test('should set default user agent', async () => {
 		const scope = nock(baseUrl, {
 			reqheaders: {
-				'user-agent': 'n8n',
+				'user-agent': 'MNI',
 			},
 		})
 			.get('/test')
@@ -449,7 +449,7 @@ describe('httpRequest', () => {
 		const scope = nock(baseUrl, {
 			reqheaders: {
 				'X-Custom-Header': 'custom-value',
-				'user-agent': 'n8n',
+				'user-agent': 'MNI',
 			},
 		})
 			.get('/test')

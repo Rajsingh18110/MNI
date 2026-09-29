@@ -509,10 +509,10 @@ function extractSha(report: RunReport): string | undefined {
  */
 export function renderMarkdown(matrix: SizingMatrix): string {
 	const lines: string[] = [];
-	lines.push('# n8n Sizing — Benchmark Substrate (raw data)');
+	lines.push('# MNI Sizing — Benchmark Substrate (raw data)');
 	lines.push('');
 	lines.push(
-		`*Generated for n8n \`${matrix.n8nVersion}\` · commit \`${matrix.commitSha}\` · ${matrix.runDate.slice(0, 10)}*`,
+		`*Generated for MNI \`${matrix.n8nVersion}\` · commit \`${matrix.commitSha}\` · ${matrix.runDate.slice(0, 10)}*`,
 	);
 	lines.push('');
 	lines.push(

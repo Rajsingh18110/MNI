@@ -1,4 +1,4 @@
-# n8n database schema (SQLite)
+# MNI database schema (SQLite)
 
 ## Description
 

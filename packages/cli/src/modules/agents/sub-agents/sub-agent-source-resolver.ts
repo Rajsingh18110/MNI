@@ -36,7 +36,7 @@ export class SubAgentSourceResolver {
 	) {}
 
 	/**
-	 * Resolve a saved n8n agent into a runnable config plus its tool/skill
+	 * Resolve a saved MNI agent into a runnable config plus its tool/skill
 	 * assets: a pinned historical version (resumes), the published version
 	 * (production runs), or the current draft (test runs).
 	 */

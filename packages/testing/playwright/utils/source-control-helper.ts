@@ -71,11 +71,11 @@ const initSourceControlSSHKey = async ({ api, gitea }: { api: ApiHelpers; gitea:
 };
 
 export const initSourceControl = async ({
-	n8n,
+	MNI,
 	api = n8n.api,
 	gitea,
 }: {
-	n8n: n8nPage;
+	MNI: n8nPage;
 	api?: ApiHelpers;
 	gitea: GiteaHelper;
 }) => {
@@ -103,7 +103,7 @@ export interface GitRepoHelper {
 	repoName: string;
 	repoUrl: string;
 	pushAndWait(
-		n8n: n8nPage,
+		MNI: n8nPage,
 		commitMessage: string,
 	): Promise<{
 		files: SourceControlledFile[];
@@ -112,11 +112,11 @@ export interface GitRepoHelper {
 }
 
 export async function setupGitRepo(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	gitea: GiteaHelper,
 	api: ApiHelpers = n8n.api,
 ): Promise<GitRepoHelper> {
-	await initSourceControl({ n8n, api, gitea });
+	await initSourceControl({ MNI, api, gitea });
 	const repoName = generateUniqueRepoName();
 
 	await gitea.createRepo(repoName);

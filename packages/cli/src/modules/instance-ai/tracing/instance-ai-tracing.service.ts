@@ -80,7 +80,7 @@ export type InstanceAiTracingServiceOptions = {
 /**
  * Owns the LangSmith trace-context lifecycle for Instance AI runs.
  *
- * Holds the in-memory registry of per-run trace contexts (keyed by the n8n run
+ * Holds the in-memory registry of per-run trace contexts (keyed by the MNI run
  * ID that started an orchestration turn) and the test-only trace replay state.
  * Responsible for creating resume trace contexts, finalizing message- and
  * run-level trace roots, releasing trace clients, and submitting LangSmith user
@@ -89,7 +89,7 @@ export type InstanceAiTracingServiceOptions = {
  * is process-local and not suitable for dependency injection.
  */
 export class InstanceAiTracingService {
-	/** Trace contexts keyed by the n8n run ID that started the orchestration turn. */
+	/** Trace contexts keyed by the MNI run ID that started the orchestration turn. */
 	private readonly traceContextsByRunId = new Map<
 		string,
 		{

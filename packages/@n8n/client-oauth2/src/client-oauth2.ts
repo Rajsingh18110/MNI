@@ -124,7 +124,7 @@ export class ClientOAuth2 {
 			// We override this to reject promises only on 5xxs
 			validateStatus: (status) => status < 500,
 			// In the shipped artifact this package resolves its own axios copy, which
-			// n8n's shared axios defaults (including the 300s timeout) do not reach —
+			// MNI's shared axios defaults (including the 300s timeout) do not reach —
 			// so bound the request explicitly. Matches the shared default.
 			timeout: 300_000,
 			// Disable axios's built-in proxy handling; the agents built below own
@@ -157,7 +157,7 @@ export class ClientOAuth2 {
 
 		// Agents are built per request whenever a proxy applies (not only for the
 		// `lookup` and relaxed-TLS cases). Whether this package's axios shares the
-		// instance that n8n's agent-injecting interceptor patches depends on package
+		// instance that MNI's agent-injecting interceptor patches depends on package
 		// layout: the shipped artifact materialises its own copy, so without these
 		// agents a process lacking the global env-proxy agents connects directly and
 		// bypasses the proxy.

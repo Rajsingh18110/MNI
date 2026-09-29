@@ -19,7 +19,7 @@ const nodeConfigurationResultSchema = z.object({
 
 export type NodeConfigurationResult = z.infer<typeof nodeConfigurationResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing specifically on NODE CONFIGURATION and PARAMETERS.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing specifically on NODE CONFIGURATION and PARAMETERS.
 Your task is to evaluate whether nodes are configured with correct parameters and settings.
 
 ## SCOPE: ONLY Evaluate Node Parameters
@@ -45,9 +45,9 @@ Your task is to evaluate whether nodes are configured with correct parameters an
 
 If you see something that looks like a connection issue, IGNORE IT. Focus only on the parameters object.
 
-## CRITICAL: Understanding n8n Credentials and Configuration
+## CRITICAL: Understanding MNI credentials and Configuration
 - **NEVER penalize nodes for missing credentials**
-- **Credentials are ALWAYS configured at runtime through the n8n UI**
+- **Credentials are ALWAYS configured at runtime through the MNI UI**
 - **Empty "credentials": {} fields are NORMAL and EXPECTED**
 - **Focus on actual parameter misconfiguration, not missing credentials**
 

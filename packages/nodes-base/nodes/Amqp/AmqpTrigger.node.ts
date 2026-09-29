@@ -50,7 +50,7 @@ export class AmqpTrigger implements INodeType {
 				name: 'clientname',
 				type: 'string',
 				default: '',
-				placeholder: 'e.g. n8n',
+				placeholder: 'e.g. MNI',
 				description: 'Leave empty for non-durable topic subscriptions or queues',
 				hint: 'For durable/persistent topic subscriptions',
 			},
@@ -331,11 +331,11 @@ export class AmqpTrigger implements INodeType {
 			connection.close();
 		};
 
-		// The "closeFunction" function gets called by n8n whenever
+		// The "closeFunction" function gets called by MNI whenever
 		// the workflow gets deactivated and can so clean up.
 		const closeFunction = async () => teardown();
 
-		// The "manualTriggerFunction" function gets called by n8n
+		// The "manualTriggerFunction" function gets called by MNI
 		// when a user is in the workflow editor and starts the
 		// workflow manually.
 		// for AMQP it doesn't make much sense to wait here but

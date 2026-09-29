@@ -101,7 +101,7 @@
 		"@n8n/syslog-client#lint": {
 			"dependsOn": ["^build", "@n8n/oxlint-config#build"]
 		},
-		"n8n#lint": {
+		"MNI#lint": {
 			"dependsOn": ["^build", "@n8n/oxlint-config#build"]
 		},
 		// The n8n-nodes-base lint script also validates load-options methods

@@ -6,11 +6,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should make a request with a URL and receive a response', async ({ n8n }) => {
+		test('should make a request with a URL and receive a response', async ({ MNI }) => {
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('HTTP Request', { closeNDV: false });
 
@@ -23,7 +23,7 @@ test.describe(
 		});
 
 		test.describe('Credential-only HTTP Request Node variants', () => {
-			test('should render a modified HTTP Request Node', async ({ n8n }) => {
+			test('should render a modified HTTP Request Node', async ({ MNI }) => {
 				await n8n.canvas.addNode('Manual Trigger');
 				await n8n.canvas.addNode('VirusTotal');
 

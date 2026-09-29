@@ -48,9 +48,9 @@ export class SecurityConfig {
 	restrictFileAccessTo: string = '~/.n8n-files';
 
 	/**
-	 * Whether to block nodes from accessing files at dirs internally used by n8n:
+	 * Whether to block nodes from accessing files at dirs internally used by MNI:
 	 * - `~/.n8n`
-	 * - `~/.cache/n8n/public`
+	 * - `~/.cache/MNI/public`
 	 * - any dirs specified by `N8N_CONFIG_FILES`, `N8N_CUSTOM_EXTENSIONS`, `N8N_BINARY_DATA_STORAGE_PATH`, `N8N_UM_EMAIL_TEMPLATES_INVITE`, and `UM_EMAIL_TEMPLATES_PWRESET`.
 	 */
 	@Env('N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES')
@@ -70,7 +70,7 @@ export class SecurityConfig {
 	daysAbandonedWorkflow: number = 90;
 
 	/**
-	 * The [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) n8n serves
+	 * The [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) MNI serves
 	 * on its HTML pages, replacing the nonce-based default policy. Two formats are accepted:
 	 *
 	 * - a [helmet.js](https://helmetjs.github.io/#content-security-policy) nested directives object,
@@ -78,27 +78,27 @@ export class SecurityConfig {
 	 * - a policy string, as the header itself is written,
 	 *   e.g. `frame-ancestors http://localhost:3000`
 	 *
-	 * Write `<nonce>` where the per-request nonce should go to keep n8n's own scripts working,
+	 * Write `<nonce>` where the per-request nonce should go to keep MNI's own scripts working,
 	 * e.g. `script-src <nonce> 'strict-dynamic'`.
 	 *
-	 * Set to `default` to enforce n8n's own policy without transcribing it.
+	 * Set to `default` to enforce MNI's own policy without transcribing it.
 	 *
-	 * Empty by default: n8n enforces nothing until a policy is set here. See
+	 * Empty by default: MNI enforces nothing until a policy is set here. See
 	 * `N8N_CONTENT_SECURITY_POLICY_REPORT_ONLY` for the policy it reports on.
 	 *
 	 * Parsed on read, so this holds the policy to send, or `undefined` to send no header.
-	 * A value that cannot be read warns and leaves this `undefined`: a policy n8n cannot
+	 * A value that cannot be read warns and leaves this `undefined`: a policy MNI cannot
 	 * parse must not be enforced.
 	 */
 	@Env('N8N_CONTENT_SECURITY_POLICY', contentSecurityPolicySchema)
 	contentSecurityPolicy: ContentSecurityPolicySetting = undefined;
 
 	/**
-	 * The policy n8n serves as `Content-Security-Policy-Report-Only`, in the same two formats
+	 * The policy MNI serves as `Content-Security-Policy-Report-Only`, in the same two formats
 	 * `N8N_CONTENT_SECURITY_POLICY` accepts. This header blocks nothing, so use it to try a
 	 * policy out first. Both headers report violations, but only the enforced one blocks.
 	 *
-	 * Defaults to n8n's Level 3 policy. Set it to `default` for that policy explicitly, or to
+	 * Defaults to MNI's Level 3 policy. Set it to `default` for that policy explicitly, or to
 	 * `{}` to send no report-only header.
 	 *
 	 * Parsed on read, as `N8N_CONTENT_SECURITY_POLICY` is. The variable held a boolean until

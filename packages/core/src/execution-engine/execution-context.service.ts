@@ -63,7 +63,7 @@ export class ExecutionContextService {
 
 	/**
 	 * Builds a credential context for work done on behalf of a live HTTP request, whose
-	 * identity is the caller's own n8n session cookie.
+	 * identity is the caller's own MNI session cookie.
 	 *
 	 * Preferred over {@link buildManualExecutionCredentials} whenever there is a request:
 	 * the `cookie-source` metadata is re-validated with the request context (browser id,
@@ -139,7 +139,7 @@ export class ExecutionContextService {
 	 * Seals the identity a trigger authenticated its caller with. The token stays in
 	 * `identity` as evidence; `grant` lets the run re-verify that token after the
 	 * protected resource stops resolving (see {@link OAuthResourceGrant}), and `subject`
-	 * seals the resolved n8n user so a bound run resolves without re-verifying the token.
+	 * seals the resolved MNI user so a bound run resolves without re-verifying the token.
 	 */
 	async buildTriggerIdentityCredentials(
 		token: string,

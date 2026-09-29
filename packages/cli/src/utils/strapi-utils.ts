@@ -14,7 +14,7 @@ interface Meta {
 }
 
 /**
- * A single entity as returned by the n8n Strapi API.
+ * A single entity as returned by the MNI Strapi API.
  *
  * Strapi v4 (and Strapi v5 with the v4 response-compatibility header) nests an
  * entity's fields under `attributes`. Strapi v5's native response drops that

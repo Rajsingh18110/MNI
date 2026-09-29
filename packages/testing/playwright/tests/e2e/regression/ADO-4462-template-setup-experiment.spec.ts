@@ -65,7 +65,7 @@ test.describe(
 			await setupRequirements(createTemplateRequirements());
 		});
 
-		test('Should take users to canvas when importing template', async ({ n8n }) => {
+		test('Should take users to canvas when importing template', async ({ MNI }) => {
 			await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 			await expect(n8n.canvas.getLoadingMask()).toBeHidden({ timeout: 30000 });
 
@@ -74,7 +74,7 @@ test.describe(
 			await expect(n8n.templateCredentialSetup.getCanvasSetupButton()).toBeVisible();
 		});
 
-		test('Loads template setup modal correctly', async ({ n8n }) => {
+		test('Loads template setup modal correctly', async ({ MNI }) => {
 			await n8n.navigate.toTemplateCredentialSetup(TEMPLATE_ID);
 			await expect(n8n.canvas.getLoadingMask()).toBeHidden({ timeout: 30000 });
 

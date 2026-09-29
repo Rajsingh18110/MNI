@@ -25,7 +25,7 @@ export class AuthenticatedN8nApiClient extends N8nApiClient {
 			},
 		});
 
-		if (response.data === 'n8n is starting up. Please wait') {
+		if (response.data === 'MNI is starting up. Please wait') {
 			await apiClient.delay(1000);
 			return await this.createUsingUsernameAndPassword(apiClient, loginDetails);
 		}

@@ -8,7 +8,7 @@ import { StoragePathRenameRule } from '../storage-path-rename.rule';
 vi.mock('node:fs', () => ({ existsSync: vi.fn() }));
 
 describe('StoragePathRenameRule', () => {
-	const instanceSettings = mock<InstanceSettings>({ n8nFolder: '/home/n8n/.n8n' });
+	const instanceSettings = mock<InstanceSettings>({ n8nFolder: '/home/MNI/.n8n' });
 	const rule = new StoragePathRenameRule(instanceSettings);
 	const exists = existsSync as Mock;
 

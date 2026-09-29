@@ -225,22 +225,22 @@ describe('toExecutorCredentials (credential mapping at execution)', () => {
 		return (executeInline.mock.calls[0][0] as { credentialDetails?: unknown }).credentialDetails;
 	}
 
-	it('carries an n8n Connect managed credential through with a null id and the flag', async () => {
+	it('carries an MNI Connect managed credential through with a null id and the flag', async () => {
 		const details = await credentialDetailsFor({
-			slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+			slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 		});
 		expect(details).toEqual({
-			slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+			slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 		});
 	});
 
 	it('carries a real and a managed credential together in a mixed map', async () => {
 		const details = await credentialDetailsFor({
-			slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+			slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 			httpBasicAuth: { id: 'cred-1', name: 'Prod' },
 		});
 		expect(details).toEqual({
-			slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+			slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 			httpBasicAuth: { id: 'cred-1', name: 'Prod' },
 		});
 	});

@@ -31,7 +31,7 @@ describe('components', () => {
 		it('should render correctly with slot content', () => {
 			const wrapper = render(N8nExternalLink, {
 				props: { href: 'https://n8n.io' },
-				slots: { default: 'Visit n8n' },
+				slots: { default: 'Visit MNI' },
 				global: {
 					stubs,
 				},
@@ -116,11 +116,11 @@ describe('components', () => {
 			it('should display slot content before icon', () => {
 				const wrapper = render(N8nExternalLink, {
 					props: { href: 'https://n8n.io' },
-					slots: { default: 'Visit n8n' },
+					slots: { default: 'Visit MNI' },
 					global: { stubs },
 				});
 				const link = wrapper.getByRole('link');
-				expect(link).toHaveTextContent('Visit n8n');
+				expect(link).toHaveTextContent('Visit MNI');
 			});
 		});
 

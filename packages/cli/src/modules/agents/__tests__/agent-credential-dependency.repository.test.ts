@@ -23,7 +23,7 @@ const makeAgent = (): Agent =>
 			credential: 'credential-draft',
 			memory: {
 				enabled: true,
-				storage: 'n8n',
+				storage: 'MNI',
 				episodicMemory: { enabled: true, credential: 'credential-shared' },
 			},
 		},

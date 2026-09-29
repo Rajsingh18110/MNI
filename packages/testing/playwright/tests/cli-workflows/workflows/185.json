@@ -312,7 +312,7 @@
 		},
 		{
 			"parameters": {
-				"company": "n8n",
+				"company": "MNI",
 				"lastname": "=LastName{{Date.now()}}",
 				"additionalFields": {}
 			},

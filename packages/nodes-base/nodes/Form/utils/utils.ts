@@ -229,7 +229,7 @@ export function validateSafeRedirectUrl(url: string | undefined): string | null 
 
 export function createDescriptionMetadata(description: string) {
 	return description === ''
-		? 'n8n form'
+		? 'MNI form'
 		: description.replace(/^\s*\n+|<\/?[^>]+(>|$)/g, '').slice(0, 150);
 }
 
@@ -246,7 +246,7 @@ function getFieldIdentifier(field: FormFieldsParameter[number], nodeVersion?: nu
 	return field.fieldLabel ?? field.fieldName ?? '';
 }
 
-/** Target of the "Form automated with n8n" attribution footer. */
+/** Target of the "Form automated with MNI" attribution footer. */
 export function getN8nWebsiteLink(instanceId?: string) {
 	const utm_campaign = instanceId ? `&utm_campaign=${encodeURIComponent(instanceId)}` : '';
 	return `https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger${utm_campaign}`;
@@ -418,11 +418,11 @@ export const validateResponseModeConfiguration = (context: IWebhookFunctions) =>
 		throw new NodeOperationError(
 			context.getNode(),
 			new Error(
-				'The "Respond to Webhook" node is not supported in workflows initiated by the "n8n Form Trigger"',
+				'The "Respond to Webhook" node is not supported in workflows initiated by the "MNI Form Trigger"',
 			),
 			{
 				description:
-					'To configure your response, add an "n8n Form" node and set the "Page Type" to "Form Ending"',
+					'To configure your response, add an "MNI Form" node and set the "Page Type" to "Form Ending"',
 			},
 		);
 	}
@@ -1349,7 +1349,7 @@ export function buildFormShellViewModel(
 		authorizationUrl: c.authorizationUrl,
 		revokeUrl: c.revokeUrl,
 		resolverId: c.resolverId,
-		// The connected identity shown as "Connected as …". For the system (n8n)
+		// The connected identity shown as "Connected as …". For the system (MNI)
 		// resolver this is the submitter themselves; surfacing the exact OAuth
 		// provider account (when it differs) is a backend-enrichment follow-up.
 		account: c.status === 'configured' ? submitterEmail : undefined,

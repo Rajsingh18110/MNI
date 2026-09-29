@@ -5,7 +5,7 @@ import { ALLOW_CONTAINER_ONLY, CONTAINER_ONLY_MODES, LICENSED_TAG } from './fixt
 import { ENGINE_TAG_PREFIX } from './fixtures/engine-parity';
 import { getBackendUrl, getFrontendUrl } from './utils/url-helper';
 
-// Tests that require container environment (won't run against local n8n).
+// Tests that require container environment (won't run against local MNI).
 // Matches:
 // - @mode:X - infrastructure modes (postgres, queue, multi-main)
 // - @licensed - enterprise license features (log streaming, SSO, etc.)
@@ -25,13 +25,13 @@ const CONTAINER_CONFIGS: Array<{ name: string; config: N8NConfig }> = [
 ];
 
 // --- Benchmark profiles ---
-// Each profile represents a real-world n8n deployment configuration.
+// Each profile represents a real-world MNI deployment configuration.
 // ONE test file runs in ALL profiles — adding a profile auto-expands coverage.
 
 // Standard benchmark resource profile.
 // Main:    2 vCPU, 4 GB RAM
 // Worker:  1 vCPU, 2 GB RAM
-// Total host budget at 1m+3w: 5 vCPU + 10 GB for n8n, plus ~3 GB for
+// Total host budget at 1m+3w: 5 vCPU + 10 GB for MNI, plus ~3 GB for
 // postgres/kafka/redis/observability.
 export const BENCHMARK_MAIN_RESOURCES = { memory: 4, cpu: 2 };
 export const BENCHMARK_WORKER_RESOURCES = { memory: 2, cpu: 1 };
@@ -41,13 +41,13 @@ export const OBSERVABILITY_SERVICES = ['victoriaLogs', 'victoriaMetrics', 'vecto
 
 /**
  * Single benchmark stack config. Specs call `benchConfig()` to get a copy with
- * spec-specific overrides (mains, workers, kafka). All n8n env tuning lives
+ * spec-specific overrides (mains, workers, kafka). All MNI env tuning lives
  * here once — the queue-mode-only vars (`QUEUE_*`, `DB_PING_INTERVAL_SECONDS`)
  * are inert in direct mode, so a single env profile works for both.
  */
 const BENCHMARK_CONFIG: N8NConfig = {
 	// Postgres exporter scrapes DB internals into VictoriaMetrics; cAdvisor exposes per-container
-	// CPU/memory/IO so benchmarks can detect when PG/n8n hit OS-level limits the per-query
+	// CPU/memory/IO so benchmarks can detect when PG/MNI hit OS-level limits the per-query
 	// reporter alone would miss. Only meaningful for benchmarks.
 	services: [...OBSERVABILITY_SERVICES, 'postgresExporter', 'cadvisor'],
 	postgres: true,
@@ -83,7 +83,7 @@ export interface BenchOptions {
 	mains?: number;
 	/** Number of worker pods. Default: 0 (direct mode). */
 	workers?: number;
-	/** Dedicated `n8n webhook` procs. Forces queue mode when > 0. */
+	/** Dedicated `MNI webhook` procs. Forces queue mode when > 0. */
 	webhooks?: number;
 	/**
 	 * Adds the `tracing` service (Jaeger + n8n-tracer) and turns on OTEL emission.
@@ -286,7 +286,7 @@ export function getProjects(): Project[] {
 			use: { containerConfig: BENCHMARKING_DEFAULT_CONFIG },
 		});
 
-		// API-only, no browser: the specs manage their own stack (they swap n8n
+		// API-only, no browser: the specs manage their own stack (they swap MNI
 		// images mid-test via stack.replaceN8N), so no containerConfig fixture.
 		projects.push({
 			name: 'encryption:infrastructure',

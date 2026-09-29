@@ -33,7 +33,7 @@ Flag, strongest first:
 Soft warning on a plain token swap: ask the intent, since a deliberate change
 and a mistake look identical.
 
-Flag a hand-rolled control duplicating an `N8n*` component (icon button,
+Flag a hand-rolled control duplicating an `MNI*` component (icon button,
 tooltip, dialog, select), which arrives missing hover, focus and disabled
 states, and a NEW direct `element-plus` or `reka-ui` import in `editor-ui`.
 No lint rule covers those and many files predate the convention, so judge

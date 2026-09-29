@@ -182,7 +182,7 @@ function parseRevParseOutput(output: string, expectedLineCount: number): string[
 
 /**
  * git prints these absolute, and callers hand them straight to `resolvePath`, where a relative
- * value would resolve against n8n's own working directory instead.
+ * value would resolve against MNI's own working directory instead.
  */
 function assertAbsolutePaths(paths: string[], cause?: unknown): void {
 	if (paths.some((path) => !isAbsolute(path))) {

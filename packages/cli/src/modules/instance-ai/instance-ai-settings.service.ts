@@ -285,10 +285,10 @@ export class InstanceAiSettingsService {
 
 	private sandboxProviderOverride?: InstanceAiSandboxProvider;
 
-	/** Whether n8n Agent is enabled for this instance. */
+	/** Whether MNI Agent is enabled for this instance. */
 	private enabled = true;
 
-	/** Whether users may connect the n8n Assistant to MCP servers from the registry. */
+	/** Whether users may connect the MNI Assistant to MCP servers from the registry. */
 	private mcpAccessEnabled = true;
 
 	/** Per-action HITL permission overrides. */
@@ -580,12 +580,12 @@ export class InstanceAiSettingsService {
 			? await Promise.all([
 					this.prepareConnection(
 						INSTANCE_AI_MODEL_CREDENTIAL_POLICY,
-						'n8n Assistant model',
+						'MNI Assistant model',
 						modelConnection,
 					),
 					this.prepareConnection(
 						INSTANCE_AI_SEARCH_CREDENTIAL_POLICY,
-						'n8n Assistant web search',
+						'MNI Assistant web search',
 						searchConnection,
 					),
 					this.prepareSandboxConnection(sandboxConnection),
@@ -609,7 +609,7 @@ export class InstanceAiSettingsService {
 					modelCredentialId = await this.upsertConnection(
 						user,
 						INSTANCE_AI_MODEL_CREDENTIAL_POLICY,
-						'n8n Assistant model',
+						'MNI Assistant model',
 						modelConnection,
 						ctx,
 						modelPrepared,
@@ -619,7 +619,7 @@ export class InstanceAiSettingsService {
 					searchCredentialId = await this.upsertConnection(
 						user,
 						INSTANCE_AI_SEARCH_CREDENTIAL_POLICY,
-						'n8n Assistant web search',
+						'MNI Assistant web search',
 						searchConnection,
 						ctx,
 						searchPrepared,
@@ -934,7 +934,7 @@ export class InstanceAiSettingsService {
 				`Connection type "${connection.type}" is not supported for the sandbox`,
 			);
 		}
-		return await this.prepareConnection(policy, 'n8n Assistant sandbox', connection);
+		return await this.prepareConnection(policy, 'MNI Assistant sandbox', connection);
 	}
 
 	private async runConnectionHooks(
@@ -961,7 +961,7 @@ export class InstanceAiSettingsService {
 		n8nSandboxCredentialId: string | null;
 		sandboxProvider?: InstanceAiSandboxProvider;
 	}> {
-		const name = 'n8n Assistant sandbox';
+		const name = 'MNI Assistant sandbox';
 		if (connection === null) {
 			return {
 				daytonaCredentialId: await this.upsertConnection(
@@ -1087,7 +1087,7 @@ export class InstanceAiSettingsService {
 	): Promise<InstanceAiConnectionUpdate> {
 		const prepared = await this.prepareConnection(
 			INSTANCE_AI_MODEL_CREDENTIAL_POLICY,
-			'n8n Assistant model',
+			'MNI Assistant model',
 			connection,
 		);
 		return this.connectionForVerification(prepared);
@@ -1105,7 +1105,7 @@ export class InstanceAiSettingsService {
 	): Promise<InstanceAiConnectionUpdate> {
 		const prepared = await this.prepareConnection(
 			INSTANCE_AI_SEARCH_CREDENTIAL_POLICY,
-			'n8n Assistant web search',
+			'MNI Assistant web search',
 			connection,
 		);
 		return this.connectionForVerification(prepared);
@@ -1249,7 +1249,7 @@ export class InstanceAiSettingsService {
 		return { ...this.permissions };
 	}
 
-	/** Whether users may connect the n8n Assistant to MCP servers from the registry. */
+	/** Whether users may connect the MNI Assistant to MCP servers from the registry. */
 	isMcpAccessEnabled(): boolean {
 		return this.mcpAccessEnabled;
 	}
@@ -1263,7 +1263,7 @@ export class InstanceAiSettingsService {
 		return this.readUserPreferences(user).localGatewayDisabled ?? false;
 	}
 
-	/** Whether the n8n Agent is enabled by the admin. */
+	/** Whether the MNI Agent is enabled by the admin. */
 	isAgentEnabled(): boolean {
 		return this.enabled;
 	}
@@ -1640,7 +1640,7 @@ export class InstanceAiSettingsService {
 		if (this.environmentSandboxProvider === 'daytona') {
 			return this.aiService.isProxyEnabled() || Boolean(this.config.daytonaApiKey.trim());
 		}
-		// n8n Sandbox accepts keyless clients, so the service URL completes the connection.
+		// MNI Sandbox accepts keyless clients, so the service URL completes the connection.
 		return Boolean(this.environmentN8nSandboxServiceUrl.trim());
 	}
 

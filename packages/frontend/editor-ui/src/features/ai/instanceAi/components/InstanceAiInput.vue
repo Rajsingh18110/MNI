@@ -764,7 +764,7 @@ function handleComposerKeydown(event: KeyboardEvent): void {
 
 function handleTabAutocomplete() {
 	if (!inputText.value && props.contextualSuggestion) {
-		// n8n wrote this follow-up, so accepting it is a pre-fill like any other.
+		// MNI wrote this follow-up, so accepting it is a pre-fill like any other.
 		setPrefill({ text: props.contextualSuggestion, prefillType: 'contextual_followup' });
 	}
 }

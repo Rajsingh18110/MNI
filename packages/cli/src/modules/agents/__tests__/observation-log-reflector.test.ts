@@ -3,8 +3,8 @@ import {
 	DEFAULT_REFLECTOR_THRESHOLD_TOKENS,
 } from '../observation-log-reflector';
 
-describe('n8n observation-log reflector policy', () => {
-	it('uses the n8n reflector defaults', () => {
+describe('MNI observation-log reflector policy', () => {
+	it('uses the MNI reflector defaults', () => {
 		expect(DEFAULT_REFLECTOR_THRESHOLD_TOKENS).toBe(60_000);
 	});
 

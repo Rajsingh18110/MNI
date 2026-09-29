@@ -44,7 +44,7 @@ export const READY_TO_RUN_WORKFLOW_V4: WorkflowDataCreate = {
 			name: 'OpenAI Model',
 			notesInFlow: true,
 			credentials: {},
-			notes: 'Free n8n credits ',
+			notes: 'Free MNI credits ',
 		},
 		{
 			parameters: {

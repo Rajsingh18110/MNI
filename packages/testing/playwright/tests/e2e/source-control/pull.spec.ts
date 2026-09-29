@@ -5,7 +5,7 @@ import { type GitRepoHelper, setupGitRepo } from '../../../utils/source-control-
 
 test.use({ capability: 'source-control' });
 
-async function expectPullSuccess(n8n: n8nPage) {
+async function expectPullSuccess(MNI: n8nPage) {
 	await n8n.notifications.waitForNotificationAndClose('Pulled successfully', { timeout: 30000 });
 }
 
@@ -21,13 +21,13 @@ test.describe(
 
 		let gitRepo: GitRepoHelper;
 
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await n8n.api.enableFeature('sourceControl');
 			await n8n.api.enableFeature('variables');
-			gitRepo = await setupGitRepo(n8n, services.gitea);
+			gitRepo = await setupGitRepo(MNI, services.gitea);
 		});
 
-		test('should pull new resources from remote', async ({ n8n }) => {
+		test('should pull new resources from remote', async ({ MNI }) => {
 			// create project
 			const project = await n8n.api.projects.createProject('Test Project');
 			const folder = await n8n.api.projects.createFolder(project.id, 'Test Folder');
@@ -68,7 +68,7 @@ test.describe(
 			// pull all resources
 			await n8n.navigate.toHome();
 			await n8n.sideBar.getSourceControlPullButton().click();
-			await expectPullSuccess(n8n);
+			await expectPullSuccess(MNI);
 
 			// check that all new resources are pulled
 			await n8n.navigate.toProjectSettings(project.id);
@@ -93,7 +93,7 @@ test.describe(
 			await expect(n8n.canvas.tagsManagerModal.getTagByName('pull-test-tag')).toBeVisible();
 		});
 
-		test('should pull modified and deleted resources from remote', async ({ n8n }) => {
+		test('should pull modified and deleted resources from remote', async ({ MNI }) => {
 			const project = await n8n.api.projects.createProject('Pull Test Project');
 			const workflow = await n8n.api.workflows.createInProject(project.id, {
 				name: 'Pull Test Workflow',
@@ -139,7 +139,7 @@ test.describe(
 
 			// click on pull & override button
 			await n8n.sourceControlPullModal.getPullAndOverrideButton().click();
-			await expectPullSuccess(n8n);
+			await expectPullSuccess(MNI);
 
 			// check pulled resources
 			await n8n.navigate.toWorkflow(workflow.id);

@@ -57,7 +57,7 @@ export class JsTaskRunnerProcess extends TaskRunnerProcessBase {
 			HOME: process.env.HOME ?? process.env.USERPROFILE,
 			NODE_PATH: process.env.NODE_PATH,
 
-			// n8n
+			// MNI
 			GENERIC_TIMEZONE: process.env.GENERIC_TIMEZONE,
 			NODE_FUNCTION_ALLOW_BUILTIN: process.env.NODE_FUNCTION_ALLOW_BUILTIN,
 			NODE_FUNCTION_ALLOW_EXTERNAL: process.env.NODE_FUNCTION_ALLOW_EXTERNAL,
@@ -78,7 +78,7 @@ export class JsTaskRunnerProcess extends TaskRunnerProcessBase {
 			N8N_RUNNERS_HEARTBEAT_INTERVAL: this.runnerConfig.heartbeatInterval.toString(),
 			N8N_RUNNERS_INSECURE_MODE: process.env.N8N_RUNNERS_INSECURE_MODE,
 			// Forwarded so the internal runner's graceful-shutdown grace can be coordinated
-			// with n8n's (otherwise it falls back to the runner's own default).
+			// with MNI's (otherwise it falls back to the runner's own default).
 			N8N_RUNNERS_GRACEFUL_SHUTDOWN_TIMEOUT: process.env.N8N_RUNNERS_GRACEFUL_SHUTDOWN_TIMEOUT,
 			N8N_RUNNERS_SHUTDOWN_FORCE_KILL_MARGIN: process.env.N8N_RUNNERS_SHUTDOWN_FORCE_KILL_MARGIN,
 		});

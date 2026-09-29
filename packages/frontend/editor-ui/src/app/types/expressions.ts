@@ -8,7 +8,7 @@ export type Segment = Plaintext | Resolvable;
 
 export type Plaintext = { kind: 'plaintext'; plaintext: string } & Range;
 
-export type Html = Plaintext; // for n8n parser, functionally identical to plaintext
+export type Html = Plaintext; // for MNI parser, functionally identical to plaintext
 
 export type ResolvableState = 'valid' | 'invalid' | 'pending' | 'redacted';
 

@@ -4,16 +4,16 @@
 	"version": 1,
 	"metadata": {
 		"component": {
-			"name": "n8n",
+			"name": "MNI",
 			"group": "",
 			"version": "2.25.2",
-			"description": "n8n Workflow Automation Tool",
+			"description": "MNI workflow automation Tool",
 			"purl": "pkg:npm/n8n@2.25.2",
 			"bom-ref": "pkg:npm/n8n@2.25.2",
 			"properties": [
 				{
 					"name": "cdx:npm:bin",
-					"value": "n8n"
+					"value": "MNI"
 				},
 				{
 					"name": "cdx:npm:has_binary",
@@ -46,7 +46,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/zwitch/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/zwitch/package.json"
 				}
 			],
 			"evidence": {
@@ -58,10 +58,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/zwitch/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/zwitch/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/zwitch/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/zwitch/package.json"
 					}
 				]
 			}
@@ -81,7 +81,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/n8n-workflow/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/n8n-workflow/package.json"
 				}
 			],
 			"evidence": {
@@ -93,10 +93,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/n8n-workflow/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/n8n-workflow/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/n8n-workflow/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/n8n-workflow/package.json"
 					}
 				]
 			}
@@ -116,7 +116,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/jszip/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/jszip/package.json"
 				}
 			],
 			"evidence": {
@@ -128,10 +128,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/jszip/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/jszip/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/jszip/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/jszip/package.json"
 					}
 				]
 			}
@@ -146,7 +146,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/binascii/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/binascii/package.json"
 				}
 			],
 			"evidence": {
@@ -158,10 +158,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/binascii/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/binascii/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/binascii/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/binascii/package.json"
 					}
 				]
 			}
@@ -181,7 +181,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/@n8n/tournament/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/tournament/package.json"
 				}
 			],
 			"evidence": {
@@ -193,10 +193,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/@n8n/tournament/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/tournament/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/@n8n/tournament/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/tournament/package.json"
 					}
 				]
 			}
@@ -211,7 +211,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/wa-sqlite/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/wa-sqlite/package.json"
 				}
 			],
 			"evidence": {
@@ -223,10 +223,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/wa-sqlite/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/wa-sqlite/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/wa-sqlite/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/wa-sqlite/package.json"
 					}
 				]
 			}
@@ -246,7 +246,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/n8n/n8n/compiled/node_modules/@n8n/db/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/db/package.json"
 				}
 			],
 			"evidence": {
@@ -258,10 +258,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/n8n/n8n/compiled/node_modules/@n8n/db/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/db/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/n8n/n8n/compiled/node_modules/@n8n/db/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/db/package.json"
 					}
 				]
 			}

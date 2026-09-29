@@ -5,7 +5,7 @@
  *
  * This is *one* way to draw modularity boundaries, not a house rule. Treat it as
  * a worked example to argue with. It is something concrete to ground a discussion
- * about where n8n wants its layers. Nobody is obliged to copy it. The value is in
+ * about where MNI wants its layers. Nobody is obliged to copy it. The value is in
  * making the trade-offs explicit enough to debate.
  *
  * ## The design choice
@@ -25,7 +25,7 @@
  * tests run with no database and no container. `fast-check` property tests and
  * Stryker mutation tests hammer the logic directly. No SQL or TypeORM detail
  * leaks in, so the same code runs on any dialect. And the whole package can be
- * lifted out of a full n8n main, which is exactly what the scheduler-worker idea
+ * lifted out of a full MNI main, which is exactly what the scheduler-worker idea
  * below relies on.
  *
  * Nothing in the language enforces this. A stray import from `@n8n/db` or a
@@ -63,7 +63,7 @@
  *    gets scheduled is a *use* of this package, not a concern of it. The
  *    scheduler must not know its consumers exist. That keeps the dependency arrow
  *    pointing one way, from the cli and the nodes toward the scheduler and never
- *    back. It is why importing the cli (`n8n`) is forbidden. That import would
+ *    back. It is why importing the cli (`MNI`) is forbidden. That import would
  *    flip the arrow.
  *
  * 5. Aim for a pure leaf. Follow the four steps and the package settles at the
@@ -115,7 +115,7 @@
  *   - today, `n8n-core` for instance identity and error reporting, unless those
  *     get extracted too
  *
- * It leaves behind the bulk of n8n: the editor, the REST API, the node registry,
+ * It leaves behind the bulk of MNI: the editor, the REST API, the node registry,
  * and every node's dependency. The win is a process whose scheduling scales and
  * fails on its own, and getting there is mostly `cli` decomposition. Purity made
  * the scheduler side free to move. The same discipline one level up is what makes
@@ -128,7 +128,7 @@
  * core to a dialect and a running database. `n8n-core` is the *doing* side. The
  * DI container `@n8n/di`, together with `@n8n/config` and `@n8n/backend-common`
  * that build on it, would hide the ports behind a global registry instead of
- * explicit injection. The cli (`n8n`) is the app wiring and depends on us, not
+ * explicit injection. The cli (`MNI`) is the app wiring and depends on us, not
  * the other way around. And the Node I/O built-ins are effects that belong behind
  * a port.
  *
@@ -153,7 +153,7 @@ const ALLOWED_DEPENDENCIES: Rule[] = [
 		name: 'luxon',
 		reason: 'Pure date/time arithmetic. The wall clock is injected via the Clock port.',
 	},
-	{ name: 'n8n-workflow', reason: 'Core interfaces and types shared across n8n, no I/O.' },
+	{ name: 'n8n-workflow', reason: 'Core interfaces and types shared across MNI, no I/O.' },
 ];
 
 /** Packages the core must never import, with the reason each is excluded. */
@@ -185,7 +185,7 @@ const FORBIDDEN_PACKAGES: Rule[] = [
 			'A backend convenience toolbox (logging, locking, license, DI modules) built on @n8n/di and @n8n/config. More a thought exercise than a real temptation, which is the point: importing it for one helper would drag in the whole DI/logger runtime. Proximity is not a reason to depend.',
 	},
 	{
-		name: 'n8n',
+		name: 'MNI',
 		reason:
 			'The cli/app wiring. It depends on the scheduler, not the reverse; importing it inverts the dependency.',
 	},

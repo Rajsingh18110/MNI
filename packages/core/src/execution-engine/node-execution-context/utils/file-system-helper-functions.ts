@@ -446,7 +446,7 @@ export const getFileSystemHelperFunctions = (node: INode): FileSystemHelperFunct
 });
 
 /**
- * @returns The restricted paths for the n8n instance.
+ * @returns The restricted paths for the MNI instance.
  */
 function getN8nRestrictedPaths() {
 	const { n8nFolder, staticCacheDir } = Container.get(InstanceSettings);

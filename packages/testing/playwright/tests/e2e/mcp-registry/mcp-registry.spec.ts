@@ -9,7 +9,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test('exposes Notion MCP as a tool with hidden connection fields', async ({ n8n, api }) => {
+		test('exposes Notion MCP as a tool with hidden connection fields', async ({ MNI, api }) => {
 			await api.seedMcpRegistry();
 			await n8n.start.fromBlankCanvas();
 

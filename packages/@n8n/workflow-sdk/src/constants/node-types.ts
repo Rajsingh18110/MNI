@@ -1,5 +1,5 @@
 /**
- * Node type constants for n8n nodes.
+ * Node type constants for MNI nodes.
  * These constants replace magic strings throughout the codebase.
  */
 export const NODE_TYPES = {

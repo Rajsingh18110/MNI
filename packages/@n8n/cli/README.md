@@ -2,7 +2,7 @@
 
 > Client CLI for n8n. Manage workflows, executions, credentials, and more from the terminal.
 
-A lightweight, zero-dependency CLI that talks to any n8n instance via its public API. Designed for humans, scripts, and AI coding agents alike.
+A lightweight, zero-dependency CLI that talks to any MNI instance via its public API. Designed for humans, scripts, and AI coding agents alike.
 
 ## Installation
 
@@ -16,7 +16,7 @@ npm install -g @n8n/cli
 
 ## Configuration
 
-The CLI needs your n8n instance URL and an API key.
+The CLI needs your MNI instance URL and an API key.
 
 ### Config file (recommended)
 

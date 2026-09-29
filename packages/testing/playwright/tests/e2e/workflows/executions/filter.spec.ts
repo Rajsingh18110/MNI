@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_4_executions_view.json');
 
 			// Create mix of successful and failed executions
@@ -24,7 +24,7 @@ test.describe(
 			await expect(n8n.executions.getExecutionItems().first()).toBeVisible();
 		});
 
-		test('should filter executions by status and show filter badge', async ({ n8n }) => {
+		test('should filter executions by status and show filter badge', async ({ MNI }) => {
 			await n8n.executions.openFilter();
 			await expect(n8n.executions.getFilterForm()).toBeVisible();
 
@@ -47,7 +47,7 @@ test.describe(
 			await expect(n8n.executions.getSuccessfulExecutionItems()).toHaveCount(0);
 		});
 
-		test('should reset filter and remove badge', async ({ n8n }) => {
+		test('should reset filter and remove badge', async ({ MNI }) => {
 			await n8n.executions.openFilter();
 			await expect(n8n.executions.getFilterForm()).toBeVisible();
 

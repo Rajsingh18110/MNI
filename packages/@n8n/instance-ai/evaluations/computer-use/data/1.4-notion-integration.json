@@ -1,7 +1,7 @@
 {
 	"id": "1.4-notion-integration",
 	"category": "browser",
-	"prompt": "I want to connect n8n to my Notion workspace. Help me create an integration and share the right databases with it.",
+	"prompt": "I want to connect MNI to my Notion workspace. Help me create an integration and share the right databases with it.",
 	"budgets": { "maxToolCalls": 50, "maxDurationMs": 600000 },
 	"graders": [
 		{ "type": "trace.mustCallMcpServer", "server": "computer-use" },

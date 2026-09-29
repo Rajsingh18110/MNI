@@ -10,7 +10,7 @@ import type { TestUser } from '../services/user-api-helper';
  * For API-only testing, use the standalone `api` fixture directly instead.
  */
 export class TestEntryComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Start UI test from the home page and navigate to canvas

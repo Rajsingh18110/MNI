@@ -47,7 +47,7 @@ export class RedisLockService implements ILockService {
 		this.lockPrefix = prefix + ':lock';
 
 		this.redisClient = redisClientService.createClient({
-			type: 'lock(n8n)',
+			type: 'lock(MNI)',
 			extraOptions: { commandTimeout: COMMAND_TIMEOUT_MS },
 		});
 	}

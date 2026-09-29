@@ -54,7 +54,7 @@ const customModels = ref<string[]>([]);
 const allModels = computed<IModel[]>(() => {
 	const models: Map<string, IModel> = new Map(
 		availableModels.value.reduce<Array<[string, IModel]>>((acc, model) => {
-			if (model.model.provider !== 'custom-agent' && model.model.provider !== 'n8n') {
+			if (model.model.provider !== 'custom-agent' && model.model.provider !== 'MNI') {
 				acc.push([
 					model.model.model,
 					{

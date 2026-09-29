@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Guards against a broken `npm install n8n`: a publishable (non-private)
+ * Guards against a broken `npm install MNI`: a publishable (non-private)
  * workspace package must not depend at runtime on a `private` one.
  *
- * The `n8n` cli depends on `n8n-editor-ui` (published), which depended on
+ * The `MNI` cli depends on `n8n-editor-ui` (published), which depended on
  * `@n8n/frontend-constants`, `@n8n/frontend-utils` and `@n8n/telemetry` — all
- * marked `"private": true`. Publishing `n8n` then produces an install graph
+ * marked `"private": true`. Publishing `MNI` then produces an install graph
  * pointing at packages that were never published. Marking any package private
  * (or adding a private package as a runtime dependency of a published one)
  * silently reintroduces this.
@@ -58,7 +58,7 @@ function main() {
 		console.error('');
 		console.error('These packages are published to npm, so a private runtime dependency leaves the');
 		console.error('published install graph pointing at packages that were never published, breaking');
-		console.error('`npm install n8n`.');
+		console.error('`npm install MNI`.');
 		console.error('');
 		for (const v of violations) console.error(`  - ${v}`);
 		console.error('');

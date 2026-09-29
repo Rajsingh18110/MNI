@@ -73,7 +73,7 @@ describe('MicrosoftTeamsV2, channelMessage => reply, workflow link', () => {
 
 		expect(body.body.contentType).toBe('html');
 		expect(body.body.content).toBe(
-			'on it<br><br><em> Powered by <a href="https://n8n.example.com/workflow/workflowId?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instanceId">this n8n workflow</a> </em>',
+			'on it<br><br><em> Powered by <a href="https://n8n.example.com/workflow/workflowId?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instanceId">this MNI workflow</a> </em>',
 		);
 	});
 

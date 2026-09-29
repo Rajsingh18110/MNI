@@ -19,7 +19,7 @@ test.skip(
 		test.setTimeout(300000);
 
 		// ========== SETUP: Verify Initial Health ==========
-		// Ensure n8n starts in a healthy state before we begin chaos testing
+		// Ensure MNI starts in a healthy state before we begin chaos testing
 		{
 			const isLive = await api.isHealthy('liveness');
 			const isReady = await api.isHealthy('readiness');
@@ -35,7 +35,7 @@ test.skip(
 		const apkUpdate = await postgres.exec(['apk', 'update']);
 		const apkInstall = await postgres.exec(['apk', 'add', 'iptables']);
 		// Block all incoming TCP traffic to PostgreSQL port 5432
-		// This simulates a network partition between n8n and the database
+		// This simulates a network partition between MNI and the database
 		const rule = ['INPUT', '-p', 'tcp', '--dport', '5432', '-j', 'DROP'];
 		const blockPostgresTraffic = await postgres.exec(['iptables', '-A', ...rule]);
 		expect(apkUpdate.exitCode).toBe(0);

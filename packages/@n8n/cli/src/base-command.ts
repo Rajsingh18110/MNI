@@ -16,7 +16,7 @@ export abstract class BaseCommand extends Command {
 	static override baseFlags = {
 		url: Flags.string({
 			char: 'u',
-			description: 'n8n instance URL (or N8N_URL env var)',
+			description: 'MNI instance URL (or N8N_URL env var)',
 			env: 'N8N_URL',
 		}),
 		apiKey: Flags.string({
@@ -74,7 +74,7 @@ export abstract class BaseCommand extends Command {
 
 		if (!url) {
 			this.error(
-				"No n8n URL configured.\nHint: Run 'n8n-cli config set-url <url>' or set N8N_URL.",
+				"No MNI URL configured.\nHint: Run 'n8n-cli config set-url <url>' or set N8N_URL.",
 				{ exit: EXIT_ERROR },
 			);
 		}

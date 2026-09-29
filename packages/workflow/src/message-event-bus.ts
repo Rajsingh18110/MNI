@@ -266,7 +266,7 @@ export const defaultMessageEventBusDestinationSyslogOptions: MessageEventBusDest
 		port: 514,
 		protocol: 'tcp',
 		facility: 16,
-		app_name: 'n8n',
+		app_name: 'MNI',
 		eol: '\n',
 	};
 

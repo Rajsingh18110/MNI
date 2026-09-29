@@ -162,7 +162,7 @@ describe('chatHub', () => {
 			expect(conversations.data[0].agentIcon).toEqual({ type: 'emoji', value: '🤖' });
 		});
 
-		it('should return agentIcon for sessions with n8n workflow agents', async () => {
+		it('should return agentIcon for sessions with MNI workflow agents', async () => {
 			const agentIcon = { type: 'icon', value: 'workflow' };
 
 			// Create an active workflow with chat trigger
@@ -193,7 +193,7 @@ describe('chatHub', () => {
 				ownerId: member.id,
 				title: 'session with workflow',
 				lastMessageAt: new Date('2025-01-01T00:00:00Z'),
-				provider: 'n8n',
+				provider: 'MNI',
 				workflowId: workflow.id,
 			});
 
@@ -408,7 +408,7 @@ describe('chatHub', () => {
 			expect(conversation.session.agentIcon).toEqual({ type: 'emoji', value: '🤖' });
 		});
 
-		it('should return agentIcon for conversation with n8n workflow agent', async () => {
+		it('should return agentIcon for conversation with MNI workflow agent', async () => {
 			const agentIcon = { type: 'icon', value: 'workflow' };
 
 			// Create an active workflow with chat trigger
@@ -439,7 +439,7 @@ describe('chatHub', () => {
 				ownerId: member.id,
 				title: 'session with workflow',
 				lastMessageAt: new Date('2025-01-01T00:00:00Z'),
-				provider: 'n8n',
+				provider: 'MNI',
 				workflowId: workflow.id,
 			});
 
@@ -1367,7 +1367,7 @@ describe('chatHub', () => {
 			});
 		});
 
-		describe('n8n workflow agents', () => {
+		describe('MNI workflow agents', () => {
 			let sessionId: string;
 			let messageId: string;
 			let watcherService: ChatHubExecutionWatcherService;
@@ -1496,7 +1496,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -1614,7 +1614,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -1746,7 +1746,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -1941,7 +1941,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -2077,7 +2077,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -2219,7 +2219,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Hello',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -2311,7 +2311,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId: secondMessageId,
 							message: 'My name is Alice',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: waitingMessageId, // Reference the waiting message
 							attachments: [],
@@ -2462,7 +2462,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Hello',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -2491,7 +2491,7 @@ describe('chatHub', () => {
 								sessionId,
 								messageId: crypto.randomUUID(),
 								message: 'anything',
-								model: { provider: 'n8n', workflowId: workflow.id },
+								model: { provider: 'MNI', workflowId: workflow.id },
 								credentials: {},
 								previousMessageId: waitingMessageId,
 								attachments: [],
@@ -2543,7 +2543,7 @@ describe('chatHub', () => {
 								sessionId,
 								messageId,
 								message: 'Test message',
-								model: { provider: 'n8n', workflowId: workflow.id },
+								model: { provider: 'MNI', workflowId: workflow.id },
 								credentials: {},
 								previousMessageId: null,
 								attachments: [],
@@ -2671,7 +2671,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -2806,7 +2806,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -2922,7 +2922,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],
@@ -3038,7 +3038,7 @@ describe('chatHub', () => {
 							sessionId,
 							messageId,
 							message: 'Test message',
-							model: { provider: 'n8n', workflowId: workflow.id },
+							model: { provider: 'MNI', workflowId: workflow.id },
 							credentials: {},
 							previousMessageId: null,
 							attachments: [],

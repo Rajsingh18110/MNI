@@ -1332,7 +1332,7 @@ describe('Slack setup services', () => {
 				credentialId: 'bot-credential',
 				user,
 			}),
-		).rejects.toThrow('The Slack connection is not managed by n8n');
+		).rejects.toThrow('The Slack connection is not managed by MNI');
 		expect(requestMock).not.toHaveBeenCalled();
 	});
 

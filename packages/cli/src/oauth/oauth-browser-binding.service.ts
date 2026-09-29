@@ -24,7 +24,7 @@ export class OAuthBrowserBindingService {
 	 * Read or mint the browser-binding cookie. Returns the cookie nonce.
 	 * Cookie attributes inherit Secure/SameSite from `globalConfig.auth.cookie`,
 	 * with SameSite clamped to a `lax` minimum (strict would block the
-	 * cross-site provider→n8n callback redirect).
+	 * cross-site provider→MNI callback redirect).
 	 * Session cookie (no Max-Age) so concurrent flows from the same browser
 	 * share a nonce; binding evaporates when the browser closes.
 	 */

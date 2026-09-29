@@ -17,7 +17,7 @@ files.forEach(file => {
   if (fs.existsSync(file)) {
     let content = fs.readFileSync(file, 'utf8');
     let newContent = content.replace(/!\[Banner image\]\(https:\/\/user-images\.githubusercontent\.com\/[^)]+\)/g, '![MNI Banner](https://raw.githubusercontent.com/Rajsingh18110/MNI/main/assets/mni-screenshot-readme.png)');
-    newContent = newContent.replace(/!\[n8n\.io - Workflow Automation\]\(https:\/\/user-images\.githubusercontent\.com\/[^)]+\)/g, '![MNI - Workflow Automation](https://raw.githubusercontent.com/Rajsingh18110/MNI/main/assets/mni-screenshot-readme.png)');
+    newContent = newContent.replace(/!\[MNI\.io - Workflow Automation\]\(https:\/\/user-images\.githubusercontent\.com\/[^)]+\)/g, '![MNI - Workflow Automation](https://raw.githubusercontent.com/Rajsingh18110/MNI/main/assets/mni-screenshot-readme.png)');
     if (content !== newContent) {
       fs.writeFileSync(file, newContent);
       console.log(`Updated ${file}`);

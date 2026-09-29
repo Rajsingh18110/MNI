@@ -36,7 +36,7 @@ export function shouldIncludeAlibabaModel(id: string): boolean {
 /**
  * Source: LmChatAlibabaCloud `loadOptions` routing.
  *
- * n8n Alibaba credentials store the region's bare host — Alibaba serves its
+ * MNI Alibaba credentials store the region's bare host — Alibaba serves its
  * native and its OpenAI-compatible API under different paths on that host —
  * so a caller-supplied `baseURL` needs the compatible-mode path appended.
  */

@@ -21,7 +21,7 @@ test.describe(
 		 * and shows the collaboration banner until the first tab closes and
 		 * releases the lock.
 		 */
-		test('second tab is read-only until the first tab closes', async ({ n8n, api }) => {
+		test('second tab is read-only until the first tab closes', async ({ MNI, api }) => {
 			const project = await api.projects.getMyPersonalProject();
 			const projectId = project.id;
 

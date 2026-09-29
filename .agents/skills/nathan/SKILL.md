@@ -1,12 +1,12 @@
 ---
-name: n8n:nathan
-description: Deploy a temporary n8n test instance (or generate a local docker run command) via the internal "Nathan" bot, from the repo instead of Slack. Use after opening a PR to offer the user a live test instance, or whenever someone asks to spin up / deploy a test instance for a branch.
+name: MNI:nathan
+description: Deploy a temporary MNI test instance (or generate a local docker run command) via the internal "Nathan" bot, from the repo instead of Slack. Use after opening a PR to offer the user a live test instance, or whenever someone asks to spin up / deploy a test instance for a branch.
 allowed-tools: Bash(pnpm nathan:*), Bash(node scripts/nathan.mjs:*), Bash(git diff:*), Read
 ---
 
 # Nathan — repo-local test instances
 
-Nathan is n8n's internal bot that deploys throwaway test instances from a branch
+Nathan is MNI's internal bot that deploys throwaway test instances from a branch
 or Docker image. It's normally driven from Slack (`/nathan ...`); this skill runs
 the same commands from the repo via `pnpm nathan`.
 
@@ -21,7 +21,7 @@ the same commands from the repo via `pnpm nathan`.
 - **A token in `~/.n8n/dev/nathan-token`.** If a command reports no token, **ask the
   user for one** — point them at the form
   (`https://internal.users.n8n.cloud/form/d6d34a2f-4899-4ee8-afc8-f8c41a8a243d`),
-  where they log in with their n8n account and copy the token from the response —
+  where they log in with their MNI account and copy the token from the response —
   then save it for them (the script's interactive paste prompt needs a real
   terminal, so as an agent use the subcommand):
 
@@ -93,7 +93,7 @@ pnpm nathan help                                   # full option reference
 pnpm nathan deploy my-branch test-my-feature       # community license
 pnpm nathan deploy my-branch test-sso --enterprise # enterprise license
 pnpm nathan deploy my-branch test-ai --ai          # instance AI (license -> pro2)
-pnpm nathan deploy nightly test-nightly            # deploy the n8nio/n8n:nightly image
+pnpm nathan deploy nightly test-nightly            # deploy the n8nio/MNI:nightly image
 ```
 
 Key flags (after the deploy args): `--license community|enterprise|starter|pro1|pro2|trial`,

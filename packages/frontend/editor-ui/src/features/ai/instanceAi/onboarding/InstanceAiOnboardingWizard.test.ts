@@ -29,7 +29,7 @@ const renderWizard = createComponentRenderer(InstanceAiOnboardingWizard, {
 		editMode: false,
 		sequence: ['model', 'sandbox', 'search', 'done'],
 		modelValue: 'anthropic/claude-opus-5',
-		sandboxValue: 'n8n Sandbox',
+		sandboxValue: 'MNI Sandbox',
 		searchValue: 'Disabled',
 		composeFastPath: false,
 	},
@@ -325,7 +325,7 @@ describe('InstanceAiOnboardingWizard', () => {
 		);
 	});
 
-	it('verifies and saves an n8n Sandbox connection', async () => {
+	it('verifies and saves an MNI Sandbox connection', async () => {
 		const { pinia, store } = setupStore();
 		vi.mocked(store.verifySandbox).mockResolvedValue({ ok: true, startupMs: 1500 });
 		const { emitted, findByTestId, findByText, getByTestId } = renderWizard({

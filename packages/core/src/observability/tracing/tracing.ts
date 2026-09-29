@@ -62,7 +62,7 @@ export const enum SpanStatus {
 export class Tracing {
 	private tracer: Tracer = new NoopTracing();
 
-	/** Common n8n specific attribute names */
+	/** Common MNI specific attribute names */
 	commonAttrs = COMMON_TRACE_ATTRIBUTES;
 
 	/** Set the concrete tracing implementation to use */

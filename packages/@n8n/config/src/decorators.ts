@@ -27,7 +27,7 @@ const readEnv = (envName: string) => {
 		const trimmed = value.trim();
 		if (value !== trimmed) {
 			console.warn(
-				`[n8n] Warning: The file specified by ${envName}_FILE contained leading or trailing whitespace; the value was trimmed.`,
+				`[MNI] Warning: The file specified by ${envName}_FILE contained leading or trailing whitespace; the value was trimmed.`,
 			);
 		}
 		return trimmed;

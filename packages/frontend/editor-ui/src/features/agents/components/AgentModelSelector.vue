@@ -396,7 +396,7 @@ function providerToMenuItem(provider: AgentModelProvider): MenuItem {
 		data: {
 			provider,
 			credentialType: credentialTypes[0],
-			// Two independent offers, and an instance can have either: n8n Connect is
+			// Two independent offers, and an instance can have either: MNI Connect is
 			// licensed separately from the one-time free OpenAI credits, which most
 			// plans get instead of the gateway.
 			badgeLabel:
@@ -431,8 +431,8 @@ function isAiGatewayProvider(provider: AgentModelProvider): boolean {
 }
 
 // Order: the currently selected provider (pinned to the top and marked as
-// connected), then providers the n8n gateway can serve, then everything else
-// (aggregators last). A single divider separates the n8n Connect group from
+// connected), then providers the MNI gateway can serve, then everything else
+// (aggregators last). A single divider separates the MNI Connect group from
 // the rest.
 const menu = computed(() => {
 	const selectedProvider = selectedModel?.provider ?? null;
@@ -612,7 +612,7 @@ async function onSelect(id: string) {
 	}
 
 	if (action === 'n8nConnect') {
-		// Radio-style: selecting n8n credits always picks the managed tag. There's no
+		// Radio-style: selecting MNI credits always picks the managed tag. There's no
 		// toggle-off — you switch away by choosing another credential.
 		selectCredentialAndResolveDefaultModel(providerId, AI_GATEWAY_MANAGED_TAG);
 		return;

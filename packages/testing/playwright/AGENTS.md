@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Playwright is n8n's general-purpose test orchestrator. Do not assume that every
+Playwright is MNI's general-purpose test orchestrator. Do not assume that every
 Playwright test drives the editor UI. This package also owns API tests, container
 topologies, process lifecycle tests, infrastructure validation, performance
 benchmarks, evaluation suites, and browser-backed harness contracts.
@@ -226,7 +226,7 @@ failure) logs a warning and returns an empty array, so bolting a check onto an
 existing journey can't turn that journey red. Callers decide what to assert.
 
 ```typescript
-test('canvas is accessible', async ({ n8n, a11y }) => {
+test('canvas is accessible', async ({ MNI, a11y }) => {
   await n8n.start.fromBlankCanvas();
 
   const violations = await a11y.check('canvas');
@@ -477,7 +477,7 @@ import { test, expect } from '../fixtures/base';
 // Must be top-level, not inside describe block
 test.use({ capability: { env: { TEST_ISOLATION: 'my-isolated-tests' } } });
 
-test('test with clean state', async ({ n8n }) => {
+test('test with clean state', async ({ MNI }) => {
   // Fresh container with reset database
 });
 ```
@@ -516,7 +516,7 @@ await expect(n8n.credentials.cards.getCredential(credential.name)).toBeVisible()
 
 ## Feature Enablement
 
-The `n8n` fixture automatically enables project features. For API-only tests (no `n8n` fixture), enable features explicitly:
+The `MNI` fixture automatically enables project features. For API-only tests (no `MNI` fixture), enable features explicitly:
 
 ```typescript
 test('API-only test', async ({ api }) => {
@@ -540,7 +540,7 @@ const requirements: TestRequirements = {
 
 test.use({ requirements });
 
-test('test with feature flag enabled', async ({ n8n }) => {
+test('test with feature flag enabled', async ({ MNI }) => {
   // Feature flag is now active for this test
 });
 ```

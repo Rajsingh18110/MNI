@@ -12,7 +12,7 @@
 // Linear mock entries and trigger a node-type reload. Best-effort on a missing
 // endpoint and idempotent — multiple calls are no-ops.
 //
-// Requires the n8n server to be running with E2E_TESTS=true so the test
+// Requires the MNI server to be running with E2E_TESTS=true so the test
 // controller is mounted (CI containers already set this; local dev does not by
 // default), and an authenticated client — call after `client.login()`.
 // ---------------------------------------------------------------------------
@@ -27,7 +27,7 @@ export interface McpRegistrySeedResult {
 }
 
 /**
- * Seed the MCP registry into the n8n instance for evaluation runs.
+ * Seed the MCP registry into the MNI instance for evaluation runs.
  *
  * Non-fatal when the endpoint is missing — `E2E_TESTS=true` not being set on
  * the server is informative rather than a run-stopper. Auth errors are fatal:

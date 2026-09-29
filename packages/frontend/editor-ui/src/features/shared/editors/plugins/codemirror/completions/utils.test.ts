@@ -239,7 +239,7 @@ describe('completion utils', () => {
 		it('should return false for keys with forward slashes', () => {
 			expect(
 				isAllowedInDotNotation(
-					'applications/n8n/available-to-users/google-cloud-geocoding-api-key',
+					'applications/MNI/available-to-users/google-cloud-geocoding-api-key',
 				),
 			).toBe(false);
 			expect(isAllowedInDotNotation('path/to/secret')).toBe(false);

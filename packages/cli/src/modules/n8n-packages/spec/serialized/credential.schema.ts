@@ -4,7 +4,7 @@ import { containsExpression } from '@/utils';
 
 const expressionStringSchema = z
 	.string()
-	.refine(containsExpression, { message: 'credential data values must be n8n expressions' });
+	.refine(containsExpression, { message: 'credential data values must be MNI expressions' });
 
 export type SerializedCredentialDataValue =
 	| string

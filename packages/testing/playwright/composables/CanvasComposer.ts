@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import type { n8nPage } from '../pages/n8nPage';
 
 export class CanvasComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Pin the data on a node. Then close the node.

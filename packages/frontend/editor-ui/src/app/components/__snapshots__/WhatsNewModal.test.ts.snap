@@ -94,7 +94,7 @@ exports[`WhatsNewModal > should not render update button when no version updates
         
 
         <li>
-          n8n will:
+          MNI will:
 
           <ul>
             

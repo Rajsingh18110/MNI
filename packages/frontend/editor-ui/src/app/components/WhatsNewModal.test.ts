@@ -78,7 +78,7 @@ describe('WhatsNewModal', () => {
 		versionsStore.whatsNew = {
 			createdAt: '2025-06-19T12:35:14.454Z',
 			updatedAt: null,
-			title: "What's New in n8n 1.100.0",
+			title: "What's New in MNI 1.100.0",
 			calloutText:
 				'Convert large workflows into sub-workflows for better modularity and performance.',
 			footer: 'This release contains performance improvements and bug fixes.',
@@ -101,7 +101,7 @@ describe('WhatsNewModal', () => {
 						'2. Right-click to open the context menu and select ' +
 						'**Convert to sub-workflow**\n' +
 						'    - Or use the shortcut: `Alt + X`\n' +
-						'3. n8n will:\n' +
+						'3. MNI will:\n' +
 						'    - Open a new tab containing the selected nodes\n' +
 						'    - Preserve all node parameters as-is\n' +
 						'    - Replace the selected nodes in the original workflow with a **Call My Sub-workflow** node\n\n' +
@@ -145,7 +145,7 @@ describe('WhatsNewModal', () => {
 		await waitFor(() => expect(getByTestId('whatsNew-modal')).toBeInTheDocument());
 		await waitFor(() => expect(getByTestId('whats-new-item-1')).toBeInTheDocument());
 
-		expect(screen.getByText("What's New in n8n 1.100.0")).toBeInTheDocument();
+		expect(screen.getByText("What's New in MNI 1.100.0")).toBeInTheDocument();
 		expect(getByTestId('whats-new-item-1')).toMatchSnapshot();
 		expect(queryByTestId('whats-new-modal-update-button')).not.toBeInTheDocument();
 		expect(queryByTestId('whats-new-modal-next-versions-link')).not.toBeInTheDocument();

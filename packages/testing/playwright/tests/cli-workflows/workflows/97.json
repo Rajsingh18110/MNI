@@ -16,7 +16,7 @@
 		{
 			"parameters": {
 				"type": "SHA256",
-				"value": "n8n"
+				"value": "MNI"
 			},
 			"name": "Crypto1",
 			"type": "n8n-nodes-base.crypto",
@@ -27,7 +27,7 @@
 		{
 			"parameters": {
 				"type": "SHA384",
-				"value": "n8n"
+				"value": "MNI"
 			},
 			"name": "Crypto2",
 			"type": "n8n-nodes-base.crypto",
@@ -38,7 +38,7 @@
 		{
 			"parameters": {
 				"type": "SHA512",
-				"value": "n8n"
+				"value": "MNI"
 			},
 			"name": "Crypto3",
 			"type": "n8n-nodes-base.crypto",
@@ -60,7 +60,7 @@
 		},
 		{
 			"parameters": {
-				"value": "n8n"
+				"value": "MNI"
 			},
 			"name": "Crypto0",
 			"type": "n8n-nodes-base.crypto",
@@ -71,7 +71,7 @@
 		{
 			"parameters": {
 				"action": "hmac",
-				"value": "n8n",
+				"value": "MNI",
 				"secret": "secrect"
 			},
 			"name": "Crypto4",
@@ -84,7 +84,7 @@
 			"parameters": {
 				"action": "hmac",
 				"type": "SHA256",
-				"value": "n8n",
+				"value": "MNI",
 				"secret": "secrect"
 			},
 			"name": "Crypto5",
@@ -97,7 +97,7 @@
 			"parameters": {
 				"action": "hmac",
 				"type": "SHA384",
-				"value": "n8n",
+				"value": "MNI",
 				"secret": "secrect"
 			},
 			"name": "Crypto6",
@@ -110,7 +110,7 @@
 			"parameters": {
 				"action": "hmac",
 				"type": "SHA512",
-				"value": "n8n",
+				"value": "MNI",
 				"secret": "secrect"
 			},
 			"name": "Crypto7",
@@ -134,7 +134,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "ripemd",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},
@@ -148,7 +148,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "ripemd160",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},
@@ -162,7 +162,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "rmd160",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},
@@ -176,7 +176,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "sha1",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},
@@ -190,7 +190,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "sha224",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},
@@ -204,7 +204,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "sha256",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},
@@ -231,7 +231,7 @@
 		{
 			"parameters": {
 				"action": "sign",
-				"value": "n8n",
+				"value": "MNI",
 				"algorithm": "md5",
 				"privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDuY4lRGHHAW9mXYY57m/CUzM4zqQ1e0W9D3e76YpipgF6rWtUn\nS8aSD+DxGxp4MldazZTwPPcpJHcV/Hr3A/KezsY9aOpXdnUdquV85969OgyGCRJk\nBv2gowSGfy4ueomfm4PFTPF0anPir+X1IZzAyzO6igL5ZE0Y5rcVrOgLKwIDAQAB\nAoGARfQ4he8d5jwt0HHkzVoX0Zp+AgPgNAxSUcCNEbWgJdFRNoh7l0HxvcfiEu6I\nqG/hWXiNdaf2QYD9XxrNfLIQXj+2MVOh4wpeqbO1DlqiGa9J8y7rLOVO+64ODXGt\nbZns6kcWLx8gYnhwqIJHnqfzvAsFjEKuKiSxpyeK8EvjDW0CQQD91J9DzhSXyvwE\nNaZT4Y9BcEbazVv+xUVhkSs7WRWStimeb57eIrIcXPE9heiT+6QpAnm6EZQR7RWN\n48PiAfbnAkEA8G0gwMWsnpmtb9VbF2uuQxs4Bw5Nuzb6l/+0zTqMELSVCaHIGnxk\nkV08NHfnck1jp1RU9MiUFI1yfRrN6vz1HQJBAMWQ8w3Rn1Gumo2kPHvZeqlSfLPd\nV5drcF9KoL2mzxXMV4SMGLmJg9xzswlR6v8TxGhvFtPuzrNNN5OjDlohcU0CQBOC\nZ3P9FmLQSZiXkYq2/C8J2GQKLxiP/4myADPfGlqIrMdZT2mGyopZLHd9e1R1Hy8G\n0tYCKLH6QF4SfL8iw6kCQCV81eZ/3JthrEfsIMv9lxvTLaRrprI5Eei8Rl+cFhNH\nziv/tOUxppOn1SkHvxXni5F5dbNR9u4mjaCLDau+qIg=\n-----END RSA PRIVATE KEY-----"
 			},

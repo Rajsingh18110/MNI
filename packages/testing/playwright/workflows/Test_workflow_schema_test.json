@@ -7,7 +7,7 @@
 				"limit": 10
 			},
 			"id": "39cd80ce-5a8f-4339-b3d5-c4af969dd330",
-			"name": "Customer Datastore (n8n training)",
+			"name": "Customer Datastore (MNI training)",
 			"type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
 			"typeVersion": 1,
 			"position": [940, 680]
@@ -49,7 +49,7 @@
 	],
 	"pinData": {},
 	"connections": {
-		"Customer Datastore (n8n training)": {
+		"Customer Datastore (MNI training)": {
 			"main": [
 				[
 					{
@@ -64,7 +64,7 @@
 			"main": [
 				[
 					{
-						"node": "Customer Datastore (n8n training)",
+						"node": "Customer Datastore (MNI training)",
 						"type": "main",
 						"index": 0
 					}

@@ -448,7 +448,7 @@ export type AuthenticationInformation = {
  *
  * roles:    Role URNs from the issued token (e.g. ['project:editor']) — for audit logging only, not enforcement.
  * scopes:   Concrete scopes resolved from those roles (e.g. ['workflow:create', 'workflow:read']).
- * resource: Optional URN constraining which resource the token may access (e.g. 'urn:n8n:project:abc123').
+ * resource: Optional URN constraining which resource the token may access (e.g. 'urn:MNI:project:abc123').
  * actor:    Actor identity for delegation — present when the token carries an `act` claim.
  */
 export interface TokenGrant {

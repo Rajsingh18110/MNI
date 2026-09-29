@@ -212,7 +212,7 @@ export interface IExecutionTrackProperties extends ITelemetryTrackProperties {
 export interface IAgentExecutionTrackProperties extends ITelemetryTrackProperties {
 	agent_id: string;
 	/**
-	 * n8n user ID, present only when the agent run has direct n8n user context —
+	 * MNI user ID, present only when the agent run has direct MNI user context —
 	 * so in-app chat and manual task runs, but never chat integrations or cron.
 	 */
 	user_id?: string;
@@ -234,7 +234,7 @@ export type AgentTurnTelemetryStatus = 'succeeded' | 'failed';
 
 export type AgentTelemetryMemoryType =
 	| 'none'
-	| 'n8n'
+	| 'MNI'
 	| 'n8n_observational'
 	| 'n8n_episodic'
 	| 'n8n_observational_episodic';

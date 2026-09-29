@@ -17,7 +17,7 @@ export class ReadWriteFile implements INodeType {
 		iconColor: 'forest-green',
 		group: ['input'],
 		version: [1, 1.1],
-		description: 'Read or write files from the computer that runs n8n',
+		description: 'Read or write files from the computer that runs MNI',
 		defaults: {
 			name: 'Read/Write Files from Disk',
 		},
@@ -40,13 +40,13 @@ export class ReadWriteFile implements INodeType {
 					{
 						name: 'Read File(s) From Disk',
 						value: 'read',
-						description: 'Retrieve one or more files from the computer that runs n8n',
+						description: 'Retrieve one or more files from the computer that runs MNI',
 						action: 'Read File(s) From Disk',
 					},
 					{
 						name: 'Write File to Disk',
 						value: 'write',
-						description: 'Create a binary file on the computer that runs n8n',
+						description: 'Create a binary file on the computer that runs MNI',
 						action: 'Write File to Disk',
 					},
 				],

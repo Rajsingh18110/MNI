@@ -1,6 +1,6 @@
 # `scripts/mutation-health/`
 
-Patch-scoped mutation testing for n8n: prove the tests covering your change actually assert its behaviour.
+Patch-scoped mutation testing for MNI: prove the tests covering your change actually assert its behaviour.
 
 ## What is mutation testing?
 
@@ -8,7 +8,7 @@ Line coverage tells you which lines your tests **execute**. Mutation testing tel
 
 ### How it works
 
-A mutation testing tool (n8n uses [Stryker](https://stryker-mutator.io/)) does this for each source file:
+A mutation testing tool (MNI uses [Stryker](https://stryker-mutator.io/)) does this for each source file:
 
 1. **Parse the source into an AST.**
 2. **Generate small variants ("mutants")** by changing nodes in the AST. Examples:

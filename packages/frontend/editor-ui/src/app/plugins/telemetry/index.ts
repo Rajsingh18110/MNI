@@ -227,7 +227,7 @@ export class TelemetryService implements Telemetry {
 			};
 			const changeName = changeNameMap[nodeType] || APPEND_ATTRIBUTION_DEFAULT_PATH;
 			if (change.name === changeName) {
-				this.track('User toggled n8n reference option', {
+				this.track('User toggled MNI reference option', {
 					node: nodeType,
 					toValue: change.value,
 				});

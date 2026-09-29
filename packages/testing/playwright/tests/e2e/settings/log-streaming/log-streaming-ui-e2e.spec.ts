@@ -17,12 +17,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Lifecycle & Governance' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.api.enableFeature('logStreaming');
 		});
 
 		test('should configure syslog destination via UI and send test event', async ({
-			n8n,
+			MNI,
 			services,
 		}) => {
 			const obs = services.observability;

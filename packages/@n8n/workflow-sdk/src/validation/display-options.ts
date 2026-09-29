@@ -1,7 +1,7 @@
 /**
  * Centralized displayOptions Resolution
  *
- * This module provides displayOptions matching logic aligned with n8n core
+ * This module provides displayOptions matching logic aligned with MNI core
  * (packages/workflow/src/node-helpers.ts). It supports:
  * - Simple value inclusion (legacy)
  * - _cnd operators (eq, not, gte, lte, gt, lt, between, includes, startsWith, endsWith, regex, exists)
@@ -144,7 +144,7 @@ function getMatchingPathValues(context: DisplayOptionsContext, regexPath: string
 /**
  * Check if conditions are met against actual values.
  *
- * Aligned with n8n core checkConditions function.
+ * Aligned with MNI core checkConditions function.
  *
  * For simple values: returns true if ANY actual value is in the conditions list.
  * For _cnd operators: returns true if ALL actual values satisfy the condition.
@@ -295,7 +295,7 @@ function isUnselectedResourceLocator(value: unknown): boolean {
 /**
  * Check if a field should be visible based on displayOptions and current context.
  *
- * Aligned with n8n core displayParameter function.
+ * Aligned with MNI core displayParameter function.
  *
  * Logic:
  * - If no displayOptions, return true

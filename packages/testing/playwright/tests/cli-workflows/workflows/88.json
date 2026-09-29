@@ -16,7 +16,7 @@
 		{
 			"parameters": {
 				"resource": "connection",
-				"service": "n8n",
+				"service": "MNI",
 				"externalid": "=account{{Date.now()}}",
 				"name": "=AccountName{{Date.now()}}",
 				"logoUrl": "https://n8n.io/_nuxt/img/df5be1c.png",

@@ -168,7 +168,7 @@ describe('McpServerApiKeyService.verifyApiKey (integration)', () => {
 		const owner = await createOwner();
 		const jwt = jwtService.sign({
 			sub: owner.id,
-			iss: 'n8n',
+			iss: 'MNI',
 			aud: 'public-api',
 			jti: 'tampered',
 		});

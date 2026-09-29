@@ -6,7 +6,7 @@ import type { n8nPage } from '../pages/n8nPage';
  * A class for user interactions with templates that go across multiple pages.
  */
 export class TemplatesComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Navigates to templates page, waits for loading to complete,

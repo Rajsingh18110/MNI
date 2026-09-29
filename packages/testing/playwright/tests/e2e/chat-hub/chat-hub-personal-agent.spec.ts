@@ -9,7 +9,7 @@ test.describe(
 	},
 	() => {
 		test('create personal agent and start conversation @auth:owner', async ({
-			n8n,
+			MNI,
 			anthropicCredential: _,
 		}) => {
 			await n8n.navigate.toChatHub();
@@ -40,7 +40,7 @@ test.describe(
 			await expect(n8n.chatHubChat.getChatMessages().last()).toContainText('你好');
 		});
 
-		test('manage personal agents @auth:admin', async ({ n8n, anthropicCredential: _ }) => {
+		test('manage personal agents @auth:admin', async ({ MNI, anthropicCredential: _ }) => {
 			await n8n.navigate.toChatHubPersonalAgents();
 			await n8n.chatHubPersonalAgents.getNewAgentButton().click();
 

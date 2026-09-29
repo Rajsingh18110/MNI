@@ -50,7 +50,7 @@ RUN node -e "const pkg = require('./package.json'); \
 # @n8n_io/ai-assistant-sdk bump landed within hours of its npm publish. This step only
 # re-resolves an already-vetted, already-pinned dependency set; the real supply-chain age
 # policy is enforced by the host install (pnpm-workspace.yaml + SafeChain).
-# Install moment by default (special case for n8n cloud)
+# Install moment by default (special case for MNI cloud)
 RUN rm -f node_modules/.modules.yaml && \
     pnpm add moment@2.30.1 --save-prod --no-lockfile --config.minimum-release-age=0
 
@@ -222,8 +222,8 @@ EXPOSE 5680/tcp
 ENTRYPOINT ["/usr/local/bin/task-runner-launcher"]
 CMD ["javascript", "python"]
 
-LABEL org.opencontainers.image.title="n8n task runners (distroless)" \
-      org.opencontainers.image.description="Distroless sidecar image providing n8n task runners for JavaScript and Python code execution" \
+LABEL org.opencontainers.image.title="MNI task runners (distroless)" \
+      org.opencontainers.image.description="Distroless sidecar image providing MNI task runners for JavaScript and Python code execution" \
       org.opencontainers.image.source="https://github.com/n8n-io/n8n" \
       org.opencontainers.image.url="https://n8n.io" \
       org.opencontainers.image.version="${N8N_VERSION}"

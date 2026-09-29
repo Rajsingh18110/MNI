@@ -8,11 +8,11 @@ test.describe(
 	},
 	() => {
 		test('renders the project executions list with seeded executions', async ({
-			n8n,
+			MNI,
 			api,
 			a11y,
 		}) => {
-			await adminViewsExecutionsList({ n8n, api, a11y });
+			await adminViewsExecutionsList({ MNI, api, a11y });
 		});
 	},
 );

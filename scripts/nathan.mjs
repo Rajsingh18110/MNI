@@ -122,7 +122,7 @@ if (process.argv[2] === 'set-token') {
 
 let token = readSavedToken();
 if (!token) {
-	console.error(`\nNo Nathan token found. Get one here:\n  ${TOKEN_FORM_URL}\n  → log in with your n8n account and copy the token from the response.\n`);
+	console.error(`\nNo Nathan token found. Get one here:\n  ${TOKEN_FORM_URL}\n  → log in with your MNI account and copy the token from the response.\n`);
 	if (process.stdin.isTTY) {
 		const rl = readline.createInterface({ input: process.stdin, output: process.stderr });
 		token = (await rl.question('Paste your Nathan token here: ')).trim();

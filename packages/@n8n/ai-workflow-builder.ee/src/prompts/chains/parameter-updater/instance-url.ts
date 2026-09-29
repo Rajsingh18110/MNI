@@ -3,7 +3,7 @@ import { PromptBuilder } from '@/prompts/builder';
 export const instanceUrlPrompt = new PromptBuilder()
 	.section(
 		'instance_url',
-		`The n8n instance base URL is: {instanceUrl}
+		`The MNI instance base URL is: {instanceUrl}
 
 This URL is essential for webhook nodes and chat triggers as it provides the base URL for:
 - Webhook URLs that external services need to call

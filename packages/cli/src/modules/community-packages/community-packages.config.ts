@@ -24,7 +24,7 @@ export class CommunityPackagesConfig {
 	@Env('N8N_UNVERIFIED_PACKAGES_ENABLED')
 	unverifiedEnabled: boolean = true;
 
-	/** Whether to enable and show search suggestion of packages verified by n8n */
+	/** Whether to enable and show search suggestion of packages verified by MNI */
 	@Env('N8N_VERIFIED_PACKAGES_ENABLED')
 	verifiedEnabled: boolean = true;
 

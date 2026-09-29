@@ -870,7 +870,7 @@ export function addWhereClauses(
 		clause.condition = normalizedCondition;
 
 		// The condition value is json type, so convert to required type only
-		// if fixed expression is used instead of n8n expressions.
+		// if fixed expression is used instead of MNI expressions.
 		if (typeof clause.value === 'string') {
 			try {
 				clause.value = JSON.parse(clause.value); // "2" → 2 (number)
@@ -1368,7 +1368,7 @@ export function getBindDefsForExecuteMany(
 	return query;
 }
 
-// It will convert the n8n values to compatible bind values.
+// It will convert the MNI values to compatible bind values.
 export function formatItemValues(item: IDataObject, col: ColumnMap): unknown[] {
 	const result = [];
 	for (const key of Object.keys(item)) {

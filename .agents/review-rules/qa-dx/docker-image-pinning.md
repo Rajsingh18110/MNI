@@ -25,7 +25,7 @@ Node release. Flag a bump that moves one and leaves another behind.
 
 ## The runtime base only changes here
 
-A separate workflow builds `n8nio/base`; a new base reaches the n8n image only
+A separate workflow builds `n8nio/base`; a new base reaches the MNI image only
 when `RUNTIME_IMAGE` changes in this file. Flag a PR that expects a base change
 to arrive on its own, and flag a runtime stage that installs a compiler or
 build dependency — the runtime base ships without one deliberately, and build

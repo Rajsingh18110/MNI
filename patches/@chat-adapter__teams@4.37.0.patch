@@ -6,7 +6,7 @@ index 5278d648103068f1f3875c27e42c775ab02238ed..c0f0a7302a731e79951a972f6e18e91b
  var CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1e3;
  var USER_INFO_CACHE_TTL_MS = 60 * 60 * 1e3;
  var USER_INFO_NEGATIVE_CACHE_TTL_MS = 5 * 60 * 1e3;
-+// n8n patch (upstream: vercel/chat#950) — Teams deletes a targeted message 24
++// MNI patch (upstream: vercel/chat#950) — Teams deletes a targeted message 24
 +// hours after it is sent, so a record of one is worthless past that point.
 +var TARGETED_ACTIVITY_TTL_MS = 24 * 60 * 60 * 1e3;
  var USER_INFO_NEGATIVE_SENTINEL = "unresolvable";
@@ -32,13 +32,13 @@ index 5278d648103068f1f3875c27e42c775ab02238ed..c0f0a7302a731e79951a972f6e18e91b
        handleTeamsError(error, "postEphemeral");
      }
    }
-+  // n8n patch (upstream: vercel/chat#950) — Teams accepts an update or a delete
++  // MNI patch (upstream: vercel/chat#950) — Teams accepts an update or a delete
 +  // for a targeted activity only through ?isTargetedActivity=true; the plain
 +  // endpoint answers 400. Nothing on the wire says afterwards which activities
 +  // were targeted and editMessage/deleteMessage receive only a message id, so
 +  // the ids sent targeted are recorded here and read back on mutation.
 +  //
-+  // The record is only a fast path. n8n backs the Chat state adapter with
++  // The record is only a fast path. MNI backs the Chat state adapter with
 +  // process memory, so a restart or a second main loses it — mutateActivity
 +  // therefore tries the other endpoint rather than trusting the lookup.
 +  targetedActivityKey(conversationId, messageId) {

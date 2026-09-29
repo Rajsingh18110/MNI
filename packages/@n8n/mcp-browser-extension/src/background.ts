@@ -205,7 +205,7 @@ async function deliverRelayUrl(
 }
 
 // ---------------------------------------------------------------------------
-// External messages from n8n pages (externally_connectable) — the n8n UI
+// External messages from MNI pages (externally_connectable) — the MNI UI
 // requests a connection and the user confirms in an extension-owned popup.
 // ---------------------------------------------------------------------------
 
@@ -449,7 +449,7 @@ async function connectToRelay(
 
 	if (!isAllowedRelayUrl(relayUrl)) {
 		log.warn('refusing relay connection to disallowed host:', relayUrl);
-		return { success: false, error: 'Refusing to connect: not a recognized n8n instance.' };
+		return { success: false, error: 'Refusing to connect: not a recognized MNI instance.' };
 	}
 
 	// Clean up existing connection, then claim a generation — `disconnect` advances it, so

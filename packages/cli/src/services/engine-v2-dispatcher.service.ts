@@ -99,7 +99,7 @@ export class EngineV2Dispatcher {
 		await this.credentialsPermissionChecker.check(workflowData.id, workflowData.nodes, data.userId);
 
 		// Lazily imported: a top-level import would pull the v1 step executor and
-		// its dependencies into every n8n process, including ones with the module off.
+		// its dependencies into every MNI process, including ones with the module off.
 		const { V1WorkflowConverter, toStepOutputs } = await import('@n8n/node-engine-compatibility');
 
 		const graph = new V1WorkflowConverter().convert(workflowData, trigger.name);

@@ -29,7 +29,7 @@ test.describe(
 			// Needs a real container to restart; skipped when running against a
 			// pre-started local instance (n8nContainer is null there).
 			// eslint-disable-next-line playwright/no-skipped-test -- runtime guard, not a disabled test
-			test.skip(!n8nContainer, 'container-only: requires a restartable n8n container');
+			test.skip(!n8nContainer, 'container-only: requires a restartable MNI container');
 
 			const workflowId = await expectScheduleTriggerFires(api, makeScheduleTriggerWorkflow());
 
@@ -43,7 +43,7 @@ test.describe(
 
 			// Restart the main container in place (same writable layer + DB).
 			const [main] = n8nContainer.findContainers(/-n8n(-main-\d+)?$/);
-			expect(main, 'main n8n container should be found').toBeDefined();
+			expect(main, 'main MNI container should be found').toBeDefined();
 			await main.restart();
 
 			// Wait until the API is serving again after the restart.

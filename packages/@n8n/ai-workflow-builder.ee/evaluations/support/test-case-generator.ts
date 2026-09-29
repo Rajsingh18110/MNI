@@ -68,7 +68,7 @@ function parseTestCasesOutput(value: unknown): GeneratedTestCasesOutput {
 /**
  * System prompt for test case generation.
  */
-const systemPrompt = `You are an expert at generating diverse test cases for an n8n workflow builder AI. Create test cases that cover various real-world scenarios and complexity levels.
+const systemPrompt = `You are an expert at generating diverse test cases for an MNI workflow builder AI. Create test cases that cover various real-world scenarios and complexity levels.
 
 ## Test Case Requirements:
 

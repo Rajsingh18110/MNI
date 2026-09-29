@@ -261,7 +261,7 @@ function webSearchEvent(requestId: string): CapturedEvent {
 				toolName: 'research',
 				args: {},
 				severity: 'info',
-				message: 'n8n AI wants to search the web for: stripe webhook signing',
+				message: 'MNI AI wants to search the web for: stripe webhook signing',
 				webSearch: { query: 'stripe webhook signing' },
 			},
 		},

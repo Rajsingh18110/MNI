@@ -203,7 +203,7 @@ export function getActiveOrchestratorDomainToolNames(context: InstanceAiContext)
 	return new Set(getOrchestratorDomainToolFactories(context).map(([name]) => name));
 }
 
-/** Creates the native n8n domain tools available to the orchestrator. */
+/** Creates the native MNI domain tools available to the orchestrator. */
 export function createOrchestratorDomainTools(context: InstanceAiContext): InstanceAiToolRegistry {
 	const tools: Array<[string, BuiltTool]> = getOrchestratorDomainToolFactories(context).map(
 		([name, createTool]) => [name, createTool()],

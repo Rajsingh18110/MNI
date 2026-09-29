@@ -89,7 +89,7 @@ export class CredentialResolverWorkflowService {
 	 *
 	 * @param workflowId - The (root) workflow ID to check
 	 * @param credentialContext - Identity context used for credential authorization
-	 * @param options.user - Optional n8n session user whose access is enforced on the root workflow
+	 * @param options.user - Optional MNI session user whose access is enforced on the root workflow
 	 * @param options.rootNodes - Optional root-workflow nodes from the caller's own snapshot (the
 	 *   running workflow version). When given, the root's credentials are collected from these nodes
 	 *   instead of the persisted entity, so only nodes that can run on this trigger are checked and

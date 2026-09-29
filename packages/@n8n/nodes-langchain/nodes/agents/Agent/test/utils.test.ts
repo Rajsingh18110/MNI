@@ -122,7 +122,7 @@ describe('getInputs', () => {
 					excludedNodes: [
 						'@n8n/n8n-nodes-langchain.lmCohere',
 						'@n8n/n8n-nodes-langchain.lmOllama',
-						'n8n/n8n-nodes-langchain.lmOpenAi',
+						'MNI/n8n-nodes-langchain.lmOpenAi',
 						'@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference',
 					],
 				},
@@ -136,7 +136,7 @@ describe('getInputs', () => {
 					excludedNodes: [
 						'@n8n/n8n-nodes-langchain.lmCohere',
 						'@n8n/n8n-nodes-langchain.lmOllama',
-						'n8n/n8n-nodes-langchain.lmOpenAi',
+						'MNI/n8n-nodes-langchain.lmOpenAi',
 						'@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference',
 					],
 				},
@@ -171,7 +171,7 @@ describe('getInputs', () => {
 					excludedNodes: [
 						'@n8n/n8n-nodes-langchain.lmCohere',
 						'@n8n/n8n-nodes-langchain.lmOllama',
-						'n8n/n8n-nodes-langchain.lmOpenAi',
+						'MNI/n8n-nodes-langchain.lmOpenAi',
 						'@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference',
 					],
 				},
@@ -185,7 +185,7 @@ describe('getInputs', () => {
 					excludedNodes: [
 						'@n8n/n8n-nodes-langchain.lmCohere',
 						'@n8n/n8n-nodes-langchain.lmOllama',
-						'n8n/n8n-nodes-langchain.lmOpenAi',
+						'MNI/n8n-nodes-langchain.lmOpenAi',
 						'@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference',
 					],
 				},
@@ -215,7 +215,7 @@ describe('getInputs', () => {
 					excludedNodes: [
 						'@n8n/n8n-nodes-langchain.lmCohere',
 						'@n8n/n8n-nodes-langchain.lmOllama',
-						'n8n/n8n-nodes-langchain.lmOpenAi',
+						'MNI/n8n-nodes-langchain.lmOpenAi',
 						'@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference',
 					],
 				},
@@ -259,7 +259,7 @@ describe('getInputs', () => {
 					excludedNodes: [
 						'@n8n/n8n-nodes-langchain.lmCohere',
 						'@n8n/n8n-nodes-langchain.lmOllama',
-						'n8n/n8n-nodes-langchain.lmOpenAi',
+						'MNI/n8n-nodes-langchain.lmOpenAi',
 						'@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference',
 					],
 				},

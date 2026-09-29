@@ -33,8 +33,8 @@ describe('scanDirectoryForPackages', () => {
 			? JSON.stringify({ name: '@elevenlabs/n8n-nodes-elevenlabs', version: '1.0.0' })
 			: JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2' });
 
-	const firecrawlPackageJson = (n8n?: object) =>
-		JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2', ...{ n8n } });
+	const firecrawlPackageJson = (MNI?: object) =>
+		JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2', ...{ MNI } });
 
 	const enoent = (file: string): NodeJS.ErrnoException => {
 		const error: NodeJS.ErrnoException = new Error(
@@ -154,7 +154,7 @@ describe('scanDirectoryForPackages', () => {
 		const [message] = vi.mocked(logger.warn).mock.calls[0];
 		expect(message).toContain(`node API version ${N8N_NODES_API_VERSION + 1}`);
 		expect(message).toContain(`supports up to ${N8N_NODES_API_VERSION}`);
-		expect(message).toContain('Upgrade n8n');
+		expect(message).toContain('Upgrade MNI');
 	});
 
 	it('skips a package with a malformed node API version', async () => {

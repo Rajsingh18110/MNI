@@ -66,7 +66,7 @@ export interface StackTelemetryRecord {
 	containers: {
 		total: number;
 		services: number;
-		n8n: number;
+		MNI: number;
 	};
 
 	/** Outcome */
@@ -301,7 +301,7 @@ export class TelemetryRecorder {
 			containers: {
 				total: this.serviceCount + this.n8nCount,
 				services: this.serviceCount,
-				n8n: this.n8nCount,
+				MNI: this.n8nCount,
 			},
 			success,
 			...(this.failurePhase ? { failurePhase: this.failurePhase } : {}),

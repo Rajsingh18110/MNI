@@ -19,7 +19,7 @@ beforeAll(async () => {
 const server = setupTestServer({ endpointGroups: ['ai'] });
 const chatIntegration = { type: 'n8n_chat', credentialId: '' } as const;
 
-describe('production n8n Chat HTTP route', () => {
+describe('production MNI Chat HTTP route', () => {
 	async function createAgent(ownerId: string) {
 		const project = await Container.get(ProjectRepository).getPersonalProjectForUserOrFail(ownerId);
 		const repository = Container.get(AgentRepository);
@@ -93,7 +93,7 @@ describe('production n8n Chat HTTP route', () => {
 		expect(response.text).toContain('"errorCode":"agent_unavailable"');
 	});
 
-	it('rejects a published version with n8n Chat disabled', async () => {
+	it('rejects a published version with MNI Chat disabled', async () => {
 		const owner = await createOwner();
 		const { project, agent } = await createAgent(owner.id);
 		await activateChat(agent.id, false);

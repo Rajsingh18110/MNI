@@ -187,7 +187,7 @@ onMounted(async () => {
 					/>
 					<N8nIcon v-else-if="detailsResolved || error" icon="mcp" size="large" color="text-dark" />
 				</div>
-				<!-- Pending-connection connector: a dashed SVG line marching toward the n8n tile
+				<!-- Pending-connection connector: a dashed SVG line marching toward the MNI tile
 				     with a slow muted spinner badge. Decorative. -->
 				<span :class="$style.connector" aria-hidden="true">
 					<svg viewBox="0 0 64 8" preserveAspectRatio="none">
@@ -462,7 +462,7 @@ onMounted(async () => {
 	}
 }
 
-/* Dashes march toward the n8n tile (right); a whole dash period (2 + 5) keeps the loop seamless. */
+/* Dashes march toward the MNI tile (right); a whole dash period (2 + 5) keeps the loop seamless. */
 .connector-line {
 	animation: mcp-connector-dash 0.8s linear infinite;
 }

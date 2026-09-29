@@ -5,20 +5,20 @@
 // need no judge: a credential exists, and the issued secret never appeared in
 // the transcript or tool traces.
 //
-// The value check is done WITHOUT reading the secret back, because n8n's REST
+// The value check is done WITHOUT reading the secret back, because MNI's REST
 // read blanks every password field. Instead the fixture stands in for the
 // provider API and accepts ONLY the minted key, and `POST /rest/credentials/test`
 // is asked to run the credential's own test request against it.
 //
 // That works because `testWithCredentials` merges the submitted payload over
 // the stored credential and calls `unredact(...)`: echo the BLANKED apiKey back
-// with a substituted `url` and n8n tests the REAL stored secret against our
+// with a substituted `url` and MNI tests the REAL stored secret against our
 // endpoint, persisting nothing. A 200 therefore proves the saved value is
 // exactly what the page issued — a truncated or re-typed key cannot pass.
 //
 // It is DISCARDED, never failed, when the provider stand-in isn't available
-// (fixture declares no `verify` block, or n8n cannot reach it — which is the
-// normal case when n8n runs in a different container from the fixture). An
+// (fixture declares no `verify` block, or MNI cannot reach it — which is the
+// normal case when MNI runs in a different container from the fixture). An
 // unreachable endpoint says nothing about the agent, so failing on it would be
 // a false regression.
 //
@@ -100,8 +100,8 @@ export function credentialsCreatedByThisBuild<T extends { id: string; type: stri
  *  copies drifting forks a case's run history. */
 export function createdExpectationText(credentialType?: string): string {
 	return credentialType
-		? `A ${credentialType} credential is created in n8n`
-		: 'A new credential is created in n8n';
+		? `A ${credentialType} credential is created in MNI`
+		: 'A new credential is created in MNI';
 }
 
 /** The three deterministic expectations, for a caller that has to report them
@@ -289,11 +289,11 @@ export async function runCredentialSetupChecks(options: {
  *
  * MUST be called while the fixture is still listening — it dies with the lane.
  *
- * Classification keys on the FIXTURE's own record, not on n8n's error prose:
+ * Classification keys on the FIXTURE's own record, not on MNI's error prose:
  * if the stand-in never saw a request, the test never reached it (unreachable
  * across a container boundary, say), which is a harness limitation and is
  * DISCARDED. Only a request the stand-in actually saw and refused is allowed to
- * red the case. Parsing n8n's message strings to tell those apart would be
+ * red the case. Parsing MNI's message strings to tell those apart would be
  * brittle in exactly the way that produces false regressions.
  */
 export async function probeCredentialValue(options: {
@@ -385,7 +385,7 @@ async function probeOneCredential(options: {
 	const attemptsBefore = fixture?.verifyAttempts ?? 0;
 	try {
 		const credential = await client.getCredentialForTest(credentialId);
-		// Echo the data back and let n8n's `unredact` restore the blanked password
+		// Echo the data back and let MNI's `unredact` restore the blanked password
 		// from storage, so the secret under test is the STORED one and nothing is
 		// written. In local mode the URL is left alone, so the test goes to the
 		// real provider API — a pass there proves the key is genuine and active,
@@ -395,7 +395,7 @@ async function probeOneCredential(options: {
 		// field to be present first: a Base URL with a default is not persisted
 		// unless the user changed it, so real anthropic/openai credentials store
 		// only `apiKey` — verified against live rows. Adding the field IS the
-		// mechanism (n8n merges the submitted data over the stored credential), so
+		// mechanism (MNI merges the submitted data over the stored credential), so
 		// requiring it would discard the check on exactly the providers it works
 		// for. A wrong `urlField` is caught at CI time instead, by the manifest ↔
 		// `test.request` lockstep in `fixture-server.test.ts`.
@@ -406,7 +406,7 @@ async function probeOneCredential(options: {
 		if (result.status === 'OK') return { kind: 'passed', target: local ? 'real' : 'stand-in' };
 
 		if (!local && fixture?.verifyAttempts === attemptsBefore) {
-			const reason = `n8n never reached the provider stand-in at ${verifyBaseUrl} (${result.message ?? result.status})`;
+			const reason = `MNI never reached the provider stand-in at ${verifyBaseUrl} (${result.message ?? result.status})`;
 			logger.verbose(`  [fixture] value check discarded — ${reason}`);
 			return { kind: 'unsupported', reason };
 		}

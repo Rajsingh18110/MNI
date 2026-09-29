@@ -36,7 +36,7 @@ export interface GetRuntimeParams {
 	/** When true, load the published snapshot. */
 	usePublishedVersion?: boolean;
 	/**
-	 * The calling n8n user. When present, the runtime is built with node/workflow
+	 * The calling MNI user. When present, the runtime is built with node/workflow
 	 * tools filtered down to what this user can access, and the cache key is
 	 * scoped to the caller so different users never share a runtime. Absent for
 	 * published/integration runs, which keep today's project-scoped runtime.

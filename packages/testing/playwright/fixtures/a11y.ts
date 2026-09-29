@@ -28,7 +28,7 @@ export const A11Y_BUCKETS = {
 
 export type A11yBucket = keyof typeof A11Y_BUCKETS;
 
-/** WCAG 2.1 A + AA, the level n8n targets. */
+/** WCAG 2.1 A + AA, the level MNI targets. */
 export const DEFAULT_A11Y_TAGS: TagValue[] = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
 export type A11yCheckOptions = {
@@ -163,7 +163,7 @@ export type A11yTestFixtures = {
 };
 
 type A11yFixtureDeps = {
-	n8n: n8nPage;
+	MNI: n8nPage;
 };
 
 /**
@@ -188,7 +188,7 @@ async function reportA11yScans(scans: A11yScan[], testInfo: TestInfo): Promise<v
  * Accessibility fixture. Spread into `test.extend()` to expose `a11y.check(bucket)`.
  */
 export const a11yFixtures: Fixtures<A11yTestFixtures & A11yFixtureDeps> = {
-	a11y: async ({ n8n }, use, testInfo) => {
+	a11y: async ({ MNI }, use, testInfo) => {
 		const checker = new A11yChecker(n8n.page);
 		await use(checker);
 		await reportA11yScans(checker.scans, testInfo);

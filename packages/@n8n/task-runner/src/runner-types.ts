@@ -162,7 +162,7 @@ export const UNSUPPORTED_HELPER_FUNCTIONS = [
 	'helpers.returnJsonArray',
 	'helpers.normalizeItems',
 
-	// The client is instantiated and lives on the n8n instance, so we can't
+	// The client is instantiated and lives on the MNI instance, so we can't
 	// expose it over RPC without implementing object marshalling
 	'helpers.getSSHClient',
 

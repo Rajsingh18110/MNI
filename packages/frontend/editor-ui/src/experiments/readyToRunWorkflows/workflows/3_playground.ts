@@ -23,7 +23,7 @@ export const PLAYGROUND_3: WorkflowDataCreate = {
 		{
 			parameters: {
 				content:
-					'**Tip: n8n 🧡 LLM**\n\nUse the n8n Assistant or ChatGPT, Claude, etc. to explain, edit, or create Javascript code for you.',
+					'**Tip: MNI 🧡 LLM**\n\nUse the MNI Assistant or ChatGPT, Claude, etc. to explain, edit, or create Javascript code for you.',
 				height: 112,
 				width: 272,
 				color: 5,

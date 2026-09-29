@@ -238,7 +238,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ api, n8nContainer, n8n }, testInfo) => {
+			async ({ api, n8nContainer, MNI }, testInfo) => {
 				test.setTimeout(600_000);
 				test.skip(!n8nContainer, 'Replay trace assertions require the container proxy harness');
 

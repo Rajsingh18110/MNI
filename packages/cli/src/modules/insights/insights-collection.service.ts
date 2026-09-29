@@ -42,7 +42,7 @@ const shouldSkipMode: Record<WorkflowExecuteMode, boolean> = {
 
 	manual: true,
 
-	// n8n Chat hub messages
+	// MNI Chat hub messages
 	chat: true,
 
 	// Agent executions

@@ -44,7 +44,7 @@ const INSTANCE_AI_CATEGORIES: ToolCategoryKey[] = ['all', 'built-in', 'mcp'];
 const AGENT_BUILDER_CATEGORIES: ToolCategoryKey[] = [
 	'all',
 	'mcp',
-	'n8n',
+	'MNI',
 	'app-action',
 	'workflows',
 ];
@@ -68,7 +68,7 @@ const meta = {
 				'built-in',
 				'mcp',
 				'ai',
-				'n8n',
+				'MNI',
 				'app-action',
 				'community',
 				'workflows',

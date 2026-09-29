@@ -1,13 +1,13 @@
 ## Workflow level OTEL
 This module enables workflow level telemetry
 
-The module should work in complete isolation - plugging into n8n to add tracing. When switched off no otel items should be loaded
+The module should work in complete isolation - plugging into MNI to add tracing. When switched off no otel items should be loaded
 
 It is based upon and an extension of the work done in the community by:
 @gabrielhmsantos - https://github.com/gabrielhmsantos/n8n-tracekit
 
 ### Testing
-Given OTEL often involves events triggered from elsewhere within the n8n system integration testing is preferred.
+Given OTEL often involves events triggered from elsewhere within the MNI system integration testing is preferred.
 
 ### Attributes
 All attributes are listed in `otel.constants.ts`
@@ -75,7 +75,7 @@ graph TD
         traceparent on the execution row"]
     end
 
-    subgraph n8n Core
+    subgraph MNI Core
         LC(("Lifecycle events
         workflowExecuteBefore, Resume, After
         nodeExecuteBefore, After"))
@@ -172,7 +172,7 @@ exporters:
     trace_storage: memory
 ```
 
-Start n8n & point it at the jaeger instance
+Start MNI & point it at the jaeger instance
 ```
 cd packages/cli
 N8N_OTEL_ENABLED=true N8N_OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 pnpm run dev
@@ -204,9 +204,9 @@ Notes:
 - The endpoint scheme controls TLS for **both** protocols: `https://` uses TLS,
   `http://` does not. There is no `grpc://` scheme.
 - Because the scheme is load-bearing, `N8N_OTEL_EXPORTER_OTLP_ENDPOINT` must be an
-  `http://` or `https://` URL. n8n logs a warning and uses the default endpoint if
+  `http://` or `https://` URL. MNI logs a warning and uses the default endpoint if
   the value has another scheme or no scheme, e.g. `localhost:4318`. The scheme is
-  matched case-insensitively, and n8n lowercases it before it reaches the exporter.
+  matched case-insensitively, and MNI lowercases it before it reaches the exporter.
 - gRPC endpoints take **no URL path**, so `N8N_OTEL_EXPORTER_OTLP_TRACING_PATH` is
   ignored when the protocol is `grpc`.
 - `N8N_OTEL_EXPORTER_OTLP_HEADERS` entries are sent as gRPC metadata. Keys are
@@ -225,5 +225,5 @@ Notes:
   `OTEL_EXPORTER_OTLP_CLIENT_KEY` and `OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE`, so a
   collector behind a private CA, or one that needs mTLS, can fail the check and
   still receive spans.
-- n8n has no setting for a custom CA or mTLS. Use the upstream
+- MNI has no setting for a custom CA or mTLS. Use the upstream
   `OTEL_EXPORTER_OTLP_*` certificate variables above, or `NODE_EXTRA_CA_CERTS`.

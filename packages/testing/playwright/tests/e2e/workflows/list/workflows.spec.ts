@@ -15,11 +15,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.goHome();
 		});
 
-		test('should create a new workflow using empty state button', async ({ n8n }) => {
+		test('should create a new workflow using empty state button', async ({ MNI }) => {
 			const { projectId } = await n8n.projectComposer.createProject();
 			await n8n.page.goto(`projects/${projectId}/workflows`);
 			await n8n.workflows.clickNewWorkflowButtonFromProject();
@@ -28,7 +28,7 @@ test.describe(
 		});
 
 		test('should create a new workflow using add workflow button and save successfully', async ({
-			n8n,
+			MNI,
 		}) => {
 			const { projectId } = await n8n.projectComposer.createProject();
 			await n8n.page.goto(`projects/${projectId}/workflows`);
@@ -41,7 +41,7 @@ test.describe(
 			await n8n.canvas.waitForSaveWorkflowCompleted();
 		});
 
-		test('should search for workflows', async ({ n8n }) => {
+		test('should search for workflows', async ({ MNI }) => {
 			const uniqueId = nanoid(8);
 			const specificName = `Specific Test ${uniqueId}`;
 			const genericName = `Generic Test ${uniqueId}`;
@@ -67,7 +67,7 @@ test.describe(
 			await expect(n8n.workflows.getNoWorkflowsFoundMessage()).toBeVisible();
 		});
 
-		test('should search workflows in command bar', async ({ n8n }) => {
+		test('should search workflows in command bar', async ({ MNI }) => {
 			const uniqueId = nanoid(8);
 			const firstWorkflowName = `Command Bar Alpha ${uniqueId}`;
 			const secondWorkflowName = `Command Bar Beta ${uniqueId}`;
@@ -94,7 +94,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(new RegExp(`/workflow/${firstWorkflow.id}(\\?.*)?$`));
 		});
 
-		test('should archive and unarchive a workflow', async ({ n8n }) => {
+		test('should archive and unarchive a workflow', async ({ MNI }) => {
 			const uniqueIdForArchive = nanoid(8);
 			const workflowName = `Archive Test ${uniqueIdForArchive}`;
 			await n8n.workflowComposer.createWorkflowFromSidebar(workflowName);
@@ -118,7 +118,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('should delete an archived workflow', async ({ n8n }) => {
+		test('should delete an archived workflow', async ({ MNI }) => {
 			const uniqueIdForDelete = nanoid(8);
 			const workflowName = `Delete Test ${uniqueIdForDelete}`;
 			await n8n.workflowComposer.createWorkflowFromSidebar(workflowName);
@@ -138,7 +138,7 @@ test.describe(
 			await expect(workflow).toBeHidden();
 		});
 
-		test('should unpublish a published workflow from workflow list', async ({ n8n }) => {
+		test('should unpublish a published workflow from workflow list', async ({ MNI }) => {
 			const uniqueIdForUnpublish = nanoid(8);
 			const workflowName = `Unpublish Test ${uniqueIdForUnpublish}`;
 
@@ -181,7 +181,7 @@ test.describe(
 			await expect(n8n.canvas.getOpenPublishModalButton()).toBeVisible();
 		});
 
-		test('should filter workflows by tag', async ({ n8n }) => {
+		test('should filter workflows by tag', async ({ MNI }) => {
 			const { id: projectId } = await n8n.api.projects.createProject();
 
 			const taggedWorkflow = await n8n.api.workflows.createInProject(projectId);
@@ -197,7 +197,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getWorkflows()).toHaveCount(1);
 		});
 
-		test('should preserve search and filters in URL', async ({ n8n }) => {
+		test('should preserve search and filters in URL', async ({ MNI }) => {
 			const { id: projectId } = await n8n.api.projects.createProject();
 
 			const workflowName = `My Tagged Workflow ${nanoid(8)}`;
@@ -220,7 +220,7 @@ test.describe(
 			await expect(n8n.workflows.cards.getWorkflow(workflowName)).toBeVisible();
 		});
 
-		test('should share a workflow', async ({ n8n }) => {
+		test('should share a workflow', async ({ MNI }) => {
 			const uniqueIdForShare = nanoid(8);
 			const workflowName = `Share Test ${uniqueIdForShare}`;
 			await n8n.workflowComposer.createWorkflow(workflowName);

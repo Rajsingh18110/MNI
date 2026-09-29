@@ -54,7 +54,7 @@ describe('evaluateWorkflowPairwise', () => {
 		expect(baseEvaluator.createEvaluatorChain).toHaveBeenCalledWith(
 			mockLlm,
 			expect.anything(), // schema
-			expect.stringContaining('expert n8n workflow auditor'), // system prompt
+			expect.stringContaining('expert MNI workflow auditor'), // system prompt
 			expect.stringContaining('<task_context>'), // human template
 		);
 		expect(baseEvaluator.invokeEvaluatorChain).toHaveBeenCalledWith(

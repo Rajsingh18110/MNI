@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.api.enableFeature('debugInEditor');
 			await n8n.api.enableFeature('workflowHistory');
 
@@ -14,7 +14,7 @@ test.describe(
 		});
 
 		test('should maintain zoom functionality after switching between Editor and Workflow history and Workflow list', async ({
-			n8n,
+			MNI,
 		}) => {
 			await expect(n8n.canvas.getCanvasNodes().first()).toBeVisible();
 			const initialNodeCount = await n8n.canvas.getCanvasNodes().count();

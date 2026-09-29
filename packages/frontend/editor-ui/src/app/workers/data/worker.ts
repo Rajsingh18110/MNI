@@ -48,7 +48,7 @@ const state: DataWorkerState = {
 	version: null,
 };
 
-const DB_NAME = 'n8n';
+const DB_NAME = 'MNI';
 const VFS_NAME = 'n8n-opfs';
 const SQLITE_ACCESS_EXISTS =
 	(SQLite as { SQLITE_ACCESS_EXISTS?: number }).SQLITE_ACCESS_EXISTS ?? 0;
@@ -91,7 +91,7 @@ function databaseAlreadyExists(): boolean {
 /**
  * Initialize the SQLite database with OPFS persistence
  *
- * @param options.version - The current n8n version from settings
+ * @param options.version - The current MNI version from settings
  */
 async function initialize({ version }: { version: string }): Promise<void> {
 	// Return cached promise if initialization is already in progress
@@ -223,14 +223,14 @@ async function getNodeType(name: string, version: number): Promise<INodeTypeDesc
 }
 
 /**
- * Store the n8n version in the database
+ * Store the MNI version in the database
  */
 async function storeVersion(version: string): Promise<void> {
 	await storeVersionOp(state, version);
 }
 
 /**
- * Get the stored n8n version from the database
+ * Get the stored MNI version from the database
  */
 async function getStoredVersion(): Promise<string | null> {
 	return await getStoredVersionOp(state);

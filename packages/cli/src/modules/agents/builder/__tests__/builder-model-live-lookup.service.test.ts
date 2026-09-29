@@ -238,7 +238,7 @@ describe('BuilderModelLiveLookupService', () => {
 			});
 		});
 
-		it('returns managed policy for the n8n Connect managed tag', async () => {
+		it('returns managed policy for the MNI Connect managed tag', async () => {
 			const { service, aiGatewayService } = makeService();
 			aiGatewayService.getCredentialTypeForProvider.mockResolvedValue('openAiApi');
 			aiGatewayService.getSyntheticCredential.mockResolvedValue({
@@ -375,7 +375,7 @@ describe('BuilderModelLiveLookupService', () => {
 		expect(listModelsForProvider).not.toHaveBeenCalled();
 	});
 
-	describe('list with the n8n Connect managed tag', () => {
+	describe('list with the MNI Connect managed tag', () => {
 		it('resolves the synthetic gateway credential and lists its allowlisted models', async () => {
 			const { service, aiGatewayService, credentialsService, credentialsHelper } = makeService();
 			aiGatewayService.getCredentialTypeForProvider.mockResolvedValue('openAiApi');

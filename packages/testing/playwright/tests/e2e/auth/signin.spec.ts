@@ -7,7 +7,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should login and logout @auth:none', async ({ n8n }) => {
+		test('should login and logout @auth:none', async ({ MNI }) => {
 			await n8n.goToRoot();
 
 			await n8n.signIn.goto();

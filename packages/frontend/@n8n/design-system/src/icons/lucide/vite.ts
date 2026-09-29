@@ -56,7 +56,7 @@ export function lucideIconsPlugin(): Plugin {
 	};
 
 	return {
-		name: 'n8n:lucide-icons',
+		name: 'MNI:lucide-icons',
 		resolveId(id) {
 			if (id === PREFIX || id.startsWith(BUCKET_PREFIX)) return '\0' + id;
 			return undefined;

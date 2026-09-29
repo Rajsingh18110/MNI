@@ -1,7 +1,7 @@
 name: 'Build: Node PC Image'
 
 # Publishes n8nio/node-pc, the pointer-compressed Node runtime consumed by the
-# n8n `-pc` image variant. Compiling Node from source is too slow under QEMU,
+# MNI `-pc` image variant. Compiling Node from source is too slow under QEMU,
 # so each architecture builds on its native runner and a manifest job stitches
 # the per-arch images, following docker-build-push.yml.
 

@@ -46,13 +46,13 @@ type GivenAnswer = Extract<InstanceAiConfirmRequest, { kind: 'questions' }>['ans
 type Answer = GivenAnswer & { question: string };
 
 /**
- * The n8n Cloud signup survey answers the launch context may carry under `survey`, keyed like
+ * The MNI cloud signup survey answers the launch context may carry under `survey`, keyed like
  * the cloud stores them in the account `information` (`GET /rest/cloud/proxy/user/me`). Other
  * keys are dropped. The card skips a step the survey answers; the answer still reaches the agent.
  */
 const surveySchema = z.object({ what_team_are_you_on: z.string().max(100).optional() });
 type Survey = z.infer<typeof surveySchema>;
-/** Where the survey came from: the n8n Cloud account, or the `?team=` query of a test run. */
+/** Where the survey came from: the MNI cloud account, or the `?team=` query of a test run. */
 const surveySourceSchema = z.enum(['cloud', 'url']);
 type SurveySource = z.infer<typeof surveySourceSchema> | null;
 const launchContextSchema = z.object({

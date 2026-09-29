@@ -770,12 +770,12 @@ describe('AgentRuntime — execution counters', () => {
 	it('counts provider-executed tool calls when surfaced by the model', async () => {
 		generateText
 			.mockResolvedValueOnce({
-				...makeGenerateWithToolCall('tc-provider', 'openai.web_search', { query: 'n8n' }),
+				...makeGenerateWithToolCall('tc-provider', 'openai.web_search', { query: 'MNI' }),
 				toolCalls: [
 					{
 						toolCallId: 'tc-provider',
 						toolName: 'openai.web_search',
-						input: { query: 'n8n' },
+						input: { query: 'MNI' },
 						providerExecuted: true,
 					},
 				],
@@ -1161,12 +1161,12 @@ describe('AgentRuntime — volatile instruction provider', () => {
 	it('calls the provider before each model call', async () => {
 		generateText
 			.mockResolvedValueOnce({
-				...makeGenerateWithToolCall('tc-provider', 'openai.web_search', { query: 'n8n' }),
+				...makeGenerateWithToolCall('tc-provider', 'openai.web_search', { query: 'MNI' }),
 				toolCalls: [
 					{
 						toolCallId: 'tc-provider',
 						toolName: 'openai.web_search',
-						input: { query: 'n8n' },
+						input: { query: 'MNI' },
 						providerExecuted: true,
 					},
 				],
@@ -4264,7 +4264,7 @@ describe('AgentRuntime.stream() — provider-executed tool timing', () => {
 			makeStreamWithProviderTool({
 				toolCallId: 'tc-ws',
 				toolName: 'web_search',
-				input: { query: 'n8n' },
+				input: { query: 'MNI' },
 				output: [{ url: 'https://n8n.io' }],
 			}),
 		);
@@ -4296,7 +4296,7 @@ describe('AgentRuntime.stream() — provider-executed tool timing', () => {
 			makeStreamWithProviderTool({
 				toolCallId: 'tc-ws-err',
 				toolName: 'web_search',
-				input: { query: 'n8n' },
+				input: { query: 'MNI' },
 				error: new Error('search failed'),
 			}),
 		);

@@ -158,7 +158,7 @@ const enabledSettings: OtelConfig = {
 	exporterEndpoint: 'http://localhost:4318',
 	exporterTracingPath: '/v1/traces',
 	exporterHeaders: '',
-	exporterServiceName: 'n8n',
+	exporterServiceName: 'MNI',
 	tracesSampleRate: 1,
 	startupConnectivityTimeoutMs: 2_000,
 	includeNodeSpans: true,
@@ -563,7 +563,7 @@ describe('OtelService', () => {
 			).isDiagnosticsLoggerConfigured = false;
 		});
 
-		it('forwards all log levels to the n8n logger', async () => {
+		it('forwards all log levels to the MNI logger', async () => {
 			otelSettingsService.loadSettings.mockResolvedValue(enabledSettings);
 			await service.init();
 

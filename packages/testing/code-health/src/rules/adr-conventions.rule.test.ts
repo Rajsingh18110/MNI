@@ -612,7 +612,7 @@ describe('AdrConventionsRule', () => {
 		await expect(rule.analyze(context())).resolves.toEqual([]);
 	});
 
-	it('flags a missing local ADR reference and an n8n repository URL', async () => {
+	it('flags a missing local ADR reference and an MNI repository URL', async () => {
 		addTestFile(
 			tmpDir,
 			'docs/adr/ADR-20260922-adopt-a-stable-interface.md',

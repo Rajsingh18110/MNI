@@ -120,7 +120,7 @@ async function buildBackend(
 }
 
 /**
- * Resolves a vector store connection's n8n credential and builds the matching
+ * Resolves a vector store connection's MNI credential and builds the matching
  * SDK backend. Pass `resolvedCredential` when the caller already decrypted
  * the credential to avoid resolving it twice.
  */

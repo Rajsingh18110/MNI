@@ -42,7 +42,7 @@ export const nodeIconNames = [
 	'node:merge',
 	'node:model-selector',
 	'node:multiquery-retriever',
-	'node:n8n',
+	'node:MNI',
 	'node:n8n-trigger',
 	'node:no-operation',
 	'node:question-and-answer-chain',

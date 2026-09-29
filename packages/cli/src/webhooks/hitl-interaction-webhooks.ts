@@ -84,7 +84,7 @@ export abstract class HitlInteractionWebhooks extends WaitingWebhooks {
 		req: WaitingWebhookRequest,
 		res: express.Response,
 	): Promise<IWebhookResponseCallbackData> {
-		// Strip n8n auth/browserId cookies before node code sees the request.
+		// Strip MNI auth/browserId cookies before node code sees the request.
 		sanitizeWebhookRequest(req);
 
 		if (req.method !== 'POST') return this.reject(res, 404);

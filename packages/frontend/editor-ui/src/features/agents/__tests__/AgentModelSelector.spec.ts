@@ -61,7 +61,7 @@ const baseText = vi.hoisted(() =>
 			{
 				'agents.modelSelector.connected': 'Connected',
 				'agents.modelSelector.defaultLabel': 'Choose model',
-				'agents.modelSelector.includedInN8n': 'Included in n8n',
+				'agents.modelSelector.includedInN8n': 'Included in MNI',
 				'agents.modelSelector.configureCredentials': 'Create credential',
 				'agents.modelSelector.connectTo': 'Connect to {provider}',
 				'agents.modelSelector.models': 'Models',
@@ -285,7 +285,7 @@ describe('AgentModelSelector', () => {
 		);
 	}
 
-	it('offers the n8n credits option for a supported provider when the gateway is enabled', async () => {
+	it('offers the MNI credits option for a supported provider when the gateway is enabled', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 
@@ -306,7 +306,7 @@ describe('AgentModelSelector', () => {
 		});
 	});
 
-	it('shows the n8n credits pill on covered providers after a top-up', async () => {
+	it('shows the MNI credits pill on covered providers after a top-up', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 		aiGatewayState.creditsLabelKey.value = 'generic.n8nCredits';
@@ -346,7 +346,7 @@ describe('AgentModelSelector', () => {
 		expect(items[0].id).toBe('openai');
 	});
 
-	it('hoists n8n Connect providers below the selected provider with a header and a single divider', async () => {
+	it('hoists MNI Connect providers below the selected provider with a header and a single divider', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['openAiApi']);
 
@@ -357,17 +357,17 @@ describe('AgentModelSelector', () => {
 		expect(items[1]).toMatchObject({
 			id: 'n8nConnect::header',
 			header: true,
-			label: 'Included in n8n',
+			label: 'Included in MNI',
 		});
 		expect(items[2].id).toBe('openai');
 		expect(items[2].divided).toBeFalsy();
-		// First provider after the n8n Connect group gets the group-boundary divider.
+		// First provider after the MNI Connect group gets the group-boundary divider.
 		expect(items[3].divided).toBe(true);
 		// Only one divider in the whole list.
 		expect(items.filter((item) => item.divided).length).toBe(1);
 	});
 
-	it('does not show a header or divider when no other provider is n8n Connect eligible', async () => {
+	it('does not show a header or divider when no other provider is MNI Connect eligible', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set<string>();
 
@@ -378,9 +378,9 @@ describe('AgentModelSelector', () => {
 		expect(items.some((item) => item.divided)).toBe(false);
 	});
 
-	it('does not duplicate a selected provider that is also n8n Connect eligible', async () => {
+	it('does not duplicate a selected provider that is also MNI Connect eligible', async () => {
 		aiGatewayState.isEnabled.value = true;
-		// anthropic is both the selected provider and n8n Connect eligible here.
+		// anthropic is both the selected provider and MNI Connect eligible here.
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 
 		const wrapper = await mountSelector({ anthropic: null });
@@ -389,7 +389,7 @@ describe('AgentModelSelector', () => {
 		expect(items[0].id).toBe('anthropic');
 		expect(items[0].data?.connectedLabel).toBe('Connected');
 		expect(items.filter((item) => item.id === 'anthropic').length).toBe(1);
-		// No other provider is n8n Connect eligible, so the group is empty.
+		// No other provider is MNI Connect eligible, so the group is empty.
 		expect(items.some((item) => item.id === 'n8nConnect::header')).toBe(false);
 	});
 
@@ -428,7 +428,7 @@ describe('AgentModelSelector', () => {
 		expect(lastRegularIndex).toBeLessThan(firstAggregatorIndex);
 	});
 
-	it('does not offer n8n credits when the gateway is disabled', async () => {
+	it('does not offer MNI credits when the gateway is disabled', async () => {
 		aiGatewayState.isEnabled.value = false;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 
@@ -437,7 +437,7 @@ describe('AgentModelSelector', () => {
 		expect(getN8nCreditsItem(wrapper, 'anthropic')).toBeUndefined();
 	});
 
-	it('does not offer n8n credits for a provider the gateway does not support', async () => {
+	it('does not offer MNI credits for a provider the gateway does not support', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set<string>(); // anthropicApi not supported
 
@@ -446,7 +446,7 @@ describe('AgentModelSelector', () => {
 		expect(getN8nCreditsItem(wrapper, 'anthropic')).toBeUndefined();
 	});
 
-	it('offers n8n credits for a multi-credential-type provider when a non-first type is supported', async () => {
+	it('offers MNI credits for a multi-credential-type provider when a non-first type is supported', async () => {
 		aiGatewayState.isEnabled.value = true;
 		// azure-openai exposes ['azureOpenAiApi', 'azureEntraCognitiveServicesOAuth2Api'];
 		// support only the second — the gate must check all types, matching the resolver.
@@ -457,7 +457,7 @@ describe('AgentModelSelector', () => {
 		expect(getN8nCreditsItem(wrapper, 'azure-openai')).toBeDefined();
 	});
 
-	it('emits selectCredential with the managed tag when n8n credits is chosen', async () => {
+	it('emits selectCredential with the managed tag when MNI credits is chosen', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 
@@ -467,7 +467,7 @@ describe('AgentModelSelector', () => {
 		expect(wrapper.emitted('selectCredential')).toEqual([['anthropic', AI_GATEWAY_MANAGED_TAG]]);
 	});
 
-	it('marks the n8n credits option as a keep-open toggle with no info tooltip', async () => {
+	it('marks the MNI credits option as a keep-open toggle with no info tooltip', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 
@@ -500,7 +500,7 @@ describe('AgentModelSelector', () => {
 		expect(JSON.stringify(anthropicItem?.children ?? [])).toContain('Claude Sonnet 4.5');
 	});
 
-	it('shows the remaining balance on the n8n credits option', async () => {
+	it('shows the remaining balance on the MNI credits option', async () => {
 		aiGatewayState.isEnabled.value = true;
 		aiGatewayState.supportedTypes = new Set(['anthropicApi']);
 		aiGatewayState.balance.value = 4.99;
@@ -529,7 +529,7 @@ describe('AgentModelSelector', () => {
 		expect(aiGatewayState.fetchWallet).not.toHaveBeenCalled();
 	});
 
-	it('shows n8n Connect (not "credentials missing") for a managed credential', async () => {
+	it('shows MNI Connect (not "credentials missing") for a managed credential', async () => {
 		// No own credential for the provider, but the selection is the managed tag —
 		// derived from `credentials`, so every caller gets this without opting in.
 		const wrapper = await mountSelector({ anthropic: AI_GATEWAY_MANAGED_TAG });
@@ -662,7 +662,7 @@ describe('AgentModelSelector', () => {
 			openAiApi: [
 				{
 					id: 'free-openai-credential',
-					name: 'n8n free OpenAI API credits',
+					name: 'MNI free OpenAI API credits',
 					type: 'openAiApi',
 					isManaged: true,
 				},
@@ -786,7 +786,7 @@ describe('AgentModelSelector', () => {
 		const openAiChildLabels = openAiItem?.children?.map((item) => item.label) ?? [];
 
 		// Two independent offers: the badge marks free OpenAI credits, the pill marks
-		// n8n Connect. The gateway is disabled here, so only the badge shows.
+		// MNI Connect. The gateway is disabled here, so only the badge shows.
 		expect(openAiItem?.data?.badgeLabel).toBe('free credits');
 		expect(openAiItem?.data?.actionPill).toBeUndefined();
 		expect(JSON.stringify(openAiItem?.children ?? [])).toContain('Use free OpenAI credits');
@@ -860,7 +860,7 @@ describe('AgentModelSelector', () => {
 		freeAiCreditsState.userCanClaimOpenAiCredits.value = true;
 		freeAiCreditsState.claimCreditsAndGetCredential.mockResolvedValueOnce({
 			id: 'free-openai-credential',
-			name: 'n8n free OpenAI API credits',
+			name: 'MNI free OpenAI API credits',
 			type: 'openAiApi',
 		});
 

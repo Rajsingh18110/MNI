@@ -122,7 +122,7 @@ describe('SandboxSettingsService', () => {
 		);
 	});
 
-	it('uses the assigned n8n Sandbox API key without replacing the environment URL', async () => {
+	it('uses the assigned MNI Sandbox API key without replacing the environment URL', async () => {
 		globalConfig.instanceAi.n8nSandboxServiceApiKey = 'env-key';
 		instanceCredentialBroker.resolveForUse.mockResolvedValue({
 			id: 'sandbox-credential',
@@ -137,7 +137,7 @@ describe('SandboxSettingsService', () => {
 		});
 	});
 
-	it('falls back to environment config for a malformed n8n Sandbox credential', async () => {
+	it('falls back to environment config for a malformed MNI Sandbox credential', async () => {
 		globalConfig.instanceAi.n8nSandboxServiceApiKey = 'env-key';
 		instanceCredentialBroker.resolveForUse.mockResolvedValue({
 			id: 'sandbox-credential',
@@ -151,9 +151,9 @@ describe('SandboxSettingsService', () => {
 			apiKey: 'env-key',
 		});
 		expect(logger.warn).toHaveBeenCalledWith(
-			'Could not resolve the configured n8n Sandbox credential; using environment fallback',
+			'Could not resolve the configured MNI Sandbox credential; using environment fallback',
 			{
-				credentialUseId: 'instance-ai:sandbox:n8n',
+				credentialUseId: 'instance-ai:sandbox:MNI',
 				error: 'The credential\'s header name must be "x-api-key" but is "authorization"',
 			},
 		);

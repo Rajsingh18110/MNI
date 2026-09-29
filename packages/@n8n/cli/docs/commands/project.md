@@ -1,6 +1,6 @@
 # project
 
-Manage n8n projects and members.
+Manage MNI projects and members.
 
 ## `project list`
 

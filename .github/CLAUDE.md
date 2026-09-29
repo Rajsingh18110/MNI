@@ -2,7 +2,7 @@
 
 ## .github Quick Reference
 
-This folder contains n8n's GitHub Actions infrastructure.
+This folder contains MNI's GitHub Actions infrastructure.
 
 ### Key Files
 

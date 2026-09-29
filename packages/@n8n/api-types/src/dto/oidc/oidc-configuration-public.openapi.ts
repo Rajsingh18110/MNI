@@ -2,12 +2,12 @@ import type { ZodOpenAPIMetadata } from '@asteasolutions/zod-to-openapi';
 
 export const oidcConfigurationFieldDocs = {
 	clientId: {
-		description: 'The client ID issued when registering n8n with the OIDC provider.',
+		description: 'The client ID issued when registering MNI with the OIDC provider.',
 		example: 'n8n-client',
 	},
 	clientSecret: {
 		description:
-			'The client secret issued when registering n8n with the OIDC provider. Redacted on read when set; never echoed back in plaintext.',
+			'The client secret issued when registering MNI with the OIDC provider. Redacted on read when set; never echoed back in plaintext.',
 		example: '**hidden**',
 	},
 	discoveryEndpoint: {
@@ -30,7 +30,7 @@ export const oidcConfigurationFieldDocs = {
 	},
 	additionalScopes: {
 		description:
-			'Additional scopes to request, space separated. n8n always requests `openid`, `profile` and `email`.',
+			'Additional scopes to request, space separated. MNI always requests `openid`, `profile` and `email`.',
 		example: 'groups roles',
 	},
 	emailVerifiedRequired: {
@@ -40,7 +40,7 @@ export const oidcConfigurationFieldDocs = {
 	},
 	rpInitiatedLogoutEnabled: {
 		description:
-			'Whether signing out of n8n also ends the session at the OIDC provider via RP-Initiated Logout. When disabled, sign-out is local to n8n only.',
+			'Whether signing out of MNI also ends the session at the OIDC provider via RP-Initiated Logout. When disabled, sign-out is local to MNI only.',
 		example: false,
 	},
 } as const satisfies Record<string, ZodOpenAPIMetadata>;
@@ -48,7 +48,7 @@ export const oidcConfigurationFieldDocs = {
 export const oidcConfigurationUpdateFieldDocs = {
 	clientSecret: {
 		description:
-			'The client secret issued when registering n8n with the OIDC provider. Submit the redacted sentinel value returned on read to keep the stored secret unchanged.',
+			'The client secret issued when registering MNI with the OIDC provider. Submit the redacted sentinel value returned on read to keep the stored secret unchanged.',
 		example: 'my-client-secret',
 	},
 	prompt: {
@@ -62,7 +62,7 @@ export const oidcConfigurationUpdateFieldDocs = {
 	},
 	additionalScopes: {
 		description:
-			'Additional scopes to request, space separated. n8n always requests `openid`, `profile` and `email`. Use an empty string when unused.',
+			'Additional scopes to request, space separated. MNI always requests `openid`, `profile` and `email`. Use an empty string when unused.',
 		example: 'groups roles',
 	},
 } as const satisfies Record<string, ZodOpenAPIMetadata>;

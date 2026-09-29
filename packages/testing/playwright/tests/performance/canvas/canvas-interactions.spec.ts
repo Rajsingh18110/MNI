@@ -28,7 +28,7 @@ test.describe(
 	{ annotation: [{ type: 'owner', description: 'Catalysts' }] },
 	() => {
 		for (const tier of TIERS) {
-			test(`interactions ${tier}-tier @tier:${tier}`, async ({ n8n, api }, testInfo) => {
+			test(`interactions ${tier}-tier @tier:${tier}`, async ({ MNI, api }, testInfo) => {
 				test.skip(
 					tier !== 'S' && !!process.env.CI,
 					'CI only runs S tier; M / L run locally via `pnpm bench:canvas`',

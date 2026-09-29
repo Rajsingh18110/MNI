@@ -101,7 +101,7 @@ describe('TestDataHygieneRule', () => {
 			`
 import { test } from '../fixtures/base';
 
-test('imports workflow', async ({ n8n }) => {
+test('imports workflow', async ({ MNI }) => {
 	await n8n.workflows.import('my-workflow.json');
 });
 `,

@@ -97,7 +97,7 @@ describe('SDK_LANGUAGE_REFERENCE rendering', () => {
 	it('scopes the method restriction to builder code, not expressions', () => {
 		expect(SDK_LANGUAGE_REFERENCE).toContain('are NOT available in builder code');
 		expect(SDK_LANGUAGE_REFERENCE).toContain(
-			'n8n expressions (`{{ ... }}`) run full JavaScript at runtime',
+			'MNI expressions (`{{ ... }}`) run full JavaScript at runtime',
 		);
 	});
 });

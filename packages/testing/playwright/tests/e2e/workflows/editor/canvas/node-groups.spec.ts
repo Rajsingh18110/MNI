@@ -29,7 +29,7 @@ test.describe(
 	() => {
 		let workflowId: string;
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			const importResult = await n8n.start.fromImportedWorkflow(FIXTURE);
 			workflowId = importResult.workflowId;
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(4);
@@ -38,7 +38,7 @@ test.describe(
 		});
 
 		test('shows the Group toolbar above a valid selection and creates an overlay on click', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 
@@ -50,7 +50,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeGroupTitle(DEFAULT_GROUP_TITLE)).toBeVisible();
 		});
 
-		test('expands the group frame when a member node is dragged farther away', async ({ n8n }) => {
+		test('expands the group frame when a member node is dragged farther away', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await n8n.canvas.deselectAll();
@@ -62,7 +62,7 @@ test.describe(
 			expect(after.width).toBeGreaterThan(before.width);
 		});
 
-		test('drags the group when grabbing the title bar beside a short name', async ({ n8n }) => {
+		test('drags the group when grabbing the title bar beside a short name', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await n8n.canvas.deselectAll();
@@ -76,7 +76,7 @@ test.describe(
 			expect(after.y).toBeGreaterThan(before.y);
 		});
 
-		test('commits a new title on Enter and reverts on Escape', async ({ n8n }) => {
+		test('commits a new title on Enter and reverts on Escape', async ({ MNI }) => {
 			const renamed = `Renamed ${nanoid(6)}`;
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
@@ -93,7 +93,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeGroupTitle(blurredTitle)).toBeVisible();
 		});
 
-		test('removes the overlay when the group ungroup button is clicked', async ({ n8n }) => {
+		test('removes the overlay when the group ungroup button is clicked', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await n8n.canvas.deselectAll();
@@ -109,7 +109,7 @@ test.describe(
 		});
 
 		test('hides the Group action when nodes inside an existing group are selected', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B', 'Set C']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
@@ -120,7 +120,7 @@ test.describe(
 			await expect(n8n.canvas.selectionToolbar.extractSubWorkflowButton()).toBeVisible();
 		});
 
-		test('hides the toolbar for invalid selections', async ({ n8n }) => {
+		test('hides the toolbar for invalid selections', async ({ MNI }) => {
 			await n8n.canvas.nodeByName('Set A').click();
 			await expect(n8n.canvas.selectionToolbar.root()).toBeHidden();
 
@@ -129,7 +129,7 @@ test.describe(
 			await expect(n8n.canvas.selectionToolbar.root()).toBeHidden();
 		});
 
-		test('keeps a single-node group when one of two members is deleted', async ({ n8n }) => {
+		test('keeps a single-node group when one of two members is deleted', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await n8n.canvas.deselectAll();
@@ -140,7 +140,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeGroupTitle(DEFAULT_GROUP_TITLE)).toBeVisible();
 		});
 
-		test('removes the group when the last member is deleted', async ({ n8n }) => {
+		test('removes the group when the last member is deleted', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await n8n.canvas.deselectAll();
@@ -151,7 +151,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeGroups()).toHaveCount(0);
 		});
 
-		test('keeps the group when one of three members is deleted', async ({ n8n }) => {
+		test('keeps the group when one of three members is deleted', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B', 'Set C']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await n8n.canvas.deselectAll();
@@ -161,7 +161,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeGroups()).toHaveCount(1);
 		});
 
-		test('includes nodeGroups in the autosave PATCH payload', async ({ n8n }) => {
+		test('includes nodeGroups in the autosave PATCH payload', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 
 			const saveResponsePromise = n8n.canvas.waitForSaveWorkflowCompleted({
@@ -187,7 +187,7 @@ test.describe(
 			);
 		});
 
-		test('persists groups after autosave and reload', async ({ n8n }) => {
+		test('persists groups after autosave and reload', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
 
 			const saveResponsePromise = n8n.canvas.waitForSaveWorkflowCompleted({
@@ -217,14 +217,14 @@ test.describe(
 		});
 
 		test('blocks Convert to sub-workflow for selections that include a trigger', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.selectNodes([TRIGGER, 'Set A']);
 			await expect(n8n.canvas.selectionToolbar.root()).toBeHidden();
 		});
 
 		test('auto-extends the group when a new connection would otherwise invalidate it', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.selectNodes(['Set B', 'Set C']);
 			await n8n.canvas.selectionToolbar.groupButton().click();
@@ -252,7 +252,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(STICKY_FIXTURE);
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(3);
 			await expect(n8n.canvas.sticky.getStickies()).toHaveCount(2);
@@ -260,20 +260,20 @@ test.describe(
 			await n8n.canvas.deselectAll();
 		});
 
-		const groupNote = (n8n: n8nPage) => n8n.canvas.sticky.getStickyByContent('Group note');
+		const groupNote = (MNI: n8nPage) => n8n.canvas.sticky.getStickyByContent('Group note');
 
-		async function createGroupWithSticky(n8n: n8nPage) {
+		async function createGroupWithSticky(MNI: n8nPage) {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
-			await groupNote(n8n).click({ modifiers: ['ControlOrMeta'] });
+			await groupNote(MNI).click({ modifiers: ['ControlOrMeta'] });
 			await n8n.canvas.selectionToolbar.groupButton().click();
 			await expect(n8n.canvas.getNodeGroups()).toHaveCount(1);
 			await n8n.canvas.deselectAll();
 		}
 
 		test('creates a group that includes the sticky and sizes the frame around it', async ({
-			n8n,
+			MNI,
 		}) => {
-			await createGroupWithSticky(n8n);
+			await createGroupWithSticky(MNI);
 
 			const frame = await n8n.canvas.getNodeGroupFrameBoundingBox(DEFAULT_GROUP_TITLE);
 			const sticky = await n8n.canvas.sticky.getStickyBoundingBox('Group note');
@@ -284,8 +284,8 @@ test.describe(
 			expect(frame.y + frame.height).toBeGreaterThanOrEqual(sticky.y + sticky.height);
 		});
 
-		test('does not offer the Group action for sticky-only selections', async ({ n8n }) => {
-			await groupNote(n8n).click();
+		test('does not offer the Group action for sticky-only selections', async ({ MNI }) => {
+			await groupNote(MNI).click();
 			await n8n.canvas.sticky
 				.getStickyByContent('Far note')
 				.click({ modifiers: ['ControlOrMeta'] });
@@ -293,9 +293,9 @@ test.describe(
 			await expect(n8n.canvas.selectionToolbar.root()).toBeHidden();
 		});
 
-		test('persists the sticky as a group member in the autosave PATCH payload', async ({ n8n }) => {
+		test('persists the sticky as a group member in the autosave PATCH payload', async ({ MNI }) => {
 			await n8n.canvas.selectNodes(['Set A', 'Set B']);
-			await groupNote(n8n).click({ modifiers: ['ControlOrMeta'] });
+			await groupNote(MNI).click({ modifiers: ['ControlOrMeta'] });
 
 			const saveResponsePromise = n8n.canvas.waitForSaveWorkflowCompleted({
 				timeout: AUTOSAVE_TIMEOUT,
@@ -319,21 +319,21 @@ test.describe(
 		});
 
 		test('hides the sticky while the group is collapsed and restores it on expand', async ({
-			n8n,
+			MNI,
 		}) => {
-			await createGroupWithSticky(n8n);
+			await createGroupWithSticky(MNI);
 
 			await n8n.canvas.toggleNodeGroup(DEFAULT_GROUP_TITLE);
-			await expect(groupNote(n8n)).toBeHidden();
+			await expect(groupNote(MNI)).toBeHidden();
 			// The free sticky is unaffected by the collapse.
 			await expect(n8n.canvas.sticky.getStickyByContent('Far note')).toBeVisible();
 
 			await n8n.canvas.toggleNodeGroup(DEFAULT_GROUP_TITLE);
-			await expect(groupNote(n8n)).toBeVisible();
+			await expect(groupNote(MNI)).toBeVisible();
 		});
 
-		test('moves the sticky along when the group is dragged by its title bar', async ({ n8n }) => {
-			await createGroupWithSticky(n8n);
+		test('moves the sticky along when the group is dragged by its title bar', async ({ MNI }) => {
+			await createGroupWithSticky(MNI);
 
 			const before = await n8n.canvas.sticky.getStickyBoundingBox('Group note');
 			await n8n.canvas.dragNodeGroupFromTitleBar(DEFAULT_GROUP_TITLE, 120, 80);
@@ -344,12 +344,12 @@ test.describe(
 		});
 
 		test('keeps a sticky-only group and saves it when the last connectable member is deleted', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Deliberate edge case: groups are not auto-dissolved when they
 			// degenerate to sticky-only members — they must keep rendering and
 			// keep saving (the backend tolerates sticky-only groups as data).
-			await createGroupWithSticky(n8n);
+			await createGroupWithSticky(MNI);
 
 			await n8n.canvas.deleteNodeFromContextMenu('Set A');
 			const saveResponsePromise = n8n.canvas.waitForSaveWorkflowCompleted({
@@ -362,7 +362,7 @@ test.describe(
 
 			await expect(n8n.canvas.getNodeGroups()).toHaveCount(1);
 			await expect(n8n.canvas.getNodeGroupTitle(DEFAULT_GROUP_TITLE)).toBeVisible();
-			await expect(groupNote(n8n)).toBeVisible();
+			await expect(groupNote(MNI)).toBeVisible();
 		});
 	},
 );
@@ -373,7 +373,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(IF_FIXTURE);
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(5);
 			await n8n.canvas.clickZoomToFitButton();
@@ -381,7 +381,7 @@ test.describe(
 		});
 
 		test('allows grouping but not extraction when the selection ends in an IF node with both branches connected', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.selectNodes(['Set A', 'If']);
 
@@ -403,13 +403,13 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(PERSISTED_FIXTURE);
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(VISIBLE_NODES_AFTER_COLLAPSED_LOAD);
 			await n8n.canvas.clickZoomToFitButton();
 		});
 
-		test('renders groups from nodeGroups without creating them in the UI', async ({ n8n }) => {
+		test('renders groups from nodeGroups without creating them in the UI', async ({ MNI }) => {
 			await expect(n8n.canvas.getNodeGroups()).toHaveCount(1);
 			await expect(n8n.canvas.getNodeGroupTitle(PERSISTED_GROUP_TITLE)).toBeVisible();
 		});
@@ -421,14 +421,14 @@ test.describe(
 	{ annotation: [{ type: 'owner', description: 'Adore' }] },
 	() => {
 		test.describe('Default state on workflow load', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow(PERSISTED_FIXTURE);
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(VISIBLE_NODES_AFTER_COLLAPSED_LOAD);
 				await n8n.canvas.clickZoomToFitButton();
 			});
 
 			test('groups load collapsed: frame is hidden, chevron shows expand caption', async ({
-				n8n,
+				MNI,
 			}) => {
 				await expect(n8n.canvas.getNodeGroupTitle(PERSISTED_GROUP_TITLE)).toBeVisible();
 				await expect(n8n.canvas.getNodeGroupFrame(PERSISTED_GROUP_TITLE)).toBeHidden();
@@ -439,7 +439,7 @@ test.describe(
 			});
 
 			test('clicking the chevron expands the group: frame and chevron caption flip', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.toggleNodeGroup(PERSISTED_GROUP_TITLE);
 
@@ -450,7 +450,7 @@ test.describe(
 				);
 			});
 
-			test('clicking the chevron again collapses back', async ({ n8n }) => {
+			test('clicking the chevron again collapses back', async ({ MNI }) => {
 				await n8n.canvas.toggleNodeGroup(PERSISTED_GROUP_TITLE);
 				await expect(n8n.canvas.getNodeGroupFrame(PERSISTED_GROUP_TITLE)).toBeVisible();
 
@@ -459,7 +459,7 @@ test.describe(
 			});
 
 			test('deleting a remapped collapsed-group connection clears it from workflow data', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.deleteConnectionBetweenNodes('Set B', 'Set C');
 				await expect(n8n.canvas.connectionBetweenNodes('Set B', 'Set C')).toBeHidden();
@@ -471,7 +471,7 @@ test.describe(
 		});
 
 		test.describe('Newly created groups start expanded', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow(FIXTURE);
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(4);
 				await n8n.canvas.clickZoomToFitButton();
@@ -479,7 +479,7 @@ test.describe(
 			});
 
 			test('a freshly created group is expanded; its frame is visible immediately', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.selectNodes(['Set A', 'Set B']);
 				await n8n.canvas.selectionToolbar.groupButton().click();
@@ -493,13 +493,13 @@ test.describe(
 		});
 
 		test.describe('Expand state persists across reload', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow(PERSISTED_FIXTURE);
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(VISIBLE_NODES_AFTER_COLLAPSED_LOAD);
 				await n8n.canvas.clickZoomToFitButton();
 			});
 
-			test('a group expanded by the user reloads expanded', async ({ n8n }) => {
+			test('a group expanded by the user reloads expanded', async ({ MNI }) => {
 				// The group loads collapsed by default; expand it deliberately.
 				await expect(n8n.canvas.getNodeGroupFrame(PERSISTED_GROUP_TITLE)).toBeHidden();
 				await n8n.canvas.toggleNodeGroup(PERSISTED_GROUP_TITLE);

@@ -71,7 +71,7 @@ describe('Parse BigQuery tokens', () => {
 	});
 });
 
-describe('Parse n8n resolvables', () => {
+describe('Parse MNI resolvables', () => {
 	const parser = postgresqlTokens.parser;
 
 	it('parses resolvables with dots inside composite identifiers', () => {

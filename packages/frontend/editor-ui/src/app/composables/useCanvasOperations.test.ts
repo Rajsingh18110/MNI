@@ -5154,7 +5154,7 @@ describe('useCanvasOperations', () => {
 			expect(copiedData.nodeGroups).toBeUndefined();
 		});
 
-		it('keeps n8n credits credentials when copying nodes', () => {
+		it('keeps MNI credits credentials when copying nodes', () => {
 			const nodeTypesStore = useNodeTypesStore();
 			nodeTypesStore.nodeTypes = {
 				[SET_NODE_TYPE]: {
@@ -5218,7 +5218,7 @@ describe('useCanvasOperations', () => {
 			return useCanvasOperations().getNodesToSave([node]).nodes[0].credentials;
 		}
 
-		it('keeps n8n credits credentials when sharing is enabled', () => {
+		it('keeps MNI credits credentials when sharing is enabled', () => {
 			const gatewayCredential = { id: null, name: '', __aiGatewayManaged: true as const };
 
 			expect(
@@ -5228,7 +5228,7 @@ describe('useCanvasOperations', () => {
 			).toEqual({ openAiApi: gatewayCredential });
 		});
 
-		it('drops id-less credentials that are not n8n credits when sharing is enabled', () => {
+		it('drops id-less credentials that are not MNI credits when sharing is enabled', () => {
 			const orphanCredential = { id: null, name: 'Orphan' };
 
 			expect(

@@ -14,7 +14,7 @@ test.describe(
 	},
 	() => {
 		test('should show the input and output panels when node is missing input and output data', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(requirements);

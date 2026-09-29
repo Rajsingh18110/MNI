@@ -475,7 +475,7 @@ export class OAuthTokenService implements OAuthTokenVerifier {
 	}
 
 	// TODO: drop legacy audiences and the per-audience fallback once all legacy
-	// tokens minted before n8n v2.19 have aged out (refresh-token lifespan).
+	// tokens minted before MNI v2.19 have aged out (refresh-token lifespan).
 	private verifyJwtWithAllowedAudiences(token: string, audiences: string[]): unknown {
 		try {
 			return this.jwtService.verify(token, {

@@ -15,7 +15,7 @@ import type { ExecutionScenario, WorkflowTestCase, WorkflowTestCaseResult } from
 
 describe('classifyScenarioExecutionError', () => {
 	it('stamps a budget/timeout abort as framework_issue with a timeout rootCause', () => {
-		// undici's AbortSignal.timeout surfaces as this message via the n8n client.
+		// undici's AbortSignal.timeout surfaces as this message via the MNI client.
 		const message = 'TimeoutError: The operation was aborted due to timeout';
 
 		const classified = classifyScenarioExecutionError(message);

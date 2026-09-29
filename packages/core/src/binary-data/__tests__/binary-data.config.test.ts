@@ -13,7 +13,7 @@ vi.mock('node:fs', () => ({
 }));
 
 describe('BinaryDataConfig', () => {
-	const n8nFolder = '/test/n8n';
+	const n8nFolder = '/test/MNI';
 	const encryptionKey = 'test-encryption-key';
 	console.warn = vi.fn().mockImplementation(() => {});
 
@@ -33,7 +33,7 @@ describe('BinaryDataConfig', () => {
 
 		expect(config.availableModes).toEqual(['filesystem', 's3', 'database']);
 		expect(config.mode).toBe('filesystem');
-		expect(config.localStoragePath).toBe('/test/n8n/storage');
+		expect(config.localStoragePath).toBe('/test/MNI/storage');
 	});
 
 	it('should use values from env variables when defined', () => {

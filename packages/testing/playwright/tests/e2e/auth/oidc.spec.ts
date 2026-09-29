@@ -12,7 +12,7 @@ test.describe(
 	},
 	() => {
 		test('should configure OIDC and login with Keycloak @auth:owner', async ({
-			n8n,
+			MNI,
 			api,
 			services,
 		}) => {

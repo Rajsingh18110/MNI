@@ -47,7 +47,7 @@ export interface WorkflowForToolSourceCheck {
  * on its declared outputs. Conservative for cases we cannot resolve
  * statically:
  *
- * - Type names ending in `Tool` are accepted unconditionally. n8n auto-wraps
+ * - Type names ending in `Tool` are accepted unconditionally. MNI auto-wraps
  *   `<x>Tool` requests to the underlying `<x>` node at lookup time, so its
  *   declared outputs (often `main`) no longer reflect the tool-wrapped shape.
  * - Unknown types and dynamic `outputs` expressions are accepted as well;

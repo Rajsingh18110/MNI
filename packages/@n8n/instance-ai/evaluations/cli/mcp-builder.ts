@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // Shared MCP build core
 //
-// The `claude -p` invocation that drives an n8n MCP server to build a workflow,
+// The `claude -p` invocation that drives an MNI MCP server to build a workflow,
 // factored out so it can be used by two callers:
 //
 //   1. build-mcp-manifest.ts — the standalone builder that writes a manifest of
@@ -197,7 +197,7 @@ export const MCP_BUILD_KEY_SUPPORT: Record<
 	buildExpectations: 'supported',
 	// The fused --build-via-mcp path seeds these into the per-build member
 	// user's personal project (the standalone manifest builder cannot — it has
-	// no n8n session).
+	// no MNI session).
 	credentials: 'supported',
 	// The fixture server, Chromium and the relay are booted around the build;
 	// `claude` gets a flattened prompt and no browser.
@@ -269,7 +269,7 @@ export interface McpBuildSettings {
 	buildTimeoutMs?: number;
 	/** Working directory for the subprocess (loads that project's Claude config/skills). */
 	buildCwd?: string;
-	/** When set, instruct the model to create the workflow in this n8n project. */
+	/** When set, instruct the model to create the workflow in this MNI project. */
 	projectId?: string;
 }
 
@@ -426,7 +426,7 @@ export function tailWorkflowId(text: string): string | null {
  *  then echo its id in a machine-parseable trailer. */
 function buildUserMessage(conversation: ConversationTurn[], settings: McpBuildSettings): string {
 	const projectInstruction = settings.projectId
-		? `\n\nWhen calling create_workflow_from_code, pass projectId: '${settings.projectId}' so the workflow is created in that n8n project.`
+		? `\n\nWhen calling create_workflow_from_code, pass projectId: '${settings.projectId}' so the workflow is created in that MNI project.`
 		: '';
 
 	return `${buildPromptFromConversation(conversation)}${projectInstruction}

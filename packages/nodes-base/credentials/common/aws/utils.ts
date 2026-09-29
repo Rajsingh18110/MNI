@@ -730,7 +730,7 @@ function signWithLegacyAws4(
 	};
 }
 
-// Translates n8n's aws4-shaped Request into a smithy HttpRequest: splits the query
+// Translates MNI's aws4-shaped Request into a smithy HttpRequest: splits the query
 // out of the path, lowercases header keys (so smithy's canonical sort is stable),
 // and mirrors aws4's content-type/length injection for body requests.
 export function buildSmithyHttpRequest(

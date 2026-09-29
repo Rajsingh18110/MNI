@@ -157,7 +157,7 @@ describe('AgentSandboxRuntimeService', () => {
 		const sandboxSettingsService = makeSandboxSettingsService();
 		const service = makeService({
 			configOverrides: {
-				sandboxSnapshot: 'n8n/agent-knowledge:1.2.3',
+				sandboxSnapshot: 'MNI/agent-knowledge:1.2.3',
 				sandboxEphemeral: true,
 			},
 			aiService,
@@ -186,7 +186,7 @@ describe('AgentSandboxRuntimeService', () => {
 				timeout: 300_000,
 				createTimeoutSeconds: 300,
 				image: 'daytonaio/sandbox:0.5.0',
-				snapshot: 'n8n/agent-knowledge:1.2.3',
+				snapshot: 'MNI/agent-knowledge:1.2.3',
 				ephemeral: true,
 				autoStopInterval: 15,
 				autoArchiveInterval: 60,
@@ -292,7 +292,7 @@ describe('AgentSandboxRuntimeService', () => {
 		await Promise.all([first, duplicate, distinct]);
 	});
 
-	it('uses distinct deterministic workspace and knowledge IDs for the n8n sandbox', async () => {
+	it('uses distinct deterministic workspace and knowledge IDs for the MNI sandbox', async () => {
 		const service = makeService({
 			sandboxSettingsService: makeSandboxSettingsService('n8n-sandbox'),
 		});
@@ -313,7 +313,7 @@ describe('AgentSandboxRuntimeService', () => {
 		);
 	});
 
-	it('marks the n8n sandbox knowledge sandbox ephemeral when configured, but never the workspace', async () => {
+	it('marks the MNI sandbox knowledge sandbox ephemeral when configured, but never the workspace', async () => {
 		const service = makeService({
 			configOverrides: { sandboxEphemeral: true },
 			sandboxSettingsService: makeSandboxSettingsService('n8n-sandbox'),
@@ -325,7 +325,7 @@ describe('AgentSandboxRuntimeService', () => {
 		expect(createSandboxMock.mock.calls.map(([config]) => config.ephemeral)).toEqual([false, true]);
 	});
 
-	it('reports how to configure a missing n8n sandbox service URL', async () => {
+	it('reports how to configure a missing MNI sandbox service URL', async () => {
 		const settingsService = makeSandboxSettingsService('n8n-sandbox');
 		settingsService.resolveN8nSandboxConfig.mockResolvedValue({});
 		const service = makeService({ sandboxSettingsService: settingsService });
@@ -347,7 +347,7 @@ describe('AgentSandboxRuntimeService', () => {
 			getClient: vi.fn().mockResolvedValue(client),
 		});
 		const service = makeService({
-			configOverrides: { sandboxSnapshot: 'n8n/agent-knowledge:1.2.3' },
+			configOverrides: { sandboxSnapshot: 'MNI/agent-knowledge:1.2.3' },
 			aiService,
 		});
 
@@ -355,7 +355,7 @@ describe('AgentSandboxRuntimeService', () => {
 
 		const config = createSandboxMock.mock.calls[0][0] as DaytonaSandboxConfig;
 		expect(config.daytonaApiUrl).toBe('https://sandbox-proxy.example');
-		expect(config.snapshot).toBe('n8n/agent-knowledge:1.2.3');
+		expect(config.snapshot).toBe('MNI/agent-knowledge:1.2.3');
 		expect(config.image).toBeUndefined();
 		expect(client.getBuilderApiProxyToken).not.toHaveBeenCalled();
 
@@ -381,7 +381,7 @@ describe('AgentSandboxRuntimeService', () => {
 	it('surfaces a snapshot failure without falling back to an image', async () => {
 		createSandboxMock.mockRejectedValueOnce(new Error('snapshot missing'));
 		const service = makeService({
-			configOverrides: { sandboxSnapshot: 'n8n/agent-knowledge:missing' },
+			configOverrides: { sandboxSnapshot: 'MNI/agent-knowledge:missing' },
 			aiService: makeProxyAiService(),
 		});
 
@@ -389,7 +389,7 @@ describe('AgentSandboxRuntimeService', () => {
 			'snapshot missing',
 		);
 		const config = createSandboxMock.mock.calls[0][0] as DaytonaSandboxConfig;
-		expect(config.snapshot).toBe('n8n/agent-knowledge:missing');
+		expect(config.snapshot).toBe('MNI/agent-knowledge:missing');
 		expect(config.image).toBeUndefined();
 	});
 

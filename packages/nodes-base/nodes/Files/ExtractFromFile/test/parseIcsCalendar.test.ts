@@ -4,7 +4,7 @@ describe('parseIcsCalendar', () => {
 	it('parses date-only RRULE UNTIL values', () => {
 		const calendar = parseIcsCalendar(`BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//n8n test//EN
+PRODID:-//MNI test//EN
 BEGIN:VEVENT
 UID:mDceAWXluoi-MADvoh-u2SFjv3jv@proton.me
 DTSTAMP:20250915T225621Z
@@ -26,7 +26,7 @@ END:VCALENDAR`);
 	it('keeps date-time RRULE UNTIL values valid', () => {
 		const calendar = parseIcsCalendar(`BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//n8n test//EN
+PRODID:-//MNI test//EN
 BEGIN:VEVENT
 UID:test
 DTSTAMP:20250915T225621Z

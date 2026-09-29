@@ -5,12 +5,12 @@ import type { n8nPage } from '../pages/n8nPage';
  * Handles configuring OIDC settings.
  */
 export class OidcComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Configure OIDC via UI form.
 	 *
-	 * @param discoveryUrl - The discovery URL for n8n backend (e.g., https://keycloak:8443/...)
+	 * @param discoveryUrl - The discovery URL for MNI backend (e.g., https://keycloak:8443/...)
 	 * @param clientId - The OIDC client ID
 	 * @param clientSecret - The OIDC client secret
 	 */

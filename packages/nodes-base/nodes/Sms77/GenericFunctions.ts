@@ -23,7 +23,7 @@ export async function sms77ApiRequest(
 ): Promise<any> {
 	const options: IRequestOptions = {
 		headers: {
-			SentWith: 'n8n',
+			SentWith: 'MNI',
 		},
 		qs,
 		uri: `https://gateway.seven.io/api${endpoint}`,

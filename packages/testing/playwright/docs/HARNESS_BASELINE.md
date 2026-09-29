@@ -83,7 +83,7 @@ It retains the production API, UI, bootstrap, service, and diagnostic fixtures.
 | Covered | Not covered |
 | --- | --- |
 | Playwright fixture resolution and consumer wiring | Real Docker acquisition, readiness, and resource removal |
-| API/browser cookie plumbing | n8n authorization and database semantics |
+| API/browser cookie plumbing | MNI authorization and database semantics |
 | Owned support-server teardown | Cleanup correctness inside `createN8NStack()` |
 | Original failure and console attachment | Every production diagnostic collector |
 | Observed reset order | Process-local state reset or session invalidation |
@@ -115,7 +115,7 @@ All six contracts passed. These counts describe current behavior. They are not r
 | Bootstrap failure | 0 | 1 | 0 | 1 |
 
 The whole local run took approximately 17 seconds. This includes subprocess and browser startup against synthetic endpoints.
-It is not an n8n startup benchmark. Matched real-runtime timing remains outstanding.
+It is not an MNI startup benchmark. Matched real-runtime timing remains outstanding.
 The verbose runner output records reset/login counts and the Playwright attempt duration for each case.
 Attempt duration does not include all worker startup. A zero bootstrap-failure duration is not zero setup cost.
 
@@ -150,12 +150,12 @@ flowchart TD
     baseURL[baseURL: test] --> frontend
     baseURL --> bootstrap
     context[context: test] --> baseURL
-    n8n[n8n: test] --> context
-    n8n --> backend
-    n8n --> frontend
+    MNI[MNI: test] --> context
+    MNI --> backend
+    MNI --> frontend
     api[api: test] --> backend
     services[services: test] --> stack
-    requirements[setupRequirements: test] --> n8n
+    requirements[setupRequirements: test] --> MNI
     requirements --> context
     console[automatic console monitor] --> context
     diagnostics[automatic observability] --> stack
@@ -194,7 +194,7 @@ Each consumer still needs a mapping from setup fields to preserved behavioral as
 ## Remaining acceptance evidence
 
 - Real application sentinels with the production stack, without the support override.
-- Matched n8n startup/bootstrap timings, runner identity, sample counts, and service source.
+- Matched MNI startup/bootstrap timings, runner identity, sample counts, and service source.
 - Runtime quarantine and conditional-skip evidence for the selected workload.
 - Complete fixture graph metrics and reproducible function-complexity measurements.
 - Per-consumer setup/assertion mapping and a reviewable scope decision for each later ticket.

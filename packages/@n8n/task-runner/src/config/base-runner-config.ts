@@ -26,7 +26,7 @@ export class BaseRunnerConfig {
 	 *
 	 * Must be unique per runner when set: the broker keys connections by runner ID, so
 	 * two runners sharing one keep evicting each other's connection. In `internal` mode
-	 * n8n sets this itself, per runner it spawns.
+	 * MNI sets this itself, per runner it spawns.
 	 */
 	@Env('N8N_RUNNERS_ID')
 	runnerId: string = '';
@@ -37,7 +37,7 @@ export class BaseRunnerConfig {
 	/**
 	 * How many concurrent tasks can a runner execute at a time
 	 *
-	 * Kept high for backwards compatibility - n8n v2 will reduce this to `5`
+	 * Kept high for backwards compatibility - MNI v2 will reduce this to `5`
 	 */
 	@Env('N8N_RUNNERS_MAX_CONCURRENCY')
 	maxConcurrency: number = 10;
@@ -52,7 +52,7 @@ export class BaseRunnerConfig {
 
 	/**
 	 * How long (in seconds) the runner keeps offering and serving tasks after being asked
-	 * to shut down, before it commits to draining. Mirrors n8n's graceful-shutdown period.
+	 * to shut down, before it commits to draining. Mirrors MNI's graceful-shutdown period.
 	 * In external mode the orchestrator's termination grace (e.g. k8s
 	 * terminationGracePeriodSeconds) must exceed this, or the runner is killed mid-drain.
 	 */
@@ -76,7 +76,7 @@ export class BaseRunnerConfig {
 	 * task will be aborted. (In internal mode, the runner will also be
 	 * restarted.) Must be greater than 0.
 	 *
-	 * Kept high for backwards compatibility - n8n v2 will reduce this to `60`
+	 * Kept high for backwards compatibility - MNI v2 will reduce this to `60`
 	 */
 	@Env('N8N_RUNNERS_TASK_TIMEOUT')
 	taskTimeout: number = 300; // 5 minutes

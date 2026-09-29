@@ -9,7 +9,7 @@ test.describe(
 	},
 	() => {
 		test('should show saved credentials when nodeCredentialType matches despite mismatched credentials object', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			await n8n.start.fromHome();
@@ -103,7 +103,7 @@ test.describe(
 		});
 
 		test('should persist credential selection across reload when mismatch is resolved', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			await n8n.start.fromHome();

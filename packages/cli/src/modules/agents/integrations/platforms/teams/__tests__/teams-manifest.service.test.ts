@@ -312,7 +312,7 @@ describe('TeamsManifestService', () => {
 		it('falls back to a default name when the agent name has no usable characters', () => {
 			// Zero-width and control characters only.
 			expect(service.buildManifest(options({ agentName: '\u200b\u0007 \u200e' })).name.short).toBe(
-				'n8n Agent',
+				'MNI Agent',
 			);
 		});
 

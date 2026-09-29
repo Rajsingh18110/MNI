@@ -6,7 +6,7 @@ const validSettings = {
 	exporterProtocol: 'http/protobuf',
 	exporterEndpoint: 'http://localhost:4318',
 	exporterTracingPath: '/v1/traces',
-	exporterServiceName: 'n8n',
+	exporterServiceName: 'MNI',
 	exporterHeaders: '',
 	tracesSampleRate: 1,
 	startupConnectivityTimeoutMs: 2_000,
@@ -144,7 +144,7 @@ describe('TestOtelTraceDto', () => {
 		exporterProtocol: 'http/protobuf',
 		exporterEndpoint: 'http://localhost:4318',
 		exporterTracingPath: '/v1/traces',
-		exporterServiceName: 'n8n',
+		exporterServiceName: 'MNI',
 		exporterHeaders: '',
 		startupConnectivityTimeoutMs: 2_000,
 	};

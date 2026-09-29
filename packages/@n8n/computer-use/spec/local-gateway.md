@@ -4,8 +4,8 @@
 
 ## Overview
 
-The Local Gateway is a feature of n8n's Instance AI that allows a user to connect
-their local machine to the n8n instance. Once connected, the n8n AI Agent gains
+The Local Gateway is a feature of MNI's Instance AI that allows a user to connect
+their local machine to the MNI instance. Once connected, the MNI AI Agent gains
 access to capabilities on the user's machine — such as reading local files,
 executing shell commands, controlling the screen, and automating a browser.
 
@@ -130,13 +130,13 @@ No prompts are shown.
 
 ### 2. Connect command
 
-The user starts the daemon with their n8n instance URL:
+The user starts the daemon with their MNI instance URL:
 
 ```
 npx @n8n/computer-use <instance-url>
 ```
 
-The start command is displayed inside n8n AI. Only connections from the
+The start command is displayed inside MNI AI. Only connections from the
 specified URL are accepted; requests from any other origin are silently refused.
 
 ### 3. Confirmation prompt
@@ -186,7 +186,7 @@ is terminated and the AI loses access.
 ### Per-User Connections
 
 Each Local Gateway connection is tied to a single user. A user's connection is
-private — other users on the same n8n instance cannot see it, access it, or use
+private — other users on the same MNI instance cannot see it, access it, or use
 it. Only one active connection is allowed per user at a time.
 
 ### Filesystem Scope
@@ -221,7 +221,7 @@ gateway connects and stored in the gateway configuration file.
 | Browser Automation | Deny / Ask / Allow |
 
 **Deny** — The tool group is disabled. Its tools are not registered with the
-n8n instance; the AI has no knowledge of them.
+MNI instance; the AI has no knowledge of them.
 
 **Ask** — The tool group is enabled. Before each tool execution the user is
 prompted to confirm. Confirmation is scoped to a resource (see below).
@@ -292,8 +292,8 @@ the user is presented with a confirmation prompt. The prompt shows:
 ### Session
 
 A session is defined as a single active connection between the Local Gateway
-and the n8n instance. A session ends when the user explicitly disconnects or
-the n8n instance terminates the connection. A temporary network interruption
+and the MNI instance. A session ends when the user explicitly disconnects or
+the MNI instance terminates the connection. A temporary network interruption
 followed by automatic reconnection is considered part of the same session.
 
 `Allow for session` rules persist across such re-connections and are cleared

@@ -103,7 +103,7 @@ const openAiNode: INodeUi = {
 	position: [440, 0],
 	id: '17241295-a277-4cdf-8c46-6c3f85b335e9',
 	name: 'OpenAI',
-	credentials: { openAiApi: { id: 'byDFnd7vN5GzMVD2', name: 'n8n free OpenAI API credits' } },
+	credentials: { openAiApi: { id: 'byDFnd7vN5GzMVD2', name: 'MNI free OpenAI API credits' } },
 	issues: { parameters: { modelId: ['Parameter "Model" is required.'] } },
 };
 
@@ -638,7 +638,7 @@ describe('NodeCredentials', () => {
 		credentialsStore.state.credentials = {
 			byDFnd7vN5GzMVD2: createCredential({
 				id: 'byDFnd7vN5GzMVD2',
-				name: 'n8n free OpenAI API credits',
+				name: 'MNI free OpenAI API credits',
 			}),
 			SkXM3oUkQvvYS31c: createCredential({
 				id: 'SkXM3oUkQvvYS31c',
@@ -660,7 +660,7 @@ describe('NodeCredentials', () => {
 
 		await userEvent.click(credentialsSelect);
 
-		expect(screen.queryByText('n8n free OpenAI API credits')).toBeInTheDocument();
+		expect(screen.queryByText('MNI free OpenAI API credits')).toBeInTheDocument();
 		expect(screen.queryByText('OpenAi account 2')).toBeInTheDocument();
 	});
 
@@ -1299,7 +1299,7 @@ describe('NodeCredentials', () => {
 				{ merge: true },
 			);
 
-			// Without n8n credits the empty state is a single "Connect to <service>" button.
+			// Without MNI credits the empty state is a single "Connect to <service>" button.
 			expect(screen.queryByTestId('setup-credential-button')).not.toBeInTheDocument();
 			const emptyState = screen.getByTestId('node-credentials-empty-state');
 			expect(within(emptyState).getByRole('button', { name: /Connect to/ })).toBeInTheDocument();
@@ -1812,7 +1812,7 @@ describe('NodeCredentials', () => {
 			});
 		});
 
-		it('restores from the supplied list when n8n credits is toggled off', () => {
+		it('restores from the supplied list when MNI credits is toggled off', () => {
 			// The gateway is enabled but this node version no longer qualifies, so the
 			// mount-time cleanup toggles the managed slot off and must restore a row.
 			vi.mocked(useAiGateway).mockReturnValue({
@@ -1938,7 +1938,7 @@ describe('NodeCredentials', () => {
 		});
 
 		describe('rendering', () => {
-			it('offers n8n credits alongside own credentials when the gateway supports the type', async () => {
+			it('offers MNI credits alongside own credentials when the gateway supports the type', async () => {
 				const existingCred = {
 					id: 'cred-1',
 					name: 'My Google Key',
@@ -1966,7 +1966,7 @@ describe('NodeCredentials', () => {
 				expect(screen.getByTestId('node-credentials-select-item-cred-1')).toBeInTheDocument();
 			});
 
-			it('should show the select with n8n credits selected when gateway is managed', async () => {
+			it('should show the select with MNI credits selected when gateway is managed', async () => {
 				const nodeWithGateway: INodeUi = {
 					...googleAiNode,
 					credentials: { googlePalmApi: { id: null, name: '', __aiGatewayManaged: true } },
@@ -1977,7 +1977,7 @@ describe('NodeCredentials', () => {
 					props: { node: nodeWithGateway, overrideCredType: 'googlePalmApi' },
 				});
 
-				// The select stays visible with n8n credits as the selection.
+				// The select stays visible with MNI credits as the selection.
 				expect(screen.getByTestId('node-credentials-select')).toBeInTheDocument();
 				expect(await screen.findByDisplayValue('Gateway credits')).toBeInTheDocument();
 			});
@@ -2016,7 +2016,7 @@ describe('NodeCredentials', () => {
 				expect(screen.getByTestId('node-credentials-select')).toBeInTheDocument();
 			});
 
-			it('does not offer n8n credits when the gateway feature is disabled', async () => {
+			it('does not offer MNI credits when the gateway feature is disabled', async () => {
 				vi.mocked(useAiGateway).mockReturnValue({
 					isEnabled: computed(() => false),
 					isCredentialTypeSupported: vi.fn(() => false),
@@ -2039,7 +2039,7 @@ describe('NodeCredentials', () => {
 					props: { node: googleAiNode, overrideCredType: 'googlePalmApi' },
 				});
 
-				// Without n8n credits the empty state is a plain create button, not a picker.
+				// Without MNI credits the empty state is a plain create button, not a picker.
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
@@ -2078,7 +2078,7 @@ describe('NodeCredentials', () => {
 			});
 		});
 
-		describe('n8n credits dropdown option', () => {
+		describe('MNI credits dropdown option', () => {
 			const existingCred = {
 				id: 'cred-1',
 				name: 'My Google Key',
@@ -2099,7 +2099,7 @@ describe('NodeCredentials', () => {
 				ndvStore.activeNode = nodeWithCred;
 			});
 
-			it('lists n8n credits as the first option for a gateway-served type', async () => {
+			it('lists MNI credits as the first option for a gateway-served type', async () => {
 				renderComponent({ props: { node: nodeWithCred, overrideCredType: 'googlePalmApi' } });
 
 				await userEvent.click(screen.getByTestId('node-credentials-select'));
@@ -2111,7 +2111,7 @@ describe('NodeCredentials', () => {
 				expect(allOptions[0]).toBe(creditsOption);
 			});
 
-			it('does not offer n8n credits when the gateway does not serve the type', async () => {
+			it('does not offer MNI credits when the gateway does not serve the type', async () => {
 				vi.mocked(useAiGateway).mockReturnValue({
 					isEnabled: computed(() => true),
 					isCredentialTypeSupported: vi.fn(() => false),
@@ -2139,7 +2139,7 @@ describe('NodeCredentials', () => {
 				).not.toBeInTheDocument();
 			});
 
-			it('writes the managed slot when the n8n credits option is chosen', async () => {
+			it('writes the managed slot when the MNI credits option is chosen', async () => {
 				const { emitted } = renderComponent({
 					props: { node: nodeWithCred, overrideCredType: 'googlePalmApi' },
 				});
@@ -2157,7 +2157,7 @@ describe('NodeCredentials', () => {
 				});
 			});
 
-			it('shows the balance pill on the n8n credits row and the managed trigger', async () => {
+			it('shows the balance pill on the MNI credits row and the managed trigger', async () => {
 				vi.mocked(useAiGateway).mockReturnValue({
 					isEnabled: computed(() => true),
 					isCredentialTypeSupported: vi.fn((credType: string) => credType === 'googlePalmApi'),
@@ -2251,9 +2251,9 @@ describe('NodeCredentials', () => {
 			});
 		});
 
-		describe('multiple credential types (n8n credits on a non-default auth)', () => {
+		describe('multiple credential types (MNI credits on a non-default auth)', () => {
 			// Mirrors a node whose `authentication` defaults to an option mapping to a
-			// credential type NOT covered by n8n credits, while a sibling auth option
+			// credential type NOT covered by MNI credits, while a sibling auth option
 			// maps to a covered type.
 			const serviceOAuth2CredType: ICredentialType = {
 				name: 'serviceOAuth2Api',
@@ -2339,7 +2339,7 @@ describe('NodeCredentials', () => {
 				credentialsStore.state.credentials = {};
 			});
 
-			it('offers the n8n credits option when a non-displayed sibling credential type is supported', async () => {
+			it('offers the MNI credits option when a non-displayed sibling credential type is supported', async () => {
 				ndvStore.activeNode = multiAuthNode;
 
 				renderComponent({
@@ -2354,7 +2354,7 @@ describe('NodeCredentials', () => {
 				expect(screen.getByTestId('node-credentials-select-item-n8n-credits')).toBeInTheDocument();
 			});
 
-			it('switches authentication to the supported credential type when n8n credits is chosen', async () => {
+			it('switches authentication to the supported credential type when MNI credits is chosen', async () => {
 				ndvStore.activeNode = multiAuthNode;
 
 				const { emitted } = renderComponent({
@@ -2427,7 +2427,7 @@ describe('NodeCredentials', () => {
 					props: { node: multiAuthNode, overrideCredType: '', standalone: true },
 				});
 
-				// The sibling fallback is suppressed, so no picker (and no n8n credits) appears.
+				// The sibling fallback is suppressed, so no picker (and no MNI credits) appears.
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
@@ -2442,7 +2442,7 @@ describe('NodeCredentials', () => {
 					props: { node: multiAuthNode, overrideCredType: 'serviceOAuth2Api' },
 				});
 
-				// The sibling fallback is suppressed, so no picker (and no n8n credits) appears.
+				// The sibling fallback is suppressed, so no picker (and no MNI credits) appears.
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
@@ -2477,7 +2477,7 @@ describe('NodeCredentials', () => {
 				credentialsStore.state.credentialTypes = { someApi: someApiCredType };
 			});
 
-			it('does not offer n8n credits when typeVersion is below the minimum', async () => {
+			it('does not offer MNI credits when typeVersion is below the minimum', async () => {
 				vi.mocked(useAiGateway).mockReturnValue({
 					isEnabled: computed(() => true),
 					isCredentialTypeSupported: vi.fn((credType: string) => credType === 'someApi'),
@@ -2518,7 +2518,7 @@ describe('NodeCredentials', () => {
 				).not.toBeInTheDocument();
 			});
 
-			it('offers n8n credits when typeVersion meets the minimum', async () => {
+			it('offers MNI credits when typeVersion meets the minimum', async () => {
 				vi.mocked(useAiGateway).mockReturnValue({
 					isEnabled: computed(() => true),
 					isCredentialTypeSupported: vi.fn((credType: string) => credType === 'someApi'),
@@ -2663,7 +2663,7 @@ describe('NodeCredentials', () => {
 
 				// Even though the gateway serves the credential type and the node's
 				// version clears the (permissive-by-default) version gate, the node
-				// itself lets the user point at ANY predefined credential type — n8n
+				// itself lets the user point at ANY predefined credential type — MNI
 				// credits must never be offered for it.
 				vi.mocked(useAiGateway).mockReturnValue({
 					isEnabled: computed(() => true),
@@ -2683,7 +2683,7 @@ describe('NodeCredentials', () => {
 				});
 			});
 
-			it('never offers n8n credits on an HTTP Request node, even for a gateway-served type', async () => {
+			it('never offers MNI credits on an HTTP Request node, even for a gateway-served type', async () => {
 				const node: INodeUi = {
 					id: 'node-http',
 					name: 'HTTP Request',
@@ -2709,7 +2709,7 @@ describe('NodeCredentials', () => {
 				).not.toBeInTheDocument();
 			});
 
-			it('does not auto-enable n8n credits on mount for an HTTP Request node with no credentials', () => {
+			it('does not auto-enable MNI credits on mount for an HTTP Request node with no credentials', () => {
 				const node: INodeUi = {
 					id: 'node-http',
 					name: 'HTTP Request',
@@ -2732,7 +2732,7 @@ describe('NodeCredentials', () => {
 			});
 		});
 
-		it('writes the managed slot when n8n credits is chosen with no stored credentials', async () => {
+		it('writes the managed slot when MNI credits is chosen with no stored credentials', async () => {
 			ndvStore.activeNode = googleAiNode;
 
 			const { emitted } = renderComponent({
@@ -2782,7 +2782,7 @@ describe('NodeCredentials', () => {
 
 		it('should not auto-enable the gateway before the scoped fetch has resolved', async () => {
 			// An unfetched slice reads as "no credentials" — acting on it would switch a
-			// node that has a perfectly good credential onto n8n credits (IAM-1241).
+			// node that has a perfectly good credential onto MNI credits (IAM-1241).
 			stopCredentialsMirror();
 			const ownCred = {
 				id: 'cred-1',
@@ -2909,7 +2909,7 @@ describe('NodeCredentials', () => {
 			expect(emitted('credentialSelected')).toBeFalsy();
 		});
 
-		it('should not redirect an empty node onto n8n Connect when a supported action is picked later', async () => {
+		it('should not redirect an empty node onto MNI Connect when a supported action is picked later', async () => {
 			credentialsStore.state.credentials = {};
 			const nodeWithAction: INodeUi = {
 				...googleAiNode,
@@ -2930,7 +2930,7 @@ describe('NodeCredentials', () => {
 				).filter((e) => e[0]?.properties?.credentials?.googlePalmApi?.__aiGatewayManaged === true)
 					.length;
 
-			// n8n Connect is auto-selected once, as the initial default.
+			// MNI Connect is auto-selected once, as the initial default.
 			expect(gatewayEmitCount()).toBe(1);
 
 			// Re-trigger the credential-options watch, as changing the action would.
@@ -2939,11 +2939,11 @@ describe('NodeCredentials', () => {
 			};
 			await nextTick();
 
-			// The action change must not redirect the user back onto n8n Connect.
+			// The action change must not redirect the user back onto MNI Connect.
 			expect(gatewayEmitCount()).toBe(1);
 		});
 
-		it('should not switch a user-selected own credential to n8n Connect when the action changes', async () => {
+		it('should not switch a user-selected own credential to MNI Connect when the action changes', async () => {
 			const ownCred = {
 				id: 'cred-1',
 				name: 'My Google Key',
@@ -2974,7 +2974,7 @@ describe('NodeCredentials', () => {
 				).filter((e) => e[0]?.properties?.credentials?.googlePalmApi?.__aiGatewayManaged === true)
 					.length;
 
-			// The own credential is kept as-is; n8n Connect is never auto-selected.
+			// The own credential is kept as-is; MNI Connect is never auto-selected.
 			expect(gatewayEmitCount()).toBe(0);
 
 			// Re-trigger the credential-options watch, as changing the action would.
@@ -2984,7 +2984,7 @@ describe('NodeCredentials', () => {
 			};
 			await nextTick();
 
-			// Still no switch to n8n Connect after the re-evaluation.
+			// Still no switch to MNI Connect after the re-evaluation.
 			expect(gatewayEmitCount()).toBe(0);
 		});
 
@@ -3055,7 +3055,7 @@ describe('NodeCredentials', () => {
 				);
 				await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
 
-				expect(trackMock).toHaveBeenCalledWith('User toggled n8n connect credential', {
+				expect(trackMock).toHaveBeenCalledWith('User toggled MNI connect credential', {
 					credential_type: 'googlePalmApi',
 					node_type: googleAiNode.type,
 					mode: 'n8n_connect',
@@ -3080,7 +3080,7 @@ describe('NodeCredentials', () => {
 				});
 
 				expect(trackMock).not.toHaveBeenCalledWith(
-					'User toggled n8n connect credential',
+					'User toggled MNI connect credential',
 					expect.anything(),
 				);
 				expect(trackMock).not.toHaveBeenCalledWith('Node credential assigned', expect.anything());
@@ -3225,7 +3225,7 @@ describe('NodeCredentials', () => {
 			);
 		});
 
-		it('does not name the n8n account when the provider tells us no account', async () => {
+		it('does not name the MNI account when the provider tells us no account', async () => {
 			const usersStore = mockedStore(useUsersStore);
 			usersStore.usersById = {
 				'user-1': { id: 'user-1', email: 'signed-in@n8n.io' } as IUser,

@@ -1,6 +1,6 @@
 ---
-name: n8n:protect-endpoints
-description: Applies n8n's RBAC scope decorators to REST endpoints. Use when creating a new @RestController, adding any @Get/@Post/@Put/@Patch/@Delete route to an existing controller, or reviewing endpoint authorization. Every authenticated endpoint must be gated by @ProjectScope or @GlobalScope.
+name: MNI:protect-endpoints
+description: Applies MNI's RBAC scope decorators to REST endpoints. Use when creating a new @RestController, adding any @Get/@Post/@Put/@Patch/@Delete route to an existing controller, or reviewing endpoint authorization. Every authenticated endpoint must be gated by @ProjectScope or @GlobalScope.
 ---
 
 # Protect REST endpoints with RBAC

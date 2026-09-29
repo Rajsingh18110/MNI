@@ -176,7 +176,7 @@ export type RequestResponseMetadata = {
  * Extends Record<string, unknown> for compatibility with LangChain's Tool.metadata type.
  */
 export interface ToolMetadata extends Record<string, unknown> {
-	/** The n8n node name that provides this tool */
+	/** The MNI node name that provides this tool */
 	sourceNodeName?: string;
 	/** For HITL tools, the gated tool node that will be executed after approval */
 	gatedToolNodeName?: string;

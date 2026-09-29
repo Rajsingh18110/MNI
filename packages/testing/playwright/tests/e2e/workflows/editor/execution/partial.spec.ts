@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test('should not execute parent nodes with no run data', async ({ n8n }) => {
+		test('should not execute parent nodes with no run data', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('manual-partial-execution.json');
 			await n8n.canvas.clickZoomToFitButton();
 
@@ -24,7 +24,7 @@ test.describe(
 		});
 
 		test('should report a user error, not crash, when the only upstream node is disabled', async ({
-			n8n,
+			MNI,
 		}, testInfo) => {
 			const { containerConfig } = testInfo.project.use as {
 				containerConfig?: { workers?: number };
@@ -58,7 +58,7 @@ test.describe(
 		});
 
 		test.describe('partial execution v2', () => {
-			test('should execute from the first dirty node up to the current node', async ({ n8n }) => {
+			test('should execute from the first dirty node up to the current node', async ({ MNI }) => {
 				const nodeNames = ['A', 'B', 'C'];
 
 				await n8n.navigate.toWorkflow('new');

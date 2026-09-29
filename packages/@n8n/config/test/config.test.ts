@@ -98,7 +98,7 @@ describe('GlobalConfig', () => {
 				options: 'error',
 			},
 			postgresdb: {
-				database: 'n8n',
+				database: 'MNI',
 				host: 'localhost',
 				password: '',
 				poolSize: 2,
@@ -632,7 +632,7 @@ describe('GlobalConfig', () => {
 			provisioning: {
 				scopesProvisionInstanceRole: false,
 				scopesProvisionProjectRoles: false,
-				scopesName: 'n8n',
+				scopesName: 'MNI',
 				scopesInstanceRoleClaimName: 'n8n_instance_role',
 				scopesProjectsRolesClaimName: 'n8n_projects',
 				scopesUseExpressionMapping: false,
@@ -655,7 +655,7 @@ describe('GlobalConfig', () => {
 			mode: 'all',
 		},
 		redis: {
-			prefix: 'n8n',
+			prefix: 'MNI',
 		},
 		externalFrontendHooksUrls: '',
 		// @ts-expect-error structuredClone ignores properties defined as a getter
@@ -784,11 +784,11 @@ describe('GlobalConfig', () => {
 
 	it('should parse N8N_AGENTS_AI_SANDBOX_SNAPSHOT from env variables', () => {
 		process.env = {
-			N8N_AGENTS_AI_SANDBOX_SNAPSHOT: 'n8n/agent-knowledge:1.2.3',
+			N8N_AGENTS_AI_SANDBOX_SNAPSHOT: 'MNI/agent-knowledge:1.2.3',
 		};
 		const config = Container.get(GlobalConfig);
 
-		expect(config.agents.sandboxSnapshot).toBe('n8n/agent-knowledge:1.2.3');
+		expect(config.agents.sandboxSnapshot).toBe('MNI/agent-knowledge:1.2.3');
 	});
 
 	it('should parse N8N_MANAGED_OAUTH_SHOW_SCOPES from env variables', () => {
@@ -806,7 +806,7 @@ describe('GlobalConfig', () => {
 	it('should use values from env variables when defined', () => {
 		process.env = {
 			DB_POSTGRESDB_HOST: 'some-host',
-			DB_POSTGRESDB_USER: 'n8n',
+			DB_POSTGRESDB_USER: 'MNI',
 			DB_POSTGRESDB_IDLE_CONNECTION_TIMEOUT: '10000',
 			DB_TABLE_PREFIX: 'test_',
 			DB_PING_INTERVAL_SECONDS: '2',
@@ -820,7 +820,7 @@ describe('GlobalConfig', () => {
 			N8N_ENFORCE_GLOBAL_USER_AGENT: 'true',
 			N8N_GLOBAL_USER_AGENT_VALUE: 'AcmeCorp/1.0',
 			N8N_AGENTS_AI_SANDBOX_EPHEMERAL: 'true',
-			N8N_AGENTS_AI_SANDBOX_SNAPSHOT: 'n8n/agent-knowledge:1.2.3',
+			N8N_AGENTS_AI_SANDBOX_SNAPSHOT: 'MNI/agent-knowledge:1.2.3',
 		};
 		const config = Container.get(GlobalConfig);
 
@@ -831,7 +831,7 @@ describe('GlobalConfig', () => {
 				postgresdb: {
 					...defaultConfig.database.postgresdb,
 					host: 'some-host',
-					user: 'n8n',
+					user: 'MNI',
 					idleTimeoutMs: 10_000,
 				},
 				sqlite: defaultConfig.database.sqlite,
@@ -878,7 +878,7 @@ describe('GlobalConfig', () => {
 			agents: {
 				...defaultConfig.agents,
 				sandboxEphemeral: true,
-				sandboxSnapshot: 'n8n/agent-knowledge:1.2.3',
+				sandboxSnapshot: 'MNI/agent-knowledge:1.2.3',
 			},
 		});
 		expect(readFileSyncMock).not.toHaveBeenCalled();

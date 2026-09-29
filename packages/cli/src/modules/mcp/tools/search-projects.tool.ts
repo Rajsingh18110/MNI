@@ -50,7 +50,7 @@ const outputSchema = {
 		.boolean()
 		.optional()
 		.describe(
-			"Whether team projects are licensed on this n8n instance. When false, default to omitting projectId on create_workflow_from_code so the workflow lands in the caller's personal project, unless the user explicitly picked one of the returned accessible projects (legacy team projects can still appear here after a license downgrade). Omitted on error responses.",
+			"Whether team projects are licensed on this MNI instance. When false, default to omitting projectId on create_workflow_from_code so the workflow lands in the caller's personal project, unless the user explicitly picked one of the returned accessible projects (legacy team projects can still appear here after a license downgrade). Omitted on error responses.",
 		),
 	hint: z
 		.string()

@@ -32,7 +32,7 @@ export interface SchemaValidationResult {
 		message: string;
 		/**
 		 * The only problem is an omitted `resource`/`operation`/`mode` discriminator.
-		 * n8n falls back to the node default at runtime (the editor strips default
+		 * MNI falls back to the node default at runtime (the editor strips default
 		 * values on save), so consumers may treat this as non-blocking.
 		 */
 		missingDiscriminator?: boolean;
@@ -533,7 +533,7 @@ function extractUnionErrorSummary(
 							unionError.issues.every(isOmittedDiscriminator),
 						);
 						return {
-							message: `Missing discriminator "${path}". Expected one of: ${expectedStr}. When "${field}" is omitted, n8n falls back to the node default at runtime (the editor strips default values on save), so this can be intentional. If you set it, make sure "${field}" is inside "parameters".`,
+							message: `Missing discriminator "${path}". Expected one of: ${expectedStr}. When "${field}" is omitted, MNI falls back to the node default at runtime (the editor strips default values on save), so this can be intentional. If you set it, make sure "${field}" is inside "parameters".`,
 							...(onlyOmittedDiscriminators ? { missingDiscriminator: true } : {}),
 						};
 					}

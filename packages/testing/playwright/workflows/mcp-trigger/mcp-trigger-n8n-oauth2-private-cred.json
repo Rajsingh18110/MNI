@@ -1,5 +1,5 @@
 {
-	"name": "MCP Trigger n8n OAuth2 Private Credential Test",
+	"name": "MCP Trigger MNI OAuth2 Private Credential Test",
 	"active": false,
 	"nodes": [
 		{

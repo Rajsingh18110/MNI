@@ -59,7 +59,7 @@ const assetFileNames = (name: string) => (asset: { names?: string[] }) =>
  */
 function copyScssSources(): Plugin {
 	return {
-		name: 'n8n:copy-scss-sources',
+		name: 'MNI:copy-scss-sources',
 		closeBundle() {
 			cpSync(resolve(srcDir, 'css'), resolve(distDir, 'css'), {
 				recursive: true,

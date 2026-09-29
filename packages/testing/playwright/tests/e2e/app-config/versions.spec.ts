@@ -63,7 +63,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('should show updates in help section', async ({ n8n, setupRequirements }) => {
+		test('should show updates in help section', async ({ MNI, setupRequirements }) => {
 			await setupRequirements(requirements);
 			await n8n.goHome();
 			await n8n.sideBar.expand();

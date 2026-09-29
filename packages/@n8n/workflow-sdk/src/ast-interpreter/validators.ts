@@ -150,9 +150,9 @@ export const BUILDER_BLOCKED_GLOBALS: readonly BuilderBlockedGlobal[] = [
 		name: 'JSON',
 		alternative: 'only JSON.stringify is available; parse at runtime in a Code node',
 	},
-	{ name: 'Math', alternative: 'compute at runtime in a Code node or an n8n expression' },
+	{ name: 'Math', alternative: 'compute at runtime in a Code node or an MNI expression' },
 	{ name: 'Date', alternative: 'use the $now / $today helpers inside expr()' },
-	{ name: 'RegExp', alternative: 'match at runtime in a Code node or an n8n expression' },
+	{ name: 'RegExp', alternative: 'match at runtime in a Code node or an MNI expression' },
 
 	// Collection/async types
 	{ name: 'Promise', alternative: 'builder code is synchronous; no async/await or promises' },

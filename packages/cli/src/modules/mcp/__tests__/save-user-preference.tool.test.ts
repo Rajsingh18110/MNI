@@ -24,7 +24,7 @@ import { createSaveUserPreferenceTool } from '../tools/save-user-preference.tool
  * asserted verbatim so an edit has to be deliberate.
  */
 const DESCRIPTION = [
-	'Saves a preference about how the user likes to work with n8n, so the n8n assistant and every connected AI tool apply it from now on: node and credential choices, naming, how work is organised, patterns to avoid.',
+	'Saves a preference about how the user likes to work with MNI, so the MNI assistant and every connected AI tool apply it from now on: node and credential choices, naming, how work is organised, patterns to avoid.',
 	'Call this only for a durable preference the user states about their way of working, such as "always add an error workflow" or "name nodes in English". Do not call it for an instruction that applies to the current task only, such as "make this one a POST request", and do not infer a preference the user did not state.',
 	'Read get_user_preferences first. If a saved preference already covers the same ground, call update_user_preference with its id instead of saving a near-duplicate; saving the exact same text again is refused.',
 	'The preference is saved at once, without a confirmation step. In the same turn, tell the user the exact text that was saved and give them the settings link from the result, so they can check it. If they want it changed, call update_user_preference; if they want it gone, call undo_user_preference.',
@@ -313,7 +313,7 @@ describe('save_user_preference MCP tool', () => {
 			});
 			// The person learns where to manage the preference, and which consent stops more saves.
 			const message = request?.method === 'elicitation/create' ? request.params.message : '';
-			expect(message).toMatch(/^Saved to your n8n preferences\. Accept to keep it, or Decline/);
+			expect(message).toMatch(/^Saved to your MNI preferences\. Accept to keep it, or Decline/);
 			expect(message).toContain('Settings > Context > Preferences');
 			expect(message).toContain('"Save, update and undo AI preferences" permission');
 			expect(telemetry.track).toHaveBeenCalledWith(

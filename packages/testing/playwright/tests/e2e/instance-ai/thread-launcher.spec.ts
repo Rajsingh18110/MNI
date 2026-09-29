@@ -13,9 +13,9 @@ test.describe(
 			// allowed to error at the model — the test asserts the user message
 			// bubble, never the assistant reply, so proxy setup is skipped.
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				// Boot the app in an authenticated state before following the
-				// deep-link route, mimicking a user coming from the n8n website.
+				// deep-link route, mimicking a user coming from the MNI website.
 				await n8n.navigate.toInstanceAi();
 
 				await n8n.page.goto('/assistant/new?templateId=1234');
@@ -36,7 +36,7 @@ test.describe(
 		test(
 			'invalid template id lands on the assistant empty view',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				await n8n.navigate.toInstanceAi();
 
 				// Non-numeric template ids are rejected by the guard: no thread is

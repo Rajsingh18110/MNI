@@ -294,7 +294,7 @@ describe('Telemetry', () => {
 			expect(execBuffer['1'].prod_success?.count).toBe(1);
 			expect(execBuffer['1'].prod_success?.first).toEqual(execTime1);
 
-			// successful execution n8n node
+			// successful execution MNI node
 			payload.error_node_type = 'n8n-nodes-base.merge';
 			payload.workflow_id = '2';
 
@@ -364,7 +364,7 @@ describe('Telemetry', () => {
 			expect(execBuffer['1'].prod_success?.first).toEqual(execTime1);
 			expect(execBuffer['2'].prod_success?.first).toEqual(execTime1);
 
-			// failed execution n8n node
+			// failed execution MNI node
 			payload.success = false;
 			payload.error_node_type = 'n8n-nodes-base.merge';
 			payload.is_manual = true;

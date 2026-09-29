@@ -59,7 +59,7 @@ export function renderOidcTestSuccess(
 
 	return `<!DOCTYPE html>
 <html>
-<head><title>n8n - OIDC Connection Test Result</title><style>${PAGE_STYLES}h1 { color: rgb(0, 0, 0); }</style></head>
+<head><title>MNI - OIDC Connection Test Result</title><style>${PAGE_STYLES}h1 { color: rgb(0, 0, 0); }</style></head>
 <body>
 <div style="text-align:center">
 	<h1>OIDC Connection Test was successful</h1>
@@ -88,7 +88,7 @@ export function renderOidcTestFailure(error: unknown, cspNonce: string): string 
 
 	return `<!DOCTYPE html>
 <html>
-<head><title>n8n - OIDC Connection Test Result</title><style>${PAGE_STYLES}h1 { color: rgb(240, 60, 60); }</style></head>
+<head><title>MNI - OIDC Connection Test Result</title><style>${PAGE_STYLES}h1 { color: rgb(240, 60, 60); }</style></head>
 <body>
 <div style="text-align:center">
 	<h1>OIDC Connection Test failed</h1>

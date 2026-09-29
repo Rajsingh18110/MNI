@@ -22,7 +22,7 @@ test('reloads Codespaces secrets before the worker starts', () => {
 	const postStart = readFileSync(new URL('./post-start.mjs', import.meta.url), 'utf8');
 	assert.match(
 		postStart,
-		/bash -lc "\. \/usr\/local\/lib\/codespaces-env\.sh; .*node \/workspaces\/n8n\/\.devcontainer\/codespaces\/agent-worker\.mjs/,
+		/bash -lc "\. \/usr\/local\/lib\/codespaces-env\.sh; .*node \/workspaces\/MNI\/\.devcontainer\/codespaces\/agent-worker\.mjs/,
 	);
 	assert.match(postStart, /installAgentHarness\(\)/);
 	assert.match(postStart, /harness\.status === 'active' &&\s+tryRun\('worker start'/);
@@ -259,7 +259,7 @@ test('streams OpenCode CLI events and resumes an OpenCode session', async () => 
 		{
 			message: 'Test message',
 			sessionId: 'ses_existing',
-			cwd: '/workspaces/n8n',
+			cwd: '/workspaces/MNI',
 			author: 'Tester',
 		},
 		(event) => events.push(event),
@@ -310,7 +310,7 @@ test('stops the OpenCode process group at the turn limit', async () => {
 	const signals = [];
 	let child;
 	const run = runOpenCode(
-		{ message: 'Test message', cwd: '/workspaces/n8n', author: 'Tester' },
+		{ message: 'Test message', cwd: '/workspaces/MNI', author: 'Tester' },
 		() => {},
 		() => {},
 		{

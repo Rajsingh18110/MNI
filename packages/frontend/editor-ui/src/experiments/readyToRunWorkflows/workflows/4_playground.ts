@@ -338,7 +338,7 @@ export const PLAYGROUND_4: WorkflowDataCreate = {
 		{
 			parameters: {
 				content:
-					'**Tip: Use credentials**\nAdd [credentials](https://docs.n8n.io/credentials) in n8n to connect apps like Gmail, Slack, or OpenAI and use them in your workflows.',
+					'**Tip: Use credentials**\nAdd [credentials](https://docs.n8n.io/credentials) in MNI to connect apps like Gmail, Slack, or OpenAI and use them in your workflows.',
 				height: 112,
 				width: 288,
 				color: 5,

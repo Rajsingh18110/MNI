@@ -79,7 +79,7 @@ describe('LangchainHistoryAdapter', () => {
 	});
 
 	describe('addMessage', () => {
-		it('should convert LangChain HumanMessage to n8n format and delegate', async () => {
+		it('should convert LangChain HumanMessage to MNI format and delegate', async () => {
 			const history = createMockHistory();
 			const adapter = new LangchainHistoryAdapter(history);
 
@@ -95,7 +95,7 @@ describe('LangchainHistoryAdapter', () => {
 			);
 		});
 
-		it('should convert LangChain AIMessage to n8n format and delegate', async () => {
+		it('should convert LangChain AIMessage to MNI format and delegate', async () => {
 			const history = createMockHistory();
 			const adapter = new LangchainHistoryAdapter(history);
 
@@ -111,7 +111,7 @@ describe('LangchainHistoryAdapter', () => {
 			);
 		});
 
-		it('should convert LangChain ToolMessage to n8n format and delegate', async () => {
+		it('should convert LangChain ToolMessage to MNI format and delegate', async () => {
 			const history = createMockHistory();
 			const adapter = new LangchainHistoryAdapter(history);
 

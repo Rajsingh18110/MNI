@@ -84,7 +84,7 @@ const resourceMapperObjectSchema = resourceMapperCommonSchema.extend({
  */
 export const resourceMapperValueSchema = z.union([
 	resourceMapperObjectSchema,
-	z.string().regex(/^={{.*}}$/s, 'Must be an n8n expression (={{...}})'),
+	z.string().regex(/^={{.*}}$/s, 'Must be an MNI expression (={{...}})'),
 ]);
 
 // =============================================================================

@@ -353,7 +353,7 @@ describe('TeamsSetupService', () => {
 		);
 
 		// The portal would fetch the template and be told the credential is
-		// incomplete, which reads as an n8n outage.
+		// incomplete, which reads as an MNI outage.
 		expect(state.deployToAzureUrl).toBeNull();
 	});
 

@@ -10,7 +10,7 @@ import type { n8nPage } from '../../../pages/n8nPage';
 
 // Helper functions for common operations
 async function addOpenAILanguageModelWithCredentials(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	parentNode: string,
 	options: { exactMatch?: boolean; closeNDV?: boolean } = { exactMatch: true, closeNDV: false },
 ) {
@@ -27,7 +27,7 @@ async function addOpenAILanguageModelWithCredentials(
 	await n8n.ndv.clickBackToCanvasButton();
 }
 
-async function executeChatAndWaitForResponse(n8n: n8nPage, message: string) {
+async function executeChatAndWaitForResponse(MNI: n8nPage, message: string) {
 	await n8n.canvas.logsPanel.sendManualChatMessage(message);
 	// No execution-success toast is shown for a chat run started on an unsaved
 	// workflow, so the bot reply is the completion signal. The first message also
@@ -42,7 +42,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 			await services.proxy.loadExpectations('langchain');
 			await n8n.canvas.openNewWorkflow();
@@ -50,7 +50,7 @@ test.describe(
 
 		test.describe('Auto-add Behavior', () => {
 			test('should auto-add chat trigger and basic LLM chain when adding LLM node', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.canvas.addNode(AI_LANGUAGE_MODEL_OPENAI_CHAT_MODEL_NODE_NAME, { closeNDV: true });
 
@@ -71,7 +71,7 @@ test.describe(
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(3);
 			});
 
-			test('should not auto-add nodes if AI nodes are already present', async ({ n8n }) => {
+			test('should not auto-add nodes if AI nodes are already present', async ({ MNI }) => {
 				await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
 				await n8n.canvas.addNode(AI_LANGUAGE_MODEL_OPENAI_CHAT_MODEL_NODE_NAME, { closeNDV: true });
@@ -83,7 +83,7 @@ test.describe(
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(3);
 			});
 
-			test('should not auto-add nodes if ChatTrigger is already present', async ({ n8n }) => {
+			test('should not auto-add nodes if ChatTrigger is already present', async ({ MNI }) => {
 				await n8n.canvas.addNode(MANUAL_CHAT_TRIGGER_NODE_NAME, {
 					closeNDV: true,
 					trigger: 'On new Chat event',
@@ -102,16 +102,16 @@ test.describe(
 		});
 
 		test.describe('Chat Execution and Interaction', () => {
-			test('should be able to open and execute Basic LLM Chain node', async ({ n8n }) => {
+			test('should be able to open and execute Basic LLM Chain node', async ({ MNI }) => {
 				await n8n.canvas.addNode(BASIC_LLM_CHAIN_NODE_NAME, { closeNDV: true });
 
-				await addOpenAILanguageModelWithCredentials(n8n, BASIC_LLM_CHAIN_NODE_NAME);
+				await addOpenAILanguageModelWithCredentials(MNI, BASIC_LLM_CHAIN_NODE_NAME);
 
 				await n8n.canvas.openNode(BASIC_LLM_CHAIN_NODE_NAME);
 				const inputMessage = 'Hello!';
 
 				await n8n.ndv.execute();
-				await executeChatAndWaitForResponse(n8n, inputMessage);
+				await executeChatAndWaitForResponse(MNI, inputMessage);
 
 				// Verify chat message appears
 				await expect(n8n.canvas.getManualChatLatestBotMessage()).toBeVisible();

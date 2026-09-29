@@ -130,7 +130,7 @@ export class WiseTrigger implements INodeType {
 				const event = this.getNodeParameter('event') as string;
 				const trigger = getTriggerName(event);
 				const body: IDataObject = {
-					name: 'n8n Webhook',
+					name: 'MNI Webhook',
 					trigger_on: trigger,
 					delivery: {
 						version: '2.0.0',

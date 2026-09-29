@@ -71,7 +71,7 @@ export function buildEvaluationConfigDto(input: BuildDtoInput): BuildDtoResult {
 	};
 }
 
-// n8n expressions wrap node names in `$('…')` single quotes. A node literally
+// MNI expressions wrap node names in `$('…')` single quotes. A node literally
 // named `Customer's Webhook` (perfectly legal) would break the expression
 // without escaping. Escape backslashes first to avoid double-processing.
 function escapeForSingleQuoted(value: string): string {

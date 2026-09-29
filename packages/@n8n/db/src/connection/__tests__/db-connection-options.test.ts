@@ -15,7 +15,7 @@ describe('DbConnectionOptions', () => {
 			maxQueryExecutionTime: 0,
 		},
 	});
-	const n8nFolder = '/test/n8n';
+	const n8nFolder = '/test/MNI';
 	const instanceSettingsConfig = mock<InstanceSettingsConfig>({ n8nFolder });
 	const moduleRegistry = mock<ModuleRegistry>({ entities: [] });
 	const dbConnectionOptions = new DbConnectionOptions(

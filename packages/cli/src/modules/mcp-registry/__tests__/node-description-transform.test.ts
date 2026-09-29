@@ -776,7 +776,7 @@ describe('serverToCredentialDescription', () => {
 		expect(serverToCredentialDescription(server, isKnownCredentialType)).toBeNull();
 	});
 
-	describe('back-compat: an old n8n instance loading a streamable-http-templated row', () => {
+	describe('back-compat: an old MNI instance loading a streamable-http-templated row', () => {
 		/**
 		 * Verbatim snapshot of pickRemote/resolveCredentialRemote as they shipped
 		 * before this ticket (commit e60c43112c3, the tip this feature branched

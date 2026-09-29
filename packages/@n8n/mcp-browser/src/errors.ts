@@ -77,7 +77,7 @@ export class ExtensionConflictError extends McpBrowserError {
 				`turn that extension off for this site and tell you once done, after which ${resume}; ` +
 				'or (2) they finish this step themselves in the browser. If you were capturing a ' +
 				'credential, (2) means the value never comes back through the page — stop using ' +
-				'browser tools for it and let the user enter it through n8n credential setup instead.',
+				'browser tools for it and let the user enter it through MNI credential setup instead.',
 		);
 	}
 }
@@ -186,7 +186,7 @@ export class ExtensionNotConnectedError extends McpBrowserError {
 			phase === 'browser_not_launched'
 				? 'The browser process may not have started. Check that the browser is installed and accessible.'
 				: phase === 'extension_missing'
-					? 'The browser opened but the user did not confirm the browser connection in time. Ask the user to look for the n8n AI Browser Bridge extension popup in their browser and click Connect. If the user does not see the popup, the extension may not be installed.'
+					? 'The browser opened but the user did not confirm the browser connection in time. Ask the user to look for the MNI AI Browser Bridge extension popup in their browser and click Connect. If the user does not see the popup, the extension may not be installed.'
 					: 'The extension did not connect within the timeout period.';
 		const install = extensionInstructions ? `\n${extensionInstructions}` : '';
 		super(

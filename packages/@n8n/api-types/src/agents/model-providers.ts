@@ -29,8 +29,8 @@ export function isAgentModelProvider(provider: string): provider is AgentModelPr
 }
 
 /**
- * The n8n credential types that can drive each model provider, in preference
- * order. Single source of truth: the model picker, the n8n Connect support gate
+ * The MNI credential types that can drive each model provider, in preference
+ * order. Single source of truth: the model picker, the MNI Connect support gate
  * and the model catalog all answer "which credential type serves this provider?"
  * from here. Deriving it separately (e.g. by parsing a gateway URL path) makes
  * the answer depend on unrelated naming schemes agreeing by coincidence.
@@ -83,7 +83,7 @@ export interface AgentProviderModelsResponse {
 	verified: boolean;
 	/**
 	 * True when the provider's model list could not be retrieved at all (e.g. the
-	 * n8n Connect gateway was unreachable), as opposed to a list that is genuinely
+	 * MNI Connect gateway was unreachable), as opposed to a list that is genuinely
 	 * empty. Lets the picker say "couldn't load" instead of "no models available".
 	 */
 	unavailable?: boolean;

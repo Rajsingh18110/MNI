@@ -12,7 +12,7 @@
  *
  * Two hazards are covered alongside the happy path: an unconnected user must get an
  * error instead of a token-shaped failure, and a credential whose resolver keys on an
- * external subject must never be handed the n8n session token.
+ * external subject must never be handed the MNI session token.
  */
 
 import {
@@ -102,7 +102,7 @@ const DRIVE_HOST = 'https://www.googleapis.com';
 const DRIVE_FILES_PATH = '/drive/v3/files';
 const PER_USER_ACCESS_TOKEN = 'per-user-access-token';
 /**
- * The OAuth2 resolver keys on a subject the external IdP names, not on an n8n user.
+ * The OAuth2 resolver keys on a subject the external IdP names, not on an MNI user.
  * Ids are 16-char nanoids in production, and Postgres enforces that column width.
  */
 const EXTERNAL_RESOLVER_ID = 'external-oauth';
@@ -185,7 +185,7 @@ const createEndUserCredential = async ({ resolverId }: { resolverId?: string } =
 	return credential;
 };
 
-/** What the connect flow stores: per-user data, encrypted, keyed by n8n user id. */
+/** What the connect flow stores: per-user data, encrypted, keyed by MNI user id. */
 const connect = async (
 	credentialId: string,
 	user: User,
@@ -270,9 +270,9 @@ describe('design-time parameter loading with end-user credentials', () => {
 		expect(driveScope.isDone()).toBe(false);
 	});
 
-	test('refuses to send the n8n session token to an external-subject resolver', async () => {
+	test('refuses to send the MNI session token to an external-subject resolver', async () => {
 		// This resolver's identifier reads the context identity as a token its own provider
-		// issued, so resolution must be refused rather than handing over an n8n session token.
+		// issued, so resolution must be refused rather than handing over an MNI session token.
 		const credential = await createEndUserCredential({ resolverId: EXTERNAL_RESOLVER_ID });
 		const driveScope = mockDriveListing();
 
@@ -328,7 +328,7 @@ describe('design-time parameter loading with end-user credentials', () => {
 			token_type: 'Bearer',
 		});
 
-		// Google rejects the stale token, n8n refreshes it, and the retry succeeds.
+		// Google rejects the stale token, MNI refreshes it, and the retry succeeds.
 		const rejection = nock(DRIVE_HOST)
 			.get(DRIVE_FILES_PATH)
 			.query(true)

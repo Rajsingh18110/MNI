@@ -2122,7 +2122,7 @@ export const getUpdatedToolDescription = (
 /**
  * Generates a tool description for a given node based on its parameters and type.
  *
- * When the user-provided `toolDescription` is an n8n expression (starts with `=`),
+ * When the user-provided `toolDescription` is an MNI expression (starts with `=`),
  * the optional `resolveToolDescription` callback is used to evaluate it against
  * the upstream input data — matching how other tool nodes (e.g. `toolWorkflow`)
  * resolve their description parameter via `getNodeParameter`. Without a resolver,

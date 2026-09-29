@@ -32,7 +32,7 @@ const allModels = computed(() => chatStore.agents.n8n.models);
 const agents = computed(() => filterAndSortAgents(allModels.value, agentFilter.value));
 
 async function handleEditAgent(model: ChatHubConversationModel) {
-	if (model.provider === 'n8n') {
+	if (model.provider === 'MNI') {
 		const routeData = router.resolve({
 			name: VIEWS.WORKFLOW,
 			params: {

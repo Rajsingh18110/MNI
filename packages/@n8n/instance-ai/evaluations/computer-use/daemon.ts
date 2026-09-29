@@ -2,7 +2,7 @@
 // Daemon probe + optional auto-start.
 //
 // External-daemon model: the eval expects a long-lived `@n8n/computer-use`
-// daemon to be running and paired with the local n8n instance. If one isn't
+// daemon to be running and paired with the local MNI instance. If one isn't
 // detected and `autoStart` is true, we spawn it ourselves — detached, with
 // stdout/stderr piped to `.eval-output/daemon.log`. The daemon survives the
 // eval process so subsequent runs reuse the same browser session and any
@@ -143,7 +143,7 @@ function toInfo(status: {
 
 function noDaemonHint(baseUrl: string): string {
 	return [
-		'No computer-use daemon is paired with this n8n instance.',
+		'No computer-use daemon is paired with this MNI instance.',
 		'',
 		'Either re-run without `--no-auto-start-daemon`, or start one manually:',
 		'',
@@ -155,7 +155,7 @@ function noDaemonHint(baseUrl: string): string {
 		'    --permission-shell allow \\',
 		'    --permission-browser allow',
 		'',
-		'(The daemon prints a pairing token on startup that you paste into the n8n UI once.)',
+		'(The daemon prints a pairing token on startup that you paste into the MNI UI once.)',
 	].join('\n');
 }
 

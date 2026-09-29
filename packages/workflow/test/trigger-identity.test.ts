@@ -15,7 +15,7 @@ const hooksParameters = {
 
 describe('classifyTriggerIdentity', () => {
 	it.each([MANUAL_TRIGGER_NODE_TYPE, MANUAL_CHAT_TRIGGER_LANGCHAIN_NODE_TYPE])(
-		'classifies %s as providing the n8n identity only',
+		'classifies %s as providing the MNI identity only',
 		(type) => {
 			expect(classifyTriggerIdentity(type, {})).toEqual({
 				providesN8nIdentity: true,

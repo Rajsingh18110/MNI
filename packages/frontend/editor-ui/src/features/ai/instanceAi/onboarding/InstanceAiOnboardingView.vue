@@ -59,7 +59,7 @@ const sandboxValue = computed(() => {
 		return i18n.baseText('instanceAi.onboarding.foundOnServer');
 	}
 	if (!configuration.sandboxConfigured.value) return notSet.value;
-	return store.settings?.sandboxProvider === 'daytona' ? 'Daytona' : 'n8n Sandbox';
+	return store.settings?.sandboxProvider === 'daytona' ? 'Daytona' : 'MNI Sandbox';
 });
 const searchValue = computed(() => {
 	if (configuration.searchState.value === 'notset') return notSet.value;

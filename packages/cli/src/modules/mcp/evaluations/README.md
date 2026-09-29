@@ -21,7 +21,7 @@ troubleshooting, use the [Instance AI workflow evaluation README](../../../../..
 
 The rest of this guide covers the two-phase flow:
 
-1. Start a local n8n instance with Instance AI enabled.
+1. Start a local MNI instance with Instance AI enabled.
 2. Generate an MCP-built workflow cohort with `eval:build-mcp-manifest`.
 3. Evaluate that manifest with `eval:instance-ai --prebuilt-workflows`.
 
@@ -67,13 +67,13 @@ against MCP baselines — never the Instance AI dataset or the
 `instance-ai-baseline-` experiments. See
 [Record runs in LangSmith](#record-runs-in-langsmith).
 
-Start n8n with the same env file in watch mode:
+Start MNI with the same env file in watch mode:
 
 ```bash
 dotenvx run -f .env.mcp-evals -- pnpm dev:ai
 ```
 
-Alternatively, use a regular local n8n instance started with `pnpm start` and
+Alternatively, use a regular local MNI instance started with `pnpm start` and
 its existing users and projects:
 
 ```bash
@@ -165,10 +165,10 @@ Two comparison views, kept separate:
 ## Prerequisites
 
 - `claude` CLI is installed and authenticated.
-- `~/.claude.json` contains an MCP server entry for the target n8n instance.
+- `~/.claude.json` contains an MCP server entry for the target MNI instance.
 - The MCP server name used below, for example `n8n-local`, matches that Claude
   config entry.
-- The n8n instance is reachable at the URL configured in the MCP server block.
+- The MNI instance is reachable at the URL configured in the MCP server block.
 
 ## Run size
 
@@ -271,10 +271,10 @@ dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:build-m
 ## Generate from another Claude project
 
 Use this when Claude should load skills or settings from a different working
-directory while the evaluation script still runs from the n8n repo:
+directory while the evaluation script still runs from the MNI repo:
 
 ```bash
-dotenvx run -f /path/to/n8n/.env.mcp-evals -- pnpm --dir /path/to/n8n \
+dotenvx run -f /path/to/MNI/.env.mcp-evals -- pnpm --dir /path/to/MNI \
   --filter @n8n/instance-ai run eval:build-mcp-manifest \
   -n 5 \
   -j 5 \
@@ -287,9 +287,9 @@ dotenvx run -f /path/to/n8n/.env.mcp-evals -- pnpm --dir /path/to/n8n \
 
 Useful flags:
 
-- `--project-id` tells the builder to create workflows in a specific n8n
+- `--project-id` tells the builder to create workflows in a specific MNI
   project when the MCP server supports project-aware workflow creation, such as
-  the official n8n MCP server. Other MCP servers may ignore it and create
+  the official MNI MCP server. Other MCP servers may ignore it and create
   workflows in the user's personal project.
 - `--source langtracer --suite <slug>` pulls the test cases from LangTracer
   (the corpus home). Alternatively `--workflow-dir` points at a directory of

@@ -36,7 +36,7 @@ const creditsLabelKey = inject(TOOL_CONNECTION_CREDITS_LABEL_KEY, null);
 /**
  * Gateway-backed rows share the credits pill copy with the node creator and
  * model selector: "Free credits" until a top-up or a depleted allowance flips
- * it to a blue "n8n credits" pill. Defaults to "Free credits" when no consumer
+ * it to a blue "MNI credits" pill. Defaults to "Free credits" when no consumer
  * injects the store-backed key.
  */
 const creditsPill = computed(() => {

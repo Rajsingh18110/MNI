@@ -8,7 +8,7 @@ import {
 describe('resolveBackendHealthEndpointPath', () => {
 	it('should always return bare health endpoint regardless of N8N_PATH', () => {
 		const mockGlobalConfig = {
-			path: '/n8n',
+			path: '/MNI',
 			endpoints: { health: '/healthz' },
 		} as GlobalConfig;
 
@@ -17,7 +17,7 @@ describe('resolveBackendHealthEndpointPath', () => {
 
 	it('should return custom health endpoint when configured', () => {
 		const mockGlobalConfig = {
-			path: '/n8n',
+			path: '/MNI',
 			endpoints: { health: '/custom/health' },
 		} as GlobalConfig;
 
@@ -48,27 +48,27 @@ describe('resolveFrontendHealthEndpointPath', () => {
 
 	it('should combine N8N_PATH with health endpoint when N8N_PATH is set', () => {
 		const mockGlobalConfig = {
-			path: '/n8n',
+			path: '/MNI',
 			endpoints: { health: '/healthz' },
 		} as GlobalConfig;
 		delete process.env.N8N_ENDPOINT_HEALTH;
 
-		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/n8n/healthz');
+		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/MNI/healthz');
 	});
 
 	it('should normalize double slashes when N8N_PATH has trailing slash', () => {
 		const mockGlobalConfig = {
-			path: '/n8n/',
+			path: '/MNI/',
 			endpoints: { health: '/healthz' },
 		} as GlobalConfig;
 		delete process.env.N8N_ENDPOINT_HEALTH;
 
-		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/n8n/healthz');
+		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/MNI/healthz');
 	});
 
 	it('should prioritize N8N_ENDPOINT_HEALTH over N8N_PATH', () => {
 		const mockGlobalConfig = {
-			path: '/n8n',
+			path: '/MNI',
 			endpoints: { health: '/custom/health' },
 		} as GlobalConfig;
 		process.env.N8N_ENDPOINT_HEALTH = '/custom/health';
@@ -78,7 +78,7 @@ describe('resolveFrontendHealthEndpointPath', () => {
 
 	it('should use N8N_ENDPOINT_HEALTH even when it is the default value', () => {
 		const mockGlobalConfig = {
-			path: '/n8n',
+			path: '/MNI',
 			endpoints: { health: '/healthz' },
 		} as GlobalConfig;
 		process.env.N8N_ENDPOINT_HEALTH = '/healthz';
@@ -88,21 +88,21 @@ describe('resolveFrontendHealthEndpointPath', () => {
 
 	it('should handle multiple path segments in N8N_PATH', () => {
 		const mockGlobalConfig = {
-			path: '/api/n8n',
+			path: '/api/MNI',
 			endpoints: { health: '/healthz' },
 		} as GlobalConfig;
 		delete process.env.N8N_ENDPOINT_HEALTH;
 
-		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/api/n8n/healthz');
+		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/api/MNI/healthz');
 	});
 
 	it('should handle custom health endpoint with N8N_PATH', () => {
 		const mockGlobalConfig = {
-			path: '/n8n',
+			path: '/MNI',
 			endpoints: { health: '/health/check' },
 		} as GlobalConfig;
 		delete process.env.N8N_ENDPOINT_HEALTH;
 
-		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/n8n/health/check');
+		expect(resolveFrontendHealthEndpointPath(mockGlobalConfig)).toBe('/MNI/health/check');
 	});
 });

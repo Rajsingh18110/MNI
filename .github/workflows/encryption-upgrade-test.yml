@@ -69,7 +69,7 @@ jobs:
           persist-credentials: false
 
       # The image under test is the docker build of this checkout
-      # (n8nio/n8n:local) — the same artifact a release ships.
+      # (n8nio/MNI:local) — the same artifact a release ships.
       - name: Setup and build the image under test
         uses: ./.github/actions/setup-nodejs
         with:

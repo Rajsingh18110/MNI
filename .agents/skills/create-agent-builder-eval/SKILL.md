@@ -1,7 +1,7 @@
 ---
-name: n8n:create-agent-builder-eval
+name: MNI:create-agent-builder-eval
 description: >-
-  Authors and calibrates Instance AI evaluations that build standalone n8n
+  Authors and calibrates Instance AI evaluations that build standalone MNI
   Agents through Agent Builder. Use when a change under
   packages/cli/src/modules/agents affects build-agent routing, Agent setup,
   model or credential selection, tools, MCP servers, integrations, skills,
@@ -142,7 +142,7 @@ run for each new push. Use the PR gate's manual dispatch after a later push.
 
 ## Credential behavior
 
-Declared credentials are real n8n credential records with placeholder data.
+Declared credentials are real MNI credential records with placeholder data.
 The eval thread limits the builder to those credential IDs.
 
 Agent Builder model catalog requests return deterministic fake models during an

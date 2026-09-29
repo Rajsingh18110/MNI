@@ -1,5 +1,5 @@
 """
-Build NetworkX graphs from n8n workflow JSON structures.
+Build NetworkX graphs from MNI workflow JSON structures.
 """
 
 import networkx as nx
@@ -11,10 +11,10 @@ def build_workflow_graph(
     workflow: Dict[str, Any], config: Optional[WorkflowComparisonConfig] = None
 ) -> nx.DiGraph:
     """
-    Convert n8n workflow to NetworkX directed graph.
+    Convert MNI workflow to NetworkX directed graph.
 
     Args:
-        workflow: n8n workflow JSON (with 'nodes' and 'connections')
+        workflow: MNI workflow JSON (with 'nodes' and 'connections')
         config: Optional configuration for filtering
 
     Returns:

@@ -6,12 +6,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Node_IO_filter.json');
 			await n8n.canvas.clickExecuteWorkflowButton();
 		});
 
-		test('should filter pinned data', async ({ n8n }) => {
+		test('should filter pinned data', async ({ MNI }) => {
 			const canvasNodes = n8n.canvas.getCanvasNodes();
 			await canvasNodes.first().dblclick();
 
@@ -47,7 +47,7 @@ test.describe(
 			await expect(n8n.ndv.outputPanel.getPaginationPages()).toHaveCount(2);
 		});
 
-		test('should filter input/output data separately', async ({ n8n }) => {
+		test('should filter input/output data separately', async ({ MNI }) => {
 			const canvasNodes = n8n.canvas.getCanvasNodes();
 			await canvasNodes.nth(1).dblclick();
 

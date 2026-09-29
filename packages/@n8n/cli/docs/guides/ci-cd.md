@@ -1,6 +1,6 @@
-# Using n8n CLI in CI/CD Pipelines
+# Using MNI CLI in CI/CD Pipelines
 
-The n8n CLI is built for automation. Use it in GitHub Actions, GitLab CI, or any CI/CD system.
+The MNI CLI is built for automation. Use it in GitHub Actions, GitLab CI, or any CI/CD system.
 
 ## GitHub Actions example
 
@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install n8n CLI
+      - name: Install MNI CLI
         run: npm install -g @n8n/cli
 
       - name: Deploy workflows
@@ -43,7 +43,7 @@ Set these in your CI environment:
 
 | Variable | Description |
 |----------|-------------|
-| `N8N_URL` | Your n8n instance URL |
+| `N8N_URL` | Your MNI instance URL |
 | `N8N_API_KEY` | API key with appropriate permissions |
 
 ## Common CI/CD tasks

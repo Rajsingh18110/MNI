@@ -18,7 +18,7 @@ import type { ToolDefinition, UserCalledMCPToolEventPayload } from '../mcp.types
  * tool called and states the contract; it does not, on its own, make the model comply.
  */
 const DESCRIPTION = [
-	'Returns the preferences saved for this n8n instance, the caller, and their projects: node and credential choices, naming, how work is organised, and patterns to avoid.',
+	'Returns the preferences saved for this MNI instance, the caller, and their projects: node and credential choices, naming, how work is organised, and patterns to avoid.',
 	`Call this before ${MCP_USER_PREFERENCES_TRIGGER_CLAUSE} and apply what it returns to every change you make for the remainder of the task, not only the first one. If a preference conflicts with something the user asks for directly, follow the user and say which preference you set aside.`,
 	'When you work inside one project, pass its `projectId` to leave the other projects out.',
 ].join('\n\n');
@@ -143,7 +143,7 @@ export const createGetUserPreferencesTool = (
 			};
 			telemetry.track(USER_CALLED_MCP_TOOL_EVENT, telemetryPayload);
 			// The registered twin of the tool-call event: an MCP read is the one place a rendered
-			// block leaves n8n without a turn to attach it to.
+			// block leaves MNI without a turn to attach it to.
 			telemetry.track(TELEMETRY_EVENT.CONTEXT.PREFERENCES_READ_OVER_MCP, {
 				count: items.length,
 				scope_types: scopes,

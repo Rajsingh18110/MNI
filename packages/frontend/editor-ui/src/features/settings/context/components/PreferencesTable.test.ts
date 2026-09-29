@@ -122,7 +122,7 @@ describe('PreferencesTable', () => {
 
 		const sources = getAllByTestId('preference-source');
 		expect(sources[0]).toHaveTextContent('Settings');
-		expect(sources[1]).toHaveTextContent('n8n assistant');
+		expect(sources[1]).toHaveTextContent('MNI assistant');
 		expect(sources[2]).toHaveTextContent('Connected AI tool');
 	});
 

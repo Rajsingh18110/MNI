@@ -1441,7 +1441,7 @@ function createWorkflow(
 }
 
 /**
- * Import workflow from n8n JSON format
+ * Import workflow from MNI JSON format
  */
 function fromJSON(json: WorkflowJSON): WorkflowBuilder {
 	const parsed = parseWorkflowJSON(json);

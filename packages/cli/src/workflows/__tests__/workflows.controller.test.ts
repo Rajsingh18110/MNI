@@ -93,7 +93,7 @@ describe('WorkflowsController', () => {
 				expect(requestMock).toHaveBeenCalledWith({ method: 'GET', url: query.url });
 			});
 
-			it('when the data is not a valid n8n workflow JSON', async () => {
+			it('when the data is not a valid MNI workflow JSON', async () => {
 				const invalidWorkflowData = {
 					nodes: 'not an array',
 					connections: 'not an object',

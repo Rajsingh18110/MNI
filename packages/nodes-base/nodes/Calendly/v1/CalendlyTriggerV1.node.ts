@@ -212,7 +212,7 @@ export class CalendlyTriggerV1 implements INodeType {
 						'Calendly requires a public HTTPS webhook URL',
 						{
 							description:
-								'Set the n8n webhook URL to a public HTTPS address, or use a tunnel while testing locally.',
+								'Set the MNI webhook URL to a public HTTPS address, or use a tunnel while testing locally.',
 						},
 					);
 				}

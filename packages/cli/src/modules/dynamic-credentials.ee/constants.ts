@@ -12,7 +12,7 @@ export { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
  * resolver dropdown (where this is the default selection). Hidden from the admin
  * resolver list / types endpoints.
  */
-export const SYSTEM_RESOLVER_NAME = 'n8n private credentials';
+export const SYSTEM_RESOLVER_NAME = 'MNI private credentials';
 
 /** Type name of the N8N self-connect resolver class (matches its `metadata.name`). */
 export const SYSTEM_RESOLVER_TYPE = 'credential-resolver.n8n-1.0';

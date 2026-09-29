@@ -7,7 +7,7 @@ import { AiGatewayService } from '@/services/ai-gateway.service';
 import { reconcileNodeToolGatewayCredentials } from './reconcile-node-tool-gateway-credentials';
 
 /**
- * Composes node descriptions with the gateway config to auto-assign n8n Connect
+ * Composes node descriptions with the gateway config to auto-assign MNI Connect
  * managed credentials to node tools. Keeps `NodeTypes` out of the config service
  * and agent-config shape out of the generic `AiGatewayService`.
  */

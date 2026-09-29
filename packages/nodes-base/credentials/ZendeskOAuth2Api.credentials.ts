@@ -17,7 +17,7 @@ export class ZendeskOAuth2Api implements ICredentialType {
 			name: 'subdomain',
 			type: 'string',
 			default: '',
-			placeholder: 'n8n',
+			placeholder: 'MNI',
 			description: 'The subdomain of your Zendesk work environment',
 			required: true,
 		},

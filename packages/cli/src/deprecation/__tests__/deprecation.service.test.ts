@@ -231,7 +231,7 @@ describe('DeprecationService', () => {
 	});
 
 	describe('running outside a container', () => {
-		const message = 'Running n8n outside a container is deprecated';
+		const message = 'Running MNI outside a container is deprecated';
 
 		test('should warn when not running in a container', () => {
 			const service = new DeprecationService(

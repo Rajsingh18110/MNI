@@ -5,11 +5,11 @@ import { type GitRepoHelper, setupGitRepo } from '../../../utils/source-control-
 
 test.use({ capability: 'source-control' });
 
-async function expectPushSuccess(n8n: n8nPage) {
+async function expectPushSuccess(MNI: n8nPage) {
 	await n8n.notifications.waitForNotificationAndClose('Pushed successfully', { timeout: 30000 });
 }
 
-async function expectNoChangesToCommit(n8n: n8nPage) {
+async function expectNoChangesToCommit(MNI: n8nPage) {
 	await n8n.notifications.waitForNotificationAndClose('No changes to commit', { timeout: 10000 });
 }
 
@@ -25,14 +25,14 @@ test.describe(
 
 		let gitRepo: GitRepoHelper;
 
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await n8n.api.enableFeature('sourceControl');
 			await n8n.api.enableFeature('variables');
 
-			gitRepo = await setupGitRepo(n8n, services.gitea);
+			gitRepo = await setupGitRepo(MNI, services.gitea);
 		});
 
-		test('should push a new workflow', async ({ n8n }) => {
+		test('should push a new workflow', async ({ MNI }) => {
 			// create workflow
 			const workflow = await n8n.api.workflows.createWorkflow({
 				name: 'Test Workflow',
@@ -54,15 +54,15 @@ test.describe(
 			await expect(workflowCheckbox).toBeChecked();
 
 			// push and wait for commit to be indexed
-			await gitRepo.pushAndWait(n8n, 'Add test workflow with manual trigger');
-			await expectPushSuccess(n8n);
+			await gitRepo.pushAndWait(MNI, 'Add test workflow with manual trigger');
+			await expectPushSuccess(MNI);
 
 			// check no changes to commit
 			await n8n.sideBar.getSourceControlPushButton().click();
-			await expectNoChangesToCommit(n8n);
+			await expectNoChangesToCommit(MNI);
 		});
 
-		test('should push all resource types together', async ({ n8n }) => {
+		test('should push all resource types together', async ({ MNI }) => {
 			// variables and tags
 			await n8n.api.variables.createTestVariable();
 			await n8n.api.tags.create('test-tag');
@@ -126,10 +126,10 @@ test.describe(
 
 			// Push all resources
 			await n8n.sourceControlPushModal.push('Add all resource types');
-			await expectPushSuccess(n8n);
+			await expectPushSuccess(MNI);
 		});
 
-		test('should push modifications and deletions', async ({ n8n }) => {
+		test('should push modifications and deletions', async ({ MNI }) => {
 			// create resources
 			const project = await n8n.api.projects.createProject('Test Project');
 			const workflow = await n8n.api.workflows.createInProject(project.id, {
@@ -151,8 +151,8 @@ test.describe(
 			await n8n.sourceControlPushModal.selectWorkflowsTab();
 			await n8n.sourceControlPushModal.selectAllFilesInModal();
 
-			await gitRepo.pushAndWait(n8n, 'new resources');
-			await expectPushSuccess(n8n);
+			await gitRepo.pushAndWait(MNI, 'new resources');
+			await expectPushSuccess(MNI);
 
 			// modify and delete resources
 			await n8n.navigate.toWorkflow(workflow.id);
@@ -177,15 +177,15 @@ test.describe(
 			).toBeVisible();
 
 			// push and wait for commit
-			await gitRepo.pushAndWait(n8n, 'Modify workflow and delete credential');
-			await expectPushSuccess(n8n);
+			await gitRepo.pushAndWait(MNI, 'Modify workflow and delete credential');
+			await expectPushSuccess(MNI);
 
 			// check no changes to commit
 			await n8n.sideBar.getSourceControlPushButton().click();
-			await expectNoChangesToCommit(n8n);
+			await expectNoChangesToCommit(MNI);
 		});
 
-		test('should push selected resources', async ({ n8n }) => {
+		test('should push selected resources', async ({ MNI }) => {
 			// Create multiple workflows
 			const workflowA = await n8n.api.workflows.createWorkflow({
 				name: 'Workflow A',
@@ -231,8 +231,8 @@ test.describe(
 			await expect(n8n.sourceControlPushModal.getFileCheckboxByName('Workflow C')).toBeChecked();
 
 			// push and wait for commit
-			await gitRepo.pushAndWait(n8n, 'Push workflows A and C');
-			await expectPushSuccess(n8n);
+			await gitRepo.pushAndWait(MNI, 'Push workflows A and C');
+			await expectPushSuccess(MNI);
 
 			// modify workflow A
 			await n8n.navigate.toWorkflow(workflowA.id);
@@ -252,12 +252,12 @@ test.describe(
 			await n8n.sourceControlPushModal.selectFile('Workflow B');
 
 			// push and wait for commit
-			await gitRepo.pushAndWait(n8n, 'Push workflow A and B');
-			await expectPushSuccess(n8n);
+			await gitRepo.pushAndWait(MNI, 'Push workflow A and B');
+			await expectPushSuccess(MNI);
 
 			// Verify no more changes
 			await n8n.sideBar.getSourceControlPushButton().click();
-			await expectNoChangesToCommit(n8n);
+			await expectNoChangesToCommit(MNI);
 		});
 	},
 );

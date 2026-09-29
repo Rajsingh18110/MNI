@@ -202,7 +202,7 @@ describe('MainSidebar', () => {
 			const { getByText, findByText } = renderComponent();
 
 			getByText('Help').click();
-			const aboutItem = await findByText('About n8n');
+			const aboutItem = await findByText('About MNI');
 			aboutItem.click();
 
 			expect(uiStore.openModal).toHaveBeenCalledWith(ABOUT_MODAL_KEY);
@@ -235,7 +235,7 @@ describe('MainSidebar', () => {
 			});
 		});
 
-		it('should open the top-up flow when n8n credits is selected', async () => {
+		it('should open the top-up flow when MNI credits is selected', async () => {
 			settingsStore.settings = {
 				...defaultSettings,
 				aiGateway: {

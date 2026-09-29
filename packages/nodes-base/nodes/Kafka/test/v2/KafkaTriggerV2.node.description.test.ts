@@ -45,7 +45,7 @@ function optionEntries(description: INodeTypeDescription): INodeProperties[] {
  * v1's raw array holds every minor version's fields at once, including two
  * entries both named `heartbeatInterval` and a `parallelProcessing` restricted
  * to 1.1 and 1.2, so it cannot be compared directly. `displayParameter` is what
- * n8n itself uses to decide visibility, so the version predicates are resolved
+ * MNI itself uses to decide visibility, so the version predicates are resolved
  * the same way here rather than being restated by hand.
  *
  * The sibling values below are chosen so every predicate that depends on another

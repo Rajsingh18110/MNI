@@ -63,7 +63,7 @@ describe('chat-model-validation', () => {
 		expect(guidance).not.toMatch(/gpt-5/);
 	});
 
-	it('only mentions n8n credits in failure guidance when the gateway covers the provider', () => {
+	it('only mentions MNI credits in failure guidance when the gateway covers the provider', () => {
 		const error = 'The model "gpt-6" was not found';
 		expect(buildChatModelFailureGuidance('invalid_model', error, [], true)).toContain(
 			'Gateway credits',
@@ -79,7 +79,7 @@ describe('chat-model-validation', () => {
 		).not.toContain('Gateway credits');
 		expect(
 			buildChatModelFailureGuidance('capability_mismatch', 'not a chat model', [], false),
-		).not.toContain('n8n credits');
+		).not.toContain('MNI credits');
 	});
 
 	it('includes replacement suggestions in failure guidance when provided', () => {

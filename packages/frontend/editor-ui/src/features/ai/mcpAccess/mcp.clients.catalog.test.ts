@@ -26,7 +26,7 @@ describe('getMcpClientCatalog', () => {
 		const cursor = clients.find((client) => client.id === 'cursor');
 		const config = new URL(cursor!.deepLink!.replace('cursor://', 'https://cursor.test/'))
 			.searchParams;
-		expect(config.get('name')).toBe('n8n');
+		expect(config.get('name')).toBe('MNI');
 		expect(JSON.parse(atob(config.get('config')!))).toEqual({ url: SERVER_URL });
 	});
 
@@ -34,7 +34,7 @@ describe('getMcpClientCatalog', () => {
 		const vscode = clients.find((client) => client.id === 'vscode');
 		const encoded = vscode!.deepLink!.replace('vscode:mcp/install?', '');
 		expect(JSON.parse(decodeURIComponent(encoded))).toEqual({
-			name: 'n8n',
+			name: 'MNI',
 			type: 'http',
 			url: SERVER_URL,
 		});
@@ -43,7 +43,7 @@ describe('getMcpClientCatalog', () => {
 	it('should prefill the server URL in the Mistral Vibe connector template link', () => {
 		const vibe = clients.find((client) => client.id === 'mistral-vibe');
 		const params = new URL(vibe!.addUrl!).searchParams;
-		expect(params.get('template')).toBe('n8n');
+		expect(params.get('template')).toBe('MNI');
 		expect(params.get('server_url')).toBe(SERVER_URL);
 	});
 

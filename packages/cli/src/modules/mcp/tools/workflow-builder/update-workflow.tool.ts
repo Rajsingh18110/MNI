@@ -256,7 +256,7 @@ function parseStrictOperations(operations: OperationInput[]): PartialUpdateOpera
 }
 
 const NON_FATAL_OPERATION_TYPES_LIST = [...NON_FATAL_OPERATION_TYPES].join(', ');
-const TOOL_DESCRIPTION = `Atomically update an existing workflow with operation objects. Edits nodes/connections and also workflow-level settings via setWorkflowSettings — including the error workflow that runs automatically on failure to send alerts (e.g. when a user asks to "add error handling" or "notify me if this breaks"). Pass skillsUsed if n8n skills were used. Node-group operations (${NON_FATAL_OPERATION_TYPES_LIST}) are the one exception to "atomically": an invalid one is skipped and reported in skippedOperations instead of aborting the whole update. Separately, if other edits in the batch make an existing group invalid, that group is removed and reported in removedGroups.`;
+const TOOL_DESCRIPTION = `Atomically update an existing workflow with operation objects. Edits nodes/connections and also workflow-level settings via setWorkflowSettings — including the error workflow that runs automatically on failure to send alerts (e.g. when a user asks to "add error handling" or "notify me if this breaks"). Pass skillsUsed if MNI skills were used. Node-group operations (${NON_FATAL_OPERATION_TYPES_LIST}) are the one exception to "atomically": an invalid one is skipped and reported in skippedOperations instead of aborting the whole update. Separately, if other edits in the batch make an existing group invalid, that group is removed and reported in removedGroups.`;
 const inputSchema = {
 	workflowId: z.string().describe('The ID of the workflow to update.'),
 	skillsUsed: z.array(z.string()).optional().describe(SKILLS_USED_PARAM_DESCRIPTION),
@@ -433,7 +433,7 @@ async function assertErrorWorkflowIsUsable({
 
 	if (!publishedNodes) {
 		throw new Error(
-			`Error workflow '${errorWorkflow.name}' (${errorWorkflowId}) has no published version, so n8n cannot run it when this workflow fails. Publish that workflow first (publish_workflow), then set it as the error workflow.`,
+			`Error workflow '${errorWorkflow.name}' (${errorWorkflowId}) has no published version, so MNI cannot run it when this workflow fails. Publish that workflow first (publish_workflow), then set it as the error workflow.`,
 		);
 	}
 
@@ -471,7 +471,7 @@ async function assertErrorWorkflowIsUsable({
 	} catch (error) {
 		if (error instanceof SubworkflowPolicyDenialError) {
 			throw new Error(
-				`Error workflow '${errorWorkflow.name}' (${errorWorkflowId}) cannot be called by this workflow because of its caller policy, so n8n would block it at runtime. Update that workflow's settings ("This workflow can be called by …") to allow this one — set it to any workflow, or add this workflow to its allowlist — or pick a different error workflow.`,
+				`Error workflow '${errorWorkflow.name}' (${errorWorkflowId}) cannot be called by this workflow because of its caller policy, so MNI would block it at runtime. Update that workflow's settings ("This workflow can be called by …") to allow this one — set it to any workflow, or add this workflow to its allowlist — or pick a different error workflow.`,
 			);
 		}
 

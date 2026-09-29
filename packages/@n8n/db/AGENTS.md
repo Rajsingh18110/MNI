@@ -28,7 +28,7 @@ and `packages/cli` AGENTS.md for which to use and why.
 For full guidance on authoring migrations — scaffolding, the pre-flight
 checklist the `@n8n-io/migrations-review` team enforces, the
 `MigrationContext` API reference, the DSL type mapping, and the detailed
-rule catalogue — use the **`n8n:db-migrations`** skill.
+rule catalogue — use the **`MNI:db-migrations`** skill.
 
 Source-of-truth files the skill defers to:
 - `packages/@n8n/db/src/migrations/migration-types.ts` — `MigrationContext`, `ReversibleMigration`, `IrreversibleMigration`

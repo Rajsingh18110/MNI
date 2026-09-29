@@ -236,7 +236,7 @@ describe('analyzePackage', () => {
 				author: { name: 'Test Author', email: 'test@example.com' },
 				keywords: ['n8n-community-node-package'],
 				peerDependencies: { 'n8n-workflow': '*' },
-				n8n: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
+				MNI: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
 			},
 			'index.js': 'module.exports = {};\n',
 		});
@@ -294,7 +294,7 @@ describe('analyzePackage', () => {
 				author: { name: 'Test Author', email: 'test@example.com' },
 				keywords: ['n8n-community-node-package'],
 				peerDependencies: { 'n8n-workflow': '*' },
-				n8n: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
+				MNI: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
 			},
 			'dist/nodes/Foo/Foo.node.d.ts': `export declare class Foo {
     description: {
@@ -331,7 +331,7 @@ describe('analyzePackage', () => {
 				author: { name: 'Test Author', email: 'test@example.com' },
 				keywords: ['n8n-community-node-package'],
 				peerDependencies: { 'n8n-workflow': '*' },
-				n8n: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
+				MNI: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
 			},
 			'gulpfile.js': "console.log('building');\n",
 		});
@@ -348,7 +348,7 @@ describe('analyzePackage', () => {
 				version: '1.0.0',
 				keywords: ['n8n-community-node-package'],
 				peerDependencies: { 'n8n-workflow': '*' },
-				n8n: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
+				MNI: { n8nNodesApiVersion: 1, nodes: ['dist/nodes/Foo/Foo.node.js'] },
 			},
 			'nodes/Foo/Foo.node.ts': "console.log('debug');\nexport class Foo {}\n",
 		});

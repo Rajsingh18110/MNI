@@ -71,13 +71,13 @@ one provider). Just pick the credential and the model.
 Two presets are available:
 
 - **`correctness`** — compares the produced answer to a ground-truth answer.
-  Requires `expectedAnswer` (an n8n expression resolving to the ground-truth
+  Requires `expectedAnswer` (an MNI expression resolving to the ground-truth
   value, typically a dataset column, e.g. `={{ $json.expected_output }}`).
 - **`helpfulness`** — judges the produced answer against the user's query.
-  Requires `userQuery` (an n8n expression for the input the user asked, e.g.
+  Requires `userQuery` (an MNI expression for the input the user asked, e.g.
   `={{ $json.input }}`).
 
-Every metric also needs `actualAnswer`: an n8n expression resolving to the
+Every metric also needs `actualAnswer`: an MNI expression resolving to the
 workflow's produced answer at the end node, e.g. `={{ $json.output }}`.
 
 `userQuery` and `expectedAnswer` name **dataset columns** (the input the user
@@ -88,8 +88,8 @@ automatically. Do not reference the trigger or any node by name.
 
 ### Expression fields must begin with `=`
 
-`actualAnswer`, `userQuery`, and `expectedAnswer` are n8n **expressions** — they
-read a value out of each test row at runtime. The leading `=` is what tells n8n
+`actualAnswer`, `userQuery`, and `expectedAnswer` are MNI **expressions** — they
+read a value out of each test row at runtime. The leading `=` is what tells MNI
 to evaluate the `{{ … }}` template. **Without it the string is stored as literal
 text**: the field shows `{{ $json.output }}` verbatim and the judge scores that
 raw string instead of the resolved value.

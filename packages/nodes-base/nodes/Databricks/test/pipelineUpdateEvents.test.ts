@@ -36,7 +36,7 @@ const POLL_BUDGET_MS = 36_000;
 const FAILURE_MESSAGE =
 	"Update 4518bf has failed. Failed to analyze flow 'workspace.n8n_spike.n8n_spike_table'.";
 const TRACEBACK =
-	'Traceback (most recent call last):\n  File ".../n8n-spike-dlt-notebook", cell 1, line 7, in n8n_spike_table\n    raise Exception("intentional pipeline failure (n8n spike)") ...';
+	'Traceback (most recent call last):\n  File ".../n8n-spike-dlt-notebook", cell 1, line 7, in n8n_spike_table\n    raise Exception("intentional pipeline failure (MNI spike)") ...';
 const ALL_EVENTS = ['updateCompleted', 'updateFailed', 'updateStarted'];
 const IN_FLIGHT_STATES = [
 	'QUEUED',

@@ -42,11 +42,11 @@ export type DeploymentStateRepo = {
 
 @Service()
 export class InstanceSettings {
-	/** The path to the n8n folder in which all n8n related data gets saved */
+	/** The path to the MNI folder in which all MNI related data gets saved */
 	readonly n8nFolder = this.config.n8nFolder;
 
 	/** The path to the folder where all generated static assets are copied to */
-	readonly staticCacheDir = path.join(this.config.userHome, '.cache/n8n/public');
+	readonly staticCacheDir = path.join(this.config.userHome, '.cache/MNI/public');
 
 	/** The path to the folder containing custom nodes and credentials */
 	readonly customExtensionDir = path.join(this.n8nFolder, 'custom');
@@ -64,7 +64,7 @@ export class InstanceSettings {
 	private settings: Settings;
 
 	/**
-	 * Fixed ID of this n8n instance, for telemetry.
+	 * Fixed ID of this MNI instance, for telemetry.
 	 * Derived from encryption key on first boot, then read from DB.
 	 * Do not confuse with `hostId`.
 	 *
@@ -213,7 +213,7 @@ export class InstanceSettings {
 	instanceRole: InstanceRole = 'unset';
 
 	/**
-	 * ID of this n8n instance. Hostname-based when in Docker, or nanoID-based
+	 * ID of this MNI instance. Hostname-based when in Docker, or nanoID-based
 	 * otherwise (resets on restart). Do not confuse with `instanceId`.
 	 *
 	 * @example 'main-bnxa1riryKUNHtln' (local)
@@ -436,7 +436,7 @@ export class InstanceSettings {
 		if (arePermissionsCorrect) return;
 
 		this.logger.error(
-			`Permissions 0${permissionsResult.result.toString(8)} for n8n settings file ${this.settingsFile} are too wide. Changing permissions to 0600..`,
+			`Permissions 0${permissionsResult.result.toString(8)} for MNI settings file ${this.settingsFile} are too wide. Changing permissions to 0600..`,
 		);
 
 		const chmodResult = toResult(() => chmodSync(this.settingsFile, 0o600));

@@ -13,7 +13,7 @@ import { createUndoUserPreferenceTool } from '../tools/undo-user-preference.tool
 
 const DESCRIPTION = [
 	'Removes a preference that save_user_preference saved for this user. Call it when the user takes back a preference that was just saved, or asks to forget one that a connected AI tool saved earlier.',
-	'It only removes preferences saved through a connected AI tool for this user. A preference the user wrote in n8n settings, or one saved for a project or the whole instance, is refused; the user removes those in settings.',
+	'It only removes preferences saved through a connected AI tool for this user. A preference the user wrote in MNI settings, or one saved for a project or the whole instance, is refused; the user removes those in settings.',
 	'Tell the user in the same turn that the preference is gone.',
 ].join('\n\n');
 

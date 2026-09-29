@@ -173,7 +173,7 @@ export async function isN8nCreditsWalletDepleted(
  * `preferNewCredentialTypes` opts a type out of every automatic attachment: the
  * user asked for a fresh credential, so an unresolved slot of that type is
  * mocked and left for credential setup instead of being silently filled from a
- * sibling node, the saved workflow, the sole stored candidate, or n8n credits.
+ * sibling node, the saved workflow, the sole stored candidate, or MNI credits.
  *
  * Nothing is ever written into json.pinData — the saved workflow stays clean.
  */
@@ -191,7 +191,7 @@ export async function resolveCredentials(
 	const mockedCredentialsByNode: Record<string, string[]> = {};
 	const resolvedCredentialsByNode: Record<string, ResolvedCredential[]> = {};
 
-	// n8n credits support is process-global config; memoize per type for this call.
+	// MNI credits support is process-global config; memoize per type for this call.
 	const gatewaySupportCache = new Map<string, boolean>();
 	const isGatewayCredentialType = async (credType: string): Promise<boolean> => {
 		if (!ctx.credentialService.isAiGatewayCredentialType) return false;
@@ -374,7 +374,7 @@ export async function resolveCredentials(
 				}
 			};
 
-			// Wire n8n Connect: attach the managed marker so the saved workflow runs
+			// Wire MNI Connect: attach the managed marker so the saved workflow runs
 			// zero-setup in production, and record it as resolved so the agent treats
 			// the node as connected (no credential-setup routing). The node stays in
 			// the simulation set (`nodeMocked`) so verification pins it instead of
@@ -400,14 +400,14 @@ export async function resolveCredentials(
 				}
 			};
 
-			// With no stored credential for the type, prefer n8n credits over mocking:
+			// With no stored credential for the type, prefer MNI credits over mocking:
 			// attach directly if the written type is gateway-supported, else attach to
 			// a supported sibling (switching auth to it) and drop the unusable slot.
 			// With no gateway option either, still prefer a managed-OAuth sibling —
 			// switch auth to it and mock under that type, so setup asks for one-click
 			// OAuth instead of an API key.
 			const mockOrAttachGateway = async () => {
-				// n8n credits is still an existing credential from the user's point of
+				// MNI credits is still an existing credential from the user's point of
 				// view — they asked to create their own, so don't answer with ours.
 				if (wantsNewCredential) {
 					mockCredential();
@@ -454,8 +454,8 @@ export async function resolveCredentials(
 					await mockOrAttachGateway();
 					continue;
 				}
-				// Explicit n8n credits: the builder wrote the managed tag as this slot's
-				// id. Attach it ahead of the user's own credential (so "use n8n credits"
+				// Explicit MNI credits: the builder wrote the managed tag as this slot's
+				// id. Attach it ahead of the user's own credential (so "use MNI credits"
 				// wins even when a stored credential of the type exists), but only when
 				// the gateway serves the type or a supported sibling. Otherwise fall
 				// through to normal resolution rather than persist an unusable credential.
@@ -525,7 +525,7 @@ export async function resolveCredentials(
 	// Second pass — required-but-omitted credentials. The first pass only visits
 	// slots the LLM wrote; a node missing a slot for a type it requires reaches
 	// post-build setup credential-less and surfaces a setup card. Required types
-	// come from the node description; silently attach n8n credits when the node has
+	// come from the node description; silently attach MNI credits when the node has
 	// no entry and no stored credential, and the type — or a supported sibling its
 	// auth is switched to — is gateway-supported. Otherwise leave it for setup.
 	for (const node of json.nodes ?? []) {

@@ -537,7 +537,7 @@ export const useChatStore = defineStore(STORES.CHAT_HUB, () => {
 	/**
 	 * Check if the current canvas context allows manual execution.
 	 * Returns true when:
-	 * 1. The agent is an n8n workflow
+	 * 1. The agent is an MNI workflow
 	 * 2. The workflow is currently open on the canvas
 	 * 3. The workflow has a chat trigger with availableInChat enabled
 	 */
@@ -545,7 +545,7 @@ export const useChatStore = defineStore(STORES.CHAT_HUB, () => {
 		model: ChatHubConversationModel,
 		canvasWorkflowId: string,
 	): boolean {
-		if (model.provider !== 'n8n') return false;
+		if (model.provider !== 'MNI') return false;
 
 		if (canvasWorkflowId !== model.workflowId) return false;
 
@@ -664,7 +664,7 @@ export const useChatStore = defineStore(STORES.CHAT_HUB, () => {
 			if (useManualMode) {
 				initManualExecutionScaffold(canvasWorkflowId);
 
-				// model is guaranteed to be n8n type here (checked in isCanvasManualMode)
+				// model is guaranteed to be MNI type here (checked in isCanvasManualMode)
 				await sendMessageManualApi(
 					rootStore.restApiContext,
 					(agent.model as ChatHubN8nModel).workflowId,

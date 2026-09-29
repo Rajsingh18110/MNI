@@ -132,7 +132,7 @@ describe('buildSetupRequests', () => {
 				properties: [{ displayName: 'Model', name: 'model', type: 'resourceLocator' }],
 			});
 			(context.credentialService.list as Mock).mockResolvedValue([
-				{ id: 'cred-free', name: 'n8n free OpenAI API credits' },
+				{ id: 'cred-free', name: 'MNI free OpenAI API credits' },
 			]);
 		}
 
@@ -151,7 +151,7 @@ describe('buildSetupRequests', () => {
 				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
 				typeVersion: 1.3,
 				parameters: { model: modelValue },
-				credentials: { openAiApi: { id: 'cred-free', name: 'n8n free OpenAI API credits' } },
+				credentials: { openAiApi: { id: 'cred-free', name: 'MNI free OpenAI API credits' } },
 			} as Partial<NodeJSON>);
 		}
 
@@ -164,7 +164,7 @@ describe('buildSetupRequests', () => {
 
 			expect(result).toHaveLength(1);
 			expect(result[0].parameterIssues?.model).toEqual([
-				'"gpt-6-mini" isn\'t available with the connected credential "n8n free OpenAI API credits". ' +
+				'"gpt-6-mini" isn\'t available with the connected credential "MNI free OpenAI API credits". ' +
 					'Pick a value the credential offers instead — use nodes(action="explore-resources") to list allowed models.',
 			]);
 			expect(result[0].needsAction).toBe(true);
@@ -578,7 +578,7 @@ describe('buildSetupRequests', () => {
 		expect(result[0].isAutoApplied).toBeFalsy();
 	});
 
-	it('auto-applies the n8n Connect credential when no stored one exists and the type is gateway-supported', async () => {
+	it('auto-applies the MNI Connect credential when no stored one exists and the type is gateway-supported', async () => {
 		(context.credentialService.list as Mock).mockResolvedValue([]);
 		(
 			context.credentialService as unknown as { isAiGatewayCredentialType: Mock }
@@ -595,7 +595,7 @@ describe('buildSetupRequests', () => {
 		});
 	});
 
-	it('does not fire the n8n Connect auto-apply when the type is not gateway-supported', async () => {
+	it('does not fire the MNI Connect auto-apply when the type is not gateway-supported', async () => {
 		(context.credentialService.list as Mock).mockResolvedValue([]);
 		(
 			context.credentialService as unknown as { isAiGatewayCredentialType: Mock }
@@ -608,7 +608,7 @@ describe('buildSetupRequests', () => {
 		expect(result[0].node.credentials?.slackApi).toBeUndefined();
 	});
 
-	it('prefers a stored credential over n8n Connect when the user already has one', async () => {
+	it('prefers a stored credential over MNI Connect when the user already has one', async () => {
 		(context.credentialService.list as Mock).mockResolvedValue([
 			{ id: 'cred-1', name: 'My Slack', updatedAt: '2025-01-01T00:00:00.000Z' },
 		]);
@@ -663,7 +663,7 @@ describe('buildSetupRequests', () => {
 		expect(track).not.toHaveBeenCalled();
 	});
 
-	it('does not auto-apply n8n Connect when a stored credential exists for the type', async () => {
+	it('does not auto-apply MNI Connect when a stored credential exists for the type', async () => {
 		const track = vi.fn();
 		(context.credentialService.list as Mock).mockResolvedValue([
 			{ id: 'cred-1', name: 'My Slack', updatedAt: '2025-01-01T00:00:00.000Z' },
@@ -1516,7 +1516,7 @@ describe('applyNodeChanges', () => {
 		expect(context.credentialService.list).not.toHaveBeenCalled();
 	});
 
-	it('tags source instance-ai-auto when n8n Connect is applied and the user has no credential of their own', async () => {
+	it('tags source instance-ai-auto when MNI Connect is applied and the user has no credential of their own', async () => {
 		const track = vi.fn();
 		(context as unknown as { trackTelemetry: Mock }).trackTelemetry = track;
 		const wfJson = makeWorkflowJSON([makeNode({ name: 'Slack', id: 'n1' })]);
@@ -1541,7 +1541,7 @@ describe('applyNodeChanges', () => {
 		);
 	});
 
-	it('tags source instance-ai-confirmed when n8n Connect is chosen despite the user having a stored credential', async () => {
+	it('tags source instance-ai-confirmed when MNI Connect is chosen despite the user having a stored credential', async () => {
 		const track = vi.fn();
 		(context as unknown as { trackTelemetry: Mock }).trackTelemetry = track;
 		const wfJson = makeWorkflowJSON([makeNode({ name: 'Slack', id: 'n1' })]);
@@ -2340,7 +2340,7 @@ describe('setup analysis for credentials the user asked to create fresh', () => 
 		expect(result[0].existingCredentials).toEqual([{ id: 'cred-1', name: 'Slack account' }]);
 	});
 
-	it('does not auto-apply n8n credits either', async () => {
+	it('does not auto-apply MNI credits either', async () => {
 		(context.credentialService.list as Mock).mockResolvedValue([]);
 		(context.credentialService as unknown as Record<string, unknown>).isAiGatewayCredentialType = vi
 			.fn()

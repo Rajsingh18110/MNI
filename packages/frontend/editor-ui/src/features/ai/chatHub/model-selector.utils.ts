@@ -190,7 +190,7 @@ function buildGroupedWorkflowAgentMenuItems(agents: ChatModelDto[], i18n: I18nCl
 			id: `n8n-project-${group}`,
 			label: displayLabel,
 			icon: (groupAgents[0]?.groupIcon ?? workflowAgentDefaultIcon) as IconOrEmoji,
-			data: { provider: 'n8n' },
+			data: { provider: 'MNI' },
 			children: groupAgents.map((agent) => agentToMenuItem(agent, workflowAgentDefaultIcon)),
 		};
 	});
@@ -208,14 +208,14 @@ function buildWorkflowAgentsMenuItem(
 	const loadingText = i18n.baseText('generic.loadingEllipsis');
 
 	return {
-		id: 'n8n',
+		id: 'MNI',
 		label: i18n.baseText('chatHub.agent.workflowAgents'),
 		icon: workflowAgentDefaultIcon as IconOrEmoji | undefined,
-		data: { provider: 'n8n' },
+		data: { provider: 'MNI' },
 		children: isLoading
-			? [{ id: 'n8n::loading', label: loadingText, disabled: true }]
+			? [{ id: 'MNI::loading', label: loadingText, disabled: true }]
 			: agents.length === 0
-				? [{ id: 'n8n::no-agents', label: emptyText, disabled: true }]
+				? [{ id: 'MNI::no-agents', label: emptyText, disabled: true }]
 				: buildGroupedWorkflowAgentMenuItems(agents, i18n),
 	};
 }

@@ -7,9 +7,9 @@
  * removed here flows to the orchestrator without a cross-package change.
  */
 
-/** What an n8n Agent can do beyond chat channels — brief, for planning. */
+/** What an MNI Agent can do beyond chat channels — brief, for planning. */
 export const AGENT_CAPABILITIES = [
-	'Call tools — n8n nodes, attached workflows, or custom code tools — to take actions and query services.',
+	'Call tools — MNI nodes, attached workflows, or custom code tools — to take actions and query services.',
 	'Connect to MCP servers to expose external tool catalogs.',
 	'Use skills — reusable instruction bundles — to extend its behavior.',
 	'Run scheduled tasks (e.g. a daily summary) without a chat trigger.',
@@ -20,6 +20,6 @@ export const AGENT_CAPABILITIES = [
 
 /** Agent-level limitations the orchestrator must respect when planning a build. */
 export const AGENT_LIMITATIONS = [
-	'Agents cannot create n8n workflows or data tables; attach existing workflows only.',
+	'Agents cannot create MNI workflows or data tables; attach existing workflows only.',
 	'Chat channels must come from the channels field of this result — any other channel is unsupported.',
 ] as const;

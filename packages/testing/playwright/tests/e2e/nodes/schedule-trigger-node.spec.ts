@@ -6,11 +6,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should execute schedule trigger node and return timestamp in output', async ({ n8n }) => {
+		test('should execute schedule trigger node and return timestamp in output', async ({ MNI }) => {
 			await n8n.canvas.addNode('Schedule Trigger');
 
 			await n8n.ndv.execute();

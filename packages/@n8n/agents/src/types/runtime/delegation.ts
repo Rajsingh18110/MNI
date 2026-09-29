@@ -131,7 +131,7 @@ export type DelegateSubAgentInput = z.infer<typeof delegateSubAgentInputSchema>;
  *
  * Per-run runtime constraints (e.g. a wall-clock timeout) are intentionally not
  * here — they're a host concern, enforced inside the `runSubAgent` callback (as
- * the n8n CLI runner does).
+ * the MNI CLI runner does).
  */
 export type DelegateSubAgentPolicy = SubAgentTaskPathPolicy;
 

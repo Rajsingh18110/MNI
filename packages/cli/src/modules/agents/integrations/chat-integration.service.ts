@@ -1130,7 +1130,7 @@ export class ChatIntegrationService {
 
 	private buildWebhookUrl(agentId: string, projectId: string, platform: string): string {
 		// getWebhookBaseUrl returns the URL with a trailing slash, honours the
-		// WEBHOOK_URL env var used by n8n's other webhook triggers.
+		// WEBHOOK_URL env var used by MNI's other webhook triggers.
 		const base = this.urlService.getWebhookBaseUrl();
 		return `${base}rest/projects/${projectId}/agents/v2/${agentId}/webhooks/${platform}`;
 	}

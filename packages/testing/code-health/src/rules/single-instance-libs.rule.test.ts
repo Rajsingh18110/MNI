@@ -105,7 +105,7 @@ describe('SingleInstanceLibsRule', () => {
 	});
 
 	it('exempts host packages', async () => {
-		writePackage(tmpDir, 'packages/cli', { name: 'n8n', dependencies: { zod: 'catalog:' } });
+		writePackage(tmpDir, 'packages/cli', { name: 'MNI', dependencies: { zod: 'catalog:' } });
 		expect(await rule.analyze(context())).toHaveLength(0);
 	});
 

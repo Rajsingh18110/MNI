@@ -302,7 +302,7 @@ export class Gitlab implements INodeType {
 						operation: ['getRepositories'],
 					},
 				},
-				placeholder: 'n8n',
+				placeholder: 'MNI',
 				description: 'The name of the project',
 			},
 

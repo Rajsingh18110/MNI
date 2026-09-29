@@ -326,14 +326,14 @@ describe('Posthog store', () => {
 			posthog.capture('Test event', {
 				test: 'value',
 				$groups: {
-					organization: 'n8n',
+					organization: 'MNI',
 				},
 			});
 
 			expect(window.posthog?.capture).toHaveBeenCalledWith('Test event', {
 				test: 'value',
 				$groups: {
-					organization: 'n8n',
+					organization: 'MNI',
 				},
 			});
 		});

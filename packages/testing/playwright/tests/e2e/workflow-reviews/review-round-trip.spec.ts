@@ -36,7 +36,7 @@ test.describe(
 	'Workflow reviews @licensed',
 	{ annotation: [{ type: 'owner', description: 'Lifecycle & Governance' }] },
 	() => {
-		test('author and reviewer complete a review round trip', async ({ n8n, api }) => {
+		test('author and reviewer complete a review round trip', async ({ MNI, api }) => {
 			await api.enableFeature('workflowReviews');
 			await api.enableFeature('personalSpacePolicy');
 			await api.securitySettings.setWorkflowReviewsEnabled(true);

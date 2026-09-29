@@ -425,7 +425,7 @@ export class NodeSearchEngine {
 			`			<node_outputs>${typeof result.outputs === 'object' ? JSON.stringify(result.outputs) : result.outputs}</node_outputs>`,
 		];
 
-		// Flag n8n Connect coverage so the model can prefer it over comparable
+		// Flag MNI Connect coverage so the model can prefer it over comparable
 		// alternatives when the user has not named a specific tool.
 		if (result.aiGateway) {
 			const minVersion =

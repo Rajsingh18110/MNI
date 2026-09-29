@@ -92,7 +92,7 @@ export class EngineControlPlaneServer {
 
 		// Auth is per route, because each route requires its own token scope. It
 		// runs before the body parser, so an unauthenticated body is never read.
-		// n8n's parser bounds the body by `N8N_PAYLOAD_SIZE_MAX`.
+		// MNI's parser bounds the body by `N8N_PAYLOAD_SIZE_MAX`.
 		app.post(
 			STATUS_CALLBACK_PATH,
 			createEngineControlPlaneAuthMiddleware(

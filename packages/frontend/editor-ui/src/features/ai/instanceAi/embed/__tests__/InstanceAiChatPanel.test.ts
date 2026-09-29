@@ -170,7 +170,7 @@ describe('InstanceAiChatPanel', () => {
 
 		await vi.waitFor(() => expect(showError).toHaveBeenCalled());
 
-		expect(showError).toHaveBeenCalledWith(expect.any(Error), "Couldn't open n8n Assistant");
+		expect(showError).toHaveBeenCalledWith(expect.any(Error), "Couldn't open MNI Assistant");
 		expect(emitted('update:threadId')).toBeFalsy();
 	});
 
@@ -195,7 +195,7 @@ describe('InstanceAiChatPanel', () => {
 
 		await vi.waitFor(() => expect(showError).toHaveBeenCalled());
 
-		expect(showError).toHaveBeenCalledWith(expect.any(Error), "Couldn't open n8n Assistant");
+		expect(showError).toHaveBeenCalledWith(expect.any(Error), "Couldn't open MNI Assistant");
 		expect(store.syncThread).not.toHaveBeenCalled();
 		expect(emitted('update:threadId')).toBeFalsy();
 	});

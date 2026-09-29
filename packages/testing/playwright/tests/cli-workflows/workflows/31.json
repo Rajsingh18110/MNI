@@ -107,7 +107,7 @@
 				"tagsUi": {
 					"tagsValues": [
 						{
-							"name": "n8n",
+							"name": "MNI",
 							"tag_bg": "#FF3503",
 							"tag_fg": "#FFFFFF"
 						}
@@ -151,7 +151,7 @@
 				"team": "4651110",
 				"timeEntryIds": "={{$node[\"ClickUp10\"].json[\"id\"]}}",
 				"tagNames": [
-					"{\"name\":\"n8n\",\"creator\":8779387,\"tag_bg\":\"#FF3503\",\"tag_fg\":\"#FFFFFF\"}"
+					"{\"name\":\"MNI\",\"creator\":8779387,\"tag_bg\":\"#FF3503\",\"tag_fg\":\"#FFFFFF\"}"
 				]
 			},
 			"name": "ClickUp13",

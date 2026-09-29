@@ -3,11 +3,11 @@ import { createLlmCheck } from './create-llm-check';
 export const noUnnecessaryCodeNodes = createLlmCheck({
 	name: 'no_unnecessary_code_nodes',
 	description:
-		'Code nodes are only used when n8n built-in nodes cannot reasonably achieve the goal',
+		'Code nodes are only used when MNI built-in nodes cannot reasonably achieve the goal',
 	dimension: 'nodes_craftsmanship',
-	systemPrompt: `You are an evaluator checking whether an n8n workflow's use of Code nodes is justified.
+	systemPrompt: `You are an evaluator checking whether an MNI workflow's use of Code nodes is justified.
 
-n8n context:
+MNI context:
 - Built-in nodes cover most data transformations: Set (field assignment), Filter (per-row predicates), Sort, Aggregate (groupBy/count), Split Out / Split In Batches (array fan-out), Compare Datasets (joins), IF / Switch (branching), Merge (combine branches).
 - HTTP Request can call any API directly, including GraphQL endpoints (POST a JSON body with the query string).
 - The Linear node uses GraphQL under the hood but only exposes a fixed field shape; custom queries need HTTP Request OR Code.

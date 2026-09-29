@@ -19,7 +19,7 @@ const SettingsMCPClientsView = async () =>
 export const MCPModule = defineFrontendModule({
 	id: 'mcp',
 	name: 'MCP Server',
-	description: 'Access your n8n instance through MCP clients',
+	description: 'Access your MNI instance through MCP clients',
 	icon: 'mcp',
 	routes: [
 		{

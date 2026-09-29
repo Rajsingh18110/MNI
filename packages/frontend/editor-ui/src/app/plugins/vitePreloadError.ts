@@ -1,4 +1,4 @@
-const VITE_PRELOAD_RELOAD_TS = 'n8n:vite-preload-reloaded-at';
+const VITE_PRELOAD_RELOAD_TS = 'MNI:vite-preload-reloaded-at';
 const RELOAD_THROTTLE_MS = 10_000;
 
 export function registerVitePreloadErrorHandler(): () => void {

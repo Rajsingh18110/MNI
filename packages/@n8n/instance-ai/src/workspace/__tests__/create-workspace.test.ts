@@ -82,7 +82,7 @@ describe('createSandbox', () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
 		mockCreateSharedSandbox.mockResolvedValue(sandbox);
-		mockSnapshotName.mockReturnValue('n8n/instance-ai:1.2.3');
+		mockSnapshotName.mockReturnValue('MNI/instance-ai:1.2.3');
 		mockEnsureImage.mockResolvedValue({ dockerfile: 'FROM node:20' });
 	});
 
@@ -240,7 +240,7 @@ describe('createSandbox', () => {
 				labels: {
 					'n8n-instance-ai-sandbox-id': sharedConfig.id,
 				},
-				snapshot: 'n8n/instance-ai:1.2.3',
+				snapshot: 'MNI/instance-ai:1.2.3',
 			},
 			{ logger, errorReporter },
 		);
@@ -265,7 +265,7 @@ describe('createSandbox', () => {
 		expect(errorReporter.error).toHaveBeenCalledWith(
 			expect.objectContaining({
 				message:
-					'No Instance AI sandbox snapshot is available for this n8n version (unknown) and sandbox images cannot be built through the sandbox proxy',
+					'No Instance AI sandbox snapshot is available for this MNI version (unknown) and sandbox images cannot be built through the sandbox proxy',
 			}),
 			{ tags: { component: 'instance-ai-snapshot' } },
 		);
@@ -289,7 +289,7 @@ describe('createSandbox', () => {
 
 		expect(errorReporter.error).toHaveBeenCalledWith(
 			expect.objectContaining({
-				message: 'Instance AI sandbox snapshot "n8n/instance-ai:1.2.3" is missing or unusable',
+				message: 'Instance AI sandbox snapshot "MNI/instance-ai:1.2.3" is missing or unusable',
 				cause: createFailure,
 			}),
 			{ tags: { component: 'instance-ai-snapshot' } },
@@ -305,7 +305,7 @@ describe('createSandbox', () => {
 			getAuthToken,
 			image: 'node:20',
 			n8nVersion: '1.2.3',
-			snapshot: 'n8n/instance-ai:2.27.3',
+			snapshot: 'MNI/instance-ai:2.27.3',
 		};
 
 		await expect(
@@ -315,7 +315,7 @@ describe('createSandbox', () => {
 		// The explicit override short-circuits the version-derived default.
 		expect(mockSnapshotName).not.toHaveBeenCalled();
 		const sharedConfig = mockCreateSharedSandbox.mock.calls[0][0] as DaytonaSandboxConfig;
-		expect(sharedConfig.snapshot).toBe('n8n/instance-ai:2.27.3');
+		expect(sharedConfig.snapshot).toBe('MNI/instance-ai:2.27.3');
 	});
 
 	it('does not leak the snapshot override into direct (non-proxy) mode', async () => {
@@ -325,7 +325,7 @@ describe('createSandbox', () => {
 			daytonaApiKey: 'test-key',
 			image: 'node:20',
 			n8nVersion: '1.2.3',
-			snapshot: 'n8n/instance-ai:2.27.3',
+			snapshot: 'MNI/instance-ai:2.27.3',
 		};
 
 		await expect(

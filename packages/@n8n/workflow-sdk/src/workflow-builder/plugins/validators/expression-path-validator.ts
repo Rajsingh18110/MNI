@@ -141,7 +141,7 @@ function validateNodePath(
 }
 
 /**
- * Unwrap the `json` property from an n8n output item.
+ * Unwrap the `json` property from an MNI output item.
  * Output items are stored as `{ json: { field: value } }` but expressions
  * reference fields directly (e.g. `$json.field`), so we need to unwrap.
  */

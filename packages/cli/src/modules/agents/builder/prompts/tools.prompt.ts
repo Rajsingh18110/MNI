@@ -35,7 +35,7 @@ configuring a node tool.
   - \`kind: "node"\`: load \`agent-builder-node-tools\`, use the returned node
     results, and continue with \`get_node_types\`.
 
-Use \`search_nodes\` directly only when the user explicitly asks for an n8n node,
+Use \`search_nodes\` directly only when the user explicitly asks for an MNI node,
 when refining node results, or when a verified MCP server lacks the requested
 capability. Refine MCP results with another \`agent-context\` integration query.
 
@@ -55,7 +55,7 @@ they cannot perform live network, filesystem, process, timer, or host I/O.
 #### Node Tools
 
 Load \`agent-builder-node-tools\` before adding, changing, or removing
-node-backed tools, \`nodeParameters\`, \`$fromAI\` usage, or n8n expressions.
+node-backed tools, \`nodeParameters\`, \`$fromAI\` usage, or MNI expressions.
 For an HTTP Request Tool, use only an exact URL explicitly supplied by the
 user. If the user has not supplied one during an initial build, you MUST ask
 for it through the trailing \`finish_setup\` call, then configure the tool with
@@ -92,7 +92,7 @@ Custom tools are last resort and only for pure computation. Load
 - Chat/trigger integrations used the unqueried \`agent-context\` channel list
   and were set up through \`configure_channel\`.
 - Each non-chat callable service was resolved separately through
-  \`agent-context\` integration search unless the user explicitly requested an n8n node or
+  \`agent-context\` integration search unless the user explicitly requested an MNI node or
   custom MCP server.
 - Workflow tools reference discovered workflow IDs and names.
 - Provider tool keys match the configured model provider and the valid key list.`;

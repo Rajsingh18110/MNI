@@ -13,7 +13,7 @@ import { PROXY_WITHOUT_COMMUNITY_PACKAGES } from '../../../fixtures/capabilities
 import type { n8nPage } from '../../../pages/n8nPage';
 
 async function addOpenAILanguageModelWithCredentials(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	parentNode: string,
 	options: { exactMatch?: boolean; closeNDV?: boolean } = { exactMatch: true, closeNDV: false },
 ) {
@@ -30,7 +30,7 @@ async function addOpenAILanguageModelWithCredentials(
 	await n8n.ndv.clickBackToCanvasButton();
 }
 
-async function setEditorText(n8n: n8nPage, parameterName: string, value: string) {
+async function setEditorText(MNI: n8nPage, parameterName: string, value: string) {
 	const codeEditor = n8n.ndv.getParameterEditor(parameterName);
 	await codeEditor.click();
 	await n8n.page.keyboard.press('ControlOrMeta+a');
@@ -68,16 +68,16 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 			await services.proxy.loadExpectations('hitl-for-tools');
 			await n8n.canvas.openNewWorkflow();
 		});
 
-		test('should add a HITL node between Agent and Tool node', async ({ n8n }) => {
+		test('should add a HITL node between Agent and Tool node', async ({ MNI }) => {
 			await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
-			await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+			await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 
 			await n8n.canvas.addSupplementalNodeToParent(
 				AI_TOOL_CODE_NODE_NAME,
@@ -109,10 +109,10 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(4);
 		});
 
-		test('should add a HITL tool node and run it', async ({ n8n }) => {
+		test('should add a HITL tool node and run it', async ({ MNI }) => {
 			await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
-			await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+			await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 
 			await n8n.canvas.addSupplementalNodeToParent(
 				MANUAL_CHAT_TRIGGER_NODE_NAME,
@@ -129,10 +129,10 @@ test.describe(
 			);
 
 			await n8n.ndv.getParameterTextarea('description').fill('Send email');
-			await setEditorText(n8n, 'jsCode', 'return "Email sent";');
+			await setEditorText(MNI, 'jsCode', 'return "Email sent";');
 
 			await n8n.ndv.setParameterSwitch('specifyInputSchema', true);
-			await setEditorText(n8n, 'jsonSchemaExample', '{"receiver": "",    "body": ""}');
+			await setEditorText(MNI, 'jsonSchemaExample', '{"receiver": "",    "body": ""}');
 
 			await n8n.ndv.clickBackToCanvasButton();
 
@@ -175,12 +175,12 @@ test.describe(
 		// and loops until it hits max iterations.
 		// https://community.n8n.io/t/human-review-before-ai-tool-works-in-n8n-2-6-0-but-does-not-execute-the-tool-in-2-27-5-hitl/304110/1
 		test('should return the real tool result to the agent after approval, not the approval object', async ({
-			n8n,
+			MNI,
 			services,
 		}) => {
 			await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
-			await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+			await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 
 			await n8n.canvas.addSupplementalNodeToParent(
 				MANUAL_CHAT_TRIGGER_NODE_NAME,
@@ -198,10 +198,10 @@ test.describe(
 
 			// The gated tool returns a distinctive result we can assert reached the agent.
 			await n8n.ndv.getParameterTextarea('description').fill('Send email');
-			await setEditorText(n8n, 'jsCode', 'return "Email sent";');
+			await setEditorText(MNI, 'jsCode', 'return "Email sent";');
 
 			await n8n.ndv.setParameterSwitch('specifyInputSchema', true);
-			await setEditorText(n8n, 'jsonSchemaExample', '{"receiver": "",    "body": ""}');
+			await setEditorText(MNI, 'jsonSchemaExample', '{"receiver": "",    "body": ""}');
 
 			await n8n.ndv.clickBackToCanvasButton();
 
@@ -254,7 +254,7 @@ test.describe(
 
 		// The duplicated-module bug this guards against only reproduces in the packaged image (container mode)
 		test('agent should send HITL-wrapped tools to the model on the first turn, before approval', async ({
-			n8n,
+			MNI,
 			api,
 			services,
 		}) => {

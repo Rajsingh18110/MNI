@@ -709,8 +709,8 @@ describe('isCommunityPackageName', () => {
 		expect(isCommunityPackageName('@my.mixed_style-org/n8n-nodes-complex_name-format')).toBe(true);
 	});
 
-	// Official n8n packages that should not be identified as community packages
-	it('should not identify official n8n packages as community nodes', () => {
+	// Official MNI packages that should not be identified as community packages
+	it('should not identify official MNI packages as community nodes', () => {
 		expect(isCommunityPackageName('@n8n/n8n-nodes-example')).toBe(false);
 		expect(isCommunityPackageName('n8n-nodes-base')).toBe(false);
 	});

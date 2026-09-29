@@ -252,7 +252,7 @@ export function persistedSpendCosts(results: EvalResults): CaseCost[] {
 	});
 }
 
-/** Arm whose builder ran in the n8n backend (AIA): sum each case's build
+/** Arm whose builder ran in the MNI backend (AIA): sum each case's build
  *  threads from the LangSmith trace project. */
 export async function threadJoinCosts(
 	results: EvalResults,

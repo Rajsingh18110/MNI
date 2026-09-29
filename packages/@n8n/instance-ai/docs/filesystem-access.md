@@ -10,7 +10,7 @@ current gateway is a generic MCP capability bridge.
 ```mermaid
 sequenceDiagram
     participant Agent as Instance AI
-    participant Server as n8n server
+    participant Server as MNI server
     participant Daemon as computer-use daemon
 
     Daemon->>Server: POST /rest/instance-ai/gateway/init
@@ -29,7 +29,7 @@ directory tree. Files and directory trees are read on demand through the
 advertised tools.
 
 The bridge is outbound from the daemon to n8n. It works for cloud deployments
-without exposing a daemon port to the n8n server. For a self-hosted deployment,
+without exposing a daemon port to the MNI server. For a self-hosted deployment,
 the user must add `--allowed-origins <instance-origin>` to the generated command.
 
 ## Instance AI Interface
@@ -93,7 +93,7 @@ status from the backend response.
 ## Gateway Protocol
 
 All daemon endpoints use `X-Gateway-Key`. The paths below are relative to the
-n8n REST base.
+MNI REST base.
 
 | Method | Path | Authentication | Body or result |
 |--------|------|----------------|----------------|

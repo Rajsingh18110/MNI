@@ -298,7 +298,7 @@
 				"sendTo": "={{ $('Workflow Configuration').first().json.emailRecipient }}",
 				"subject": "=Daily RAG Chatbot Summary - {{ $json.date }}",
 				"emailType": "text",
-				"message": "=Daily RAG Chatbot Analytics Summary\n\nDate: {{ $json.date }}\n\nTotal Questions Asked: {{ $json.totalQuestions }}\nFailed Lookups: {{ $json.failedLookups }}\n\nTop Referenced Files:\n{{ $json.topFiles }}\n\n---\nThis is an automated summary from your n8n RAG workflow."
+				"message": "=Daily RAG Chatbot Analytics Summary\n\nDate: {{ $json.date }}\n\nTotal Questions Asked: {{ $json.totalQuestions }}\nFailed Lookups: {{ $json.failedLookups }}\n\nTop Referenced Files:\n{{ $json.topFiles }}\n\n---\nThis is an automated summary from your MNI RAG workflow."
 			},
 			"webhookId": "d2ee52fc-9031-48e5-a42d-c6b2c7aaf2e9"
 		}

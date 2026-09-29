@@ -22,7 +22,7 @@ test.describe(
 	() => {
 		for (const tier of TIERS) {
 			test(`loads ${tier}-tier workflow @tier:${tier}`, async ({
-				n8n,
+				MNI,
 				api,
 				n8nContainer,
 				services,

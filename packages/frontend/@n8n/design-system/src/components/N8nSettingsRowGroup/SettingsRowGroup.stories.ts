@@ -84,7 +84,7 @@ export const MergedSubsection: Story = {
 				<N8nSettingsRow title="Safari on iPhone" description="Gdynia, Poland · last seen 4 hours ago" :show-divider="false">
 					<template #action><N8nButton variant="outline" size="small" label="Revoke" /></template>
 				</N8nSettingsRow>
-				<N8nSettingsRow title="n8n CLI" description="headless · last seen 3 days ago" />
+				<N8nSettingsRow title="MNI CLI" description="headless · last seen 3 days ago" />
 			</N8nSettingsRowGroup>
 		`),
 	}),

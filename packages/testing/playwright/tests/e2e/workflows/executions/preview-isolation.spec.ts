@@ -4,12 +4,12 @@ test.describe(
 	'Execution preview isolation',
 	{ annotation: [{ type: 'owner', description: 'Lifecycle & Governance' }] },
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_4_executions_view.json');
 		});
 
 		test('should preserve unsaved editor changes while previewing an execution', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.executionsComposer.createExecutions(1);
 
@@ -45,7 +45,7 @@ test.describe(
 			await expect(n8n.canvas.disabledNodes()).toHaveCount(0);
 		});
 
-		test('should keep the preview working when switching between executions', async ({ n8n }) => {
+		test('should keep the preview working when switching between executions', async ({ MNI }) => {
 			await n8n.executionsComposer.createExecutions(3);
 
 			await n8n.canvas.clickExecutionsTab();

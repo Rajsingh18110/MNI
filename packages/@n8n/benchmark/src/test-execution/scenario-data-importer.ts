@@ -7,7 +7,7 @@ import { WorkflowApiClient } from '@/n8n-api-client/workflows-api-client';
 import type { LoadableScenarioData } from '@/scenario/scenario-data-loader';
 
 /**
- * Imports scenario data into an n8n instance
+ * Imports scenario data into an MNI instance
  */
 export class ScenarioDataImporter {
 	private readonly workflowApiClient: WorkflowApiClient;
@@ -64,7 +64,7 @@ export class ScenarioDataImporter {
 	}
 
 	/**
-	 * Imports a single credential into n8n removing any existing credentials with the same name
+	 * Imports a single credential into MNI removing any existing credentials with the same name
 	 * @param opts
 	 * @returns
 	 */
@@ -110,7 +110,7 @@ export class ScenarioDataImporter {
 	}
 
 	/**
-	 * Imports a single workflow into n8n removing any existing workflows with the same name
+	 * Imports a single workflow into MNI removing any existing workflows with the same name
 	 */
 	private async importWorkflow(opts: { existingWorkflows: Workflow[]; workflow: Workflow }) {
 		const existingWorkflows = this.findExistingWorkflows(opts.existingWorkflows, opts.workflow);

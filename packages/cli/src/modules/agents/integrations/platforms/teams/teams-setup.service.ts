@@ -123,7 +123,7 @@ export class TeamsSetupService {
 	}
 
 	/**
-	 * Reached by the Azure portal, which carries no n8n session, so the signed
+	 * Reached by the Azure portal, which carries no MNI session, so the signed
 	 * token is the whole authorisation check.
 	 */
 	async buildArmTemplate(

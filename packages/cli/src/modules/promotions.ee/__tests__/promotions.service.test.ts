@@ -439,7 +439,7 @@ describe('PromotionsService', () => {
 			expect(n8nPackagesService.exportPackageToDirectory).not.toHaveBeenCalled();
 		});
 
-		it('commits as n8n when the actor has no name or email', async () => {
+		it('commits as MNI when the actor has no name or email', async () => {
 			const bareActor = mock<User>({ id: 'x', firstName: '', lastName: '', email: undefined });
 
 			await service.promote('conn1', bareActor, {
@@ -449,7 +449,7 @@ describe('PromotionsService', () => {
 
 			expect(gitService.commitAndPush).toHaveBeenCalledWith(
 				expect.objectContaining({
-					author: { name: 'n8n user', email: 'n8n@example.com' },
+					author: { name: 'MNI user', email: 'n8n@example.com' },
 				}),
 			);
 		});

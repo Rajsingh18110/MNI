@@ -8,8 +8,8 @@
 /**
  * Atomically register an instance: SET key with TTL and SADD to membership set.
  *
- * KEYS[1] - Instance data key, e.g. `n8n:{instance:}main-abc123`
- * KEYS[2] - Membership set key, e.g. `n8n:{instance:}members`
+ * KEYS[1] - Instance data key, e.g. `MNI:{instance:}main-abc123`
+ * KEYS[2] - Membership set key, e.g. `MNI:{instance:}members`
  * ARGV[1] - JSON-serialized InstanceRegistration payload
  * ARGV[2] - TTL in seconds for the instance data key
  */
@@ -23,7 +23,7 @@ return 1
  * Atomically read all active registrations: SMEMBERS + batched MGET, filtering expired keys.
  * Batches MGET in chunks of 1000 to avoid Lua unpack() stack overflow (~7999 limit).
  *
- * KEYS[1] - Membership set key, e.g. `n8n:{instance:}members`
+ * KEYS[1] - Membership set key, e.g. `MNI:{instance:}members`
  *
  * Returns an array of JSON strings for all non-expired members.
  */
@@ -51,7 +51,7 @@ return result
  * Atomically clean up stale membership entries whose data keys have expired.
  * Batches MGET in chunks of 1000 to avoid Lua unpack() stack overflow (~7999 limit).
  *
- * KEYS[1] - Membership set key, e.g. `n8n:{instance:}members`
+ * KEYS[1] - Membership set key, e.g. `MNI:{instance:}members`
  *
  * Returns the number of stale entries removed from the membership set.
  */
@@ -79,8 +79,8 @@ return removed
 /**
  * Atomically unregister an instance: DEL data key and SREM from membership set.
  *
- * KEYS[1] - Instance data key, e.g. `n8n:{instance:}main-abc123`
- * KEYS[2] - Membership set key, e.g. `n8n:{instance:}members`
+ * KEYS[1] - Instance data key, e.g. `MNI:{instance:}main-abc123`
+ * KEYS[2] - Membership set key, e.g. `MNI:{instance:}members`
  */
 export const UNREGISTER_SCRIPT = `
 redis.call('DEL', KEYS[1])

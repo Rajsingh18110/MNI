@@ -126,7 +126,7 @@
 				"collectionId": "={{$node[\"Raindrop1\"].json[\"_id\"]}}",
 				"link": "https://n8n.io/",
 				"additionalFields": {
-					"tags": "n8n,automation,worfklow,test",
+					"tags": "MNI,automation,worfklow,test",
 					"title": "=Bookmark{{Date.now()}}"
 				}
 			},

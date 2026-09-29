@@ -111,7 +111,7 @@
 			"parameters": {
 				"group": "image",
 				"tool": "getBarcodeEncoded",
-				"text": "n8n rocks!",
+				"text": "MNI rocks!",
 				"bcid": "auspost",
 				"additionalOptions": {}
 			},
@@ -150,7 +150,7 @@
 			"parameters": {
 				"group": "image",
 				"tool": "getImageWithText",
-				"text": "n8n rocks!",
+				"text": "MNI rocks!",
 				"url": "https://n8n.io/_nuxt/img/df5be1c.png",
 				"size": "72",
 				"additionalOptions": {}

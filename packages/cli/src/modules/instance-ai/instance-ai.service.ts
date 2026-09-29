@@ -319,7 +319,7 @@ function buildHandoffContextBlock(context: InstanceAiHandoffContext | undefined)
 		credential.docsUrl
 			? `- The provider page where the user creates/copies the secret (verified during recipe research): ${credential.docsUrl}`
 			: '',
-		credential.documentationUrl ? `- n8n documentation URL: ${credential.documentationUrl}` : '',
+		credential.documentationUrl ? `- MNI documentation URL: ${credential.documentationUrl}` : '',
 		credential.oauthRedirectUrl
 			? `- OAuth redirect/callback URL shown in the modal: ${credential.oauthRedirectUrl}`
 			: '',
@@ -359,7 +359,7 @@ const RESUME_REJECTED_MESSAGE =
 /**
  * Upper bound on how long `shutdown()` will wait for in-flight executeRun /
  * processResumedStream promises to drain after their abortControllers fire.
- * Sized well below n8n's `gracefulShutdownTimeoutInS` (30s default) so a
+ * Sized well below MNI's `gracefulShutdownTimeoutInS` (30s default) so a
  * stuck agent can't burn the whole budget here.
  */
 const INSTANCE_AI_SHUTDOWN_DRAIN_TIMEOUT_MS = 5 * 1000;
@@ -437,7 +437,7 @@ export function isAttachmentRejectedByProviderError(error: unknown): boolean {
  * `quota_exhausted` error state; kept in sync with the FE i18n copy.
  */
 export const QUOTA_EXHAUSTED_USER_MESSAGE =
-	"You've run out of AI credits. Upgrade your plan to continue using the n8n Assistant.";
+	"You've run out of AI credits. Upgrade your plan to continue using the MNI Assistant.";
 
 const OPERATIONAL_ERROR_USER_MESSAGE =
 	'I hit an operational error before I could finish that response. Please try again.';
@@ -668,7 +668,7 @@ type InstanceAgent = Awaited<ReturnType<typeof createInstanceAgent>>['agent'];
  *
  * An unknown version throws, so a typo fails the run loudly rather than
  * silently serving the default profile. Resolved at the point of use, not
- * cached at construction: a module `init()` that throws takes the whole n8n
+ * cached at construction: a module `init()` that throws takes the whole MNI
  * process down with it, and an optional Instance AI pin must not cost the
  * instance its webhooks and executions.
  */
@@ -780,7 +780,7 @@ export class InstanceAiService {
 
 	/**
 	 * In-flight `executeRun` / `processResumedStream` promises. Tracked so
-	 * `shutdown()` can drain them before n8n closes the DB connection — the
+	 * `shutdown()` can drain them before MNI closes the DB connection — the
 	 * SDK's abort-driven `cleanupRun` and `executeRun`'s `finally` block
 	 * both write to the DB during teardown, and racing the connection close
 	 * surfaces as `DriverAlreadyReleasedError` for callers.
@@ -1161,7 +1161,7 @@ export class InstanceAiService {
 			const { creditsQuota, creditsClaimed, quotaLocked } =
 				await this.modelService.getCredits(user);
 			// The activation lock refuses use while the quota still has credits left, so the numbers
-			// alone wouldn't explain the failure. Read from the proxy, not from n8n's own trigger
+			// alone wouldn't explain the failure. Read from the proxy, not from MNI's own trigger
 			// state: that only says the lock *should* apply, so a lock call that failed would turn
 			// any unrelated stream death into a spurious upgrade wall.
 			if (!quotaLocked && (creditsQuota < 0 || creditsClaimed < creditsQuota)) return error;
@@ -1455,7 +1455,7 @@ export class InstanceAiService {
 				});
 				this.eventService.emit('instance-ai-run-refused', { reason: 'instance_run_limit' });
 				throw new InstanceAiRunLimitError(
-					'This n8n instance is already running the maximum number of assistant conversations. Try again in a moment.',
+					'This MNI instance is already running the maximum number of assistant conversations. Try again in a moment.',
 					{ reason: 'instance_run_limit', limit: maxConcurrentRuns },
 				);
 			}
@@ -2058,7 +2058,7 @@ export class InstanceAiService {
 		// the SDK's abort-driven `cleanupRun` issues `checkpointStore.delete`,
 		// all of which would race the connection close in `exitSuccessFully`
 		// and surface as `DriverAlreadyReleasedError` otherwise. Bounded so
-		// a hung agent can't block n8n's own graceful-shutdown deadline.
+		// a hung agent can't block MNI's own graceful-shutdown deadline.
 		await this.drainInFlightExecutions(INSTANCE_AI_SHUTDOWN_DRAIN_TIMEOUT_MS);
 		this.instanceAiErrorReporter.endAllRuns();
 
@@ -3639,7 +3639,7 @@ export class InstanceAiService {
 	private async doSchedulePlannedTasks(user: User, threadId: string): Promise<void> {
 		const revalidated = await this.revalidateActiveUser(user.id);
 		if (!revalidated) {
-			this.logger.warn('Cancelling run: user no longer authorized for n8n Assistant', {
+			this.logger.warn('Cancelling run: user no longer authorized for MNI Assistant', {
 				userId: user.id,
 				threadId,
 			});
@@ -5019,7 +5019,7 @@ export class InstanceAiService {
 			if (suspended?.user.id === requestingUserId) {
 				this.cancelRun(suspended.threadId);
 			}
-			this.logger.warn('Rejecting confirmation: user no longer authorized for n8n Assistant', {
+			this.logger.warn('Rejecting confirmation: user no longer authorized for MNI Assistant', {
 				userId: requestingUserId,
 				requestId,
 			});
@@ -5619,7 +5619,7 @@ export class InstanceAiService {
 
 		const activeUser = await this.revalidateActiveUser(user.id);
 		if (!activeUser) {
-			this.logger.warn('Cancelling suspended run: user no longer authorized for n8n Assistant', {
+			this.logger.warn('Cancelling suspended run: user no longer authorized for MNI Assistant', {
 				userId: user.id,
 				threadId,
 				requestId,

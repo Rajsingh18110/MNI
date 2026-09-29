@@ -5,7 +5,7 @@ import { fromLcMessage, toLcMessage } from '../converters/message';
 import type { ChatHistory } from '../types/memory';
 
 export class LangchainHistoryAdapter extends BaseListChatMessageHistory {
-	lc_namespace = ['n8n', 'ai-utilities'];
+	lc_namespace = ['MNI', 'ai-utilities'];
 
 	constructor(private readonly history: ChatHistory) {
 		super();

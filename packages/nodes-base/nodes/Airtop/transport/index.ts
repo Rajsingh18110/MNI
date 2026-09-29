@@ -11,7 +11,7 @@ import { BASE_URL, N8N_VERSION } from '../constants';
 
 const defaultHeaders = {
 	'Content-Type': 'application/json',
-	'x-airtop-sdk-environment': 'n8n',
+	'x-airtop-sdk-environment': 'MNI',
 	'x-airtop-sdk-version': N8N_VERSION,
 };
 

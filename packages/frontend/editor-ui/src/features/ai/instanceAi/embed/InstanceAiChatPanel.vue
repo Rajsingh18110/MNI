@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 /**
- * Generic embeddable n8n Assistant panel: a chat scoped to one subject (an
+ * Generic embeddable MNI Assistant panel: a chat scoped to one subject (an
  * agent today, a workflow later — see `InstanceAiEmbedSubject`), with its own
  * filtered thread history. It never renders artifact/preview panels — the
  * host's own surface (the agent builder, a future node editor) is the
- * artifact; "open in n8n Assistant" is the escape hatch to the full UI.
+ * artifact; "open in MNI Assistant" is the escape hatch to the full UI.
  *
  * Router-free except for that one hand-off. Provides the thread runtime
  * itself, so `InstanceAiConversation` works unchanged. Its history lives in

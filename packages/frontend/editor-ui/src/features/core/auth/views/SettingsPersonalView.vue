@@ -117,7 +117,7 @@ const isMfaFeatureEnabled = computed((): boolean => {
 	return settingsStore.isMfaFeatureEnabled;
 });
 
-// Unlike SAML/OIDC, LDAP has no native 2FA, so n8n's own 2FA must stay
+// Unlike SAML/OIDC, LDAP has no native 2FA, so MNI's own 2FA must stay
 // configurable for LDAP users even though password management is external.
 const canConfigureMfa = computed((): boolean => {
 	return (

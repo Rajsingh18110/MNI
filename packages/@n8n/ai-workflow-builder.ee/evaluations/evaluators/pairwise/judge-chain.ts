@@ -43,7 +43,7 @@ export type PairwiseEvaluationResult = z.infer<typeof pairwiseEvaluationLLMResul
 const EVALUATOR_SYSTEM_PROMPT = prompt()
 	.section(
 		'role',
-		'You are an expert n8n workflow auditor. Your task is to strictly evaluate a candidate workflow against a provided set of requirements.',
+		'You are an expert MNI workflow auditor. Your task is to strictly evaluate a candidate workflow against a provided set of requirements.',
 	)
 	.section(
 		'role_definition',
@@ -77,7 +77,7 @@ When evaluating whether a specific node type has been used:
 const humanTemplate = prompt()
 	.section(
 		'task_context',
-		'Analyze the following n8n workflow against the provided checklist of criteria.',
+		'Analyze the following MNI workflow against the provided checklist of criteria.',
 	)
 	.section('evaluation_criteria', '{userPrompt}')
 	.section('workflow_candidate', '{generatedWorkflow}')

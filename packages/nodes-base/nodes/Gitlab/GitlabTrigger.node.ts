@@ -153,7 +153,7 @@ export class GitlabTrigger implements INodeType {
 				type: 'string',
 				default: '',
 				required: true,
-				placeholder: 'n8n',
+				placeholder: 'MNI',
 				description: 'The name of the repository',
 			},
 			{

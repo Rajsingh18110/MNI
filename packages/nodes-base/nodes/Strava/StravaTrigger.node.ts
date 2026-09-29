@@ -177,7 +177,7 @@ export class StravaTrigger implements INodeType {
 										`/push_subscriptions/${webhooks[0].id}`,
 									);
 
-									// now there is room create a subscription with the n8n data
+									// now there is room create a subscription with the MNI data
 									const requestBody = {
 										callback_url: webhookUrl,
 										verify_token: randomBytes(20).toString('hex'),

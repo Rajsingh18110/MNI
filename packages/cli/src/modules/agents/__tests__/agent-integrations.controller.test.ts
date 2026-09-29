@@ -469,7 +469,7 @@ describe('AgentIntegrationsController channel status', () => {
 		]);
 	});
 
-	it('reports draft and active n8n Chat availability separately', async () => {
+	it('reports draft and active MNI Chat availability separately', async () => {
 		const agent = {
 			...publishedAgent,
 			activeVersion: {

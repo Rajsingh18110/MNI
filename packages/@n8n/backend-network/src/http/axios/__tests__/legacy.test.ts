@@ -25,7 +25,7 @@ describe('buildAxiosConfigFromLegacyRequest', () => {
 				headers: {
 					accept: '*/*',
 					'content-type': 'application/json',
-					'User-Agent': 'n8n',
+					'User-Agent': 'MNI',
 				},
 				data: { key: 'value' },
 				maxRedirects: 0,
@@ -58,7 +58,7 @@ describe('buildAxiosConfigFromLegacyRequest', () => {
 			method: 'GET',
 		});
 
-		expect(axiosOptions.headers).toMatchObject({ 'User-Agent': 'n8n' });
+		expect(axiosOptions.headers).toMatchObject({ 'User-Agent': 'MNI' });
 	});
 
 	test('should preserve a caller-supplied User-Agent header', async () => {
@@ -69,7 +69,7 @@ describe('buildAxiosConfigFromLegacyRequest', () => {
 		});
 
 		expect(axiosOptions.headers).toMatchObject({ 'User-Agent': 'MyCustomNode/1.0' });
-		expect(axiosOptions.headers).not.toMatchObject({ 'User-Agent': 'n8n' });
+		expect(axiosOptions.headers).not.toMatchObject({ 'User-Agent': 'MNI' });
 	});
 
 	test('should set correct headers for FormData', async () => {

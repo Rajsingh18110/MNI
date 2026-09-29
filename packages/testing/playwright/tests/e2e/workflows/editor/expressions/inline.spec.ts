@@ -16,12 +16,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test.describe('Basic UI functionality', () => {
-			test('should open and close inline expression preview', async ({ n8n }) => {
+			test('should open and close inline expression preview', async ({ MNI }) => {
 				await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME);
 				await n8n.ndv.activateParameterExpressionEditor(SCHEDULE_PARAMETER_NAME);
 
@@ -36,7 +36,7 @@ test.describe(
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toBeHidden();
 			});
 
-			test.fixme('should switch between expression and fixed using keyboard', async ({ n8n }) => {
+			test.fixme('should switch between expression and fixed using keyboard', async ({ MNI }) => {
 				await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME);
 
 				// Should switch to expression with =
@@ -60,13 +60,13 @@ test.describe(
 		});
 
 		test.describe('Static data', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME);
 				await n8n.ndv.activateParameterExpressionEditor(SCHEDULE_PARAMETER_NAME);
 			});
 
-			test('should resolve primitive resolvables', async ({ n8n }) => {
+			test('should resolve primitive resolvables', async ({ MNI }) => {
 				await n8n.ndv.clearExpressionEditor();
 				await n8n.ndv.typeInExpressionEditor('{{ 1 + 2');
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText('3');
@@ -80,7 +80,7 @@ test.describe(
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText('false');
 			});
 
-			test('should resolve object resolvables', async ({ n8n }) => {
+			test('should resolve object resolvables', async ({ MNI }) => {
 				await n8n.ndv.clearExpressionEditor();
 				await n8n.ndv.typeInExpressionEditor('{{ { a: 1 }');
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText(
@@ -92,7 +92,7 @@ test.describe(
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText('1');
 			});
 
-			test('should resolve array resolvables', async ({ n8n }) => {
+			test('should resolve array resolvables', async ({ MNI }) => {
 				await n8n.ndv.clearExpressionEditor();
 				await n8n.ndv.typeInExpressionEditor('{{ [1, 2, 3]');
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText(
@@ -104,7 +104,7 @@ test.describe(
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText('1');
 			});
 
-			test('should resolve bare identifiers through the workflow data context', async ({ n8n }) => {
+			test('should resolve bare identifiers through the workflow data context', async ({ MNI }) => {
 				// `origin` is declared inside the nested block only, so the read after
 				// it is a free read and resolves through the data context.
 				await n8n.ndv.clearExpressionEditor();
@@ -123,7 +123,7 @@ test.describe(
 		});
 
 		test.describe('Dynamic data', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME);
 				await n8n.ndv.setPinnedData([{ myStr: 'Monday' }]);
 				await n8n.ndv.close();
@@ -132,14 +132,14 @@ test.describe(
 				await n8n.ndv.activateParameterExpressionEditor(HACKER_NEWS_PARAMETER_NAME);
 			});
 
-			test('should resolve $parameter[]', async ({ n8n }) => {
+			test('should resolve $parameter[]', async ({ MNI }) => {
 				await n8n.ndv.clearExpressionEditor();
 				// Resolving $parameter is slow, especially on CI runner
 				await n8n.ndv.typeInExpressionEditor('{{ $parameter["operation"]');
 				await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText('getAll');
 			});
 
-			test('should resolve input: $json,$input,$(nodeName)', async ({ n8n }) => {
+			test('should resolve input: $json,$input,$(nodeName)', async ({ MNI }) => {
 				// Previous nodes have not run, input is empty
 				await n8n.ndv.clearExpressionEditor();
 				await n8n.ndv.typeInExpressionEditor('{{ $json.myStr');

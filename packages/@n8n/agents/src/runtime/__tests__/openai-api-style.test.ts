@@ -691,7 +691,7 @@ describe('openai api-style selection (real SDK)', () => {
 		const { fetchFn, calls } = fakeEndpoint({
 			'/v1/responses': {
 				status: 200,
-				body: '<!doctype html><title>n8n</title>',
+				body: '<!doctype html><title>MNI</title>',
 				contentType: 'text/html; charset=utf-8',
 			},
 			'/v1/chat/completions': CHAT_OK,
@@ -732,7 +732,7 @@ describe('openai api-style selection (real SDK)', () => {
 		const { fetchFn, calls } = fakeEndpoint({
 			'/v1/responses': {
 				status: 200,
-				body: '<!doctype html><title>n8n</title>',
+				body: '<!doctype html><title>MNI</title>',
 				contentType: 'text/html; charset=utf-8',
 			},
 			'/v1/chat/completions': CHAT_STREAM_OK,
@@ -757,7 +757,7 @@ describe('openai api-style selection (real SDK)', () => {
 		// neither route reports an error instead of an empty answer.
 		const page: Route = {
 			status: 200,
-			body: '<!doctype html><title>n8n</title>',
+			body: '<!doctype html><title>MNI</title>',
 			contentType: 'text/html; charset=utf-8',
 		};
 		const { fetchFn, calls } = fakeEndpoint({
@@ -794,7 +794,7 @@ describe('openai api-style selection (real SDK)', () => {
 		// Without the guard on the chat adapter, this ends as a silent empty stream.
 		const page: Route = {
 			status: 200,
-			body: '<!doctype html><title>n8n</title>',
+			body: '<!doctype html><title>MNI</title>',
 			contentType: 'text/html; charset=utf-8',
 		};
 		const { fetchFn, calls } = fakeEndpoint({
@@ -832,7 +832,7 @@ describe('openai api-style selection (real SDK)', () => {
 			// all, so a page labelled anything other than JSON or SSE reaches the
 			// caller as a silent empty stream exactly as an HTML one does.
 			const { fetchFn, calls } = fakeEndpoint({
-				'/v1/responses': { status: 200, body: '<!doctype html><title>n8n</title>', contentType },
+				'/v1/responses': { status: 200, body: '<!doctype html><title>MNI</title>', contentType },
 				'/v1/chat/completions': CHAT_STREAM_OK,
 			});
 			const model = build({ url: PROXY }, fetchFn) as unknown as EndpointModel;
@@ -848,7 +848,7 @@ describe('openai api-style selection (real SDK)', () => {
 
 	it('fails explicitly when both routes answer a page with no content type', async () => {
 		// The chat side must not succeed silently either.
-		const page: Route = { status: 200, body: '<!doctype html><title>n8n</title>' };
+		const page: Route = { status: 200, body: '<!doctype html><title>MNI</title>' };
 		const { fetchFn, calls } = fakeEndpoint({
 			'/v1/responses': page,
 			'/v1/chat/completions': page,
@@ -863,7 +863,7 @@ describe('openai api-style selection (real SDK)', () => {
 		// A catch-all page is a whole document, and a reverse proxy sends a small one
 		// in a single chunk. The guard reads a bounded prefix, so neither the read nor
 		// the error it raises holds the megabyte the caller never asked for.
-		const page = '<!doctype html><title>n8n</title>' + '<p>proxied</p>'.repeat(80_000);
+		const page = '<!doctype html><title>MNI</title>' + '<p>proxied</p>'.repeat(80_000);
 		// A fresh stream for each call: one route object's body is read one time.
 		const { fetchFn, calls } = fakeEndpoint(() => ({
 			status: 200,
@@ -1226,7 +1226,7 @@ describe('openai api-style selection (real SDK)', () => {
 		const { fetchFn, calls } = fakeEndpoint({
 			'/v1/chat/completions': {
 				status: 200,
-				body: '<!doctype html><title>n8n</title>',
+				body: '<!doctype html><title>MNI</title>',
 				contentType: 'text/html; charset=utf-8',
 			},
 			'/v1/responses': RESPONSES_STREAM_OK,

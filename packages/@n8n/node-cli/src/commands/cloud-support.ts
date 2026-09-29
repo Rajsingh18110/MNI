@@ -51,14 +51,14 @@ export default class CloudSupport extends Command {
 
 		const lintCommand = await suggestLintCommand();
 		outro(
-			`Cloud support enabled. Run "${lintCommand}" to check compliance - your node must pass linting to be eligible for n8n Cloud publishing.`,
+			`Cloud support enabled. Run "${lintCommand}" to check compliance - your node must pass linting to be eligible for MNI cloud publishing.`,
 		);
 	}
 
 	private async disableCloudSupport(workingDir: string): Promise<void> {
 		intro(await getCommandHeader('n8n-node cloud-support disable'));
 
-		log.warning(`This will make your node ineligible for n8n Cloud verification!
+		log.warning(`This will make your node ineligible for MNI cloud verification!
 
 The following changes will be made:
   • Switch to ${picocolors.magenta('configWithoutCloudSupport')} in ${picocolors.cyan('eslint.config.mjs')}
@@ -87,7 +87,7 @@ The following changes will be made:
 		log.success(`Disabled strict mode in ${picocolors.cyan('package.json')}`);
 
 		outro(
-			"Cloud support disabled. Your node may pass linting but it won't pass verification for n8n Cloud.",
+			"Cloud support disabled. Your node may pass linting but it won't pass verification for MNI cloud.",
 		);
 	}
 
@@ -142,12 +142,12 @@ export default configWithoutCloudSupport;
 				log.success(`✅ Cloud support is ${picocolors.green('ENABLED')}
   • Strict mode: ${picocolors.green('enabled')}
   • ESLint config: ${picocolors.green('using default config')}
-  • Status: ${picocolors.green('eligible')} for n8n Cloud verification ${picocolors.dim('(if lint passes)')}`);
+  • Status: ${picocolors.green('eligible')} for MNI cloud verification ${picocolors.dim('(if lint passes)')}`);
 			} else {
 				log.warning(`⚠️  Cloud support is ${picocolors.yellow('DISABLED')}
   • Strict mode: ${isStrictMode ? picocolors.green('enabled') : picocolors.red('disabled')}
   • ESLint config: ${isUsingDefaultConfig ? picocolors.green('using default config') : picocolors.red('using custom config')}
-  • Status: ${picocolors.red('NOT eligible')} for n8n Cloud verification`);
+  • Status: ${picocolors.red('NOT eligible')} for MNI cloud verification`);
 			}
 
 			const enableCommand = await suggestCloudSupportCommand('enable');

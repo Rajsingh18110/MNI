@@ -2,7 +2,7 @@ operationId: generateAudit
 tags:
   - Audit
 summary: Generate an audit
-description: Generate a security audit for your n8n instance.
+description: Generate a security audit for your MNI instance.
 x-required-scope: securityAudit:generate
 x-eov-operation-id: unreachable
 x-eov-operation-handler: v1/handlers/decorator-routed.handler
@@ -502,8 +502,8 @@ responses:
                     risk: nodes
                     sections:
                       - title: Community nodes
-                        description: This node is sourced from the community. Community nodes are not vetted by the n8n team and have full access to the host system.
-                        recommendation: Consider reviewing the source code in any community nodes installed in this n8n instance, and uninstalling any community nodes no longer used.
+                        description: This node is sourced from the community. Community nodes are not vetted by the MNI team and have full access to the host system.
+                        recommendation: Consider reviewing the source code in any community nodes installed in this MNI instance, and uninstalling any community nodes no longer used.
                         location:
                           - kind: community
                             nodeType: n8n-nodes-test.test

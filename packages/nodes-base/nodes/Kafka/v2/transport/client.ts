@@ -33,6 +33,6 @@ export async function createKafkaClient(
 	const { Kafka, logLevel } = await getKafkaLibrary();
 	const config = toKafkaJSConfig(credentials);
 	// Without an explicit level the library's own logger writes broker host:port to
-	// process stdout on every execution, outside n8n's logger.
+	// process stdout on every execution, outside MNI's logger.
 	return new Kafka({ ...config, kafkaJS: { ...config.kafkaJS, logLevel: logLevel.ERROR } });
 }

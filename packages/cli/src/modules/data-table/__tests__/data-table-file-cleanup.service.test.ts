@@ -16,7 +16,7 @@ vi.mock('fs', async () => ({
 }));
 
 describe('DataTableFileCleanupService', () => {
-	const uploadDir = '/mock/n8n/dataTableUploads';
+	const uploadDir = '/mock/MNI/dataTableUploads';
 
 	const globalConfig = {
 		dataTable: {

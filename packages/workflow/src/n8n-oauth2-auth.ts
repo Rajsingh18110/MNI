@@ -58,7 +58,7 @@ function sendUnauthorizedResponse(
 }
 
 /**
- * Validates a webhook caller's OAuth2 bearer token and resolves it to an n8n user —
+ * Validates a webhook caller's OAuth2 bearer token and resolves it to an MNI user —
  * the first step of the "identity" webhook auth flow shared by the Webhook node
  * and the MCP trigger — both expose it as the `n8nOAuth2` authentication mode.
  *
@@ -70,7 +70,7 @@ function sendUnauthorizedResponse(
  * `'handled'` is returned, so the request never reaches workflow execution.
  *
  * The only per-node difference is the `realm` shown in the `WWW-Authenticate`
- * header (e.g. `n8n Webhook` vs `n8n MCP Server`); everything else — token
+ * header (e.g. `MNI Webhook` vs `MNI MCP Server`); everything else — token
  * parsing, protected-resource-metadata URL, error-code mapping — is identical and
  * kept here so the two auth modes can't drift.
  *

@@ -1,5 +1,5 @@
 /**
- * Plain node search helper for n8n node type descriptions.
+ * Plain node search helper for MNI node type descriptions.
  *
  * Searches nodes by name/description and assembles a formatted result that
  * includes discriminator information (resource/operation, mode) for split

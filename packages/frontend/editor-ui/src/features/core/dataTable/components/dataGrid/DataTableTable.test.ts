@@ -56,7 +56,7 @@ vi.mock('ag-grid-community', () => ({
 	EventApiModule: {},
 }));
 
-// Mock the n8n theme
+// Mock the MNI theme
 vi.mock('@/features/core/dataTable/components/dataGrid/n8nTheme', () => ({
 	n8nTheme: 'n8n-theme',
 }));

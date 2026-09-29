@@ -1,6 +1,6 @@
 # packages/testing
 
-n8n's **test platform** — the infrastructure that decides what to test, runs it, and measures it. Each package is one concern; they compose rather than overlap.
+MNI's **test platform** — the infrastructure that decides what to test, runs it, and measures it. Each package is one concern; they compose rather than overlap.
 
 ## Packages
 

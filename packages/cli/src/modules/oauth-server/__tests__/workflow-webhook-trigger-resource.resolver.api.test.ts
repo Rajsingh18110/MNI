@@ -210,7 +210,7 @@ describe('protected resource metadata for webhook triggers', () => {
 	});
 
 	test('should resolve disjoint-method triggers on a shared path', async () => {
-		// n8n only enforces path uniqueness per (path, method), so two workflows can
+		// MNI only enforces path uniqueness per (path, method), so two workflows can
 		// register the same path under disjoint methods. Each is its own trigger, and
 		// the method picks exactly one — (webhookPath, method) is the primary key.
 		const webhookPath = randomUUID();

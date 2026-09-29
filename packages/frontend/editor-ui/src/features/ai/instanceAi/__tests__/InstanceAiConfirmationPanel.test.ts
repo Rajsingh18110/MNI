@@ -28,7 +28,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 					'These nodes will send credentials here for tests and executions: {nodeNames}.',
 				'instanceAi.confirmation.credentialDestination.approve': 'Use destination',
 				'instanceAi.confirmation.credentialDestination.deny': "Don't use destination",
-				'instanceAi.confirmation.allowPrompt': 'Allow n8n Assistant to {action}?',
+				'instanceAi.confirmation.allowPrompt': 'Allow MNI Assistant to {action}?',
 				'instanceAi.confirmation.details': 'Approval details',
 				'instanceAi.approval.deleteTable': 'Eliminar la tabla y todas sus filas',
 				'instanceAi.confirmation.resourcePrompt': 'Assistant wants to {action} {name}',
@@ -354,7 +354,7 @@ describe('InstanceAiConfirmationPanel telemetry', () => {
 			);
 			const { getByText } = renderComponent({ props: { kind: 'floating' } });
 
-			expect(getByText('Allow n8n Assistant to edit workflow?')).toBeVisible();
+			expect(getByText('Allow MNI Assistant to edit workflow?')).toBeVisible();
 		});
 
 		it('names the node in the title when the assistant executes one', () => {

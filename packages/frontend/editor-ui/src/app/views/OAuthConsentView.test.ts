@@ -71,7 +71,7 @@ describe('OAuthConsentView', () => {
 		const { getByText } = renderComponent();
 		await waitAllPromises();
 
-		expect(getByText('Test MCP Client wants access to your n8n instance')).toBeVisible();
+		expect(getByText('Test MCP Client wants access to your MNI instance')).toBeVisible();
 		expect(getByText('Get a list of your workflows')).toBeVisible();
 	});
 
@@ -116,7 +116,7 @@ describe('OAuthConsentView', () => {
 		await waitAllPromises();
 
 		// A rejected request must not present the broad instance permission grant.
-		expect(queryByText('Test MCP Client wants access to your n8n instance')).toBeNull();
+		expect(queryByText('Test MCP Client wants access to your MNI instance')).toBeNull();
 		expect(queryByText('Get a list of your workflows')).toBeNull();
 	});
 
@@ -160,7 +160,7 @@ describe('OAuthConsentView', () => {
 		await nextTick();
 
 		expect(queryByTestId('consent-content')).toBeNull();
-		expect(queryByText('Test MCP Client wants access to your n8n instance')).toBeNull();
+		expect(queryByText('Test MCP Client wants access to your MNI instance')).toBeNull();
 		expect(getByTestId('consent-loading')).toBeVisible();
 
 		// The real store assigns `consentDetails` as part of resolving the fetch;
@@ -285,7 +285,7 @@ describe('OAuthConsentView', () => {
 			const { getByText } = renderComponent();
 			await waitAllPromises();
 
-			expect(getByText('"Feedback workflow" wants to run using your n8n login')).toBeVisible();
+			expect(getByText('"Feedback workflow" wants to run using your MNI login')).toBeVisible();
 			expect(
 				getByText(
 					'Running this form executes its workflow using your account and any connected credentials. Only continue if you trust the creator of this form.',

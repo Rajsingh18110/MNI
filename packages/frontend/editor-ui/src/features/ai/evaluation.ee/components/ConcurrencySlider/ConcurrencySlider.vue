@@ -33,7 +33,7 @@ withDefaults(defineProps<ConcurrencySliderProps>(), {
 // inside the track without a visible coloured border ring, and subtle
 // stops as dots rather than dividers.
 //
-// `--background--brand` is the semantic alias for the n8n orange. The
+// `--background--brand` is the semantic alias for the MNI orange. The
 // runway/disabled tokens fall back to legacy `--color--foreground*`
 // because the design system has no semantic alias for the
 // "neutral surface behind an interactive control" role yet.

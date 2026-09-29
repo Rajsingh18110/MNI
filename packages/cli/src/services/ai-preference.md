@@ -2,7 +2,7 @@
 
 An AI preference is one instruction that a user writes once, and that every AI surface
 then applies: node and credential choices, naming, how work is organized, and patterns to
-avoid. The n8n Assistant, the MCP server and the settings area all read the same rows
+avoid. The MNI Assistant, the MCP server and the settings area all read the same rows
 through `AiPreferenceService`.
 
 ## The data
@@ -61,7 +61,7 @@ person wrote by hand. A row that fails the check answers like one that does not 
 ## The assistant write
 
 Every assistant surface writes through `writeAssistantPreference` in
-[`ai-preference-write.ts`](./ai-preference-write.ts): the n8n Assistant tool with
+[`ai-preference-write.ts`](./ai-preference-write.ts): the MNI Assistant tool with
 `surface: 'aia'` and the MCP tool with `surface: 'mcp'`. It sets `source`, maps a refusal
 to one of six reasons (`too_long`, `scope_full`, `duplicate`, `not_permitted`,
 `blocked_by_admin`, `failed`) and fires the events, so the two surfaces cannot drift.
@@ -89,7 +89,7 @@ after the write means "not this one". A cancelled form keeps the row, because a 
 no way to show the form answers cancel on its own, and silence must not delete data.
 
 The form also carries the scope, for a user who holds the global `aiPreference:create`
-right: `Just you` or `Everyone on this n8n instance`. The tool always writes `user`, as the
+right: `Just you` or `Everyone on this MNI instance`. The tool always writes `user`, as the
 chat card does, and the form is where the person moves the row. A project needs an id that
 no form can supply, so a move to a project goes through `update_user_preference` with a
 `projectId` from `search_projects`. Every move runs through `update()`, so the right to
@@ -150,7 +150,7 @@ and carries the id of each row. Three renderers read that one structure:
 
 | Function | Output | Reader |
 | --- | --- | --- |
-| `renderAiPreferencesBlock` | One `<ai-preferences>` block | The n8n Assistant turn |
+| `renderAiPreferencesBlock` | One `<ai-preferences>` block | The MNI Assistant turn |
 | `renderAiPreferences` | The same text with no wrapping tag | The `get_user_preferences` MCP tool |
 | `flattenAiPreferences` | One item for each preference, with its id and scope | Structured tool output |
 
@@ -169,7 +169,7 @@ best effort.
 
 ## What one turn reads, and what it reports
 
-The n8n Assistant rebuilds the block on every user turn, so a preference saved anywhere —
+The MNI Assistant rebuilds the block on every user turn, so a preference saved anywhere —
 another session, the settings area, an MCP client — reaches an open thread on its next
 turn. The turn re-sends the block only when its text differs from the last block in the
 thread's persisted messages: the earlier copy travels with the history on every request,

@@ -18,7 +18,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Use deferred tools to count the characters in the text \"n8n\". Search for the tool, load it, call it, then answer with the length."
+							"text": "Use deferred tools to count the characters in the text \"MNI\". Search for the tool, load it, call it, then answer with the length."
 						}
 					]
 				}
@@ -118,7 +118,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Use deferred tools to count the characters in the text \"n8n\". Search for the tool, load it, call it, then answer with the length."
+							"text": "Use deferred tools to count the characters in the text \"MNI\". Search for the tool, load it, call it, then answer with the length."
 						}
 					]
 				},
@@ -127,7 +127,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "I'll help you count the characters in \"n8n\" using deferred tools. Let me start by searching for a character counting tool."
+							"text": "I'll help you count the characters in \"MNI\" using deferred tools. Let me start by searching for a character counting tool."
 						},
 						{
 							"type": "tool_use",
@@ -248,7 +248,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Use deferred tools to count the characters in the text \"n8n\". Search for the tool, load it, call it, then answer with the length."
+							"text": "Use deferred tools to count the characters in the text \"MNI\". Search for the tool, load it, call it, then answer with the length."
 						}
 					]
 				},
@@ -257,7 +257,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "I'll help you count the characters in \"n8n\" using deferred tools. Let me start by searching for a character counting tool."
+							"text": "I'll help you count the characters in \"MNI\" using deferred tools. Let me start by searching for a character counting tool."
 						},
 						{
 							"type": "tool_use",
@@ -424,7 +424,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Use deferred tools to count the characters in the text \"n8n\". Search for the tool, load it, call it, then answer with the length."
+							"text": "Use deferred tools to count the characters in the text \"MNI\". Search for the tool, load it, call it, then answer with the length."
 						}
 					]
 				},
@@ -433,7 +433,7 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "I'll help you count the characters in \"n8n\" using deferred tools. Let me start by searching for a character counting tool."
+							"text": "I'll help you count the characters in \"MNI\" using deferred tools. Let me start by searching for a character counting tool."
 						},
 						{
 							"type": "tool_use",
@@ -493,14 +493,14 @@
 					"content": [
 						{
 							"type": "text",
-							"text": "Now I'll call the loaded tool to count the characters in \"n8n\"."
+							"text": "Now I'll call the loaded tool to count the characters in \"MNI\"."
 						},
 						{
 							"type": "tool_use",
 							"id": "toolu_01WDEeEbuF1u42PPV9JQqcJG",
 							"name": "count_characters",
 							"input": {
-								"text": "n8n"
+								"text": "MNI"
 							},
 							"caller": {
 								"type": "direct"

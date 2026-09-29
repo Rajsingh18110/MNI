@@ -11,7 +11,7 @@ export class CreateAgentFilesTable1784000000018 implements ReversibleMigration {
 
 		await createTable('agent_files')
 			.withColumns(
-				column('id').varchar(16).primary.comment('Application-generated n8n nano ID'),
+				column('id').varchar(16).primary.comment('Application-generated MNI nano ID'),
 				// FK to agents.id, which is declared varchar(36); the column type
 				// mirrors the referenced primary key.
 				column('agentId')

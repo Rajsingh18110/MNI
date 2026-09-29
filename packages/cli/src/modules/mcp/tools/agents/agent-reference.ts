@@ -2,7 +2,7 @@ import { AgentJsonConfigBaseSchema, WORKFLOW_TOOL_TRIGGER_DISPLAY_NAME } from '@
 import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'n8n-workflow';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
-export const AGENT_BUILDER_REFERENCE_URI = 'n8n://agents/reference';
+export const AGENT_BUILDER_REFERENCE_URI = 'MNI://agents/reference';
 
 // Integrations are managed only through update_agent_integration, so they are
 // never part of the editable draft config the model reads and writes.
@@ -12,20 +12,20 @@ export const AGENT_CONFIG_JSON_SCHEMA = zodToJsonSchema(EditableAgentJsonConfigS
 	name: 'AgentJsonConfig',
 });
 
-export const AGENT_BUILDER_GUIDE = `# n8n Agent management
+export const AGENT_BUILDER_GUIDE = `# MNI Agent management
 
-Use the Agent MCP tools to create and edit persisted n8n Agents. The MCP client is the
+Use the Agent MCP tools to create and edit persisted MNI Agents. The MCP client is the
 orchestrator: there is no nested conversational Agent Builder.
 
 ## Choose an Agent or workflow
 
-An n8n Agent is a first-class persisted resource with its own instructions, model, tools, skills,
+An MNI Agent is a first-class persisted resource with its own instructions, model, tools, skills,
 tasks, memory, integrations, and lifecycle. An AI Agent node is a node inside a workflow whose
 trigger, surrounding graph, and lifecycle are owned by that workflow.
 
 If the request is actually a fixed trigger or schedule with enumerable, repeatable steps, it is
 probably a workflow — explain the mismatch and ask before building the alternative. Never substitute
-a Chat Trigger plus an AI Agent node for a requested n8n Agent.
+a Chat Trigger plus an AI Agent node for a requested MNI Agent.
 
 ## Build sequence
 

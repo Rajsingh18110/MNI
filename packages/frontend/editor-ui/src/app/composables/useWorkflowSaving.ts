@@ -473,7 +473,7 @@ export function useWorkflowSaving({
 				);
 
 				// Ungroup node groups this version can't save (e.g. groups created on a
-				// newer n8n version) so the request isn't rejected on every (auto)save.
+				// newer MNI version) so the request isn't rejected on every (auto)save.
 				// Runs before the dirty-count capture so the removal doesn't keep the
 				// state dirty after a successful save.
 				removeInvalidNodeGroups(workflowDocumentStore);

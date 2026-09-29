@@ -29,7 +29,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('should display archived workflow in read-only mode on canvas', async ({ n8n, api }) => {
+		test('should display archived workflow in read-only mode on canvas', async ({ MNI, api }) => {
 			const workflowId = await createWorkflowWithSingleNode(api);
 			await api.workflows.archive(workflowId);
 			await n8n.navigate.toWorkflow(workflowId);
@@ -86,7 +86,7 @@ test.describe(
 		});
 
 		test('should not trigger autosave when pasting nodes on an archived workflow', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const workflowId = await createWorkflowWithSingleNode(api);
@@ -123,7 +123,7 @@ test.describe(
 			await expect(n8n.notifications.getErrorNotifications().first()).not.toBeAttached();
 		});
 
-		test('should not be able to archive or delete unsaved workflow', async ({ n8n }) => {
+		test('should not be able to archive or delete unsaved workflow', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 
 			await expect(n8n.workflowMenu.getTrigger()).toBeVisible();
@@ -133,7 +133,7 @@ test.describe(
 			await expect(n8n.workflowMenu.getArchiveItemWrapper()).toHaveClass(/is-disabled/);
 		});
 
-		test('should archive nonactive workflow and then delete it', async ({ n8n, api }) => {
+		test('should archive nonactive workflow and then delete it', async ({ MNI, api }) => {
 			const workflowId = await createWorkflowWithSingleNode(api);
 			await api.workflows.archive(workflowId);
 			await n8n.navigate.toWorkflow(workflowId);
@@ -150,7 +150,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(/\/workflows$/);
 		});
 
-		test('should archive published workflow and then delete it', async ({ n8n, api }) => {
+		test('should archive published workflow and then delete it', async ({ MNI, api }) => {
 			const workflowId = await createWorkflowWithSingleNode(api);
 			await n8n.navigate.toWorkflow(workflowId);
 			await n8n.canvas.publishWorkflow();
@@ -183,7 +183,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(/\/workflows$/);
 		});
 
-		test('should archive nonactive workflow and then unarchive it', async ({ n8n, api }) => {
+		test('should archive nonactive workflow and then unarchive it', async ({ MNI, api }) => {
 			const workflowId = await createWorkflowWithSingleNode(api);
 			await api.workflows.archive(workflowId);
 			await n8n.navigate.toWorkflow(workflowId);
@@ -200,7 +200,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeCreatorPlusButton()).toBeVisible();
 		});
 
-		test('should not show unpublish menu item for non-published workflow', async ({ n8n, api }) => {
+		test('should not show unpublish menu item for non-published workflow', async ({ MNI, api }) => {
 			const { id: workflowId } = await api.workflows.createWorkflow({
 				name: `Test Workflow ${nanoid()}`,
 				nodes: [],
@@ -215,7 +215,7 @@ test.describe(
 		});
 
 		// TODO: flaky test - 18 similar failures across 10 branches in last 14 days
-		test.fixme('should unpublish a published workflow', async ({ n8n }) => {
+		test.fixme('should unpublish a published workflow', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.publishWorkflow();
@@ -234,7 +234,7 @@ test.describe(
 			await expect(n8n.canvas.getPublishedIndicator()).toBeHidden();
 		});
 
-		test('should unpublish published workflow on archive', async ({ n8n, api }) => {
+		test('should unpublish published workflow on archive', async ({ MNI, api }) => {
 			const workflowId = await createWorkflowWithSingleNode(api);
 			await n8n.navigate.toWorkflow(workflowId);
 			await n8n.canvas.publishWorkflow();

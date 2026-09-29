@@ -24,7 +24,7 @@ const { privateKey, publicKey } = generateKeyPairSync('rsa', {
 
 const TEST_KID = 'embed-test-kid';
 const TEST_ISSUER = 'https://embed-test-issuer.example.com';
-const TEST_AUDIENCE = 'n8n';
+const TEST_AUDIENCE = 'MNI';
 
 const trustedKeysJson = JSON.stringify([
 	{

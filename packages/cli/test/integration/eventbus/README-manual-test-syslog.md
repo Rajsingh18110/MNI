@@ -1,6 +1,6 @@
 # Syslog Manual Testing
 
-Please note: You will need an enterprise licence in n8n to configure this.
+Please note: You will need an enterprise licence in MNI to configure this.
 
 ## With TCP
 
@@ -55,14 +55,14 @@ echo "test message" | nc -v localhost 514
 # You should see the message in the window tailing the logs
 ```
 
-### Step 2 - Configure log streaming in n8n
-Head to n8n log streaming settings and enter the following:
+### Step 2 - Configure log streaming in MNI
+Head to MNI log streaming settings and enter the following:
 ```
 Host: localhost
 Port: 514
 Protocol: TCP
 Facility: Local0
-App Name: n8n
+App Name: MNI
 ```
 Once saved you can send a test message and validate it is received using the `docker logs syslog-ng-tcp` command.
 
@@ -155,16 +155,16 @@ echo 'TEST MESSAGE' | \
 # You should see the message in the window tailing the logs
 ```
 
-### Step 3 - Configure log streaming in n8n
-Head to n8n log streaming settings and enter the following:
+### Step 3 - Configure log streaming in MNI
+Head to MNI log streaming settings and enter the following:
 ```
 Host: localhost // This is important as the certificate CN=localhost
 Port: 6514
 Protocol: TLS
 TlsCa: Paste the contents of ca-cert.pem created in step 1
 Facility: Local0
-App Name: n8n
+App Name: MNI
 ```
 Once saved you can send a test message and validate it is received using the `docker logs syslog-ng-tls` command.
 
-Most problems result in a log in the n8n system - error feedback will hopefully be improved in  
+Most problems result in a log in the MNI system - error feedback will hopefully be improved in  

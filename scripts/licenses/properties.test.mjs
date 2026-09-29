@@ -41,7 +41,7 @@ const cfg = () => ({
 	overrides,
 	byName,
 	elections,
-	licenseText: 'n8n Sustainable Use License text',
+	licenseText: 'MNI Sustainable Use License text',
 	firstPartyOsi,
 	dropPhantomNpm: true,
 });

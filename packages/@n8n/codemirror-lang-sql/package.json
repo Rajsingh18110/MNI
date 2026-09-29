@@ -1,7 +1,7 @@
 {
   "name": "@n8n/codemirror-lang-sql",
   "version": "1.13.0",
-  "description": "SQL + n8n expression language support for CodeMirror 6",
+  "description": "SQL + MNI expression language support for CodeMirror 6",
   "scripts": {
     "clean": "rimraf dist .turbo",
     "test": "vitest run",

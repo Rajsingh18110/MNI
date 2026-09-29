@@ -75,7 +75,7 @@ vi.mock('../composables/useModelCatalog', async () => {
 				anthropic: {
 					models: [
 						anthropicModel('claude-sonnet-4-5', 'Claude Sonnet 4.5'),
-						// n8n Connect serves an allowlist; a user's own credential sees the
+						// MNI Connect serves an allowlist; a user's own credential sees the
 						// provider's full catalog.
 						...(credentials?.anthropic === managedTag
 							? []
@@ -358,7 +358,7 @@ describe('AgentSubAgentsPanel', () => {
 		expect(last?.subAgents?.modelsByDifficulty?.low?.credential).toBe('anthropic-cred-2');
 	});
 
-	it('persists the managed tag when n8n Connect is chosen after an own credential, before the model', async () => {
+	it('persists the managed tag when MNI Connect is chosen after an own credential, before the model', async () => {
 		const wrapper = await mountPanel();
 		await enableCustomModelRouting(wrapper);
 
@@ -368,7 +368,7 @@ describe('AgentSubAgentsPanel', () => {
 			'anthropic',
 			'anthropic-cred-2',
 		);
-		// 2. Switch to n8n Connect before picking a model — replaces the pending choice
+		// 2. Switch to MNI Connect before picking a model — replaces the pending choice
 		// for this difficulty without touching the shared selection.
 		emitDifficultyCredentialChange(
 			'agent-sub-agents-difficulty-low-model',

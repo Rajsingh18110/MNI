@@ -161,23 +161,23 @@ export class GlobalConfig {
 	@Nested
 	sentry: SentryConfig;
 
-	/** Path n8n is deployed to */
+	/** Path MNI is deployed to */
 	@Env('N8N_PATH')
 	path: string = '/';
 
-	/** Host name n8n can be reached */
+	/** Host name MNI can be reached */
 	@Env('N8N_HOST')
 	host: string = 'localhost';
 
-	/** HTTP port n8n can be reached */
+	/** HTTP port MNI can be reached */
 	@Env('N8N_PORT')
 	port: number = 5678;
 
-	/** IP address n8n should listen on */
+	/** IP address MNI should listen on */
 	@Env('N8N_LISTEN_ADDRESS')
 	listen_address: string = '::';
 
-	/** HTTP Protocol via which n8n can be reached */
+	/** HTTP Protocol via which MNI can be reached */
 	@Env('N8N_PROTOCOL', protocolSchema)
 	protocol: Protocol = 'http';
 
@@ -264,7 +264,7 @@ export class GlobalConfig {
 	@Env('N8N_HIDE_USAGE_PAGE')
 	hideUsagePage: boolean = false;
 
-	/** Number of reverse proxies n8n is running behind. */
+	/** Number of reverse proxies MNI is running behind. */
 	@Env('N8N_PROXY_HOPS')
 	proxy_hops: number = 0;
 

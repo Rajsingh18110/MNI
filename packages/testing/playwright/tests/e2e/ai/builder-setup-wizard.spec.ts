@@ -20,7 +20,7 @@ test.describe(
 	() => {
 		let projectId: string;
 
-		test.beforeEach(async ({ n8n, setupRequirements }) => {
+		test.beforeEach(async ({ MNI, setupRequirements }) => {
 			await setupRequirements(builderWizardRequirements);
 
 			await n8n.page.route('**/rest/ai/build/credits', async (route) => {
@@ -51,8 +51,8 @@ test.describe(
 			projectId = await n8n.start.fromNewProjectBlankCanvas();
 		});
 
-		test('should disable per-card execute button when credentials are missing', async ({ n8n }) => {
-			const { builderWizardComposer: bw } = n8n;
+		test('should disable per-card execute button when credentials are missing', async ({ MNI }) => {
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			await bw.mockBuilderStream();
@@ -63,8 +63,8 @@ test.describe(
 			await expect(wiz.getExecuteStepButton()).toBeDisabled();
 		});
 
-		test('should allow stepping through cards in both directions', async ({ n8n }) => {
-			const { builderWizardComposer: bw } = n8n;
+		test('should allow stepping through cards in both directions', async ({ MNI }) => {
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// 3-node fixture → 2 visible cards after trigger filter (Slack + Telegram)
@@ -88,8 +88,8 @@ test.describe(
 
 		// --- Follow-up behavior ---
 
-		test('should reset to first incomplete card after AI updates workflow', async ({ n8n }) => {
-			const { builderWizardComposer: bw } = n8n;
+		test('should reset to first incomplete card after AI updates workflow', async ({ MNI }) => {
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// 2 visible cards: Slack (card 1) + Telegram (card 2)
@@ -112,8 +112,8 @@ test.describe(
 			await expect(wiz.getStepIndicator(1, 2)).toBeVisible();
 		});
 
-		test('should land on new incomplete card when follow-up inserts a node', async ({ n8n }) => {
-			const { builderWizardComposer: bw } = n8n;
+		test('should land on new incomplete card when follow-up inserts a node', async ({ MNI }) => {
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			await bw.mockBuilderStream(createBuilderStreamingResponse());
@@ -134,9 +134,9 @@ test.describe(
 		// --- Multi-trigger ---
 
 		test('should only allow executing the first trigger in a multi-trigger workflow', async ({
-			n8n,
+			MNI,
 		}) => {
-			const { builderWizardComposer: bw } = n8n;
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// Multi-trigger: Morning Schedule (trigger-only, filtered) + Slack + Telegram Listener
@@ -161,8 +161,8 @@ test.describe(
 
 		// --- Credential grouping ---
 
-		test('should group nodes sharing the same credential type into one card', async ({ n8n }) => {
-			const { builderWizardComposer: bw } = n8n;
+		test('should group nodes sharing the same credential type into one card', async ({ MNI }) => {
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// Two Slack nodes (Slack Alerts + Slack Reports) both need slackApi → one grouped card
@@ -184,8 +184,8 @@ test.describe(
 
 		// --- Branching workflows ---
 
-		test('should show cards for nodes across conditional branches', async ({ n8n }) => {
-			const { builderWizardComposer: bw } = n8n;
+		test('should show cards for nodes across conditional branches', async ({ MNI }) => {
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// If node with Slack (true branch) and Telegram (false branch)
@@ -209,9 +209,9 @@ test.describe(
 		// --- Placeholder parameter handling ---
 
 		test('should show placeholder parameters and keep card incomplete until filled', async ({
-			n8n,
+			MNI,
 		}) => {
-			const { builderWizardComposer: bw } = n8n;
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// 2-card fixture: Telegram (card 1) + Slack with placeholder (card 2).
@@ -230,7 +230,7 @@ test.describe(
 		});
 
 		test('should not complete a card with credential alone when parameters are required', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			await api.credentials.createCredential({
@@ -240,7 +240,7 @@ test.describe(
 				projectId,
 			});
 
-			const { builderWizardComposer: bw } = n8n;
+			const { builderWizardComposer: bw } = MNI;
 			const wiz = n8n.aiBuilder.wizard;
 
 			// 2-card fixture with placeholder so navigating triggers clearing.

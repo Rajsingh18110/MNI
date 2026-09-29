@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Seed a local n8n instance via the public API.
+// Seed a local MNI instance via the public API.
 // Creates projects, fake credentials, workflows with sub-workflow dependencies
 // (including some that cross project boundaries), and data tables.
 //
@@ -155,7 +155,7 @@ const DATA_TABLE_PROXY_CONSUMERS = [3, 5];
 // Heavy utility-usage controls. Across the whole org, most workflows reach into
 // a utility workflow (Audit Logger, Tenant Resolver, etc.) and a sizeable
 // fraction reach the central `customers` data table — but cross-project DT
-// access is illegal in n8n, so non-Org-Utilities workflows go through a proxy
+// access is illegal in MNI, so non-Org-Utilities workflows go through a proxy
 // workflow that owns the direct DataTable reference.
 const UTILITY_REF_PROB = 0.6;
 // Probability a phase-1/2 community workflow includes a customers-proxy ref
@@ -327,7 +327,7 @@ const CRED_RECIPES = [
 			host: `db-${pickWord(['prod', 'staging', 'dev', 'reporting'])}.internal`,
 			port: 5432,
 			database: pickWord(['analytics', 'crm', 'billing', 'leads']),
-			user: 'n8n',
+			user: 'MNI',
 			password: rand(24),
 			allowUnauthorizedCerts: false,
 			ssl: 'allow',
@@ -341,7 +341,7 @@ const CRED_RECIPES = [
 			host: `mysql-${pickWord(['us', 'eu', 'apac'])}.internal`,
 			port: 3306,
 			database: pickWord(['orders', 'inventory', 'pricing']),
-			user: 'n8n',
+			user: 'MNI',
 			password: rand(24),
 			ssl: false,
 			sshTunnel: false,
@@ -553,7 +553,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 						resource: 'issue',
 						operation: 'getAll',
 						owner: 'n8n-io',
-						repository: 'n8n',
+						repository: 'MNI',
 					},
 					id: rand(36),
 					name: 'GitHub',
@@ -754,7 +754,7 @@ async function clearSeeded() {
 	}
 
 	// Sweep orphan team projects — empty (no workflows / creds / dts), not
-	// named "My project" (the n8n default), and not on the current PROJECT_NAMES
+	// named "My project" (the MNI default), and not on the current PROJECT_NAMES
 	// list. These are leftovers from earlier seed runs whose name set changed.
 	const remainingWorkflows = await listAll('/workflows');
 	const remainingCreds = await listAll('/credentials');
@@ -935,7 +935,7 @@ async function main() {
 		await seedPreferenceProfile();
 		return;
 	}
-	log('Seeding n8n at', BASE);
+	log('Seeding MNI at', BASE);
 
 	log('Fetching projects...');
 	const initialProjects = await listAll('/projects');
@@ -1143,7 +1143,7 @@ async function main() {
 
 	// Customers proxy: the only workflow that directly references the central
 	// data table. Other projects "use" the central DT by calling this proxy
-	// via ExecuteWorkflow — modeling the n8n constraint that DataTable nodes
+	// via ExecuteWorkflow — modeling the MNI constraint that DataTable nodes
 	// can only point at tables in the same project.
 	let customersProxy = null;
 	const orgUtilProj = utilityProjects.find((p) => p.name === ORG_UTILITIES_PROJECT_NAME);
@@ -1505,7 +1505,7 @@ async function main() {
 
 	// Phase 4: data-table proxy workflows. A few data tables get exposed via a
 	// wrapper workflow in their owning project; consumers in OTHER projects
-	// then call that wrapper as a sub-workflow. Models the real n8n pattern
+	// then call that wrapper as a sub-workflow. Models the real MNI pattern
 	// of sharing data across project boundaries via a workflow proxy.
 	log('Creating workflows — phase 4 (cross-project data-table proxies)...');
 	const allDataTables = [];

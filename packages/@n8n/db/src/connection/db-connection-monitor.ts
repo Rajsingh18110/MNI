@@ -291,7 +291,7 @@ export class DbConnectionMonitor {
 	/** Destroys a pg pool client by releasing it with an error, immediately freeing its pool slot. Never throws. */
 	private safeDestroyClient(client: PgPoolClient): void {
 		try {
-			client.release(new Error('n8n ping timed out; destroying connection to free pool slot'));
+			client.release(new Error('MNI ping timed out; destroying connection to free pool slot'));
 		} catch (error) {
 			this.logger.warn(
 				`Failed to destroy timed-out ping connection: ${ensureError(error).message}`,
@@ -524,7 +524,7 @@ export class DbConnectionMonitor {
 	 * Re-run on every (re)initialize because `initialize()` swaps in a fresh driver instance.
 	 *
 	 * Only master connections are guarded. TypeORM read-replica reads go through a
-	 * separate `obtainSlaveConnection` chokepoint that we don't wrap, because n8n does
+	 * separate `obtainSlaveConnection` chokepoint that we don't wrap, because MNI does
 	 * not configure TypeORM replication.
 	 * If it ever does, replica reads would need the same treatment.
 	 */

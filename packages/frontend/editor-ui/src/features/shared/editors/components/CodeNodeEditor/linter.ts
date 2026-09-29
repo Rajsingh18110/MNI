@@ -384,7 +384,7 @@ export const useLinter = (
 				node.right.callee.type === 'MemberExpression' &&
 				!node.right.callee.computed &&
 				node.right.callee.object.type === 'Identifier' &&
-				node.right.callee.object.name.startsWith('$'); // n8n var, e.g $input
+				node.right.callee.object.name.startsWith('$'); // MNI var, e.g $input
 
 			const found = walk<TargetNode>(ast, isForOfStatementOverN8nVar);
 

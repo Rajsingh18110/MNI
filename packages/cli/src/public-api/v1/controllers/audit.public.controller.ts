@@ -22,7 +22,7 @@ export class AuditPublicController {
 	@Post('/')
 	@ApiKeyScope('securityAudit:generate')
 	@ApiSummary('Generate an audit')
-	@ApiDescription('Generate a security audit for your n8n instance.')
+	@ApiDescription('Generate a security audit for your MNI instance.')
 	@ApiTags(['Audit'])
 	@ApiResponse(200, AuditPublicDto)
 	@ApiErrorResponse(500)

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * This script is used to build the n8n application for production.
+ * This script is used to build the MNI application for production.
  * It will:
  * 1. Clean the previous build output
  * 2. Run pnpm install and build
@@ -72,7 +72,7 @@ function printDivider() {
 // #endregion ===== Helper Functions =====
 
 // #region ===== Main Build Process =====
-printHeader('n8n Build & Production Preparation');
+printHeader('MNI Build & Production Preparation');
 echo(`INFO: Output Directory: ${config.compiledAppDir}`);
 printDivider();
 
@@ -460,8 +460,8 @@ try {
 	);
 
 	// Deliberately unstripped. This closure ships as its own image and is two
-	// orders of magnitude smaller than the n8n one, so the strips above are not
-	// worth duplicating here — the closure figure they report covers the n8n image
+	// orders of magnitude smaller than the MNI one, so the strips above are not
+	// worth duplicating here — the closure figure they report covers the MNI image
 	// only, not the shipped total.
 	startTimer('task_runner_deploy');
 	await $`cd ${config.rootDir} && NODE_ENV=production DOCKER_BUILD=true pnpm --filter=@n8n/task-runner ${deployFlags} deploy --no-optional ${config.compiledTaskRunnerDir}`;
@@ -655,10 +655,10 @@ const totalBuildTime = getElapsedTime('total_build');
 // #region ===== Final Output =====
 echo('');
 echo(chalk.green.bold('================ BUILD SUMMARY ================'));
-echo(chalk.green(`✅ n8n built successfully!`));
+echo(chalk.green(`✅ MNI built successfully!`));
 echo('');
 echo(chalk.blue('📦 Build Output:'));
-echo(chalk.green('   n8n:'));
+echo(chalk.green('   MNI:'));
 echo(`   Directory:      ${path.resolve(config.compiledAppDir)}`);
 echo(`   Size:           ${compiledAppOutputSize}`);
 echo('');

@@ -9,11 +9,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test("add node by clicking on 'On form submission'", async ({ n8n }) => {
+		test("add node by clicking on 'On form submission'", async ({ MNI }) => {
 			await n8n.canvas.clickNodeCreatorPlusButton();
 			await n8n.canvas.nodeCreatorItemByName('On form submission').click();
 
@@ -25,7 +25,7 @@ test.describe(
 			await expect(n8n.canvas.nodeIssuesBadge('On form submission')).toBeHidden();
 		});
 
-		test('should fill up form fields', async ({ n8n }) => {
+		test('should fill up form fields', async ({ MNI }) => {
 			await n8n.canvas.clickNodeCreatorPlusButton();
 			await n8n.canvas.nodeCreatorItemByName('On form submission').click();
 
@@ -75,7 +75,7 @@ test.describe(
 			await expect(n8n.canvas.nodeIssuesBadge('On form submission')).toBeHidden();
 		});
 
-		test('should create and submit a multi-page form', async ({ n8n }) => {
+		test('should create and submit a multi-page form', async ({ MNI }) => {
 			// Add Form Trigger node with first name field
 			await n8n.canvas.clickNodeCreatorPlusButton();
 			await n8n.canvas.nodeCreatorItemByName('On form submission').click();
@@ -90,7 +90,7 @@ test.describe(
 			await n8n.ndv.clickBackToCanvasButton();
 
 			// Add Form node (next page) by selecting the "Next Form Page" action
-			await n8n.canvas.addNode('n8n Form', { closeNDV: false, action: 'Next Form Page' });
+			await n8n.canvas.addNode('MNI Form', { closeNDV: false, action: 'Next Form Page' });
 
 			// Add a single field to the Form node
 			await n8n.ndv.addFixedCollectionItem();
@@ -137,7 +137,7 @@ test.describe(
 				},
 			});
 
-			test('form submission works with basic auth', async ({ api, n8n }) => {
+			test('form submission works with basic auth', async ({ api, MNI }) => {
 				const { id, name } = await api.credentials.createCredential({
 					name: 'Basic Auth test:test',
 					type: 'httpBasicAuth',
@@ -204,7 +204,7 @@ test.describe(
 				await formPage.expectText('This worked');
 			});
 
-			test('multi-step form submission works with basic auth', async ({ api, n8n }) => {
+			test('multi-step form submission works with basic auth', async ({ api, MNI }) => {
 				const { id, name } = await api.credentials.createCredential({
 					name: 'Basic Auth test:test',
 					type: 'httpBasicAuth',

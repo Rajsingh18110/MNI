@@ -268,7 +268,7 @@ describe('WorkflowPublicationOutboxConsumer (integration)', () => {
 				nodes: versionData.nodes,
 				connections: versionData.connections,
 				nodeGroups: versionData.nodeGroups ?? [],
-				authors: 'n8n',
+				authors: 'MNI',
 				autosaved: false,
 			});
 			await Container.get(WorkflowRepository).update({ id }, { activeVersionId: versionId });

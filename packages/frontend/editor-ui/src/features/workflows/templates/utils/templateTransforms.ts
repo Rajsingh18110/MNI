@@ -42,7 +42,7 @@ export const keyFromCredentialTypeAndName = (
 
 /**
  * Normalizes the credentials of a template node. Templates created with
- * different versions of n8n may have different credential formats.
+ * different versions of MNI may have different credential formats.
  */
 export const normalizeTemplateNodeCredentials = (
 	credentials?: IWorkflowTemplateNodeCredentials,

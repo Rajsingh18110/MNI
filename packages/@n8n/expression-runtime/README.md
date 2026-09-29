@@ -1,10 +1,10 @@
 # @n8n/expression-runtime
 
-Secure, isolated expression evaluation runtime for n8n workflows.
+Secure, isolated expression evaluation runtime for MNI workflows.
 
 ## Status
 
-**Shipped — the `vm` engine is n8n's default expression engine.**
+**Shipped — the `vm` engine is MNI's default expression engine.**
 
 - ✅ TypeScript interfaces and architecture design
 - ✅ Runtime bundle: extension functions, deep lazy proxy system
@@ -189,7 +189,7 @@ interface EvaluatorConfig {
 
 ## Environment Variables
 
-In n8n, the evaluator is configured via `ExpressionEngineConfig` (`@n8n/config`):
+In MNI, the evaluator is configured via `ExpressionEngineConfig` (`@n8n/config`):
 
 ```bash
 # Engine selection ('vm' is the default; 'legacy' opts out of isolation)
@@ -305,14 +305,14 @@ Future security features (Phase 2+):
 
 ## Contributing
 
-See the main n8n repository for contribution guidelines.
+See the main MNI repository for contribution guidelines.
 
 ## License
 
-See [LICENSE.md](../../LICENSE.md) in the n8n repository root.
+See [LICENSE.md](../../LICENSE.md) in the MNI repository root.
 
 ## Related
 
-- [n8n workflow package](../workflow/)
+- [MNI workflow package](../workflow/)
 - [isolated-vm](https://github.com/laverdet/isolated-vm)
 - [@n8n/tournament](https://github.com/n8n-io/tournament)

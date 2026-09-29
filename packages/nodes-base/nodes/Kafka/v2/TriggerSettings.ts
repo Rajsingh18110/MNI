@@ -281,7 +281,7 @@ export function toConsumerOptions(
 	//
 	// The last one used to be the Rebalance Timeout default, which handed the broker
 	// a 10 minute deadline while the emitter was still prepared to wait an hour for
-	// the same execution. Anything in between was fenced and redelivered while n8n
+	// the same execution. Anything in between was fenced and redelivered while MNI
 	// believed the run still owned it: two of our own defaults disagreeing about one
 	// deadline, so they are now the same value by construction.
 	let deadlineMs: number;
@@ -356,7 +356,7 @@ export function toConsumerOptions(
 /**
  * Maps the node's options and offset settings onto the emitter.
  *
- * `executionTimeoutSeconds` is passed through raw: n8n treats <= 0 as
+ * `executionTimeoutSeconds` is passed through raw: MNI treats <= 0 as
  * explicitly unbounded, and the emitter handles that. Coercing it to a default
  * here would reintroduce a deadline the user switched off.
  * @param options - The node's `options` collection

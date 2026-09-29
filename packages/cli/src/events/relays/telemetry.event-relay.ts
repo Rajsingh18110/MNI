@@ -1343,7 +1343,7 @@ export class TelemetryEventRelay extends EventRelay {
 	}
 
 	private packageImported({ user, options, counts }: RelayEventMap['n8n-package-imported']) {
-		this.telemetry.track('User imported n8n package', {
+		this.telemetry.track('User imported MNI package', {
 			user_id: user.id,
 			workflow_conflict_policy: options.workflowConflictPolicy,
 			workflow_id_policy: options.workflowIdPolicy,
@@ -1395,7 +1395,7 @@ export class TelemetryEventRelay extends EventRelay {
 		credentialExportPolicy,
 		includeArchivedWorkflows,
 	}: RelayEventMap['n8n-package-exported']) {
-		this.telemetry.track('User exported n8n package', {
+		this.telemetry.track('User exported MNI package', {
 			user_id: user.id,
 			workflow_count: counts.workflows,
 			folder_count: counts.folders,

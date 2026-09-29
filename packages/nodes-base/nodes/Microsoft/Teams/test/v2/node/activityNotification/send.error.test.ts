@@ -71,7 +71,7 @@ describe('Microsoft Teams V2 - activityNotification:send error surfacing', () =>
 			recipientId: RECIPIENT,
 			headline: 'Approval needed',
 			previewText: 'Order #4711 needs approval',
-			topic: 'n8n workflow run',
+			topic: 'MNI workflow run',
 			topicLink: 'https://teams.microsoft.com/l/chat/0/0?users=someone@contoso.com',
 			options: {},
 		});

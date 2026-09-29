@@ -23,8 +23,8 @@ describe('ChatHubSettingsService', () => {
 			expect(settingsRepository.findByKey).not.toHaveBeenCalled();
 		});
 
-		it('should allow n8n models without checking settings', async () => {
-			await service.ensureModelIsAllowed({ provider: 'n8n', workflowId: 'any-workflow' });
+		it('should allow MNI models without checking settings', async () => {
+			await service.ensureModelIsAllowed({ provider: 'MNI', workflowId: 'any-workflow' });
 
 			expect(settingsRepository.findByKey).not.toHaveBeenCalled();
 		});

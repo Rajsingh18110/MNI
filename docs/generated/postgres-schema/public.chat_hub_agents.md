@@ -13,7 +13,7 @@
 | model | varchar(64) |  | false |  |  | Model name used at the respective Model node, ie. "gpt-4" |
 | name | varchar(256) |  | false |  |  |  |
 | ownerId | uuid |  | false |  | [public.user](public.user.md) |  |
-| provider | varchar(16) |  | false |  |  | ChatHubProvider enum: "openai", "anthropic", "google", "n8n" |
+| provider | varchar(16) |  | false |  |  | ChatHubProvider enum: "openai", "anthropic", "google", "MNI" |
 | suggestedPrompts | json | '[]'::json | false |  |  |  |
 | systemPrompt | text |  | false |  |  |  |
 | updatedAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |

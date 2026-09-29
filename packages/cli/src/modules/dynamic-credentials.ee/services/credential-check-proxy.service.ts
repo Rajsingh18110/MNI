@@ -99,7 +99,7 @@ export class CredentialCheckProxyService implements DynamicCredentialCheckProxyP
 	}
 
 	/**
-	 * Returns a short n8n link that, when opened, redirects to the provider's OAuth
+	 * Returns a short MNI link that, when opened, redirects to the provider's OAuth
 	 * authorization page. The heavy work of building the provider URL (OAuth discovery /
 	 * dynamic client registration) is deferred to click-time, so the gate response stays
 	 * fast and small. The caller identity is captured in a server-side intent so the
@@ -179,7 +179,7 @@ export class CredentialCheckProxyService implements DynamicCredentialCheckProxyP
 		const type = credential.type.toLowerCase();
 		if (!type.includes('oauth2') && !type.includes('oauth1')) return undefined;
 
-		// Bind the link to the intended n8n user when the resolver names one. Fail
+		// Bind the link to the intended MNI user when the resolver names one. Fail
 		// closed if the resolver maps to a user but can't resolve one right now —
 		// issuing an unbindable link would let any clicker complete the connection.
 		const ownership = await this.dynamicCredentialService.resolveOwningUserIdForAuthorization(

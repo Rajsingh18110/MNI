@@ -62,7 +62,7 @@ const mcpTriggerNode = (requireExecuteAccess?: boolean): INode => ({
 
 /**
  * Create an active, published workflow whose MCP trigger is protected with
- * n8n OAuth2, plus the production webhook row the resolver matches on. Returns
+ * MNI OAuth2, plus the production webhook row the resolver matches on. Returns
  * the canonical resource URL the OAuth server binds tokens and consent to.
  */
 const createProtectedWorkflow = async (workflowName: string, requireExecuteAccess?: boolean) => {

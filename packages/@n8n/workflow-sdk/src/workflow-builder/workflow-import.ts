@@ -1,7 +1,7 @@
 /**
  * Workflow Import Utility
  *
- * Parses n8n JSON format into internal graph structures.
+ * Parses MNI JSON format into internal graph structures.
  */
 
 import { deepCopy } from 'n8n-workflow';
@@ -46,7 +46,7 @@ export function parseWorkflowJSON(json: WorkflowJSON): ParsedWorkflow {
 	const nodes = new Map<string, GraphNode>();
 	// Map from connection name (how nodes reference each other) to map key
 	const nameToKey = new Map<string, string>();
-	// Map from n8n node ID to the created node handle, used to rebuild groups (which
+	// Map from MNI node ID to the created node handle, used to rebuild groups (which
 	// reference members by ID) as node refs — the same shape `.group()` authoring uses.
 	const idToInstance = new Map<string, NodeInstance<string, string, unknown>>();
 

@@ -45,7 +45,7 @@ const SeedWorkflowSchema = z.object({
  *  case references the project the way a user would (by name), and nothing in a
  *  seed's messages can refer to a project id, so there is no id to remap. */
 const SeedProjectSchema = z.object({
-	/** Trimmed, not merely non-empty. n8n's `projectNameSchema` has no trim, so
+	/** Trimmed, not merely non-empty. MNI's `projectNameSchema` has no trim, so
 	 *  `" Foobar "` is created VERBATIM as a project distinct from `"Foobar"` — two
 	 *  projects a human reads as identical, both visible to the agent, leaving a case
 	 *  that says "the Foobar project" in prose ambiguous. It would also slip past the
@@ -55,7 +55,7 @@ const SeedProjectSchema = z.object({
 	name: z
 		.string()
 		.min(1)
-		// n8n's own `projectNameSchema` cap. Enforced here so an over-long name fails at
+		// MNI's own `projectNameSchema` cap. Enforced here so an over-long name fails at
 		// case load rather than mid-run, where the create call returns a 400 that
 		// `createTeamProject` reports as a licensing/quota problem.
 		.max(255)
@@ -320,7 +320,7 @@ export const freshSeedNameSuffix = () => seedNameSuffix(randomUUID().slice(0, 8)
 /** Matches a suffixed name, capturing the base. Workflows and data tables both. */
 export const SEED_NAME_RE = /^(.*) \[seed [0-9a-f]{8}\]$/;
 
-/** n8n's name-column bound. */
+/** MNI's name-column bound. */
 const MAX_SEED_NAME = 128;
 
 export function uniquifySeedName(name: string, suffix: string): string {
@@ -434,11 +434,11 @@ export function remapSeedArtifactIds(seed: ConversationSeed): ConversationSeed {
 
 	const remapped = ConversationSeedSchema.parse(jsonParse(serialized));
 
-	// n8n itself allows duplicate workflow names, so a scrubbed real seed could
+	// MNI itself allows duplicate workflow names, so a scrubbed real seed could
 	// legitimately carry two. This harness can't take them: the rename below rewrites
 	// mentions by matching the name text, so both workflows' mentions would collapse
 	// onto the first one's new name and the history would point at the wrong workflow.
-	// Refuse rather than mangle — a limit of the rewrite, not an n8n rule.
+	// Refuse rather than mangle — a limit of the rewrite, not an MNI rule.
 	const names = remapped.workflows.map((workflow) => workflow.name);
 	const duplicate = names.find((name, index) => names.indexOf(name) !== index);
 	if (duplicate !== undefined) {

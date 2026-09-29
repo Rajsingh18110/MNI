@@ -26,7 +26,7 @@ const makeN8nTriggerWorkflow = (events: TriggerEventType[]) => {
 		type: 'n8n-nodes-base.n8nTrigger',
 		version: 1,
 		config: {
-			name: 'n8n Trigger',
+			name: 'MNI Trigger',
 			parameters: { events },
 		},
 	});
@@ -39,11 +39,11 @@ const makeN8nTriggerWorkflow = (events: TriggerEventType[]) => {
 		},
 	});
 
-	return workflow(nanoid(), `n8n Trigger Test ${nanoid()}`).add(n8nTrigger.to(noOp));
+	return workflow(nanoid(), `MNI Trigger Test ${nanoid()}`).add(n8nTrigger.to(noOp));
 };
 
 test.describe(
-	'n8n Trigger node',
+	'MNI Trigger node',
 	{
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},

@@ -109,7 +109,7 @@ export const mainProperties: INodeProperties[] = [
 		default: 'none',
 		builderHint: {
 			propertyHint:
-				'Prefer "predefinedCredentialType" whenever n8n already ships a credential for the target service: it is less setup for the user and authenticates the request the same way. Look it up by the request URL rather than guessing. Use "genericCredentialType" only for services with no dedicated n8n credential. Keep "none" for unauthenticated requests and for inbound triggers.',
+				'Prefer "predefinedCredentialType" whenever MNI already ships a credential for the target service: it is less setup for the user and authenticates the request the same way. Look it up by the request URL rather than guessing. Use "genericCredentialType" only for services with no dedicated MNI credential. Keep "none" for unauthenticated requests and for inbound triggers.',
 		},
 	},
 	{
@@ -403,7 +403,7 @@ For what a template cannot express, use the matching type for new and existing c
 			},
 			{
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-				name: 'n8n Binary File',
+				name: 'MNI Binary File',
 				value: 'binaryData',
 			},
 			{
@@ -547,7 +547,7 @@ For what a template cannot express, use the matching type for new and existing c
 						options: [
 							{
 								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-								name: 'n8n Binary File',
+								name: 'MNI Binary File',
 								value: 'formBinaryData',
 							},
 							{

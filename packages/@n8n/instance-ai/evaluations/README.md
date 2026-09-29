@@ -6,10 +6,10 @@ Tests the workflows and standalone Agents that Instance AI builds. Builds call t
 
 Six harnesses live here:
 
-- **`eval:instance-ai`** — end-to-end build + mocked execution + LLM verification (drives a running n8n instance)
+- **`eval:instance-ai`** — end-to-end build + mocked execution + LLM verification (drives a running MNI instance)
 - **`eval:agents`** — standalone Agent build cases from the LangTracer `agents` suite (author new ones in `data/agents/`)
 - **`eval:subagent`** — legacy command name for the workflow-build compatibility corpus; it drives the live orchestrator/skill build path, scored by binary checks
-- **`eval:discovery`** — orchestrator in-process, scored against required or forbidden tool/dispatch events (no n8n server)
+- **`eval:discovery`** — orchestrator in-process, scored against required or forbidden tool/dispatch events (no MNI server)
 - **`eval:pairwise`** — live orchestrator workflow builds, scored by an LLM judge panel against do/don't lists. Intended for head-to-head comparison with `ai-workflow-builder.ee` on the same dataset
 - **`eval:computer-use`** — grades the computer-use agent (file / OAuth / doc-reading tasks) against fixtures; see [`computer-use/README.md`](computer-use/README.md)
 
@@ -50,11 +50,11 @@ Common upload flows (webhook → file upload to Slack/Telegram/S3) are also cove
 
 ## Quick start
 
-You need an n8n instance running with Instance AI enabled, a seeded owner account, and an Anthropic API key. Two paths:
+You need an MNI instance running with Instance AI enabled, a seeded owner account, and an Anthropic API key. Two paths:
 
 ### Local (pnpm dev:ai)
 
-`pnpm dev:ai` runs watch mode across `n8n`, `n8n-core`, and `@n8n/n8n-nodes-langchain` in parallel — the set you need when iterating on Instance AI or the eval framework.
+`pnpm dev:ai` runs watch mode across `MNI`, `n8n-core`, and `@n8n/n8n-nodes-langchain` in parallel — the set you need when iterating on Instance AI or the eval framework.
 
 1. **Create `.env.local`** at the repo root with at minimum:
    ```env
@@ -101,7 +101,7 @@ docker run -d --name n8n-eval \
   -e N8N_AI_ENABLED=true \
   -e N8N_INSTANCE_AI_MODEL_API_KEY=your-key \
   -p 5678:5678 \
-  n8nio/n8n:local
+  n8nio/MNI:local
 
 # Seed the owner
 curl -sf -X POST http://localhost:5678/rest/e2e/reset -H "Content-Type: application/json" -d '{"owner":{"email":"nathan@n8n.io","password":"PlaywrightTest123","firstName":"Eval","lastName":"Owner"},"admin":{"email":"admin@n8n.io","password":"PlaywrightTest123","firstName":"Admin","lastName":"User"},"members":[],"chat":{"email":"chat@n8n.io","password":"PlaywrightTest123","firstName":"Chat","lastName":"User"}}'
@@ -123,7 +123,7 @@ dotenvx run -f ../../../.env.local -- pnpm eval:instance-ai --filter contact-for
 
 # Keep built workflows for inspection after the run. With --keep-workflows,
 # each scenario's persisted canvas execution is reachable via the
-# "view in n8n" link in the HTML report.
+# "view in MNI" link in the HTML report.
 dotenvx run -f ../../../.env.local -- pnpm eval:instance-ai --filter contact-form --keep-workflows
 
 # Multi-iteration for pass@k / pass^k metrics
@@ -138,9 +138,9 @@ dotenvx run -f ../../../.env.local -- pnpm eval:instance-ai --iterations 3
 | `--filter` | — | Filter test cases by filename substring. Comma-separated values mean OR (e.g. `contact-form,deduplication`) |
 | `--exclude` | — | Skip test cases whose filename matches any of the substrings. Same comma-separated shape as `--filter`; applied after `--filter` |
 | `--prebuilt-workflows` | — | Path to a JSON manifest mapping test-case slugs to existing workflow IDs. Skips the orchestrator build for matched test cases — see [Running evals against pre-built workflows](#running-evals-against-pre-built-workflows) |
-| `--keep-workflows` | `false` | Don't delete any build artifacts after the run — workflows, data tables, and threads (with their sandboxes) all survive. Pair with the HTML report's "view in n8n" links to inspect each scenario's canvas execution. Sandboxes have no auto-cleanup, so use with `--filter` on a few cases rather than full baselines |
+| `--keep-workflows` | `false` | Don't delete any build artifacts after the run — workflows, data tables, and threads (with their sandboxes) all survive. Pair with the HTML report's "view in MNI" links to inspect each scenario's canvas execution. Sandboxes have no auto-cleanup, so use with `--filter` on a few cases rather than full baselines |
 | `--delete-prebuilt-workflows` | `false` | With `--prebuilt-workflows`, delete successfully used manifest workflows after the eval run. Mutually exclusive with `--keep-workflows` |
-| `--base-url` | `http://localhost:5678` | n8n instance URL |
+| `--base-url` | `http://localhost:5678` | MNI instance URL |
 | `--email` | E2E test owner | Override login email (or `N8N_EVAL_EMAIL`) |
 | `--password` | E2E test owner | Override login password (or `N8N_EVAL_PASSWORD`) |
 | `--timeout-ms` | `900000` | Per-test-case timeout (the MCP CI workflow passes `1500000` — its multi-agent cases with large mocked payloads legitimately run past 15 min) |
@@ -316,7 +316,7 @@ action so process expectations can check the response.
 
 Start each panel eval instance with
 `N8N_FEATURE_FLAG_OVERRIDES='{"118_instance_ai_setup_overhaul":"variant"}'`.
-Set this variable on the n8n server process or in the lane's environment file.
+Set this variable on the MNI server process or in the lane's environment file.
 Setting it only on the eval client does not enable the server feature.
 Run the normal PR tier with `control` and `variant`. For panel cases, load the
 external suite with `--source langtracer --suite <suite-id>`, or stage a local
@@ -339,16 +339,16 @@ on disk. Losing this field turns it into a normal attachment test.
 | `EVAL_MODAL_LLM_HEADERS` | No | Eval-only JSON object of extra HTTP headers for Modal (or other custom) LLM endpoints |
 | `OPENAI_API_KEY` | No | Provider-specific key used automatically when `N8N_INSTANCE_AI_MODEL` starts with `openai/` |
 | `ANTHROPIC_API_KEY` | No | Provider-specific key used automatically when `N8N_INSTANCE_AI_MODEL` starts with `anthropic/` |
-| `N8N_EVAL_EMAIL` | No | n8n login email (defaults to E2E test owner) |
-| `N8N_EVAL_PASSWORD` | No | n8n login password (defaults to E2E test owner) |
+| `N8N_EVAL_EMAIL` | No | MNI login email (defaults to E2E test owner) |
+| `N8N_EVAL_PASSWORD` | No | MNI login password (defaults to E2E test owner) |
 | `LANGSMITH_API_KEY` | No | Enables experiment tracking + tracing. **See caveat below.** |
 | `LANGSMITH_ENDPOINT` | No | Region (`https://api.smith.langchain.com` US, `https://eu.api.smith.langchain.com` EU) |
 | `LANGSMITH_REVISION_ID` | No | Commit SHA to tag the experiment with (auto-set in CI) |
 | `LANGSMITH_BRANCH` | No | Branch name to tag the experiment with (auto-set in CI) |
 | `CONTEXT7_API_KEY` | No | Context7 key for API-doc lookups. Improves mock realism for less-common services; the LLM falls back to training data when unset |
 | `N8N_AI_ASSISTANT_BASE_URL` | No | Set to `""` to bypass the hosted AI proxy and hit Anthropic directly — useful to avoid per-tenant quota during large batch runs |
-| `INSTANCE_AI_BRAVE_SEARCH_API_KEY` | No | Set on the **target n8n instance** (note: no `N8N_` prefix) to enable the builder's `web-search` action. Unset = the action returns zero results, which reads to the agent as "nothing found". A licensed instance with `N8N_AI_ASSISTANT_BASE_URL` set routes search through the AI proxy instead and ignores this key |
-| `N8N_INSTANCE_AI_RUN_DEBUG_ENABLED` | No | Set to `true` on the target n8n instance to capture orchestrator LLM steps and workflow code for the eval LLM debug report (`workflow-eval-llm-debug.html`). Off by default. |
+| `INSTANCE_AI_BRAVE_SEARCH_API_KEY` | No | Set on the **target MNI instance** (note: no `N8N_` prefix) to enable the builder's `web-search` action. Unset = the action returns zero results, which reads to the agent as "nothing found". A licensed instance with `N8N_AI_ASSISTANT_BASE_URL` set routes search through the AI proxy instead and ignores this key |
+| `N8N_INSTANCE_AI_RUN_DEBUG_ENABLED` | No | Set to `true` on the target MNI instance to capture orchestrator LLM steps and workflow code for the eval LLM debug report (`workflow-eval-llm-debug.html`). Off by default. |
 
 **LangSmith caveat:** if `LANGSMITH_API_KEY` is set in `.env.local`, local runs also land in the shared `instance-ai-workflow-evals` dataset. Unset it (or run without `dotenvx`) to keep exploratory runs out of team results.
 
@@ -409,7 +409,7 @@ Comparison is logged and skipped on any LangSmith failure — it never fails the
 
 ## Running evals against pre-built workflows
 
-The eval framework normally builds each workflow with Instance AI and then verifies it. With `--prebuilt-workflows <path>`, the build step is skipped for matched test cases — the harness fetches the existing workflow from the n8n instance and runs verification against it instead. Use this to score workflows authored by other tools (an MCP-driven session, a hand-built reference, an older Instance AI snapshot) on the same dataset and the same verifier.
+The eval framework normally builds each workflow with Instance AI and then verifies it. With `--prebuilt-workflows <path>`, the build step is skipped for matched test cases — the harness fetches the existing workflow from the MNI instance and runs verification against it instead. Use this to score workflows authored by other tools (an MCP-driven session, a hand-built reference, an older Instance AI snapshot) on the same dataset and the same verifier.
 
 The manifest is a JSON file mapping test-case file slugs to workflow IDs:
 
@@ -421,7 +421,7 @@ The manifest is a JSON file mapping test-case file slugs to workflow IDs:
 ```
 
 - **Keys** are test-case slugs — the case name in LangTracer (for disk-loaded cases, the JSON filename without `.json`), e.g. `contact-form-automation`. The `--filter` flag uses the same identifier.
-- **Values** are arrays of workflow IDs that already exist in the target n8n instance. Multiple iterations rotate through the list with `iteration % ids.length`, so an `--iterations 5` run with 5 IDs gets 5 distinct builds.
+- **Values** are arrays of workflow IDs that already exist in the target MNI instance. Multiple iterations rotate through the list with `iteration % ids.length`, so an `--iterations 5` run with 5 IDs gets 5 distinct builds.
 
 Test cases not present in the manifest fall back to the regular Instance AI build path. To run *only* the prebuilt set, pair with `--exclude` to skip the rest, or `--filter` to narrow the run.
 
@@ -438,9 +438,9 @@ The harness leaves prebuilt workflows alone after the run (no auto-delete), so t
 
 ### Producing a manifest
 
-`pnpm eval:build-mcp-manifest` (`evaluations/cli/build-mcp-manifest.ts`) drives `claude -p` against an MCP server — defaults to n8n's instance MCP — and writes a manifest in the schema this flag expects, plus a `manifest-stats.json` sidecar with per-cohort cost / turn / duration aggregates. The output is validated against the same Zod schema the loader uses, so shape regressions surface here rather than at eval time.
+`pnpm eval:build-mcp-manifest` (`evaluations/cli/build-mcp-manifest.ts`) drives `claude -p` against an MCP server — defaults to MNI's instance MCP — and writes a manifest in the schema this flag expects, plus a `manifest-stats.json` sidecar with per-cohort cost / turn / duration aggregates. The output is validated against the same Zod schema the loader uses, so shape regressions surface here rather than at eval time.
 
-**Prerequisites**: `claude` CLI installed; `~/.claude.json` has the MCP server block configured (project-scoped under `.projects[<repo-root>].mcpServers[<name>]` or globally under `.mcpServers[<name>]`); n8n instance reachable at the URL the MCP block points at. Default MCP server name is `"n8n-mcp (instance)"` — override with `--mcp-server`.
+**Prerequisites**: `claude` CLI installed; `~/.claude.json` has the MCP server block configured (project-scoped under `.projects[<repo-root>].mcpServers[<name>]` or globally under `.mcpServers[<name>]`); MNI instance reachable at the URL the MCP block points at. Default MCP server name is `"n8n-mcp (instance)"` — override with `--mcp-server`.
 
 ```bash
 # Build N=5 per test case, 4 in parallel
@@ -453,11 +453,11 @@ dotenvx run -f ../../../.env.local -- pnpm eval:instance-ai \
   --experiment-name mcp-cohort
 ```
 
-For runs that need to leave the n8n repo (for example, driving the build from a separate Claude project where you have skills configured), three flags decouple the script from its default assumptions:
+For runs that need to leave the MNI repo (for example, driving the build from a separate Claude project where you have skills configured), three flags decouple the script from its default assumptions:
 
 - `--workflow-dir <path>` — read test-case JSONs from a different directory (the default `evaluations/data/workflows/` is an authoring dir, not the corpus; use `--source langtracer --suite <slug>` for that). When set, the script no longer needs `git rev-parse` to find the repo.
 - `--build-cwd <path>` — set the working directory the `claude` subprocess spawns from. Affects which `~/.claude.json` `projects` entry (and which skills) Claude loads.
-- `--project-id <id>` — instructs the model to pass `projectId` to `create_workflow_from_code` so workflows land in a specific n8n project instead of the user's personal one.
+- `--project-id <id>` — instructs the model to pass `projectId` to `create_workflow_from_code` so workflows land in a specific MNI project instead of the user's personal one.
 
 Run `pnpm eval:build-mcp-manifest --help` for the full flag list.
 
@@ -582,7 +582,7 @@ evals, then scores the captured workflow with the pairwise judge panel.
 ```bash
 # From packages/@n8n/instance-ai/
 
-# 1. Small LangSmith smoke set against a running n8n instance
+# 1. Small LangSmith smoke set against a running MNI instance
 LANGSMITH_API_KEY=... N8N_AI_ANTHROPIC_KEY="$ANTHROPIC_API_KEY" \
   pnpm eval:pairwise --judges 1 --max-examples 3
 
@@ -598,7 +598,7 @@ pnpm eval:pairwise \
 
 ### Target instance
 
-Pairwise evals require a running n8n instance with the eval login environment
+Pairwise evals require a running MNI instance with the eval login environment
 configured. The CLI talks to `N8N_EVAL_BASE_URL` or `http://localhost:5678` by
 default.
 
@@ -625,7 +625,7 @@ N8N_AI_ANTHROPIC_KEY=sk-ant-... # or ANTHROPIC_API_KEY for the judge LLM
 | `--timeout-ms` | `1200000` | Per-example build timeout |
 | `--output-dir` | `.output/pairwise/<iso>` | Where to write artifacts |
 | `--experiment-name` | `pairwise-evals-instance-ai` | LangSmith experiment label |
-| `--base-url` | `N8N_EVAL_BASE_URL` or `http://localhost:5678` | n8n instance URL |
+| `--base-url` | `N8N_EVAL_BASE_URL` or `http://localhost:5678` | MNI instance URL |
 | `--keep-workflows` | `false` | Keep generated workflows instead of deleting them after scoring |
 | `--verbose` | `false` | Per-example log lines |
 
@@ -710,7 +710,7 @@ No real credentials or API connections are needed. ~95% of node types are covere
 
 ## How the workflow-build harness works
 
-1. The CLI logs in to n8n with `N8N_EVAL_EMAIL` / `N8N_EVAL_PASSWORD`.
+1. The CLI logs in to MNI with `N8N_EVAL_EMAIL` / `N8N_EVAL_PASSWORD`.
 2. For each test case it sends the prompt through the normal Instance AI orchestrator chat flow.
 3. The orchestrator loads the workflow-builder skill guidance, uses the live build tools, and saves the workflow through the real workflow service.
 4. The CLI reads the built workflow from the orchestrator outcome, scores it with the binary-check suite, and archives+deletes it (unless `--keep-workflows`).
@@ -1004,7 +1004,7 @@ user names (CONTEXT-86: `workflows(action="list")` takes `folderPath` or `folder
 - **Rules checked at case load**, not mid-run: a folder `id` has at least 8 characters;
   ids are unique; every `parentFolderId` (on a folder or a workflow) names a declared
   folder; no folder is its own ancestor; a `name` is already trimmed, has no `/` (the
-  `folderPath` separator) and passes n8n's own folder-name rules; at most 20 folders.
+  `folderPath` separator) and passes MNI's own folder-name rules; at most 20 folders.
 - **Folders are licensed** (`feat:folders`). An unlicensed instance fails the restore
   with a hint instead of seeding without the folder: the case would otherwise grade the
   agent against a folder that does not exist. On a local instance started with
@@ -1124,7 +1124,7 @@ transport or a provider outage → `framework_issue`.
 
 ### Provider outages are never a builder verdict
 
-A model-provider 5xx/429/529 during the build happens upstream of the n8n
+A model-provider 5xx/429/529 during the build happens upstream of the MNI
 instance, so the lane stays healthy and nothing looks broken locally — but the
 build fails, and unclassified it reads exactly like "the agent built it wrong".
 A ~15-minute Anthropic outage recorded 124 flat-zero units as a product
@@ -1175,7 +1175,7 @@ status.
 
 ## CI
 
-Evals run automatically on PRs that change Instance AI code (path-filtered). The workflow boots a set of n8n lane containers, pulls the test-case suite from LangTracer (`--source langtracer --suite baseline`), and runs the CLI against the lanes. See `.github/workflows/test-evals-instance-ai.yml`.
+Evals run automatically on PRs that change Instance AI code (path-filtered). The workflow boots a set of MNI lane containers, pulls the test-case suite from LangTracer (`--source langtracer --suite baseline`), and runs the CLI against the lanes. See `.github/workflows/test-evals-instance-ai.yml`.
 
 The job is **non-blocking**. Results are posted as a PR comment and uploaded as artifacts. When `LANGSMITH_API_KEY` is set via the `EVALS_LANGSMITH_API_KEY` secret, runs also land as LangSmith experiments tagged with commit SHA + branch, so you can compare against master side-by-side.
 
@@ -1211,7 +1211,7 @@ If still unresolved, the field is omitted from the request (no blanket custom de
 evaluations/
 ├── index.ts              # Public API
 ├── cli/                  # CLI entries: instance-ai, subagent, pairwise, compare-pairwise, report
-├── clients/              # n8n REST + SSE clients
+├── clients/              # MNI REST + SSE clients
 ├── checklist/            # LLM verification with retry
 ├── credentials/          # Test credential seeding
 ├── data/agents/          # standalone Agent case authoring (the corpus lives in LangTracer suite `agents`)

@@ -54,7 +54,7 @@ export async function runLocally(config) {
 
 	try {
 		for (const n8nSetup of config.n8nSetupsToUse) {
-			console.log(`Running benchmarks for n8n setup: ${n8nSetup}`);
+			console.log(`Running benchmarks for MNI setup: ${n8nSetup}`);
 
 			await $({
 				env: {

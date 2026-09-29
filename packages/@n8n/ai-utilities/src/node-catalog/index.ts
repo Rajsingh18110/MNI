@@ -1,6 +1,6 @@
 /**
  * Node-catalog helpers — plain, LangChain-free utilities for parsing,
- * searching, and describing n8n node type descriptions. Designed to be
+ * searching, and describing MNI node type descriptions. Designed to be
  * imported from a leaf subpath (`@n8n/ai-utilities/node-catalog`) so callers
  * don't drag in the heavier dependencies of the main ai-utilities entry.
  *

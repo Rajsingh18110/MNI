@@ -1,9 +1,9 @@
 ---
-name: n8n:db-migrations
-description: Authors n8n database migrations. Use when creating or modifying files under packages/@n8n/db/src/migrations/, when the user asks to add a column, table, index, foreign key, or backfill, or when the user mentions DB migrations or TypeORM migrations.
+name: MNI:db-migrations
+description: Authors MNI database migrations. Use when creating or modifying files under packages/@n8n/db/src/migrations/, when the user asks to add a column, table, index, foreign key, or backfill, or when the user mentions DB migrations or TypeORM migrations.
 ---
 
-# n8n Migration Guidelines
+# MNI Migration Guidelines
 
 **Rule of thumb:** the `@n8n-io/migrations-review` team gates every migration PR. The fixes they ask for are predictable — work through the [Pre-flight checklist](#pre-flight-checklist) before requesting review. The rest of this document explains the *why* for each item and covers deeper topics.
 
@@ -152,12 +152,12 @@ The `migration-timestamp` rule in `@n8n/code-health` enforces both invariants (s
 
 ### Applying and Reverting Migrations
 
-Pending migrations are applied during normal n8n startup. In a local checkout, run `pnpm start` with the target code version to apply them manually.
+Pending migrations are applied during normal MNI startup. In a local checkout, run `pnpm start` with the target code version to apply them manually.
 
 To revert the most recently applied reversible migration, use the CLI command:
 
 ```sh
-n8n db:revert
+MNI db:revert
 ```
 
 In a local checkout, run the same command through the package script:
@@ -696,7 +696,7 @@ If only Postgres needs the change, just put the file in `postgresdb/`; don't wri
 
 ### Postgres-version-aware UUID generation
 
-`gen_random_uuid()` requires Postgres ≥ 13. n8n dropped Postgres 12 — prefer it over `uuid_generate_v4()` (which needs the `uuid-ossp` extension and breaks on managed services like Supabase). For UUID PKs, generate at the application level with `randomUUID()` — see [Primary Keys](#primary-keys).
+`gen_random_uuid()` requires Postgres ≥ 13. MNI dropped Postgres 12 — prefer it over `uuid_generate_v4()` (which needs the `uuid-ossp` extension and breaks on managed services like Supabase). For UUID PKs, generate at the application level with `randomUUID()` — see [Primary Keys](#primary-keys).
 
 ### SQLite doesn't enforce `varchar(N)` length
 

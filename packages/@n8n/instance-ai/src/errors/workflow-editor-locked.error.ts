@@ -8,7 +8,7 @@ import { OperationalError } from 'n8n-workflow';
 export class WorkflowEditorLockedError extends OperationalError {
 	constructor(readonly workflowId: string) {
 		super(
-			`Workflow ${workflowId} is being edited by a user in the n8n editor right now, so it cannot be modified. ` +
+			`Workflow ${workflowId} is being edited by a user in the MNI editor right now, so it cannot be modified. ` +
 				'Tell the user to finish or close their editing session, then retry.',
 			{ level: 'warning' },
 		);

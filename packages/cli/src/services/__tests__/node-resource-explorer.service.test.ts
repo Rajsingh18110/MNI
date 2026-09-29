@@ -159,7 +159,7 @@ describe('NodeResourceExplorerService', () => {
 		});
 	});
 
-	test('accepts the n8n Connect managed tag and passes a gateway-managed credential', async () => {
+	test('accepts the MNI Connect managed tag and passes a gateway-managed credential', async () => {
 		mockNodeDescription({ properties: [] as never });
 		dynamicNodeParametersService.getResourceLocatorResults.mockResolvedValue({
 			results: [{ name: 'gpt-5-mini', value: 'gpt-5-mini' }],
@@ -382,7 +382,7 @@ describe('NodeResourceExplorerService', () => {
 		}
 
 		beforeEach(() => {
-			mockCredentialOwned({ type: 'openAiApi', name: 'n8n free OpenAI API credits' });
+			mockCredentialOwned({ type: 'openAiApi', name: 'MNI free OpenAI API credits' });
 		});
 
 		test('ignores a same-named non-locator sibling and probes the locator', async () => {

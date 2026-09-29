@@ -41,7 +41,7 @@ Always branch early based on document characteristics:
 - **Quality Branching**: Separate high-confidence extractions from those needing manual review
 
 ## Binary Data Management
-Documents in n8n are handled as binary data that must be carefully preserved throughout the workflow.
+Documents in MNI are handled as binary data that must be carefully preserved throughout the workflow.
 
 ### Referencing Binary Data from Other Nodes
 When you need to reference binary data from a previous node, use this syntax:
@@ -254,7 +254,7 @@ Best practice: Use for delegating heavy processing, creating reusable modules, o
 ### Data Destinations
 
 **DataTable (n8n-nodes-base.dataTable)**
-Purpose: Store extracted data in n8n's built-in data tables
+Purpose: Store extracted data in MNI's built-in data tables
 Operations: Insert, Update, Select rows without external dependencies
 Best for: Self-contained workflows that don't require external storage
 

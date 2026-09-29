@@ -6,14 +6,14 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_chat_partial_execution.json');
 			await n8n.notifications.quickCloseAll();
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.canvas.deselectAll();
 		});
 
-		test.afterEach(async ({ n8n }) => {
+		test.afterEach(async ({ MNI }) => {
 			await n8n.notifications.quickCloseAll();
 			await n8n.canvas.logsPanel.clearExecutionData();
 			await n8n.canvas.logsPanel.sendManualChatMessage('Test Full Execution');
@@ -26,7 +26,7 @@ test.describe(
 		});
 
 		test('should do partial execution when using chat trigger and clicking NDV execute node', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.openNode('Edit Fields1');
 			await n8n.ndv.execute();
@@ -44,7 +44,7 @@ test.describe(
 		});
 
 		test('should do partial execution when using chat trigger and context-menu execute node', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Workaround to prevent the context menu be blocked by the tabbar
 			await n8n.canvas.dragNodeToRelativePosition('Edit Fields', 0, -100);

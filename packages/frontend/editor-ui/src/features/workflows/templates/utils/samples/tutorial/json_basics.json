@@ -177,7 +177,7 @@
 			"parameters": {
 				"width": 460,
 				"height": 656,
-				"content": "## Tutorial - What is JSON?\n\nWelcome! This workflow will teach you the basics of JSON, the language that apps and n8n nodes use to exchange information.\n\n**What is JSON?**\nImagine a contact card:\n- **Name:** John Doe\n- **Age:** 30\n- **Has Children:** Yes\n- **Phone Numbers:** [\"555-1234\", \"555-5678\"]\n\n\nJSON is just a way of writing this down so a computer can understand it perfectly.\n\n**How to use this tutorial:**\n1.  Click **\"Execute Workflow\"** button.\n2.  Click on each node, one by one, in order.\n3.  Look at the node's output in the panel on the right and read the associated sticky note to understand what's happening."
+				"content": "## Tutorial - What is JSON?\n\nWelcome! This workflow will teach you the basics of JSON, the language that apps and MNI nodes use to exchange information.\n\n**What is JSON?**\nImagine a contact card:\n- **Name:** John Doe\n- **Age:** 30\n- **Has Children:** Yes\n- **Phone Numbers:** [\"555-1234\", \"555-5678\"]\n\n\nJSON is just a way of writing this down so a computer can understand it perfectly.\n\n**How to use this tutorial:**\n1.  Click **\"Execute Workflow\"** button.\n2.  Click on each node, one by one, in order.\n3.  Look at the node's output in the panel on the right and read the associated sticky note to understand what's happening."
 			},
 			"typeVersion": 1
 		},
@@ -363,7 +363,7 @@
 				"color": 5,
 				"width": 340,
 				"height": 516,
-				"content": "#### ⭐ THE KEY STEP: Using JSON in n8n!\n\nNow for the magic. How do you use data from a previous node? With **expressions** `{{ }}`.\n\nThis node creates a custom message. Look at the value of the `message` field:\n`Hello, the number from the tutorial is: {{ $('Number').item.json.json_example_integer }}`\n\nIt dynamically pulled the number `10` from the \"Number\" node! This is how you make your nodes talk to each other."
+				"content": "#### ⭐ THE KEY STEP: Using JSON in MNI!\n\nNow for the magic. How do you use data from a previous node? With **expressions** `{{ }}`.\n\nThis node creates a custom message. Look at the value of the `message` field:\n`Hello, the number from the tutorial is: {{ $('Number').item.json.json_example_integer }}`\n\nIt dynamically pulled the number `10` from the \"Number\" node! This is how you make your nodes talk to each other."
 			},
 			"typeVersion": 1
 		},
@@ -448,7 +448,7 @@
 				"color": 3,
 				"width": 540,
 				"height": 1200,
-				"content": "## Was this helpful? Let me know!\n[![clic](https://supastudio.ia2s.app/storage/v1/object/public/assets/n8n/clic_down_lucas.gif)](https://api.ia2s.app/form/templates/academy)\n\nI really hope this tutorial helped you understand JSON better. Your feedback is incredibly valuable and helps me create better resources for the n8n community.\n\n### **Have Feedback, a Question, or a Project Idea?**\n\nI've streamlined the way we connect. It all starts with one simple form that takes less than 10 seconds. After that, you'll chat with my AI assistant who will gather the key details and pass them directly on to me.\n\n#### ➡️ **[Click here to start the conversation](https://api.ia2s.app/form/templates/academy)**\n\nUse this single link for anything you need:\n\n*   **Give Feedback:** Share your thoughts on this template—whether you found a typo, encountered an unexpected error, have a suggestion, or just want to say thanks!\n\n*   **n8n Coaching:** Get personalized, one-on-one guidance to master n8n. We can work together to get you launched with confidence or help you reach an expert level.\n\n*   **n8n Consulting:** Have a complex business challenge or need a custom workflow built from scratch? Let's partner on a powerful automation solution tailored to your specific needs.\n\n---\n\nHappy Automating!\nLucas Peyrin | [n8n Academy](https://n8n.ac)"
+				"content": "## Was this helpful? Let me know!\n[![clic](https://supastudio.ia2s.app/storage/v1/object/public/assets/MNI/clic_down_lucas.gif)](https://api.ia2s.app/form/templates/academy)\n\nI really hope this tutorial helped you understand JSON better. Your feedback is incredibly valuable and helps me create better resources for the MNI community.\n\n### **Have Feedback, a Question, or a Project Idea?**\n\nI've streamlined the way we connect. It all starts with one simple form that takes less than 10 seconds. After that, you'll chat with my AI assistant who will gather the key details and pass them directly on to me.\n\n#### ➡️ **[Click here to start the conversation](https://api.ia2s.app/form/templates/academy)**\n\nUse this single link for anything you need:\n\n*   **Give Feedback:** Share your thoughts on this template—whether you found a typo, encountered an unexpected error, have a suggestion, or just want to say thanks!\n\n*   **MNI Coaching:** Get personalized, one-on-one guidance to master n8n. We can work together to get you launched with confidence or help you reach an expert level.\n\n*   **MNI Consulting:** Have a complex business challenge or need a custom workflow built from scratch? Let's partner on a powerful automation solution tailored to your specific needs.\n\n---\n\nHappy Automating!\nLucas Peyrin | [MNI Academy](https://n8n.ac)"
 			},
 			"typeVersion": 1
 		},
@@ -480,7 +480,7 @@
 				"color": 7,
 				"width": 576,
 				"height": 392,
-				"content": "[![Execute Workflow](https://supastudio.ia2s.app/storage/v1/object/public/assets/n8n/execute_workflow_json_tutorial.gif)](https://www.youtube.com/watch?v=PAmgrwYnzWs)"
+				"content": "[![Execute Workflow](https://supastudio.ia2s.app/storage/v1/object/public/assets/MNI/execute_workflow_json_tutorial.gif)](https://www.youtube.com/watch?v=PAmgrwYnzWs)"
 			},
 			"typeVersion": 1
 		},
@@ -496,7 +496,7 @@
 				"color": 6,
 				"width": 336,
 				"height": 312,
-				"content": "## [>> Go to Eval Workflow <<](https://n8n.io/workflows/6232)\n\nVerify your skills with a complete eval workflow to put your JSON Skills to the test.\n[![Test Skills](https://supastudio.ia2s.app/storage/v1/object/public/assets/n8n/test_your_skillls_button.gif)](https://n8n.io/workflows/6232)"
+				"content": "## [>> Go to Eval Workflow <<](https://n8n.io/workflows/6232)\n\nVerify your skills with a complete eval workflow to put your JSON Skills to the test.\n[![Test Skills](https://supastudio.ia2s.app/storage/v1/object/public/assets/MNI/test_your_skillls_button.gif)](https://n8n.io/workflows/6232)"
 			},
 			"typeVersion": 1
 		}

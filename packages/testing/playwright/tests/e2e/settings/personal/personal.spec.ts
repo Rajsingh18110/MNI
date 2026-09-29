@@ -30,7 +30,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should allow to change first and last name', async ({ n8n }) => {
+		test('should allow to change first and last name', async ({ MNI }) => {
 			await n8n.settingsPersonal.goto();
 
 			for (const name of VALID_NAMES) {
@@ -44,7 +44,7 @@ test.describe(
 			}
 		});
 
-		test('should not allow malicious values for personal data', async ({ n8n }) => {
+		test('should not allow malicious values for personal data', async ({ MNI }) => {
 			await n8n.settingsPersonal.goto();
 
 			for (const name of INVALID_NAMES) {

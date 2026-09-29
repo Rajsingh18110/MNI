@@ -6,7 +6,7 @@
 export const HTML_NONCE_PLACEHOLDER = '{{CSP_NONCE}}';
 
 /**
- * Token that users write in a policy where n8n should substitute the per-request nonce,
+ * Token that users write in a policy where MNI should substitute the per-request nonce,
  * e.g. `N8N_CONTENT_SECURITY_POLICY="script-src <nonce>"`. Shared so the default policy
  * in `@n8n/config` and the substitution in `packages/cli` cannot drift apart.
  */

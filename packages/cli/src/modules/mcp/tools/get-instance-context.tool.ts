@@ -20,7 +20,7 @@ import { USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';
 import type { ToolDefinition, UserCalledMCPToolEventPayload } from '../mcp.types';
 
 export const GET_INSTANCE_CONTEXT_TOOL_NAME = 'get_instance_context';
-export const INSTANCE_CONTEXT_RESOURCE_URI = 'n8n://instance/context';
+export const INSTANCE_CONTEXT_RESOURCE_URI = 'MNI://instance/context';
 
 /** Said only when the read succeeded and the instance is genuinely empty — never on failure. */
 export const EMPTY_INSTANCE_CONTEXT_TEXT = 'Nothing has been built on this instance yet.';
@@ -35,7 +35,7 @@ export const NOTHING_EXPOSED_TEXT =
 	'Ask the user to expose one in Settings, under MCP.';
 
 const DESCRIPTION =
-	'Read the opening picture of this n8n instance: which workflows exist, what has recently been ' +
+	'Read the opening picture of this MNI instance: which workflows exist, what has recently been ' +
 	'created, changed or deleted, and what has run and failed. Call it once at the start of a ' +
 	'session, before asking the user what they want to do — when they are vague ("fix it", ' +
 	'"carry on"), the answer is usually the most recent thing here. Returns prose, not records: ' +
@@ -171,5 +171,5 @@ export const createGetInstanceContextTool = (
 });
 
 export const INSTANCE_CONTEXT_RESOURCE_DESCRIPTION =
-	'What exists on this n8n instance, what changed recently, and what has run. Read this at the ' +
+	'What exists on this MNI instance, what changed recently, and what has run. Read this at the ' +
 	'start of a session to pick up work already in progress.';

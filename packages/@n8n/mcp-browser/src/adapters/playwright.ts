@@ -144,7 +144,7 @@ export class PlaywrightAdapter {
 
 		if (this.externalRelay) {
 			// Remote mode - the extension connects to an externally managed relay
-			// (e.g. exposed by the n8n server). No local browser is launched.
+			// (e.g. exposed by the MNI server). No local browser is launched.
 			this.relay = this.externalRelay;
 			log.debug('remote mode: waiting for extension on external relay...');
 			await this.relay.waitForExtension({ browserWasLaunched: true });

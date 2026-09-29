@@ -1268,8 +1268,8 @@ describe('Slack V2 > GenericFunctions', () => {
 			});
 		});
 
-		it('should handle complex nested structure matching n8n parameter format', () => {
-			// This matches the actual structure from n8n workflow parameters
+		it('should handle complex nested structure matching MNI parameter format', () => {
+			// This matches the actual structure from MNI workflow parameters
 			const threadOptions = {
 				replyValues: {
 					thread_ts: 1709203825.689579,
@@ -1344,7 +1344,7 @@ describe('Slack V2 > GenericFunctions', () => {
 					type: 'section',
 					text: {
 						type: 'mrkdwn',
-						text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|n8n workflow>_',
+						text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|MNI workflow>_',
 					},
 				});
 				expect(result.text).toBe('Fallback text');
@@ -1409,7 +1409,7 @@ describe('Slack V2 > GenericFunctions', () => {
 
 				expect((result as any).blocks).toHaveLength(2);
 				expect((result as any).blocks[1].text.text).toBe(
-					'_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack|n8n workflow>_',
+					'_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack|MNI workflow>_',
 				);
 			});
 
@@ -1555,7 +1555,7 @@ describe('Slack V2 > GenericFunctions', () => {
 					title: 'Warning attachment',
 				});
 				expect((result as any).attachments[2]).toEqual({
-					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|n8n workflow>_',
+					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|MNI workflow>_',
 				});
 			});
 
@@ -1627,7 +1627,7 @@ describe('Slack V2 > GenericFunctions', () => {
 				// Plus the attribution link is added
 				expect((result as any).attachments).toHaveLength(15);
 				expect((result as any).attachments[(result as any).attachments.length - 1]).toEqual({
-					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|n8n workflow>_',
+					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|MNI workflow>_',
 				});
 			});
 		});

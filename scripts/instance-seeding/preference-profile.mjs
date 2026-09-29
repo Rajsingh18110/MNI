@@ -6,7 +6,7 @@
 // does not learn something false from the title.
 
 // Five rules, no exceptions: at n=10 an exception is indistinguishable from noise.
-// Each rule is a place n8n offers a real choice. A rule with no alternative is a
+// Each rule is a place MNI offers a real choice. A rule with no alternative is a
 // constraint, not a preference, and detecting it proves nothing.
 export const HOUSE_STYLE = {
 	// Alternatives: Anthropic, Gemini, Mistral, Ollama, Azure OpenAI.

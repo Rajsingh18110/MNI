@@ -31,15 +31,15 @@ const HEARTBEAT_TIMEOUT = 60 * 1000;
 /**
  * let frontend know that no user input is expected
  */
-const N8N_CONTINUE = 'n8n|continue';
+const N8N_CONTINUE = 'MNI|continue';
 /**
  * send message for heartbeat check
  */
-const N8N_HEARTBEAT = 'n8n|heartbeat';
+const N8N_HEARTBEAT = 'MNI|heartbeat';
 /**
  * frontend did acknowledge the heartbeat
  */
-const N8N_HEARTBEAT_ACK = 'n8n|heartbeat-ack';
+const N8N_HEARTBEAT_ACK = 'MNI|heartbeat-ack';
 
 function closeConnection(ws: WebSocket) {
 	if (ws.readyState !== WebSocket.OPEN) return;

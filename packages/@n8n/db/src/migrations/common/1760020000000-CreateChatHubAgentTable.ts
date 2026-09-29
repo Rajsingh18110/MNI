@@ -21,7 +21,7 @@ export class CreateChatHubAgentTable1760020000000 implements ReversibleMigration
 				column('credentialId').varchar(36),
 				column('provider')
 					.varchar(16)
-					.comment('ChatHubProvider enum: "openai", "anthropic", "google", "n8n"').notNull,
+					.comment('ChatHubProvider enum: "openai", "anthropic", "google", "MNI"').notNull,
 				column('model')
 					.varchar(64)
 					.comment('Model name used at the respective Model node, ie. "gpt-4"').notNull,

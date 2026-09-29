@@ -19,7 +19,7 @@ import { loadNodesFromFile } from '../../../../evaluations/support/load-nodes';
  * - Skips questions for specific prompts
  * - Asks relevant, outcome-focused questions (not technical jargon)
  * - Stays within 2-3 questions
- * - Provides options grounded in n8n capabilities
+ * - Provides options grounded in MNI capabilities
  *
  * To run:
  * ENABLE_INTEGRATION_TESTS=true N8N_AI_ANTHROPIC_KEY=your-key pnpm vi question-quality.integration
@@ -222,7 +222,7 @@ function checkQuestionQuality(
 	for (const q of questions) {
 		const text = q.question.toLowerCase();
 
-		// Questions should not use internal n8n terminology
+		// Questions should not use internal MNI terminology
 		if (text.includes('node type') || text.includes('n8n-nodes-base')) {
 			violations.push(`Technical jargon in question: "${q.question}"`);
 		}
@@ -559,7 +559,7 @@ describe('Question Quality - Integration Tests', () => {
 		expect(allViolations).toHaveLength(0);
 	});
 
-	// ── Storage questions: n8n Data Tables should be the recommended option ──
+	// ── Storage questions: MNI Data Tables should be the recommended option ──
 
 	const storagePrompts = [
 		{
@@ -577,7 +577,7 @@ describe('Question Quality - Integration Tests', () => {
 	];
 
 	it.each(storagePrompts)(
-		'should recommend n8n Data Tables for storage: $name',
+		'should recommend MNI Data Tables for storage: $name',
 		async ({ name, prompt: userPrompt }) => {
 			if (skipTests) return;
 
@@ -640,7 +640,7 @@ describe('Question Quality - Integration Tests', () => {
 			console.log(`  ${name}: Storage question: "${storageQuestion.question}"`);
 			console.log(`    Options: [${(storageQuestion.options ?? []).join(', ')}]`);
 
-			// n8n Data Tables should be among the options
+			// MNI Data Tables should be among the options
 			const options = storageQuestion.options ?? [];
 			const hasDataTableOption = options.some(
 				(opt) => opt.toLowerCase().includes('data table') || opt.toLowerCase().includes('built-in'),
@@ -648,7 +648,7 @@ describe('Question Quality - Integration Tests', () => {
 
 			expect(hasDataTableOption).toBe(true);
 
-			// n8n Data Tables should be the FIRST option (recommended)
+			// MNI Data Tables should be the FIRST option (recommended)
 			if (options.length > 0) {
 				const firstOption = options[0].toLowerCase();
 				const isFirstOption =

@@ -137,7 +137,7 @@ describe('findExemption', () => {
 	});
 
 	it('ignores heads from another repository', () => {
-		const fromFork = pullRequestFor('sync/master-to-3x', '3.x', 'someone/n8n');
+		const fromFork = pullRequestFor('sync/master-to-3x', '3.x', 'someone/MNI');
 		assert.equal(findExemption(fromFork, exemptions), undefined);
 	});
 
@@ -432,7 +432,7 @@ describe('run', () => {
 	});
 
 	it('does not exempt a fork branch that is named like an exempt route', async () => {
-		getPullRequestByIdImpl = async () => pullRequestFor('sync/master-to-3x', '3.x', 'someone/n8n');
+		getPullRequestByIdImpl = async () => pullRequestFor('sync/master-to-3x', '3.x', 'someone/MNI');
 		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
 
 		await run();

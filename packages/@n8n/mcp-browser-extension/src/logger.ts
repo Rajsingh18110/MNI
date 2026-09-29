@@ -63,7 +63,7 @@ function parseArgs(
 }
 
 export function createLogger(tag: string) {
-	const prefix = `[n8n:${tag}]`;
+	const prefix = `[MNI:${tag}]`;
 
 	function log(level: LogLevel, consoleFn: (...args: unknown[]) => void, args: unknown[]): void {
 		if (!isEnabled(level)) return;

@@ -40,7 +40,7 @@ export function markNonRetryable<E>(error: E): E {
 
 /**
  * Extracts retry information from anything a failed outbound HTTP call may
- * have thrown, whichever client or wrapper threw it, n8n node errors
+ * have thrown, whichever client or wrapper threw it, MNI node errors
  * included. Never throws.
  *
  * @param now Reference time for resolving an HTTP-date `Retry-After` header.

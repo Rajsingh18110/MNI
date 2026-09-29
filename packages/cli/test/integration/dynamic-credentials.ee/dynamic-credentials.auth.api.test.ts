@@ -281,7 +281,7 @@ describe('Dynamic Credentials API', () => {
 		});
 
 		describe('when the identity is taken from the session cookie', () => {
-			it('should refuse to authorize against a resolver that does not resolve n8n users', async () => {
+			it('should refuse to authorize against a resolver that does not resolve MNI users', async () => {
 				const response = await testServer
 					.authAgentFor(owner)
 					.post(`/credentials/${savedCredential.id}/authorize`)
@@ -292,7 +292,7 @@ describe('Dynamic Credentials API', () => {
 				expect(response.body.data).toBeUndefined();
 			});
 
-			it('should refuse to revoke against a resolver that does not resolve n8n users', async () => {
+			it('should refuse to revoke against a resolver that does not resolve MNI users', async () => {
 				const response = await testServer
 					.authAgentFor(owner)
 					.delete(`/credentials/${savedCredential.id}/revoke`)
@@ -394,7 +394,7 @@ describe('Dynamic Credentials API', () => {
 		});
 	});
 
-	describe('DELETE /credentials/:id/revoke with the n8n resolver', () => {
+	describe('DELETE /credentials/:id/revoke with the MNI resolver', () => {
 		let userEntryRepository: DynamicCredentialUserEntryRepository;
 		let storage: DynamicCredentialUserEntryStorage;
 		let outsider: User;

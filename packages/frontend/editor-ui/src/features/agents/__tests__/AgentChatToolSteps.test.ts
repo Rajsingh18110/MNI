@@ -138,7 +138,7 @@ describe('AgentChatToolSteps', () => {
 				tool: 'openai.web_search',
 				toolCallId: 'tc-web-search',
 				state: TOOL_CALL_STATE.DONE,
-				input: { query: 'n8n agents' },
+				input: { query: 'MNI agents' },
 				output: { results: [{ title: 'Agents documentation' }] },
 			},
 		]);
@@ -147,7 +147,7 @@ describe('AgentChatToolSteps', () => {
 		expect(wrapper.find('button').exists()).toBe(true);
 
 		await wrapper.find('button').trigger('click');
-		expect(wrapper.text()).toContain('n8n agents');
+		expect(wrapper.text()).toContain('MNI agents');
 		expect(wrapper.text()).toContain('Agents documentation');
 	});
 

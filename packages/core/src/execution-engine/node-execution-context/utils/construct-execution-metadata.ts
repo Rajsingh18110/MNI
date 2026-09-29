@@ -1,7 +1,7 @@
 import type { INodeExecutionData, IPairedItemData, NodeExecutionWithMetadata } from 'n8n-workflow';
 
 /**
- * Takes generic input data and brings it into the new json, pairedItem format n8n uses.
+ * Takes generic input data and brings it into the new json, pairedItem format MNI uses.
  * @param {(IPairedItemData)} itemData
  * @param {(INodeExecutionData[])} inputData
  */

@@ -9,7 +9,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Lifecycle & Governance' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_4_executions_view.json');
 		});
 
@@ -17,7 +17,7 @@ test.describe(
 		// Manual timeouts have been added to try to mitigate this, but it still happens.
 		test.fixme(
 			'should keep popover open when selecting from dropdown inside it',
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				// Regression test: Element Plus dropdowns are teleported to body, causing
 				// Reka UI's DismissableLayer to detect clicks as "outside" and close the popover.
 				// This test verifies the popover stays open during and after dropdown selection.
@@ -72,11 +72,11 @@ const TIMEOUTS = {
 
 test.describe('Workflow Executions', () => {
 	test.describe('when workflow is saved', () => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_4_executions_view.json');
 		});
 
-		test('should render executions tab correctly', async ({ n8n }) => {
+		test('should render executions tab correctly', async ({ MNI }) => {
 			await n8n.executionsComposer.createExecutions(15);
 
 			await n8n.canvas.toggleNodeEnabled('Error');
@@ -108,7 +108,7 @@ test.describe('Workflow Executions', () => {
 			await expect(n8n.executions.getFirstExecutionItem()).toHaveClass(/_active_/);
 		});
 
-		test('should open command bar with keyboard shortcut on executions view', async ({ n8n }) => {
+		test('should open command bar with keyboard shortcut on executions view', async ({ MNI }) => {
 			await n8n.executionsComposer.createExecutions(1);
 
 			await n8n.canvas.clickExecutionsTab();
@@ -119,7 +119,7 @@ test.describe('Workflow Executions', () => {
 		});
 
 		test('should not redirect back to execution tab when request is not done before leaving the page', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.page.route('**/rest/executions?filter=*', (route) => route.continue());
 			await n8n.page.route('**/rest/executions/active?filter=*', (route) => route.continue());
@@ -148,7 +148,7 @@ test.describe('Workflow Executions', () => {
 		});
 
 		test('should not redirect back to execution tab when slow request is not done before leaving the page', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.page.route('**/rest/executions?filter=*', async (route) => {
 				await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -171,7 +171,7 @@ test.describe('Workflow Executions', () => {
 		});
 
 		test('should error toast when server error message returned without stack trace', async ({
-			n8n,
+			MNI,
 		}) => {
 			const responsePromise = n8n.page.waitForResponse(
 				(response) =>
@@ -223,7 +223,7 @@ test.describe('Workflow Executions', () => {
 		});
 
 		test('should redirect back to editor after seeing a couple of execution using browser back button', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.executionsComposer.createExecutions(15);
 
@@ -325,11 +325,11 @@ test.describe('Workflow Executions', () => {
 	});
 
 	test.describe('when new workflow is not saved', () => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should open executions tab', async ({ n8n }) => {
+		test('should open executions tab', async ({ MNI }) => {
 			await n8n.canvas.clickExecutionsTab();
 			await expect(n8n.executions.getExecutionsSidebar()).toBeVisible();
 			await expect(n8n.executions.getExecutionsEmptyList()).toBeVisible();

@@ -18,7 +18,7 @@ const sharedFields: INodeProperties[] = [
 	},
 ];
 
-const DEFAULT_INITIALIZATION_TEXT = 'n8n vector store initialization text';
+const DEFAULT_INITIALIZATION_TEXT = 'MNI vector store initialization text';
 
 const NO_ROWS_FOUND_ERROR_MESSAGE = 'No rows found.';
 
@@ -33,9 +33,9 @@ const isPlainObject = (value: unknown): value is Record<string, unknown> =>
 /**
  * Deeply merges stored node filter and ad-hoc runtime filter so both sets of predicates apply.
  * Example:
- *   base      → { $and: [{ project: 'n8n' }], nested: { flag: true } }
+ *   base      → { $and: [{ project: 'MNI' }], nested: { flag: true } }
  *   override  → { $and: [{ language: 'en' }], nested: { rating: { $gte: 4.5 } } }
- *   result    → { $and: [{ project: 'n8n' }, { language: 'en' }],
+ *   result    → { $and: [{ project: 'MNI' }, { language: 'en' }],
  *                 nested: { flag: true, rating: { $gte: 4.5 } } }
  *
  * Arrays (e.g. $and/$or/$in) are concatenated; plain objects merge recursively; scalars favour override.

@@ -1,4 +1,4 @@
-# Builds the n8n and runners CI test images (n8nio/n8n:local +
+# Builds the MNI and runners CI test images (n8nio/MNI:local +
 # n8nio/runners:local) and caches the tarball under a SHA-derived key so
 # downstream jobs in the same workflow run can restore it via
 # load-n8n-docker.
@@ -7,8 +7,8 @@
 # workflow ran prepare-docker earlier), the build step is skipped and this
 # action becomes a no-op.
 
-name: 'Build n8n CI Docker image'
-description: 'Builds n8nio/n8n + n8nio/runners test images and publishes them as a SHA-keyed cache tarball for downstream shards.'
+name: 'Build MNI CI Docker image'
+description: 'Builds n8nio/MNI + n8nio/runners test images and publishes them as a SHA-keyed cache tarball for downstream shards.'
 
 inputs:
   build-variant:

@@ -9,7 +9,7 @@ import type {
 } from '@/types';
 
 /**
- * Base URL for n8n template API
+ * Base URL for MNI template API
  */
 const N8N_API_BASE_URL = 'https://api.n8n.io/api';
 
@@ -58,7 +58,7 @@ function buildSearchQueryString(query: TemplateSearchQuery): string {
 }
 
 /**
- * Fetch template/workflow list from n8n API
+ * Fetch template/workflow list from MNI API
  */
 export async function fetchTemplateList(query: {
 	search?: string;
@@ -89,7 +89,7 @@ export async function fetchTemplateList(query: {
 }
 
 /**
- * Fetch a specific workflow template by ID from n8n API
+ * Fetch a specific workflow template by ID from MNI API
  */
 export async function fetchTemplateByID(id: number): Promise<TemplateFetchResponse> {
 	const url = `${N8N_API_BASE_URL}/workflows/templates/${id}`;

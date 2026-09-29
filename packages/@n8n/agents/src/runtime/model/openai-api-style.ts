@@ -368,7 +368,7 @@ export function guardOpenAiRoutes(fetch: FetchFn): FetchFn {
  * download, and the chat conversion then rejects the URL. Advertising the
  * intersection keeps the download, and both APIs accept the downloaded bytes.
  * The cost is that an endpoint which does serve /responses no longer has PDF
- * URLs passed through to it: n8n downloads them and inlines the bytes.
+ * URLs passed through to it: MNI downloads them and inlines the bytes.
  */
 function sharedSupportedUrls(
 	responses: Record<string, RegExp[]>,
@@ -385,7 +385,7 @@ function sharedSupportedUrls(
 
 /**
  * How long one endpoint's answer stays valid. Short, so a server that gains a
- * /responses route in a later version is used again without an n8n restart.
+ * /responses route in a later version is used again without an MNI restart.
  */
 const DECISION_TTL_MS = 5 * 60 * 1000;
 

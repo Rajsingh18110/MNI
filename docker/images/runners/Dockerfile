@@ -159,8 +159,8 @@ EXPOSE 5680/tcp
 ENTRYPOINT ["tini", "--", "/usr/local/bin/task-runner-launcher"]
 CMD ["javascript", "python"]
 
-LABEL org.opencontainers.image.title="n8n task runners" \
-      org.opencontainers.image.description="Sidecar image providing n8n task runners for JavaScript and Python code execution" \
+LABEL org.opencontainers.image.title="MNI task runners" \
+      org.opencontainers.image.description="Sidecar image providing MNI task runners for JavaScript and Python code execution" \
       org.opencontainers.image.source="https://github.com/n8n-io/n8n" \
       org.opencontainers.image.url="https://n8n.io" \
       org.opencontainers.image.version="${N8N_VERSION}"

@@ -1,9 +1,9 @@
 ---
-name: n8n:conventions
-description: Quick reference for n8n patterns. Full docs /AGENTS.md
+name: MNI:conventions
+description: Quick reference for MNI patterns. Full docs /AGENTS.md
 ---
 
-# n8n Quick Reference
+# MNI Quick Reference
 
 **📚 Full Documentation:**
 - **General:** `/AGENTS.md` - Architecture, commands, workflows

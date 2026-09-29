@@ -8,7 +8,7 @@ export const HTTP_REQUEST_GUIDE: NodeTypeGuide = {
 #### IMPORTANT - Credential Security
 
 **NEVER hardcode credentials** (API keys, tokens, passwords, secrets) in the HTTP Request node parameters.
-Instead, ALWAYS use n8n's built-in credential system:
+Instead, ALWAYS use MNI's built-in credential system:
 
 1. Set \`authentication\` to \`"genericCredentialType"\`
 2. Set \`genericAuthType\` to the appropriate credential type:
@@ -27,7 +27,7 @@ Instead, ALWAYS use n8n's built-in credential system:
 
 **DO:**
 - Use the authentication parameter with the appropriate credential type
-- Let users configure their credentials securely in n8n's credential manager
+- Let users configure their credentials securely in MNI's credential manager
 
 #### Common Parameters
 - **url**: The endpoint URL (can use expressions)
@@ -117,7 +117,7 @@ Current Parameters:
 
 Requested Changes:
 - Change to POST method
-- Add API key authentication (using n8n credentials)
+- Add API key authentication (using MNI credentials)
 - Add JSON body with user ID and status
 
 Expected Output:
@@ -153,5 +153,5 @@ Expected Output:
 }
 
 Note: The API key is handled by the httpTemplatedCustomAuth credential, NOT hardcoded in the header parameters.
-The user will configure their API key securely in n8n's credential manager.`,
+The user will configure their API key securely in MNI's credential manager.`,
 };

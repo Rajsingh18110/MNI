@@ -55,7 +55,7 @@ const REPOSITORY_OUT_OF_BOUNDS_MESSAGE =
 	'The git repository containing this path is outside the allowed file paths';
 
 const REPOSITORY_OUT_OF_BOUNDS_DESCRIPTION =
-	"The working tree or the git directory of this repository is outside the allowed file paths, matched by the blocked file patterns, or inside n8n's own directories";
+	"The working tree or the git directory of this repository is outside the allowed file paths, matched by the blocked file patterns, or inside MNI's own directories";
 
 const WORKTREE_GIT_DIR_OUT_OF_BOUNDS_DESCRIPTION =
 	'The git directory of this worktree is not inside the repository it belongs to';
@@ -574,7 +574,7 @@ export class Git implements INodeType {
 				if (operation === 'clone') {
 					// Clone into an unguessable staging directory under a fixed base, then
 					// move the result into place, so the git subprocess only ever resolves
-					// paths under a directory n8n controls.
+					// paths under a directory MNI controls.
 					gitBaseDir = await this.helpers.resolveStagingBaseForTarget(resolvedRepositoryPath);
 					cloneStagingBase = gitBaseDir;
 
@@ -630,7 +630,7 @@ export class Git implements INodeType {
 				const isWriteOperation = operation === 'push' || operation === 'pushTags';
 				// Tell git not to ask for any information via the terminal like for
 				// example the username. As nobody will be able to answer it would
-				// n8n keep on waiting forever.
+				// MNI keep on waiting forever.
 				cleanEnv['GIT_TERMINAL_PROMPT'] = '0';
 				cleanEnv['GIT_ALLOW_PROTOCOL'] =
 					isWriteOperation && !enableHooks ? 'git:http:https:ssh' : 'file:git:http:https:ssh';
@@ -750,7 +750,7 @@ export class Git implements INodeType {
 							if (error instanceof Error && 'code' in error && error.code === 'EXDEV') {
 								throw new NodeOperationError(
 									this.getNode(),
-									'Cannot clone to a path on a different filesystem than the n8n data directory',
+									'Cannot clone to a path on a different filesystem than the MNI data directory',
 								);
 							}
 							throw error;

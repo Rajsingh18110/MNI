@@ -5,7 +5,7 @@ import type { ApiHelpers } from '../../../services/api-helper';
 
 /**
  * E2E for the Webhook node's `n8nOAuth2` authentication: a production webhook
- * becomes an OAuth 2.1 protected resource served by n8n's own authorization
+ * becomes an OAuth 2.1 protected resource served by MNI's own authorization
  * server, and only a bearer token whose audience names that trigger may call it.
  *
  * The method being served is part of the resource URL (`?method=POST`), since one
@@ -111,7 +111,7 @@ test.describe(
 				// document, method selector included, so it can discover where to get a
 				// token and for which audience.
 				const challenge = response.headers()['www-authenticate'];
-				expect(challenge).toContain('Bearer realm="n8n Webhook"');
+				expect(challenge).toContain('Bearer realm="MNI Webhook"');
 				expect(challenge).toContain(
 					`/.well-known/oauth-protected-resource/webhook/${webhookPath}?method=POST`,
 				);

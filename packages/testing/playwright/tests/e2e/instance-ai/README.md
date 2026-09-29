@@ -7,7 +7,7 @@ sandbox service that the workflow builder requires.
 ### Sandbox service: hosted or local
 
 Set `N8N_SANDBOX_SERVICE_URL` and `N8N_SANDBOX_SERVICE_API_KEY` and the stack
-points n8n at that deployment and starts no sandbox containers. CI supplies both
+points MNI at that deployment and starts no sandbox containers. CI supplies both
 as repository secrets, so internal runs use the hosted service.
 
 The stack falls back to booting the local stack (cert bootstrap + API +
@@ -35,7 +35,7 @@ it.
 
 ### CI / container mode (default)
 
-Spins up an n8n container plus the MockServer proxy, and wires in the sandbox
+Spins up an MNI container plus the MockServer proxy, and wires in the sandbox
 service (hosted or local, see above). The proxy either:
 
 - **Replays** previously-recorded responses from `expectations/instance-ai/<test-slug>/`
@@ -52,7 +52,7 @@ pnpm test:container:sqlite tests/e2e/instance-ai
 ### Local-build mode (no docker, real Anthropic key)
 
 Use this when iterating on instance-ai code and you want a fast feedback loop
-against your local n8n build, without the docker proxy stack. Tests hit the
+against your local MNI build, without the docker proxy stack. Tests hit the
 real Anthropic API directly — no recording, no replay.
 
 ```bash
@@ -86,21 +86,21 @@ pnpm test:local:instance-ai --grep "preview" --headed
 
 It's a thin wrapper over the generic
 [`test:local:isolated`](../../../README.md#testlocalisolated--local-run-with-full-isolation)
-runner that pre-fills the four env vars n8n needs to boot the instance-ai
+runner that pre-fills the four env vars MNI needs to boot the instance-ai
 module (`N8N_ENABLED_MODULES`, `N8N_INSTANCE_AI_MODEL`,
 `N8N_INSTANCE_AI_MODEL_API_KEY`, `N8N_INSTANCE_AI_LOCAL_GATEWAY_DISABLED`).
 
 From the isolated runner you get:
 
-- **Random free OS ports** for n8n + the task-runner broker, so multiple
+- **Random free OS ports** for MNI + the task-runner broker, so multiple
   invocations don't collide.
 - **Throwaway `N8N_USER_FOLDER`** under the OS temp dir, cleaned up on exit.
   `~/.n8n/database.sqlite` is never touched.
 - **`PLAYWRIGHT_ALLOW_CONTAINER_ONLY=true`** so container-tagged (`@mode:*`,
   `@licensed`, and `@db:reset`) tests are selected by the local `e2e` project.
-- **Self-managed n8n** with a `/rest/e2e/reset` readiness check that waits for
+- **Self-managed MNI** with a `/rest/e2e/reset` readiness check that waits for
   the E2E controller, `PLAYWRIGHT_SKIP_WEBSERVER=true` to stop Playwright from
-  spawning a duplicate, and process-group cleanup so `node ./n8n` doesn't get
+  spawning a duplicate, and process-group cleanup so `node ./MNI` doesn't get
   orphaned.
 
 The `instanceAiProxySetup` fixture (`fixtures.ts`) detects the missing
@@ -115,7 +115,7 @@ call goes straight to Anthropic.
 
 1. Write the test against fixtures from `./fixtures` (not the base playwright
    fixture). The `instanceAiTestConfig` brings in the proxy and sandbox
-   services plus the env vars n8n needs.
+   services plus the env vars MNI needs.
 2. Iterate in **local-build mode** until the test passes against real
    Anthropic.
 3. Refresh recorded expectations:

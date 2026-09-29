@@ -62,7 +62,7 @@ export const setupHintField = z
 						.string()
 						.optional()
 						.describe(
-							'Optional one-line clarification of the value itself — its format or which of the provider\'s tokens it is (e.g. "Starts with tvly-"). NEVER where to obtain it: the user asks the n8n Assistant for that. No URLs or domains.',
+							'Optional one-line clarification of the value itself — its format or which of the provider\'s tokens it is (e.g. "Starts with tvly-"). NEVER where to obtain it: the user asks the MNI Assistant for that. No URLs or domains.',
 						),
 					type: z
 						.enum(['password', 'plain'])
@@ -200,7 +200,7 @@ export function findSetupHintProblems(
 	for (const placeholder of hint.placeholders) {
 		if (INFO_LINK_REGEX.test(placeholder.info ?? '')) {
 			problems.push(
-				`placeholder "${placeholder.name}" mentions a URL or domain in its info — keep info to the value itself (its format, or which of the provider's tokens it is); the user asks the n8n Assistant where to get it`,
+				`placeholder "${placeholder.name}" mentions a URL or domain in its info — keep info to the value itself (its format, or which of the provider's tokens it is); the user asks the MNI Assistant where to get it`,
 			);
 		}
 	}
@@ -394,7 +394,7 @@ const setupAction = z.object({
 				credentialType: z
 					.string()
 					.describe(
-						'n8n credential type name (e.g. "slackApi", "gmailOAuth2"). Must be the registered type name, which can differ from the credential class name — verify with action "search-types" when unsure.',
+						'MNI credential type name (e.g. "slackApi", "gmailOAuth2"). Must be the registered type name, which can differ from the credential class name — verify with action "search-types" when unsure.',
 					),
 				reason: z.string().optional().describe('Why this credential is needed (shown to user)'),
 				suggestedName: z
@@ -577,7 +577,7 @@ interface CredentialToolContext {
 // ── Handlers ───────────────────────────────────────────────────────────────
 
 interface AiGatewayManagedListItem extends CredentialSummary {
-	// Use the shared managed tag as the id so the builder references n8n credits
+	// Use the shared managed tag as the id so the builder references MNI credits
 	// like a stored credential (`newCredential(name, id)`); resolve recognizes the
 	// tag and attaches the managed credential.
 	id: typeof AI_GATEWAY_MANAGED_TAG;
@@ -606,7 +606,7 @@ async function handleList(context: InstanceAiContext, input: Extract<Input, { ac
 		}
 	}
 
-	// When the caller filters by type, prepend the synthetic n8n Connect
+	// When the caller filters by type, prepend the synthetic MNI Connect
 	// managed entry if the AI Gateway covers that credential type. This is
 	// the LLM's primary awareness signal that a zero-config credential is
 	// available. Section D's setup service auto-applies the entry through a
@@ -715,7 +715,7 @@ async function handleSearchTypes(
 	context: InstanceAiContext,
 	input: Extract<Input, { action: 'search-types' }>,
 ) {
-	// Enumerate n8n Connect–supported types regardless of query.
+	// Enumerate MNI Connect–supported types regardless of query.
 	if (input.gatewayCreditsOnly) {
 		const types = (await context.credentialService.listAiGatewayCredentialTypes?.()) ?? [];
 		return { results: types.map((type) => ({ type, gatewayCredits: true })) };
@@ -1073,7 +1073,7 @@ function describeSelectionProblem(selection: SelectedCredentialOutcome): string 
 	if (selection.hasNoValues) return `${label} has no values filled in`;
 	if (selection.connection === 'untested') {
 		return (
-			`${label} could not be verified — n8n has no connection test for this credential type, ` +
+			`${label} could not be verified — MNI has no connection test for this credential type, ` +
 			'so the selection may be a pre-existing credential belonging to a different service'
 		);
 	}

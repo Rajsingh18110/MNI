@@ -122,7 +122,7 @@ export class UserManagementConfig {
 	@Nested
 	password: PasswordConfig;
 
-	/** JWT secret to use. If unset, n8n will generate its own. */
+	/** JWT secret to use. If unset, MNI will generate its own. */
 	@Env('N8N_USER_MANAGEMENT_JWT_SECRET')
 	jwtSecret: string = '';
 

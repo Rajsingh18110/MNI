@@ -16,7 +16,7 @@ test.describe(
 		test(
 			'shows a tailored out-of-credits state when the model quota is exhausted',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n, n8nContainer }) => {
+			async ({ MNI, n8nContainer }) => {
 				test.skip(!n8nContainer, 'Requires the proxy service to simulate a quota 403');
 
 				// Clear any recordings left by prior tests, then make every model call

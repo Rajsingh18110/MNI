@@ -13,7 +13,7 @@ import { assistantSurfaceSchema } from '../schemas';
 import { setupItemProperties, setupTelemetryProperties } from '../setup-properties';
 
 /**
- * How each n8n Assistant setup component is configured. Source (who set it) and
+ * How each MNI Assistant setup component is configured. Source (who set it) and
  * type/provider (what it is) are separate properties on purpose: an env-var
  * Daytona sandbox reports sandbox_source 'env' and sandbox_type 'daytona',
  * so neither dimension shadows the other.
@@ -180,7 +180,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_CLICKED_AI_CREDIT_BALANCE: {
 		name: 'User clicked AI credit balance',
 		description:
-			'The user clicked the n8n Assistant credit balance button to open or close the balance dropdown.',
+			'The user clicked the MNI Assistant credit balance button to open or close the balance dropdown.',
 		properties: z.object({}),
 	},
 	FREE_NUDGE_EXPOSED: {
@@ -206,7 +206,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	OPEN_BY_DEFAULT_NOTIFICATION_SHOWN: {
 		name: 'Open in assistant notification shown',
 		description:
-			'The open-by-default experiment notification rendered after a workflow list card auto-opened in the n8n Assistant.',
+			'The open-by-default experiment notification rendered after a workflow list card auto-opened in the MNI Assistant.',
 		properties: z.object({
 			workflow_id: z.string().nullable(),
 			variant: openWorkflowInAssistantVariant,
@@ -226,7 +226,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	},
 	DEFAULT_EDITOR_PREFERENCE_CHANGED: {
 		name: 'Default editor preference changed',
-		description: 'The user saved the default-editor preference on the n8n Assistant settings page.',
+		description: 'The user saved the default-editor preference on the MNI Assistant settings page.',
 		properties: z.object({
 			value: z.enum(['assistant', 'manual']),
 			variant: openWorkflowInAssistantVariant,
@@ -247,19 +247,19 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	},
 	USER_CLICKED_AI_ASSISTANT_INPUT_PLUS_BUTTON: {
 		name: 'User clicked AI Assistant input plus button',
-		description: 'The user clicked the plus button in the n8n Assistant input.',
+		description: 'The user clicked the plus button in the MNI Assistant input.',
 		properties: z.object({}),
 	},
 	TOOLS_LIST_OPENED: {
 		name: 'Instance AI tools list opened',
-		description: 'The user opened the n8n Assistant tools connection modal.',
+		description: 'The user opened the MNI Assistant tools connection modal.',
 		properties: z.object({
 			source: z.enum(['input_menu', 'mcp_connect_card']),
 		}),
 	},
 	MCP_SETTINGS_OPENED: {
 		name: 'Instance AI mcp settings opened',
-		description: 'The user opened settings for an MCP connection in the n8n Assistant.',
+		description: 'The user opened settings for an MCP connection in the MNI Assistant.',
 		properties: z.object({
 			server_slug: z.string(),
 			source: z.enum(['input_menu', 'mcp_connect_card']),
@@ -314,7 +314,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	BROWSER_USE_DIRECT_CONNECT_REQUESTED: {
 		name: 'Instance AI Browser Use direct connect requested',
 		description:
-			'The n8n Assistant requested a direct connection through the Browser Use extension.',
+			'The MNI Assistant requested a direct connection through the Browser Use extension.',
 		properties: z.object({}),
 	},
 	USER_RECEIVED_AI_ASSISTANT_RESPONSE: {
@@ -391,7 +391,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_VIEWED_AI_ASSISTANT_SETUP_PAGE: {
 		name: 'User viewed AI Assistant setup page',
 		description:
-			'The user landed on a self-hosted n8n Assistant setup surface: the onboarding takeover on /assistant, or the settings page on /settings/assistant. Carries the configuration snapshot at view time, so joined with "AI Assistant setup completed" it measures setup drop-off. Not emitted on cloud or proxy deployments, where setup is managed.',
+			'The user landed on a self-hosted MNI Assistant setup surface: the onboarding takeover on /assistant, or the settings page on /settings/assistant. Carries the configuration snapshot at view time, so joined with "AI Assistant setup completed" it measures setup drop-off. Not emitted on cloud or proxy deployments, where setup is managed.',
 		properties: z.object({
 			page: z
 				.enum(['onboarding', 'settings'])
@@ -402,7 +402,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_CONFIGURED_AI_ASSISTANT_MODEL: {
 		name: 'User configured AI Assistant model',
 		description:
-			'An admin saved an n8n Assistant model connection (PUT /instance-ai/settings), covering the first connect, later changes, and same-provider key rotations: first connects are rows where previous_provider is absent. The event marks a saved configuration, not a verified one — the setup wizard verifies before saving, but a direct API save can skip verification. Env-var model config never emits this; it is visible on "Instance started" and on the snapshot events instead.',
+			'An admin saved an MNI Assistant model connection (PUT /instance-ai/settings), covering the first connect, later changes, and same-provider key rotations: first connects are rows where previous_provider is absent. The event marks a saved configuration, not a verified one — the setup wizard verifies before saving, but a direct API save can skip verification. Env-var model config never emits this; it is visible on "Instance started" and on the snapshot events instead.',
 		properties: z.object({
 			provider: z
 				.string()
@@ -420,7 +420,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_CONFIGURED_AI_ASSISTANT_SANDBOX: {
 		name: 'User configured AI Assistant sandbox',
 		description:
-			'An admin saved an n8n Assistant sandbox connection (PUT /instance-ai/settings), covering the first connect, later changes, and same-provider key rotations: first connects are rows where previous_sandbox_type is absent. Env-var sandbox config never emits this.',
+			'An admin saved an MNI Assistant sandbox connection (PUT /instance-ai/settings), covering the first connect, later changes, and same-provider key rotations: first connects are rows where previous_sandbox_type is absent. Env-var sandbox config never emits this.',
 		properties: z.object({
 			sandbox_type: z.enum(['n8n-sandbox', 'daytona']),
 			previous_sandbox_type: z
@@ -434,7 +434,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_CONFIGURED_AI_ASSISTANT_WEB_SEARCH: {
 		name: 'User configured AI Assistant web search',
 		description:
-			'An admin saved an n8n Assistant web search connection (PUT /instance-ai/settings), covering the first connect, later changes, and same-provider key rotations: first connects are rows where previous_provider is absent. Explicitly disabling web search does not emit this; that decision is visible as web_search_source "disabled" on the snapshot events.',
+			'An admin saved an MNI Assistant web search connection (PUT /instance-ai/settings), covering the first connect, later changes, and same-provider key rotations: first connects are rows where previous_provider is absent. Explicitly disabling web search does not emit this; that decision is visible as web_search_source "disabled" on the snapshot events.',
 		properties: z.object({
 			provider: z.enum(['brave', 'searxng']),
 			previous_provider: z
@@ -479,7 +479,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	AI_ASSISTANT_SETUP_COMPLETED: {
 		name: 'AI Assistant setup completed',
 		description:
-			'A self-hosted instance reached a complete n8n Assistant setup for the first time: model configured, sandbox configured, and web search decided (configured or explicitly disabled) — the same predicate that unlocks the assistant UI. Fires at most once per instance, guarded by a persisted settings key, regardless of how the last piece was set: emitted from the settings save path, with a boot-time check so an env-var finish is also counted. No "User" prefix because the last piece can land via env vars with no acting user.',
+			'A self-hosted instance reached a complete MNI Assistant setup for the first time: model configured, sandbox configured, and web search decided (configured or explicitly disabled) — the same predicate that unlocks the assistant UI. Fires at most once per instance, guarded by a persisted settings key, regardless of how the last piece was set: emitted from the settings save path, with a boot-time check so an env-var finish is also counted. No "User" prefix because the last piece can land via env vars with no acting user.',
 		properties: z.object({ ...setupSnapshotProps }),
 	},
 	USER_ADDED_NODES_TO_CHAT: {
@@ -504,7 +504,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_OPENED_AI_ASSISTANT_MENTION_PICKER: {
 		name: 'User opened AI Assistant mention picker',
 		description:
-			'The user opened the n8n Assistant mention picker by typing an at sign or selecting the composer button. Every open ends in exactly one "User selected AI Assistant mention" or one "User dismissed AI Assistant mention picker", so the two together give the pick rate per open.',
+			'The user opened the MNI Assistant mention picker by typing an at sign or selecting the composer button. Every open ends in exactly one "User selected AI Assistant mention" or one "User dismissed AI Assistant mention picker", so the two together give the pick rate per open.',
 		properties: z.object({
 			thread_id: assistantMentionThreadId,
 			source: assistantMentionTriggerSource,
@@ -513,7 +513,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_DISMISSED_AI_ASSISTANT_MENTION_PICKER: {
 		name: 'User dismissed AI Assistant mention picker',
 		description:
-			'The n8n Assistant mention picker closed without a selection. The list properties describe what was on screen at that moment: a search with result_count 0 is a resource the user could not find, a non-zero ambiguous_result_count is a list the user could not tell apart. Carries interaction metadata but no query text or resource names; the query text of an empty search is on "User searched AI Assistant mentions without results".',
+			'The MNI Assistant mention picker closed without a selection. The list properties describe what was on screen at that moment: a search with result_count 0 is a resource the user could not find, a non-zero ambiguous_result_count is a list the user could not tell apart. Carries interaction metadata but no query text or resource names; the query text of an empty search is on "User searched AI Assistant mentions without results".',
 		properties: z.object({
 			thread_id: assistantMentionThreadId,
 			source: assistantMentionTriggerSource,
@@ -546,7 +546,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_SEARCHED_AI_ASSISTANT_MENTIONS_WITHOUT_RESULTS: {
 		name: 'User searched AI Assistant mentions without results',
 		description:
-			'The n8n Assistant mention picker showed its empty state for a search query the user let settle for about a second, or closed the picker on. Fires once per distinct settled query within one picker open, so typing straight through a prefix chain like "S", "Sl", "Slack" reports "Slack" once. The one mention event that carries the query text, to learn what users try to mention and cannot.',
+			'The MNI Assistant mention picker showed its empty state for a search query the user let settle for about a second, or closed the picker on. Fires once per distinct settled query within one picker open, so typing straight through a prefix chain like "S", "Sl", "Slack" reports "Slack" once. The one mention event that carries the query text, to learn what users try to mention and cannot.',
 		properties: z.object({
 			thread_id: assistantMentionThreadId,
 			source: assistantMentionTriggerSource,
@@ -574,7 +574,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_SELECTED_AI_ASSISTANT_MENTION: {
 		name: 'User selected AI Assistant mention',
 		description:
-			'The user selected a workflow, node, or canvas group from the n8n Assistant mention picker. A pick of a mention that is already staged also counts, so every open ends in this event or in "User dismissed AI Assistant mention picker". The event contains interaction metadata but no resource names or IDs.',
+			'The user selected a workflow, node, or canvas group from the MNI Assistant mention picker. A pick of a mention that is already staged also counts, so every open ends in this event or in "User dismissed AI Assistant mention picker". The event contains interaction metadata but no resource names or IDs.',
 		properties: z.object({
 			thread_id: assistantMentionThreadId,
 			kind: assistantMentionKind,
@@ -598,7 +598,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_REMOVED_AI_ASSISTANT_MENTION: {
 		name: 'User removed AI Assistant mention',
 		description:
-			'The user removed workflow, node, or canvas group context that they added through the n8n Assistant mention picker.',
+			'The user removed workflow, node, or canvas group context that they added through the MNI Assistant mention picker.',
 		properties: z.object({
 			thread_id: assistantMentionThreadId,
 			kind: assistantMentionKind,
@@ -607,7 +607,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_SENT_BUILDER_MESSAGE: {
 		name: 'User sent builder message',
 		description:
-			'The user sent a message to the n8n Assistant. Fires once per message on the optimistic send, before the request is admitted, so a refused send still counts as an attempt. Carries who wrote the text: a pre-fill is an opener n8n composed (a failed execution, a credential modal, a template card, a suggestion chip) that the user accepted or edited, so pre-fill share must be read from prefill_type rather than matched against the message body.',
+			'The user sent a message to the MNI Assistant. Fires once per message on the optimistic send, before the request is admitted, so a refused send still counts as an attempt. Carries who wrote the text: a pre-fill is an opener MNI composed (a failed execution, a credential modal, a template card, a suggestion chip) that the user accepted or edited, so pre-fill share must be read from prefill_type rather than matched against the message body.',
 		properties: z.object({
 			...setupTelemetryProperties,
 			workflow_id: z.string().optional(),
@@ -673,7 +673,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 	USER_STARTED_AI_ASSISTANT_ONBOARDING: {
 		name: 'User started AI Assistant onboarding',
 		description:
-			'An onboarding thread was created: the user arrived from the n8n Cloud signup survey (/assistant?source=onboarding) or opened the onboarding by hand. Fires once per thread, from the backend, when the seeded greeting and question card are stored.',
+			'An onboarding thread was created: the user arrived from the MNI cloud signup survey (/assistant?source=onboarding) or opened the onboarding by hand. Fires once per thread, from the backend, when the seeded greeting and question card are stored.',
 		properties: z.object({
 			user_id: z.string(),
 			thread_id: z.string(),
@@ -687,7 +687,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 				.enum(['cloud', 'url'])
 				.nullable()
 				.describe(
-					'Where the team answer came from: the n8n Cloud account, or the `?team=` query of a test run. Null when there is no team',
+					'Where the team answer came from: the MNI cloud account, or the `?team=` query of a test run. Null when there is no team',
 				),
 		}),
 	},
@@ -706,7 +706,7 @@ export const INSTANCE_AI_TELEMETRY = defineTelemetryEvents({
 				.enum(['cloud', 'url', 'card'])
 				.nullable()
 				.describe(
-					'Where the team came from: the n8n Cloud account, the `?team=` query of a test run, or the card. Null when the card step was skipped',
+					'Where the team came from: the MNI cloud account, the `?team=` query of a test run, or the card. Null when the card step was skipped',
 				),
 			apps: z.array(z.string()).describe('Apps picked in the card, by their shown names'),
 			custom_text: z

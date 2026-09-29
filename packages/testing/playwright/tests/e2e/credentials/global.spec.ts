@@ -14,7 +14,7 @@ test.describe(
 			await api.enableFeature('sharing');
 		});
 
-		test('owner should create HTTP header credential and set to global', async ({ n8n }) => {
+		test('owner should create HTTP header credential and set to global', async ({ MNI }) => {
 			await n8n.api.signin('owner');
 
 			// Navigate to credentials page
@@ -49,7 +49,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('member should see global credential in credentials view', async ({ n8n }) => {
+		test('member should see global credential in credentials view', async ({ MNI }) => {
 			await n8n.api.signin('member', 0);
 
 			// Navigate to credentials page
@@ -65,7 +65,7 @@ test.describe(
 		});
 
 		test('member should execute workflow with HTTP node using global credential', async ({
-			n8n,
+			MNI,
 			internalUrl,
 		}) => {
 			await n8n.api.signin('member', 0);
@@ -78,7 +78,7 @@ test.describe(
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('HTTP Request');
 
-			// n8n calls this URL, not the browser, so it must resolve from inside the
+			// MNI calls this URL, not the browser, so it must resolve from inside the
 			// stack - under container projects the request leaves a worker container.
 			await n8n.ndv.fillParameterInput('URL', `${internalUrl}/rest/settings`);
 			await n8n.ndv.selectOptionInParameterDropdown('authentication', 'Generic Credential Type');
@@ -109,7 +109,7 @@ test.describe(
 			);
 		});
 
-		test('owner should be able to remove global sharing', async ({ n8n }) => {
+		test('owner should be able to remove global sharing', async ({ MNI }) => {
 			await n8n.api.signin('owner');
 
 			// Navigate to credentials page
@@ -137,7 +137,7 @@ test.describe(
 			).toBeHidden();
 		});
 
-		test('member should not see credential after global sharing removed', async ({ n8n }) => {
+		test('member should not see credential after global sharing removed', async ({ MNI }) => {
 			await n8n.api.signin('member', 0);
 
 			// Navigate to credentials page

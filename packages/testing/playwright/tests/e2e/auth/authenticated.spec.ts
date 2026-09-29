@@ -7,7 +7,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		// The root route lands users on the n8n Assistant while the `instance-ai`
+		// The root route lands users on the MNI Assistant while the `instance-ai`
 		// module is active — but only if they may manage it, or setup is complete.
 		// Owner and admin hold `instanceAi:manage`; members only hold
 		// `instanceAi:message`, so they land there once Instance AI is set up.
@@ -37,7 +37,7 @@ test.describe(
 		];
 
 		for (const { role, expectedUrl, auth, requirements } of testCases) {
-			test(`${role} authentication ${auth}`, async ({ n8n, setupRequirements }) => {
+			test(`${role} authentication ${auth}`, async ({ MNI, setupRequirements }) => {
 				await setupRequirements(requirements);
 				await n8n.goToRoot();
 				await expect(n8n.page).toHaveURL(expectedUrl);

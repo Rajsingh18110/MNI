@@ -59,7 +59,7 @@ export function usesSdk(resolver: Resolvers): boolean {
 }
 
 /**
- * Runs an SDK credential provider and maps it to the shape n8n expects. Returns
+ * Runs an SDK credential provider and maps it to the shape MNI expects. Returns
  * `null` (never throws) when the source is unavailable or resolution fails,
  * matching the legacy resolvers' "ignore and continue" behaviour.
  */

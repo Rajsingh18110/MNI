@@ -574,7 +574,7 @@ describe('useActionsGenerator', () => {
 		const simpleMemoryNode: INodeTypeDescription = {
 			name: SIMPLE_MEMORY_NODE_TYPE,
 			displayName: 'Simple Memory',
-			description: 'Stores in n8n memory',
+			description: 'Stores in MNI memory',
 			defaultVersion: 1,
 			version: 1,
 			group: ['transform'],

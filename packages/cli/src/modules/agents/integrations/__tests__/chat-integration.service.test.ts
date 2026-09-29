@@ -201,7 +201,7 @@ describe('ChatIntegrationService.syncToConfig — publish gate', () => {
 		broadcastSpy = vi.spyOn(service, 'broadcastIntegrationChange').mockResolvedValue();
 	});
 
-	it('does not start an external adapter for n8n Chat', async () => {
+	it('does not start an external adapter for MNI Chat', async () => {
 		const agent = makeAgent({ activeVersionId: 'published-version-1' });
 		const n8nChatIntegration = { type: 'n8n_chat', credentialId: '' } as const;
 

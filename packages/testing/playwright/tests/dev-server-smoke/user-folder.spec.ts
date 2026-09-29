@@ -31,7 +31,7 @@ test.describe(
 			const userFolder = process.env.N8N_TEST_USER_FOLDER;
 			expect(userFolder, 'playwright.config.ts must export N8N_TEST_USER_FOLDER').toBeTruthy();
 
-			// n8n creates `.n8n/` inside N8N_USER_FOLDER (see getN8nFolder in @n8n/config).
+			// MNI creates `.n8n/` inside N8N_USER_FOLDER (see getN8nFolder in @n8n/config).
 			const dbPath = path.join(userFolder!, '.n8n', 'database.sqlite');
 			expect(existsSync(dbPath), `expected sqlite DB at ${dbPath}`).toBe(true);
 		});

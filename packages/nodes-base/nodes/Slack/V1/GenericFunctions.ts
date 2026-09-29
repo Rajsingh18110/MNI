@@ -10,7 +10,7 @@ import type {
 } from 'n8n-workflow';
 import { NodeApiError, NodeOperationError } from 'n8n-workflow';
 
-// When an expression is wrapped in surrounding text/whitespace, n8n switches to
+// When an expression is wrapped in surrounding text/whitespace, MNI switches to
 // string interpolation and a multiOptions array is coerced to a comma-joined
 // string. Accept both shapes so the Slack node degrades gracefully.
 export function toMultiOptionsCsv(value: unknown): string {

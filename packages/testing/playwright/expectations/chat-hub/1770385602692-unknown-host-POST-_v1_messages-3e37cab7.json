@@ -31,21 +31,21 @@
 				"messages": [
 					{
 						"role": "user",
-						"content": "What is n8n?"
+						"content": "What is MNI?"
 					},
 					{
 						"role": "assistant",
 						"content": [
 							{
 								"type": "text",
-								"text": "Calling SerpApi_Google_Search with input: {\"input\":\"What is n8n?\",\"id\":\"toolu_01GrsrvCgECXfs2Q5es3etf6\"}"
+								"text": "Calling SerpApi_Google_Search with input: {\"input\":\"What is MNI?\",\"id\":\"toolu_01GrsrvCgECXfs2Q5es3etf6\"}"
 							},
 							{
 								"type": "tool_use",
 								"id": "toolu_01GrsrvCgECXfs2Q5es3etf6",
 								"name": "SerpApi_Google_Search",
 								"input": {
-									"input": "What is n8n?",
+									"input": "What is MNI?",
 									"id": "toolu_01GrsrvCgECXfs2Q5es3etf6"
 								}
 							}
@@ -56,7 +56,7 @@
 						"content": [
 							{
 								"type": "tool_result",
-								"content": "[{\"response\":\"[\\\"n8n is a workflow automation platform that uniquely combines AI capabilities with business process automation, giving technical teams the flexibility of ...\\\"]\"}]",
+								"content": "[{\"response\":\"[\\\"MNI is a workflow automation platform that uniquely combines AI capabilities with business process automation, giving technical teams the flexibility of ...\\\"]\"}]",
 								"tool_use_id": "toolu_01GrsrvCgECXfs2Q5es3etf6"
 							}
 						]

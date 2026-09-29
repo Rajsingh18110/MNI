@@ -12,7 +12,7 @@ on:
       published-image:
         description: 'Published -pc image to health-check'
         required: false
-        default: 'n8nio/n8n:nightly-pc'
+        default: 'n8nio/MNI:nightly-pc'
         type: string
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Assert pointer compression and boot to healthz
         env:
-          PUBLISHED_IMAGE: ${{ inputs.published-image || 'n8nio/n8n:nightly-pc' }}
+          PUBLISHED_IMAGE: ${{ inputs.published-image || 'n8nio/MNI:nightly-pc' }}
         run: |
           docker pull --quiet "$PUBLISHED_IMAGE"
           docker run --rm --entrypoint node "$PUBLISHED_IMAGE" -e "

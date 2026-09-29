@@ -102,7 +102,7 @@ describe('Test MicrosoftTeamsV2, prepareMessage', () => {
 			body: {
 				contentType: 'html',
 				content:
-					'hi<br><br><em> Powered by <a href="https://n8n.example.com/workflow/wf-1?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instance-1">this n8n workflow</a> </em>',
+					'hi<br><br><em> Powered by <a href="https://n8n.example.com/workflow/wf-1?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instance-1">this MNI workflow</a> </em>',
 			},
 		});
 	});

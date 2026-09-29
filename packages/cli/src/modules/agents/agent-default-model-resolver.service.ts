@@ -33,7 +33,7 @@ export class AgentDefaultModelResolverService {
 	 * Full resolution for agent creation: lists credentials, picks the
 	 * highest-priority provider with exactly one credential, and verifies
 	 * its maintained default against the provider's live model list. Falls
-	 * back to the n8n Connect managed OpenAI slot when the user has no
+	 * back to the MNI Connect managed OpenAI slot when the user has no
 	 * personal LLM credential. Returns `null` when the choice is ambiguous
 	 * or the default is not live — the caller keeps the agent as a draft.
 	 */

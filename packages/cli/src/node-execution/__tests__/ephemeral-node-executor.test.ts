@@ -427,7 +427,7 @@ describe('EphemeralNodeExecutor', () => {
 			).rejects.toThrow(/has type .* but the node expects credential slot/);
 		});
 
-		it('passes an n8n Connect managed credential through without a project lookup', async () => {
+		it('passes an MNI Connect managed credential through without a project lookup', async () => {
 			mockToolNodeWithSupplyData();
 
 			const result = await executor.executeInline({
@@ -435,7 +435,7 @@ describe('EphemeralNodeExecutor', () => {
 				nodeTypeVersion: 1,
 				nodeParameters: {},
 				credentialDetails: {
-					slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+					slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 				},
 				inputData: [],
 				projectId: 'p-1',
@@ -462,11 +462,11 @@ describe('EphemeralNodeExecutor', () => {
 				nodeType: '@n8n/n8n-nodes-langchain.toolWikipedia',
 				nodeTypeVersion: 1,
 				nodeParameters: {},
-				inputData: [{ json: { query: 'n8n' } }],
+				inputData: [{ json: { query: 'MNI' } }],
 				projectId: 'p-1',
 			});
 
-			expect(invoke).toHaveBeenCalledWith({ query: 'n8n' });
+			expect(invoke).toHaveBeenCalledWith({ query: 'MNI' });
 			expect(result).toEqual({
 				status: 'success',
 				data: [{ json: { response: 'wiki-result' } }],

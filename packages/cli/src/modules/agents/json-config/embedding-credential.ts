@@ -19,7 +19,7 @@ const EMBEDDING_PROVIDER_OPTION_KEYS = [
 ] as const satisfies ReadonlyArray<keyof EmbeddingProviderOptions>;
 
 /**
- * Resolves an n8n credential into embedding provider options for the given
+ * Resolves an MNI credential into embedding provider options for the given
  * embedding model's provider prefix. Shared by episodic memory and vector
  * store connections — both attach an embedding model to a user-selected
  * credential rather than the managed AI proxy.

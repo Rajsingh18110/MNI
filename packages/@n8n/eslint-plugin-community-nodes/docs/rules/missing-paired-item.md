@@ -67,4 +67,4 @@ returnData.push({ json: aggregatedResult });
 
 ## Further Reading
 
-- [n8n Paired Items Documentation](https://docs.n8n.io/integrations/creating-nodes/build/reference/paired-items/)
+- [MNI Paired Items Documentation](https://docs.n8n.io/integrations/creating-nodes/build/reference/paired-items/)

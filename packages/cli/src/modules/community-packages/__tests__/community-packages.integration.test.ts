@@ -275,12 +275,12 @@ describe('node API compatibility at startup', () => {
 	let downloadDir: string;
 	let nodeModulesDir: string;
 
-	const writePackage = (name: string, n8n?: object) => {
+	const writePackage = (name: string, MNI?: object) => {
 		const dir = path.join(nodeModulesDir, name);
 		mkdirSync(dir);
 		writeFileSync(
 			path.join(dir, 'package.json'),
-			JSON.stringify({ name, version: '1.0.0', ...(n8n ? { n8n } : {}) }),
+			JSON.stringify({ name, version: '1.0.0', ...(MNI ? { MNI } : {}) }),
 		);
 	};
 

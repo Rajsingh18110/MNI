@@ -11,7 +11,7 @@ function readRecord(req: RequestWithHeaders): string[] {
 }
 
 /**
- * Saves which headers n8n consumed to authenticate this request, so that they can be redacted later
+ * Saves which headers MNI consumed to authenticate this request, so that they can be redacted later
  */
 export function recordConsumedAuth(req: RequestWithHeaders, names: string[]): void {
 	Object.defineProperty(req, CONSUMED_AUTH, {

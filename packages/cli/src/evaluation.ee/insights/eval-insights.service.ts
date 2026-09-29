@@ -26,7 +26,7 @@ import { InsightsModelResolver } from './insights-model-resolver';
 // (scores, node diffs, regressed cases) arrive in the user prompt, and the
 // output shape is enforced by `structuredOutput(aiInsightsPayloadSchema)`.
 const INSIGHTS_SYSTEM_PROMPT = [
-	'You are an evaluation analyst for n8n workflow evaluations.',
+	'You are an evaluation analyst for MNI workflow evaluations.',
 	'You compare workflow versions run against the same dataset and explain the results.',
 	'Given the JSON context, produce:',
 	'- `winner`: set `versionLabel` to the base version letter given in the context; explain why it leads.',

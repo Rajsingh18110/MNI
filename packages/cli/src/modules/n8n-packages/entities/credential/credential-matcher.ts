@@ -27,7 +27,7 @@ export type UsableCredential = Awaited<
  * type compatibility is enforced. {@link CredentialMatcher.match} compares
  * `targetType` against the reference's required type and only then accepts the
  * binding — a credential whose id is reachable but whose type differs cannot
- * satisfy the node's credential slot (n8n resolves node credentials by exact
+ * satisfy the node's credential slot (MNI resolves node credentials by exact
  * `{ id, type }`), so binding it would silently produce an empty credential.
  */
 export interface ResolvedCredentialMatch {

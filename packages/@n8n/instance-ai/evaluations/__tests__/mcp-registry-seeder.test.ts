@@ -19,7 +19,7 @@ describe('seedMcpRegistry', () => {
 		const client = makeClient(
 			async () =>
 				await Promise.reject(
-					new N8nApiError('n8n API POST /rest/mcp-registry/test/seed failed (404)', 404),
+					new N8nApiError('MNI API POST /rest/mcp-registry/test/seed failed (404)', 404),
 				),
 		);
 
@@ -30,7 +30,7 @@ describe('seedMcpRegistry', () => {
 		const client = makeClient(
 			async () =>
 				await Promise.reject(
-					new N8nApiError(`n8n API POST /rest/mcp-registry/test/seed failed (${status})`, status),
+					new N8nApiError(`MNI API POST /rest/mcp-registry/test/seed failed (${status})`, status),
 				),
 		);
 

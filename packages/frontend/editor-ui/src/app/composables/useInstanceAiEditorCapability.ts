@@ -25,9 +25,9 @@ export interface InstanceAiCredentialContext {
 	placeholderTitles?: string[];
 	/** The provider's key page from the recipe (where the user creates/copies
 	 *  the secret) — the help thread directs the user there instead of
-	 *  re-researching. Distinct from documentationUrl (the n8n docs page). */
+	 *  re-researching. Distinct from documentationUrl (the MNI docs page). */
 	docsUrl?: string;
-	/** n8n docs URL for this credential type, when available in the modal. */
+	/** MNI docs URL for this credential type, when available in the modal. */
 	documentationUrl?: string;
 	/** OAuth redirect/callback URL shown in the modal, when this is an OAuth credential. */
 	oauthRedirectUrl?: string;

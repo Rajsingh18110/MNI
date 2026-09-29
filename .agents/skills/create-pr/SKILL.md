@@ -1,12 +1,12 @@
 ---
-name: n8n:create-pr
+name: MNI:create-pr
 description: Creates GitHub pull requests with properly formatted titles that pass the check-pr-title CI validation. Use when creating PRs, submitting changes for review, or when the user says /pr or asks to create a pull request.
 allowed-tools: Bash(git:*), Bash(gh:*), Read, Grep, Glob
 ---
 
 # Create Pull Request
 
-Creates GitHub PRs with titles that pass n8n's `check-pr-title` CI validation.
+Creates GitHub PRs with titles that pass MNI's `check-pr-title` CI validation.
 
 ## PR Title Format
 
@@ -104,7 +104,7 @@ sentences, the active voice, and one instruction for each sentence.
 ### How to test Section
 - Explain how to test the changes
 - Include an example workflow if appropriate
-- If the feature is gated in a default n8n instance (requires a non-default
+- If the feature is gated in a default MNI instance (requires a non-default
   module via `N8N_ENABLED_MODULES`, an enterprise license, a feature flag, or
   similar), note which env vars/license are needed so the tester can deploy a
   correctly configured instance

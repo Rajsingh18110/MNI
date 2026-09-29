@@ -86,7 +86,7 @@ const inputSchema = {
 		.string()
 		.max(MAX_WORKFLOW_CODE_LENGTH)
 		.describe(
-			`Full TypeScript/JavaScript workflow code using the n8n Workflow SDK. Must be validated first with ${CODE_BUILDER_VALIDATE_TOOL.toolName}. Max ${MAX_WORKFLOW_CODE_LENGTH} characters.`,
+			`Full TypeScript/JavaScript workflow code using the MNI Workflow SDK. Must be validated first with ${CODE_BUILDER_VALIDATE_TOOL.toolName}. Max ${MAX_WORKFLOW_CODE_LENGTH} characters.`,
 		),
 	skillsUsed: z.array(z.string()).optional().describe(SKILLS_USED_PARAM_DESCRIPTION),
 	name: z
@@ -129,7 +129,7 @@ const outputSchema = {
 	workflowId: z.string().optional().describe('The ID of the created workflow'),
 	name: z.string().optional().describe('The name of the created workflow'),
 	nodeCount: z.number().optional().describe('The number of nodes in the workflow'),
-	url: z.string().optional().describe('The URL to open the workflow in n8n'),
+	url: z.string().optional().describe('The URL to open the workflow in MNI'),
 	autoAssignedCredentials: z
 		.array(
 			z.object({
@@ -313,7 +313,7 @@ async function recoverPersistedCreate({
 }
 
 /**
- * MCP tool that creates a workflow in n8n from validated SDK code.
+ * MCP tool that creates a workflow in MNI from validated SDK code.
  * Parses the code, validates it, and saves the resulting workflow.
  */
 export const createCreateWorkflowFromCodeTool = (
@@ -333,7 +333,7 @@ export const createCreateWorkflowFromCodeTool = (
 ): ToolDefinition<typeof inputSchema> => ({
 	name: MCP_CREATE_WORKFLOW_FROM_CODE_TOOL.toolName,
 	config: {
-		description: `Create a workflow in n8n from validated SDK code. This tool expects code that already follows the n8n Workflow SDK patterns and has passed ${CODE_BUILDER_VALIDATE_TOOL.toolName}. If code fails to parse, call get_workflow_sdk_reference, rewrite the code using the reference, validate again, then retry creation. If the user named a target project, resolve it via search_projects before calling this tool; when projectId is omitted, the workflow is created in the user's personal project. If the user named a target folder, resolve it via search_folders. If you used n8n skills while preparing this workflow, pass their identifiers in skillsUsed. After creation, always tell the user which project — and folder, if any — the workflow landed in (see the targetProject and targetFolder fields in the response).`,
+		description: `Create a workflow in MNI from validated SDK code. This tool expects code that already follows the MNI Workflow SDK patterns and has passed ${CODE_BUILDER_VALIDATE_TOOL.toolName}. If code fails to parse, call get_workflow_sdk_reference, rewrite the code using the reference, validate again, then retry creation. If the user named a target project, resolve it via search_projects before calling this tool; when projectId is omitted, the workflow is created in the user's personal project. If the user named a target folder, resolve it via search_folders. If you used MNI skills while preparing this workflow, pass their identifiers in skillsUsed. After creation, always tell the user which project — and folder, if any — the workflow landed in (see the targetProject and targetFolder fields in the response).`,
 		inputSchema,
 		outputSchema,
 		annotations: {

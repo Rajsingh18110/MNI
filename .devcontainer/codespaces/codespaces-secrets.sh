@@ -9,7 +9,7 @@
 # so a new codespace does not show the theme and trust prompts. The env
 # secrets supply the login.
 [ -f "$HOME/.claude.json" ] || printf '%s\n' \
-	'{"hasCompletedOnboarding":true,"theme":"dark","projects":{"/workspaces/n8n":{"hasTrustDialogAccepted":true}}}' \
+	'{"hasCompletedOnboarding":true,"theme":"dark","projects":{"/workspaces/MNI":{"hasTrustDialogAccepted":true}}}' \
 	>"$HOME/.claude.json"
 
 # Register the Flaky MCP server for Claude Code. The config keeps a literal

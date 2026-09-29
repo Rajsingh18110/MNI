@@ -59,7 +59,7 @@ describe('FreeAiCreditsService', () => {
 			globalConfig.aiAssistant.baseUrl = 'https://ai-assistant.n8n.io';
 		});
 
-		it('returns false when n8n Connect is enabled and licensed', () => {
+		it('returns false when MNI Connect is enabled and licensed', () => {
 			globalConfig.aiGateway.enabled = true;
 			licenseState.isAiGatewayLicensed.mockReturnValue(true);
 			const user = { settings: {} } as User;
@@ -67,7 +67,7 @@ describe('FreeAiCreditsService', () => {
 			expect(service.isEligible(user)).toBe(false);
 		});
 
-		it('returns true when n8n Connect is enabled but not licensed', () => {
+		it('returns true when MNI Connect is enabled but not licensed', () => {
 			globalConfig.aiGateway.enabled = true;
 			const user = { settings: {} } as User;
 

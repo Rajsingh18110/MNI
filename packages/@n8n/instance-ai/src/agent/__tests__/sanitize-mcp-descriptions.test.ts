@@ -35,7 +35,7 @@ describe('sanitizeMcpDescription', () => {
 	});
 
 	it('should leave an HTML comment in place, since nothing renders these as HTML', () => {
-		// A tool description reaches the model and no one else — n8n ships tool
+		// A tool description reaches the model and no one else — MNI ships tool
 		// names to the UI, never descriptions. So a comment hides nothing from
 		// anyone here, and text a server writes in the open is what the
 		// untrusted-content doctrine in the system prompt is for.

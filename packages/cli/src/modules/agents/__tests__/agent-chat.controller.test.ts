@@ -957,7 +957,7 @@ describe('AgentChatController attachment download', () => {
 	});
 });
 
-describe('AgentChatController production n8n Chat', () => {
+describe('AgentChatController production MNI Chat', () => {
 	const request = { params: { projectId: 'project-1' }, user: { id: 'user-1' } };
 
 	it('rejects an unpublished channel before starting a turn', async () => {
@@ -968,7 +968,7 @@ describe('AgentChatController production n8n Chat', () => {
 			message: 'hello',
 		} as never);
 		expect(writes).toContain(
-			'data: {"type":"error","message":"This agent is not available in n8n Chat.","errorCode":"agent_unavailable"}\n\n',
+			'data: {"type":"error","message":"This agent is not available in MNI Chat.","errorCode":"agent_unavailable"}\n\n',
 		);
 		expect(agentExecutionOrchestratorService.executeForN8nChatPublished).not.toHaveBeenCalled();
 	});

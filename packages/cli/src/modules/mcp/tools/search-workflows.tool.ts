@@ -126,7 +126,7 @@ export const createSearchWorkflowsTool = (
 				readOnlyHint: true, // This tool only reads data
 				destructiveHint: false, // No destructive operations
 				idempotentHint: true, // Safe to retry multiple times
-				openWorldHint: false, // Works with internal n8n data only
+				openWorldHint: false, // Works with internal MNI data only
 			},
 		},
 		handler: async ({

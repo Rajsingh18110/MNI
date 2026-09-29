@@ -1,7 +1,7 @@
 # Playwright Test Orchestration Guide
 
 Playwright is not only the browser E2E runner. This package uses Playwright's
-worker lifecycle and project model to orchestrate browsers, APIs, n8n processes,
+worker lifecycle and project model to orchestrate browsers, APIs, MNI processes,
 service containers, deployment topologies, diagnostics, and benchmark artifacts.
 
 ## Choose a suite
@@ -60,7 +60,7 @@ pnpm --silent distribution:count
 ```
 
 The report counts selected specs, runnable tests, declared container images, and
-the Playwright worker profiles that would each start an n8n stack with one worker.
+the Playwright worker profiles that would each start an MNI stack with one worker.
 It compares those stack starts with the fixture count from the distributor.
 
 Inspect the impact selection for a pull request:
@@ -90,7 +90,7 @@ servers need, and let dev mode pick them up.
 # host:port + credentials. Containers stay running in the background.
 pnpm --filter n8n-containers services --services postgres,redis,mailpit,proxy
 
-# Terminal 2 — run n8n locally as usual. It picks up the .env automatically.
+# Terminal 2 — run MNI locally as usual. It picks up the .env automatically.
 # Add `pnpm dev:fe:editor` in a third terminal for frontend hot reload.
 pnpm dev:be
 ```
@@ -118,7 +118,7 @@ pnpm --filter n8n-containers services:clean
 This stops the containers and removes `packages/cli/bin/.env`.
 
 **Running service-backed tests against this setup.** Tests with service-backed
-`capability` options skip local mode because the service helpers require an n8n
+`capability` options skip local mode because the service helpers require an MNI
 test container. Run these tests with a container project.
 
 ## Separate Backend and Frontend URLs
@@ -163,21 +163,21 @@ pnpm test:local:isolated tests/e2e/credentials/crud.spec.ts
 `pnpm test:local:isolated` is a generalized version of `test:local` for
 situations where `test:local`'s defaults aren't enough:
 
-- **Random free OS port** for n8n's HTTP server and the task-runner broker, so
+- **Random free OS port** for MNI's HTTP server and the task-runner broker, so
   multiple instances can run in parallel without colliding on `5678`/`5679`.
   Pin a port with `N8N_BASE_URL=http://localhost:5680 …` when you need a
   stable URL for browser inspection.
 - **Throwaway `N8N_USER_FOLDER`** under the OS temp dir (cleaned up on exit).
-  n8n creates `.n8n/` (sqlite DB, encryption key) inside it, fully isolated
+  MNI creates `.n8n/` (sqlite DB, encryption key) inside it, fully isolated
   from your local `~/.n8n` install.
 - **Container-tagged tests included.** The local project selects `@licensed`,
   `@db:reset`, and `@mode:*` tests. Service-backed tests still skip because
   local mode does not provide the service container helpers.
-- **Self-managed n8n.** Boots n8n with a readiness check against
+- **Self-managed n8n.** Boots MNI with a readiness check against
   `/rest/e2e/reset`, so the run waits for the E2E controller itself, and skips
   Playwright's own webServer.
 
-Pass extra n8n env via `N8N_TEST_ENV` (the same convention `test:local` uses):
+Pass extra MNI env via `N8N_TEST_ENV` (the same convention `test:local` uses):
 
 ```bash
 N8N_TEST_ENV='{"N8N_ENABLED_MODULES":"my-module"}' \
@@ -189,7 +189,7 @@ The two underlying env-var levers — usable independently of the script:
 | Env var | Effect |
 |---------|--------|
 | `PLAYWRIGHT_ALLOW_CONTAINER_ONLY=true` | Includes `@mode:*`, `@licensed`, and `@db:reset` tests in local runs. Service-backed tests still skip. |
-| `PLAYWRIGHT_SKIP_WEBSERVER=true` | Stops Playwright from launching its own n8n via the `webServer` config. Use when a wrapper script (like `scripts/run-local-isolated.mjs`) already manages n8n with custom env vars. |
+| `PLAYWRIGHT_SKIP_WEBSERVER=true` | Stops Playwright from launching its own MNI via the `webServer` config. Use when a wrapper script (like `scripts/run-local-isolated.mjs`) already manages MNI with custom env vars. |
 
 ## Test Tags
 ```typescript
@@ -220,7 +220,7 @@ The `engine-v2:e2e` project runs the regular `tests/e2e` specs against a stack
 that runs engine v2 in its own container (`containerConfig.engine:
 'container'`, Postgres, single main). The main runs the `engine-v2` module in
 remote mode and dials the engine over the stack network. The engine container
-runs `n8n engine`, has no `DB_*` env and no encryption key, resolves
+runs `MNI engine`, has no `DB_*` env and no encryption key, resolves
 credentials through the main's control plane server, and keeps its own
 `n8n_engine` database on the dedicated `engine-postgres` service. Execution
 responses travel back to the main over the stack's Redis. Under that stack
@@ -263,7 +263,7 @@ test.use({ capability: { env: { TEST_ISOLATION: 'my-test-name' } } });
 test.describe('My isolated tests', () => {
   test.describe.configure({ mode: 'serial' }); // If tests depend on each other's data
 
-  test('test with clean state', async ({ n8n }) => {
+  test('test with clean state', async ({ MNI }) => {
     // Fresh container with reset database
   });
 });
@@ -282,11 +282,11 @@ import { test, expect } from '../fixtures/base';
 test.use({ capability: { env: { TEST_ISOLATION: 'my-stateful-tests' } } });
 
 test.describe('My stateful tests @db:reset', () => {
-  test('test 1', async ({ n8n }) => {
+  test('test 1', async ({ MNI }) => {
     // Fresh database (reset before this test)
   });
 
-  test('test 2', async ({ n8n }) => {
+  test('test 2', async ({ MNI }) => {
     // Fresh database again (reset before this test too)
   });
 });
@@ -306,12 +306,12 @@ Use the `@licensed` tag for tests that require enterprise features which are **o
 ```typescript
 // The @licensed tag ensures this only runs in container mode with a valid license
 test.describe('Log Streaming @licensed', () => {
-  test.beforeEach(async ({ n8n }) => {
+  test.beforeEach(async ({ MNI }) => {
     // enableFeature() works for runtime checks, but module must be loaded first
     await n8n.api.enableFeature('logStreaming');
   });
 
-  test('should show licensed view', async ({ n8n }) => {
+  test('should show licensed view', async ({ MNI }) => {
     await n8n.navigate.toLogStreaming();
     // ...
   });
@@ -336,7 +336,7 @@ import { test, expect } from '../fixtures/base';
 
 // Cloud resource testing
 import { test, expect } from '../fixtures/cloud-only';
-test('Performance under constraints @cloud:trial', async ({ n8n, api }) => {
+test('Performance under constraints @cloud:trial', async ({ MNI, api }) => {
   // Test runs with 384MB RAM, 250 millicore CPU
 });
 ```
@@ -367,7 +367,7 @@ import { test, expect } from '../fixtures/base';
 test.use({ capability: 'proxy' });
 
 test.describe('Proxy tests', () => {
-  test('should mock HTTP requests', async ({ services, n8n }) => {
+  test('should mock HTTP requests', async ({ services, MNI }) => {
     // Create mock expectations
     await services.proxy.createGetExpectation('/api/data', { result: 'mocked' });
 
@@ -448,7 +448,7 @@ This prevents expectations from one test affecting others and ensures test isola
 ### Keepalive Mode
 
 Use `N8N_CONTAINERS_KEEPALIVE=true` to keep containers running after tests complete. Useful for:
-- Inspecting n8n instance state after a failure
+- Inspecting MNI instance state after a failure
 - Exploring configured integrations (email, OIDC, source control)
 - Manual testing against a pre-configured environment
 

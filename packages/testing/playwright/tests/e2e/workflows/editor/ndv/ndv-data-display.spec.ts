@@ -20,15 +20,15 @@ test.describe(
 				'prop2',
 			];
 
-			const setupSchemaWorkflow = async (n8n: n8nPage) => {
+			const setupSchemaWorkflow = async (MNI: n8nPage) => {
 				await n8n.start.fromImportedWorkflow('Test_workflow_schema_test.json');
 				await n8n.canvas.clickZoomToFitButton();
 				await n8n.canvas.openNode('Set');
 				await n8n.ndv.execute();
 			};
 
-			test('should switch to output schema view and validate it', async ({ n8n }) => {
-				await setupSchemaWorkflow(n8n);
+			test('should switch to output schema view and validate it', async ({ MNI }) => {
+				await setupSchemaWorkflow(MNI);
 				await n8n.ndv.outputPanel.switchDisplayMode('schema');
 
 				for (const key of schemaKeys) {
@@ -36,8 +36,8 @@ test.describe(
 				}
 			});
 
-			test('should preserve schema view after execution', async ({ n8n }) => {
-				await setupSchemaWorkflow(n8n);
+			test('should preserve schema view after execution', async ({ MNI }) => {
+				await setupSchemaWorkflow(MNI);
 				await n8n.ndv.outputPanel.switchDisplayMode('schema');
 				await n8n.ndv.execute();
 
@@ -46,8 +46,8 @@ test.describe(
 				}
 			});
 
-			test('should collapse and expand nested schema object', async ({ n8n }) => {
-				await setupSchemaWorkflow(n8n);
+			test('should collapse and expand nested schema object', async ({ MNI }) => {
+				await setupSchemaWorkflow(MNI);
 				const expandedObjectProps = ['prop1', 'prop2'];
 
 				await n8n.ndv.outputPanel.switchDisplayMode('schema');
@@ -63,15 +63,15 @@ test.describe(
 				}
 			});
 
-			test('should not display pagination for schema', async ({ n8n }) => {
-				await setupSchemaWorkflow(n8n);
+			test('should not display pagination for schema', async ({ MNI }) => {
+				await setupSchemaWorkflow(MNI);
 
 				await n8n.ndv.clickBackToCanvasButton();
 				await n8n.canvas.deselectAll();
 				await n8n.canvas.nodeByName('Set').click();
-				await n8n.canvas.addNode('Customer Datastore (n8n training)');
+				await n8n.canvas.addNode('Customer Datastore (MNI training)');
 
-				await n8n.canvas.openNode('Customer Datastore (n8n training)');
+				await n8n.canvas.openNode('Customer Datastore (MNI training)');
 
 				await n8n.ndv.execute();
 
@@ -85,7 +85,7 @@ test.describe(
 				await n8n.ndv.outputPanel.switchDisplayMode('json');
 			});
 
-			test('should display large schema', async ({ n8n }) => {
+			test('should display large schema', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('Test_workflow_schema_test_pinned_data.json');
 				await n8n.canvas.clickZoomToFitButton();
 				await n8n.canvas.openNode('Set');
@@ -101,7 +101,7 @@ test.describe(
 		});
 
 		test.describe('Search and Rendering', () => {
-			test('should keep search expanded after Execute step node run', async ({ n8n }) => {
+			test('should keep search expanded after Execute step node run', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('Test_ndv_search.json');
 				await n8n.canvas.clickZoomToFitButton();
 				await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
@@ -121,7 +121,7 @@ test.describe(
 				await expect(n8n.ndv.outputPanel.getSearchInput()).toHaveValue('US');
 			});
 
-			test('Should render xml and html tags as strings and can search', async ({ n8n }) => {
+			test('Should render xml and html tags as strings and can search', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('Test_workflow_xml_output.json');
 				await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
 					'Workflow executed successfully',
@@ -149,7 +149,7 @@ test.describe(
 		});
 
 		test.describe('Run Data & Selectors', () => {
-			test('can link and unlink run selectors between input and output', async ({ n8n }) => {
+			test('can link and unlink run selectors between input and output', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('multi-branch-data-transform.json');
 				await n8n.canvas.clickZoomToFitButton();
 				await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
@@ -196,7 +196,7 @@ test.describe(
 		});
 
 		test.describe('Schema & Data Views', () => {
-			test('should show data from the correct output in schema view', async ({ n8n }) => {
+			test('should show data from the correct output in schema view', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.importWorkflow('Test_workflow_multiple_outputs.json', 'Multiple outputs');
 				await n8n.workflowComposer.executeWorkflowAndWaitForNotification(
@@ -224,7 +224,7 @@ test.describe(
 		});
 
 		test.describe('Search Functionality - Advanced', () => {
-			test('should not show items count when searching in schema view', async ({ n8n }) => {
+			test('should not show items count when searching in schema view', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.importWorkflow('Test_ndv_search.json', 'NDV Search Test');
 				await n8n.canvas.openNode('Edit Fields');
@@ -238,7 +238,7 @@ test.describe(
 			});
 
 			test('should show additional tooltip when searching in schema view if no matches', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.importWorkflow('Test_ndv_search.json', 'NDV Search Test');

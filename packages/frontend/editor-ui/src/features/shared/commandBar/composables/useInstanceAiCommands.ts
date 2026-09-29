@@ -13,7 +13,7 @@ const NAME_KEYWORDS = [
 	'instance ai',
 	'ai',
 	'agent',
-	'n8n agent',
+	'MNI agent',
 	'chat',
 ];
 

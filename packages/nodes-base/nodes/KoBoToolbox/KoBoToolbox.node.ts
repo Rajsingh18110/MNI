@@ -473,7 +473,7 @@ export class KoBoToolbox implements INodeType {
 			returnData = returnData.concat(responseData);
 		}
 
-		// Map data to n8n data
+		// Map data to MNI data
 		return binaryItems.length > 0 ? [binaryItems] : [this.helpers.returnJsonArray(returnData)];
 	}
 }

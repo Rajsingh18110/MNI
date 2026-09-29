@@ -1,6 +1,6 @@
 # Local verification plan
 
-How to prove, on one machine, that a dev n8n instance reports to a local
+How to prove, on one machine, that a dev MNI instance reports to a local
 instance-reporting receiver on `http://127.0.0.1:3456`, and that the two data
 points hold the numbers from `insights` and `workflow_statistics`.
 
@@ -27,7 +27,7 @@ the test.
 - Keep the receiver's request log visible. You must see the raw body.
 - `sqlite3` is installed. The dev instance uses SQLite at
   `~/.n8n/database.sqlite` unless you set another database.
-- An n8n owner account exists on the instance (the report reads insights as the
+- An MNI owner account exists on the instance (the report reads insights as the
   instance owner). Complete the setup screen first if this is a fresh
   `~/.n8n`.
 
@@ -161,7 +161,7 @@ with:
 Confirm the numbers match what you recorded in step 2, and that `date` is
 yesterday's UTC date, not today's.
 
-**n8n side.**
+**MNI side.**
 
 ```bash
 sqlite3 -header "$N8N_DB" \

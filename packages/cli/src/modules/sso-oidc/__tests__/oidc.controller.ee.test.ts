@@ -642,7 +642,7 @@ describe('OidcController', () => {
 			vi.mocked(isOidcCurrentAuthenticationMethod).mockReturnValue(true);
 		});
 
-		test('Should always invalidate the n8n session and clear the auth and ID token cookies', async () => {
+		test('Should always invalidate the MNI session and clear the auth and ID token cookies', async () => {
 			const req = makeLogoutReq({ [OIDC_ID_TOKEN_COOKIE_NAME]: 'encrypted-id-token' });
 			const res = mock<Response>();
 			oidcService.decryptIdToken.mockResolvedValueOnce('raw-id-token');
@@ -682,7 +682,7 @@ describe('OidcController', () => {
 
 			expect(result).toEqual({ redirectUrl: null });
 			expect(oidcService.generateEndSessionUrl).not.toHaveBeenCalled();
-			// The n8n session is still terminated
+			// The MNI session is still terminated
 			expect(authService.invalidateToken).toHaveBeenCalledWith(req);
 			expect(authService.clearCookie).toHaveBeenCalledWith(res);
 		});

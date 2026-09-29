@@ -121,7 +121,7 @@ const properties: INodeProperties[] = [
 			{
 				...appendAttributionOption,
 				description:
-					'Whether to include the phrase “This email was sent automatically with n8n” to the end of the email',
+					'Whether to include the phrase “This email was sent automatically with MNI” to the end of the email',
 			},
 			{
 				displayName: 'Attachments (Inline)',
@@ -242,10 +242,10 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 					<br>
 					---
 					<br>
-					<em>${attributionText}<a href="${link}" target="_blank">n8n</a></em>
+					<em>${attributionText}<a href="${link}" target="_blank">MNI</a></em>
 					`;
 				} else {
-					mailOptions.text = `${mailOptions.text}\n\n---\n${attributionText}n8n\n${'https://n8n.io'}`;
+					mailOptions.text = `${mailOptions.text}\n\n---\n${attributionText}MNI\n${'https://n8n.io'}`;
 				}
 			}
 

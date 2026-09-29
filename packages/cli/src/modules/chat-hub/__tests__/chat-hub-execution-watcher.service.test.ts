@@ -48,7 +48,7 @@ describe('ChatHubExecutionWatcherService', () => {
 			userId: USER_ID,
 			messageId: MESSAGE_ID,
 			previousMessageId: PREV_MESSAGE_ID,
-			model: { provider: 'n8n', workflowId: WORKFLOW_ID },
+			model: { provider: 'MNI', workflowId: WORKFLOW_ID },
 			responseMode: 'lastNode',
 			awaitingResume: false,
 			createMessageOnResume: false,
@@ -133,7 +133,7 @@ describe('ChatHubExecutionWatcherService', () => {
 				status: 'running',
 				content: '',
 				retryOfMessageId: null,
-				provider: 'n8n',
+				provider: 'MNI',
 				workflowId: WORKFLOW_ID,
 			});
 

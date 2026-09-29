@@ -248,7 +248,7 @@ describe('fetchRemoteEnv', () => {
 			for (const warning of warnings) {
 				assert.doesNotMatch(warning, /hunter2/);
 				assert.doesNotMatch(warning, new RegExp(PASSWORD));
-				assert.doesNotMatch(warning, /n8n\.example/);
+				assert.doesNotMatch(warning, /MNI\.example/);
 			}
 	});
 });

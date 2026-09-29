@@ -86,7 +86,7 @@ describe('AgentJsonConfigSchema — subAgents', () => {
 });
 
 describe('AgentJsonConfigSchema — memory.observationalMemory', () => {
-	const memoryBase = { enabled: true, storage: 'n8n' as const };
+	const memoryBase = { enabled: true, storage: 'MNI' as const };
 
 	it('accepts a memory config without observationalMemory', () => {
 		const parsed = AgentJsonConfigSchema.safeParse({ ...baseConfig, memory: memoryBase });
@@ -243,7 +243,7 @@ describe('AgentJsonConfigSchema — memory.observationalMemory', () => {
 });
 
 describe('AgentJsonConfigSchema — memory.episodicMemory', () => {
-	const memoryBase = { enabled: true, storage: 'n8n' as const };
+	const memoryBase = { enabled: true, storage: 'MNI' as const };
 
 	it('preserves episodic memory task models', () => {
 		const parsed = AgentJsonConfigSchema.parse({

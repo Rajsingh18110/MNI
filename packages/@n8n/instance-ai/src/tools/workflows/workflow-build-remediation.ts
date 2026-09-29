@@ -8,9 +8,9 @@ import { createRemediation } from '../../workflow-loop/remediation';
 import type { RemediationMetadata } from '../../workflow-loop/workflow-loop-state';
 
 export const INVALID_WORKFLOW_ID_GUIDANCE =
-	'Call build-workflow again with the same filePath and omit workflowId to create a new workflow only if that value was never a real n8n workflow id (for example an SDK slug). ' +
+	'Call build-workflow again with the same filePath and omit workflowId to create a new workflow only if that value was never a real MNI workflow id (for example an SDK slug). ' +
 	'If you meant an existing workflow, confirm the id with workflows() first — missing and inaccessible look the same. ' +
-	'workflowId must be a real n8n workflow id from a prior build-workflow or workflows() tool result — never the first argument of workflow(slug, name).';
+	'workflowId must be a real MNI workflow id from a prior build-workflow or workflows() tool result — never the first argument of workflow(slug, name).';
 
 function getFailureText(error: unknown): string {
 	return getErrorMessage(error).toLowerCase();
@@ -67,7 +67,7 @@ export function createWorkflowLockedByEditorRemediation(): RemediationMetadata {
 		shouldEdit: false,
 		reason: 'workflow_locked_by_editor',
 		guidance:
-			'The workflow could not be saved because someone is editing it in the n8n editor right now — saving would overwrite their work. Stop editing the source and tell the user to finish or close their editing session, then retry.',
+			'The workflow could not be saved because someone is editing it in the MNI editor right now — saving would overwrite their work. Stop editing the source and tell the user to finish or close their editing session, then retry.',
 	});
 }
 

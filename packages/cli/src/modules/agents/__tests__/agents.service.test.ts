@@ -306,7 +306,7 @@ describe('AgentsService', () => {
 					integrations: [{ type: 'telegram', credentialId: 'cred-telegram-1' }],
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						episodicMemory: {
 							enabled: true,
 							credential: 'cred-model-2',

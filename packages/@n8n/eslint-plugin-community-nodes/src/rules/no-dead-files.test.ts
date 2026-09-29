@@ -34,7 +34,7 @@ ruleTester.run('no-dead-files', NoDeadFilesRule, {
 		{
 			name: 'package with no dead files',
 			filename: packageJsonPath,
-			code: '{ "name": "n8n-nodes-example", "n8n": { "nodes": ["dist/nodes/Foo/Foo.node.js"] } }',
+			code: '{ "name": "n8n-nodes-example", "MNI": { "nodes": ["dist/nodes/Foo/Foo.node.js"] } }',
 		},
 		{
 			name: 'non-package.json file is ignored',

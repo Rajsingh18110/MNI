@@ -335,7 +335,7 @@ describe('createInstanceAgent', () => {
 	});
 
 	// INS-749: `research` (web-search) is always loaded while `n8n-docs` used to be
-	// deferred, so answering an n8n question from n8n's own docs cost a search_tools +
+	// deferred, so answering an MNI question from MNI's own docs cost a search_tools +
 	// load_tool round trip that web search did not. That price gap pushed the agent to
 	// web-search things the docs already answer.
 	it('keeps n8n-docs always loaded so it is no costlier to reach than web search', async () => {

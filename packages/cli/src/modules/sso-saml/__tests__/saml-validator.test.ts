@@ -369,7 +369,7 @@ describe('saml-validator', () => {
 				<AttributeValue>4663f730-51c5-4490-a38a-19dda804865a</AttributeValue>
 			</Attribute>
 			<Attribute Name="http://schemas.microsoft.com/identity/claims/displayname">
-				<AttributeValue>Danny n8n</AttributeValue>
+				<AttributeValue>Danny MNI</AttributeValue>
 			</Attribute>
 			<Attribute Name="http://schemas.microsoft.com/identity/claims/identityprovider">
 				<AttributeValue>mail</AttributeValue>

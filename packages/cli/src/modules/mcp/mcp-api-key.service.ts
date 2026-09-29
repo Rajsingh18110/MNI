@@ -10,7 +10,7 @@ import { JwtService } from '@/services/jwt.service';
 import { UserWithContext } from '@/services/oauth-token-verifier-proxy.service';
 
 const API_KEY_AUDIENCE: ApiKeyAudience = 'mcp-server-api';
-const API_KEY_ISSUER = 'n8n';
+const API_KEY_ISSUER = 'MNI';
 const REDACT_API_KEY_REVEAL_COUNT = 4;
 const REDACT_API_KEY_MAX_LENGTH = 10;
 const API_KEY_LABEL = 'MCP Server API Key';

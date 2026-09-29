@@ -302,7 +302,7 @@ export async function handleErrorPostReceive(
 					errorCode === 'BadRequest' &&
 					errorMessage === 'Empty Payload. JSON content expected.'
 				) {
-					// Ignore empty payload error. Currently n8n deletes the empty body object from the request.
+					// Ignore empty payload error. Currently MNI deletes the empty body object from the request.
 					return data;
 				}
 				if (errorCode === 'Request_ResourceNotFound') {
@@ -376,7 +376,7 @@ export async function handleErrorPostReceive(
 					errorCode === 'BadRequest' &&
 					errorMessage === 'Empty Payload. JSON content expected.'
 				) {
-					// Ignore empty payload error. Currently n8n deletes the empty body object from the request.
+					// Ignore empty payload error. Currently MNI deletes the empty body object from the request.
 					return data;
 				}
 				if (errorCode === 'Request_ResourceNotFound') {

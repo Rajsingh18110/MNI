@@ -39,8 +39,8 @@ import { initCredentialsTypes } from '../shared/utils';
  * Only the statement count is asserted, and only loosely, so the suite trips on a
  * regression to per-row queries but not on timing.
  *
- *   N8N_CREDENTIALS_BENCHMARK=1 pnpm --filter n8n test:sqlite credentials-list.benchmark
- *   N8N_CREDENTIALS_BENCHMARK=1 pnpm --filter n8n test:postgres:integration:tc credentials-list.benchmark
+ *   N8N_CREDENTIALS_BENCHMARK=1 pnpm --filter MNI test:sqlite credentials-list.benchmark
+ *   N8N_CREDENTIALS_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc credentials-list.benchmark
  *
  * Knobs (all optional):
  *   N8N_CREDENTIALS_BENCH_TIERS         members per project for each tier, e.g. "50,200,800"

@@ -154,7 +154,7 @@ export class EngineV2ExecutionReader {
 		if (!workflow) return undefined;
 
 		// Lazily imported: a top-level import would pull `@n8n/engine` into every
-		// n8n process, including ones with the module off.
+		// MNI process, including ones with the module off.
 		const { toV1RunExecutionData } = await import('@n8n/node-engine-compatibility');
 
 		return this.toExecutionResponse(

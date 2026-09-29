@@ -877,7 +877,7 @@ describe('requestOAuth2 - tokenExpiredStatusCode', () => {
 		});
 
 		test('should still refresh on a 404 when the stored expiry is unknown', async () => {
-			// Tokens stored before n8n recorded an expiry, and grants whose server sends no
+			// Tokens stored before MNI recorded an expiry, and grants whose server sends no
 			// expires_in, must keep the old behaviour or the fix would not reach them
 			mockThis.getCredentials.mockResolvedValue(
 				makeCredentialData({ oauthTokenData: { access_token: 'unknown-expiry-token' } }),

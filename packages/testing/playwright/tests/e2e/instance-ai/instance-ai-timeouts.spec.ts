@@ -7,7 +7,7 @@ test.describe(
 	() => {
 		test.fixme(
 			'should show a timeout message when a stuck background task times out',
-			async ({ api, n8n }) => {
+			async ({ api, MNI }) => {
 				const owner = await api.signin('owner');
 				const simulation = await api.startInstanceAiBackgroundTimeoutSimulation(owner.id);
 

@@ -1,4 +1,4 @@
-# Node.js compiled with V8 pointer compression, for the n8n `-pc` image variant.
+# Node.js compiled with V8 pointer compression, for the MNI `-pc` image variant.
 #
 # No official pointer-compressed Node binaries exist (nodejs.org publishes none,
 # and Docker Hub node images are stock), so this image compiles Node from the
@@ -7,7 +7,7 @@
 #
 # Two published targets:
 #   runtime (default) - n8nio/base with our compiled Node swapped in
-#   dev               - plain Alpine with apk usable, for the n8n builder
+#   dev               - plain Alpine with apk usable, for the MNI builder
 #                       stage, which must compile native addons against this
 #                       Node's headers
 ARG NODE_VERSION=26.7.0

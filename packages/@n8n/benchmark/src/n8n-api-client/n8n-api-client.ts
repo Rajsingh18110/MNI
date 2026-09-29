@@ -24,11 +24,11 @@ export class N8nApiClient {
 				}
 			} catch {}
 
-			console.log(`n8n instance not online yet, retrying in ${INTERVAL_MS / 1000} seconds...`);
+			console.log(`MNI instance not online yet, retrying in ${INTERVAL_MS / 1000} seconds...`);
 			await this.delay(INTERVAL_MS);
 		}
 
-		throw new Error(`n8n instance did not come online within ${TIMEOUT_MS / 1000} seconds`);
+		throw new Error(`MNI instance did not come online within ${TIMEOUT_MS / 1000} seconds`);
 	}
 
 	async setupOwnerIfNeeded(loginDetails: { email: string; password: string }) {
@@ -52,7 +52,7 @@ export class N8nApiClient {
 			if (responsePayload.message === 'Instance owner already setup')
 				console.log('Owner already set up');
 		} else if (response.status === 404) {
-			// The n8n instance setup owner endpoint not be available yet even tho
+			// The MNI instance setup owner endpoint not be available yet even tho
 			// the health endpoint returns ok. In this case we simply retry.
 			console.log('Owner setup endpoint not available yet, retrying in 1s...');
 			await this.delay(1000);

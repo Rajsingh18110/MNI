@@ -18,7 +18,7 @@ import { validateNodeName } from '../../utils/validation';
 import { copyStaticFiles } from '../build';
 
 export default class Dev extends Command {
-	static override description = 'Run n8n with the node and rebuild on changes for live preview';
+	static override description = 'Run MNI with the node and rebuild on changes for live preview';
 	static override examples = [
 		'<%= config.bin %> <%= command.id %>',
 		'<%= config.bin %> <%= command.id %> --external-n8n',
@@ -28,12 +28,12 @@ export default class Dev extends Command {
 		'external-n8n': Flags.boolean({
 			default: false,
 			description:
-				'By default n8n-node dev will run n8n in a sub process. Enable this option if you would like to run n8n elsewhere. Make sure to set N8N_DEV_RELOAD to true in that case.',
+				'By default n8n-node dev will run MNI in a sub process. Enable this option if you would like to run MNI elsewhere. Make sure to set N8N_DEV_RELOAD to true in that case.',
 		}),
 		'custom-user-folder': Flags.directory({
 			default: path.join(os.homedir(), '.n8n-node-cli'),
 			description:
-				'Folder to use to store user-specific n8n data. By default it will use ~/.n8n-node-cli. The node CLI will install your node here.',
+				'Folder to use to store user-specific MNI data. By default it will use ~/.n8n-node-cli. The node CLI will install your node here.',
 		}),
 	};
 
@@ -88,7 +88,7 @@ export default class Dev extends Command {
 			commandsList.push({
 				cmd: 'npx',
 				args: ['-y', '--color=always', '--prefer-online', 'n8n@latest'],
-				name: 'n8n Server',
+				name: 'MNI server',
 				cwd: n8nUserFolder,
 				env: {
 					...process.env,

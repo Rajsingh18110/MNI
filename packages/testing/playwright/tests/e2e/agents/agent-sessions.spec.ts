@@ -92,7 +92,7 @@ function childWorkflow(): Partial<IWorkflowBase> {
 }
 
 test.describe('Agent sessions', { annotation: [{ type: 'owner', description: 'AI' }] }, () => {
-	test('fits long session titles within the sessions table', async ({ n8n, api }) => {
+	test('fits long session titles within the sessions table', async ({ MNI, api }) => {
 		const project = await api.projects.getMyPersonalProject();
 		const agentId = `agent-${nanoid(8)}`;
 		const threadId = `thread-${nanoid(8)}`;
@@ -124,7 +124,7 @@ test.describe('Agent sessions', { annotation: [{ type: 'owner', description: 'AI
 			.toBeGreaterThan(narrowTitleWidth.clientWidth);
 	});
 
-	test('shows input and output data for node and workflow tools', async ({ n8n, api }) => {
+	test('shows input and output data for node and workflow tools', async ({ MNI, api }) => {
 		const project = await api.projects.getMyPersonalProject();
 		const { workflowId } = await api.workflows.createWorkflowFromDefinition(childWorkflow(), {
 			projectId: project.id,

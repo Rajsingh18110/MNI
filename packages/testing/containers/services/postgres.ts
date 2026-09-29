@@ -112,7 +112,7 @@ export const postgres: Service<PostgresResult> = {
 };
 
 /**
- * Gives the engine v2 data plane its own database, next to the n8n one. The
+ * Gives the engine v2 data plane its own database, next to the MNI one. The
  * separation is deliberate: neither plane can read the other's tables, so a
  * cross-plane query fails in a test instead of passing by accident.
  *

@@ -92,7 +92,7 @@ describe('assertTopicExists', () => {
 	});
 
 	it('puts the fix in the message, which is the only part a failed publish shows', async () => {
-		// n8n's activation path drops the description of a NodeOperationError, so
+		// MNI's activation path drops the description of a NodeOperationError, so
 		// guidance that lives only there never reaches the user.
 		failNextTopicMetadata(unknownTopicError());
 		failNextTopicMetadata(unknownTopicError());

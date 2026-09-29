@@ -5,7 +5,7 @@ import { sanitizeUnknownAgentCredentials } from '../sanitize-unknown-agent-crede
 describe('sanitizeUnknownAgentCredentials', () => {
 	const accessibleCredentialIds = new Set(['known-cred', 'nested-cred']);
 
-	it('preserves the n8n Connect tag on the main model credential', () => {
+	it('preserves the MNI Connect tag on the main model credential', () => {
 		const result = sanitizeUnknownAgentCredentials(
 			{ credential: AI_GATEWAY_MANAGED_TAG, model: 'openai/gpt-5' },
 			accessibleCredentialIds,
@@ -14,7 +14,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 		expect(result).toEqual({ credential: AI_GATEWAY_MANAGED_TAG, model: 'openai/gpt-5' });
 	});
 
-	it('preserves the n8n Connect tag on difficulty model credentials', () => {
+	it('preserves the MNI Connect tag on difficulty model credentials', () => {
 		const result = sanitizeUnknownAgentCredentials(
 			{
 				subAgents: {
@@ -37,7 +37,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 		});
 	});
 
-	it('preserves the n8n Connect tag on memory worker model credentials', () => {
+	it('preserves the MNI Connect tag on memory worker model credentials', () => {
 		// Memory workers are ordinary chat models, so the gateway can serve them.
 		// Stripping the tag here left the model with an unresolvable empty credential.
 		const workerModel = { model: 'openai/gpt-4o-mini', credential: AI_GATEWAY_MANAGED_TAG };
@@ -55,7 +55,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 		expect(sanitizeUnknownAgentCredentials(config, accessibleCredentialIds)).toEqual(config);
 	});
 
-	it('clears the n8n Connect tag on the episodic memory embedding credential', () => {
+	it('clears the MNI Connect tag on the episodic memory embedding credential', () => {
 		// That path is served by the AI assistant proxy and only accepts
 		// MANAGED_CREDENTIAL_TOKEN; the gateway tag is not a valid value there.
 		const result = sanitizeUnknownAgentCredentials(
@@ -68,7 +68,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 		});
 	});
 
-	it('preserves the n8n Connect tag on the web search credential', () => {
+	it('preserves the MNI Connect tag on the web search credential', () => {
 		const result = sanitizeUnknownAgentCredentials(
 			{
 				config: {
@@ -187,7 +187,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 						node: {
 							nodeType: 'n8n-nodes-base.slack',
 							nodeTypeVersion: 1,
-							credentials: { slackApi: { id: 'managed', name: 'Managed by n8n' } },
+							credentials: { slackApi: { id: 'managed', name: 'Managed by MNI' } },
 						},
 					},
 				],
@@ -231,14 +231,14 @@ describe('sanitizeUnknownAgentCredentials', () => {
 					node: {
 						nodeType: 'n8n-nodes-base.slack',
 						nodeTypeVersion: 1,
-						credentials: { slackApi: { id: '', name: 'Managed by n8n' } },
+						credentials: { slackApi: { id: '', name: 'Managed by MNI' } },
 					},
 				},
 			],
 		});
 	});
 
-	it('preserves the n8n Connect managed sentinel on a node-tool credential', () => {
+	it('preserves the MNI Connect managed sentinel on a node-tool credential', () => {
 		// Relies on the non-string-id recursion branch of the `credentials`
 		// handler — this pin exists so a refactor of that branch can't silently
 		// start clearing managed refs.
@@ -252,7 +252,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 							nodeType: 'n8n-nodes-base.slackTool',
 							nodeTypeVersion: 1,
 							credentials: {
-								slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+								slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 							},
 						},
 					},
@@ -270,7 +270,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 						nodeType: 'n8n-nodes-base.slackTool',
 						nodeTypeVersion: 1,
 						credentials: {
-							slackApi: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+							slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 						},
 					},
 				},

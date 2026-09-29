@@ -261,7 +261,7 @@ const isPreviewActive = computed(function isPreviewActive() {
 	return isStandalonePreview.value || isPreviewDockOpen.value;
 });
 
-// Embedded n8n Assistant panel (left dock, mirrors the preview dock on the right).
+// Embedded MNI Assistant panel (left dock, mirrors the preview dock on the right).
 // Default open for a pending agent so a new agent lands with the assistant
 // already showing; closed otherwise. Persisted per agent, like the preview dock.
 // null = no preference yet, so the default is derived instead of stored — see
@@ -613,7 +613,7 @@ const pendingExternalRefresh = ref(false);
 let pendingExternalRefreshSource: string | undefined;
 const agentName = ref('');
 const agent = ref<AgentResource | null>(null);
-/** Scopes the embedded n8n Assistant panel to this agent's thread history. */
+/** Scopes the embedded MNI Assistant panel to this agent's thread history. */
 const instanceAiEmbedSubject = computed<InstanceAiEmbedSubject>(() => ({
 	type: 'agent',
 	id: agentId.value,
@@ -1560,7 +1560,7 @@ function normalizeAgentMemoryConfig(config: AgentJsonConfig): AgentJsonConfig {
 		memory: {
 			...config.memory,
 			enabled: true,
-			storage: 'n8n',
+			storage: 'MNI',
 		},
 	};
 }

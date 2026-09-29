@@ -186,7 +186,7 @@ export const observabilityFixtures: Fixtures<
 				try {
 					await attachStartupDiagnostics(failure.diagnostics, testInfo, failure.failurePhase);
 				} catch (error) {
-					console.warn('Failed to attach n8n startup diagnostics:', error);
+					console.warn('Failed to attach MNI startup diagnostics:', error);
 				}
 				return;
 			}
@@ -195,7 +195,7 @@ export const observabilityFixtures: Fixtures<
 				try {
 					await attachStartupDiagnostics(n8nContainer.startupDiagnostics, testInfo);
 				} catch (error) {
-					console.warn('Failed to attach n8n startup diagnostics:', error);
+					console.warn('Failed to attach MNI startup diagnostics:', error);
 				}
 			}
 

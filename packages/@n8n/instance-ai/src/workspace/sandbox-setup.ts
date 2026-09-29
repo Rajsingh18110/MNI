@@ -129,7 +129,7 @@ export const NPM_INSTALL_FLAGS_REFRESH_METADATA = `${NPM_INSTALL_BASE_FLAGS} --p
  * Pick install flags for the sandbox the workspace runs on. The two providers do not
  * offer the same cache guarantee:
  *
- *   - Daytona installs from a snapshot that `SnapshotManager` bakes per n8n version,
+ *   - Daytona installs from a snapshot that `SnapshotManager` bakes per MNI version,
  *     running this same pinned `PACKAGE_JSON`. The cached packument therefore always
  *     resolves the pinned SDK version, so take the fast offline path.
  *   - n8n-sandbox installs against an image cache that can lag the pin, so refresh

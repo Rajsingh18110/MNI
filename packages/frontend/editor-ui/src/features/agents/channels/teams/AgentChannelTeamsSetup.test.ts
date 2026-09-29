@@ -688,7 +688,7 @@ describe('AgentChannelTeamsSetup', () => {
 			);
 		});
 
-		it('tracks a failed n8n request apart from Microsoft being unreachable', async () => {
+		it('tracks a failed MNI request apart from Microsoft being unreachable', async () => {
 			vi.mocked(checkTeamsCredential).mockRejectedValue(new Error('500'));
 
 			const { getByTestId } = renderComponent({ props: props({ modelValue: 'cred-1' }) });

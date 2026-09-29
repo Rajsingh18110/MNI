@@ -4494,7 +4494,7 @@ describe('AgentBuilderView — three-column shell', () => {
 			'a1',
 			expect.objectContaining({
 				...importedConfig,
-				memory: { enabled: true, storage: 'n8n' },
+				memory: { enabled: true, storage: 'MNI' },
 			}),
 			'hash-1',
 		);

@@ -26,7 +26,7 @@ const BOT_API_VERSION = '2022-09-15';
 
 /** Azure caps the bot's display name; the fallback matches the manifest's. */
 const BOT_DISPLAY_NAME_MAX = 42;
-const DEFAULT_BOT_DISPLAY_NAME = 'n8n Agent';
+const DEFAULT_BOT_DISPLAY_NAME = 'MNI Agent';
 
 export interface TeamsArmTemplateOptions {
 	/**
@@ -61,7 +61,7 @@ export class TeamsArmTemplateService {
 	 */
 	buildTemplate(options: TeamsArmTemplateOptions): Record<string, unknown> {
 		// Azure Bot Service refuses a plain-http endpoint, and the deployment fails
-		// with a message that names neither n8n nor the setting behind it.
+		// with a message that names neither MNI nor the setting behind it.
 		if (!options.messagingEndpoint.startsWith('https://')) {
 			throw new UserError(
 				"The Teams bot needs an HTTPS messaging endpoint. Set N8N_WEBHOOK_URL to this instance's public HTTPS URL.",
@@ -162,7 +162,7 @@ export class TeamsArmTemplateService {
 	}
 
 	/**
-	 * The portal fetches the template with no n8n session, so the token is the
+	 * The portal fetches the template with no MNI session, so the token is the
 	 * whole authorisation. Every value the template is built from is a claim, so
 	 * a token cannot be reused for another agent or another credential.
 	 */

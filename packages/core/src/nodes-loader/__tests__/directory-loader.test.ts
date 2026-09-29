@@ -38,7 +38,7 @@ describe('DirectoryLoader', () => {
 	const directory = '/not/a/real/path';
 	const packageJson = JSON.stringify({
 		name: 'n8n-nodes-testing',
-		n8n: {
+		MNI: {
 			credentials: ['dist/Credential1.js'],
 			nodes: ['dist/Node1/Node1.node.js', 'dist/Node2/Node2.node.js'],
 		},
@@ -224,7 +224,7 @@ describe('DirectoryLoader', () => {
 			expect(() => new PackageDirectoryLoader(directory)).toThrow('Failed to parse JSON');
 		});
 
-		it('should do nothing if package.json has no n8n field', async () => {
+		it('should do nothing if package.json has no MNI field', async () => {
 			mockFs.readFileSync.calledWith(`${directory}/package.json`).mockReturnValue(
 				JSON.stringify({
 					name: 'n8n-nodes-testing',

@@ -227,24 +227,24 @@ describe('BrandfetchV1.execute', () => {
 	it('should return company data when operation is company', async () => {
 		mockParams({ operation: 'company', domain: 'n8n.io' });
 		(GenericFunctions.brandfetchApiRequest as Mock).mockResolvedValue({
-			company: { name: 'n8n' },
+			company: { name: 'MNI' },
 		});
 
 		const result = await node.execute.call(executeFunctions);
 
-		expect(result[0]).toEqual([{ name: 'n8n' }]);
+		expect(result[0]).toEqual([{ name: 'MNI' }]);
 	});
 
 	it('should return the full brand response when operation is industry (legacy V1 behavior)', async () => {
 		mockParams({ operation: 'industry', domain: 'n8n.io' });
 		(GenericFunctions.brandfetchApiRequest as Mock).mockResolvedValue({
-			name: 'n8n',
+			name: 'MNI',
 			company: { industries: [{ name: 'Software' }] },
 		});
 
 		const result = await node.execute.call(executeFunctions);
 
-		expect(result[0]).toEqual([{ name: 'n8n', company: { industries: [{ name: 'Software' }] } }]);
+		expect(result[0]).toEqual([{ name: 'MNI', company: { industries: [{ name: 'Software' }] } }]);
 	});
 
 	it('should push an error item when continueOnFail is true', async () => {

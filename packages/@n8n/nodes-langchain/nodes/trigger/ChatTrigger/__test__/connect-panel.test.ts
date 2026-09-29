@@ -17,7 +17,7 @@ const configuredCred = (overrides: Partial<CredentialCheckStatus> = {}): Credent
 	credentialName: 'Google account',
 	credentialType: 'googleOAuth2Api',
 	status: 'configured',
-	revokeUrl: 'https://n8n.example.com/credentials/cred-2/revoke?resolverId=n8n',
+	revokeUrl: 'https://n8n.example.com/credentials/cred-2/revoke?resolverId=MNI',
 	...overrides,
 });
 
@@ -52,7 +52,7 @@ describe('buildChatShellViewModel', () => {
 				id: 'cred-2',
 				name: 'Google account',
 				connected: true,
-				revokeUrl: 'https://n8n.example.com/credentials/cred-2/revoke?resolverId=n8n',
+				revokeUrl: 'https://n8n.example.com/credentials/cred-2/revoke?resolverId=MNI',
 			},
 		]);
 	});

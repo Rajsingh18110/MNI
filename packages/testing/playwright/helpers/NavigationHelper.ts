@@ -4,7 +4,7 @@ import { InstanceAiPage } from '../pages/InstanceAiPage';
 import { SecretsProviderSettingsPage } from '../pages/SecretsProviderSettingsPage';
 
 /**
- * NavigationHelper provides centralized navigation methods for all n8n routes.
+ * NavigationHelper provides centralized navigation methods for all MNI routes.
  * Handles both project-specific and global routes with proper URL construction.
  *
  * URLs are documented to help users understand where they're navigating:

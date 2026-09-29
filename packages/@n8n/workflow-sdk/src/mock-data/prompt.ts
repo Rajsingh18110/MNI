@@ -5,7 +5,7 @@ import { workflowToMermaid } from './mermaid';
 import type { NodeSchemaContext, PinDataGenerationInstructions } from './types';
 import type { WorkflowJSON } from '../types/base';
 
-export const PIN_DATA_SYSTEM_PROMPT = `You are a test data generator for n8n workflow automation. Generate realistic mock API response data for service nodes in a workflow.
+export const PIN_DATA_SYSTEM_PROMPT = `You are a test data generator for MNI workflow automation. Generate realistic mock API response data for service nodes in a workflow.
 
 RULES:
 1. Data must be consistent across nodes. If node A creates an entity with id "abc-123", downstream nodes referencing that entity must use "abc-123". When a node's "Direct downstream consumers" are listed, emit EXACTLY the field names their parameters/expressions/code read (e.g. a Code node reading item.json.last_details requires a field named "last_details") — never rename or synonymize them.

@@ -26,7 +26,7 @@ test.describe(
 	() => {
 		test.describe.configure({ mode: 'serial' });
 
-		test('Should be able to login with MFA code', async ({ n8n }) => {
+		test('Should be able to login with MFA code', async ({ MNI }) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 			await n8n.sideBar.signOutFromWorkflows();
 
@@ -35,7 +35,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(/workflows/);
 		});
 
-		test('Should be able to login with MFA recovery code', async ({ n8n }) => {
+		test('Should be able to login with MFA recovery code', async ({ MNI }) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 			await n8n.sideBar.signOutFromWorkflows();
 
@@ -44,7 +44,7 @@ test.describe(
 			await expect(n8n.page).toHaveURL(/workflows/);
 		});
 
-		test('Should be able to disable MFA in account with MFA code', async ({ n8n }) => {
+		test('Should be able to disable MFA in account with MFA code', async ({ MNI }) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 			await n8n.sideBar.signOutFromWorkflows();
 
@@ -57,7 +57,7 @@ test.describe(
 			await expect(n8n.settingsPersonal.getEnableMfaButton()).toBeVisible();
 		});
 
-		test('Should prompt for MFA code when email changes', async ({ n8n }) => {
+		test('Should prompt for MFA code when email changes', async ({ MNI }) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 
 			await n8n.settingsPersonal.goto();
@@ -72,7 +72,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('Should prompt for MFA recovery code when email changes', async ({ n8n }) => {
+		test('Should prompt for MFA recovery code when email changes', async ({ MNI }) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 
 			await n8n.settingsPersonal.goto();
@@ -83,7 +83,7 @@ test.describe(
 		});
 
 		test('Should not prompt for MFA code or recovery code when first name or last name changes', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 
@@ -97,7 +97,7 @@ test.describe(
 			).toBeVisible();
 		});
 
-		test('Should be able to disable MFA in account with recovery code', async ({ n8n }) => {
+		test('Should be able to disable MFA in account with recovery code', async ({ MNI }) => {
 			await n8n.mfaComposer.enableMfa(email, password, mfaSecret!);
 			await n8n.sideBar.signOutFromWorkflows();
 

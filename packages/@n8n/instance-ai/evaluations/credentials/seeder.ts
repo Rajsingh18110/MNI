@@ -7,7 +7,7 @@
 // thread's credential view is pinned to exactly the created set, so concurrent
 // cases never observe each other's credentials.
 //
-// POST /rest/credentials takes raw values -- n8n encrypts them server-side.
+// POST /rest/credentials takes raw values -- MNI encrypts them server-side.
 // ---------------------------------------------------------------------------
 
 import type { InstanceAiCredentialSetupHint } from '@n8n/api-types';

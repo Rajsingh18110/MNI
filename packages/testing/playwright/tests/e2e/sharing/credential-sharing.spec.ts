@@ -10,7 +10,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should share credential with another user via UI', async ({ n8n, api }) => {
+		test('should share credential with another user via UI', async ({ MNI, api }) => {
 			const member = await api.publicApi.createUser({
 				email: `member-${nanoid()}@test.com`,
 				firstName: 'Test',
@@ -61,7 +61,7 @@ test.describe(
 		});
 
 		test('should show shared credential with proper permissions in node credential dropdown', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const member = await api.publicApi.createUser({

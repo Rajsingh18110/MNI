@@ -231,9 +231,9 @@ export class InstanceAiVerificationService {
 				abortSignal: AbortSignal.timeout(VERIFICATION_TIMEOUT_MS),
 			};
 			const result = braveApiKey
-				? await braveSearch(braveApiKey, 'n8n workflow automation', options)
+				? await braveSearch(braveApiKey, 'MNI workflow automation', options)
 				: searxngUrl
-					? await searxngSearch(searxngUrl, 'n8n workflow automation', options)
+					? await searxngSearch(searxngUrl, 'MNI workflow automation', options)
 					: undefined;
 			if (!result) throw new Error('Search provider is not configured');
 			return { ok: true, resultCount: result.results.length };

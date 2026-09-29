@@ -35,7 +35,7 @@ export type RunTokenUsage = z.infer<typeof runTokenUsageSchema>;
 /** Shape of the `finish` stream chunk emitted by the agent runtime. */
 const finishChunkSchema = z.object({
 	type: z.literal('finish'),
-	// Stable n8n model id stamped by the runtime; optional so a chunk missing it
+	// Stable MNI model id stamped by the runtime; optional so a chunk missing it
 	// (older runtime, sub-paths) still parses and falls back to 'unknown'.
 	model: z.string().optional(),
 	usage: z

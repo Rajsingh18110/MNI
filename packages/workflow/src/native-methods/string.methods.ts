@@ -323,12 +323,12 @@ export const stringMethods: NativeDoc = {
 					'Returns the index (position) of the first occurrence of a pattern within the string, or -1 if not found. The pattern is specified using a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">regular expression</a>. To use text instead, see <code>indexOf()</code>.',
 				examples: [
 					{
-						example: '"Neat n8n node".search(/n[^ ]*/)',
+						example: '"Neat MNI node".search(/n[^ ]*/)',
 						evaluated: '5',
 						description: "Pos of first word starting with 'n'",
 					},
 					{
-						example: '"Neat n8n node".search(/n[^ ]*/i)',
+						example: '"Neat MNI node".search(/n[^ ]*/i)',
 						evaluated: '0',
 						description:
 							"Case-insensitive match with 'i'\nPos of first word starting with 'n' or 'N'",
@@ -355,9 +355,9 @@ export const stringMethods: NativeDoc = {
 				description:
 					'Extracts a fragment of the string at the given position. For more advanced extraction, see <code>match()</code>.',
 				examples: [
-					{ example: "'Hello from n8n'.slice(0, 5)", evaluated: "'Hello'" },
-					{ example: "'Hello from n8n'.slice(6)", evaluated: "'from n8n'" },
-					{ example: "'Hello from n8n'.slice(-3)", evaluated: "'n8n'" },
+					{ example: "'Hello from MNI'.slice(0, 5)", evaluated: "'Hello'" },
+					{ example: "'Hello from MNI'.slice(6)", evaluated: "'from MNI'" },
+					{ example: "'Hello from MNI'.slice(-3)", evaluated: "'MNI'" },
 				],
 				section: 'edit',
 				docURL:
@@ -459,8 +459,8 @@ export const stringMethods: NativeDoc = {
 				description:
 					'Extracts a fragment of the string at the given position. For more advanced extraction, see <code>match()</code>.',
 				examples: [
-					{ example: "'Hello from n8n'.substring(0, 5)", evaluated: "'Hello'" },
-					{ example: "'Hello from n8n'.substring(6)", evaluated: "'from n8n'" },
+					{ example: "'Hello from MNI'.substring(0, 5)", evaluated: "'Hello'" },
+					{ example: "'Hello from MNI'.substring(6)", evaluated: "'from MNI'" },
 				],
 				section: 'edit',
 				docURL:

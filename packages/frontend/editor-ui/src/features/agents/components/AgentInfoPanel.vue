@@ -318,11 +318,11 @@ watch(
 );
 
 // An empty draft can mount with a credential already available (localStorage
-// pick, managed n8n credits, or an existing credential), where no picker event
+// pick, managed MNI credits, or an existing credential), where no picker event
 // ever fires — seed default resolution from that initial state once, so the
 // agent starts with a working model instead of a blank choice. Mirrors the
 // backend creation resolver: personal credentials win, and with none the
-// managed fallback is OpenAI only (n8n credits serves other providers too,
+// managed fallback is OpenAI only (MNI credits serves other providers too,
 // but the agreed no-credential default is openai/gpt-5-mini).
 const initialDefaultSeeded = ref(false);
 watch(

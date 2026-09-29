@@ -46,7 +46,7 @@ const fs = fsPromises as unknown as {
 	unlink: Mock;
 };
 
-const UPLOAD_DIR = '/mock/n8n/dataTableUploads';
+const UPLOAD_DIR = '/mock/MNI/dataTableUploads';
 const MAX_SIZE = 50 * 1024 * 1024;
 
 const buildMiddleware = (opts: { uploadMaxFileSize?: number } = {}) => {

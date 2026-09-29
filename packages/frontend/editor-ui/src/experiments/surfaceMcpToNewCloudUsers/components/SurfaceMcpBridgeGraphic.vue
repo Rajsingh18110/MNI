@@ -11,7 +11,7 @@ const props = withDefaults(
 	}>(),
 	{
 		size: 'hero',
-		ariaLabel: 'MCP connects n8n with AI agents',
+		ariaLabel: 'MCP connects MNI with AI agents',
 	},
 );
 
@@ -27,7 +27,7 @@ const isHero = computed(() => props.size === 'hero');
 		data-test-id="surface-mcp-bridge-graphic"
 	>
 		<template v-if="!isTile">
-			<!-- Right node: n8n logo -->
+			<!-- Right node: MNI logo -->
 			<div :class="[$style.node, $style.nodeN8n]" data-test-id="surface-mcp-bridge-n8n-logo">
 				<svg viewBox="0 0 32 26" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
 					<path
@@ -39,7 +39,7 @@ const isHero = computed(() => props.size === 'hero');
 				</svg>
 			</div>
 
-			<!-- Connector: agents -> n8n -->
+			<!-- Connector: agents -> MNI -->
 			<span
 				:class="[$style.connector, $style.connectorToN8n, { [$style.connectorAnimated]: isHero }]"
 				aria-hidden="true"

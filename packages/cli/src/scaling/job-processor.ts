@@ -133,7 +133,7 @@ export class JobProcessor {
 		}
 
 		/**
-		 * Bull's implicit retry mechanism and n8n's execution recovery mechanism may
+		 * Bull's implicit retry mechanism and MNI's execution recovery mechanism may
 		 * cause a crashed execution to be enqueued. We refrain from processing it,
 		 * until we have reworked both mechanisms to prevent this scenario.
 		 */

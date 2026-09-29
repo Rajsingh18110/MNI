@@ -1,5 +1,5 @@
 ---
-name: n8n:human-like-code-review
+name: MNI:human-like-code-review
 description: Reviews a GitHub pull request like a thoughtful human reviewer and writes the feedback to a markdown file. Prioritizes context, architecture fit, solution complexity, bugs, security edge cases, and missing tests. Use when given a PR URL to review, or when the user says /human-like-code-review.
 allowed-tools: Bash(gh:*), Bash(git:*), Read, Glob, Grep
 ---
@@ -27,7 +27,7 @@ Extract the PR number and repository from the URL and use the `gh` CLI to fetch 
 3. Fetch PR metadata: `gh pr view <number> --repo <owner>/<repo>`
 4. Fetch existing review comments: `gh api repos/<owner>/<repo>/pulls/<number>/comments`
 5. If the PR description mentions a Linear issue, pull the ticket context with
-   `n8n:linear-issue` before reviewing the diff. Use the ticket description,
+   `MNI:linear-issue` before reviewing the diff. Use the ticket description,
    comments, linked GitHub issues/PRs, media, related issues, affected node
    popularity, and effort estimate as review context. If the skill is not
    available, fetch the same Linear context through the active Linear MCP or ask

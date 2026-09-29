@@ -60,7 +60,7 @@ export type OracleDBNodeOptions = {
 	prefetchRows?: number;
 	stringOutBindMaxSize?: number;
 
-	// n8n options
+	// MNI options
 	largeNumbersOutputAsString?: boolean; // bigInt
 	outputColumns?: string[];
 	stmtBatching?: QueryMode;

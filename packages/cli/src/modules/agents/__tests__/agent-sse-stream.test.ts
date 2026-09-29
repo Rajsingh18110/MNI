@@ -185,11 +185,11 @@ describe('agent-sse-stream — stringifyError (via error chunk)', () => {
 		expect(events).toEqual([{ type: 'error', message: 'null' }]);
 	});
 
-	it('surfaces the n8n Connect gateway message from an ai-sdk error responseBody', async () => {
+	it('surfaces the MNI Connect gateway message from an ai-sdk error responseBody', async () => {
 		const responseBody = JSON.stringify({
 			error: {
 				message:
-					"n8n Connect doesn't currently support this operation. Switch to using your own credential to continue.",
+					"MNI Connect doesn't currently support this operation. Switch to using your own credential to continue.",
 				type: 'ai_gateway_request_error',
 			},
 		});
@@ -201,7 +201,7 @@ describe('agent-sse-stream — stringifyError (via error chunk)', () => {
 			{
 				type: 'error',
 				message:
-					"n8n Connect doesn't currently support this operation. Switch to using your own credential to continue.",
+					"MNI Connect doesn't currently support this operation. Switch to using your own credential to continue.",
 			},
 		]);
 	});

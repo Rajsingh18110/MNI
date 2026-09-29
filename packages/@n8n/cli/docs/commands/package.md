@@ -1,8 +1,8 @@
 # package
 
-Export and import workflows as portable n8n packages (`.n8np` archives).
+Export and import workflows as portable MNI packages (`.n8np` archives).
 
-> **Beta feature:** n8n packages are still under development and there may be breaking changes on APIs.
+> **Beta feature:** MNI packages are still under development and there may be breaking changes on APIs.
 
 ## `package export`
 
@@ -31,7 +31,7 @@ n8n-cli package export -w abc --include-tags=false -o export.n8np
 | `--include-archived-workflows` | `false` (default) or `true`. Whether folder and project exports include their archived workflows. When `true`, they travel with `isArchived: true` and are archived on import. Workflows given by `--workflow-id` always export, also when archived. |
 | `--missing-workflow-dependency-policy` | Policy for missing static sub-workflow dependencies: `fail` aborts when any dependency is missing, `include-in-package` automatically adds missing static sub-workflows, and `reference-only` keeps them out of the package, listing them in the package requirements as workflows expected to already exist on the target. |
 | `--workflow-version-policy` | Which version of each workflow travels in the package: `latest` (default) exports the latest version whether or not it is published, `published-strict` exports the published version and aborts when any workflow has none, `prefer-published` falls back to the latest version where there is no published one, and `ignore-unpublished` leaves unpublished workflows out of the package entirely. |
-| `--credential-export-policy` | Whether expression values from credential data are bundled into the package: `expression-values-only` (default on the instance) includes credential fields whose value is an n8n expression (for example `={{ $secrets.apiKey }}`); `no-values` keeps credential data out of the package, so each credential file carries only its id, name and type. Literal values never travel either way. |
+| `--credential-export-policy` | Whether expression values from credential data are bundled into the package: `expression-values-only` (default on the instance) includes credential fields whose value is an MNI expression (for example `={{ $secrets.apiKey }}`); `no-values` keeps credential data out of the package, so each credential file carries only its id, name and type. Literal values never travel either way. |
 
 Provide at least one `--workflow-id`, `--folder-id`, or `--project-id`. Requires
 the API key to hold `workflow:export` when exporting workflows or folders, or
@@ -46,7 +46,7 @@ latest version.
 
 Statically referenced sub-workflows are dependencies of the package. How
 missing ones are handled depends on
-`--missing-workflow-dependency-policy`. With the default `fail` policy you include them yourself. With `include-in-package`, n8n resolves the static dependency graph and adds any
+`--missing-workflow-dependency-policy`. With the default `fail` policy you include them yourself. With `include-in-package`, MNI resolves the static dependency graph and adds any
 missing sub-workflows to the package automatically, so you don't need to list
 them explicitly. With `reference-only`, missing sub-workflows stay out of the
 package and are only listed in the package requirements (by id, with a

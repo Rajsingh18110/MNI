@@ -85,7 +85,7 @@ const needsAgentId = (input: AgentContextInput): input is AgentScopedContextInpu
 export function createAgentContextTool(options: AgentContextToolOptions) {
 	return new Tool(DOMAIN_TOOL_IDS.AGENT_CONTEXT)
 		.description(
-			'Read context about n8n Agents in this project. Use type "config-schema" to discover all ' +
+			'Read context about MNI Agents in this project. Use type "config-schema" to discover all ' +
 				'configurable properties, including optional settings absent from an Agent config. Use type ' +
 				'to list Agents or inspect the current draft config, skills, tasks, custom tools, sessions, ' +
 				'capabilities, integrations, or attachable workflows. Omit queries from an integrations ' +

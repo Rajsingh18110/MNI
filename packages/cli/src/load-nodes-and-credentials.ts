@@ -102,9 +102,9 @@ export class LoadNodesAndCredentials {
 
 		// Load nodes from `n8n-nodes-base`
 		const basePathsToScan = [
-			// In case "n8n" package is in same node_modules folder.
+			// In case "MNI" package is in same node_modules folder.
 			path.join(CLI_DIR, '..'),
-			// In case "n8n" package is the root and the packages are
+			// In case "MNI" package is the root and the packages are
 			// in the "node_modules" folder underneath it.
 			path.join(CLI_DIR, 'node_modules'),
 		];
@@ -465,7 +465,7 @@ export class LoadNodesAndCredentials {
 				// This ensures hookName is always serialized in the workflow JSON
 				default: '',
 				description:
-					'Configure how n8n extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
+					'Configure how MNI extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
 				required: true,
 			},
 		];
@@ -518,13 +518,13 @@ export class LoadNodesAndCredentials {
 				},
 			],
 			description:
-				'Configure how n8n extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
+				'Configure how MNI extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
 		};
 
 		// Create a notice that always appears after the hooks collection
 		const contextHooksNotice: INodeProperties = {
 			displayName:
-				'Configure how n8n extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
+				'Configure how MNI extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
 			name: 'contextHooksNotice',
 			type: 'notice',
 			default: '',

@@ -8,7 +8,7 @@ import { test } from '../../../fixtures/base';
  * @n8n/ai-utilities install context.
  *
  * The fix replaces LangChain's PDFLoader with N8nPdfLoader (pdf-parse@2 backed).
- * This test exercises the end-to-end path on the real n8n runtime, using
+ * This test exercises the end-to-end path on the real MNI runtime, using
  * FakeEmbeddings so the workflow can complete without external API keys.
  */
 test.describe(
@@ -16,7 +16,7 @@ test.describe(
 	{ annotation: [{ type: 'owner', description: 'AI' }] },
 	() => {
 		test('embeds a PDF through Default Data Loader → In-Memory Vector Store without the pdf-parse v1 error', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('AI-2505_pdf_embed_fake_embeddings.json');
 			await n8n.canvas.clickZoomToFitButton();

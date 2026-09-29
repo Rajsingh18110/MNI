@@ -22,7 +22,7 @@ test.describe(
 	},
 	() => {
 		test.describe('Support Chat', () => {
-			test('assistant returns code snippet', async ({ n8n, setupRequirements }) => {
+			test('assistant returns code snippet', async ({ MNI, setupRequirements }) => {
 				await setupRequirements(aiEnabledWithCodeSnippetRequirements);
 				await n8n.start.fromBlankCanvas();
 
@@ -38,13 +38,13 @@ test.describe(
 					'Show me an expression',
 				);
 				await expect(n8n.aiAssistant.getChatMessagesAssistant().first()).toContainText(
-					'To use expressions in n8n, follow these steps:',
+					'To use expressions in MNI, follow these steps:',
 				);
 				await expect(n8n.aiAssistant.getChatMessagesAssistant().first()).toContainText('New York');
 				await expect(n8n.aiAssistant.getCodeSnippet()).toHaveText('{{$json.body.city}}');
 			});
 
-			test('should send current context to support chat', async ({ n8n, setupRequirements }) => {
+			test('should send current context to support chat', async ({ MNI, setupRequirements }) => {
 				await setupRequirements(aiEnabledWithHttpWorkflowRequirements);
 
 				const chatRequests: ChatRequestBody[] = [];
@@ -72,7 +72,7 @@ test.describe(
 			});
 
 			test('should not send workflow context if nothing changed', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(aiEnabledWithHttpWorkflowRequirements);

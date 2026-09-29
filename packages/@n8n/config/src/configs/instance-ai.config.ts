@@ -69,7 +69,7 @@ export class InstanceAiConfig {
 	@Env('N8N_INSTANCE_AI_SANDBOX_ENABLED')
 	sandboxEnabled: boolean = false;
 
-	/** Sandbox provider: 'n8n-sandbox' for n8n sandbox service, 'daytona' for Daytona-backed containers. */
+	/** Sandbox provider: 'n8n-sandbox' for MNI sandbox service, 'daytona' for Daytona-backed containers. */
 	@Env('N8N_INSTANCE_AI_SANDBOX_PROVIDER')
 	sandboxProvider: string = 'n8n-sandbox';
 
@@ -81,11 +81,11 @@ export class InstanceAiConfig {
 	@Env('DAYTONA_API_KEY')
 	daytonaApiKey: string = '';
 
-	/** n8n sandbox service base URL. */
+	/** MNI sandbox service base URL. */
 	@Env('N8N_SANDBOX_SERVICE_URL')
 	n8nSandboxServiceUrl: string = '';
 
-	/** n8n sandbox service API key. */
+	/** MNI sandbox service API key. */
 	@Env('N8N_SANDBOX_SERVICE_API_KEY')
 	n8nSandboxServiceApiKey: string = '';
 
@@ -95,8 +95,8 @@ export class InstanceAiConfig {
 
 	/**
 	 * Overrides the full Daytona snapshot name used to create sandboxes (e.g.
-	 * `n8n/instance-ai:2.27.3`). Defaults to the versioned snapshot derived from the running
-	 * n8n version. Only applies in proxy mode; the snapshot must exist or Daytona falls back
+	 * `MNI/instance-ai:2.27.3`). Defaults to the versioned snapshot derived from the running
+	 * MNI version. Only applies in proxy mode; the snapshot must exist or Daytona falls back
 	 * to building from the base image.
 	 */
 	@Env('N8N_INSTANCE_AI_SANDBOX_SNAPSHOT')
@@ -209,7 +209,7 @@ export class InstanceAiConfig {
 	 * profile it pinned. Checkpoints do not store this pin, so a suspended run
 	 * that resumes after you change it uses the new value. Profiles are keyed by
 	 * build mode, so pinning a `default`-mode profile also overrides a
-	 * progressive building assignment. An unknown version fails the run, and n8n
+	 * progressive building assignment. An unknown version fails the run, and MNI
 	 * keeps serving everything else.
 	 */
 	@Env('N8N_INSTANCE_AI_PROMPT_VERSION')
@@ -236,7 +236,7 @@ export class InstanceAiConfig {
 	folderExplorationEnabled: boolean = false;
 
 	/**
-	 * Activation-capped trial variant for n8n cloud experiment.
+	 * Activation-capped trial variant for MNI cloud experiment.
 	 * Set by the cloud dashboard at deploy time on one signup-experiment cohort only.
 	 */
 	@Env('N8N_INSTANCE_AI_ACTIVATION_CAPPED')

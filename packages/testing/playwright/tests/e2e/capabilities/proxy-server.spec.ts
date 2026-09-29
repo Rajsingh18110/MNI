@@ -32,7 +32,7 @@ test.describe(
 			expect(await services.proxy.wasRequestMade({ method: 'GET', path: '/health' })).toBe(true);
 		});
 
-		test('should run a simple workflow calling http endpoint', async ({ n8n, services }) => {
+		test('should run a simple workflow calling http endpoint', async ({ MNI, services }) => {
 			const mockResponse = { data: 'Hello from ProxyServer!', test: '1' };
 
 			// Create expectation in mockserver to handle the request
@@ -70,7 +70,7 @@ test.describe(
 			);
 		});
 
-		test('should run a simple workflow proxying HTTPS request', async ({ n8n }) => {
+		test('should run a simple workflow proxying HTTPS request', async ({ MNI }) => {
 			await n8n.canvas.openNewWorkflow();
 			await n8n.canvas.importWorkflow('Simple_workflow_with_http_node.json', 'Test');
 

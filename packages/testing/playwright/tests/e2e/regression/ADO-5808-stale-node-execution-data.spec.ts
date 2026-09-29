@@ -8,7 +8,7 @@ test.describe(
 	},
 	() => {
 		test('should not show the deleted node execution data on a new node reusing its name', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('ADO-5808-erroring-code-node.json');
 

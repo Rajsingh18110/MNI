@@ -305,7 +305,7 @@ export interface BuildResult {
 	 *  otherwise be scored as an agent failure. */
 	priorRunFailed?: string;
 	/** Evidence that the MODEL PROVIDER, not the builder, failed this build (a
-	 *  5xx/429 upstream of the n8n instance). Set only after the retry budget is
+	 *  5xx/429 upstream of the MNI instance). Set only after the retry budget is
 	 *  spent. Routed to `framework_issue` with `PROVIDER_OUTAGE_ROOT_CAUSE`, so an
 	 *  outage never lands in the builder's baseline. */
 	providerOutage?: string;
@@ -374,7 +374,7 @@ export function scrubLocalSecretsFromBuild(build: BuildResult): BuildResult {
 	Object.assign(build, redacted);
 
 	// The facts ride separately only because `leakHaystacks` is keyed on their
-	// identity. `valueProbe.detail` is n8n's message from a credential test fired
+	// identity. `valueProbe.detail` is MNI's message from a credential test fired
 	// at the REAL provider, so it can quote the key back.
 	if (facts.valueProbe) {
 		let probe = facts.valueProbe;
@@ -412,7 +412,7 @@ function localScrubPrefixes(facts: CredentialSetupRunFacts): string[] {
 }
 
 /** Apply a local run's scrub to anything fetched AFTER the build was scrubbed —
- *  run debug is re-read from n8n and would otherwise reach the report raw.
+ *  run debug is re-read from MNI and would otherwise reach the report raw.
  *  Throws on an unscrubale local run, exactly like the build scrub. */
 export function redactLocalRunSecrets<T>(value: T, facts?: CredentialSetupRunFacts): T {
 	if (!facts?.local) return value;
@@ -450,7 +450,7 @@ export interface CredentialSetupRunFacts {
 	 *  agent's work. */
 	foreignCredentialIds?: string[];
 	/** Provider-API stand-in for the credential test, when the fixture ships one
-	 *  AND n8n can reach it. Undefined => the value check is DISCARDED (reported
+	 *  AND MNI can reach it. Undefined => the value check is DISCARDED (reported
 	 *  unverifiable) rather than failed. */
 	verifyBaseUrl?: string;
 	/** Result of running the credential's own test against that stand-in.
@@ -514,7 +514,7 @@ export interface BuildWorkflowConfig {
 	 *  read it from. */
 	credentialSetupType?: string;
 	/** Which case this build is, and which repeat of it. Recorded on the thread
-	 *  as sourceContext, which n8n surfaces on the LangSmith trace — the only
+	 *  as sourceContext, which MNI surfaces on the LangSmith trace — the only
 	 *  thing that distinguishes one build from the hundreds of near-identical
 	 *  ones a suite produces. */
 	caseIdentity?: { fileSlug: string; iteration: number };
@@ -880,7 +880,7 @@ export async function buildWorkflow(config: BuildWorkflowConfig): Promise<BuildR
 				}
 				seedAgentsBySeedId = new Map(restoredAgents);
 				// `folderIds` is positional to `folders`. Cleanup needs the ROOT folders
-				// only: n8n's folder delete cascades to the subfolders.
+				// only: MNI's folder delete cascades to the subfolders.
 				restoredFolderIds = remapped.folders.flatMap((folder, index) =>
 					folder.parentFolderId === undefined ? [restoreResult.folderIds[index]] : [],
 				);

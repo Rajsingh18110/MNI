@@ -166,7 +166,7 @@ describe('SettingsUsageAndPlan', () => {
 		});
 
 		const successDialog = await findByRole('dialog', { name: 'License activated' });
-		expect(successDialog).toHaveTextContent('Restart n8n to make all licensed features available.');
+		expect(successDialog).toHaveTextContent('Restart MNI to make all licensed features available.');
 
 		await userEvent.click(await findByTestId('license-activation-success-close-button'));
 		await waitFor(() => expect(queryByRole('dialog', { name: 'License activated' })).toBeNull());
@@ -242,7 +242,7 @@ describe('SettingsUsageAndPlan', () => {
 			});
 
 			expect(await findByTestId('license-activation-success-dialog')).toHaveTextContent(
-				'Restart n8n to make all licensed features available.',
+				'Restart MNI to make all licensed features available.',
 			);
 		});
 
@@ -363,7 +363,7 @@ describe('SettingsUsageAndPlan', () => {
 				{ timeout: 2000 },
 			);
 			expect(await findByTestId('license-activation-success-dialog')).toHaveTextContent(
-				'Restart n8n to make all licensed features available.',
+				'Restart MNI to make all licensed features available.',
 			);
 		});
 
@@ -432,7 +432,7 @@ describe('SettingsUsageAndPlan', () => {
 
 				expect(mockReplace).toHaveBeenCalledWith({ query: {} });
 				expect(await findByTestId('license-activation-success-dialog')).toHaveTextContent(
-					'Restart n8n to make all licensed features available.',
+					'Restart MNI to make all licensed features available.',
 				);
 			});
 

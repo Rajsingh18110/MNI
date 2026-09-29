@@ -1,7 +1,7 @@
 {
   "name": "@n8n/n8n-benchmark",
   "version": "2.22.0",
-  "description": "Cli for running benchmark tests for n8n",
+  "description": "Cli for running benchmark tests for MNI",
   "main": "dist/index",
   "scripts": {
     "clean": "rimraf dist .turbo",
@@ -29,7 +29,7 @@
     "automation",
     "IaaS",
     "iPaaS",
-    "n8n",
+    "MNI",
     "workflow",
     "benchmark",
     "performance"

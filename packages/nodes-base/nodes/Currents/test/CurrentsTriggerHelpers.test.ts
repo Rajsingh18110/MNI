@@ -291,7 +291,7 @@ describe('CurrentsTriggerHelpers', () => {
 				url: 'https://example.com/webhook',
 				hookEvents: ['RUN_FINISH', 'RUN_START'],
 				headers: '{"x-webhook-secret":"secret123"}',
-				label: 'n8n workflow 456',
+				label: 'MNI workflow 456',
 			};
 
 			(mockHookFunctions.helpers!.httpRequestWithAuthentication as Mock).mockResolvedValue({
@@ -302,7 +302,7 @@ describe('CurrentsTriggerHelpers', () => {
 				url: 'https://example.com/webhook',
 				hookEvents: ['RUN_FINISH', 'RUN_START'],
 				headers: '{"x-webhook-secret":"secret123"}',
-				label: 'n8n workflow 456',
+				label: 'MNI workflow 456',
 			});
 
 			expect(mockHookFunctions.helpers!.httpRequestWithAuthentication).toHaveBeenCalledWith(
@@ -315,7 +315,7 @@ describe('CurrentsTriggerHelpers', () => {
 						url: 'https://example.com/webhook',
 						hookEvents: ['RUN_FINISH', 'RUN_START'],
 						headers: '{"x-webhook-secret":"secret123"}',
-						label: 'n8n workflow 456',
+						label: 'MNI workflow 456',
 					},
 				},
 			);

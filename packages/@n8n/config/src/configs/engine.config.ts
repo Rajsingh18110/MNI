@@ -17,7 +17,7 @@ export type EngineMode = z.infer<typeof engineModeSchema>;
 export class EngineConfig {
 	/**
 	 * Where the data plane runs. `in-process`: this main hosts it. `remote`:
-	 * another process hosts it (`n8n engine`), and this main runs only the
+	 * another process hosts it (`MNI engine`), and this main runs only the
 	 * control plane side. Remote mode needs `N8N_ENGINE_BASE_URL` and
 	 * `N8N_ENGINE_AUTH_SECRET`.
 	 *

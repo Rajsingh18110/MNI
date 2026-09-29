@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { fromLcTool, getParametersJsonSchema } from '../../converters/tool';
 
 describe('fromLcTool', () => {
-	it('converts StructuredTool (schema + invoke) to N8n function tool', () => {
+	it('converts StructuredTool (schema + invoke) to MNI function tool', () => {
 		const tool = {
 			name: 'search',
 			description: 'Search the web',
@@ -23,7 +23,7 @@ describe('fromLcTool', () => {
 		});
 	});
 
-	it('converts DynamicStructuredTool (schema + func) to N8n function tool', () => {
+	it('converts DynamicStructuredTool (schema + func) to MNI function tool', () => {
 		const tool = {
 			name: 'calculator',
 			description: 'Do math',
@@ -41,7 +41,7 @@ describe('fromLcTool', () => {
 		});
 	});
 
-	it('converts tool with name and schema (no invoke/func) to N8n function tool', () => {
+	it('converts tool with name and schema (no invoke/func) to MNI function tool', () => {
 		const tool = {
 			name: 'lookup',
 			description: 'Look up data',
@@ -58,7 +58,7 @@ describe('fromLcTool', () => {
 		});
 	});
 
-	it('converts FunctionDefinition (function + type === "function") to N8n function tool', () => {
+	it('converts FunctionDefinition (function + type === "function") to MNI function tool', () => {
 		const parameters: JSONSchema7 = {
 			type: 'object',
 			properties: { query: { type: 'string' } },

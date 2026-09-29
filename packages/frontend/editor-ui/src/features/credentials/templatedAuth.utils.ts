@@ -7,7 +7,7 @@ import { CREDENTIAL_BLANKING_VALUE, jsonParse } from 'n8n-workflow';
  * the template's `{{marker}}`s are the source of truth for which inputs a
  * simple view renders; placeholder defs only contribute labels and masking.
  *
- * Markers are NOT n8n expressions: they are plain named placeholders that the
+ * Markers are NOT MNI expressions: they are plain named placeholders that the
  * server substitutes per JSON leaf with stored values, never evaluated (an
  * agent/user-supplied template must not become an eval surface). Expressions
  * only appear as placeholder *values* (e.g. `={{ $secrets.vault.key }}`),

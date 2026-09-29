@@ -1,7 +1,7 @@
 {
 	"id": "4.1-authenticated-api-docs",
 	"category": "browser",
-	"prompt": "I want to set up an n8n HTTP Request node to query Linear's API. Open Linear's API settings page in my browser (https://linear.app/settings/account/api) — I'm already logged in there — and tell me: what API endpoint URL Linear uses for its GraphQL API, what auth header n8n's HTTP Request node will need, and roughly how many personal API keys are currently shown on the page. Don't copy or echo any actual key value back to me; just describe what the page shows.",
+	"prompt": "I want to set up an MNI HTTP Request node to query Linear's API. Open Linear's API settings page in my browser (https://linear.app/settings/account/api) — I'm already logged in there — and tell me: what API endpoint URL Linear uses for its GraphQL API, what auth header MNI's HTTP Request node will need, and roughly how many personal API keys are currently shown on the page. Don't copy or echo any actual key value back to me; just describe what the page shows.",
 	"budgets": { "maxToolCalls": 40, "maxDurationMs": 600000 },
 	"graders": [
 		{ "type": "trace.mustCallMcpServer", "server": "computer-use" },

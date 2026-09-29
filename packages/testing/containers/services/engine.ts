@@ -2,13 +2,13 @@
  * How the stack runs engine v2.
  *
  * `in-process` enables the `engine-v2` backend module, so the data plane runs
- * inside the main container. `container` starts a separate `n8n engine`
+ * inside the main container. `container` starts a separate `MNI engine`
  * container as the data plane and runs the main in remote mode. The engine
  * container has no control plane database access.
  *
  * Two functions build the env, one per plane:
  * - `applyEngineEnv`: the main (control plane), in both modes.
- * - `engineContainerEnv`: the `n8n engine` container (data plane), in
+ * - `engineContainerEnv`: the `MNI engine` container (data plane), in
  *   `container` mode only.
  */
 export type EngineMode = 'in-process' | 'container';

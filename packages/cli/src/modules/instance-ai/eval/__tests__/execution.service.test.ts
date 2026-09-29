@@ -544,7 +544,7 @@ describe('EvalExecutionService', () => {
 				expect(workflowRunner.run).not.toHaveBeenCalled();
 				expect(result.success).toBe(false);
 				expect(result.errors[0]).toMatch(
-					/^Execution failed: n8n refused to start the workflow: .*'HTTP Request' node has issues:\n- Not a valid Jira Project ID/,
+					/^Execution failed: MNI refused to start the workflow: .*'HTTP Request' node has issues:\n- Not a valid Jira Project ID/,
 				);
 				expect(result.nodeResults['HTTP Request']?.configIssues).toBeDefined();
 				expect(result.nodeResults.Webhook?.executionMode).not.toBe('pinned');

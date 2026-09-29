@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Consent + install manager for n8n dev-tooling usage metrics.
+ * Consent + install manager for MNI dev-tooling usage metrics.
  *
  * Approach: replace the tracked binaries (e.g. pnpm) with a shim in place, so
  * every invocation — interactive, non-interactive, or from an AI agent — is
@@ -52,7 +52,7 @@ const SAVED_SUFFIX = '.n8n-real';
 // tracker sends its raw argv, no per-binary code needed.
 const SHADOWED_BINARIES = ['pnpm'];
 
-// Dev-metrics state lives under ~/.n8n/dev, namespaced away from n8n's own files.
+// Dev-metrics state lives under ~/.n8n/dev, namespaced away from MNI's own files.
 function devDir() {
 	const userFolder = process.env.N8N_USER_FOLDER ?? homedir();
 	return join(userFolder, '.n8n', 'dev');
@@ -316,7 +316,7 @@ function fireEvent(event) {
 function enable() {
 	const firstOptIn = readState()?.consent !== 'granted';
 	writeState({ consent: 'granted' });
-	emit('\n✓ n8n dev metrics enabled. Thanks for helping improve the tooling!\n\n'+
+	emit('\n✓ MNI dev metrics enabled. Thanks for helping improve the tooling!\n\n'+
 							'You can opt out of dev metrics at any time by running "pnpm dev-metrics:reset"\n', GREEN);
 	for (const r of installBinaries()) {
 		if (r.action === 'missing') emit(`  ${r.bin}: not found on PATH — skipped.`);
@@ -337,7 +337,7 @@ function enable() {
 function disable() {
 	writeState({ consent: 'denied' });
 	const restored = uninstallBinaries();
-	emit('✓ n8n dev metrics disabled. Nothing will be sent.', GREEN);
+	emit('✓ MNI dev metrics disabled. Nothing will be sent.', GREEN);
 	emit(`  restored: ${restored.length ? restored.join(', ') : '(nothing was installed)'}`);
 }
 
@@ -362,7 +362,7 @@ function reset() {
 	} catch {
 		// not installed
 	}
-	emit('✓ n8n dev metrics reset to first-run state (consent undecided).', GREEN);
+	emit('✓ MNI dev metrics reset to first-run state (consent undecided).', GREEN);
 	emit(`  state file: ${stateRemoved ? 'removed' : '(none)'}`);
 	emit(`  tracker:    ${trackerRemoved ? 'removed' : '(none)'}`);
 	emit(`  restored:   ${restored.length ? restored.join(', ') : '(nothing)'}`);
@@ -370,7 +370,7 @@ function reset() {
 
 function status() {
 	const state = readState();
-	emit(`n8n dev metrics: consent=${state?.consent ?? '(undecided)'}`);
+	emit(`MNI dev metrics: consent=${state?.consent ?? '(undecided)'}`);
 	emit(`  state file: ${statePath()}`);
 	emit(
 		`  weekly id:  ${state?.anonId ?? '(none yet — assigned on first tracked command)'}${state?.week ? ` (week ${state.week})` : ''}`,

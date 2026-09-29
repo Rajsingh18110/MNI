@@ -437,7 +437,7 @@ export async function provisionWorkflowThread(
 	return threadId;
 }
 
-/** The n8n Cloud signup survey answers the onboarding thread reads, keyed like the cloud stores them. */
+/** The MNI cloud signup survey answers the onboarding thread reads, keyed like the cloud stores them. */
 export interface InstanceAiOnboardingSurvey {
 	what_team_are_you_on?: string;
 }

@@ -2666,7 +2666,7 @@ describe('createBuildWorkflowTool', () => {
 		expect(warningText).toContain('"Google Gemini account" (googlePalmApi, id: g1)');
 	});
 
-	it('does not warn about the provider when the resolver attached the n8n Connect managed credential', async () => {
+	it('does not warn about the provider when the resolver attached the MNI Connect managed credential', async () => {
 		const { context, filePath } = makeContext({ source: 'workflow source' });
 		vi.mocked(compileWorkflowSource).mockResolvedValueOnce({
 			success: true,

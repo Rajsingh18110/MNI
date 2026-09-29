@@ -18,7 +18,7 @@ const telegramNode = {
 		resource: 'message',
 		operation: 'sendMessage',
 		chatId: '123456789',
-		text: 'Hello from n8n!',
+		text: 'Hello from MNI!',
 	},
 };
 
@@ -85,7 +85,7 @@ const slackNode = {
 			value: 'C01234567',
 		},
 		messageType: 'text',
-		text: 'Hello from n8n!',
+		text: 'Hello from MNI!',
 	},
 };
 

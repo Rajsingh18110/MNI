@@ -131,7 +131,7 @@ export function createEmailBodyWithN8nAttribution(
 						<td>
 							<a href=${n8nWebsiteLink}
 								target="_blank" style="color: #7e8186; text-decoration: none;">Automated with
-								n8n</a>
+								MNI</a>
 						</td>
 					</tr>
 				</table>

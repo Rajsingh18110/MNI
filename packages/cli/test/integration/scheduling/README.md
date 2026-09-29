@@ -33,7 +33,7 @@ without it) and reuse the scheduling-integration scripts, filtered by file name.
 
 ```sh
 # SQLite
-N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:sqlite scheduler-benchmarks
+N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks
 
 # Postgres via testcontainers (needs Docker; on Colima add the socket override)
 N8N_SCHEDULER_BENCHMARK=1 \
@@ -41,7 +41,7 @@ N8N_SCHEDULER_BENCHMARK=1 \
   pnpm --filter n8n test:postgres:integration:tc scheduler-benchmarks
 
 # Postgres against a running instance (DB_POSTGRESDB_* set)
-N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:postgres scheduler-benchmarks
+N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres scheduler-benchmarks
 ```
 
 Default run: ~50s SQLite, ~110s Postgres (laptop-class). Results print to stdout
@@ -49,7 +49,7 @@ via `console.log`, one block per benchmark; nothing is written to disk. Vitest
 buffers per-test logs, so capture with a redirect:
 
 ```sh
-N8N_SCHEDULER_BENCHMARK=1 pnpm --filter n8n test:sqlite scheduler-benchmarks > bench.log 2>&1
+N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks > bench.log 2>&1
 grep -A20 'scheduler-benchmark ·' bench.log
 ```
 

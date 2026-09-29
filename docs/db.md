@@ -1,6 +1,6 @@
 # Database
 
-n8n persists its state in a relational database, accessed through TypeORM. The
+MNI persists its state in a relational database, accessed through TypeORM. The
 schema supports both SQLite (the default) and PostgreSQL, and is defined by the
 **migrations** in `@n8n/db` rather than the entities (entities run with
 `synchronize: false`).

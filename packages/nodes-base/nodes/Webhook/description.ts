@@ -8,15 +8,15 @@ import { fromFunction, fromParameter, webhookDescriptionFields } from 'n8n-workf
 
 import { getResponseCode, getResponseData } from './utils';
 
-// The Webhook node's "n8n User Auth (OAuth2)" mode. Seeds the triggering user's
+// The Webhook node's "MNI user Auth (OAuth2)" mode. Seeds the triggering user's
 // identity into the execution so the workflow can use that user's private
 // credentials. Shares the `n8nOAuth2` value with the MCP trigger's equivalent mode.
 // Only offered by nodes that pass `includeN8nOAuth2` (not Wait).
 const n8nOAuth2AuthOption: INodePropertyOptions = {
 	// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-	name: 'n8n User Auth (OAuth2)',
+	name: 'MNI user Auth (OAuth2)',
 	value: 'n8nOAuth2',
-	description: 'Require user to give consent to use their n8n account',
+	description: 'Require user to give consent to use their MNI account',
 };
 
 // Each field declares its expression template and native resolver in one place:
@@ -72,12 +72,12 @@ export const credentialsProperty = (
 
 export const inboundTriggerAuthenticationBuilderHint = {
 	propertyHint:
-		"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
+		"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
 };
 
 export const authenticationProperty = (
 	propertyName = 'authentication',
-	// The "n8n User Auth (OAuth2)" mode seeds the triggering user's identity into
+	// The "MNI user Auth (OAuth2)" mode seeds the triggering user's identity into
 	// the execution, which only the Webhook node's `webhook()` flow supports. It is
 	// opt-in so it isn't exposed on nodes that reuse this property (e.g. Wait).
 	includeN8nOAuth2 = false,
@@ -108,13 +108,13 @@ export const authenticationProperty = (
 	// The auth method is a mode selector, never a runtime value. Disallowing
 	// expressions keeps the stored parameter equal to the resolved one, so the
 	// webhook execution layer (which reads the raw parameter to decide whether to
-	// pre-initialize execution data for the n8n Identity flow) can't diverge from
+	// pre-initialize execution data for the MNI Identity flow) can't diverge from
 	// what the node resolves at runtime.
 	noDataExpression: true,
 	description: 'The way to authenticate',
 });
 
-// Toggle deciding whether `workflow:execute` is enforced on top of the n8n User
+// Toggle deciding whether `workflow:execute` is enforced on top of the MNI user
 // Auth (OAuth2) mode. Mirrors the MCP trigger's equivalent parameter, including
 // its on-by-default semantics (`node.parameters.requireExecuteAccess !== false`).
 // Only relevant while the n8nOAuth2 mode is selected, so it is hidden otherwise.
@@ -390,7 +390,7 @@ export const optionsProperty: INodeProperties = {
 					name: 'Auto-Detect',
 					value: 'auto',
 					description:
-						'Redirect browser navigations through the n8n login; require a bearer token from everything else',
+						'Redirect browser navigations through the MNI login; require a bearer token from everything else',
 				},
 				{
 					name: 'Bearer Token Only',
@@ -400,7 +400,7 @@ export const optionsProperty: INodeProperties = {
 				{
 					name: 'Browser (Virtual Client)',
 					value: 'browser',
-					description: 'Always redirect GET requests without a bearer token through the n8n login',
+					description: 'Always redirect GET requests without a bearer token through the MNI login',
 				},
 			],
 			default: 'auto',
@@ -408,7 +408,7 @@ export const optionsProperty: INodeProperties = {
 			// The resolvers read the raw value to grant `isFirstParty`, so it must be static.
 			noDataExpression: true,
 			description:
-				'How a request without a bearer token is handled when using n8n User Auth (OAuth2). Only GET requests can be redirected.',
+				'How a request without a bearer token is handled when using MNI user Auth (OAuth2). Only GET requests can be redirected.',
 		},
 		{
 			displayName: 'Raw Body',

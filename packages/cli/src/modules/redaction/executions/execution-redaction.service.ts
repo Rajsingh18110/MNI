@@ -372,8 +372,8 @@ export class ExecutionRedactionService implements ExecutionRedaction {
 	 * that resolved private credentials, where everyone else is still redacted.
 	 *
 	 * Reads `runtimeData.executedByUserId`, set during credential resolution to
-	 * the n8n user a dynamic credential resolved to (covers both manual and
-	 * chat-hub runs). It is absent when the resolved identity isn't an n8n user
+	 * the MNI user a dynamic credential resolved to (covers both manual and
+	 * chat-hub runs). It is absent when the resolved identity isn't an MNI user
 	 * (external Slack/OAuth resolvers) or when no dynamic credential resolved, so
 	 * `undefined` will never strict-equal the requester's id: a single comparison
 	 * covers both the "no attributable user" and "different user" cases, falling

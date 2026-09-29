@@ -216,7 +216,7 @@ export class TestPage {
 		createFile(
 			'/tests/test.spec.ts',
 			`
-const n8n = getFixture();
+const MNI = getFixture();
 n8n.page.container.click();
 `,
 		);

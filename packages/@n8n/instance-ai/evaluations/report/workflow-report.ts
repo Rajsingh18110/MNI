@@ -536,7 +536,7 @@ function renderExecutionLink(
 	if (!baseUrl || !workflowId || !sr.evalResult?.executionId) return '';
 	const href = executionUrl(baseUrl, workflowId, sr.evalResult.executionId);
 	// stopPropagation prevents the click from also toggling the parent header.
-	return `<a class="execution-link" href="${href}" target="_blank" rel="noopener" onclick="event.stopPropagation()">view in n8n →</a>`;
+	return `<a class="execution-link" href="${href}" target="_blank" rel="noopener" onclick="event.stopPropagation()">view in MNI →</a>`;
 }
 
 function renderScenario(
@@ -1441,7 +1441,7 @@ function renderTestCase(result: WorkflowTestCaseResult, tcIndex: number): string
 
 	const workflowLink =
 		result.workflowId && result.n8nBaseUrl
-			? `<a class="workflow-link" href="${workflowUrl(result.n8nBaseUrl, result.workflowId)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">open in n8n →</a>`
+			? `<a class="workflow-link" href="${workflowUrl(result.n8nBaseUrl, result.workflowId)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">open in MNI →</a>`
 			: '';
 
 	const llmDebugLink =

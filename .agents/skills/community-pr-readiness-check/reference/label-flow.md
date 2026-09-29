@@ -81,7 +81,7 @@ If the user picks `Skip` at the "post this comment?" prompt, leave the PR on `tr
 
 ## status:* labels
 
-These are independent of the triage state and signal where the PR sits in the n8n internal flow:
+These are independent of the triage state and signal where the PR sits in the MNI internal flow:
 
 | Label                       | Applied when                                       |
 |-----------------------------|----------------------------------------------------|

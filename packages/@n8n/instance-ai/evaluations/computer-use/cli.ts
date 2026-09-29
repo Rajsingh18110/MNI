@@ -3,7 +3,7 @@
 // Computer-use eval CLI
 //
 // Discovers scenario JSON files under evaluations/computer-use/data/, runs
-// them sequentially against a local n8n instance, prints a summary, and
+// them sequentially against a local MNI instance, prints a summary, and
 // exits non-zero when any scenario fails. Designed for the prompt-tuning
 // inner loop — fast feedback, no LangSmith dependency.
 // ---------------------------------------------------------------------------
@@ -260,7 +260,7 @@ async function main(): Promise<void> {
 
 	const manifest = await collectManifest();
 	logger.info(
-		`Manifest: git ${manifest.gitRef}, daemon ${manifest.daemonVersion}, n8n ${manifest.n8nVersion}`,
+		`Manifest: git ${manifest.gitRef}, daemon ${manifest.daemonVersion}, MNI ${manifest.n8nVersion}`,
 	);
 
 	const startedAt = new Date().toISOString();

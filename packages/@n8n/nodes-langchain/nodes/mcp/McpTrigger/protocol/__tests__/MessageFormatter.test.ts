@@ -280,9 +280,9 @@ describe('MessageFormatter', () => {
 						credentialId: 'cred-1',
 						credentialName: 'My Slack',
 						credentialType: 'slackOAuth2Api',
-						resolverId: 'n8n',
+						resolverId: 'MNI',
 						status: 'missing',
-						authorizationUrl: 'https://n8n.test/rest/credentials/cred-1/authorize?resolverId=n8n',
+						authorizationUrl: 'https://n8n.test/rest/credentials/cred-1/authorize?resolverId=MNI',
 					},
 				],
 			};
@@ -293,7 +293,7 @@ describe('MessageFormatter', () => {
 			expect(result.content[0].text).toContain('My Slack (slackOAuth2Api)');
 			// The URL is emitted raw on its own line (not wrapped in prose).
 			expect(result.content[0].text.split('\n')).toContain(
-				'https://n8n.test/rest/credentials/cred-1/authorize?resolverId=n8n',
+				'https://n8n.test/rest/credentials/cred-1/authorize?resolverId=MNI',
 			);
 			// The structured field carries the full result (raw URLs) for programmatic clients.
 			expect(result.credentialGate).toEqual(gateResult);
@@ -307,14 +307,14 @@ describe('MessageFormatter', () => {
 						credentialId: 'cred-ok',
 						credentialName: 'Connected Cred',
 						credentialType: 'githubOAuth2Api',
-						resolverId: 'n8n',
+						resolverId: 'MNI',
 						status: 'configured',
 					},
 					{
 						credentialId: 'cred-missing',
 						credentialName: 'Missing Cred',
 						credentialType: 'notionOAuth2Api',
-						resolverId: 'n8n',
+						resolverId: 'MNI',
 						status: 'missing',
 						authorizationUrl: 'https://n8n.test/authorize',
 					},

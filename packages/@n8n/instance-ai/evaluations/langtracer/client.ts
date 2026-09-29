@@ -12,7 +12,7 @@ const suiteListSchema = z.array(suiteSummarySchema);
 const exportedSuiteSchema = z.object({
 	suite: z.string(),
 	count: z.number(),
-	/** `<case-name>.json` → raw exported case body (n8n WorkflowTestCase shape). */
+	/** `<case-name>.json` → raw exported case body (MNI WorkflowTestCase shape). */
 	files: z.record(z.unknown()),
 });
 

@@ -39,7 +39,7 @@ test.describe(
 			expect(await response.json()).toEqual({ id: INSTANCE_OWNER_CREDENTIALS.email });
 		});
 
-		test('ui-only', async ({ n8n }) => {
+		test('ui-only', async ({ MNI }) => {
 			record({ type: 'body' });
 			n8n.page.once('close', () => record({ type: 'page-closed' }));
 			const response = await n8n.page.goto('/consumer');
@@ -47,7 +47,7 @@ test.describe(
 			await expect(n8n.page.getByRole('heading')).toHaveText(INSTANCE_OWNER_CREDENTIALS.email);
 		});
 
-		test('combined', { tag: ['@db:reset', '@auth:member'] }, async ({ api, n8n }) => {
+		test('combined', { tag: ['@db:reset', '@auth:member'] }, async ({ api, MNI }) => {
 			record({ type: 'body' });
 			const response = await api.request.get('/identity');
 			expect(response.ok()).toBe(true);
@@ -62,7 +62,7 @@ test.describe(
 			expect(await services.mailpit.list()).toEqual([]);
 		});
 
-		test('body-failure', async ({ n8n }) => {
+		test('body-failure', async ({ MNI }) => {
 			record({ type: 'body' });
 			n8n.page.once('close', () => record({ type: 'page-closed' }));
 			await n8n.page.goto('/consumer');

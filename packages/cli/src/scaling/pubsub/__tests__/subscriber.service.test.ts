@@ -18,7 +18,7 @@ describe('Subscriber', () => {
 	const client = mock<SingleNodeClient>();
 	const redisClientService = mock<RedisClientService>({ createClient: () => client });
 	const executionsConfig = mockInstance(ExecutionsConfig, { mode: 'queue' });
-	const globalConfig = mockInstance(GlobalConfig, { redis: { prefix: 'n8n' } });
+	const globalConfig = mockInstance(GlobalConfig, { redis: { prefix: 'MNI' } });
 
 	function getHandler(event: string) {
 		const call = client.on.mock.calls.find(([e]) => e === event);
@@ -84,7 +84,7 @@ describe('Subscriber', () => {
 			const commandChannel = subscriber.getCommandChannel();
 			await subscriber.subscribe(commandChannel);
 
-			expect(client.subscribe).toHaveBeenCalledWith('n8n:n8n.commands', expect.any(Function));
+			expect(client.subscribe).toHaveBeenCalledWith('MNI:n8n.commands', expect.any(Function));
 		});
 	});
 
@@ -111,9 +111,9 @@ describe('Subscriber', () => {
 			getHandler('ready')();
 			await vi.waitFor(() => expect(client.subscribe).toHaveBeenCalledTimes(2));
 
-			expect(client.subscribe).toHaveBeenCalledWith('n8n:n8n.commands', expect.any(Function));
+			expect(client.subscribe).toHaveBeenCalledWith('MNI:n8n.commands', expect.any(Function));
 			expect(client.subscribe).toHaveBeenCalledWith(
-				'n8n:n8n.worker-response',
+				'MNI:n8n.worker-response',
 				expect.any(Function),
 			);
 		});
@@ -198,7 +198,7 @@ describe('Subscriber', () => {
 			await vi.advanceTimersByTimeAsync(30_000 + 10_000);
 
 			expect(client.subscribe).toHaveBeenCalledTimes(1);
-			expect(client.subscribe).toHaveBeenCalledWith('n8n:n8n.commands', 'n8n:n8n.worker-response');
+			expect(client.subscribe).toHaveBeenCalledWith('MNI:n8n.commands', 'MNI:n8n.worker-response');
 			expect(client.disconnect).not.toHaveBeenCalled();
 			subscriber.shutdown();
 		});
@@ -290,8 +290,8 @@ describe('Subscriber', () => {
 
 			const messageHandler = getMessageHandler();
 
-			messageHandler('n8n:n8n.commands', makeCommandMsg('reload-license', true));
-			messageHandler('n8n:n8n.commands', makeCommandMsg('reload-external-secrets-providers', true));
+			messageHandler('MNI:n8n.commands', makeCommandMsg('reload-license', true));
+			messageHandler('MNI:n8n.commands', makeCommandMsg('reload-external-secrets-providers', true));
 
 			vi.advanceTimersByTime(300);
 
@@ -316,9 +316,9 @@ describe('Subscriber', () => {
 
 			const messageHandler = getMessageHandler();
 
-			messageHandler('n8n:n8n.commands', makeCommandMsg('reload-license', true));
-			messageHandler('n8n:n8n.commands', makeCommandMsg('reload-license', true));
-			messageHandler('n8n:n8n.commands', makeCommandMsg('reload-license', true));
+			messageHandler('MNI:n8n.commands', makeCommandMsg('reload-license', true));
+			messageHandler('MNI:n8n.commands', makeCommandMsg('reload-license', true));
+			messageHandler('MNI:n8n.commands', makeCommandMsg('reload-license', true));
 
 			vi.advanceTimersByTime(300);
 
@@ -339,7 +339,7 @@ describe('Subscriber', () => {
 
 			const messageHandler = getMessageHandler();
 
-			messageHandler('n8n:n8n.commands', makeCommandMsg('reload-license', true));
+			messageHandler('MNI:n8n.commands', makeCommandMsg('reload-license', true));
 
 			expect((subscriber as any).debouncedHandlers.size).toBe(1);
 
@@ -365,11 +365,11 @@ describe('Subscriber', () => {
 			const payloadA = { packageName: 'pkg-a', packageVersion: '1.0.0' };
 			const payloadB = { packageName: 'pkg-b', packageVersion: '1.0.0' };
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('community-package-install', true, payloadA),
 			);
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('community-package-install', true, payloadB),
 			);
 
@@ -395,11 +395,11 @@ describe('Subscriber', () => {
 
 			const payload = { packageName: 'pkg-a', packageVersion: '1.0.0' };
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('community-package-install', true, payload),
 			);
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('community-package-install', true, payload),
 			);
 
@@ -424,7 +424,7 @@ describe('Subscriber', () => {
 
 			const payload = { workflowId: 'wf-1', activeVersionId: 'v-1', activationMode: 'init' };
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('add-webhooks-triggers-and-pollers', false, payload),
 			);
 
@@ -451,11 +451,11 @@ describe('Subscriber', () => {
 			const payload1 = { workflowId: 'wf-1', activeVersionId: 'v-1' };
 			const payload2 = { workflowId: 'wf-2', activeVersionId: 'v-2' };
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('display-workflow-activation', false, payload1),
 			);
 			messageHandler(
-				'n8n:n8n.commands',
+				'MNI:n8n.commands',
 				makeCommandMsg('display-workflow-activation', false, payload2),
 			);
 
@@ -496,7 +496,7 @@ describe('Subscriber', () => {
 				response: { test: true },
 			};
 
-			messageHandler('n8n:n8n.mcp-relay', JSON.stringify(relayMsg));
+			messageHandler('MNI:n8n.mcp-relay', JSON.stringify(relayMsg));
 
 			expect(mockHandler).toHaveBeenCalledWith(relayMsg);
 		});
@@ -524,7 +524,7 @@ describe('Subscriber', () => {
 			const messageHandler = messageHandlerCall![1] as (channel: string, msg: string) => void;
 
 			// Send malformed message (missing required fields)
-			messageHandler('n8n:n8n.mcp-relay', JSON.stringify({ invalid: true }));
+			messageHandler('MNI:n8n.mcp-relay', JSON.stringify({ invalid: true }));
 
 			expect(mockHandler).not.toHaveBeenCalled();
 			// The scoped logger is what's actually used internally
@@ -550,7 +550,7 @@ describe('Subscriber', () => {
 			};
 
 			// Should not throw when handler is not set
-			expect(() => messageHandler('n8n:n8n.mcp-relay', JSON.stringify(relayMsg))).not.toThrow();
+			expect(() => messageHandler('MNI:n8n.mcp-relay', JSON.stringify(relayMsg))).not.toThrow();
 		});
 	});
 });

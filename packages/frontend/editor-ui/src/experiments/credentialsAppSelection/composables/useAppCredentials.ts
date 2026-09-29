@@ -29,7 +29,7 @@ export interface AppEntry {
 	installed: boolean;
 	// For community nodes that need installation
 	packageName?: string;
-	// true = bundled with n8n, false = community node
+	// true = bundled with MNI, false = community node
 	isBundled: boolean;
 	// For bundled: popularity rank (lower = more popular)
 	// For community: number of downloads (higher = more popular)

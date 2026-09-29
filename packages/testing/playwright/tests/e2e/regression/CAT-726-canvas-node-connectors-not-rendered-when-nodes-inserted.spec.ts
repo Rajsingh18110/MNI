@@ -8,7 +8,7 @@ test.describe(
 	},
 	() => {
 		test('should correctly append a No Op node when Loop Over Items node is added (from add button)', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: true });

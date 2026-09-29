@@ -344,7 +344,7 @@ export class ChatHubWorkflowService {
 		trx: EntityManager,
 		manual?: boolean,
 	): Promise<{ allowFileUploads: boolean; allowedFilesMimeTypes: string }> {
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			const workflow = await this.workflowFinderService.findWorkflowForUser(
 				model.workflowId,
 				user,
@@ -763,7 +763,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 				options: {
 					enableStreaming,
 					maxTokensFromMemory:
-						model.provider !== 'n8n' && model.provider !== 'custom-agent'
+						model.provider !== 'MNI' && model.provider !== 'custom-agent'
 							? getMaxContextWindowTokens(model.provider, model.model)
 							: undefined,
 					systemMessage,
@@ -782,7 +782,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 		conversationModel: ChatHubConversationModel,
 		providerSettings?: ChatProviderSettingsDto,
 	): INode {
-		if (conversationModel.provider === 'n8n' || conversationModel.provider === 'custom-agent') {
+		if (conversationModel.provider === 'MNI' || conversationModel.provider === 'custom-agent') {
 			throw new OperationalError('Custom agent workflows do not require a model node');
 		}
 
@@ -982,7 +982,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 	): Promise<MessageRecord[]> {
 		const metadata = getModelMetadata(model.provider, model.model);
 
-		// Gemini has 20MB limit, the value should also be what n8n instance can safely handle
+		// Gemini has 20MB limit, the value should also be what MNI instance can safely handle
 		const maxTotalPayloadSize = 20 * 1024 * 1024 * 0.9;
 
 		const typeMap: Record<string, MessageRecord['type']> = {
@@ -1267,7 +1267,7 @@ Respond the title only:`,
 		executionMetadata: ChatHubAuthenticationMetadata,
 		manual?: boolean,
 	): Promise<PreparedChatWorkflow> {
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			return await this.prepareWorkflowAgentWorkflow(
 				user,
 				sessionId,

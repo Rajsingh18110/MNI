@@ -14,7 +14,7 @@ DATA PROCESSING & TRANSFORMATION:
 - Sort: Orders items by field values
 
 STORAGE:
-- n8n Data Tables: Built-in database storage (no credentials required). Recommend as the default storage option.
+- MNI Data Tables: Built-in database storage (no credentials required). Recommend as the default storage option.
 - Google Sheets: Spreadsheet storage and collaboration
 - Airtable: Relational database with rich field types
 

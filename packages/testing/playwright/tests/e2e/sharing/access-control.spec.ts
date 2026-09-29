@@ -10,7 +10,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should prevent credential editing by sharee', async ({ n8n, api }) => {
+		test('should prevent credential editing by sharee', async ({ MNI, api }) => {
 			const member = await api.publicApi.createUser({
 				email: `member-${nanoid()}@test.com`,
 				firstName: 'Test',
@@ -39,7 +39,7 @@ test.describe(
 		});
 
 		test('should allow admin full access to credentials created by others', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			const member = await api.publicApi.createUser({
@@ -110,7 +110,7 @@ test.describe(
 			expect(response.status()).toBe(403);
 		});
 
-		test('should enforce project isolation for team projects', async ({ n8n, api }) => {
+		test('should enforce project isolation for team projects', async ({ MNI, api }) => {
 			await api.setMaxTeamProjectsQuota(-1);
 
 			const devProject = await api.projects.createProject(`Development ${nanoid()}`);
@@ -144,7 +144,7 @@ test.describe(
 			await expect(n8n.ndv.credentials.getOptionByText(devCredName)).toBeHidden();
 		});
 
-		test('should prevent sharing team project workflows', async ({ n8n, api }) => {
+		test('should prevent sharing team project workflows', async ({ MNI, api }) => {
 			const teamProject = await api.projects.createProject(`Team Project ${nanoid()}`);
 			const teamWorkflow = await api.workflows.createInProject(teamProject.id, {
 				name: `Team Workflow ${nanoid()}`,

@@ -30,7 +30,7 @@ import { setupTestRequirements } from '../utils/requirements';
 import { getBackendUrl, getFrontendUrl } from '../utils/url-helper';
 
 type TestFixtures = {
-	n8n: n8nPage;
+	MNI: n8nPage;
 	api: ApiHelpers;
 	baseURL: string;
 	setupRequirements: (requirements: TestRequirements) => Promise<void>;
@@ -213,11 +213,11 @@ export const test = base.extend<
 		{ scope: 'worker' },
 	],
 
-	// The n8n URL as seen from *inside* the stack, for specs that make n8n itself
+	// The MNI URL as seen from *inside* the stack, for specs that make MNI itself
 	// call it (an HTTP Request node, a webhook destination). Under container
 	// projects the node runs in a main or worker container, where the host-mapped
 	// `backendUrl` port does not exist - use the network alias instead. Locally
-	// there are no containers and n8n shares the host's loopback, so they match.
+	// there are no containers and MNI shares the host's loopback, so they match.
 	internalUrl: [
 		async ({ n8nContainer, backendUrl }, use) => {
 			await use(n8nContainer?.internalMainUrls[0] ?? backendUrl);
@@ -251,7 +251,7 @@ export const test = base.extend<
 		await use(frontendUrl);
 	},
 
-	n8n: async ({ context, n8nStackConfig }, use, testInfo) => {
+	MNI: async ({ context, n8nStackConfig }, use, testInfo) => {
 		const apiOptions = { workflowSettings: workflowSettingsFor(n8nStackConfig) };
 		await setupDefaultInterceptors(context);
 		const page = await context.newPage();
@@ -340,9 +340,9 @@ export const test = base.extend<
 		}
 	},
 
-	setupRequirements: async ({ n8n, context }, use) => {
+	setupRequirements: async ({ MNI, context }, use) => {
 		const setupFunction = async (requirements: TestRequirements): Promise<void> => {
-			await setupTestRequirements(n8n, context, requirements);
+			await setupTestRequirements(MNI, context, requirements);
 		};
 
 		await use(setupFunction);
@@ -360,10 +360,10 @@ export type { A11yBucket, A11yCheckOptions, A11yViolation } from './a11y';
 /*
 Fixture Dependency Graph:
 Worker: capability + project.containerConfig → n8nStackConfig → n8nContainer → [backendUrl, frontendUrl, dbSetup]
-Test:   frontendUrl + dbSetup → baseURL → n8n (uses backendUrl for API calls)
+Test:   frontendUrl + dbSetup → baseURL → MNI (uses backendUrl for API calls)
         backendUrl → api
         n8nContainer → services
-        n8n → a11y
+        MNI → a11y
 
 n8nStackConfig: Resolved N8NConfig (topology-neutral, always produced)
 n8nContainer:   Container lifecycle (stop, containers, mainUrls, etc.)

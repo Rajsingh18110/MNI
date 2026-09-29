@@ -26,7 +26,7 @@ test.describe(
 	},
 	() => {
 		test('does not show assistant button if feature is disabled', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(aiDisabledRequirements);
@@ -37,7 +37,7 @@ test.describe(
 );
 
 test.describe('AI Assistant::enabled', () => {
-	test('renders placeholder UI', async ({ n8n, setupRequirements }) => {
+	test('renders placeholder UI', async ({ MNI, setupRequirements }) => {
 		await setupRequirements(aiEnabledRequirements);
 		await n8n.start.fromBlankCanvas();
 
@@ -60,7 +60,7 @@ test.describe('AI Assistant::enabled', () => {
 		await expect(n8n.aiAssistant.getAskAssistantChat()).toBeHidden();
 	});
 
-	test('should show resizer when chat is open', async ({ n8n, setupRequirements }) => {
+	test('should show resizer when chat is open', async ({ MNI, setupRequirements }) => {
 		await setupRequirements(aiEnabledRequirements);
 		await n8n.start.fromBlankCanvas();
 
@@ -75,7 +75,7 @@ test.describe('AI Assistant::enabled', () => {
 		await n8n.aiAssistant.getCloseChatButton().click();
 	});
 
-	test('should start chat session from node error view', async ({ n8n, setupRequirements }) => {
+	test('should start chat session from node error view', async ({ MNI, setupRequirements }) => {
 		await setupRequirements(aiEnabledWithWorkflowRequirements);
 
 		await n8n.canvas.openNode('Stop and Error');
@@ -94,7 +94,7 @@ test.describe('AI Assistant::enabled', () => {
 		);
 	});
 
-	test('should render chat input correctly', async ({ n8n, setupRequirements }) => {
+	test('should render chat input correctly', async ({ MNI, setupRequirements }) => {
 		await setupRequirements(aiEnabledWithWorkflowRequirements);
 
 		await n8n.aiAssistant.getAskAssistantCanvasActionButton().click();
@@ -119,7 +119,7 @@ test.describe('AI Assistant::enabled', () => {
 		await expect(n8n.aiAssistant.getChatInput()).toHaveValue('');
 	});
 
-	test('should render and handle quick replies', async ({ n8n, setupRequirements }) => {
+	test('should render and handle quick replies', async ({ MNI, setupRequirements }) => {
 		await setupRequirements(aiEnabledWithQuickRepliesRequirements);
 
 		await n8n.canvas.openNode('Stop and Error');
@@ -141,7 +141,7 @@ test.describe('AI Assistant::enabled', () => {
 		await expect(n8n.aiAssistant.getChatMessagesUser().first()).toContainText("Sure, let's do it");
 	});
 
-	test('should warn before starting a new session', async ({ n8n, setupRequirements }) => {
+	test('should warn before starting a new session', async ({ MNI, setupRequirements }) => {
 		await setupRequirements(aiEnabledWithWorkflowRequirements);
 
 		await n8n.canvas.openNode('Edit Fields');
@@ -170,7 +170,7 @@ test.describe('AI Assistant::enabled', () => {
 	});
 
 	test('should end chat session when `end_session` event is received', async ({
-		n8n,
+		MNI,
 		setupRequirements,
 	}) => {
 		await setupRequirements(aiEnabledWithEndSessionRequirements);
@@ -191,7 +191,7 @@ test.describe('AI Assistant::enabled', () => {
 	});
 
 	test('should reset session after it ended and sidebar is closed', async ({
-		n8n,
+		MNI,
 		setupRequirements,
 	}) => {
 		await setupRequirements(aiEnabledRequirements);
@@ -209,7 +209,7 @@ test.describe('AI Assistant::enabled', () => {
 								role: 'assistant',
 								type: 'message',
 								title: 'Glad to Help',
-								text: "I'm glad I could help. If you have any more questions or need further assistance with your n8n workflows, feel free to ask!",
+								text: "I'm glad I could help. If you have any more questions or need further assistance with your MNI workflows, feel free to ask!",
 							},
 							{
 								role: 'assistant',
@@ -249,7 +249,7 @@ test.describe('AI Assistant::enabled', () => {
 	});
 
 	test('should not reset assistant session when workflow is saved', async ({
-		n8n,
+		MNI,
 		setupRequirements,
 	}) => {
 		await setupRequirements(aiEnabledWithSimpleChatRequirements);
@@ -270,7 +270,7 @@ test.describe('AI Assistant::enabled', () => {
 	});
 
 	test('should send message via shift + enter even with global NodeCreator panel opened', async ({
-		n8n,
+		MNI,
 		setupRequirements,
 	}) => {
 		await setupRequirements(aiEnabledWithSimpleChatRequirements);

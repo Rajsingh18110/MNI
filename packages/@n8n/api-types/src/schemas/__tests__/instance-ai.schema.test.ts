@@ -1397,7 +1397,7 @@ describe('instanceAiEvalSeedFolderSchema', () => {
 		expect(errorOf(result)).toContain('/');
 	});
 
-	it("applies n8n's own folder name rules", () => {
+	it("applies MNI's own folder name rules", () => {
 		expect(instanceAiEvalSeedFolderSchema.safeParse(folder({ name: '' })).success).toBe(false);
 		expect(instanceAiEvalSeedFolderSchema.safeParse(folder({ name: '...' })).success).toBe(false);
 		expect(instanceAiEvalSeedFolderSchema.safeParse(folder({ name: '.hidden' })).success).toBe(

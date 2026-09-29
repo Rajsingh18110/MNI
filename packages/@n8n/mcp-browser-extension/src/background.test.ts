@@ -300,7 +300,7 @@ describe('external messages (direct connect flow)', () => {
 		expect(chromeMock.tabs.update).not.toHaveBeenCalled();
 	});
 
-	it('rejects a relay URL that is not a recognized n8n instance', async () => {
+	it('rejects a relay URL that is not a recognized MNI instance', async () => {
 		const response = await simulateExternalMessage(
 			{ type: 'connect', relayUrl: 'wss://evil.example.com/relay' },
 			ALLOWED_ORIGIN,

@@ -10,7 +10,7 @@
  *   output: [assistant{tool-call}, tool{tool-result}, user{x}, assistant{y}]
  *
  * The tool-result is inserted right after its tool-call, regardless of what
- * messages follow it in the n8n list.
+ * messages follow it in the MNI list.
  */
 import type { ModelMessage } from 'ai';
 import { describe, it, expect } from 'vitest';
@@ -396,7 +396,7 @@ describe('toAiMessages + fromAiMessages — round-trip', () => {
 						type: 'tool-call',
 						toolCallId: 'tc-json',
 						toolName: 'search',
-						input: '{"query":"n8n"}',
+						input: '{"query":"MNI"}',
 						state: 'resolved',
 						output: {},
 					},
@@ -436,7 +436,7 @@ describe('toAiMessages + fromAiMessages — round-trip', () => {
 			}
 		).content;
 
-		expect(assistantParts.map((part) => part.input)).toEqual([{ query: 'n8n' }, {}, {}, {}]);
+		expect(assistantParts.map((part) => part.input)).toEqual([{ query: 'MNI' }, {}, {}, {}]);
 	});
 
 	it('preserves content tool outputs when building tool ModelMessages', () => {
@@ -800,7 +800,7 @@ describe('toAiMessages + fromAiMessages — round-trip', () => {
 	it('round-trips provider-executed tool results inside the assistant message', () => {
 		// Native web search: the AI SDK places the result in the assistant message,
 		// never in a role:tool message.
-		const results = [{ url: 'https://n8n.io', title: 'n8n', type: 'web_search_result' }];
+		const results = [{ url: 'https://n8n.io', title: 'MNI', type: 'web_search_result' }];
 		const searchError = { type: 'web_search_tool_result_error', errorCode: 'max_uses_exceeded' };
 		const error = JSON.stringify(searchError);
 		const aiMessages: ModelMessage[] = [
@@ -811,7 +811,7 @@ describe('toAiMessages + fromAiMessages — round-trip', () => {
 						type: 'tool-call',
 						toolCallId: 'srvtoolu_1',
 						toolName: 'web_search',
-						input: { query: 'n8n' },
+						input: { query: 'MNI' },
 						providerExecuted: true,
 					},
 					{
@@ -891,7 +891,7 @@ describe('toAiMessages + fromAiMessages — round-trip', () => {
 
 	it('interim-message ordering: tool-result is inserted right after its tool-call', () => {
 		// This is the key regression test for the interim-message scenario.
-		// Input n8n list: [assistant{tool-call resolved}, user{x}, assistant{y}]
+		// Input MNI list: [assistant{tool-call resolved}, user{x}, assistant{y}]
 		// Expected AI SDK output: [assistant{tc}, tool{tr}, user{x}, assistant{y}]
 		const input: Message[] = [
 			{

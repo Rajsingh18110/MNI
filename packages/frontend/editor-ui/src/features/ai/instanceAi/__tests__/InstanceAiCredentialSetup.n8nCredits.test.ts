@@ -23,7 +23,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {
-			if (key === 'aiGateway.credentialMode.n8nConnect.title') return 'n8n credits';
+			if (key === 'aiGateway.credentialMode.n8nConnect.title') return 'MNI credits';
 			if (opts?.interpolate) {
 				return Object.entries(opts.interpolate).reduce(
 					(str, [k, v]) => str.replace(`{${k}}`, v),
@@ -35,7 +35,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 	}),
 }));
 
-// Enable the n8n credits option.
+// Enable the MNI credits option.
 vi.mock('@/app/composables/useAiGateway', () => ({
 	useAiGateway: vi.fn(() => ({
 		isEnabled: ref(true),
@@ -124,7 +124,7 @@ describe('InstanceAiCredentialSetup - with real NodeCredentials', () => {
 		});
 	});
 
-	it('registers n8n credits selection and submits the managed tag', async () => {
+	it('registers MNI credits selection and submits the managed tag', async () => {
 		const confirmSpy = vi.spyOn(thread, 'confirmAction').mockResolvedValue(true);
 
 		renderComponent({
@@ -185,7 +185,7 @@ describe('InstanceAiCredentialSetup - with real NodeCredentials', () => {
 
 		const select = screen.getByTestId('node-credentials-select');
 		// Real credentials are listed, so the empty-slice path must not have
-		// auto-enabled n8n credits behind the user's back.
+		// auto-enabled MNI credits behind the user's back.
 		expect(select.querySelector('[data-icon="wallet"]')).toBeNull();
 
 		await userEvent.click(select);

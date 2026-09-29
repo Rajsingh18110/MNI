@@ -55,7 +55,7 @@ describe('DbConnection', () => {
 		port: 5432,
 		username: 'user',
 		password: 'password',
-		database: 'n8n',
+		database: 'MNI',
 		migrations,
 	};
 
@@ -368,7 +368,7 @@ describe('DbConnection', () => {
 			);
 		});
 
-		it('should return null for a database type n8n does not configure', async () => {
+		it('should return null for a database type MNI does not configure', async () => {
 			await expect(newConnection('mysql').getDbVersion()).resolves.toBeNull();
 			expect(dataSource.query).not.toHaveBeenCalled();
 		});

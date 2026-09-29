@@ -27,7 +27,7 @@ describe('N8nNonEstimatingTracing', () => {
 				configuration: {
 					baseURL: 'https://api.openai.com/v1',
 					defaultHeaders: {
-						'User-Agent': 'n8n',
+						'User-Agent': 'MNI',
 						authorization: 'Bearer My_secret_API_key123456789',
 						'x-secret-header': 'My_secret_API_key123456789',
 					},
@@ -52,7 +52,7 @@ describe('N8nNonEstimatingTracing', () => {
 			const persistedHeaders = getPersistedHeaders();
 			expect(persistedHeaders['x-secret-header']).toBe('**********');
 			// non-declared header is untouched
-			expect(persistedHeaders['User-Agent']).toBe('n8n');
+			expect(persistedHeaders['User-Agent']).toBe('MNI');
 
 			// stored run details are masked the same way
 			const storedOptions = tracer.runsMap['run-123'].options as {

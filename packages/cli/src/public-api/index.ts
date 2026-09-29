@@ -107,7 +107,7 @@ function createLazySwaggerMiddleware(
 
 			const swaggerSetupOpts = {
 				customCss: swaggerThemeCss,
-				customSiteTitle: 'n8n Public API UI',
+				customSiteTitle: 'MNI Public API UI',
 				customfavIcon: `${n8nPath}favicon.ico`,
 				swaggerOptions: {
 					plugins: [scopeBadgePlugin],

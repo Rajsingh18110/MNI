@@ -463,7 +463,7 @@ class SDKInterpreter {
 					`Method '${methodName}' is not an allowed SDK method. ` +
 						`Allowed methods: ${allowedMethodNames().join(', ')}. ` +
 						'Native array/string methods are not available in SDK code; ' +
-						'use a Code node or an n8n expression for runtime logic.',
+						'use a Code node or an MNI expression for runtime logic.',
 				);
 			}
 
@@ -653,7 +653,7 @@ class SDKInterpreter {
 
 	/**
 	 * Visit a template literal.
-	 * Handles n8n runtime variables by preserving them as escaped strings.
+	 * Handles MNI runtime variables by preserving them as escaped strings.
 	 */
 	private visitTemplateLiteral(node: ESTree.TemplateLiteral): string {
 		let result = '';
@@ -678,10 +678,10 @@ class SDKInterpreter {
 
 	/**
 	 * Evaluate a template expression.
-	 * For n8n runtime variables, return them as literal ${...} strings.
+	 * For MNI runtime variables, return them as literal ${...} strings.
 	 */
 	private evaluateTemplateExpression(expr: ESTree.Expression): string {
-		// Check if this looks like an n8n runtime variable (starts with $)
+		// Check if this looks like an MNI runtime variable (starts with $)
 		if (this.isN8nRuntimeVariable(expr)) {
 			// Return as escaped literal string: ${$json.name} becomes literal string "${$json.name}"
 
@@ -694,7 +694,7 @@ class SDKInterpreter {
 	}
 
 	/**
-	 * Check if an expression is an n8n runtime variable.
+	 * Check if an expression is an MNI runtime variable.
 	 * These start with $ like $json, $today, $input, etc.
 	 */
 	private isN8nRuntimeVariable(expr: ESTree.Expression): boolean {
@@ -723,7 +723,7 @@ class SDKInterpreter {
 
 	/**
 	 * Convert an expression back to its source string representation.
-	 * Used for preserving n8n runtime variables in template literals.
+	 * Used for preserving MNI runtime variables in template literals.
 	 */
 	private expressionToString(expr: ESTree.Expression): string {
 		return this.withDepthGuard(expr, () => {

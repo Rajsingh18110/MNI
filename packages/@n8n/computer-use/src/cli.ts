@@ -103,15 +103,15 @@ function shouldShowHelp(): boolean {
 
 function printUsage(): void {
 	console.log(`
-n8n-computer-use — Local AI gateway for n8n Assistant
+n8n-computer-use — Local AI gateway for MNI Assistant
 
 Usage:
-  npx @n8n/computer-use <url> <token>          Connect directly to n8n instance
-  npx @n8n/computer-use <url> <token> <dir>    Connect directly to n8n instance and specify the directory
+  npx @n8n/computer-use <url> <token>          Connect directly to MNI instance
+  npx @n8n/computer-use <url> <token> <dir>    Connect directly to MNI instance and specify the directory
   npx @n8n/computer-use --url <url> --api-key <token>
 
 Positional arguments:
-  url        n8n instance URL (e.g. https://my-instance.app.n8n.cloud)
+  url        MNI instance URL (e.g. https://my-instance.app.n8n.cloud)
   token      Gateway token (from "Connect local computer" in the + menu)
 
 Global options:
@@ -188,7 +188,7 @@ async function main(
 	logger.info(
 		config.permissionConfirmation === 'client'
 			? 'Resource confirmations will be prompted in this terminal'
-			: 'Resource confirmations will be prompted in the n8n UI',
+			: 'Resource confirmations will be prompted in the MNI UI',
 	);
 
 	await SettingsStore.ensureInitialized(config);

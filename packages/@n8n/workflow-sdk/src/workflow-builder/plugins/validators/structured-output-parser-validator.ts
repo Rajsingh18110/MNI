@@ -8,7 +8,7 @@
  *   values; JSON Schema belongs in `schemaType: "manual"` + `inputSchema`.
  *
  * Applies to Structured Output Parser, Information Extractor, Code Tool, and
- * Call n8n Workflow Tool (v1 schema mode).
+ * Call MNI Workflow Tool (v1 schema mode).
  */
 
 import { isRecord } from '@n8n/utils/is-record';
@@ -24,7 +24,7 @@ const NODE_LABELS = new Map<string, string>([
 	['@n8n/n8n-nodes-langchain.outputParserStructured', 'Structured Output Parser'],
 	['@n8n/n8n-nodes-langchain.informationExtractor', 'Information Extractor'],
 	['@n8n/n8n-nodes-langchain.toolCode', 'Code Tool'],
-	['@n8n/n8n-nodes-langchain.toolWorkflow', 'Call n8n Workflow Tool'],
+	['@n8n/n8n-nodes-langchain.toolWorkflow', 'Call MNI Workflow Tool'],
 ]);
 
 function usesFromJsonExample(

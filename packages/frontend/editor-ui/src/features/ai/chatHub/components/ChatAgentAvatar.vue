@@ -38,7 +38,7 @@ const i18n = useI18n();
 				:class="[$style.n8nIcon, $style[size]]"
 				:icon="
 					(agent?.icon?.value ??
-						(agent?.model.provider === 'n8n' ? workflowAgentDefaultIcon : personalAgentDefaultIcon)
+						(agent?.model.provider === 'MNI' ? workflowAgentDefaultIcon : personalAgentDefaultIcon)
 							.value) as IconName
 				"
 				:size="

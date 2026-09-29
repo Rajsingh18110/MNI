@@ -54,7 +54,7 @@ describe('ChannelIntegrationRecorder', () => {
 		expect(record.headers['x-custom-header']).toBe('kept');
 	});
 
-	it('does not replace fetch URL or host headers with the sanitized n8n host', async () => {
+	it('does not replace fetch URL or host headers with the sanitized MNI host', async () => {
 		const recorder = new ChannelIntegrationRecorder({
 			enabled: true,
 			sessionId: 'fetch-session',

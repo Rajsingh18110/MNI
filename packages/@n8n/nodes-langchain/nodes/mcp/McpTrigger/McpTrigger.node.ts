@@ -71,7 +71,7 @@ export class McpTrigger extends Node {
 		},
 		group: ['trigger'],
 		version: [1, 1.1, 2, 2.1],
-		description: 'Expose n8n tools as an MCP Server endpoint',
+		description: 'Expose MNI tools as an MCP Server endpoint',
 		activationMessage:
 			'You can now connect your MCP Clients to the URL, using SSE or Streamable HTTP transports.',
 		defaults: {
@@ -140,11 +140,11 @@ export class McpTrigger extends Node {
 				options: [
 					{ name: 'None', value: 'none' },
 					{
-						// n8n is a brand name and should be lowercase
+						// MNI is a brand name and should be lowercase
 						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-						name: 'n8n User Auth (OAuth2)',
+						name: 'MNI user Auth (OAuth2)',
 						value: 'n8nOAuth2',
-						description: 'Require user to give consent to use their n8n account',
+						description: 'Require user to give consent to use their MNI account',
 						displayOptions: { show: { '@version': [{ _cnd: { gte: 2 } }] } },
 					},
 					{ name: 'Bearer Auth', value: 'bearerAuth' },
@@ -154,7 +154,7 @@ export class McpTrigger extends Node {
 				description: 'The way to authenticate',
 				builderHint: {
 					propertyHint:
-						"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
+						"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
 				},
 			},
 			{
@@ -246,7 +246,7 @@ export class McpTrigger extends Node {
 				resp.end('OAuth2 authentication requires mcp trigger node v2.0 or higher');
 				return { noWebhookResponse: true };
 			}
-			const authResult = await n8nOAuth2Auth(context, { realm: 'n8n MCP Server' });
+			const authResult = await n8nOAuth2Auth(context, { realm: 'MNI MCP Server' });
 			if (authResult === 'handled') {
 				return { noWebhookResponse: true };
 			}
@@ -271,7 +271,7 @@ export class McpTrigger extends Node {
 
 		const node = context.getNode();
 
-		// n8n's own auth credential must never reach the tools — not here, and not on the
+		// MNI's own auth credential must never reach the tools — not here, and not on the
 		// worker, which rebuilds their input from `toolInput`. The caller's identity is
 		// surfaced as `user` instead, so tools never need the token to know who called.
 		const headers = redactedHeaders(req);

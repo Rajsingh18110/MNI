@@ -42,7 +42,7 @@
   "files": [
     "dist"
   ],
-  "n8n": {
+  "MNI": {
     "n8nNodesApiVersion": 1,
     "credentials": [
       "dist/credentials/AlibabaCloudApi.credentials.js",

@@ -14,7 +14,7 @@ test.describe(
 	},
 	() => {
 		test('can load workflows with Switch nodes with null at connection index @auth:owner', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements(requirements);

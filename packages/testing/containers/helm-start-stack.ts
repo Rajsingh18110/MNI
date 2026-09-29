@@ -23,20 +23,20 @@ const log = {
 
 function showHelp() {
 	console.log(`
-${colors.bright}n8n Helm Stack${colors.reset}
+${colors.bright}MNI Helm Stack${colors.reset}
 
-Start n8n via Helm chart in a K3s (lightweight Kubernetes) container.
+Start MNI via Helm chart in a K3s (lightweight Kubernetes) container.
 
 ${colors.yellow}Usage:${colors.reset}
   pnpm stack:helm [options]
 
 ${colors.yellow}Options:${colors.reset}
   --mode <mode>         standalone (SQLite, default) or queue (PostgreSQL + Redis + workers)
-  --image <image>       n8n Docker image (default: n8nio/n8n:local)
+  --image <image>       MNI Docker image (default: n8nio/n8n:local)
   --chart-ref <ref>     Git branch/tag for n8n-hosting repo (default: main)
   --chart-repo <url>    Git repo URL (default: https://github.com/n8n-io/n8n-hosting.git)
   --k3s-image <image>   K3s image (default: rancher/k3s:v1.32.2-k3s1)
-  --env <KEY=VALUE>     Set environment variable in n8n pods (repeatable)
+  --env <KEY=VALUE>     Set environment variable in MNI pods (repeatable)
   --url-file <path>     Write URL to file when ready (for CI)
   --help, -h            Show this help
 
@@ -44,11 +44,11 @@ ${colors.yellow}Examples:${colors.reset}
   ${colors.bright}# Start with default local image${colors.reset}
   pnpm stack:helm
 
-  ${colors.bright}# Test specific n8n version against specific chart${colors.reset}
-  pnpm stack:helm --image n8nio/n8n:1.80.0 --chart-ref v1.2.0
+  ${colors.bright}# Test specific MNI version against specific chart${colors.reset}
+  pnpm stack:helm --image n8nio/MNI:1.80.0 --chart-ref v1.2.0
 
   ${colors.bright}# Queue mode (PostgreSQL + Redis + workers)${colors.reset}
-  pnpm stack:helm --mode queue --image n8nio/n8n:latest
+  pnpm stack:helm --mode queue --image n8nio/MNI:latest
 
   ${colors.bright}# E2E test mode (requires INCLUDE_TEST_CONTROLLER image)${colors.reset}
   pnpm stack:helm --env E2E_TESTS=true --env NODE_ENV=development
@@ -59,7 +59,7 @@ ${colors.yellow}Examples:${colors.reset}
 ${colors.yellow}Prerequisites:${colors.reset}
   • Docker with privileged container support
   • helm and kubectl CLIs installed locally
-  • n8n Docker image built locally (pnpm build:docker) or available on Docker Hub
+  • MNI Docker image built locally (pnpm build:docker) or available on Docker Hub
   • See HELM-TESTING.md for full requirements
 
 ${colors.yellow}Notes:${colors.reset}
@@ -92,7 +92,7 @@ async function main() {
 		process.exit(0);
 	}
 
-	log.header('Starting n8n Helm Stack');
+	log.header('Starting MNI Helm Stack');
 
 	const mode = (values.mode as HelmStackMode) || undefined;
 
@@ -117,7 +117,7 @@ async function main() {
 	});
 
 	log.header('Stack Ready');
-	log.success(`n8n URL: ${colors.bright}${colors.green}${stack.baseUrl}${colors.reset}`);
+	log.success(`MNI URL: ${colors.bright}${colors.green}${stack.baseUrl}${colors.reset}`);
 	log.info(`Kubeconfig: ${colors.bright}${stack.kubeConfigPath}${colors.reset}`);
 
 	if (values['url-file']) {
@@ -133,7 +133,7 @@ async function main() {
 	console.log('');
 	log.info('Debug with kubectl (context already active):');
 	log.info(`  ${colors.bright}kubectl get pods${colors.reset}`);
-	log.info(`  ${colors.bright}kubectl logs -l app.kubernetes.io/name=n8n${colors.reset}`);
+	log.info(`  ${colors.bright}kubectl logs -l app.kubernetes.io/name=MNI${colors.reset}`);
 	console.log('');
 	log.info(`Cleanup: ${colors.bright}pnpm --filter n8n-containers stack:helm:clean${colors.reset}`);
 	console.log('');

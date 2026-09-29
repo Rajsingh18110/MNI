@@ -15,7 +15,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Subworkflow-extraction-workflow.json');
 
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(7);
@@ -29,7 +29,7 @@ test.describe(
 		});
 
 		test('should extract a single node, succeed execution, and undo successfully', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.rightClickNode(EDIT_FIELDS_NAMES[0]);
 
@@ -51,7 +51,7 @@ test.describe(
 		});
 
 		test('should extract all nodes besides trigger, succeed execution, and undo successfully', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.nodeByName(EDIT_FIELDS_NAMES[0]).click();
 
@@ -75,14 +75,14 @@ test.describe(
 		});
 
 		test.describe('disconnected branch extraction (ADO-4679)', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('Subworkflow-extraction-disconnected.json');
 
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(4);
 				await n8n.canvas.clickZoomToFitButton();
 			});
 
-			test('should extract a disconnected branch and connect it properly', async ({ n8n }) => {
+			test('should extract a disconnected branch and connect it properly', async ({ MNI }) => {
 				await n8n.canvas.nodeByName('Edit Fields Disconnected 1').click();
 				await n8n.canvas.extendSelectionWithArrows('right');
 

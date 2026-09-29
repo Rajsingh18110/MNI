@@ -19,7 +19,7 @@ const functionalityResultSchema = z.object({
 
 export type FunctionalityResult = z.infer<typeof functionalityResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing specifically on FUNCTIONAL CORRECTNESS.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing specifically on FUNCTIONAL CORRECTNESS.
 Your task is to evaluate whether a generated workflow correctly implements what the user EXPLICITLY requested.
 
 ## Your Role
@@ -66,7 +66,7 @@ Evaluate ONLY the functional aspects - whether the workflow achieves the intende
 - Ensure data transformations are implemented as requested
 - Remember: functional correctness is about meeting requirements, not perfection
 
-## n8n RAG Pipeline Pattern (CRITICAL - Do Not Misunderstand)
+## MNI RAG Pipeline Pattern (CRITICAL - Do Not Misunderstand)
 
 **Document Loader is a CAPABILITY-ONLY sub-node. It NEVER receives main data flow.**
 

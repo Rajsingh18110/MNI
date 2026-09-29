@@ -30,7 +30,7 @@ vi.mock('../GenericFunctions', () => ({
 }));
 
 const INBOUND_TRIGGER_AUTHENTICATION_BUILDER_HINT =
-	"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
+	"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.";
 
 describe('ChatTrigger Node', () => {
 	const mockContext = mock<IWebhookFunctions>();

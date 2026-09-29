@@ -15,7 +15,7 @@ export class SsrfBlockedHostnameError extends UserError {
 		super('The request was blocked because the destination hostname is restricted', {
 			description:
 				`The hostname '${hostname}' is on the configured deny-list. ` +
-				'If you need to reach this destination, ask your n8n administrator to remove it from ' +
+				'If you need to reach this destination, ask your MNI administrator to remove it from ' +
 				'the blocked hostnames or add it to the allowed hostnames in the environment configuration.',
 			extra: { hostname },
 		});

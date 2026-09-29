@@ -61,7 +61,7 @@ export const userTargetMessages = (label: string): UserTargetMessages => ({
 });
 
 /**
- * Rewrites Graph's 403 for a missing team-tag scope into copy that names the n8n action. Returns
+ * Rewrites Graph's 403 for a missing team-tag scope into copy that names the MNI action. Returns
  * `undefined` for every other error, so both tag call sites stay one line and the two
  * descriptions cannot drift apart.
  *
@@ -431,7 +431,7 @@ export function prepareMessage(
 			'n8n-nodes-base.microsoftTeams',
 		)}${instanceId ? '_' + instanceId : ''}`;
 		contentType = 'html';
-		message = `${message}<br><br><em> Powered by <a href="${link}">this n8n workflow</a> </em>`;
+		message = `${message}<br><br><em> Powered by <a href="${link}">this MNI workflow</a> </em>`;
 	}
 
 	const body: IDataObject = {

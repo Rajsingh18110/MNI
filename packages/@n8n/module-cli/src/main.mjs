@@ -108,7 +108,7 @@ const scaffold = async (args) => {
 };
 
 const create = defineCommand({
-	meta: { name: 'create', description: 'Scaffold a new n8n module' },
+	meta: { name: 'create', description: 'Scaffold a new MNI module' },
 	args: {
 		name: {
 			type: 'positional',
@@ -135,7 +135,7 @@ await runMain(
 	defineCommand({
 		meta: {
 			name: 'n8n-module-sdk',
-			description: 'Scaffold n8n modules (frontend, backend, or both)',
+			description: 'Scaffold MNI modules (frontend, backend, or both)',
 		},
 		subCommands: { create },
 	}),

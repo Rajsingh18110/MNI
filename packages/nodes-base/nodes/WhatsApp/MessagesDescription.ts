@@ -858,7 +858,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload an audio file',
+		description: 'Use a link, an ID, or MNI to upload an audio file',
 		options: [
 			{
 				name: 'Link',
@@ -873,7 +873,7 @@ export const messageTypeFields: INodeProperties[] = [
 			},
 			{
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-				name: 'n8n',
+				name: 'MNI',
 				value: 'useMedian8n',
 				description: 'Use binary data passed into this node',
 			},
@@ -890,7 +890,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload a document',
+		description: 'Use a link, an ID, or MNI to upload a document',
 		options: [
 			{
 				name: 'Link',
@@ -905,9 +905,9 @@ export const messageTypeFields: INodeProperties[] = [
 			},
 			{
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-				name: 'n8n',
+				name: 'MNI',
 				value: 'useMedian8n',
-				description: 'Upload a binary file on the item being processed in n8n',
+				description: 'Upload a binary file on the item being processed in MNI',
 			},
 		],
 		displayOptions: {
@@ -922,7 +922,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload an image',
+		description: 'Use a link, an ID, or MNI to upload an image',
 		options: [
 			{
 				name: 'Link',
@@ -937,9 +937,9 @@ export const messageTypeFields: INodeProperties[] = [
 			},
 			{
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-				name: 'n8n',
+				name: 'MNI',
 				value: 'useMedian8n',
-				description: 'Upload a binary file on the item being processed in n8n',
+				description: 'Upload a binary file on the item being processed in MNI',
 			},
 		],
 		displayOptions: {
@@ -954,7 +954,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload a video',
+		description: 'Use a link, an ID, or MNI to upload a video',
 		options: [
 			{
 				name: 'Link',
@@ -969,9 +969,9 @@ export const messageTypeFields: INodeProperties[] = [
 			},
 			{
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-				name: 'n8n',
+				name: 'MNI',
 				value: 'useMedian8n',
-				description: 'Upload a binary file on the item being processed in n8n',
+				description: 'Upload a binary file on the item being processed in MNI',
 			},
 		],
 		displayOptions: {

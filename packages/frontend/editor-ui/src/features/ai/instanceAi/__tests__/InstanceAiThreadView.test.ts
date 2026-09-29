@@ -998,7 +998,7 @@ describe('InstanceAiThreadView', () => {
 	describe('browser tab title', () => {
 		it('names the tab after the thread it opens', () => {
 			renderView({ props: { threadId: 'thread-1' } });
-			expect(document.title).toBe('Test thread - n8n');
+			expect(document.title).toBe('Test thread - MNI');
 		});
 
 		it('falls back to the feature title for a thread without a title', () => {
@@ -1008,7 +1008,7 @@ describe('InstanceAiThreadView', () => {
 
 			renderView({ props: { threadId: 'thread-1' } });
 
-			expect(document.title).toBe('n8n Assistant - n8n');
+			expect(document.title).toBe('MNI Assistant - MNI');
 		});
 
 		it('renames the tab when the thread gets a title', async () => {
@@ -1017,7 +1017,7 @@ describe('InstanceAiThreadView', () => {
 			store.threads = [{ ...store.threads[0], title: 'Renamed thread' }] as typeof store.threads;
 
 			await vi.waitFor(() => {
-				expect(document.title).toBe('Renamed thread - n8n');
+				expect(document.title).toBe('Renamed thread - MNI');
 			});
 		});
 	});

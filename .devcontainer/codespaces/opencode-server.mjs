@@ -183,7 +183,7 @@ async function resolveSession({ name, fresh, directory, server }) {
 	}
 	const response = await request(server, '/session', directory, {
 		method: 'POST',
-		body: JSON.stringify({ title: `n8n: ${name}` }),
+		body: JSON.stringify({ title: `MNI: ${name}` }),
 	});
 	if (!response.ok) throw new Error(`Cannot create OpenCode session (${response.status}).`);
 	const session = await response.json();
@@ -199,7 +199,7 @@ export async function prepareOpenCode({
 	workspaces = '/workspaces',
 } = {}) {
 	const stateDir = join(workspaces, '.n8n-opencode');
-	const mainDirectory = join(workspaces, 'n8n');
+	const mainDirectory = join(workspaces, 'MNI');
 	if (!/^\w[\w-]*$/.test(name)) throw new Error('Invalid OpenCode workspace name.');
 	mkdirSync(stateDir, { recursive: true, mode: 0o700 });
 	const directory = name === 'agent' ? mainDirectory : join(workspaces, `wt-${name}`);

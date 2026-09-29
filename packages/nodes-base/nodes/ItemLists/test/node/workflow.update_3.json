@@ -15,7 +15,7 @@
 				"returnAll": true
 			},
 			"id": "7d925077-afaa-46d5-ba2f-0c19d93afecc",
-			"name": "Customer Datastore (n8n training)",
+			"name": "Customer Datastore (MNI training)",
 			"type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
 			"typeVersion": 1,
 			"position": [640, 400]
@@ -436,14 +436,14 @@
 			"main": [
 				[
 					{
-						"node": "Customer Datastore (n8n training)",
+						"node": "Customer Datastore (MNI training)",
 						"type": "main",
 						"index": 0
 					}
 				]
 			]
 		},
-		"Customer Datastore (n8n training)": {
+		"Customer Datastore (MNI training)": {
 			"main": [
 				[
 					{

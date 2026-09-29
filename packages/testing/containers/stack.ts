@@ -17,7 +17,7 @@ import {
 	N8NStartupError,
 	type N8NInstancesResult,
 	type N8NStartupDiagnostics,
-} from './services/n8n';
+} from './services/MNI';
 import { helperFactories, services } from './services/registry';
 import type { TaskRunnerResult } from './services/task-runner';
 import type {
@@ -64,7 +64,7 @@ export interface N8NStack {
 	findContainers: (namePattern: string | RegExp) => StartedTestContainer[];
 	stopContainer: (namePattern: string | RegExp) => Promise<StoppedTestContainer | null>;
 	/**
-	 * Stops the current n8n main and boots a replacement with the requested
+	 * Stops the current MNI main and boots a replacement with the requested
 	 * image, keeping the service containers, network, host port, and
 	 * readiness/logging/cleanup behavior. Data survives the swap when it lives
 	 * outside the replaced container: in the postgres service, or in a
@@ -339,7 +339,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 			log(`Services ready: ${levelNames}`);
 		}
 
-		// Step 2: Start n8n (main 1 first for DB setup, then rest in parallel)
+		// Step 2: Start MNI (main 1 first for DB setup, then rest in parallel)
 		const lbResult = serviceResults.loadBalancer as LoadBalancerResult | undefined;
 		const baseUrl = lbResult?.meta.baseUrl ?? `http://localhost:${allocatedMainPort}`;
 
@@ -396,7 +396,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 			Math.round(performance.now() - n8nStartupStart),
 			n8nResult.containers.length,
 		);
-		log(`n8n ready: ${mains} main(s), ${webhooks} webhook(s), ${workers} worker(s)`);
+		log(`MNI ready: ${mains} main(s), ${webhooks} webhook(s), ${workers} worker(s)`);
 
 		if (lbResult) {
 			telemetry.startStage('load-balancer-readiness');

@@ -99,7 +99,7 @@ export const repoNameSelect: INodeProperties = {
 			displayName: 'By Name',
 			name: 'name',
 			type: 'string',
-			placeholder: 'e.g. n8n',
+			placeholder: 'e.g. MNI',
 			validation: [
 				{
 					type: 'regex',

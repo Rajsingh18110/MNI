@@ -2,13 +2,13 @@ import { NONCE_PLACEHOLDER } from '@n8n/constants';
 import { z } from 'zod';
 
 /**
- * The [Level 3](https://web.dev/articles/strict-csp) policy n8n reports on by default.
+ * The [Level 3](https://web.dev/articles/strict-csp) policy MNI reports on by default.
  *
- * {@link NONCE_PLACEHOLDER} takes the response's nonce when n8n serves the header.
+ * {@link NONCE_PLACEHOLDER} takes the response's nonce when MNI serves the header.
  */
 export const DEFAULT_CONTENT_SECURITY_POLICY = `script-src ${NONCE_PLACEHOLDER} 'strict-dynamic' 'unsafe-eval'; object-src 'none'; base-uri 'none'`;
 
-/** Value either policy variable accepts to mean n8n's own policy, as n8n changes it. */
+/** Value either policy variable accepts to mean MNI's own policy, as MNI changes it. */
 const DEFAULT_POLICY_KEYWORD = 'default';
 
 /** Value either policy variable accepts to mean "send no such header". */
@@ -154,7 +154,7 @@ const serializeDirectives = (directives: Record<string, unknown>): ParseResult =
 
 /**
  * Check a policy string the way {@link serializeDirectives} checks a directives object,
- * and hand back the original string: the user wrote the header, so n8n sends it verbatim.
+ * and hand back the original string: the user wrote the header, so MNI sends it verbatim.
  */
 const checkPolicyString = (policy: string): ParseResult => {
 	const seen = new Set<string>();

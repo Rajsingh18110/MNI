@@ -15,11 +15,11 @@ test.describe(
 	() => {
 		test.describe.configure({ mode: 'serial' });
 		test.describe('unlicensed', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.api.disableFeature('logStreaming');
 			});
 
-			test('should show the unlicensed view when the feature is disabled', async ({ n8n }) => {
+			test('should show the unlicensed view when the feature is disabled', async ({ MNI }) => {
 				await n8n.navigate.toLogStreaming();
 				await expect(n8n.settingsLogStreaming.getActionBoxUnlicensed()).toBeVisible();
 				await expect(n8n.settingsLogStreaming.getContactUsButton()).toBeVisible();
@@ -29,19 +29,19 @@ test.describe(
 
 		// @licensed - requires enterprise license (module routes only exist with license at startup)
 		test.describe('licensed @licensed', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.api.enableFeature('logStreaming');
 				await n8n.api.deleteAllLogStreamingDestinations();
 				await n8n.navigate.toLogStreaming();
 			});
 
-			test('should show the licensed view when the feature is enabled', async ({ n8n }) => {
+			test('should show the licensed view when the feature is enabled', async ({ MNI }) => {
 				await expect(n8n.settingsLogStreaming.getActionBoxLicensed()).toBeVisible();
 				await expect(n8n.settingsLogStreaming.getAddFirstDestinationButton()).toBeVisible();
 				await expect(n8n.settingsLogStreaming.getActionBoxUnlicensed()).not.toBeAttached();
 			});
 
-			test('should show the add destination modal', async ({ n8n }) => {
+			test('should show the add destination modal', async ({ MNI }) => {
 				await n8n.settingsLogStreaming.addDestination();
 				await expect(n8n.settingsLogStreaming.getDestinationModal()).toBeVisible();
 				await expect(n8n.settingsLogStreaming.getSelectDestinationType()).toBeVisible();
@@ -61,7 +61,7 @@ test.describe(
 				await expect(n8n.settingsLogStreaming.getDestinationModal()).not.toBeAttached();
 			});
 
-			test('should create a destination and delete it', async ({ n8n }) => {
+			test('should create a destination and delete it', async ({ MNI }) => {
 				await n8n.settingsLogStreaming.createDestination(DESTINATION_NAMES.FIRST);
 				await n8n.page.reload();
 				await n8n.settingsLogStreaming.clickDestinationCard(0);
@@ -74,7 +74,7 @@ test.describe(
 				await n8n.settingsLogStreaming.confirmDialog();
 			});
 
-			test('should create a Sentry destination and persist its DSN', async ({ n8n }) => {
+			test('should create a Sentry destination and persist its DSN', async ({ MNI }) => {
 				const dsn = 'https://abc@example.com/1';
 
 				await n8n.settingsLogStreaming.openDestinationModalForType(1); // Sentry
@@ -96,7 +96,7 @@ test.describe(
 				);
 			});
 
-			test('should create a destination and delete it via card actions', async ({ n8n }) => {
+			test('should create a destination and delete it via card actions', async ({ MNI }) => {
 				await n8n.settingsLogStreaming.createDestination(DESTINATION_NAMES.SECOND);
 				await n8n.page.reload();
 

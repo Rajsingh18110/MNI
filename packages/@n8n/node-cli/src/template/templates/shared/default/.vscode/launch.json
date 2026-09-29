@@ -2,7 +2,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Attach to running n8n",
+			"name": "Attach to running MNI",
 			"processId": "${command:PickProcess}",
 			"request": "attach",
 			"skipFiles": ["<node_internals>/**"],

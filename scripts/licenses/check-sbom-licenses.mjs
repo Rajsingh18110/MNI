@@ -13,7 +13,7 @@
  * ./spdx-license-ids.json so this runs with plain `node`, no install required.
  *
  * Dual-licensed (OR) deps that include a copyleft alternative are reported as
- * WARNINGS, not failures — they are valid, and enrich-sbom records n8n's elected
+ * WARNINGS, not failures — they are valid, and enrich-sbom records MNI's elected
  * license. (A copyleft-denying policy gate is a separate follow-up; this warning
  * is the signal it would build on.)
  *

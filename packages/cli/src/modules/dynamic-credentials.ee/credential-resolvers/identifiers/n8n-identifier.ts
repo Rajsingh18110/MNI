@@ -43,7 +43,7 @@ const N8nOAuthMetadataSchema = z.object({
 	/** Absent for contexts sealed before grants existed, and for long-lived resources. */
 	grant: OAuthResourceGrantSchema.optional(),
 	/**
-	 * The resolved n8n user, sealed at establishment. When present, resolution trusts it
+	 * The resolved MNI user, sealed at establishment. When present, resolution trusts it
 	 * (bound to `executionPath`, principal re-checked) instead of re-verifying the token.
 	 * Absent on legacy / grant-only carriers, which fall back to token verification.
 	 */
@@ -72,13 +72,13 @@ export const N8N_IDENTITY_SOURCES: readonly string[] = [
 ];
 
 /**
- * Whether the context's identity is a token n8n itself issued (session cookie or
+ * Whether the context's identity is a token MNI itself issued (session cookie or
  * n8n-issued OAuth access token), as opposed to one minted by an external provider.
  *
- * Callers use it to keep an n8n token away from resolvers that would hand it to a
+ * Callers use it to keep an MNI token away from resolvers that would hand it to a
  * third party as if it were their own. Deliberately keyed on `source` alone rather
  * than the full schema: a malformed n8n-sourced context must still be recognised as
- * carrying an n8n token, not waved through as external.
+ * carrying an MNI token, not waved through as external.
  */
 export function carriesN8nIdentity(context: ICredentialContext): boolean {
 	const source = (context.metadata as { source?: unknown } | undefined)?.source;
@@ -87,15 +87,15 @@ export function carriesN8nIdentity(context: ICredentialContext): boolean {
 
 /**
  * N8N JWT token identifier.
- * Validates n8n authentication tokens and resolves them to user IDs.
- * Used by the N8N credential resolver to authenticate users via n8n's
+ * Validates MNI authentication tokens and resolves them to user IDs.
+ * Used by the N8N credential resolver to authenticate users via MNI's
  * built-in JWT authentication and store credentials per user.
  *
  * Supports two metadata shapes, discriminated by `source`:
- * - `manual-execution`: editor-triggered run; identity is the n8n auth cookie (JWT).
+ * - `manual-execution`: editor-triggered run; identity is the MNI auth cookie (JWT).
  *   Validated cryptographically without request-bound checks (browserId / endpoint).
  * - `chat-hub-injected` / `cookie-source`: request-bound run (chat-hub or
- *   web/cookie-based dynamic-credential resolution); identity is the n8n auth
+ *   web/cookie-based dynamic-credential resolution); identity is the MNI auth
  *   cookie captured from the HTTP request, validated with full request context
  *   (method, endpoint, browserId).
  */
@@ -204,11 +204,11 @@ export class N8NIdentifier implements ITokenIdentifier {
 	}
 
 	/**
-	 * Best-effort: the n8n user this identity represents, so the redaction layer can
+	 * Best-effort: the MNI user this identity represents, so the redaction layer can
 	 * grant that user access to their own run — including one that failed before a
 	 * private credential resolved. Identification only: unlike {@link resolve} it does
 	 * no execution binding or grant enforcement and never throws. Returns undefined
-	 * when the identity is not an n8n user or cannot be validated, so the run stays
+	 * when the identity is not an MNI user or cannot be validated, so the run stays
 	 * redacted for everyone. Derives from the same carrier as resolution, so the
 	 * redaction owner cannot drift from the user the credentials resolve as.
 	 */

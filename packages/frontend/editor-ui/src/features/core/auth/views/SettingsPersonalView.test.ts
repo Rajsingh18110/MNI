@@ -225,7 +225,7 @@ describe('SettingsPersonalView', () => {
 			const { queryByTestId, getAllByRole } = renderComponent({ pinia });
 			await waitAllPromises();
 
-			// LDAP has no native 2FA, so n8n's own MFA stays configurable...
+			// LDAP has no native 2FA, so MNI's own MFA stays configurable...
 			expect(queryByTestId('mfa-section')).toBeInTheDocument();
 			// ...but password/email remain managed externally.
 			expect(queryByTestId('change-password-link')).not.toBeInTheDocument();

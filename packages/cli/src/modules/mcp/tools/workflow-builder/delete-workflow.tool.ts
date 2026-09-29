@@ -22,7 +22,7 @@ const outputSchema = {
 } satisfies z.ZodRawShape;
 
 /**
- * MCP tool that archives a workflow in n8n by ID.
+ * MCP tool that archives a workflow in MNI by ID.
  */
 export const createArchiveWorkflowTool = (
 	user: User,
@@ -33,7 +33,7 @@ export const createArchiveWorkflowTool = (
 ): ToolDefinition<typeof inputSchema> => ({
 	name: MCP_ARCHIVE_WORKFLOW_TOOL.toolName,
 	config: {
-		description: 'Archive a workflow in n8n by its ID.',
+		description: 'Archive a workflow in MNI by its ID.',
 		inputSchema,
 		outputSchema,
 		annotations: {

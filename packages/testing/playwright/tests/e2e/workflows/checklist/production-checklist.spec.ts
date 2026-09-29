@@ -8,12 +8,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test('should show suggested actions automatically when workflow is first published', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 
@@ -36,7 +36,7 @@ test.describe(
 		});
 
 		test('should display evaluations action when AI node exists and feature is enabled', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.api.enableFeature('evaluation');
 
@@ -58,7 +58,7 @@ test.describe(
 		});
 
 		test('should open workflow settings modal when error workflow action is clicked', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.publishWorkflow();
@@ -76,7 +76,7 @@ test.describe(
 		});
 
 		test('should open workflow settings modal when time saved action is clicked', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.publishWorkflow();
@@ -92,7 +92,7 @@ test.describe(
 			await expect(n8n.workflowSettingsModal.getModal()).toBeVisible();
 		});
 
-		test('should keep the checklist available after closing it', async ({ n8n }) => {
+		test('should keep the checklist available after closing it', async ({ MNI }) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.publishWorkflow();
 			await expect(n8n.workflowActivationModal.getModal()).toBeVisible();
@@ -110,7 +110,7 @@ test.describe(
 		});
 
 		// Flaky in multi-main mode
-		test.fixme('should show completed state for configured actions', async ({ n8n, api }) => {
+		test.fixme('should show completed state for configured actions', async ({ MNI, api }) => {
 			const errorWorkflow = await api.workflows.createWorkflow({
 				name: 'Error Handler',
 				nodes: [

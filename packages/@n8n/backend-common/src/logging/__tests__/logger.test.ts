@@ -388,7 +388,7 @@ describe('Logger', () => {
 			test('should accept relative paths', () => {
 				// ARRANGE
 				const location = 'tmp/n8n.log';
-				const n8nFolder = '/tmp/n8n';
+				const n8nFolder = '/tmp/MNI';
 				const globalConfig = mock<GlobalConfig>({
 					logging: {
 						level: 'info',

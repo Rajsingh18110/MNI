@@ -12,14 +12,14 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			// Each test gets its own project so credentials created in one test
 			// (e.g. the unconnected OAuth credential below) cannot auto-attach to
 			// nodes in concurrently running tests of this file.
 			await n8n.start.fromNewProjectBlankCanvas();
 		});
 
-		test('should render both RLC components in google sheets', async ({ n8n }) => {
+		test('should render both RLC components in google sheets', async ({ MNI }) => {
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Google Sheets', { closeNDV: false, action: 'Update row in sheet' });
 
@@ -33,7 +33,7 @@ test.describe(
 			);
 		});
 
-		test('should show appropriate error when credentials are not set', async ({ n8n }) => {
+		test('should show appropriate error when credentials are not set', async ({ MNI }) => {
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Google Sheets', { closeNDV: false, action: 'Update row in sheet' });
 
@@ -47,7 +47,7 @@ test.describe(
 		});
 
 		test('should show create credentials modal when clicking "add your credential"', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Google Sheets', { closeNDV: false, action: 'Update row in sheet' });
@@ -65,7 +65,7 @@ test.describe(
 			await expect(n8n.canvas.credentialModal.getModal()).toBeVisible();
 		});
 
-		test('should show appropriate error when credentials are not valid', async ({ n8n }) => {
+		test('should show appropriate error when credentials are not valid', async ({ MNI }) => {
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Google Sheets', { closeNDV: false, action: 'Update row in sheet' });
 
@@ -101,7 +101,7 @@ test.describe(
 			);
 		});
 
-		test('should show appropriate errors when search filter is required', async ({ n8n }) => {
+		test('should show appropriate errors when search filter is required', async ({ MNI }) => {
 			await n8n.canvas.addNode('GitHub', { closeNDV: false, trigger: 'On pull request' });
 
 			await expect(n8n.ndv.getResourceLocator('owner')).toBeVisible();
@@ -112,7 +112,7 @@ test.describe(
 			);
 		});
 
-		test('should reset resource locator when dependent field is changed', async ({ n8n }) => {
+		test('should reset resource locator when dependent field is changed', async ({ MNI }) => {
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Google Sheets', { closeNDV: false, action: 'Update row in sheet' });
 
@@ -124,7 +124,7 @@ test.describe(
 		});
 
 		// unlike RMC and remote options, RLC does not support loadOptionDependsOn
-		test('should retrieve list options when other params throw errors', async ({ n8n }) => {
+		test('should retrieve list options when other params throw errors', async ({ MNI }) => {
 			await n8n.canvas.addNode(E2E_TEST_NODE_NAME, { closeNDV: false, action: 'Resource Locator' });
 
 			await n8n.ndv.getResourceLocatorInput('rlc').click();

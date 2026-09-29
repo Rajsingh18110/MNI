@@ -9,7 +9,7 @@ export class AddJsonSizeBytesAndWorkflowVersionIdToExecutionEntity1784000000029
 		const workflowVersionId = escape.columnName('workflowVersionId');
 
 		// Not using addColumn DSL to avoid recreating this large table in SQLite.
-		// See: https://github.com/n8n-io/n8n/blob/05c554dad53397f735003917f29eac5a5d62bdb4/.claude/plugins/n8n/skills/db-migrations/SKILL.md#sqlite-table-recreation-risk
+		// See: https://github.com/n8n-io/n8n/blob/05c554dad53397f735003917f29eac5a5d62bdb4/.claude/plugins/MNI/skills/db-migrations/SKILL.md#sqlite-table-recreation-risk
 		await runQuery(
 			`ALTER TABLE ${tableName} ADD COLUMN ${jsonSizeBytes} BIGINT NOT NULL DEFAULT 0`,
 		);

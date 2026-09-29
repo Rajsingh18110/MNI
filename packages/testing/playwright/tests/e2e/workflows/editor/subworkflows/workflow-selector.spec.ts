@@ -9,7 +9,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 
 			const subWorkflows = [
@@ -47,12 +47,12 @@ test.describe(
 			await n8n.canvas.addNode(EXECUTE_WORKFLOW_NODE_NAME, { action: 'Execute A Sub Workflow' });
 		});
 
-		test('should show required parameter warning', async ({ n8n }) => {
+		test('should show required parameter warning', async ({ MNI }) => {
 			await n8n.ndv.openResourceLocator('workflowId');
 			await expect(n8n.ndv.getParameterInputIssues()).toBeVisible();
 		});
 
-		test('should filter sub-workflows list', async ({ n8n }) => {
+		test('should filter sub-workflows list', async ({ MNI }) => {
 			await n8n.ndvComposer.filterWorkflowList('workflowId', 'Weather');
 
 			const items = n8n.ndv.getResourceLocatorItems();
@@ -64,7 +64,7 @@ test.describe(
 			await expect(inputField).toHaveValue(/Get_Weather/);
 		});
 
-		test('should render sub-workflow links correctly', async ({ n8n }) => {
+		test('should render sub-workflow links correctly', async ({ MNI }) => {
 			await n8n.ndvComposer.selectWorkflowFromList('workflowId', 'Search_DB');
 			const link = n8n.ndv.getResourceLocatorLink('workflowId');
 			await expect(link).toBeVisible();
@@ -73,7 +73,7 @@ test.describe(
 			await expect(link).toBeHidden();
 		});
 
-		test('should switch to ID mode on expression', async ({ n8n }) => {
+		test('should switch to ID mode on expression', async ({ MNI }) => {
 			await n8n.ndvComposer.selectWorkflowFromList('workflowId', 'Search_DB');
 			const modeSelector = n8n.ndv.getResourceLocatorModeSelectorInput('workflowId');
 			await expect(modeSelector).toHaveValue('From list');
@@ -83,7 +83,7 @@ test.describe(
 		});
 
 		test('should render add resource option and redirect to the correct route when clicked', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.ndv.openResourceLocator('workflowId');
 

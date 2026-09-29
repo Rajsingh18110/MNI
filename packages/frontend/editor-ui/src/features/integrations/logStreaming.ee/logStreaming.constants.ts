@@ -24,7 +24,7 @@ export const circuitBreakerOptions = {
 			},
 			default: LOGSTREAMING_CB_DEFAULT_MAX_FAILURES,
 			description:
-				'After this many errors within the failure window n8n stops sending requests to prevent overloading the external service that’s not working properly.',
+				'After this many errors within the failure window MNI stops sending requests to prevent overloading the external service that’s not working properly.',
 		},
 		{
 			displayName: 'Failure Window',
@@ -565,8 +565,8 @@ export const syslogModalDescription = [
 		displayName: 'App Name',
 		name: 'app_name',
 		type: 'string',
-		default: 'n8n',
-		placeholder: 'n8n',
+		default: 'MNI',
+		placeholder: 'MNI',
 		noDataExpression: true,
 		description: 'Syslog app name parameter',
 	},

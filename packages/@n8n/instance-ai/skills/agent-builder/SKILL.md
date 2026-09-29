@@ -46,7 +46,7 @@ on the Agent.
 
 ## Supported channels & unsupported requests
 
-`agent-context` with `type: "capabilities"` returns every chat channel n8n Agents support, each
+`agent-context` with `type: "capabilities"` returns every chat channel MNI Agents support, each
 with `capabilities`, `useIntegrationWhen`, and `useNodeToolWhen`. It is the
 authoritative source the orchestrator can read before building; a channel
 absent from its result is unsupported for agents.

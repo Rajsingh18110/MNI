@@ -215,7 +215,7 @@ function replacementSuggestionsForFailure(
 	return [];
 }
 
-/** Whether n8n credits cover the identified failing node's credential type. */
+/** Whether MNI credits cover the identified failing node's credential type. */
 function creditsCoverFailingNode(
 	nodeErrors: ExecutionNodeError[],
 	lastNodeExecuted: string | undefined,

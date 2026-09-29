@@ -163,7 +163,7 @@ const serveCommand = (pr, head) => {
 	const marker = (key, detail) => (options.json ? [shellPhaseEcho(key, detail)] : []);
 
 	return [
-		'cd /workspaces/n8n',
+		'cd /workspaces/MNI',
 		// `preview-serve.mjs` announces its own phases, but these two happen before it
 		// runs, so the chain has to say them itself.
 		...marker('checkout', head.headRefOid.slice(0, 7)),

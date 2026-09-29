@@ -14,10 +14,10 @@ test.use({
 });
 
 test.describe(
-	'n8n Assistant self-hosted onboarding @db:reset',
+	'MNI Assistant self-hosted onboarding @db:reset',
 	{ annotation: [{ type: 'owner', description: 'instanceAI' }] },
 	() => {
-		test('should verify search and complete onboarding', async ({ n8n }) => {
+		test('should verify search and complete onboarding', async ({ MNI }) => {
 			await n8n.instanceAi.gotoOnboarding();
 			await n8n.instanceAi.mockSearchVerification({ ok: true, resultCount: 10 });
 
@@ -31,7 +31,7 @@ test.describe(
 			await expect(n8n.instanceAi.getChatInput()).toBeVisible();
 		});
 
-		test('should keep the search step open when verification fails', async ({ n8n }) => {
+		test('should keep the search step open when verification fails', async ({ MNI }) => {
 			await n8n.instanceAi.gotoOnboarding();
 			await n8n.instanceAi.mockSearchVerification({ ok: false, failure: 'unauthorized' });
 

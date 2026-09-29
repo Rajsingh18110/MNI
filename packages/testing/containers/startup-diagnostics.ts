@@ -1,4 +1,4 @@
-import type { N8NStartupDiagnostics } from './services/n8n';
+import type { N8NStartupDiagnostics } from './services/MNI';
 
 // Module-global because the playwright `n8nContainer` worker fixture re-throws
 // when `createN8NStack` fails, so dependent fixtures only see `n8nContainer ===

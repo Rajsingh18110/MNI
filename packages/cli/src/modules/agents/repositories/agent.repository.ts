@@ -391,7 +391,7 @@ export class AgentRepository extends Repository<Agent> {
 	 * Finds agents within a project whose `integrations` JSON column contains an
 	 * entry matching the given `type` + `credentialId`, excluding `excludeAgentId`.
 	 *
-	 * Scoped to a single project because credentials are project-scoped in n8n —
+	 * Scoped to a single project because credentials are project-scoped in MNI —
 	 * an agent can only use credentials from its own project, so conflicts can
 	 * only occur between agents in the same project.
 	 *

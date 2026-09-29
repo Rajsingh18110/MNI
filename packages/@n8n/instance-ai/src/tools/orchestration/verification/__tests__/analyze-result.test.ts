@@ -144,7 +144,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 		expect(analysis.remediation?.reason).toBe('chat_model_failure');
 		expect(analysis.remediation?.guidance).toContain('Prefer one of: "gemini-3-flash"');
 		expect(analysis.remediation?.guidance).not.toContain('Gateway credits');
-		expect(analysis.remediation?.guidance).not.toContain('n8n credits');
+		expect(analysis.remediation?.guidance).not.toContain('MNI credits');
 	});
 
 	it('does not classify a model-shaped HTTP Request failure as a chat-model failure', () => {
@@ -166,7 +166,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 		expect(analysis.remediation?.reason).toBe('runtime_failure');
 	});
 
-	it('adds n8n credits guidance for chat-model scoped quota failures when credits are available', () => {
+	it('adds MNI credits guidance for chat-model scoped quota failures when credits are available', () => {
 		const analysis = analyzeVerificationResult({
 			result: {
 				executionId: 'exec-1',
@@ -189,7 +189,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 		expect(analysis.remediation?.guidance).toContain('Gateway credits');
 	});
 
-	it('omits n8n credits from quota guidance when the instance has no gateway coverage', () => {
+	it('omits MNI credits from quota guidance when the instance has no gateway coverage', () => {
 		const analysis = analyzeVerificationResult({
 			result: {
 				executionId: 'exec-1',
@@ -210,7 +210,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 
 		expect(analysis.remediation?.category).toBe('needs_setup');
 		expect(analysis.remediation?.guidance).not.toContain('Gateway credits');
-		expect(analysis.remediation?.guidance).not.toContain('n8n credits');
+		expect(analysis.remediation?.guidance).not.toContain('MNI credits');
 		expect(analysis.remediation?.guidance).toContain('another provider or key');
 	});
 
@@ -239,7 +239,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 		expect(analysis.remediation?.guidance).toContain('explore-resources');
 	});
 
-	it('omits n8n credits when the gateway covers a different node than the failing one', () => {
+	it('omits MNI credits when the gateway covers a different node than the failing one', () => {
 		const analysis = analyzeVerificationResult({
 			result: {
 				executionId: 'exec-1',
@@ -260,7 +260,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 
 		expect(analysis.remediation?.category).toBe('needs_setup');
 		expect(analysis.remediation?.guidance).not.toContain('Gateway credits');
-		expect(analysis.remediation?.guidance).not.toContain('n8n credits');
+		expect(analysis.remediation?.guidance).not.toContain('MNI credits');
 		expect(analysis.remediation?.guidance).toContain('another provider or key');
 	});
 
@@ -281,7 +281,7 @@ describe('analyzeVerificationResult — chat model failures', () => {
 
 		expect(analysis.remediation?.category).toBe('needs_setup');
 		expect(analysis.remediation?.guidance).not.toContain('Gateway credits');
-		expect(analysis.remediation?.guidance).not.toContain('n8n credits');
+		expect(analysis.remediation?.guidance).not.toContain('MNI credits');
 	});
 });
 

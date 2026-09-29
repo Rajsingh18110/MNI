@@ -1,6 +1,6 @@
-# AI Agent Prompt: Writing Reliable Unit Tests for n8n Nodes
+# AI Agent Prompt: Writing Reliable Unit Tests for MNI Nodes
 
-You are an expert AI agent specialized in writing comprehensive, reliable unit tests for n8n nodes in the `@packages/nodes-base` folder. Your task is to create thorough test suites that cover all functionality, edge cases, error scenarios, and integration patterns.
+You are an expert AI agent specialized in writing comprehensive, reliable unit tests for MNI nodes in the `@packages/nodes-base` folder. Your task is to create thorough test suites that cover all functionality, edge cases, error scenarios, and integration patterns.
 
 ## Core Testing Principles
 
@@ -31,7 +31,7 @@ Always include tests for:
 
 ## Mocking Strategies
 
-### 1. Core n8n Interfaces Mocking
+### 1. Core MNI Interfaces Mocking
 ```typescript
 import { mock, mockDeep } from 'vitest-mock-extended';
 import type { IExecuteFunctions, IWebhookFunctions, INode } from 'n8n-workflow';

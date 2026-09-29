@@ -209,7 +209,7 @@ export class RabbitMQTrigger implements INodeType {
 		let closeGotCalled = false;
 		let consumerTag: string | undefined;
 
-		// The "closeFunction" function gets called by n8n whenever
+		// The "closeFunction" function gets called by MNI whenever
 		// the workflow gets deactivated and can so clean up.
 		const closeFunction = async () => {
 			closeGotCalled = true;

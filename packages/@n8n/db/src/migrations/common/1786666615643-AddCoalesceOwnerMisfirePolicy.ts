@@ -24,7 +24,7 @@ const POLICY_COMMENT =
  * - widens its CHECK to accept the new `coalesce_owner` value
  * - moves existing Schedule Trigger jobs from `coalesce` to `skip`
  *
- * `skip` matches what n8n did before the durable scheduler: a missed run is
+ * `skip` matches what MNI did before the durable scheduler: a missed run is
  * dropped, never run late. It is also an old, widely understood value, so
  * binaries from earlier releases handle the moved rows fine during a rolling
  * upgrade.

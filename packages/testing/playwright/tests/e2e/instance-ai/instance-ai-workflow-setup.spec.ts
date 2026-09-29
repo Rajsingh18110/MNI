@@ -470,7 +470,7 @@ test.describe(
 			);
 		});
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.page.route('**/rest/credentials/test', async (route) => {
 				if (route.request().method() === 'POST') {
 					await route.fulfill({
@@ -494,7 +494,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n, n8nContainer }) => {
+			async ({ MNI, n8nContainer }) => {
 				test.skip(
 					!n8nContainer,
 					'Requires proxy service to mock Google service account token exchange',
@@ -624,7 +624,7 @@ test.describe(
 		);
 
 		test('should defer all setup when user skips every card without persisting credentials', async ({
-			n8n,
+			MNI,
 		}) => {
 			const workflow = await n8n.api.workflows.createWorkflow(
 				createTwoCardWorkflow(DEFER_WORKFLOW_NAME),
@@ -666,7 +666,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				const workflow = await n8n.api.workflows.createWorkflow(
 					createTwoCardWorkflow(PARTIAL_WORKFLOW_NAME),
 				);
@@ -717,7 +717,7 @@ test.describe(
 		);
 
 		test('should mark a skipped card and keep the wizard open while other cards are unhandled', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.api.workflows.createWorkflow(createTwoCardWorkflow(SKIP_BADGE_WORKFLOW_NAME));
 
@@ -754,7 +754,7 @@ test.describe(
 		});
 
 		test('should route back to an earlier unhandled card when user skips a later one', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.api.workflows.createWorkflow(createTwoCardWorkflow(ROUTE_BACK_WORKFLOW_NAME));
 
@@ -775,7 +775,7 @@ test.describe(
 		});
 
 		test('should clear required parameter issue indicator when the field is filled', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.api.workflows.createWorkflow(
 				createParameterOnlyWorkflow(PARAMETER_ISSUE_WORKFLOW_NAME),
@@ -813,7 +813,7 @@ test.describe(
 					},
 				],
 			},
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				const workflow = await n8n.api.workflows.createWorkflow(
 					createParameterAndCredentialWorkflow(PARAMETER_APPLY_WORKFLOW_NAME),
 				);
@@ -852,7 +852,7 @@ test.describe(
 		);
 
 		test('should create and apply a mocked testable Slack credential from setup', async ({
-			n8n,
+			MNI,
 		}) => {
 			const workflow = await n8n.api.workflows.createWorkflow(
 				createSlackWorkflow(SLACK_WORKFLOW_NAME),
@@ -902,7 +902,7 @@ test.describe(
 		});
 
 		test('should persist a manually selected existing credential from the dropdown', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Creds are sorted by name in the dropdown; auto-select picks the most recently updated.
 			const firstCredentialInList = await n8n.api.credentials.createCredential({
@@ -952,7 +952,7 @@ test.describe(
 			);
 		});
 
-		test('should render each AI agent subnode as its own setup step', async ({ n8n }) => {
+		test('should render each AI agent subnode as its own setup step', async ({ MNI }) => {
 			await n8n.api.credentials.createCredential({
 				name: AGENT_SUBNODES_OPENAI_CREDENTIAL_NAME,
 				type: 'openAiApi',

@@ -74,7 +74,7 @@ export type OidcLogoutResponse = {
 	/**
 	 * OIDC RP-Initiated Logout URL to redirect the browser to, or `null` when
 	 * the session was not established through OIDC or the provider does not
-	 * support RP-initiated logout. The n8n session is terminated either way.
+	 * support RP-initiated logout. The MNI session is terminated either way.
 	 */
 	redirectUrl: string | null;
 };

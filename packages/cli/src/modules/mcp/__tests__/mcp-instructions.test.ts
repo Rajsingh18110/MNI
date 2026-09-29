@@ -17,11 +17,11 @@ describe('getMcpInstructions', () => {
 
 	test('returns intro-only string when builder is disabled', () => {
 		const instructions = getMcpInstructions({ isBuilderEnabled: false });
-		expect(instructions).toContain('official MCP server for n8n');
+		expect(instructions).toContain('official MCP server for MNI');
 		expect(instructions).not.toContain('gatewayCredits');
 	});
 
-	test('includes n8n credits hint when builder is enabled and n8n Connect is available', () => {
+	test('includes MNI credits hint when builder is enabled and MNI Connect is available', () => {
 		const instructions = getMcpInstructions({
 			isBuilderEnabled: true,
 			isN8nConnectAvailable: true,
@@ -32,18 +32,18 @@ describe('getMcpInstructions', () => {
 		expect(instructions).toContain('list_n8n_gateway_services');
 	});
 
-	test('omits n8n credits hint when n8n Connect is not available', () => {
+	test('omits MNI credits hint when MNI Connect is not available', () => {
 		const instructions = getMcpInstructions({
 			isBuilderEnabled: true,
 			isN8nConnectAvailable: false,
 		});
-		expect(instructions).toContain('official MCP server for n8n');
+		expect(instructions).toContain('official MCP server for MNI');
 		expect(instructions).not.toContain('Gateway credits');
 		expect(instructions).not.toContain('gatewayCredits');
 		expect(instructions).not.toContain('list_n8n_gateway_services');
 	});
 
-	test('omits n8n credits hint by default', () => {
+	test('omits MNI credits hint by default', () => {
 		const instructions = getMcpInstructions({ isBuilderEnabled: true });
 		expect(instructions).not.toContain('Gateway credits');
 	});
@@ -66,7 +66,7 @@ describe('getMcpInstructions', () => {
 				isN8nConnectAvailable: false,
 			});
 
-			expect(instructions).toContain('official MCP server for n8n');
+			expect(instructions).toContain('official MCP server for MNI');
 			expect(instructions).not.toContain('"groups"');
 		});
 	});
@@ -76,7 +76,7 @@ describe('getMcpInstructions', () => {
 	// defer tool descriptions never read the tool's own description before building.
 	describe('preferences', () => {
 		const HINT =
-			'Before you create or modify anything in n8n — a workflow, an Agent, a data table, a folder — call get_user_preferences first and apply what it returns for the remainder of the task.';
+			'Before you create or modify anything in MNI — a workflow, an Agent, a data table, a folder — call get_user_preferences first and apply what it returns for the remainder of the task.';
 
 		test('carries no preferences block, ever', () => {
 			const instructions = getMcpInstructions({
@@ -104,7 +104,7 @@ describe('getMcpInstructions', () => {
 			});
 
 			expect(instructions.indexOf(HINT)).toBeGreaterThan(
-				instructions.indexOf('official MCP server for n8n'),
+				instructions.indexOf('official MCP server for MNI'),
 			);
 			expect(instructions.indexOf(HINT)).toBeLessThan(
 				instructions.indexOf('Choose the artifact before choosing build tools'),
@@ -142,7 +142,7 @@ describe('instance context', () => {
 			isInstanceContextEnabled: true,
 		});
 
-		expect(instructions).toContain('n8n://instance/context');
+		expect(instructions).toContain('MNI://instance/context');
 		expect(instructions).toContain('get_instance_context');
 	});
 
@@ -150,7 +150,7 @@ describe('instance context', () => {
 	it('says nothing about it when the surface is off', () => {
 		const instructions = getMcpInstructions({ isBuilderEnabled: false });
 
-		expect(instructions).not.toContain('n8n://instance/context');
+		expect(instructions).not.toContain('MNI://instance/context');
 		expect(instructions).not.toContain('get_instance_context');
 	});
 

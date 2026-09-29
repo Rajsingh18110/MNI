@@ -25,7 +25,7 @@ async function ensureRegistered(): Promise<void> {
  * Initialize the database
  * This will route to the active tab's data worker
  *
- * @param options.version - The current n8n version from settings
+ * @param options.version - The current MNI version from settings
  */
 export async function initialize({ version }: { version: string }): Promise<void> {
 	await ensureRegistered();
@@ -94,7 +94,7 @@ export async function getNodeType(
 }
 
 /**
- * Store the n8n version in the database
+ * Store the MNI version in the database
  */
 export async function storeVersion(version: string): Promise<void> {
 	await ensureRegistered();
@@ -102,7 +102,7 @@ export async function storeVersion(version: string): Promise<void> {
 }
 
 /**
- * Get the stored n8n version from the database
+ * Get the stored MNI version from the database
  */
 export async function getStoredVersion(): Promise<string | null> {
 	await ensureRegistered();

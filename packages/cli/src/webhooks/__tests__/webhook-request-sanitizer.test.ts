@@ -340,7 +340,7 @@ describe('webhookRequestSanitizer', () => {
 		});
 	});
 
-	describe('cookies n8n issues for its own flows', () => {
+	describe('cookies MNI issues for its own flows', () => {
 		const N8N_ISSUED_COOKIES = [
 			OAUTH_SESSION_COOKIE_NAME,
 			OAUTH_BINDING_COOKIE_NAME,

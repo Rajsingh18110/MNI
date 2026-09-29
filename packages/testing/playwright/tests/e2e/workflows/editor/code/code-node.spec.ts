@@ -12,13 +12,13 @@ test.describe(
 	},
 	() => {
 		test.describe('Code editor', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript' });
 			});
 
-			test('should show correct placeholders switching modes', async ({ n8n }) => {
+			test('should show correct placeholders switching modes', async ({ MNI }) => {
 				await expect(
 					n8n.ndv.getPlaceholderText('// Loop over input items and add a new field'),
 				).toBeVisible();
@@ -36,7 +36,7 @@ test.describe(
 				).toBeVisible();
 			});
 
-			test('should execute the placeholder successfully in both modes', async ({ n8n }) => {
+			test('should execute the placeholder successfully in both modes', async ({ MNI }) => {
 				await n8n.ndv.execute();
 
 				await expect(
@@ -52,7 +52,7 @@ test.describe(
 				).toBeVisible();
 			});
 
-			test('should allow switching between sibling code nodes', async ({ n8n }) => {
+			test('should allow switching between sibling code nodes', async ({ MNI }) => {
 				await n8n.ndv.getCodeEditor().fill("console.log('Code in JavaScript1')");
 				await n8n.ndv.close();
 
@@ -70,7 +70,7 @@ test.describe(
 				await expect(n8n.ndv.getCodeEditor()).toContainText("console.log('Code in JavaScript1')");
 			});
 
-			test('should show lint errors in `runOnceForAllItems` mode', async ({ n8n }) => {
+			test('should show lint errors in `runOnceForAllItems` mode', async ({ MNI }) => {
 				await n8n.ndv.getCodeEditor().fill(`$input.itemMatching()
 $input.item
 $('When clicking ‘Execute workflow’').item
@@ -97,7 +97,7 @@ return
 
 		test.describe
 			.serial('Run Once for Each Item', () => {
-				test('should show lint errors in `runOnceForEachItem` mode', async ({ n8n }) => {
+				test('should show lint errors in `runOnceForEachItem` mode', async ({ MNI }) => {
 					await n8n.start.fromBlankCanvas();
 					await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 					await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript' });

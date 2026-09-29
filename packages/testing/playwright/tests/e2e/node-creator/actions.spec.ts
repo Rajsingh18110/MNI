@@ -6,11 +6,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should add node to canvas from actions panel', async ({ n8n }) => {
+		test('should add node to canvas from actions panel', async ({ MNI }) => {
 			const editImageNode = 'Edit Image';
 
 			await n8n.canvas.nodeCreator.open();
@@ -25,7 +25,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(2);
 		});
 
-		test('should search through actions and confirm added action', async ({ n8n }) => {
+		test('should search through actions and confirm added action', async ({ MNI }) => {
 			await n8n.canvas.nodeCreator.open();
 			await n8n.canvas.nodeCreator.searchFor('ftp');
 			await n8n.canvas.nodeCreator.selectItem('FTP');
@@ -41,7 +41,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(2);
 		});
 
-		test('should show multiple actions for multi-action nodes', async ({ n8n }) => {
+		test('should show multiple actions for multi-action nodes', async ({ MNI }) => {
 			await n8n.canvas.nodeCreator.open();
 			await n8n.canvas.nodeCreator.searchFor('OpenWeatherMap');
 			await n8n.canvas.nodeCreator.selectItem('OpenWeatherMap');
@@ -55,7 +55,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(2);
 		});
 
-		test('should add node with specific operation configuration', async ({ n8n }) => {
+		test('should add node with specific operation configuration', async ({ MNI }) => {
 			await n8n.canvas.nodeCreator.open();
 			await n8n.canvas.nodeCreator.searchFor('Slack');
 			await n8n.canvas.nodeCreator.selectItem('Slack');

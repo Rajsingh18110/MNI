@@ -68,7 +68,7 @@ const config: KnipConfig = {
 		'.github/scripts': {
 			entry: ['**/*.mjs'],
 			ignoreDependencies: [
-				// docker/kafka-native-smoke-check.mjs requires it from the n8n install under test.
+				// docker/kafka-native-smoke-check.mjs requires it from the MNI install under test.
 				'@confluentinc/kafka-javascript',
 				// The generate-sbom script runs the cdxgen binary; the package is not installed here.
 				'@cyclonedx/cdxgen',
@@ -81,13 +81,13 @@ const config: KnipConfig = {
 		'packages/@n8n/typescript-config': pkg({ entry: [] }),
 		'packages/cli': pkg({
 			ignoreDependencies: [
-				// bin/n8n has no extension, so knip does not parse it.
+				// bin/MNI has no extension, so knip does not parse it.
 				'dotenv',
 				'source-map-support',
 				// scripts/build.mjs runs these binaries from inside template strings.
 				'mjml',
 				'@redocly/cli',
-				// Declared so community nodes resolve it from the n8n install.
+				// Declared so community nodes resolve it from the MNI install.
 				'@n8n/ai-node-sdk',
 				// psl is loaded with a dynamic import, which knip does not link to @types.
 				'@types/psl',
@@ -148,8 +148,8 @@ const config: KnipConfig = {
 			ignoreDependencies: ['k6'],
 		}),
 		'packages/@n8n/backend-common': pkg({
-			// module-registry resolves the installed n8n package by path at runtime.
-			ignoreDependencies: ['n8n'],
+			// module-registry resolves the installed MNI package by path at runtime.
+			ignoreDependencies: ['MNI'],
 		}),
 		'packages/core': pkg({
 			// bin/generate-node-defs and bin/copy-static-files have no extension, so knip does not parse them.
@@ -203,7 +203,7 @@ const config: KnipConfig = {
 		'packages/testing/playwright': pkg({
 			ignoreDependencies: [
 				// The e2e suite runs against the built app; the edge orders the turbo build.
-				'n8n',
+				'MNI',
 				'n8n-core',
 				// Manual `pnpm exec playwright-cli` runs; .gitignore lists its .playwright-cli dir.
 				'@playwright/cli',

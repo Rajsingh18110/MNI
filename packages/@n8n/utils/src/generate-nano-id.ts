@@ -4,7 +4,7 @@ import { customAlphabet } from 'nanoid';
 /**
  * Generates a unique 16-character nanoid.
  *
- * This is the canonical ID generator used across the entire n8n codebase for:
+ * This is the canonical ID generator used across the entire MNI codebase for:
  * - Workflow IDs
  * - Project IDs
  * - Variable IDs

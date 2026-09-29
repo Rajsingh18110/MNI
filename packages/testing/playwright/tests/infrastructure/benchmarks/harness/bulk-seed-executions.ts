@@ -1,7 +1,7 @@
 import type { ServiceHelpers } from 'n8n-containers/services/types';
 
 /**
- * Bypasses TypeORM and the n8n execution lifecycle so 100k+ rows seed in seconds.
+ * Bypasses TypeORM and the MNI execution lifecycle so 100k+ rows seed in seconds.
  * Status mix and 1ms-staggered timestamps mirror production shape so the
  * executions list query's ORDER BY and access-control filter exercise realistic plans.
  */

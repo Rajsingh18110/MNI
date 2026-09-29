@@ -109,7 +109,7 @@ export class MyServiceOAuth2Api implements ICredentialType {
 ```
 - The base `oAuth2Api` handles the generic OAuth2 flow.
 - When allowing users to specify scopes in a custom OAuth2 credential,
-  make sure to follow n8n's internal rules (see n8n docs).
+  make sure to follow MNI's internal rules (see MNI docs).
 - If you want to define scopes that the credentials will request, add a
   property with `name: 'scope'`, `type: 'hidden'` and `default` field
   that has your desired scopes

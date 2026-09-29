@@ -411,7 +411,7 @@ describe('getStatus', () => {
 					teamId: 'team1',
 					teamName: 'Team 1',
 				},
-				filename: '/mock/n8n/git/projects/project1.json',
+				filename: '/mock/MNI/git/projects/project1.json',
 			},
 			withoutIcon: {
 				id: 'project2',
@@ -424,7 +424,7 @@ describe('getStatus', () => {
 					teamId: 'team2',
 					teamName: 'Team 2',
 				},
-				filename: '/mock/n8n/git/projects/project2.json',
+				filename: '/mock/MNI/git/projects/project2.json',
 			},
 		};
 
@@ -857,7 +857,7 @@ describe('getStatus', () => {
 						teamId: 'local-project-1',
 						teamName: 'Local Project 1',
 					},
-					filename: '/mock/n8n/git/projects/local-project-1.json',
+					filename: '/mock/MNI/git/projects/local-project-1.json',
 				},
 			];
 
@@ -1294,7 +1294,7 @@ describe('getStatus', () => {
 					name: 'Test Credential',
 					type: 'testApi',
 					data: {},
-					filename: '/mock/n8n/git/credentials/cred1.json',
+					filename: '/mock/MNI/git/credentials/cred1.json',
 					...overrides,
 				}) as StatusExportableCredential;
 

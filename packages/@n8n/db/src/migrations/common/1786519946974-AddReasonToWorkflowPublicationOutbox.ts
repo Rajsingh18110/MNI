@@ -7,7 +7,7 @@ const columnName = 'reason';
  * Adds `reason` so each publication record carries why it was enqueued: a user
  * publish/unpublish, the leader's startup pass, a leadership takeover, or the
  * reconciler healing drift. The applier translates it into the activation mode
- * reported to trigger nodes (e.g. the n8n Trigger's "Instance Started" event
+ * reported to trigger nodes (e.g. the MNI Trigger's "Instance Started" event
  * fires only for `startup`).
  *
  * NOT NULL with a `publish` default so rows inserted by pre-upgrade instances

@@ -10,7 +10,7 @@ const sharedSkillsDir = path.join(repoRoot, '.agents', 'skills');
 const harnessSkillDirs = [
 	{
 		name: 'Claude plugin',
-		dir: path.join(repoRoot, '.claude', 'plugins', 'n8n', 'skills'),
+		dir: path.join(repoRoot, '.claude', 'plugins', 'MNI', 'skills'),
 	},
 ];
 

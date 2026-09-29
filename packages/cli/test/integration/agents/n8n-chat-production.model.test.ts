@@ -146,7 +146,7 @@ beforeAll(async () => {
 
 const server = setupTestServer({ endpointGroups: ['ai'] });
 
-describe.skipIf(!enabled)('production n8n Chat with a real model', () => {
+describe.skipIf(!enabled)('production MNI Chat with a real model', () => {
 	let finishCassette: (() => void) | undefined;
 	let fetchBeforeCassette: typeof globalThis.fetch | undefined;
 
@@ -229,7 +229,7 @@ describe.skipIf(!enabled)('production n8n Chat with a real model', () => {
 			model: 'openai/gpt-4o-mini',
 			credential: credential.id,
 			instructions: options.instructions,
-			memory: { enabled: true, storage: 'n8n' },
+			memory: { enabled: true, storage: 'MNI' },
 			...(options.approvalTool
 				? { tools: [{ type: 'custom' as const, id: 'approve_marker', requireApproval: true }] }
 				: {}),

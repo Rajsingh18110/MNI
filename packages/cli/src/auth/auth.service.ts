@@ -331,7 +331,7 @@ export class AuthService {
 	}
 
 	/**
-	 * Validates an n8n auth cookie (JWT) without request-bound checks (browserId / endpoint / method).
+	 * Validates an MNI auth cookie (JWT) without request-bound checks (browserId / endpoint / method).
 	 *
 	 * Use when the cookie was captured at the controller boundary and must be re-validated
 	 * later in the execution lifecycle, after the original HTTP request is no longer available.

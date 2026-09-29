@@ -85,7 +85,7 @@ function shouldScopeSessionKey(ctx: ISupplyDataFunctions | IWebhookFunctions): b
 }
 
 // Some memory backends (Motorhead URL paths, Xata/Zep record IDs) reject
-// characters outside [A-Za-z0-9_-]. Node names in n8n allow spaces, emoji,
+// characters outside [A-Za-z0-9_-]. Node names in MNI allow spaces, emoji,
 // and punctuation, so sanitize before using the name as part of a session key.
 function sanitizeForSessionKey(name: string): string {
 	return name.replace(/[^A-Za-z0-9_-]/g, '_');

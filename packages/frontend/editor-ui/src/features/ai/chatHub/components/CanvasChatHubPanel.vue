@@ -79,7 +79,7 @@ const workflowAgent = computed<ChatModelDto | null>(() => {
 	const agentIcon = params?.agentIcon as AgentIconOrEmoji | undefined;
 
 	const agent = chatStore.getAgent(
-		{ provider: 'n8n', workflowId },
+		{ provider: 'MNI', workflowId },
 		{ name: agentDisplayName.value, icon: agentIcon ?? null },
 	);
 

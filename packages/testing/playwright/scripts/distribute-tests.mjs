@@ -2,7 +2,7 @@
 // @ts-check
 
 /**
- * n8n CI Adapter for Test Distribution
+ * MNI CI Adapter for Test Distribution
  *
  * Thin wrapper that calls `janitor distribute` for generic shard distribution,
  * then maps capabilities to n8n-specific Docker images for the CI matrix.

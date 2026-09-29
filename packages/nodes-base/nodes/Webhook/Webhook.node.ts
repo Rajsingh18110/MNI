@@ -253,15 +253,15 @@ export class Webhook extends Node {
 			if (options.ignoreBots && isbot(req.headers['user-agent']))
 				throw new WebhookAuthorizationError(403);
 			if (context.getNodeParameter('authentication', 'none') === 'n8nOAuth2') {
-				// Two-step n8n user-auth flow: (1) validate the bearer token and resolve
-				// the caller to an n8n user, then (2) seed the execution context so the
+				// Two-step MNI user-auth flow: (1) validate the bearer token and resolve
+				// the caller to an MNI user, then (2) seed the execution context so the
 				// run happens as that user (merging their private credentials). The method
 				// being served selects the resource, since disjoint-method triggers can
 				// share a path; take it from the request rather than the `httpMethod`
 				// parameter, which is an expression that can resolve differently from the
 				// rows written at activation time.
 				const authResult = await n8nOAuth2Auth(context, {
-					realm: 'n8n Webhook',
+					realm: 'MNI Webhook',
 					method: req.method,
 					// Same version-gated default as the resolvers' `isFirstParty`, so the
 					// runtime redirect and the AS's virtual client can't disagree.

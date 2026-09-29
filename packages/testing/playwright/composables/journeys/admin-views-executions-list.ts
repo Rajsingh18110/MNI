@@ -82,7 +82,7 @@ export async function setupAdminViewsExecutionsList(
 }
 
 export async function viewExecutionsListAsAdmin(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	ctx: AdminViewsExecutionsListContext,
 ): Promise<void> {
 	const executionsResponse = n8n.page.waitForResponse(
@@ -110,7 +110,7 @@ export async function viewExecutionsListAsAdmin(
  * `PLAYWRIGHT_A11Y_MAX_VIOLATIONS` decides that, and is unset by default.
  */
 export async function adminViewsExecutionsList(deps: {
-	n8n: n8nPage;
+	MNI: n8nPage;
 	api: ApiHelpers;
 	a11y?: A11yChecker;
 }): Promise<void> {

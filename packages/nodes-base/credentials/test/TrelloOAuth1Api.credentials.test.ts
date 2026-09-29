@@ -23,6 +23,6 @@ describe('TrelloOAuth1Api credentials', () => {
 		const params = new URL(authUrl).searchParams;
 		expect(params.get('scope')).toBe('read,write,account');
 		expect(params.get('expiration')).toBe('never');
-		expect(params.get('name')).toBe('n8n');
+		expect(params.get('name')).toBe('MNI');
 	});
 });

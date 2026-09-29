@@ -187,7 +187,7 @@ beforeAll(async () => {
 		branchReadOnly: false,
 		branchColor: '#5296D6',
 		publicKey:
-			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBSz2nMZAiUBWe6n89aWd5x9QMcIOaznVW3fpuCYC4L n8n deploy key',
+			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBSz2nMZAiUBWe6n89aWd5x9QMcIOaznVW3fpuCYC4L MNI deploy key',
 	});
 });
 

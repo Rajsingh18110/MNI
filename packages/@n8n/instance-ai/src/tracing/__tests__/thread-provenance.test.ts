@@ -26,7 +26,7 @@ describe('threadProvenanceMetadata', () => {
 		});
 	});
 
-	it('cannot overwrite the trace fields n8n sets itself', () => {
+	it('cannot overwrite the trace fields MNI sets itself', () => {
 		// buildBaseMetadata spreads caller metadata LAST, so an unprefixed
 		// `user_id` in a caller's bag would replace the real one. The prefix is
 		// what makes an arbitrary caller bag safe to merge at all.

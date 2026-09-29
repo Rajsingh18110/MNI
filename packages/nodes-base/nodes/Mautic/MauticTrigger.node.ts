@@ -152,7 +152,7 @@ export class MauticTrigger implements INodeType {
 				const webhookSecret = randomBytes(32).toString('hex');
 				const body: IDataObject = {
 					name: `n8n-webhook:${urlParts.path}`,
-					description: 'n8n webhook',
+					description: 'MNI webhook',
 					webhookUrl,
 					secret: webhookSecret,
 					triggers: events,

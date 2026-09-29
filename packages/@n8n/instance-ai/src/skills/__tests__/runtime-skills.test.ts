@@ -311,7 +311,7 @@ describe('Instance AI runtime skills', () => {
 		expect(loaded?.instructions).not.toMatch(/MCP|devtools/i);
 	});
 
-	it('loads the bundled n8n docs assistant skill', async () => {
+	it('loads the bundled MNI docs assistant skill', async () => {
 		const source = loadInstanceAiRuntimeSkillSource();
 		const skill = source.registry.skills.find((entry) => entry.name === 'n8n-docs-assistant');
 
@@ -380,13 +380,13 @@ describe('Instance AI runtime skills', () => {
 		expect(loaded?.instructions).toContain('follow the inlined\n    `postBuildFlow.instructions`');
 		expect(loaded?.instructions).toContain('Do not call\n    `verify-built-workflow` directly');
 		expect(loaded?.instructions).toContain('workflows(action="get-as-code", workflowId)');
-		expect(loaded?.instructions).toContain('n8n has no global error workflow setting');
+		expect(loaded?.instructions).toContain('MNI has no global error workflow setting');
 		expect(loaded?.instructions).toContain('references/error-workflows.md');
 		expect(loaded?.instructions).toContain('settings.errorWorkflow');
 		expect(loaded?.instructions).toContain(
 			'knowledge-base/reference/workflow-builder-guardrails.md',
 		);
-		expect(loaded?.instructions).toContain('Prefer n8n sources over guessing');
+		expect(loaded?.instructions).toContain('Prefer MNI sources over guessing');
 		expect(loaded?.instructions).toContain('knowledge base');
 		expect(loaded?.instructions).toContain('n8n-docs-assistant');
 		expect(loaded?.instructions).toContain('never load `templates/index.json`');
@@ -400,7 +400,7 @@ describe('Instance AI runtime skills', () => {
 		expect(loaded?.instructions).toContain('never stop before the first\n`build-workflow` call');
 		expect(loaded?.instructions).toContain('inspect it first via `debugging-executions`');
 		expect(loaded?.instructions).toContain('SDK node `output` mocks are raw `$json` objects');
-		expect(loaded?.instructions).toMatch(/inline setup card in the n8n\s+Assistant panel/);
+		expect(loaded?.instructions).toMatch(/inline setup card in the MNI\s+Assistant panel/);
 		expect(loaded?.instructions).toContain(
 			'never ask for\nsetup values before the first successful build',
 		);
@@ -484,7 +484,7 @@ describe('Instance AI runtime skills', () => {
 		expect(loaded?.instructions).toContain('verificationReadiness.status === "needs_setup"');
 		expect(loaded?.instructions).toContain('verificationReadiness.status === "not_verifiable"');
 		expect(loaded?.instructions).toContain('setupRequirement.status === "required"');
-		expect(loaded?.instructions).toMatch(/inline setup card in\s+the n8n Assistant panel/);
+		expect(loaded?.instructions).toMatch(/inline setup card in\s+the MNI Assistant panel/);
 		expect(loaded?.instructions).toContain(
 			'ask once whether the user wants to build an error workflow for that workflow',
 		);
@@ -503,7 +503,7 @@ describe('Instance AI runtime skills', () => {
 			'The opt-in must explicitly mention an error workflow and the target workflow\nname.',
 		);
 		expect(loaded?.instructions).toContain(
-			'Mention that n8n has\n   no global or instance-wide error workflow setting only when the user\n   explicitly asked about',
+			'Mention that MNI has\n   no global or instance-wide error workflow setting only when the user\n   explicitly asked about',
 		);
 		expect(loaded?.instructions).toContain('Mocked verification live-test follow-up');
 		expect(loaded?.instructions).toMatch(

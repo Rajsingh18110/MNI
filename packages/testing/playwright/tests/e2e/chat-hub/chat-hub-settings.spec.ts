@@ -9,7 +9,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Chat' }],
 	},
 	() => {
-		test('set global credentials for a provider', async ({ n8n, anthropicCredential }) => {
+		test('set global credentials for a provider', async ({ MNI, anthropicCredential }) => {
 			await n8n.navigate.toChatHubSettings();
 
 			// Open Anthropic settings
@@ -54,7 +54,7 @@ test.describe(
 		});
 
 		test('restrict available LLM providers and models', async ({
-			n8n,
+			MNI,
 			anthropicCredential,
 			anthropicApiKey,
 		}) => {

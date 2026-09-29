@@ -1,4 +1,4 @@
-# n8n database schema (PostgreSQL)
+# MNI database schema (PostgreSQL)
 
 ## Description
 

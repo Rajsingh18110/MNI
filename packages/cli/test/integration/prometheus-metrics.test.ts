@@ -53,7 +53,7 @@ describe('PrometheusMetricsService', () => {
 		vi.useRealTimers();
 	});
 
-	it('should return n8n version', async () => {
+	it('should return MNI version', async () => {
 		/**
 		 * Act
 		 */
@@ -67,7 +67,7 @@ describe('PrometheusMetricsService', () => {
 
 		const n8nVersion = semverParse(N8N_VERSION);
 
-		if (!n8nVersion) expect.fail('Failed to parse n8n version');
+		if (!n8nVersion) expect.fail('Failed to parse MNI version');
 
 		const { version, major, minor, patch } = n8nVersion;
 

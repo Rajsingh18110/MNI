@@ -10,7 +10,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Chat' }],
 	},
 	() => {
-		test('manage workflow agents @auth:admin', async ({ n8n, agentWorkflow }) => {
+		test('manage workflow agents @auth:admin', async ({ MNI, agentWorkflow }) => {
 			// STEP: Navigate to workflow agents page and verify agent is listed
 			await n8n.navigate.toChatHubWorkflowAgents();
 			await expect(n8n.chatHubWorkflowAgents.getAgentCards()).toHaveCount(1);
@@ -63,7 +63,7 @@ test.describe(
 		});
 
 		test('sharing workflow agent with project chat user', async ({
-			n8n,
+			MNI,
 			anthropicCredential,
 			agentWorkflow,
 			project,

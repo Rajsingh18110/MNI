@@ -10,7 +10,7 @@ describe('NoRawEditorNavigationRule', () => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
 			`
-test('opens workflow', async ({ n8n }) => {
+test('opens workflow', async ({ MNI }) => {
 	await n8n.page.goto(\`/workflow/\${workflowId}\`);
 });
 `,
@@ -42,7 +42,7 @@ test('blank canvas', async ({ page }) => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
 			`
-test('blank canvas', async ({ n8n }) => {
+test('blank canvas', async ({ MNI }) => {
 	await n8n.page.goto(ROUTES.NEW_WORKFLOW_PAGE);
 });
 `,
@@ -57,7 +57,7 @@ test('blank canvas', async ({ n8n }) => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
 			`
-test('lists', async ({ n8n }) => {
+test('lists', async ({ MNI }) => {
 	await n8n.page.goto('/workflows');
 	await n8n.page.goto('/home/workflows');
 	await n8n.page.goto(\`projects/\${projectId}/workflows\`);
@@ -75,7 +75,7 @@ test('lists', async ({ n8n }) => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
 			`
-test('imports', async ({ n8n }) => {
+test('imports', async ({ MNI }) => {
 	await n8n.start.fromImportedWorkflow('workflow/file.json');
 });
 `,
@@ -93,7 +93,7 @@ test('imports', async ({ n8n }) => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
 			`
-test('benchmark', async ({ n8n }) => {
+test('benchmark', async ({ MNI }) => {
 	// janitor-disable-next-line no-raw-editor-navigation -- measures cold load
 	await n8n.page.goto(\`/workflow/\${workflowId}\`);
 });
@@ -109,7 +109,7 @@ test('benchmark', async ({ n8n }) => {
 		const file = createFile(
 			'/tests/e2e/example.spec.ts',
 			`
-test('benchmark', async ({ n8n }) => {
+test('benchmark', async ({ MNI }) => {
 	// janitor-disable-next-line selector-purity
 	await n8n.page.goto(\`/workflow/\${workflowId}\`);
 });

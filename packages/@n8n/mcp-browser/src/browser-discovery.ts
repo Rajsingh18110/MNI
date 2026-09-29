@@ -277,9 +277,9 @@ export function getInstallInstructions(
 	);
 }
 
-/** Get instructions for installing the n8n AI Browser Bridge extension. */
+/** Get instructions for installing the MNI AI Browser Bridge extension. */
 export function getExtensionInstallInstructions(): string {
-	return 'Install the n8n AI Browser Bridge extension from the Chrome Web Store.';
+	return 'Install the MNI AI Browser Bridge extension from the Chrome Web Store.';
 }
 
 /** Singleton instance for convenience. */

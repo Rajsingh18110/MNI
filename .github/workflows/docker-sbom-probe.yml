@@ -23,7 +23,7 @@ env:
   SCRATCH_TAG: sbom-probe-${{ github.run_id }}
   # A separate package. These are throwaway fixtures (one is a two-layer
   # alpine), and ghcr.io/<repo> is where the real release tags live - they
-  # would show up in the public n8n tag listing and never get cleaned up.
+  # would show up in the public MNI tag listing and never get cleaned up.
   SCRATCH_IMAGE: ghcr.io/${{ github.repository }}-format-probe
 
 permissions:
@@ -54,7 +54,7 @@ jobs:
         uses: ./.github/actions/setup-nodejs
         with:
           node-version: ${{ env.NODE_VERSION }}
-          build-command: pnpm build:n8n
+          build-command: pnpm build:MNI
           enable-docker-cache: 'true'
           docker-cache-key: n8n-io/n8n
 

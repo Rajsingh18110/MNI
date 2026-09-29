@@ -104,7 +104,7 @@ const STALE_CONFIG_ERROR: ConfigValidationError = {
 const AGENT_LOCKED_BY_EDITOR_ERROR: ConfigValidationError = {
 	path: '(root)',
 	message:
-		'The agent is being edited by a user in the n8n builder right now, so it cannot be modified. ' +
+		'The agent is being edited by a user in the MNI builder right now, so it cannot be modified. ' +
 		'Stop editing and tell the user to finish or close their editing session, then retry.',
 };
 
@@ -769,7 +769,7 @@ export class AgentsBuilderToolsService {
 					'{ ok: false, stage, errors } on failure. ' +
 					'stage is "locked", "parse", "stale", "patch", or "schema". On stage: "stale", call agent-context with type "config" and retry ' +
 					'once using its fresh config and configHash. On stage: "locked", stop and tell the user to close ' +
-					'their editing session in the n8n builder.',
+					'their editing session in the MNI builder.',
 			)
 			.input(
 				z.object({
@@ -1411,7 +1411,7 @@ export class AgentsBuilderToolsService {
 		options?: BuilderToolsOptions,
 	): ModelLookup {
 		return {
-			// `list` resolves the n8n Connect managed tag to the synthetic gateway
+			// `list` resolves the MNI Connect managed tag to the synthetic gateway
 			// credential internally, so no managed branch is needed here.
 			list: async (credentialId, credentialType, provider) =>
 				await this.builderModelLiveLookupService.list(

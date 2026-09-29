@@ -2,7 +2,7 @@
 	"bot": {
 		"id": 777000,
 		"is_bot": true,
-		"first_name": "n8n Agent",
+		"first_name": "MNI Agent",
 		"username": "n8n_agent_bot"
 	},
 	"user": {
@@ -64,7 +64,7 @@
 			"from": {
 				"id": 777000,
 				"is_bot": true,
-				"first_name": "n8n Agent",
+				"first_name": "MNI Agent",
 				"username": "n8n_agent_bot"
 			},
 			"chat": {
@@ -92,7 +92,7 @@
 				"from": {
 					"id": 777000,
 					"is_bot": true,
-					"first_name": "n8n Agent",
+					"first_name": "MNI Agent",
 					"username": "n8n_agent_bot"
 				},
 				"chat": {

@@ -847,7 +847,7 @@ describe('AgentWorkflowExecutionService', () => {
 						// stays off (it would accumulate under the synthetic id).
 						memory: {
 							enabled: true,
-							storage: 'n8n',
+							storage: 'MNI',
 							observationalMemory: { enabled: false },
 							episodicMemory: { enabled: false },
 						},
@@ -937,7 +937,7 @@ describe('AgentWorkflowExecutionService', () => {
 								nodeTypeVersion: 1,
 								nodeParameters: { url: 'https://example.com' },
 								credentials: {
-									httpBasicAuth: { id: null, name: 'n8n credits', __aiGatewayManaged: true },
+									httpBasicAuth: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
 								},
 							},
 						},
@@ -1118,7 +1118,7 @@ describe('AgentWorkflowExecutionService', () => {
 
 		it.each([
 			// Memory is injected server-side; the node cannot configure it.
-			['memory', { memory: { enabled: true, storage: 'n8n' } }],
+			['memory', { memory: { enabled: true, storage: 'MNI' } }],
 			// Approval suspends the run, which workflow executions can't resume.
 			[
 				'tool approval',

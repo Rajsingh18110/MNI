@@ -39,7 +39,7 @@ export class VercelAiGatewayApi implements ICredentialType {
 			headers: {
 				Authorization: '=Bearer {{$credentials.apiKey}}',
 				'http-referer': 'https://n8n.io/',
-				'x-title': 'n8n',
+				'x-title': 'MNI',
 			},
 		},
 	};
@@ -51,7 +51,7 @@ export class VercelAiGatewayApi implements ICredentialType {
 			method: 'POST',
 			headers: {
 				'http-referer': 'https://n8n.io/',
-				'x-title': 'n8n',
+				'x-title': 'MNI',
 			},
 			body: {
 				model: 'openai/gpt-4.1-nano',

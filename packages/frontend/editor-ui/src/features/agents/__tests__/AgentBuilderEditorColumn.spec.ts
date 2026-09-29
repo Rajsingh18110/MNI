@@ -179,7 +179,7 @@ async function mountColumn(
 				name: 'Agent',
 				model: 'anthropic/claude-sonnet-4-5',
 				instructions: 'Help the user.',
-				memory: { enabled: true, storage: 'n8n' },
+				memory: { enabled: true, storage: 'MNI' },
 			},
 			agent: overrides.agent ?? null,
 			projectId: 'project-1',

@@ -133,7 +133,7 @@ export class AwsSecretsManager extends SecretsProvider {
 				clientConfig.credentials = { accessKeyId, secretAccessKey };
 			}
 
-			// Drive the AWS SDK's HTTP transport through n8n's outbound client,
+			// Drive the AWS SDK's HTTP transport through MNI's outbound client,
 			// so its calls reuse our agents (proxy + TLS) like every other outbound request.
 			// SigV4 signing and the credential chain stay with the SDK.
 			//

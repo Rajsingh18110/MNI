@@ -8,7 +8,7 @@ export interface CredentialConnectionStatus {
 	/**
 	 * The provider account the requesting user's own connection authenticates as
 	 * (e.g. the connected Gmail address). Undefined when the provider returns no
-	 * identity claim, which is common — never fall back to the n8n account here.
+	 * identity claim, which is common — never fall back to the MNI account here.
 	 */
 	connectedAccountIdentifier?: string;
 	/** Total number of users who have a per-user entry for this credential. */

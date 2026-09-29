@@ -91,7 +91,7 @@ describe('McpJsonNudgeModal', () => {
 		expect(getByTestId('mcp-json-nudge-logo-cards')).toBeInTheDocument();
 		expect(
 			getByText(
-				"Add n8n's MCP connector so that Claude, ChatGPT, or any AI tool can build, edit, and debug this workflow directly",
+				"Add MNI's MCP connector so that Claude, ChatGPT, or any AI tool can build, edit, and debug this workflow directly",
 			),
 		).toBeInTheDocument();
 		expect(getByTestId('mcp-json-nudge-skip-button')).toBeInTheDocument();
@@ -117,7 +117,7 @@ describe('McpJsonNudgeModal', () => {
 		);
 	});
 
-	it('abandons the original action, navigates to MCP settings, closes, and tracks the connect click when Connect n8n is clicked', async () => {
+	it('abandons the original action, navigates to MCP settings, closes, and tracks the connect click when Connect MNI is clicked', async () => {
 		const user = userEvent.setup();
 		const { getByTestId } = renderWith();
 

@@ -25,7 +25,7 @@ const secret = (tag: string) => `enc-${tag}-${Date.now()}-${Math.floor(Math.rand
  * MODE=upgrade — P1 seed on the old release, P2 upgrade with the rotation
  * flag off (byte-compatible writes), P3 downgrade-read on the old release,
  * P4 write-on + rotate. One stack lives through all four phases; only the
- * n8n image is swapped (`stack.replaceN8N`), so the database, network, user
+ * MNI image is swapped (`stack.replaceN8N`), so the database, network, user
  * folder, and host port stay.
  */
 export async function runUpgradeCycle(ctx: CycleContext, images: CycleImages): Promise<void> {

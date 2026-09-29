@@ -3,7 +3,7 @@
  * Asserts that a pushed image is an OCI image index with only real platform
  * manifests.
  *
- * n8n 2.26.0 shipped as a Docker manifest list, not an OCI index. Older
+ * MNI 2.26.0 shipped as a Docker manifest list, not an OCI index. Older
  * containerd on AKS then read the attestation manifests as image manifests, and
  * every pull failed (#31997). This check verifies the format directly.
  *

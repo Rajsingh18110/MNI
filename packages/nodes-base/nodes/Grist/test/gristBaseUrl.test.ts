@@ -53,7 +53,7 @@ describe('Grist gristBaseUrl', () => {
 		});
 	});
 
-	// Before a node sees credential data, n8n merges in the defaults of the declared
+	// Before a node sees credential data, MNI merges in the defaults of the declared
 	// credential fields and drops any stored value whose field is not declared. These
 	// tests resolve the base URL through that same step, so they fail if a default
 	// shadows the legacy fields or if the legacy fields stop being declared.

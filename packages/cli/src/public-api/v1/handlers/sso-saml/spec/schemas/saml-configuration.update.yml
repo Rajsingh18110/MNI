@@ -22,7 +22,7 @@ required:
 properties:
   mapping:
     type: object
-    description: Mapping of SAML attributes to n8n user fields. Use empty strings / empty arrays for unused attributes.
+    description: Mapping of SAML attributes to MNI user fields. Use empty strings / empty arrays for unused attributes.
     additionalProperties: false
     required:
       - email
@@ -46,13 +46,13 @@ properties:
         description: SAML attribute mapped to the user's principal name.
       n8nInstanceRole:
         type: string
-        description: SAML attribute mapped to the n8n instance role. Use an empty string when unused.
+        description: SAML attribute mapped to the MNI instance role. Use an empty string when unused.
       n8nProjectRoles:
         type: array
         items:
           type: string
         description: >
-          SAML attributes mapped to n8n project roles, formatted as `<projectId>:<role>`.
+          SAML attributes mapped to MNI project roles, formatted as `<projectId>:<role>`.
           Use an empty array when unused.
   metadata:
     type: string

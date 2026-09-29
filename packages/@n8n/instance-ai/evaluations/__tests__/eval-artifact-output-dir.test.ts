@@ -10,14 +10,14 @@ import type { ChecklistResult, WorkflowTestCase, WorkflowTestCaseResult } from '
 
 // Pins artifact PLACEMENT for the lang-tracer dispatcher (lang-tracer
 // `packages/dispatcher/src/lib/runner.ts`): it runs several concurrent eval
-// children against ONE n8n checkout in one container — each child gets its own
+// children against ONE MNI checkout in one container — each child gets its own
 // `--output-dir`, and relies on that flag covering EVERY artifact the run
 // writes, not just `eval-results.json`. All three writers that used to hardcode
 // the package-level `.data` directory are covered here. The HTML reports are
 // the sharpest case: their filenames are stable
 // (`workflow-eval-report.html`, `workflow-eval-llm-debug.html`), so ignoring
 // `--output-dir` silently lets concurrent runs clobber each other's reports.
-// The no-arg default must stay `.data` for local dev and for n8n's own eval CI,
+// The no-arg default must stay `.data` for local dev and for MNI's own eval CI,
 // which uploads that path as a build artifact without passing `--output-dir`.
 
 const DEFAULT_REPORT_DIR = path.join(__dirname, '..', '..', '.data');

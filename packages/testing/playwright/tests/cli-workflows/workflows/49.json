@@ -17,7 +17,7 @@
 			"parameters": {
 				"longUrl": "https://n8n.io/",
 				"additionalFields": {
-					"title": "n8n"
+					"title": "MNI"
 				}
 			},
 			"name": "Bitly",

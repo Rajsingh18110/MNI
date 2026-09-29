@@ -23,7 +23,7 @@ const PROVIDER_PREFIX_BY_NODE_TYPE = new Map<string, string>([
 	['@n8n/n8n-nodes-langchain.lmChatVercelAiGateway', 'vercel'],
 ]);
 
-// Providers whose n8n credential default base URL omits the version path the
+// Providers whose MNI credential default base URL omits the version path the
 // `@ai-sdk/*` client expects; forward nothing so the SDK uses its own default.
 const SKIP_CREDENTIAL_BASE_URL = new Set(['google', 'cohere']);
 

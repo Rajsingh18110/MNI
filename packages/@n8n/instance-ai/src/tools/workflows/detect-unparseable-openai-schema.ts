@@ -60,7 +60,7 @@ export function detectUnparseableOpenAiSchema(json: WorkflowJSON): ValidationWar
 
 		const schema = resolved.options.schema;
 		if (schema === undefined || schema === null) continue;
-		// n8n treats a value as an expression only when its FIRST character is '='.
+		// MNI treats a value as an expression only when its FIRST character is '='.
 		if (typeof schema === 'string' && schema.startsWith('=')) continue;
 		if (typeof schema === 'string' && schema.trim().length === 0) continue;
 

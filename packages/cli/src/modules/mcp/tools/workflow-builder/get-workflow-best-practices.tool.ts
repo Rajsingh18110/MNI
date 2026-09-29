@@ -99,7 +99,7 @@ function buildTechniqueResponse(technique: WorkflowTechniqueType) {
 	}
 
 	const description = TechniqueDescription[technique];
-	const message = `Technique "${technique}" (${description}) does not have detailed best-practices documentation yet — proceed with general n8n knowledge.`;
+	const message = `Technique "${technique}" (${description}) does not have detailed best-practices documentation yet — proceed with general MNI knowledge.`;
 	return { text: message, hasDocumentation: false, structured: { technique, message } };
 }
 

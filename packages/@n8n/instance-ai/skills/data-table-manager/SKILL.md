@@ -22,7 +22,7 @@ platforms:
 For workflow builds that create or write Data Tables, load this skill, then
 `workflow-builder`, before `build-workflow`.
 
-Use this skill to build and maintain n8n Data Tables in the current turn with
+Use this skill to build and maintain MNI Data Tables in the current turn with
 `data-tables` and, for attachments, `parse-file`. Do not spawn another agent or
 create a background plan for data-table-only work.
 
@@ -30,7 +30,7 @@ Also load this skill before planning or building a workflow whose trigger,
 processing steps, or outputs create, inspect, or write Data Table records, then
 pass the relevant schema/row-handling guidance to the planning skill or builder.
 
-n8n Data Tables are flat, workflow-friendly stores. Design them so future
+MNI Data Tables are flat, workflow-friendly stores. Design them so future
 workflow expressions can read predictable field names and so updates/deletes
 can target rows with narrow filters.
 

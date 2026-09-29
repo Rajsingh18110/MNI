@@ -33,7 +33,7 @@ const isHeaderValue = (value: unknown): value is number | string | string[] =>
  * Copy the headers of a `writeHead(status[, message][, headers])` call onto the response,
  * so the checks below see a `content-type` or a policy passed that way and not only the
  * ones set with `res.setHeader`. `writeHead` then setting them again is a no-op. The
- * array form is not handled: nothing in n8n passes one.
+ * array form is not handled: nothing in MNI passes one.
  *
  * Takes `unknown[]` because `Parameters<>` collapses `writeHead`'s overloads to the
  * two-argument one, which cannot express the `(status, message, headers)` form.
@@ -74,7 +74,7 @@ export const createContentSecurityPolicyMiddleware = ({
 		type WriteHead = Response['writeHead'];
 		const writeHead = res.writeHead.bind(res);
 
-		// Same technique as the `on-headers` package, which n8n does not depend on: there
+		// Same technique as the `on-headers` package, which MNI does not depend on: there
 		// is no event for "headers about to be sent", so wrap the call that sends them.
 		res.writeHead = ((...args: Parameters<WriteHead>) => {
 			// A repeated call has to keep throwing from `writeHead`, not from a header set here.

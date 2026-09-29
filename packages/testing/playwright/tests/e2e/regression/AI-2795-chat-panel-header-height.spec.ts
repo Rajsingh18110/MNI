@@ -4,7 +4,7 @@ test.describe(
 	'AI-2795: chat panel header height in the expanded logs pane',
 	{ annotation: [{ type: 'owner', description: 'AI' }] },
 	() => {
-		test('keeps the chat header the same height as the overview header', async ({ n8n }) => {
+		test('keeps the chat header the same height as the overview header', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_chat_partial_execution.json');
 			await n8n.notifications.quickCloseAll();
 

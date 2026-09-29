@@ -54,7 +54,7 @@ export class MessageEventBusDestinationSyslog
 		this.port = options.port ?? 514;
 		this.protocol = options.protocol ?? 'udp';
 		this.facility = options.facility ?? Facility.Local0;
-		this.app_name = options.app_name ?? 'n8n';
+		this.app_name = options.app_name ?? 'MNI';
 		this.eol = options.eol ?? '\n';
 		this.expectedStatusCode = options.expectedStatusCode ?? 200;
 

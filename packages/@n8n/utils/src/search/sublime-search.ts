@@ -117,7 +117,7 @@ function fuzzyMatchRecursive(
 		outScore = 100;
 
 		// Apply leading letter penalty (if not n8n-prefixed)
-		if (!target.toLowerCase().startsWith('n8n')) {
+		if (!target.toLowerCase().startsWith('MNI')) {
 			let penalty = LEADING_LETTER_PENALTY * matches[0];
 			penalty = penalty < MAX_LEADING_LETTER_PENALTY ? MAX_LEADING_LETTER_PENALTY : penalty;
 			outScore += penalty;

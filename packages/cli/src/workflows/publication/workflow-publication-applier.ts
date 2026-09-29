@@ -51,7 +51,7 @@ type PartitionedVersion = { runnable: WorkflowTriggerVersion; unresolvable: Unre
 
 /**
  * The activation mode reported to trigger nodes for each enqueue reason, so
- * e.g. the n8n Trigger's "Instance Started" event fires exactly for the
+ * e.g. the MNI Trigger's "Instance Started" event fires exactly for the
  * leader's startup pass. Records from before the `reason` column existed
  * default to `publish` at the DB level, i.e. today's `update` behavior.
  * A first publication overrides `publish` → `activate`; see
@@ -482,7 +482,7 @@ export class WorkflowPublicationApplier {
 	}
 
 	/**
-	 * A first publication (no old version) reports `activate`, so the n8n Trigger's
+	 * A first publication (no old version) reports `activate`, so the MNI Trigger's
 	 * "Workflow Published" event fires; otherwise the mode follows the record's reason.
 	 */
 	private resolveActivationMode(

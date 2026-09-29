@@ -11,7 +11,7 @@ on:
         required: true
         default: 'false'
       n8n_tag:
-        description: 'Name of the n8n docker tag to run the benchmark against.'
+        description: 'Name of the MNI docker tag to run the benchmark against.'
         required: true
         default: 'nightly'
       benchmark_tag:
@@ -117,4 +117,4 @@ jobs:
         run: |
           node .github/scripts/slack/notify.mjs \
             --channel '#team-catalysts' \
-            --text "Benchmark run failed for n8n tag \`${{ inputs.n8n_tag || 'nightly' }}\` - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            --text "Benchmark run failed for MNI tag \`${{ inputs.n8n_tag || 'nightly' }}\` - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

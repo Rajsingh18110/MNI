@@ -22,7 +22,7 @@ test.describe(
 	},
 	() => {
 		test('should populate logs as manual execution progresses', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements({ workflow: 'Workflow_loop.json' });
@@ -74,7 +74,7 @@ test.describe(
 		});
 
 		test('should show the actions menu when the overflow button is clicked', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements({ workflow: 'Workflow_if.json' });
@@ -85,7 +85,7 @@ test.describe(
 			await expect(n8n.canvas.logsPanel.getSyncSelectionMenuItem()).toBeVisible();
 		});
 
-		test('should allow to trigger partial execution', async ({ n8n, setupRequirements }) => {
+		test('should allow to trigger partial execution', async ({ MNI, setupRequirements }) => {
 			await setupRequirements({ workflow: 'Workflow_if.json' });
 
 			await n8n.canvas.clickZoomToFitButton();
@@ -112,7 +112,7 @@ test.describe(
 		});
 
 		test('should show input and output data in the selected display mode', async ({
-			n8n,
+			MNI,
 			anthropicCredential,
 			setupRequirements,
 		}) => {
@@ -157,7 +157,7 @@ test.describe(
 		});
 
 		test('should show input and output data of correct run index and branch', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements({ workflow: 'Workflow_if.json' });
@@ -209,7 +209,7 @@ test.describe(
 		});
 
 		test('should keep populated logs unchanged when workflow get edits after the execution', async ({
-			n8n,
+			MNI,
 			setupRequirements,
 		}) => {
 			await setupRequirements({ workflow: 'Workflow_if.json' });
@@ -226,7 +226,7 @@ test.describe(
 		});
 
 		test('should show logs for a past execution', async ({
-			n8n,
+			MNI,
 			anthropicCredential,
 			setupRequirements,
 		}) => {
@@ -256,7 +256,7 @@ test.describe(
 		});
 
 		test('should refresh chat history when switching between past executions', async ({
-			n8n,
+			MNI,
 			anthropicCredential,
 			setupRequirements,
 		}) => {
@@ -300,7 +300,7 @@ test.describe(
 		});
 
 		test('should show logs for a workflow with a node that waits for webhook', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			await n8n.start.fromImportedWorkflow('Workflow_wait_for_webhook.json');
@@ -336,7 +336,7 @@ test.describe(
 		});
 
 		test('should allow to cancel a workflow with a node that waits for webhook', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('Workflow_wait_for_webhook.json');
 			await n8n.canvas.deselectAll();

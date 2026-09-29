@@ -26,7 +26,7 @@ const bestPracticesResultSchema = z.object({
 
 export type BestPracticesResult = z.infer<typeof bestPracticesResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing specifically on BEST PRACTICES ADHERENCE.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing specifically on BEST PRACTICES ADHERENCE.
 Your task is to evaluate whether a generated workflow follows the documented best practices for its workflow type(s).
 
 ## Your Role
@@ -44,7 +44,7 @@ Evaluate ONLY adherence to the provided best practices documentation. Focus on w
 
 ### Understanding Workflow Connections
 
-n8n workflows can have multiple triggers and execution paths. When evaluating whether components are "connected," understand that n8n supports multiple connection methods beyond direct node-to-node data flow.
+MNI workflows can have multiple triggers and execution paths. When evaluating whether components are "connected," understand that MNI supports multiple connection methods beyond direct node-to-node data flow.
 
 Valid Connection Methods:
 
@@ -81,7 +81,7 @@ Valid Connection Methods:
 5. **Data Storage Sharing**: Multiple workflows reading/writing to the same persistent storage
    - Database nodes (PostgreSQL, MongoDB, MySQL)
    - Spreadsheet services (Google Sheets, Airtable)
-   - Data Tables (n8n's built-in storage)
+   - Data Tables (MNI's built-in storage)
    - One workflow writes data, another workflow reads it
 
 6. **Tool-based Connections**: Agents connected through tool nodes
@@ -99,7 +99,7 @@ Valid Connection Methods:
    - Processing nodes connect back to Split In Batches input (index 0)
    - Output 0 connects to aggregation/final step
 
-   This is the standard n8n pattern for processing large datasets in batches.
+   This is the standard MNI pattern for processing large datasets in batches.
 
 8. **Shared Destination Pattern**: Multiple branches connecting to same node
    - Multiple Switch/IF outputs can ALL connect to the same downstream node
@@ -128,7 +128,7 @@ Before marking components as "disconnected," verify they have NO connection meth
 
 ### Evaluating Configuration and Fields
 
-If a best practice states that certain configuration should be applied, for example disabling n8n attribution
+If a best practice states that certain configuration should be applied, for example disabling MNI attribution
 check to see if that has been specified as part of the generated workflows configuration or its additional fields.
 If a node of the correct type has these settings present, then it is likely NOT in violation of the practice.
 
@@ -164,7 +164,7 @@ If a node of the correct type has these settings present, then it is likely NOT 
 - DO NOT mark optional features as critical violations when they weren't requested
 `;
 
-const humanTemplate = `Evaluate how well this workflow follows n8n best practices in the context of what the user requested.
+const humanTemplate = `Evaluate how well this workflow follows MNI best practices in the context of what the user requested.
 
 <user_prompt>
 {userPrompt}
@@ -219,7 +219,7 @@ async function loadRelevantBestPractices(
 		if (relevantDocs.length === 0) {
 			return {
 				documentation:
-					'No specific best practices documentation available for this workflow type. Evaluate based on general n8n workflow principles.',
+					'No specific best practices documentation available for this workflow type. Evaluate based on general MNI workflow principles.',
 				techniques: categorization.techniques,
 			};
 		}
@@ -232,7 +232,7 @@ async function loadRelevantBestPractices(
 		// If categorization fails, return a message indicating no specific best practices
 		return {
 			documentation:
-				'Unable to load specific best practices. Evaluate based on general n8n workflow principles.',
+				'Unable to load specific best practices. Evaluate based on general MNI workflow principles.',
 			techniques: [],
 		};
 	}

@@ -279,7 +279,7 @@ describe('McpAgentToolsService', () => {
 			expect(registerResource).toHaveBeenCalledWith(
 				expect.objectContaining({
 					name: 'agent-builder-reference',
-					uri: 'n8n://agents/reference',
+					uri: 'MNI://agents/reference',
 					config: expect.any(Object),
 					read: expect.any(Function),
 				}),

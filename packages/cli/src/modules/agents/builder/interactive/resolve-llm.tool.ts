@@ -14,7 +14,7 @@ import { findVerifiedModelId, normalizeProviderModelId } from '../../utils/provi
 import { BUILDER_TOOLS } from '../builder-tool-names';
 import type { ModelChoice } from '../model-lookup.types';
 
-/** User-facing name written for an n8n credits (AI Gateway managed) model credential. */
+/** User-facing name written for an MNI credits (AI Gateway managed) model credential. */
 const N8N_CONNECT_CREDENTIAL_NAME = 'Gateway credits';
 
 export interface ModelLookup {
@@ -31,8 +31,8 @@ export interface ResolveLlmToolDeps {
 	credentialProvider: CredentialProvider;
 	modelLookup: ModelLookup;
 	/**
-	 * Whether n8n Connect (AI Gateway) serves the given model provider (e.g.
-	 * `openai`). When provided, the tool offers n8n Connect as an additional
+	 * Whether MNI Connect (AI Gateway) serves the given model provider (e.g.
+	 * `openai`). When provided, the tool offers MNI Connect as an additional
 	 * credential for served providers the user has no own credential for.
 	 */
 	isProviderServedByGateway?(provider: string): Promise<boolean>;
@@ -247,7 +247,7 @@ async function resolveDefaultModelForCredential(
 }
 
 /**
- * Resolve the n8n Connect managed credential for a provider on an explicit
+ * Resolve the MNI Connect managed credential for a provider on an explicit
  * request; fails only when the provider is unknown or the gateway does not
  * serve it (own-credential precedence is the caller's concern).
  *
@@ -383,7 +383,7 @@ export function buildResolveLlmTool(deps: ResolveLlmToolDeps): BuiltTool {
 				credentialId?: string;
 				useGatewayCredits?: boolean;
 			}) => {
-				// Explicit "use n8n credits" wins over own credentials and never asks:
+				// Explicit "use MNI credits" wins over own credentials and never asks:
 				// resolve the managed credential for the named provider, or the sole
 				// gateway-served provider when none is named.
 				if (useGatewayCredits) {
@@ -407,10 +407,10 @@ export function buildResolveLlmTool(deps: ResolveLlmToolDeps): BuiltTool {
 				const all = await deps.credentialProvider.list();
 				const ownCredentials = all.filter((credential) => LLM_PROVIDER_DEFAULTS[credential.type]);
 
-				// Offer n8n Connect as an additional credential for each gateway-served
+				// Offer MNI Connect as an additional credential for each gateway-served
 				// provider the user has no own credential for. It then flows through the same
 				// resolution below as any credential: single → auto-use, several → ask, none →
-				// missing (a legitimate setup prompt, e.g. a provider n8n Connect does not serve).
+				// missing (a legitimate setup prompt, e.g. a provider MNI Connect does not serve).
 				const managedCredentials: CredentialListItem[] = [];
 				for (const [credentialType, defaults] of Object.entries(LLM_PROVIDER_DEFAULTS)) {
 					const hasOwnCredential = ownCredentials.some((c) => c.type === credentialType);

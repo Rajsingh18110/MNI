@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should create a new credential using empty state', async ({ n8n }) => {
+		test('should create a new credential using empty state', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const credentialName = `My awesome Notion account ${nanoid()}`;
 
@@ -22,7 +22,7 @@ test.describe(
 			await expect(n8n.credentials.cards.getCredential(credentialName)).toBeVisible();
 		});
 
-		test('should sort credentials', async ({ n8n }) => {
+		test('should sort credentials', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const credentialA = `A Credential ${nanoid()}`;
 			const credentialZ = `Z Credential ${nanoid()}`;
@@ -55,7 +55,7 @@ test.describe(
 		});
 
 		test('should create credentials from NDV for node with multiple auth options', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 			const credentialName = `My Google Service Account ${nanoid()}`;
@@ -82,7 +82,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialSelect()).toHaveValue(credentialName);
 		});
 
-		test('should show multiple credential types in the same dropdown', async ({ n8n }) => {
+		test('should show multiple credential types in the same dropdown', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 			const serviceAccountCredentialName2 = `OAuth2 Credential ${nanoid()}`;
 			const serviceAccountCredentialName = `Service Account Credential ${nanoid()}`;
@@ -111,7 +111,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialDropdownOptions()).toHaveCount(2);
 		});
 
-		test('should correctly render required and optional credentials', async ({ n8n }) => {
+		test('should correctly render required and optional credentials', async ({ MNI }) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 
 			await n8n.canvas.addNode('Pipedrive', { trigger: 'On new Pipedrive event' });
@@ -130,7 +130,7 @@ test.describe(
 			await n8n.canvas.credentialModal.close();
 		});
 
-		test('should create credentials from NDV for node with no auth options', async ({ n8n }) => {
+		test('should create credentials from NDV for node with no auth options', async ({ MNI }) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 			const credentialName = `My Trello Account ${nanoid()}`;
 
@@ -148,7 +148,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialSelect()).toHaveValue(credentialName);
 		});
 
-		test('should delete credentials from NDV', async ({ n8n }) => {
+		test('should delete credentials from NDV', async ({ MNI }) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 			const credentialName = `Notion Credential ${nanoid()}`;
 
@@ -172,7 +172,7 @@ test.describe(
 			await expect(n8n.ndv.getNodeCredentialsEmptyState()).toBeVisible();
 		});
 
-		test('should rename credentials from NDV', async ({ n8n }) => {
+		test('should rename credentials from NDV', async ({ MNI }) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 			const initialName = `My Trello Account ${nanoid()}`;
 			const renamedName = `Something else ${nanoid()}`;
@@ -196,7 +196,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialSelect()).toHaveValue(renamedName);
 		});
 
-		test('should edit credential for non-standard credential type', async ({ n8n }) => {
+		test('should edit credential for non-standard credential type', async ({ MNI }) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 			const initialName = `Adalo Credential ${nanoid()}`;
 			const editedName = `Something else ${nanoid()}`;
@@ -223,7 +223,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialSelect()).toHaveValue(editedName);
 		});
 
-		test('should set a default credential when adding nodes', async ({ n8n }) => {
+		test('should set a default credential when adding nodes', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 			const credentialName = `My awesome Notion account ${nanoid()}`;
 
@@ -243,7 +243,7 @@ test.describe(
 			await n8n.api.credentials.deleteCredential(credential!.id);
 		});
 
-		test('should set a default credential when editing a node', async ({ n8n }) => {
+		test('should set a default credential when editing a node', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 			const credentialName = `My awesome Notion account ${nanoid()}`;
 
@@ -266,7 +266,7 @@ test.describe(
 			await n8n.api.credentials.deleteCredential(credential!.id);
 		});
 
-		test('should setup generic authentication for HTTP node', async ({ n8n }) => {
+		test('should setup generic authentication for HTTP node', async ({ MNI }) => {
 			await n8n.start.fromNewProjectBlankCanvas();
 			const credentialName = `Query Auth Credential ${nanoid()}`;
 
@@ -288,7 +288,7 @@ test.describe(
 		});
 
 		test('should not show OAuth redirect URL section when OAuth2 credentials are overridden', async ({
-			n8n,
+			MNI,
 		}) => {
 			// Mock credential types response to simulate admin override
 			await n8n.page.route('**/rest/types/credentials.json', async (route) => {
@@ -317,7 +317,7 @@ test.describe(
 			await expect(n8n.canvas.credentialModal.getModal()).toBeVisible();
 		});
 
-		test('ADO-2583 should show notifications above credential modal overlay', async ({ n8n }) => {
+		test('ADO-2583 should show notifications above credential modal overlay', async ({ MNI }) => {
 			await n8n.page.route('**/rest/credentials', async (route) => {
 				if (route.request().method() === 'POST') {
 					await route.abort('failed');

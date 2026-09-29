@@ -77,7 +77,7 @@ export class LeaderElectionClient {
 		this.leaderKeyTtlInS = globalConfig.multiMainSetup.ttl;
 
 		this.redisClient = redisClientService.createClient({
-			type: 'leader(n8n)',
+			type: 'leader(MNI)',
 			extraOptions: { commandTimeout: COMMAND_TIMEOUT_MS },
 		});
 	}

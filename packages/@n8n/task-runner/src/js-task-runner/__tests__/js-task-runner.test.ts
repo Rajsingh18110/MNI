@@ -382,7 +382,7 @@ describe('JsTaskRunner', () => {
 			// https://docs.n8n.io/code/builtin/jmespath/
 			JMESPath: [['{ val: $jmespath([{ f: 1 },{ f: 2 }], "[*].f") }', { val: [1, 2] }]],
 			// https://docs.n8n.io/code/builtin/n8n-metadata/
-			'n8n metadata': [
+			'MNI metadata': [
 				[
 					'$execution',
 					{
@@ -2288,10 +2288,10 @@ describe('JsTaskRunner', () => {
 							.map(word => word.charAt(0).toUpperCase() + word.slice(1))
 							.join(' ')
 					`,
-					additionalProperties: { text: 'hello world from n8n' },
+					additionalProperties: { text: 'hello world from MNI' },
 				});
 
-				expect(outcome.result).toBe('Hello World From N8n');
+				expect(outcome.result).toBe('Hello World From MNI');
 			});
 		});
 	});

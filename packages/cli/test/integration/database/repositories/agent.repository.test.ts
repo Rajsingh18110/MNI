@@ -59,7 +59,7 @@ describe('AgentRepository', () => {
 		await testDb.terminate();
 	});
 
-	describe('published n8n Chat availability', () => {
+	describe('published MNI Chat availability', () => {
 		it('uses the active version instead of the mutable draft switch', async () => {
 			const agent = await createAgent();
 			expect(agent.integrations).toEqual([]);

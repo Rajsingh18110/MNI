@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 const apiBaseUrl = __ENV.API_BASE_URL;
-const n8nDataDirPath = __ENV.N8N_DATA_DIR_PATH || '/n8n';
+const n8nDataDirPath = __ENV.N8N_DATA_DIR_PATH || '/MNI';
 
 // This creates a 2MB file (16 * 128 * 1024 = 2 * 1024 * 1024 = 2MB)
 const file = Array.from({ length: 128 * 1024 }, () => Math.random().toString().slice(2)).join('');

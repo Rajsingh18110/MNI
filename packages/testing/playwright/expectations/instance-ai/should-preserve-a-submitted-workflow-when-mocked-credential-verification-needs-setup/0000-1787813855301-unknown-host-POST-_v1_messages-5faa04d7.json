@@ -4,7 +4,7 @@
     "path": "/v1/messages",
     "body": {
       "type": "REGEX",
-      "regex": "[\\s\\S]*You are the n8n Instance Agent — a helpful AI assistant embedded in an n8n insta[\\s\\S]*Build a workflow named \\\\\"INS-164 mocked credential guard\\\\\" with a Manual Trigger connected to a Slack node that posts a me[\\s\\S]*"
+      "regex": "[\\s\\S]*You are the MNI instance Agent — a helpful AI assistant embedded in an MNI insta[\\s\\S]*Build a workflow named \\\\\"INS-164 mocked credential guard\\\\\" with a Manual Trigger connected to a Slack node that posts a me[\\s\\S]*"
     }
   },
   "httpResponse": {

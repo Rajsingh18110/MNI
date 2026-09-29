@@ -181,7 +181,7 @@ watch(
 						width="500"
 						height="280"
 						src="https://www.youtube.com/embed/5LlF196PKaE"
-						title="n8n Evaluation quickstart"
+						title="MNI Evaluation quickstart"
 						frameborder="0"
 						allow="
 							accelerometer;

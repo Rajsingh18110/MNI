@@ -558,7 +558,7 @@ describe('autoPopulateNodeCredentials', () => {
 
 		test('does not rewrite a parameter that already activates the assigned credential type', async () => {
 			// The credential is shown for several auth values; the node already uses
-			// the second one, so assigning n8n credits must not flip it to the first.
+			// the second one, so assigning MNI credits must not flip it to the first.
 			const desc = {
 				...makeNodeTypeDescription({ name: 'n8n-nodes-base.service' }),
 				credentials: [
@@ -782,7 +782,7 @@ describe('autoPopulateNodeCredentials', () => {
 			]);
 		});
 
-		describe('incoming n8n Connect markers', () => {
+		describe('incoming MNI Connect markers', () => {
 			const suppliedMarker = { id: null, name: 'supplied name', __aiGatewayManaged: true } as const;
 
 			test('keeps an eligible incoming marker and honors it over the user credential', async () => {
@@ -804,7 +804,7 @@ describe('autoPopulateNodeCredentials', () => {
 					makeAiGatewayService(true),
 				);
 
-				// Canonicalized to the sentinel and kept — the explicit n8n Connect request
+				// Canonicalized to the sentinel and kept — the explicit MNI Connect request
 				// wins over the owned credential, and no assignment is recorded for it.
 				expect(node.credentials).toEqual({
 					slackApi: { id: null, name: 'Gateway credits', __aiGatewayManaged: true },

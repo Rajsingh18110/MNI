@@ -229,7 +229,7 @@ export const cellFormat: INodeProperties = {
 		},
 		{
 			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-			name: 'Let n8n format',
+			name: 'Let MNI format',
 			value: 'RAW',
 			description: 'Cells have the same types as the input data',
 		},

@@ -32,7 +32,7 @@ import {
  * webhook can listen on any HTTP method.
  *
  * A resource is identified by the trigger — `(workflowId, node)` — not by
- * `(path, method)`. n8n only enforces webhook uniqueness per `(path, method)`, so
+ * `(path, method)`. MNI only enforces webhook uniqueness per `(path, method)`, so
  * one path can host several triggers as long as their methods are disjoint
  * (e.g. workflow A on `GET /orders`, workflow B on `POST /orders`). Path alone
  * therefore cannot name the resource, so a resource URL carries the method being

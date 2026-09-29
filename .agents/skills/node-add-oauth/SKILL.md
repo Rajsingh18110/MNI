@@ -1,12 +1,12 @@
 ---
-name: n8n:node-add-oauth
-description: Add OAuth2 credential support to an existing n8n node — creates the credential file, updates the node, adds tests, and keeps the CLI constant in sync. Use when the user says /node-add-oauth.
+name: MNI:node-add-oauth
+description: Add OAuth2 credential support to an existing MNI node — creates the credential file, updates the node, adds tests, and keeps the CLI constant in sync. Use when the user says /node-add-oauth.
 argument-hint: "[node-name] [optional: custom-scopes flag or scope list]"
 ---
 
 ## Overview
 
-Add OAuth2 (Authorization Code / 3LO) support to an existing n8n node. Works for any
+Add OAuth2 (Authorization Code / 3LO) support to an existing MNI node. Works for any
 third-party service that supports standard OAuth2.
 
 Before starting, read comparable existing OAuth2 credential files and tests under
@@ -152,7 +152,7 @@ service (alphabetical ordering within the service's block):
 File: `packages/cli/src/constants.ts`
 
 Add `'{camelCase}OAuth2Api'` to the `GENERIC_OAUTH2_CREDENTIALS_WITH_EDITABLE_SCOPE`
-array. Without this, n8n deletes the user's custom scope on OAuth2 reconnect.
+array. Without this, MNI deletes the user's custom scope on OAuth2 reconnect.
 
 ```typescript
 export const GENERIC_OAUTH2_CREDENTIALS_WITH_EDITABLE_SCOPE = [

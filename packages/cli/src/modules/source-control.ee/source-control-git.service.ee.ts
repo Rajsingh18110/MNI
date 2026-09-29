@@ -32,10 +32,10 @@ import type { SourceControlPreferences } from './types/source-control-preference
  * Service for interacting with locally cloned git repositories.
  *
  * For local development:
- * Keep in mind that when running n8n locally using a pnpm dev script,
+ * Keep in mind that when running MNI locally using a pnpm dev script,
  * the git credentials on your machine will be picked up by the git client
  * used in this service.
- * See the README for the environments feature for instructions to run n8n in a docker container.
+ * See the README for the environments feature for instructions to run MNI in a docker container.
  */
 @Service()
 export class SourceControlGitService {
@@ -148,7 +148,7 @@ export class SourceControlGitService {
 				knownHostsPath: path.join(sshFolder, 'known_hosts'),
 			});
 
-			// Allow GIT_SSH_COMMAND so we can point SSH at n8n's own private key and known_hosts.
+			// Allow GIT_SSH_COMMAND so we can point SSH at MNI's own private key and known_hosts.
 			// This is safe because the command is constructed internally above, not from user input.
 			this.git = simpleGit({
 				...this.gitOptions,

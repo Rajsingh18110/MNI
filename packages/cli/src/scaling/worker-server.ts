@@ -76,7 +76,7 @@ export class WorkerServer {
 		this.server.on('error', (error: NodeJS.ErrnoException) => {
 			if (error.code === 'EADDRINUSE') {
 				this.logger.error(
-					`Port ${this.port} is already in use, possibly by the n8n main process server. Please set a different port for the worker server.`,
+					`Port ${this.port} is already in use, possibly by the MNI main process server. Please set a different port for the worker server.`,
 				);
 				process.exit(1);
 			}

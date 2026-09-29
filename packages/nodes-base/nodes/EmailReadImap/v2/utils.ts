@@ -124,7 +124,7 @@ export async function getNewEmails(
 			await imapConnection.addFlags(processedUids, ['\\SEEN']);
 		}
 
-		// Set before emitting: n8n persists the static data as the emit goes out, so a watermark
+		// Set before emitting: MNI persists the static data as the emit goes out, so a watermark
 		// advanced afterwards is only written by the next batch, and a lone message never at all.
 		if (maxUid > ((staticData.lastMessageUid as number) ?? 0)) {
 			staticData.lastMessageUid = maxUid;

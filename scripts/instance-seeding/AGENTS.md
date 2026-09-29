@@ -1,4 +1,4 @@
-# Seed n8n instance
+# Seed MNI instance
 
 Four dev-tooling scripts, none of them product code:
 
@@ -33,7 +33,7 @@ teaches the reader something false.
 
 ### The house style
 
-Five rules, no exceptions. Each is a place n8n offers a real choice and this estate
+Five rules, no exceptions. Each is a place MNI offers a real choice and this estate
 always makes the same one, because a rule with no alternative is a constraint rather
 than a preference.
 
@@ -75,7 +75,7 @@ Two things make that work. The upgrade is a `PATCH`, because the public API has 
 `preference` profile skips `clearSeeded()`, which deletes credentials and would change
 every id on every run; it removes only the workflows.
 
-Secrets go through the public API, so n8n does the encryption and this tooling never
+Secrets go through the public API, so MNI does the encryption and this tooling never
 touches the instance key. Token lengths are logged, never values.
 
 ## `seedHistory.mjs`
@@ -83,7 +83,7 @@ touches the instance key. Token lengths are logged, never values.
 Writes what the public API cannot: executions have no create route, threads and
 activity entries have none at all. Run it after `seed:account`.
 
-A live instance is fine. SQLite serialises writers, so n8n's inserts queue behind the
+A live instance is fine. SQLite serialises writers, so MNI's inserts queue behind the
 script. Prefer an idle one: an instance actively executing workflows can hold the write
 lock long enough to fail.
 
@@ -93,7 +93,7 @@ broke?" probe has a definite answer.
 
 ### The window ends at the current time
 
-n8n prunes on age: threads after 30 days, executions past `EXECUTIONS_DATA_MAX_AGE`
+MNI prunes on age: threads after 30 days, executions past `EXECUTIONS_DATA_MAX_AGE`
 (336 hours). A fixed past date puts the fortnight beyond both cutoffs and the next
 startup deletes it. This was observed, not predicted: a hardcoded clock lost all 10
 threads on the first restart.
@@ -156,7 +156,7 @@ phases of the seed are therefore independent, with no ordering between them.
 # The estate profile
 
 
-`seedInstance.mjs` fills a local n8n instance with a realistic-looking spread of
+`seedInstance.mjs` fills a local MNI instance with a realistic-looking spread of
 projects, workflows, credentials, and data tables via the **public API**. The
 resulting dependency graph is designed to render like a real org's automation
 estate: dense intra-team clusters, sparse cross-team bridges through shared
@@ -184,7 +184,7 @@ alone, as are the n8n-default `My project` team projects.
 | Var | Default | Purpose |
 | --- | --- | --- |
 | `N8N_API_KEY` | (required) | Public-API JWT. Must have owner or admin scopes. |
-| `N8N_BASE_URL` | `http://localhost:5678` | n8n instance to seed. |
+| `N8N_BASE_URL` | `http://localhost:5678` | MNI instance to seed. |
 | `CLEAR` | `false` | Set to `true` to wipe data instead. |
 | `PERSONAL_WORKFLOWS` | `50` | Amount of workflows to create in the personal project. |
 
@@ -333,5 +333,5 @@ fan-out".
   group-aware visualisation. Renaming a workflow externally severs the
   link the analyser uses to group it.
 - No protection against running against a non-local instance. **Don't point
-  it at a shared/production n8n** — the clear step will delete everything
+  it at a shared/production MNI** — the clear step will delete everything
   prefixed `[seed]` regardless of who created it.

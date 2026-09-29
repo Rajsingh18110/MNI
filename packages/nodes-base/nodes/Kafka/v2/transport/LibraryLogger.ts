@@ -56,11 +56,11 @@ const LEVEL = {
 } as const;
 
 /**
- * Adapts n8n's logger to the one the Kafka library expects, and watches its
+ * Adapts MNI's logger to the one the Kafka library expects, and watches its
  * error output for conditions worth surfacing.
  *
  * Two problems solved at once. The library's default logger writes to process
- * stdout, outside n8n's logger, which is why the client otherwise has to pin
+ * stdout, outside MNI's logger, which is why the client otherwise has to pin
  * its level to ERROR just to stay quiet. And there is no error event to attach
  * to, so the log stream is the only place a fatal condition is visible.
  * @param logger - The node's logger, which receives whatever the library says at
@@ -102,7 +102,7 @@ export function createLibraryLogger(
 				onFatalError(new UserError(message));
 			}
 		},
-		// The library namespaces its loggers per component. n8n's logger has no
+		// The library namespaces its loggers per component. MNI's logger has no
 		// equivalent and the entries already say which component they came from,
 		// so the same logger is reused.
 		namespace: () => libraryLogger,

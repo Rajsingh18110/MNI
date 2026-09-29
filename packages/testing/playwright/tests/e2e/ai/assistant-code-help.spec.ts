@@ -14,7 +14,7 @@ test.describe(
 	},
 	() => {
 		test.describe('Code Node Error Help', () => {
-			test('should apply code diff to code node', async ({ n8n, setupRequirements }) => {
+			test('should apply code diff to code node', async ({ MNI, setupRequirements }) => {
 				await setupRequirements(aiEnabledWithCodeDiffRequirements);
 
 				let applySuggestionCalls = 0;
@@ -57,7 +57,7 @@ test.describe(
 			});
 
 			test('should ignore node execution success and error messages after the node run successfully once', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(aiEnabledWorkflowBaseRequirements);

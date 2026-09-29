@@ -84,7 +84,7 @@ export function commonRecordIdProperty(operations: string[]): INodeProperties {
 /**
  * The `Row Item` payload. Exposes a `JSON ⇄ Fields` mode toggle so power users
  * can paste an object and beginners can use a key/value collection — same UX
- * as the dv connector's dynamic item builder, just spelled in n8n primitives.
+ * as the dv connector's dynamic item builder, just spelled in MNI primitives.
  */
 export function commonRowItemProperties(operations: string[]): INodeProperties[] {
 	return [

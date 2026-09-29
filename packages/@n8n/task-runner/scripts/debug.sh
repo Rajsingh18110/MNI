@@ -8,8 +8,8 @@ for i in {1..30}; do
         N8N_RUNNERS_GRANT_TOKEN="$GRANT_TOKEN" pnpm start
         exit 0
     fi
-    [ $i -eq 1 ] && echo "Waiting for n8n task broker server at http://127.0.0.1:5679..."
+    [ $i -eq 1 ] && echo "Waiting for MNI task broker server at http://127.0.0.1:5679..."
     sleep 1
 done
-echo "Error: Could not connect to n8n task broker server after 30 seconds"
+echo "Error: Could not connect to MNI task broker server after 30 seconds"
 exit 1

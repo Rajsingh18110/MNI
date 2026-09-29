@@ -4,7 +4,7 @@ import type { InstanceSettings } from 'n8n-core';
 /**
  * How long a single Gateway listener runs before {@link DiscordGateway}
  * re-arms it. The adapter's listener is duration-bounded (it destroys the
- * discord.js client when the timer fires), so a long-running n8n process has
+ * discord.js client when the timer fires), so a long-running MNI process has
  * to restart it in a loop.
  *
  * Must stay below 2^31-1 ms: Node clamps larger `setTimeout` delays to 1ms,

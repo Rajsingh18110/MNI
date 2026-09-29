@@ -59,7 +59,7 @@ describe('PrometheusWebhookAndFormMetricsService', () => {
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
 				name: 'n8n_webhook_request_duration_seconds',
-				help: 'Duration of webhook requests served by n8n, in seconds.',
+				help: 'Duration of webhook requests served by MNI, in seconds.',
 				labelNames: ['method', 'status_code', 'webhook_path', 'workflow_id'],
 				buckets: [0.003, 0.03, 0.1, 0.3, 1.5, 10],
 			});
@@ -71,7 +71,7 @@ describe('PrometheusWebhookAndFormMetricsService', () => {
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
 				name: 'n8n_form_submission_duration_seconds',
-				help: 'Duration of form submissions (POST) served by n8n, in seconds.',
+				help: 'Duration of form submissions (POST) served by MNI, in seconds.',
 				labelNames: ['status_code', 'form_path', 'workflow_id'],
 				buckets: [0.003, 0.03, 0.1, 0.3, 1.5, 10],
 			});

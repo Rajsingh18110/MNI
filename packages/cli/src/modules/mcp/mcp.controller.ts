@@ -82,7 +82,7 @@ export class McpController {
 	async discoverAuthSchemeHead(_req: Request, res: Response) {
 		this.setCorsHeaders(res);
 		const prmUrl = this.mcpProtectedResource.getProtectedResourceMetadataUrl();
-		res.header('WWW-Authenticate', `Bearer realm="n8n MCP Server", resource_metadata="${prmUrl}"`);
+		res.header('WWW-Authenticate', `Bearer realm="MNI MCP Server", resource_metadata="${prmUrl}"`);
 		res.status(401).end();
 	}
 

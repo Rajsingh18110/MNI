@@ -2548,7 +2548,7 @@ describe('generateNodesGraph', () => {
 						typeVersion: 1,
 						position: [100, 100],
 						credentials: {
-							openAiApi: { id: null, name: 'n8n Connect', __aiGatewayManaged: true },
+							openAiApi: { id: null, name: 'MNI Connect', __aiGatewayManaged: true },
 						},
 					},
 				],

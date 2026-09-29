@@ -9,7 +9,7 @@ export const responseDescribesChangesAccurately = createLlmCheck({
 	description:
 		"Agent's narration makes no false or overstated claims about the changes it actually made (over-claiming only — unmentioned changes are fine; completeness is covered by fulfills_user_request)",
 	dimension: 'communication',
-	systemPrompt: `You are a strict evaluator checking whether an AI assistant's narration honestly describes the changes it made to an n8n workflow.
+	systemPrompt: `You are a strict evaluator checking whether an AI assistant's narration honestly describes the changes it made to an MNI workflow.
 
 The narration may span multiple conversation turns (numbered "Turn N:"). You are given:
 - The workflow at the START of the conversation (often empty — a brand-new workflow built over the conversation)

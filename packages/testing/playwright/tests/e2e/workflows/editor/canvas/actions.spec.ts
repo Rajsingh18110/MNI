@@ -15,16 +15,16 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should add first step', async ({ n8n }) => {
+		test('should add first step', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(1);
 		});
 
-		test('should add a connected node using plus endpoint', async ({ n8n }) => {
+		test('should add a connected node using plus endpoint', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.clickNodePlusEndpoint(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
 			await n8n.canvas.fillNodeCreatorSearchBar(CODE_NODE_NAME);
@@ -36,7 +36,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(1);
 		});
 
-		test('should add a connected node dragging from node creator', async ({ n8n }) => {
+		test('should add a connected node dragging from node creator', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.clickNodePlusEndpoint(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
 			await n8n.canvas.fillNodeCreatorSearchBar(CODE_NODE_NAME);
@@ -49,14 +49,14 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(1);
 		});
 
-		test('should add a node by dropping a DataTransfer payload on the canvas', async ({ n8n }) => {
+		test('should add a node by dropping a DataTransfer payload on the canvas', async ({ MNI }) => {
 			await n8n.canvas.dropNodeOnCanvas('n8n-nodes-base.code');
 
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(1);
 		});
 
 		test('should open a category when trying to drag and drop it on the canvas', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.clickNodePlusEndpoint(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
@@ -72,7 +72,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(0);
 		});
 
-		test('should add node between two connected nodes', async ({ n8n }) => {
+		test('should add node between two connected nodes', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -90,7 +90,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(2);
 		});
 
-		test('should delete node by pressing keyboard backspace', async ({ n8n }) => {
+		test('should delete node by pressing keyboard backspace', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.page.keyboard.press('Backspace');
@@ -98,7 +98,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(0);
 		});
 
-		test('should delete connections by clicking on the delete button', async ({ n8n }) => {
+		test('should delete connections by clicking on the delete button', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -112,7 +112,7 @@ test.describe(
 		});
 
 		test.describe('Node hover actions', () => {
-			test('should execute node', async ({ n8n }) => {
+			test('should execute node', async ({ MNI }) => {
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.deselectAll();
 				await n8n.canvas.executeNode(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
@@ -124,7 +124,7 @@ test.describe(
 				await expect(n8n.canvas.selectedNodes()).toHaveCount(0);
 			});
 
-			test('should disable and enable node', async ({ n8n }) => {
+			test('should disable and enable node', async ({ MNI }) => {
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 				await n8n.canvas.deselectAll();
@@ -141,7 +141,7 @@ test.describe(
 				await expect(n8n.canvas.selectedNodes()).toHaveCount(0);
 			});
 
-			test('should delete node', async ({ n8n }) => {
+			test('should delete node', async ({ MNI }) => {
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 				await n8n.canvas.deleteNodeByName(CODE_NODE_DISPLAY_NAME);
@@ -151,7 +151,7 @@ test.describe(
 			});
 		});
 
-		test('should copy selected nodes', async ({ n8n }) => {
+		test('should copy selected nodes', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvasComposer.selectAllAndCopy();
@@ -161,7 +161,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(2);
 		});
 
-		test('should select/deselect all nodes', async ({ n8n }) => {
+		test('should select/deselect all nodes', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.selectAll();
@@ -172,7 +172,7 @@ test.describe(
 			await expect(n8n.canvas.selectedNodes()).toHaveCount(0);
 		});
 
-		test('should select nodes using arrow keys', async ({ n8n }) => {
+		test('should select nodes using arrow keys', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -187,7 +187,7 @@ test.describe(
 			await expect(selectedNodes.last()).toHaveClass(/selected/);
 		});
 
-		test('should select nodes using shift and arrow keys', async ({ n8n }) => {
+		test('should select nodes using shift and arrow keys', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
@@ -198,7 +198,7 @@ test.describe(
 		});
 
 		test.describe('Node insertion positioning', () => {
-			test('should not shift downstream nodes when there is enough space', async ({ n8n }) => {
+			test('should not shift downstream nodes when there is enough space', async ({ MNI }) => {
 				// Create trigger -> code with large gap between them
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
@@ -227,7 +227,7 @@ test.describe(
 				expect(codePositionAfter.y).toBe(codePositionBefore.y);
 			});
 
-			test('should shift downstream nodes when there is not enough space', async ({ n8n }) => {
+			test('should shift downstream nodes when there is not enough space', async ({ MNI }) => {
 				// Create trigger -> code (close together)
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
@@ -252,7 +252,7 @@ test.describe(
 				expect(codePositionAfter.x).toBeGreaterThan(codePositionBefore.x);
 			});
 
-			test('should shift connected downstream nodes together', async ({ n8n }) => {
+			test('should shift connected downstream nodes together', async ({ MNI }) => {
 				// Create trigger -> code -> edit fields chain
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 				await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
@@ -288,7 +288,7 @@ test.describe(
 			});
 
 			test('should shift downstream nodes correctly when inserting configurable nodes like AI Agent', async ({
-				n8n,
+				MNI,
 			}) => {
 				// Create trigger -> code (close together)
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
@@ -322,7 +322,7 @@ test.describe(
 			});
 
 			test('should not shift downstream nodes when there is enough space for configurable nodes', async ({
-				n8n,
+				MNI,
 			}) => {
 				// Create trigger -> code with large gap between them
 				await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);

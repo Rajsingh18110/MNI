@@ -26,7 +26,7 @@ import { EngineCredentialsClient } from './engine-credentials-client';
 import { RemoteCredentialsHelper } from './remote-credentials-helper';
 
 /**
- * Runs the engine v2 data plane inside the n8n process.
+ * Runs the engine v2 data plane inside the MNI process.
  *
  * This is the integrated-mode composition root. It chooses the adapters the
  * engine needs — the data plane `DataSource`, the admittance policy, the v1 step

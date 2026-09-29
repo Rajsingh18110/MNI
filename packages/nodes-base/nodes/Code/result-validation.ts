@@ -139,10 +139,10 @@ export function validateRunCodeAllItems(
 
 	if (Array.isArray(executionResult)) {
 		/**
-		 * If at least one top-level key is an n8n item key (`json`, `binary`, etc.),
-		 * then require all item keys to be an n8n item key.
+		 * If at least one top-level key is an MNI item key (`json`, `binary`, etc.),
+		 * then require all item keys to be an MNI item key.
 		 *
-		 * If no top-level key is an n8n key, then skip this check, allowing non-n8n
+		 * If no top-level key is an MNI key, then skip this check, allowing non-n8n
 		 * item keys to be wrapped in `json` when normalizing items below.
 		 */
 		for (const item of executionResult) {

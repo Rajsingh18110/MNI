@@ -68,7 +68,7 @@ describe('OpenTelemetry settings in Public API', () => {
 			expect(response.body).toMatchObject({
 				enabled: false,
 				exporterProtocol: 'http/protobuf',
-				exporterServiceName: 'n8n',
+				exporterServiceName: 'MNI',
 				exporterTracingPath: '/v1/traces',
 			});
 			expect(typeof response.body.exporterEndpoint).toBe('string');

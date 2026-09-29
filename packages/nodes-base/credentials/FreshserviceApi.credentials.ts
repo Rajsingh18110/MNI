@@ -21,9 +21,9 @@ export class FreshserviceApi implements ICredentialType {
 			name: 'domain',
 			type: 'string',
 			default: '',
-			placeholder: 'n8n',
+			placeholder: 'MNI',
 			description:
-				'Domain in the Freshservice org URL. For example, in <code>https://n8n.freshservice.com</code>, the domain is <code>n8n</code>',
+				'Domain in the Freshservice org URL. For example, in <code>https://n8n.freshservice.com</code>, the domain is <code>MNI</code>',
 		},
 	];
 }

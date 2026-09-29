@@ -29,7 +29,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should register every n8n process in the cluster', async ({ api }) => {
+		test('should register every MNI process in the cluster', async ({ api }) => {
 			const expectedInstanceCount = 3;
 
 			await expect

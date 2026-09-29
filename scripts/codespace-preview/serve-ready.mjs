@@ -32,13 +32,13 @@ export async function waitForHealth(port, healthPath, timeoutMs = 120_000, inter
 }
 
 // `/healthz` answers ok as soon as the process listens: it checks neither the
-// database nor the routes. n8n unblocks `/healthz/readiness` from markAsReady(),
+// database nor the routes. MNI unblocks `/healthz/readiness` from markAsReady(),
 // after the migrations run and the controllers mount, so it is the only safe gate
 // for anything that then calls the REST API.
 export const waitForReady = (port, healthPath, timeoutMs = 180_000, intervalMs = 3000) =>
 	waitForHealth(port, `${healthPath}/readiness`, timeoutMs, intervalMs);
 
-// In a codespace, share the port with the org. Then any n8n member can open the
+// In a codespace, share the port with the org. Then any MNI member can open the
 // URL. GitHub makes every port private again at each start, so set it here. If
 // `gh` fails, report the reason and let the caller carry on.
 export function shareWithOrg(port, name = codespaceName()) {
@@ -62,7 +62,7 @@ export function reportUp(port, { name, shared, error }, codespacesDir = CODESPAC
 	if (name)
 		console.log(
 			shared
-				? '(org-visible — any n8n member signed into GitHub can open it)'
+				? '(org-visible — any MNI member signed into GitHub can open it)'
 				: `(still private: ${error} — retry with \`gh codespace ports visibility ${port}:org -c ${name}\`)`,
 		);
 	else if (existsSync(codespacesDir))

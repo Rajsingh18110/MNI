@@ -39,7 +39,7 @@ const test = base.extend<SendAndWaitFixtures>({
 		{ auto: true },
 	],
 
-	slackCredential: async ({ n8n }, use) => {
+	slackCredential: async ({ MNI }, use) => {
 		const credential = await n8n.api.credentials.createCredential({
 			name: `Slack Test ${crypto.randomUUID().slice(0, 8)}`,
 			type: 'slackApi',
@@ -134,7 +134,7 @@ test.describe(
 	{ annotation: [{ type: 'owner', description: 'NODES' }] },
 	() => {
 		test('should complete approval flow when clicking approve URL', async ({
-			n8n,
+			MNI,
 			services,
 			slackCredential,
 		}) => {
@@ -157,7 +157,7 @@ test.describe(
 		});
 
 		test('should complete rejection flow when clicking reject URL', async ({
-			n8n,
+			MNI,
 			services,
 			slackCredential,
 		}) => {
@@ -180,7 +180,7 @@ test.describe(
 		});
 
 		test('should reject requests with invalid signatures', async ({
-			n8n,
+			MNI,
 			services,
 			slackCredential,
 		}) => {
@@ -206,7 +206,7 @@ test.describe(
 			expect(tamperedResponse.status()).toBe(401);
 		});
 
-		test('should complete form submission flow', async ({ n8n, services, slackCredential }) => {
+		test('should complete form submission flow', async ({ MNI, services, slackCredential }) => {
 			const { workflowId } = await n8n.api.workflows.importWorkflowFromFile(
 				'send-and-wait-form.json',
 				{ transform: withSlackCredential(slackCredential) },
@@ -244,7 +244,7 @@ test.describe(
 		});
 
 		test('should complete approval flow in production mode (activated workflow)', async ({
-			n8n,
+			MNI,
 			services,
 			slackCredential,
 		}) => {

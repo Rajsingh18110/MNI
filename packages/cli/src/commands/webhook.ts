@@ -18,7 +18,7 @@ import { BaseCommand } from './base-command';
 
 @Command({
 	name: 'webhook',
-	description: 'Starts n8n webhook process. Intercepts only production URLs.',
+	description: 'Starts MNI webhook process. Intercepts only production URLs.',
 })
 export class Webhook extends BaseCommand {
 	protected server = Container.get(WebhookServer);
@@ -30,7 +30,7 @@ export class Webhook extends BaseCommand {
 	override seedsInstanceIdentity = true;
 
 	/**
-	 * Stops n8n in a graceful way.
+	 * Stops MNI in a graceful way.
 	 * Make for example sure that all the webhooks from third party services
 	 * get removed.
 	 */
@@ -68,7 +68,7 @@ export class Webhook extends BaseCommand {
 		await this.initCrashJournal();
 		this.logger.debug('Crash journal initialized');
 
-		this.logger.info('Starting n8n webhook process...');
+		this.logger.info('Starting MNI webhook process...');
 		this.logger.debug(`Host ID: ${this.instanceSettings.hostId}`);
 
 		await super.init();

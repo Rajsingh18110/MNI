@@ -4,7 +4,7 @@ export const fulfillsUserRequest = createLlmCheck({
 	name: 'fulfills_user_request',
 	description: 'Workflow fulfills every feature the user explicitly requested',
 	dimension: 'intent_match',
-	systemPrompt: `You are a strict evaluator checking whether an n8n workflow fulfills a user's request.
+	systemPrompt: `You are a strict evaluator checking whether an MNI workflow fulfills a user's request.
 
 For each feature the user explicitly asked for, check:
 1. Is there a node of the correct TYPE for that feature? (e.g., YouTube node for YouTube operations)

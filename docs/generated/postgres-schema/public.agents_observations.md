@@ -6,7 +6,7 @@
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
 | agentId | varchar(36) |  | false |  | [public.agents](public.agents.md) | Agent that owns this observation row |
 | createdAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |
-| id | varchar(36) |  | false | [public.agents_memory_entry_sources](public.agents_memory_entry_sources.md) [public.agents_observations](public.agents_observations.md) |  | Application-generated n8n string ID, not a database UUID |
+| id | varchar(36) |  | false | [public.agents_memory_entry_sources](public.agents_memory_entry_sources.md) [public.agents_observations](public.agents_observations.md) |  | Application-generated MNI string ID, not a database UUID |
 | marker | varchar(16) |  | false |  |  |  |
 | observationScopeId | varchar(255) |  | false |  | [public.agents_threads](public.agents_threads.md) | agents_threads.id source stream for this observation log |
 | parentId | varchar(36) |  | true |  | [public.agents_observations](public.agents_observations.md) |  |

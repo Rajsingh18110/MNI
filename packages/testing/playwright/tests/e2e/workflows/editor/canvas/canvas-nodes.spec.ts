@@ -16,11 +16,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should add switch node and test connections', async ({ n8n }) => {
+		test('should add switch node and test connections', async ({ MNI }) => {
 			const desiredOutputs = 4;
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.addNode(SWITCH_NODE_NAME);
@@ -61,7 +61,7 @@ test.describe(
 			}
 		});
 
-		test('should add merge node and test connections', async ({ n8n }) => {
+		test('should add merge node and test connections', async ({ MNI }) => {
 			const editFieldsNodeCount = 2;
 
 			const checkConnections = async () => {
@@ -134,7 +134,7 @@ test.describe(
 			);
 		});
 
-		test('should add nodes and check execution success', async ({ n8n }) => {
+		test('should add nodes and check execution success', async ({ MNI }) => {
 			const nodeCount = 3;
 
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
@@ -165,7 +165,7 @@ test.describe(
 			await expect(n8n.canvas.getAllNodeSuccessIndicators()).toHaveCount(nodeCount + 1);
 		});
 
-		test('should delete node using context menu', async ({ n8n }) => {
+		test('should delete node using context menu', async ({ MNI }) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.clickZoomToFitButton();
@@ -176,7 +176,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(0);
 		});
 
-		test('should delete node using keyboard shortcut', async ({ n8n }) => {
+		test('should delete node using keyboard shortcut', async ({ MNI }) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.nodeByName(CODE_NODE_DISPLAY_NAME).click();
@@ -186,7 +186,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(0);
 		});
 
-		test('should delete node between two connected nodes', async ({ n8n }) => {
+		test('should delete node between two connected nodes', async ({ MNI }) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: true });
@@ -202,7 +202,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(1);
 		});
 
-		test('should delete multiple nodes (context menu or shortcut)', async ({ n8n }) => {
+		test('should delete multiple nodes (context menu or shortcut)', async ({ MNI }) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 			await n8n.canvas.hitDeleteAllNodes();
@@ -220,7 +220,7 @@ test.describe(
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(0);
 		});
 
-		test('should move node', async ({ n8n }) => {
+		test('should move node', async ({ MNI }) => {
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 			await n8n.canvas.nodeByName(MANUAL_TRIGGER_NODE_DISPLAY_NAME).click();
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });

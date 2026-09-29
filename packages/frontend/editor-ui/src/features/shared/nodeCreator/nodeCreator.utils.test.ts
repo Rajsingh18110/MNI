@@ -827,7 +827,7 @@ describe('NodeCreator - utils', () => {
 			expect(result.properties.tag).toEqual({ text: 'Free credits', pill: true });
 		});
 
-		it('should show n8n credits badge after a top-up or depleted allowance', () => {
+		it('should show MNI credits badge after a top-up or depleted allowance', () => {
 			vi.mocked(useAiGatewayStore).mockReturnValue({
 				isNodeSupported: vi.fn(() => true),
 				isNodeTypeVersionSupported: vi.fn(() => true),
@@ -1075,7 +1075,7 @@ describe('NodeCreator - utils', () => {
 			} as unknown as ReturnType<typeof useNodeTypesStore>);
 		});
 
-		it('should split gateway-supported nodes into an Included in n8n section', () => {
+		it('should split gateway-supported nodes into an Included in MNI section', () => {
 			const supported = makeNode('supportedNode');
 			const other = makeNode('otherNode');
 
@@ -1083,7 +1083,7 @@ describe('NodeCreator - utils', () => {
 
 			expect(result).not.toBeNull();
 			expect(result?.section.key).toBe('n8nConnect');
-			expect(result?.section.title).toBe('Included in n8n');
+			expect(result?.section.title).toBe('Included in MNI');
 			expect(result?.section.trailing).toBe('creditsBalance');
 			expect(result?.section.showSeparator).toBe(true);
 			expect(result?.section.children.map((child) => child.key)).toEqual(['supportedNode']);
@@ -1182,7 +1182,7 @@ describe('NodeCreator - utils', () => {
 		});
 	});
 
-	describe('searchNodes - n8n Connect boost', () => {
+	describe('searchNodes - MNI Connect boost', () => {
 		const makeNode = (name: string, displayName: string, alias: string[] = []) =>
 			mockNodeCreateElement(
 				{ key: name },

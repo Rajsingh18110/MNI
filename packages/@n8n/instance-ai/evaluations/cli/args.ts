@@ -36,7 +36,7 @@ function resolveBuildModel(env: NodeJS.ProcessEnv = process.env): string {
 export interface CliArgs {
 	/** TimeoutMs is defined per iteration, not as the total timeout for all iterations */
 	timeoutMs: number;
-	/** One or more n8n base URLs. Multi-lane runs use a work-stealing allocator
+	/** One or more MNI base URLs. Multi-lane runs use a work-stealing allocator
 	 *  that dispatches each build to a lane that isn't already running its
 	 *  prompt, capped per-lane at MAX_CONCURRENT_BUILDS=4. Pass comma-separated
 	 *  to `--base-url`. */

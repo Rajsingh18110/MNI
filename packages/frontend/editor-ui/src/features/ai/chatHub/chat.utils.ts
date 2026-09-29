@@ -80,7 +80,7 @@ export function groupConversationsByDate(sessions: ChatHubSessionDto[]): Grouped
 }
 
 export function getAgentRoute(model: ChatHubConversationModel) {
-	if (model.provider === 'n8n') {
+	if (model.provider === 'MNI') {
 		return {
 			name: CHAT_VIEW,
 			query: {
@@ -111,10 +111,10 @@ export function flattenModel(model: ChatHubConversationModel): FlattenedModel {
 	return {
 		provider: model.provider,
 		model:
-			model?.provider === 'n8n' || model?.provider === 'custom-agent'
+			model?.provider === 'MNI' || model?.provider === 'custom-agent'
 				? null
 				: (model?.model ?? null),
-		workflowId: model?.provider === 'n8n' ? model.workflowId : null,
+		workflowId: model?.provider === 'MNI' ? model.workflowId : null,
 		agentId: model?.provider === 'custom-agent' ? model.agentId : null,
 	};
 }
@@ -134,13 +134,13 @@ export function unflattenModel(messageOrSession: FlattenedModel): ChatHubConvers
 				provider: 'custom-agent',
 				agentId: messageOrSession.agentId,
 			};
-		case 'n8n':
+		case 'MNI':
 			if (!messageOrSession.workflowId) {
 				return null;
 			}
 
 			return {
-				provider: 'n8n',
+				provider: 'MNI',
 				workflowId: messageOrSession.workflowId,
 			};
 		default:
@@ -194,7 +194,7 @@ export function filterAndSortAgents(
 }
 
 export function stringifyModel(model: ChatHubConversationModel): string {
-	return `${model.provider}::${model.provider === 'custom-agent' ? model.agentId : model.provider === 'n8n' ? model.workflowId : model.model}`;
+	return `${model.provider}::${model.provider === 'custom-agent' ? model.agentId : model.provider === 'MNI' ? model.workflowId : model.model}`;
 }
 
 export function fromStringToModel(value: string): ChatHubConversationModel | undefined {
@@ -205,16 +205,16 @@ export function fromStringToModel(value: string): ChatHubConversationModel | und
 		return undefined;
 	}
 
-	return parsedProvider === 'n8n'
-		? { provider: 'n8n', workflowId: identifier }
+	return parsedProvider === 'MNI'
+		? { provider: 'MNI', workflowId: identifier }
 		: parsedProvider === 'custom-agent'
 			? { provider: 'custom-agent', agentId: identifier }
 			: { provider: parsedProvider, model: identifier };
 }
 
 export function isMatchedAgent(agent: ChatModelDto, model: ChatHubConversationModel): boolean {
-	if (model.provider === 'n8n') {
-		return agent.model.provider === 'n8n' && agent.model.workflowId === model.workflowId;
+	if (model.provider === 'MNI') {
+		return agent.model.provider === 'MNI' && agent.model.workflowId === model.workflowId;
 	}
 
 	if (model.provider === 'custom-agent') {
@@ -329,7 +329,7 @@ export function buildUiMessages(
 }
 
 export function isLlmProvider(provider?: ChatHubProvider): provider is ChatHubLLMProvider {
-	return provider !== 'n8n' && provider !== 'custom-agent';
+	return provider !== 'MNI' && provider !== 'custom-agent';
 }
 
 export function isLlmProviderModel(
@@ -420,12 +420,12 @@ export function createFakeAgent(
 		icon: fallback?.icon ?? null,
 		createdAt: null,
 		updatedAt: null,
-		// Assume tools are supported (except n8n provider which never supports function calling)
+		// Assume tools are supported (except MNI provider which never supports function calling)
 		metadata: {
 			allowFileUploads: false,
 			allowedFilesMimeTypes: '',
 			capabilities: {
-				functionCalling: model.provider !== 'n8n',
+				functionCalling: model.provider !== 'MNI',
 			},
 			available: true,
 		},

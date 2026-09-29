@@ -2,7 +2,7 @@
  * Multi-Main Observability E2E Tests
  *
  * These tests verify that the observability stack (VictoriaMetrics + VictoriaLogs)
- * works correctly with n8n's multi-main architecture in queue mode.
+ * works correctly with MNI's multi-main architecture in queue mode.
  *
  * Architecture under test:
  * ┌─────────────────────────────────────────────────────────────────────────┐
@@ -26,7 +26,7 @@
  * │                                                                         │
  * │  ┌──────────────────────────────────────────────────────────────────┐  │
  * │  │              VictoriaMetrics (:8428)                              │  │
- * │  │  - Scrapes /metrics from all n8n instances every 5s              │  │
+ * │  │  - Scrapes /metrics from all MNI instances every 5s              │  │
  * │  │  - PromQL queries via HTTP API                                   │  │
  * │  └──────────────────────────────────────────────────────────────────┘  │
  * └─────────────────────────────────────────────────────────────────────────┘
@@ -60,12 +60,12 @@ test.describe(
 		 * Test: Metrics scraping from multi-main cluster
 		 *
 		 * Verifies that VictoriaMetrics can discover and scrape metrics from all
-		 * n8n instances in the queue mode cluster (2 mains + 1 worker).
+		 * MNI instances in the queue mode cluster (2 mains + 1 worker).
 		 *
 		 * This tests the Prometheus-compatible /metrics endpoint exposure and
 		 * service discovery configuration in VictoriaMetrics.
 		 */
-		test('should scrape metrics from all n8n instances', async ({ services }) => {
+		test('should scrape metrics from all MNI instances', async ({ services }) => {
 			const obs = services.observability;
 
 			// Expected targets: 2 mains + 1 worker = 3 instances
@@ -110,7 +110,7 @@ test.describe(
 		 * This tests:
 		 * - Log streaming feature flag enablement
 		 * - Syslog destination configuration via REST API
-		 * - TCP syslog delivery from n8n to VictoriaLogs
+		 * - TCP syslog delivery from MNI to VictoriaLogs
 		 * - LogsQL query capability in VictoriaLogs
 		 */
 		test('should configure log streaming and receive events', async ({ api, services }) => {
@@ -132,7 +132,7 @@ test.describe(
 			console.log(`  Target: ${obs.syslog.host}:${obs.syslog.port} (${obs.syslog.protocol})`);
 
 			// ========== STEP 3: Send test message ==========
-			// The test message triggers n8n to send a "n8n.destination.test" event
+			// The test message triggers MNI to send a "n8n.destination.test" event
 			const testResult = await api.testLogStreamingDestination(destination.id);
 			expect(testResult, 'Test message should be sent successfully').toBe(true);
 			console.log('Test message sent to log streaming destination');

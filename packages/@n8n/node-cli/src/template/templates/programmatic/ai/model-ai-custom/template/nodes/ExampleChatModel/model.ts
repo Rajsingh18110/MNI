@@ -50,7 +50,7 @@ export class CustomChatModel extends BaseChatModel<ModelConfig> {
 
 	async generate(messages: Message[], config?: ModelConfig): Promise<GenerateResult> {
 		const merged = this.mergeConfig(config);
-		// Convert n8n messages to provider format
+		// Convert MNI messages to provider format
 		const providerMessages = messages.map((m) => ({
 			role: m.role,
 			content: m.content
@@ -72,7 +72,7 @@ export class CustomChatModel extends BaseChatModel<ModelConfig> {
 		);
 		const body = response.body as ProviderResponse;
 
-		// Convert provider response to n8n message
+		// Convert provider response to MNI message
 		const message: Message = {
 			role: 'assistant',
 			content: [{ type: 'text', text: body.response }],
@@ -92,7 +92,7 @@ export class CustomChatModel extends BaseChatModel<ModelConfig> {
 
 	async *stream(messages: Message[], config?: ModelConfig): AsyncIterable<StreamChunk> {
 		const merged = this.mergeConfig(config);
-		// Convert n8n messages to provider format
+		// Convert MNI messages to provider format
 		const providerMessages = messages.map((m) => ({
 			role: m.role,
 			content: m.content

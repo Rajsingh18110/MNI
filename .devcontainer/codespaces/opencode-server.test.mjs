@@ -26,7 +26,7 @@ function stopped(pid) {
 function fixture(t) {
 	const fake = fakeBinaries('opencode-server-');
 	const dir = fake.root;
-	mkdirSync(join(dir, 'n8n', 'node_modules'), { recursive: true });
+	mkdirSync(join(dir, 'MNI', 'node_modules'), { recursive: true });
 	const savedEnv = { ...process.env };
 	// prepareOpenCode spawns the shims in this process. Log every call before the shim body runs.
 	Object.assign(process.env, fake.env, {
@@ -177,7 +177,7 @@ test(
 		const webbed = await f.prepare({ name: 'fix-flaky', web: true });
 		assert.equal(webbed.sessionID, 'ses_1');
 		const created = JSON.parse(readFileSync(join(f.dir, 'sessions.json'), 'utf8'));
-		assert.equal(created.ses_1.title, 'n8n: fix-flaky');
+		assert.equal(created.ses_1.title, 'MNI: fix-flaky');
 		assert.equal(created.ses_1.directory, join(f.dir, 'wt-fix-flaky'));
 		assert.equal((await f.prepare({ name: 'fix-flaky', web: true })).sessionID, 'ses_1');
 		assert.equal((await f.prepare({ name: 'another-task', web: true })).sessionID, 'ses_2');
@@ -215,7 +215,7 @@ test(
 			.at(-1);
 		assert.deepEqual(worktree.args, [
 			'-C',
-			join(f.dir, 'n8n'),
+			join(f.dir, 'MNI'),
 			'worktree',
 			'add',
 			first.directory,
@@ -243,11 +243,11 @@ test(
 	{ timeout: 10000 },
 	async (t) => {
 		const f = fixture(t);
-		rmSync(join(f.dir, 'n8n', 'node_modules'), { recursive: true });
+		rmSync(join(f.dir, 'MNI', 'node_modules'), { recursive: true });
 		process.env.TEST_INSTALL_FAIL = '1';
 		await assert.rejects(f.prepare(), /pnpm failed/);
 		delete process.env.TEST_INSTALL_FAIL;
-		assert.equal((await f.prepare()).directory, join(f.dir, 'n8n'));
+		assert.equal((await f.prepare()).directory, join(f.dir, 'MNI'));
 		assert.equal(f.commands().filter((entry) => entry.command === 'pnpm').length, 2);
 	},
 );

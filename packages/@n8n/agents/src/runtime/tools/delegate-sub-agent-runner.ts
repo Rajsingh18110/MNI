@@ -430,7 +430,7 @@ function stringifyUnknown(value: unknown): string {
  * A host that runs the child by calling `agent.generate(...)`/`stream(...)` can
  * reuse these instead of hand-rolling the delegation prompt and the result
  * mapping. They are NOT wired into the tool — call them from your `runSubAgent`
- * (the n8n CLI runner does).
+ * (the MNI CLI runner does).
  */
 
 /** Render the default delegation prompt from a request's goal / context / expectedOutput. */

@@ -7,12 +7,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(E2E_TEST_NODE_NAME, { action: 'Resource Mapping Component' });
 		});
 
-		test('should not retrieve list options when required params throw errors', async ({ n8n }) => {
+		test('should not retrieve list options when required params throw errors', async ({ MNI }) => {
 			const fieldsContainer = n8n.ndv.getResourceMapperFieldsContainer();
 			await expect(fieldsContainer).toBeVisible();
 			await expect(n8n.ndv.getResourceMapperParameterInputs()).toHaveCount(3);
@@ -26,7 +26,7 @@ test.describe(
 			await expect(n8n.ndv.getResourceMapperFieldsContainer()).toHaveCount(0);
 		});
 
-		test('should retrieve list options when optional params throw errors', async ({ n8n }) => {
+		test('should retrieve list options when optional params throw errors', async ({ MNI }) => {
 			await n8n.ndv.activateParameterExpressionEditor('otherField');
 			await n8n.ndv.typeInExpressionEditor("{{ $('unknown')");
 			await expect(n8n.ndv.getInlineExpressionEditorPreview()).toContainText("node doesn't exist");
@@ -37,7 +37,7 @@ test.describe(
 			await expect(n8n.ndv.getResourceMapperParameterInputs()).toHaveCount(3);
 		});
 
-		test('should correctly delete single field', async ({ n8n }) => {
+		test('should correctly delete single field', async ({ MNI }) => {
 			await n8n.ndv.fillParameterInputByName('id', '001');
 			await n8n.ndv.fillParameterInputByName('name', 'John');
 			await n8n.ndv.fillParameterInputByName('age', '30');
@@ -60,7 +60,7 @@ test.describe(
 			);
 		});
 
-		test('should correctly delete all fields', async ({ n8n }) => {
+		test('should correctly delete all fields', async ({ MNI }) => {
 			await n8n.ndv.fillParameterInputByName('id', '001');
 			await n8n.ndv.fillParameterInputByName('name', 'John');
 			await n8n.ndv.fillParameterInputByName('age', '30');
@@ -93,7 +93,7 @@ test.describe(
 	},
 	() => {
 		test('should preserve resource mapper values when navigating between connected nodes via floating nodes', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromBlankCanvas();
 

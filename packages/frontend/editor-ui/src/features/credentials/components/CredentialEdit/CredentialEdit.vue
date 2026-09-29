@@ -792,7 +792,7 @@ async function useGatewayCredits(): Promise<void> {
 	if (!getCurrentContextNode()) return;
 
 	const workflowId = telemetryWorkflowId.value || undefined;
-	telemetry.track('User toggled n8n connect credential', {
+	telemetry.track('User toggled MNI connect credential', {
 		credential_type: type,
 		node_type: node.type,
 		mode: 'n8n_connect',

@@ -249,7 +249,7 @@ The Wait node preserves all prior workflow data when resuming:
 - Waiting executions are saved to database, not running
 - No worker threads consumed during wait
 - Can have hundreds of paused workflows
-- Survives n8n restarts (state in database)
+- Survives MNI restarts (state in database)
 
 ### Complex Parallel Approvals
 

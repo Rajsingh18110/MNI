@@ -174,7 +174,7 @@ describe('useDebugInfo', () => {
 						{
 							check: 'version-mismatch',
 							code: 'cluster.version-mismatch',
-							message: 'Detected multiple n8n versions in the cluster: 1.110.0, 1.111.0',
+							message: 'Detected multiple MNI versions in the cluster: 1.110.0, 1.111.0',
 							severity: 'error',
 						},
 					],

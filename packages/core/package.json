@@ -1,7 +1,7 @@
 {
   "name": "n8n-core",
   "version": "2.41.0",
-  "description": "Core functionality of n8n",
+  "description": "Core functionality of MNI",
   "main": "dist/index",
   "types": "dist/index.d.ts",
   "bin": {

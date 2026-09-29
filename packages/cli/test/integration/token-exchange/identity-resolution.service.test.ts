@@ -52,7 +52,7 @@ afterEach(() => {
 const baseClaims: ExternalTokenClaims = {
 	sub: 'ext-sub-1',
 	iss: 'https://issuer.example.com',
-	aud: 'n8n',
+	aud: 'MNI',
 	iat: Math.floor(Date.now() / 1000),
 	exp: Math.floor(Date.now() / 1000) + 30,
 	jti: 'jti-1',

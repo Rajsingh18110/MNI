@@ -28,7 +28,7 @@ export const migrationFindingStatusSchema = z.enum([
 export type MigrationFindingStatus = z.infer<typeof migrationFindingStatusSchema>;
 
 /**
- * The target n8n major version for the migration/breaking-changes report.
+ * The target MNI major version for the migration/breaking-changes report.
  *
  * Set this to a version (e.g. 'v2') to enable the migration report on both
  * frontend (settings sidebar + page) and backend (controller + service).

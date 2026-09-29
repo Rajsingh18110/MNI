@@ -113,7 +113,7 @@ test.describe(
 			});
 
 			test('should show the blocked node as restricted and keep the workflow editable', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.start.fromExistingWorkflow(workflow.id);
 
@@ -181,7 +181,7 @@ test.describe(
 
 			test('should show the type as restricted in the nodes panel of that project only', async ({
 				api,
-				n8n,
+				MNI,
 			}) => {
 				const inNarrowed = await api.workflows.createWorkflow(
 					triggerOnlyWorkflow(),
@@ -267,8 +267,8 @@ test.describe(
 					type: 'postgres',
 					data: {
 						host: 'localhost',
-						database: 'n8n',
-						user: 'n8n',
+						database: 'MNI',
+						user: 'MNI',
 						password: 'not-used',
 						port: 5432,
 					},
@@ -293,7 +293,7 @@ test.describe(
 
 			test('should show the blocked node as restricted on the canvas and in the nodes panel', async ({
 				api,
-				n8n,
+				MNI,
 			}) => {
 				const workflow = await api.workflows.createWorkflow(
 					postgresWorkflow(credential),

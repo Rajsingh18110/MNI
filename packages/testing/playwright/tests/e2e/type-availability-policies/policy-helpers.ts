@@ -139,7 +139,7 @@ export function postgresCredential(projectId: string): CreateCredentialDto {
 	return {
 		name: `Postgres ${nanoid(8)}`,
 		type: POSTGRES_CREDENTIAL,
-		data: { host: 'localhost', database: 'n8n', user: 'n8n', password: 'not-used', port: 5432 },
+		data: { host: 'localhost', database: 'MNI', user: 'MNI', password: 'not-used', port: 5432 },
 		projectId,
 	};
 }

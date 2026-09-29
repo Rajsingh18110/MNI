@@ -59,7 +59,7 @@ function customerRecord(seed: number, targetBytes: number): IDataObject {
 function buildItems(targetBytes: number, seed: number): INodeExecutionData[] {
 	// Many small items mimic real API/DB responses better than one huge string.
 	// Pick an item count that lands close to the target while keeping each item
-	// in the 1-50KB range that's realistic for n8n workflows.
+	// in the 1-50KB range that's realistic for MNI workflows.
 	const desiredItems = Math.max(1, Math.min(50, Math.floor(targetBytes / FILLER_BYTES)));
 	const bytesPerItem = Math.max(512, Math.floor(targetBytes / desiredItems));
 	const items: INodeExecutionData[] = [];

@@ -66,7 +66,7 @@ describe('McpConnectClientDialog', () => {
 			expect(body().getByText('One-click setup')).toBeInTheDocument();
 		});
 		expect(body().getByText('Server URL')).toBeInTheDocument();
-		expect(body().queryByText('Add n8n to Cursor')).not.toBeInTheDocument();
+		expect(body().queryByText('Add MNI to Cursor')).not.toBeInTheDocument();
 		expect(body().queryByText('Authenticate')).not.toBeInTheDocument();
 	});
 

@@ -148,7 +148,7 @@ export class DiscordIntegration extends AgentChatIntegration {
 	readonly deleteActionMessageBeforeResume = false;
 
 	resolveWebhookRequest(request: WebhookRequestContext): WebhookRequestResolution {
-		// n8n does not enable the adapter's HTTP Gateway forwarding mode.
+		// MNI does not enable the adapter's HTTP Gateway forwarding mode.
 		if (request.headers['x-discord-gateway-token'] !== undefined) {
 			return { type: 'reject', response: { status: 404, body: { error: 'Not found' } } };
 		}

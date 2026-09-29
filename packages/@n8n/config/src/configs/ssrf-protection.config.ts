@@ -80,7 +80,7 @@ export class SsrfProtectionConfig {
 	 * node, a workflow imported from a URL, or an OAuth/discovery endpoint.
 	 *
 	 * Off by default so existing self-hosted setups that call internal services
-	 * keep working. Turn it on to stop n8n from reaching private or internal
+	 * keep working. Turn it on to stop MNI from reaching private or internal
 	 * addresses on behalf of untrusted input, then use the allow-lists below to
 	 * re-open the specific internal hosts you still need.
 	 *
@@ -95,7 +95,7 @@ export class SsrfProtectionConfig {
 	 * The IP address ranges (in CIDR notation) that guarded requests are not
 	 * allowed to reach. Comma-separated.
 	 *
-	 * The keyword `default` expands to n8n's built-in list of private, loopback,
+	 * The keyword `default` expands to MNI's built-in list of private, loopback,
 	 * link-local (including cloud metadata endpoints) and reserved ranges. Keep
 	 * it and append your own to block more, for example: `default,100.64.0.0/10`.
 	 */

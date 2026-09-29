@@ -61,7 +61,7 @@ export class LaneUserPool {
 			return `eval-mcp-${this.nonce}-${String(this.seq)}@n8n-evals.invalid`;
 		});
 		const invited = await this.ownerClient.inviteMembers(emails);
-		// Record every shell before judging usability: n8n creates them all up
+		// Record every shell before judging usability: MNI creates them all up
 		// front, so even an unusable batch has to be deleted after the run.
 		for (const user of invited) this.createdUserIds.push(user.id);
 

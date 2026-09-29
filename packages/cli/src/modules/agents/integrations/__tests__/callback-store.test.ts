@@ -15,7 +15,7 @@ async function createCache(): Promise<CacheService> {
 			redis: { prefix: 'cache', ttl: 60_000 },
 		},
 		executions: { mode: 'regular' },
-		redis: { prefix: 'n8n' },
+		redis: { prefix: 'MNI' },
 	} as GlobalConfig);
 	const cache = new CacheService(globalConfig);
 	await cache.init();

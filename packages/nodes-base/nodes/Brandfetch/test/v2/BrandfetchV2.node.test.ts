@@ -55,7 +55,7 @@ describe('BrandfetchV2.execute', () => {
 
 	it('should return full brand data when operation is data', async () => {
 		mockParams({ operation: 'data', type: 'domain', identifier: 'n8n.io' });
-		const brandData = { name: 'n8n', logos: [], colors: [] };
+		const brandData = { name: 'MNI', logos: [], colors: [] };
 		(GenericFunctions.brandfetchApiRequest as Mock).mockResolvedValue(brandData);
 
 		const result = await node.execute.call(executeFunctions);
@@ -271,7 +271,7 @@ describe('BrandfetchV2.execute', () => {
 	it('should return brand context as JSON when operation is context', async () => {
 		mockParams({ operation: 'context', domain: 'n8n.io', outputFormat: 'json', cachedOnly: false });
 		const context = {
-			meta: { domain: 'n8n.io', canonical_name: 'n8n' },
+			meta: { domain: 'n8n.io', canonical_name: 'MNI' },
 			identity: { tagline: 'Flexible AI workflow automation' },
 		};
 		(GenericFunctions.brandfetchApiRequest as Mock).mockResolvedValue(context);
@@ -296,7 +296,7 @@ describe('BrandfetchV2.execute', () => {
 			outputFormat: 'markdown',
 			cachedOnly: false,
 		});
-		(GenericFunctions.brandfetchApiRequest as Mock).mockResolvedValue('# n8n Brand Context');
+		(GenericFunctions.brandfetchApiRequest as Mock).mockResolvedValue('# MNI Brand Context');
 
 		const result = await node.execute.call(executeFunctions);
 
@@ -308,7 +308,7 @@ describe('BrandfetchV2.execute', () => {
 			undefined,
 			{ json: false, headers: { accept: 'text/markdown' } },
 		);
-		expect(result[0]).toEqual([{ context: '# n8n Brand Context' }]);
+		expect(result[0]).toEqual([{ context: '# MNI Brand Context' }]);
 	});
 
 	it('should pass cachedOnly as a query parameter', async () => {

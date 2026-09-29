@@ -347,7 +347,7 @@ function buildFallbackWebSearchTool(
 			};
 
 			if (webSearchConfig.provider === 'brave') {
-				// n8n Connect (Gateway credits): route through the AI gateway with a
+				// MNI Connect (Gateway credits): route through the AI gateway with a
 				// minted credential instead of the user's API key.
 				if (credentialId === AI_GATEWAY_MANAGED_TAG) {
 					const proxyConfig = await resolveWebSearchGatewayProxyConfig(

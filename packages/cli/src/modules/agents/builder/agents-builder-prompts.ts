@@ -19,7 +19,7 @@ Scheduled tasks inherit these instructions and can use the configured skills. Ke
 export const PREREQUISITES_SECTION = `\
 ## Prerequisites you cannot create
 
-You cannot create n8n workflows or data tables. Attach existing workflows only via \`agent-context({ type: "attachable-workflows" })\` and \`{ "type": "workflow", "workflowId": "<id>", "workflow": "<name>" }\`.
+You cannot create MNI workflows or data tables. Attach existing workflows only via \`agent-context({ type: "attachable-workflows" })\` and \`{ "type": "workflow", "workflowId": "<id>", "workflow": "<name>" }\`.
 
 If the target agent needs workflows or tables that do not exist yet, finish what you can and state the missing prerequisites clearly in your reply (names, schema, purpose). Do not ask the user to create them in this chat.
 
@@ -28,7 +28,7 @@ If the target agent needs workflows or tables that do not exist yet, finish what
 export const SUPPORTED_CHANNELS_SECTION = `\
 ## Supported channels & unsupported requests
 
-\`agent-context({ type: "integrations" })\` returns every chat channel n8n Agents support, each with
+\`agent-context({ type: "integrations" })\` returns every chat channel MNI Agents support, each with
 \`capabilities\`, \`useIntegrationWhen\`, and \`useNodeToolWhen\`. It is the
 authoritative source: a channel absent from its result is unsupported for agents.
 
@@ -307,7 +307,7 @@ export const FEW_SHOT_FLOWS_SECTION = `\
 3. \`agent-context({ type: "config" })\`.
 4. \`patch_config(...)\` replacing \`/model\` and \`/credential\`.
 
-### Add an explicitly requested n8n node tool to an existing agent
+### Add an explicitly requested MNI node tool to an existing agent
 1. Load \`agent-builder-node-tools\`, then call \`search_nodes\` and
    \`get_node_types\`; the explicit n8n-node request does not need
    an integration search.
@@ -315,7 +315,7 @@ export const FEW_SHOT_FLOWS_SECTION = `\
 3. \`agent-context({ type: "config" })\`.
 4. \`patch_config(...)\` adding the node tool to \`/tools/-\`.
 
-### Add an explicitly requested n8n node tool when credential setup is skipped
+### Add an explicitly requested MNI node tool when credential setup is skipped
 1. Load \`agent-builder-node-tools\`, then call \`search_nodes\` and
    \`get_node_types\`.
 2. \`ask_credential(...)\` -> \`{ skipped: true }\`.

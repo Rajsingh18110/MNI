@@ -10,7 +10,7 @@ Enforces consistency between `n8n.aiNodeSdkVersion` in `package.json` and the `a
 
 The rule checks four conditions:
 
-- `aiNodeSdkVersion` is declared inside the `n8n` section (not at the root level)
+- `aiNodeSdkVersion` is declared inside the `MNI` section (not at the root level)
 - `aiNodeSdkVersion` is a positive integer
 - If `n8n.aiNodeSdkVersion` is set, `ai-node-sdk` must appear in `peerDependencies`
 - If `ai-node-sdk` is in `peerDependencies`, `n8n.aiNodeSdkVersion` must be set
@@ -22,7 +22,7 @@ The rule checks four conditions:
 ```json
 {
   "name": "n8n-nodes-my-ai-node",
-  "n8n": {
+  "MNI": {
     "aiNodeSdkVersion": "1"
   }
 }
@@ -52,7 +52,7 @@ The rule checks four conditions:
 ```json
 {
   "name": "n8n-nodes-my-ai-node",
-  "n8n": {
+  "MNI": {
     "aiNodeSdkVersion": 1
   },
   "peerDependencies": {

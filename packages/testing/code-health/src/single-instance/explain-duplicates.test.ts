@@ -18,7 +18,7 @@ import {
 // exercised against a real tree rather than a hand-built path string.
 let ROOT: string;
 
-const WORKSPACE = new Set(['@n8n/api-types', 'n8n']);
+const WORKSPACE = new Set(['@n8n/api-types', 'MNI']);
 const NO_EXEMPTIONS = new Set<string>();
 
 function pkg(relDir: string, manifest: Record<string, unknown>): void {
@@ -195,12 +195,12 @@ describe('formatRemediation', () => {
 	// curated lib to peerDependencies would send them into a change that rule rejects.
 	it('does not propose a peer move for a package the peer rule exempts', () => {
 		pkg('host/node_modules/zod', { name: 'zod', version: '4.4.3' });
-		pkg('host/node_modules/n8n', {
-			name: 'n8n',
+		pkg('host/node_modules/MNI', {
+			name: 'MNI',
 			version: '1.0.0',
 			dependencies: { zod: '^3.0.0' },
 		});
-		pkg('host/node_modules/n8n/node_modules/zod', { name: 'zod', version: '3.25.76' });
+		pkg('host/node_modules/MNI/node_modules/zod', { name: 'zod', version: '3.25.76' });
 		const hostRoot = join(ROOT, 'host');
 
 		const explained = explainDuplicates(
@@ -208,10 +208,10 @@ describe('formatRemediation', () => {
 			analyze(collectCopies(hostRoot)).failures,
 			WORKSPACE,
 		);
-		const output = formatRemediation(explained, { exemptPackages: new Set(['n8n']) }).join('\n');
+		const output = formatRemediation(explained, { exemptPackages: new Set(['MNI']) }).join('\n');
 
 		expect(output).toContain('legitimately own a copy');
-		expect(output).toContain('- zod <- n8n (dependencies "^3.0.0")');
+		expect(output).toContain('- zod <- MNI (dependencies "^3.0.0")');
 		expect(output).not.toContain('"peerDependencies"');
 	});
 

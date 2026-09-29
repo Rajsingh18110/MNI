@@ -79,7 +79,7 @@ export class ChatHubService {
 		provider: ChatHubProvider,
 		credentials: INodeCredentials,
 	): string | null {
-		if (provider === 'n8n' || provider === 'custom-agent') {
+		if (provider === 'MNI' || provider === 'custom-agent') {
 			return null;
 		}
 
@@ -124,7 +124,7 @@ export class ChatHubService {
 		const { workflow, previousMessage, message, sessionId, user, messageId, model } = opts;
 
 		if (
-			model.provider !== 'n8n' ||
+			model.provider !== 'MNI' ||
 			workflow.responseMode !== 'responseNodes' ||
 			previousMessage?.status !== 'waiting' ||
 			!previousMessage?.executionId
@@ -203,7 +203,7 @@ export class ChatHubService {
 
 	private getModelCredential(model: ChatHubConversationModel, credentials: INodeCredentials) {
 		const credentialId =
-			model.provider !== 'n8n' ? this.pickCredentialId(model.provider, credentials) : null;
+			model.provider !== 'MNI' ? this.pickCredentialId(model.provider, credentials) : null;
 
 		return credentialId;
 	}
@@ -367,7 +367,7 @@ export class ChatHubService {
 			sessionUpdates.agentId = null;
 			sessionUpdates.workflowId = null;
 
-			if (updates.agent.model.provider === 'n8n') {
+			if (updates.agent.model.provider === 'MNI') {
 				sessionUpdates.workflowId = updates.agent.model.workflowId;
 			} else if (updates.agent.model.provider === 'custom-agent') {
 				sessionUpdates.agentId = updates.agent.model.agentId;
@@ -411,7 +411,7 @@ export class ChatHubService {
 			}
 		}
 
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			// Find the workflow to get its name
 			const workflowEntity = await this.workflowFinderService.findWorkflowForUser(
 				model.workflowId,
@@ -619,8 +619,8 @@ export class ChatHubService {
 		} = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'n8n') {
-			throw new BadRequestError('Manual execution is only supported for n8n workflow agents');
+		if (model.provider !== 'MNI') {
+			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
 		const credentialId = this.getModelCredential(model, credentials);
@@ -676,7 +676,7 @@ export class ChatHubService {
 					trx,
 				);
 
-				// Manual mode only supports n8n provider — workflow has its own tools
+				// Manual mode only supports MNI provider — workflow has its own tools
 				const tools: INode[] = [];
 
 				const replyWorkflow = await this.chatHubWorkflowService.prepareReplyWorkflow(
@@ -901,8 +901,8 @@ export class ChatHubService {
 		const { sessionId, editId, messageId, message, model, credentials, timeZone } = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'n8n') {
-			throw new BadRequestError('Manual execution is only supported for n8n workflow agents');
+		if (model.provider !== 'MNI') {
+			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
 		let result: {
@@ -972,7 +972,7 @@ export class ChatHubService {
 						trx,
 					);
 
-					// Manual mode only supports n8n provider — workflow has its own tools
+					// Manual mode only supports MNI provider — workflow has its own tools
 					const tools: INode[] = [];
 
 					const workflow = await this.chatHubWorkflowService.prepareReplyWorkflow(
@@ -1136,8 +1136,8 @@ export class ChatHubService {
 		const { sessionId, retryId, model, credentials, timeZone } = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'n8n') {
-			throw new BadRequestError('Manual execution is only supported for n8n workflow agents');
+		if (model.provider !== 'MNI') {
+			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
 		const { retryOfMessageId, previousMessageId, workflow } =
@@ -1170,7 +1170,7 @@ export class ChatHubService {
 				const message = lastHumanMessage ? lastHumanMessage.content : '';
 				const attachments = lastHumanMessage.attachments ?? [];
 
-				// Manual mode only supports n8n provider — workflow has its own tools
+				// Manual mode only supports MNI provider — workflow has its own tools
 				const tools: INode[] = [];
 
 				const workflow = await this.chatHubWorkflowService.prepareReplyWorkflow(

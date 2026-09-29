@@ -133,7 +133,7 @@ export function parsePostgresError(
  * These run during node configuration and routinely fail for reasons the user
  * controls (missing table, bad credentials, unreachable host). Passing the
  * message as a string makes the error `warning` level, so it is shown to the
- * user but not reported to Sentry as if it were an n8n bug.
+ * user but not reported to Sentry as if it were an MNI bug.
  */
 export function parseParameterLoadingError(node: INode, error: unknown): NodeOperationError {
 	if (error instanceof NodeOperationError) return error;

@@ -42,7 +42,7 @@ const DEFAULT_API_KEY_SCOPES: ApiKeyScope[] = [
 	'project:list',
 ];
 
-/** Helper for working with n8n's Public API using API key authentication. */
+/** Helper for working with MNI's Public API using API key authentication. */
 export class PublicApiHelper {
 	private apiKey: string | null = null;
 
@@ -144,7 +144,7 @@ export class PublicApiHelper {
 	/**
 	 * Create a fully activated user by inviting them via the Public API and accepting the invitation.
 	 *
-	 * n8n's Public API doesn't have a direct "create user" endpoint. Users must be invited first,
+	 * MNI's Public API doesn't have a direct "create user" endpoint. Users must be invited first,
 	 * then accept the invitation to complete registration. The invitation acceptance endpoint
 	 * (`/rest/invitations/accept`) expects a JWT token from the invite link and sets session cookies.
 	 *

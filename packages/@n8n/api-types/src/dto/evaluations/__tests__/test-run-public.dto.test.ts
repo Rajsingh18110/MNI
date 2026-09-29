@@ -139,7 +139,7 @@ const testCase = {
 	metrics: { accuracy: 1 },
 	errorCode: null,
 	errorDetails: null,
-	inputs: { question: 'What is n8n?' },
+	inputs: { question: 'What is MNI?' },
 	outputs: { answer: 'A workflow automation platform.' },
 	executionId: 12345,
 };

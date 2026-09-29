@@ -1,6 +1,6 @@
-# n8n Task Runner Python
+# MNI Task Runner Python
 
-Native Python task runner for n8n
+Native Python task runner for MNI
 
 ## Development
 

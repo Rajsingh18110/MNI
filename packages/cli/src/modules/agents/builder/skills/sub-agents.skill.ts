@@ -28,7 +28,7 @@ The target agent can call \`delegate_subagent\` with \`subAgentId: "inline"\`
 without any saved-agent refs. Inline subagents are ad-hoc child agents for
 one-off focused tasks.
 
-\`subAgents.agents\` is only for optional saved n8n Agent specialists that the
+\`subAgents.agents\` is only for optional saved MNI Agent specialists that the
 target agent may select by id when they are a better fit than an inline subagent.
 
 ## When to configure

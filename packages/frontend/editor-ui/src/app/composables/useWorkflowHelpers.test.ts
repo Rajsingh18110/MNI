@@ -1076,7 +1076,7 @@ describe('useWorkflowHelpers', () => {
 		const ownedCredential = { id: 'cred-1', name: 'Mine' } as ICredentialsResponse;
 		const gatewayCredential = { id: null, name: '', __aiGatewayManaged: true as const };
 
-		it('keeps n8n credits credentials that have no stored id', () => {
+		it('keeps MNI credits credentials that have no stored id', () => {
 			const workflow: WorkflowData = {
 				nodes: [
 					createTestNode({
@@ -1109,7 +1109,7 @@ describe('useWorkflowHelpers', () => {
 			expect(workflow.nodes[0].credentials).toEqual({ openAiApi: gatewayCredential });
 		});
 
-		it('keeps owned credentials alongside n8n credits', () => {
+		it('keeps owned credentials alongside MNI credits', () => {
 			const workflow: WorkflowData = {
 				nodes: [
 					createTestNode({

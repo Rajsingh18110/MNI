@@ -233,9 +233,9 @@ describe('ChatInput', () => {
 		});
 
 		it('acks a legacy string heartbeat with the legacy ack', () => {
-			emit('n8n|heartbeat');
+			emit('MNI|heartbeat');
 
-			expect(ws.send).toHaveBeenCalledWith('n8n|heartbeat-ack');
+			expect(ws.send).toHaveBeenCalledWith('MNI|heartbeat-ack');
 			expect(wrapper.vm.chatStore.messages.value).toHaveLength(0);
 		});
 
@@ -247,8 +247,8 @@ describe('ChatInput', () => {
 		});
 
 		it('treats a legacy continue frame as control, not a message', () => {
-			emit('n8n|heartbeat'); // locks legacy mode
-			emit('n8n|continue');
+			emit('MNI|heartbeat'); // locks legacy mode
+			emit('MNI|continue');
 
 			expect(wrapper.vm.chatStore.messages.value).toHaveLength(0);
 			expect(wrapper.vm.chatStore.waitingForResponse.value).toBe(true);
@@ -263,7 +263,7 @@ describe('ChatInput', () => {
 		});
 
 		it('renders JSON that looks like a control frame as a message when the server is legacy', () => {
-			emit('n8n|heartbeat'); // locks legacy mode (single legacy ack)
+			emit('MNI|heartbeat'); // locks legacy mode (single legacy ack)
 			emit(JSON.stringify({ type: 'continue' }));
 			emit(JSON.stringify({ type: 'heartbeat' }));
 
@@ -278,19 +278,19 @@ describe('ChatInput', () => {
 				text: JSON.stringify({ type: 'heartbeat' }),
 			});
 			expect(ws.send).toHaveBeenCalledTimes(1);
-			expect(ws.send).toHaveBeenCalledWith('n8n|heartbeat-ack');
+			expect(ws.send).toHaveBeenCalledWith('MNI|heartbeat-ack');
 		});
 
 		it('keeps JSON mode when a stray legacy heartbeat arrives later', () => {
 			emit(JSON.stringify({ type: 'heartbeat' })); // locks JSON mode
-			emit('n8n|heartbeat'); // stray legacy frame — must NOT flip the mode
+			emit('MNI|heartbeat'); // stray legacy frame — must NOT flip the mode
 			emit(JSON.stringify({ type: 'continue' }));
 
 			// the stray legacy heartbeat renders as a message; JSON control still works
 			expect(wrapper.vm.chatStore.messages.value).toHaveLength(1);
 			expect(wrapper.vm.chatStore.messages.value[0]).toMatchObject({
 				sender: 'bot',
-				text: 'n8n|heartbeat',
+				text: 'MNI|heartbeat',
 			});
 			expect(wrapper.vm.chatStore.waitingForResponse.value).toBe(true);
 			// only the JSON ack from the real heartbeat — no legacy ack for the stray

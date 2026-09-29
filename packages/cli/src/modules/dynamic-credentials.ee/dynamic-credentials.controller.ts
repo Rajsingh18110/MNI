@@ -100,7 +100,7 @@ export class DynamicCredentialsController {
 
 		// The caller names the resolver, and clients take that id from the workflow's
 		// effective resolver rather than the credential's own, so it can be any
-		// registered resolver. Refuse to hand an n8n session token to a resolver that
+		// registered resolver. Refuse to hand an MNI session token to a resolver that
 		// keys on an external subject (it would forward the token to a third party).
 		if (carriesN8nIdentity(credentialContext) && !resolver.resolveOwningUserId) {
 			throw new BadRequestError(new N8nIdentityNotSupportedError(credentialName).message);
@@ -196,9 +196,9 @@ export class DynamicCredentialsController {
 			});
 		}
 
-		// Best-effort: bind the callback to the intended n8n user when the resolver
+		// Best-effort: bind the callback to the intended MNI user when the resolver
 		// names one, so `decodeCsrfState` rejects a mismatched session. External
-		// machine callers legitimately have no n8n user, so this never fails the POST.
+		// machine callers legitimately have no MNI user, so this never fails the POST.
 		const ownership = await this.dynamicCredentialService.resolveOwningUserIdForAuthorization(
 			credentialContext,
 			resolverEntity.id,
@@ -259,7 +259,7 @@ export class DynamicCredentialsController {
 			return;
 		}
 
-		// When the link is bound to an n8n user, the clicker must be that user.
+		// When the link is bound to an MNI user, the clicker must be that user.
 		if (intent.userId) {
 			const user = isAuthenticatedRequest(req) ? req.user : undefined;
 

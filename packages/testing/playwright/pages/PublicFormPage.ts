@@ -3,9 +3,9 @@ import { expect, type BrowserContext, type FrameLocator, type Locator } from '@p
 import { BasePage } from './BasePage';
 
 /**
- * The rendered public n8n form served by a Form Trigger / Send-and-Wait /
+ * The rendered public MNI form served by a Form Trigger / Send-and-Wait /
  * Wait-for-form node. It opens in its own browser tab (a new page or a popup),
- * separate from the editor tab the `n8n` facade drives, so it is rooted at its
+ * separate from the editor tab the `MNI` facade drives, so it is rooted at its
  * own `Page` rather than the shared one.
  */
 export class PublicFormPage extends BasePage {
@@ -154,7 +154,7 @@ export class PublicFormPage extends BasePage {
 	}
 
 	/**
-	 * The form's own OAuth2 flow sends the submitter through n8n's consent screen the
+	 * The form's own OAuth2 flow sends the submitter through MNI's consent screen the
 	 * first time. Approve it if it is showing, then wait for the shell to render.
 	 */
 	async allowOAuthConsentAndWaitForShell() {

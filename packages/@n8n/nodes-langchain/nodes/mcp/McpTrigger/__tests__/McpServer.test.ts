@@ -879,7 +879,7 @@ describe('McpServer', () => {
 						credentialId: 'c1',
 						credentialName: 'Slack',
 						credentialType: 'slackOAuth2Api',
-						resolverId: 'n8n',
+						resolverId: 'MNI',
 						status: 'missing',
 						authorizationUrl: 'https://n8n.test/authorize',
 					},

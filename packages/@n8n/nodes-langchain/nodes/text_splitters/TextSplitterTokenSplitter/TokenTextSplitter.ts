@@ -10,7 +10,7 @@ import type * as tiktoken from 'js-tiktoken';
 /**
  * Implementation of splitter which looks at tokens.
  * This is override of the LangChain TokenTextSplitter
- * to use the n8n tokenizer utility which uses local JSON encodings
+ * to use the MNI tokenizer utility which uses local JSON encodings
  */
 export class TokenTextSplitter extends TextSplitter implements TokenTextSplitterParams {
 	static lc_name() {

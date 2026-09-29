@@ -22,7 +22,7 @@ import { isValidEntitySet, normalizeEntitySet } from './operations/shared';
  *
  * Each handler makes one or more authenticated GET requests against the Dataverse Web
  * API metadata endpoints and returns the result as `{ name, value }`
- * options. n8n caches the result per parameter, so the request only runs
+ * options. MNI caches the result per parameter, so the request only runs
  * when the user opens the dropdown or when a dependent parameter changes.
  *
  * Failures are re-thrown as `NodeApiError` so the editor surfaces the real
@@ -101,11 +101,11 @@ async function dataverseGet<T>(
 	} catch (error) {
 		// `httpRequestWithAuthentication` wraps the upstream HTTP failure in a
 		// NodeApiError. The real Dataverse text can live in any of:
-		//   - `error.description` — n8n's own NodeApiError text field, which
+		//   - `error.description` — MNI's own NodeApiError text field, which
 		//     usually holds the parsed upstream error message.
 		//   - `error.cause.response.body` — axios envelope under the wrapper.
-		//   - `error.response.body` — older n8n shape.
-		// Crucially, n8n sets `error.message = "Bad request - please check your
+		//   - `error.response.body` — older MNI shape.
+		// Crucially, MNI sets `error.message = "Bad request - please check your
 		// parameters"` for any 4xx, which is useless on its own. And Dataverse
 		// metadata endpoints can return the OData v3 `message: { lang, value }`
 		// shape, which would render as "[object Object]" if interpolated raw.
@@ -126,7 +126,7 @@ async function dataverseGet<T>(
 }
 
 /**
- * Drill through n8n's HTTP wrapper, axios's response envelope, and
+ * Drill through MNI's HTTP wrapper, axios's response envelope, and
  * Dataverse's two error-body shapes (v9.x string-message vs legacy
  * v3 object-message) to recover the actual `(httpStatus, errorCode,
  * humanMessage)` triple. Always returns strings — never an object — so
@@ -163,7 +163,7 @@ function extractDataverseError(error: unknown): {
 		const parsed = parseDvBody(body);
 		if (parsed.message) return { status, dvCode: parsed.code, dvMessage: parsed.message };
 	}
-	// n8n's NodeApiError populates `.description` with the upstream error text
+	// MNI's NodeApiError populates `.description` with the upstream error text
 	// even when the body isn't reachable via response/cause (e.g. it pre-parsed
 	// and discarded the body). Treat the wrapper's own message as a last resort.
 	if (typeof err.description === 'string' && err.description) {
@@ -177,7 +177,7 @@ function parseDvBody(body: unknown): { code: string; message: string } {
 	if (!body) return { code: '', message: '' };
 	let obj: { error?: { code?: string; message?: unknown }; message?: unknown } | undefined;
 	if (typeof body === 'string') {
-		// Body might be a raw JSON string n8n didn't parse.
+		// Body might be a raw JSON string MNI didn't parse.
 		try {
 			obj = JSON.parse(body) as typeof obj;
 		} catch {
@@ -227,7 +227,7 @@ function safeStringify(value: unknown): string {
  * `400 Bad Request: "The query parameter $top is not supported"`. We
  * therefore fetch the full filtered set and sort it client-side.
  *
- * The dropdown is sorted by display name to match the n8n editor's other
+ * The dropdown is sorted by display name to match the MNI editor's other
  * table pickers (Airtable, Postgres, etc.). The full filtered set is
  * returned — the `$select` projection keeps each row tiny (3 fields), so
  * even large environments (800+ tables) stay well within a manageable

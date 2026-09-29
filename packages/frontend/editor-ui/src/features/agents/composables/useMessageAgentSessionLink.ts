@@ -54,7 +54,7 @@ function extractSession(logEntry: LogEntry | undefined): MessageAgentSession | n
  * any other node-type or runs missing the expected payload, so the caller can
  * `v-if` straight off `link`.
  *
- * Opens in a new tab (matching n8n's other deep links from execution log) so
+ * Opens in a new tab (matching MNI's other deep links from execution log) so
  * the workflow execution view stays in place — and so the link still works
  * when the logs panel is popped out into its own window.
  */

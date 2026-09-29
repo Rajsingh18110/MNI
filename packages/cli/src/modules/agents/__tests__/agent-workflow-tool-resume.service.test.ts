@@ -94,7 +94,7 @@ function setup() {
 	};
 }
 
-describe('AgentWorkflowToolResumeService production n8n Chat', () => {
+describe('AgentWorkflowToolResumeService production MNI Chat', () => {
 	it('resumes the published runtime for the owning user', async () => {
 		const { service, userRepository, agentRepository, orchestratorService, agentTestRunService } =
 			setup();

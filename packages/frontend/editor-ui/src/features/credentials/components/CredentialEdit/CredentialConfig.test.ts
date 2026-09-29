@@ -780,7 +780,7 @@ describe('CredentialConfig', () => {
 				);
 			});
 
-			it('stays generic rather than naming the n8n account when the provider tells us none', () => {
+			it('stays generic rather than naming the MNI account when the provider tells us none', () => {
 				renderComponent({
 					pinia: createTestingPinia({
 						initialState: {

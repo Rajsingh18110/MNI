@@ -30,7 +30,7 @@ describe('ImportWorkflowsCommand', () => {
 	};
 
 	describe('--activeState flag', () => {
-		it('throws when n8n is not running in queue mode and activeState is set to "fromJson"', async () => {
+		it('throws when MNI is not running in queue mode and activeState is set to "fromJson"', async () => {
 			globalConfig.executions.mode = 'regular';
 
 			const command = buildCommand();
@@ -42,7 +42,7 @@ describe('ImportWorkflowsCommand', () => {
 			};
 
 			await expect(command.run()).rejects.toThrow(
-				'The "--activeState=fromJson" flag can only be used when n8n is running in queue or multi-main mode. In regular deployment mode, workflow activation is not supported.',
+				'The "--activeState=fromJson" flag can only be used when MNI is running in queue or multi-main mode. In regular deployment mode, workflow activation is not supported.',
 			);
 		});
 

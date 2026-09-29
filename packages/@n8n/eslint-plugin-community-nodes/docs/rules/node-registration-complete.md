@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-n8n discovers the nodes in a community package from the `n8n.nodes` array in `package.json`. Any `.node.ts` file that exists in the package's `nodes/` directory but is missing from that array will be silently excluded from the published package — the node simply won't show up in n8n.
+MNI discovers the nodes in a community package from the `n8n.nodes` array in `package.json`. Any `.node.ts` file that exists in the package's `nodes/` directory but is missing from that array will be silently excluded from the published package — the node simply won't show up in n8n.
 
 This rule cross-references the `.node.ts` files found in the `nodes/` directory against the entries in `n8n.nodes` and flags every node file that is not registered, so missing registrations are caught at lint time rather than after publishing.
 
@@ -26,7 +26,7 @@ nodes/Bar/Bar.node.ts
 ```json
 {
   "name": "n8n-nodes-my-service",
-  "n8n": {
+  "MNI": {
     "nodes": ["dist/nodes/Foo/Foo.node.js"]
   }
 }
@@ -39,7 +39,7 @@ Every node file is registered:
 ```json
 {
   "name": "n8n-nodes-my-service",
-  "n8n": {
+  "MNI": {
     "nodes": ["dist/nodes/Foo/Foo.node.js", "dist/nodes/Bar/Bar.node.js"]
   }
 }
@@ -65,7 +65,7 @@ registering just the entry file is correct:
 ```json
 {
   "name": "n8n-nodes-my-service",
-  "n8n": {
+  "MNI": {
     "nodes": ["dist/nodes/SoterGuard/SoterGuard.node.js"]
   }
 }

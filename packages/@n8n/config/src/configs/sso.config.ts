@@ -41,7 +41,7 @@ class ProvisioningConfig {
 
 	/** Name of the OAuth scope to request for SSO provisioning. */
 	@Env('N8N_SSO_SCOPES_NAME')
-	scopesName: string = 'n8n';
+	scopesName: string = 'MNI';
 
 	/** Name of the SSO claim that contains the user's instance role (for provisioning). */
 	@Env('N8N_SSO_SCOPES_INSTANCE_ROLE_CLAIM_NAME')

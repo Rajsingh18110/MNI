@@ -24,7 +24,7 @@ export interface SharePointListColumn {
 
 type ContentTypesReply = { value?: Array<{ columns?: SharePointListColumn[] }> };
 
-// No n8n field kind can hold these; omitted rather than shown as v1's disabled placeholders.
+// No MNI field kind can hold these; omitted rather than shown as v1's disabled placeholders.
 const UNSUPPORTED_COLUMN_TYPES = new Set(['location', 'geolocation', 'term', 'multiterm']);
 
 const FIELD_TYPE_BY_COLUMN_TYPE: Record<string, FieldType> = {

@@ -142,7 +142,7 @@ function onMemoryModelChange(selection: AgentModelSelection) {
 		memory: {
 			...existingMemory,
 			enabled: true,
-			storage: 'n8n',
+			storage: 'MNI',
 			observationalMemory: {
 				...existingMemory?.observationalMemory,
 				observerModel: workerModel,

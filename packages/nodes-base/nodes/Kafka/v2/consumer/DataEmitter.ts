@@ -44,7 +44,7 @@ export interface DataEmitterOptions {
  * The wait an absent workflow execution timeout falls back to. Exported because
  * the consumer's processing deadline has to agree with it: if the emitter waits
  * an hour for an execution the broker fenced ten minutes in, the message is
- * redelivered while n8n still thinks the run owns it.
+ * redelivered while MNI still thinks the run owns it.
  */
 export const DEFAULT_EXECUTION_TIMEOUT_SECONDS = 3600;
 
@@ -180,7 +180,7 @@ async function rejectOnClose(closeSignal: AbortSignal): Promise<never> {
 /**
  * Starts one execution and waits for it, bounded by the workflow's timeout and
  * by close.
- * @param deadlineSeconds - Zero or less means unbounded. n8n treats a workflow
+ * @param deadlineSeconds - Zero or less means unbounded. MNI treats a workflow
  * timeout of <= 0 that way (workflow-execute-additional-data.ts:255), and handing
  * it to setTimeout would fire on the next tick and fail every hand-off. A
  * deadline too large for a timer is treated the same way, for the same reason.

@@ -7,19 +7,19 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		test('should prevent non-owners to access UM settings', async ({ n8n }) => {
+		test('should prevent non-owners to access UM settings', async ({ MNI }) => {
 			// This creates a new user in the same context, so the cookies are refreshed and owner is no longer logged in
 			await n8n.api.users.create();
 			await n8n.navigate.toUsers();
 			await expect.poll(() => n8n.page.url()).not.toContain('/settings/users');
 		});
 
-		test('should allow instance owner to access UM settings', async ({ n8n }) => {
+		test('should allow instance owner to access UM settings', async ({ MNI }) => {
 			await n8n.navigate.toUsers();
 			expect(n8n.page.url()).toContain('/settings/users');
 		});
 
-		test('should be able to change user role to Admin and back', async ({ n8n, api }) => {
+		test('should be able to change user role to Admin and back', async ({ MNI, api }) => {
 			const user = await api.users.create();
 			await n8n.navigate.toUsers();
 			await n8n.settingsUsers.search(user.email);
@@ -29,7 +29,7 @@ test.describe(
 			await expect(n8n.settingsUsers.getAccountType(user.email)).toHaveText('Member');
 		});
 
-		test('should delete user and their data', async ({ n8n, api }) => {
+		test('should delete user and their data', async ({ MNI, api }) => {
 			const user = await api.users.create();
 			await n8n.navigate.toUsers();
 			await n8n.page.reload();
@@ -42,7 +42,7 @@ test.describe(
 			await expect(n8n.notifications.getNotificationByTitleOrContent('User deleted')).toBeVisible();
 		});
 
-		test('should delete user and transfer their data', async ({ n8n, api }) => {
+		test('should delete user and transfer their data', async ({ MNI, api }) => {
 			const ownerEmail = INSTANCE_OWNER_CREDENTIALS.email;
 			const user = await api.users.create();
 			await n8n.navigate.toUsers();

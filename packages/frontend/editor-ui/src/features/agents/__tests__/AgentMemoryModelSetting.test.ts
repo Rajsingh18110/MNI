@@ -68,7 +68,7 @@ function makeConfig(): AgentJsonConfig {
 		instructions: 'Help the user.',
 		memory: {
 			enabled: true,
-			storage: 'n8n',
+			storage: 'MNI',
 			observationalMemory: {
 				enabled: true,
 				observerModel: {
@@ -122,7 +122,7 @@ describe('AgentMemoryModelSetting', () => {
 				{
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						observationalMemory: {
 							enabled: true,
 							observerModel: {

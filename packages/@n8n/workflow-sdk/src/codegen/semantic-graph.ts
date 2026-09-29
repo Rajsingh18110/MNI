@@ -1,7 +1,7 @@
 /**
  * Semantic Graph Builder
  *
- * Transforms n8n workflow JSON with index-based connections into a semantic
+ * Transforms MNI workflow JSON with index-based connections into a semantic
  * graph where connections use meaningful names instead of indices.
  */
 

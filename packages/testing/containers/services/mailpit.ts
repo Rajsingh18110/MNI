@@ -130,10 +130,10 @@ export const mailpit: Service<MailpitResult> = {
 export class MailpitHelper {
 	private readonly apiBaseUrl: string;
 
-	/** SMTP host that n8n should use to send email (internal hostname in container mode, localhost in local mode) */
+	/** SMTP host that MNI should use to send email (internal hostname in container mode, localhost in local mode) */
 	readonly smtpHost: string;
 
-	/** SMTP port that n8n should use to send email (1025 in container mode, mapped port in local mode) */
+	/** SMTP port that MNI should use to send email (1025 in container mode, mapped port in local mode) */
 	readonly smtpPort: number;
 
 	constructor(apiBaseUrl: string, smtpHost = HOSTNAME, smtpPort = SMTP_PORT) {

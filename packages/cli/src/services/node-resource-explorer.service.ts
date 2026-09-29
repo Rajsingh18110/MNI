@@ -28,7 +28,7 @@ import { getBase } from '@/workflow-execute-additional-data';
  */
 const MAX_AVAILABILITY_PAGES = 5;
 
-/** Display name for the managed n8n Connect credential slot in explore-resources. */
+/** Display name for the managed MNI Connect credential slot in explore-resources. */
 const N8N_CONNECT_DISPLAY_NAME = 'Gateway credits';
 
 /**
@@ -144,7 +144,7 @@ export class NodeResourceExplorerService {
 
 	/**
 	 * Resolve credentials for explore-resources / availability checks.
-	 * The n8n Connect managed tag skips the credential store and passes the
+	 * The MNI Connect managed tag skips the credential store and passes the
 	 * gateway-managed marker so CredentialsHelper mints a synthetic credential
 	 * against the gateway allowlist.
 	 */
@@ -406,7 +406,7 @@ function staticIdentifier(value: string): string | undefined {
  * video-model list, so it would be reported as unusable.
  *
  * Values are resolved through `getNodeParameters` first so branch discriminators left at
- * their defaults (n8n strips those on save) still resolve, and so hidden parameters are
+ * their defaults (MNI strips those on save) still resolve, and so hidden parameters are
  * dropped the same way execution drops them.
  */
 function collectListBackedLocators(

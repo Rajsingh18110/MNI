@@ -110,7 +110,7 @@ const N8N_BYPASS_PREFIX = '--n8n--';
 const DISABLE_CHECK_FOR_NAMESPACES = new Set(['reka', 'ag', 'chat']);
 
 // Allowed namespaces
-const NAMESPACES = new Set(['n8n', 'p', ...DISABLE_CHECK_FOR_NAMESPACES]);
+const NAMESPACES = new Set(['MNI', 'p', ...DISABLE_CHECK_FOR_NAMESPACES]);
 
 // Semantic values and scales
 const SEMANTIC_VALUES = new Set([

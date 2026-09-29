@@ -57,7 +57,7 @@ export async function zulipApiRequest(
 }
 
 // A multiOptions parameter normally resolves to an array. When its value comes
-// from an expression that is wrapped in surrounding text/whitespace, n8n
+// from an expression that is wrapped in surrounding text/whitespace, MNI
 // switches to string interpolation and the array is coerced to a comma-joined
 // string. Accept both shapes so the node degrades gracefully instead of
 // throwing a low-level "join is not a function" TypeError.

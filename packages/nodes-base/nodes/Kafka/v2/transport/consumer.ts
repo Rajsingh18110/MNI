@@ -6,7 +6,7 @@ import { createLibraryLogger, type FatalErrorHandler } from './LibraryLogger';
 import type { KafkaCredentials } from '../../utils';
 
 /**
- * Consumer settings n8n pins rather than leaves to the library, from the ENT-8
+ * Consumer settings MNI pins rather than leaves to the library, from the ENT-8
  * findings (section 4). Both differ from librdkafka's own defaults and restore
  * what v1 effectively did on kafkajs.
  */

@@ -137,7 +137,7 @@ describe('N8nChatIntegration', () => {
 		expect(result).toMatchObject({ ok: false, error: { code: 'UNSUPPORTED_QUERY' } });
 	});
 
-	it('get_user resolves the n8n user', async () => {
+	it('get_user resolves the MNI user', async () => {
 		userRepository.findOneBy.mockResolvedValue({
 			id: 'user-1',
 			firstName: 'Ada',

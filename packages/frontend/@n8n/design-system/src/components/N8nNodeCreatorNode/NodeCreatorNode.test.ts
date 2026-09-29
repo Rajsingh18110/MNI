@@ -11,8 +11,8 @@ function renderNode(tag: { text: string; pill?: boolean; type?: string }) {
 
 describe('N8nNodeCreatorNode', () => {
 	it('passes info type to the credits badge', () => {
-		const { getByText } = renderNode({ text: 'n8n credits', pill: true, type: 'info' });
-		expect(getByText('n8n credits').closest('.n8n-badge')?.className).toContain('info');
+		const { getByText } = renderNode({ text: 'MNI credits', pill: true, type: 'info' });
+		expect(getByText('MNI credits').closest('.n8n-badge')?.className).toContain('info');
 	});
 
 	it('passes danger type to the credits badge', () => {

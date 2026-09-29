@@ -19,7 +19,7 @@ files.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
     content = content.replace(/docker\/images\/n8n-base/g, 'docker/images/mni-base');
     content = content.replace(/docker\/images\/n8n/g, 'docker/images/mni');
-    content = content.replace(/images\/n8n/g, 'images/mni');
+    content = content.replace(/images\/MNI/g, 'images/mni');
     fs.writeFileSync(file, content);
     console.log(`Updated ${file}`);
   }

@@ -18,7 +18,7 @@ test.describe(
 				await setupRequirements(previewRequirements);
 			});
 
-			test('should preserve connections when same workflow is reimported', async ({ n8n }) => {
+			test('should preserve connections when same workflow is reimported', async ({ MNI }) => {
 				await n8n.demo.goto();
 				await n8n.demo.importWorkflow(simpleWorkflow);
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(3);
@@ -31,7 +31,7 @@ test.describe(
 			});
 
 			test('should show correct connections when switching to a different workflow', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.demo.goto();
 
@@ -46,7 +46,7 @@ test.describe(
 				await expect(n8n.canvas.nodeConnections()).toHaveCount(3);
 			});
 
-			test('should show all nodes in viewport after reimport (fitView)', async ({ n8n }) => {
+			test('should show all nodes in viewport after reimport (fitView)', async ({ MNI }) => {
 				await n8n.demo.goto();
 				await n8n.demo.importWorkflow(simpleWorkflow);
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(3);

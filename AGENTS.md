@@ -1,10 +1,10 @@
 # AGENTS.md
 
-This file provides guidance on how to work with the n8n repository.
+This file provides guidance on how to work with the MNI repository.
 
 ## Project Overview
 
-n8n is a workflow automation platform written in TypeScript, using a monorepo
+MNI is a workflow automation platform written in TypeScript, using a monorepo
 structure managed by pnpm workspaces. It consists of a Node.js backend, Vue.js
 frontend, and extensible node-based workflow engine.
 
@@ -28,7 +28,7 @@ frontend, and extensible node-based workflow engine.
 - To find registered telemetry events (names, descriptions, properties), run
   `pnpm --filter @n8n/telemetry catalog` (`--json` for structured output). The
   registry is being adopted incrementally, so search call sites if the catalog
-  has no match. The `n8n:telemetry` skill covers adding or changing events
+  has no match. The `MNI:telemetry` skill covers adding or changing events
 - When starting to work on a new ticket – create a new branch from fresh
   master with the name specified in Linear ticket
 - When creating a new branch for a ticket in Linear - use the branch name
@@ -40,7 +40,7 @@ frontend, and extensible node-based workflow engine.
   [.github/DEVELOPING_V3.md](.github/DEVELOPING_V3.md).
 - The AI gateway feature is **"Gateway credits"** in user-facing text (UI copy,
   error messages, prompts). Only internal identifiers, i18n keys, telemetry, and
-  comments keep the historical `n8nConnect` / `n8n credits` / AI Gateway names
+  comments keep the historical `n8nConnect` / `MNI credits` / AI Gateway names
 - **Shared utilities:** before you hand-roll a utility (`isRecord`, secret or
   PII redaction, JSON extraction from LLM output, Zod to JSON Schema, model-id
   parsing, …), you MUST check the shared packages for an existing
@@ -51,16 +51,16 @@ frontend, and extensible node-based workflow engine.
 
 ## Agent Skills and Claude Code Plugin
 
-n8n shared skills live in `.agents/skills/`. Claude Code consumes them through
-symlinks in `.claude/plugins/n8n/skills/`; OpenCode reads `.agents/skills/`
+MNI shared skills live in `.agents/skills/`. Claude Code consumes them through
+symlinks in `.claude/plugins/MNI/skills/`; OpenCode reads `.agents/skills/`
 directly. Harness-specific overrides remain real directories in the harness
 path, such as `.opencode/skills/setup-mcps/`. See
 [skills README](.agents/skills/AGENTS.md) for editing and sync guidance.
 
-n8n-specific Claude Code commands and agents live in `.claude/plugins/n8n/` and
-are namespaced under `n8n:`. Use `n8n:` prefix when invoking them (e.g.
-`/n8n:create-pr`, `/n8n:plan`, `n8n:developer` agent). See
-[plugin README](.claude/plugins/n8n/README.md) for structure and details.
+n8n-specific Claude Code commands and agents live in `.claude/plugins/MNI/` and
+are namespaced under `MNI:`. Use `MNI:` prefix when invoking them (e.g.
+`/MNI:create-pr`, `/MNI:plan`, `MNI:developer` agent). See
+[plugin README](.claude/plugins/MNI/README.md) for structure and details.
 
 ## Essential Commands
 
@@ -142,7 +142,7 @@ The monorepo is organized into these key packages:
 - **`packages/frontend/@n8n/i18n`**: Internationalization for UI text
 - **`packages/nodes-base`**: Built-in nodes for integrations
 - **`packages/@n8n/nodes-langchain`**: AI/LangChain nodes
-- **`packages/@n8n/instance-ai`**: "n8n Assistant" in the UI, "Instance AI" in code — n8n Assistant backend. See its `CLAUDE.md` for architecture docs.
+- **`packages/@n8n/instance-ai`**: "MNI Assistant" in the UI, "Instance AI" in code — MNI Assistant backend. See its `CLAUDE.md` for architecture docs.
 - **`@n8n/design-system`**: Vue component library for UI consistency
 - **`@n8n/config`**: Centralized configuration management
 
@@ -315,7 +315,7 @@ extends one of those layers):
   `createVitestConfigWithDecorators` from `@n8n/vitest-config/node-decorators`.
 - Check import and mock side effects before running tests. Keep tests out of
   user-owned directories. Set `N8N_USER_FOLDER` to a test-owned directory before
-  importing n8n settings. Clean up only paths that the test created.
+  importing MNI settings. Clean up only paths that the test created.
 - CI runs [`@n8n/code-health`](packages/testing/code-health/README.md) static
   analysis on PRs. It checks monorepo rules, including dependency hygiene and
   encryption-boundary coverage.

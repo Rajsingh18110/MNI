@@ -3,7 +3,7 @@ import { Command } from '@oclif/core';
 import { deleteConfig, readConfig } from '../config';
 
 export default class Logout extends Command {
-	static override description = 'Disconnect from the current n8n instance (removes saved config)';
+	static override description = 'Disconnect from the current MNI instance (removes saved config)';
 
 	static override examples = ['<%= config.bin %> logout'];
 

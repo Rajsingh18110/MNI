@@ -16,7 +16,7 @@ import type { Logger } from '../logger';
 import { SnapshotManager } from './snapshot-manager';
 
 export type InstanceAiDaytonaSandboxConfig = DaytonaSandboxConfig & {
-	/** Running n8n version, used to resolve a versioned prebuilt snapshot. */
+	/** Running MNI version, used to resolve a versioned prebuilt snapshot. */
 	n8nVersion?: string;
 	/** Prefix prepended to the Daytona sandbox name and surfaced as a label. */
 	namePrefix?: string;
@@ -74,7 +74,7 @@ function toSharedSandboxConfig(config: InstanceAiSandboxConfig): SharedSandboxCo
  * Returns undefined when sandbox is disabled.
  *
  * - 'daytona': Isolated Docker container via Daytona API.
- * - 'n8n-sandbox': n8n sandbox service-backed container.
+ * - 'n8n-sandbox': MNI sandbox service-backed container.
  */
 export async function createSandbox(
 	config: InstanceAiSandboxConfig,
@@ -111,7 +111,7 @@ export async function createSandbox(
 	if (isProxyMode) {
 		if (!snapshot) {
 			const error = new Error(
-				`No Instance AI sandbox snapshot is available for this n8n version (${config.n8nVersion ?? 'unknown'}) and sandbox images cannot be built through the sandbox proxy`,
+				`No Instance AI sandbox snapshot is available for this MNI version (${config.n8nVersion ?? 'unknown'}) and sandbox images cannot be built through the sandbox proxy`,
 			);
 			// Error-level on purpose: every proxied build for this version is down until fixed.
 			options.errorReporter?.error(error, { tags: { component: 'instance-ai-snapshot' } });

@@ -9,7 +9,7 @@ test.describe(
 		test.describe
 			.serial('Expression Preview', () => {
 				test('maps expressions from table json, and resolves value based on hover', async ({
-					n8n,
+					MNI,
 				}) => {
 					// This test is marked as serial because hover/tooltips are unreliable when running in parallel against a single server due to resource contention.
 
@@ -50,7 +50,7 @@ test.describe(
 					await expect(n8n.ndv.getParameterExpressionPreviewValue()).toContainText('1');
 				});
 			});
-		test('maps expressions from json view', async ({ n8n }) => {
+		test('maps expressions from json view', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set');
 			await n8n.ndv.inputPanel.switchDisplayMode('json');
@@ -99,7 +99,7 @@ test.describe(
 			await expect(previewElement).toBeVisible();
 		});
 
-		test('maps expressions from previous nodes', async ({ n8n }) => {
+		test('maps expressions from previous nodes', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set1');
 			await n8n.ndv.executePrevious();
@@ -144,7 +144,7 @@ test.describe(
 
 			await n8n.ndv.selectInputNode('Set');
 		});
-		test('maps expressions from table header', async ({ n8n }) => {
+		test('maps expressions from table header', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow-actions_paste-data.json');
 			await n8n.canvas.openNode('Set');
 			await n8n.ndv.executePrevious();
@@ -190,7 +190,7 @@ test.describe(
 			);
 		});
 
-		test('maps expressions from schema view', async ({ n8n }) => {
+		test('maps expressions from schema view', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set');
 
@@ -220,7 +220,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterExpressionPreviewValue()).toContainText('[object Object]0');
 		});
 
-		test('maps keys to path', async ({ n8n }) => {
+		test('maps keys to path', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.openNode('When clicking ‘Execute workflow’');
@@ -265,7 +265,7 @@ test.describe(
 			);
 		});
 
-		test.fixme('maps expressions to updated fields correctly', async ({ n8n }) => {
+		test.fixme('maps expressions to updated fields correctly', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set');
 
@@ -299,7 +299,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterExpressionPreviewValue()).toContainText('[object Object]0');
 		});
 
-		test('renders expression preview when a previous node is selected', async ({ n8n }) => {
+		test('renders expression preview when a previous node is selected', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set');
 
@@ -323,7 +323,7 @@ test.describe(
 			await expect(n8n.ndv.getParameterExpressionPreviewValue()).toContainText('test_value');
 		});
 
-		test('shows you can drop to inputs, including booleans', async ({ n8n }) => {
+		test('shows you can drop to inputs, including booleans', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set');
 
@@ -350,7 +350,7 @@ test.describe(
 			await n8n.page.mouse.up();
 		});
 
-		test('maps expressions to a specific location in the editor', async ({ n8n }) => {
+		test('maps expressions to a specific location in the editor', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 			await n8n.canvas.openNode('Set');
 

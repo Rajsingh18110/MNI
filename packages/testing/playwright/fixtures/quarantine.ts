@@ -54,7 +54,7 @@ export type QuarantineWorkerFixtures = {
  * check, no log noise.
  *
  * On fork PRs `CURRENTS_RECORD_KEY` is empty (GitHub Actions does not expose
- * secrets to fork PRs), so we fetch the live list from the internal n8n
+ * secrets to fork PRs), so we fetch the live list from the internal MNI
  * webhook with a ~10s timeout and skip matching tests. Any error (timeout,
  * non-2xx, parse error) fails open: tests run as if nothing is quarantined.
  *

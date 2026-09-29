@@ -180,19 +180,19 @@ function setupWebsocketConnection(executionId: string, resumeToken?: string) {
 			// (or socket close) below will clear it again.
 			chatStore.waitingForResponse.value = true;
 			// The first heartbeat locks the protocol: a pre-v3 server sends the string
-			// `n8n|heartbeat`, a v3 server sends `{type:'heartbeat'}`. Once legacy mode is
+			// `MNI|heartbeat`, a v3 server sends `{type:'heartbeat'}`. Once legacy mode is
 			// locked, JSON that merely looks like a control frame is a chat message.
 			let jsonProtocol: boolean | undefined;
 			chatStore.ws.onmessage = (e) => {
 				const data = e.data as string;
 
 				// Backward compatible with both protocols: legacy string sentinels
-				// (n8n < v3) and JSON frames (n8n v3+). Normalize to a frame type,
+				// (MNI < v3) and JSON frames (MNI v3+). Normalize to a frame type,
 				// remembering the legacy case so heartbeats are acked in kind.
-				const isLegacy = data === 'n8n|heartbeat' || data === 'n8n|continue';
+				const isLegacy = data === 'MNI|heartbeat' || data === 'MNI|continue';
 				let frameType: string | undefined;
 				if (isLegacy) {
-					frameType = data === 'n8n|heartbeat' ? 'heartbeat' : 'continue';
+					frameType = data === 'MNI|heartbeat' ? 'heartbeat' : 'continue';
 				} else {
 					try {
 						frameType = (JSON.parse(data) as { type?: string }).type;
@@ -209,7 +209,7 @@ function setupWebsocketConnection(executionId: string, resumeToken?: string) {
 				if (frameType === 'heartbeat' && matchesProtocol) {
 					jsonProtocol = !isLegacy;
 					chatStore.ws?.send(
-						isLegacy ? 'n8n|heartbeat-ack' : JSON.stringify({ type: 'heartbeat-ack' }),
+						isLegacy ? 'MNI|heartbeat-ack' : JSON.stringify({ type: 'heartbeat-ack' }),
 					);
 					return;
 				}
@@ -234,7 +234,7 @@ function setupWebsocketConnection(executionId: string, resumeToken?: string) {
 				chatStore.blockUserInput.value = false;
 			};
 		} catch (error) {
-			// do not throw error here as it should work with n8n versions that do not support websockets
+			// do not throw error here as it should work with MNI versions that do not support websockets
 			console.error('Error setting up websocket connection', error);
 		}
 	}

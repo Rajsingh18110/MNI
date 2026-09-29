@@ -35,7 +35,7 @@ export const NoHttpRequestWithManualAuthRule = createRule({
 		},
 		messages: {
 			useHttpRequestWithAuthentication:
-				"Avoid calling 'this.helpers.httpRequest()' in a function that retrieves credentials via 'this.getCredentials()'. Use 'this.helpers.httpRequestWithAuthentication()' instead — it handles authentication internally and benefits from future n8n improvements like token refresh and audit logging.",
+				"Avoid calling 'this.helpers.httpRequest()' in a function that retrieves credentials via 'this.getCredentials()'. Use 'this.helpers.httpRequestWithAuthentication()' instead — it handles authentication internally and benefits from future MNI improvements like token refresh and audit logging.",
 		},
 		schema: [],
 		hasSuggestions: false,

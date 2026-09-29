@@ -21,7 +21,7 @@ export async function createRedisExecutionResponseSender(logger: Logger) {
 	const { RedisExecutionResponseSender } = await import('./redis-execution-response-sender.js');
 
 	return new RedisExecutionResponseSender(
-		Container.get(RedisClientService).createClient({ type: 'publisher(n8n)' }),
+		Container.get(RedisClientService).createClient({ type: 'publisher(MNI)' }),
 		await createChannelNameGenerator(),
 		logger,
 	);
@@ -33,7 +33,7 @@ export async function startRedisExecutionResponseReceiver(logger: Logger) {
 	const { RedisExecutionResponseReceiver } = await import('./redis-execution-response-receiver.js');
 
 	const receiver = new RedisExecutionResponseReceiver(
-		Container.get(RedisClientService).createClient({ type: 'subscriber(n8n)' }),
+		Container.get(RedisClientService).createClient({ type: 'subscriber(MNI)' }),
 		await createChannelNameGenerator(),
 		logger,
 	);

@@ -3,7 +3,7 @@ import { Service } from '@n8n/di';
 
 @Service()
 export class UrlService {
-	/** Returns the base URL n8n is reachable from */
+	/** Returns the base URL MNI is reachable from */
 	readonly baseUrl: string;
 
 	constructor(private readonly globalConfig: GlobalConfig) {
@@ -26,7 +26,7 @@ export class UrlService {
 		return base;
 	}
 
-	/** Return the n8n instance base URL without trailing slash */
+	/** Return the MNI instance base URL without trailing slash */
 	getInstanceBaseUrl(): string {
 		const n8nBaseUrl = this.trimQuotes(this.globalConfig.editorBaseUrl) || this.getWebhookBaseUrl();
 

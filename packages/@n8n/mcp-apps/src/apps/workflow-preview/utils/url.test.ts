@@ -29,7 +29,7 @@ describe('isAllowedWorkflowUrl', () => {
 			['data: scheme (XSS/phishing)', 'data:text/html,<script>alert(1)</script>'],
 			['file: scheme (local access)', 'file:///etc/passwd'],
 			['ftp: scheme', 'ftp://example.com/'],
-			['custom scheme', 'n8n://workflow/abc'],
+			['custom scheme', 'MNI://workflow/abc'],
 			['protocol-relative URL', '//n8n.example.com/workflow/abc'],
 			['relative path', '/workflow/abc'],
 			['empty string', ''],
@@ -66,7 +66,7 @@ describe('isAllowedWorkflowUrl', () => {
 describe('isAllowedWorkflowDemoUrl', () => {
 	it.each([
 		['root demo URL', `${WORKFLOW_PREVIEW_ORIGIN}/workflows/demo?hideControls=true`],
-		['base-path demo URL', `${WORKFLOW_PREVIEW_ORIGIN}/n8n/workflows/demo`],
+		['base-path demo URL', `${WORKFLOW_PREVIEW_ORIGIN}/MNI/workflows/demo`],
 	])('accepts fixed preview service %s', (_label, input) => {
 		expect(isAllowedWorkflowDemoUrl(input)).toBe(true);
 	});
@@ -127,7 +127,7 @@ describe('resolveWorkflowDemoUrl', () => {
 	});
 
 	it.each([
-		['n8n Cloud URL', 'https://workspace.app.n8n.cloud/workflow/abc123'],
+		['MNI cloud URL', 'https://workspace.app.n8n.cloud/workflow/abc123'],
 		['local URL', 'http://localhost:5678/workflow/abc123'],
 		['self-hosted URL', 'https://self-hosted.example.com/workflow/abc123'],
 		['unexpected valid path', 'https://self-hosted.example.com/rest/workflows/abc123'],

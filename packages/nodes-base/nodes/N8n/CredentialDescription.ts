@@ -58,7 +58,7 @@ const createOperation: INodeProperties[] = [
 		name: 'name',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. n8n account',
+		placeholder: 'e.g. MNI account',
 		required: true,
 		displayOptions: {
 			show: {
@@ -96,7 +96,7 @@ const createOperation: INodeProperties[] = [
 			},
 		},
 		description:
-			"The available types depend on nodes installed on the n8n instance. Some built-in types include e.g. 'githubApi', 'notionApi', and 'slackApi'.",
+			"The available types depend on nodes installed on the MNI instance. Some built-in types include e.g. 'githubApi', 'notionApi', and 'slackApi'.",
 	},
 	{
 		displayName: 'Data',
@@ -158,7 +158,7 @@ const getSchemaOperation: INodeProperties[] = [
 			},
 		},
 		description:
-			"The available types depend on nodes installed on the n8n instance. Some built-in types include e.g. 'githubApi', 'notionApi', and 'slackApi'.",
+			"The available types depend on nodes installed on the MNI instance. Some built-in types include e.g. 'githubApi', 'notionApi', and 'slackApi'.",
 	},
 ];
 

@@ -102,7 +102,7 @@ export function checkDomainAccess(options: {
 		allowed: false,
 		suspendPayload: {
 			requestId: nanoid(),
-			message: `n8n AI wants to fetch content from ${host}`,
+			message: `MNI AI wants to fetch content from ${host}`,
 			severity: 'info' as const,
 			domainAccess: { url, host },
 		},
@@ -143,7 +143,7 @@ export function checkWebSearchAccess(options: {
 		allowed: false,
 		suspendPayload: {
 			requestId: nanoid(),
-			message: `n8n AI wants to search the web for: ${query}`,
+			message: `MNI AI wants to search the web for: ${query}`,
 			severity: 'info' as const,
 			webSearch: { query },
 		},

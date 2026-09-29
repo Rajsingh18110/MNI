@@ -128,7 +128,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 				const regex = getRepositoryExtractRegex();
 				const url = 'https://github.com/n8n-io/n8n';
 				const match = url.match(regex);
-				expect(match?.[1]).toBe('n8n');
+				expect(match?.[1]).toBe('MNI');
 			});
 
 			it('should extract repository from custom GitHub URL', () => {
@@ -199,7 +199,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 				const regex = getTriggerRepositoryExtractRegex();
 				const url = 'https://github.com/n8n-io/n8n';
 				const match = url.match(regex);
-				expect(match?.[1]).toBe('n8n');
+				expect(match?.[1]).toBe('MNI');
 			});
 
 			it('should extract repository from custom GitHub URL', () => {

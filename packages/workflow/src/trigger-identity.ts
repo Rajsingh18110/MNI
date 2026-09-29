@@ -12,7 +12,7 @@ import type { INodeParameters } from './interfaces';
 /**
  * The identity families a trigger can establish at runtime, used to gate dynamic
  * (resolvable) credentials:
- * - `providesN8nIdentity`: the n8n user identity, keyed on by the system resolver
+ * - `providesN8nIdentity`: the MNI user identity, keyed on by the system resolver
  *   (private credentials).
  * - `providesExternalIdentity`: an identity extracted from the trigger data, keyed
  *   on by custom resolvers (OAuth, Slack, …).
@@ -38,7 +38,7 @@ function hasContextEstablishmentHook(parameters: INodeParameters | undefined): b
 }
 
 /**
- * Whether a Chat Trigger's `n8nUserAuth` establishes the visitor's n8n identity: only in
+ * Whether a Chat Trigger's `n8nUserAuth` establishes the visitor's MNI identity: only in
  * hosted-chat mode (embedded/webhook mode has no page to run the OAuth2 handshake on) and
  * only when public (a non-public trigger never reaches the auth code at all). Absent
  * `mode` counts as `hostedChat`, its default.
@@ -72,7 +72,7 @@ export function classifyTriggerIdentity(
 		nodeType === CHAT_TRIGGER_NODE_TYPE && parameters?.availableInChat === true;
 	const isMcpTrigger =
 		nodeType === MCP_TRIGGER_NODE_TYPE && parameters?.authentication === 'n8nOAuth2';
-	// The Webhook node's "n8n User Auth (OAuth2)" mode injects the caller's n8n
+	// The Webhook node's "MNI user Auth (OAuth2)" mode injects the caller's MNI
 	// identity the same way the MCP trigger does — sharing the `n8nOAuth2` value.
 	const isOAuth2Webhook =
 		nodeType === WEBHOOK_NODE_TYPE && parameters?.authentication === 'n8nOAuth2';
@@ -91,7 +91,7 @@ export function classifyTriggerIdentity(
 		return { providesN8nIdentity: true, providesExternalIdentity: true };
 	}
 
-	// Manual triggers run with the executing n8n user's identity (attached from the
+	// Manual triggers run with the executing MNI user's identity (attached from the
 	// session by the manual-run endpoint). Chat and MCP triggers must NOT match here:
 	// outside the branches above they establish no identity at runtime.
 	if (MANUAL_TRIGGER_NODE_TYPES.includes(nodeType)) {

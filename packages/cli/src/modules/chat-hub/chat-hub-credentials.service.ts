@@ -39,7 +39,7 @@ export class ChatHubCredentialsService {
 		provider: ChatHubConversationModel['provider'],
 		credentials: INodeCredentials,
 	): string | null {
-		if (provider === 'n8n' || provider === 'custom-agent') {
+		if (provider === 'MNI' || provider === 'custom-agent') {
 			return null;
 		}
 

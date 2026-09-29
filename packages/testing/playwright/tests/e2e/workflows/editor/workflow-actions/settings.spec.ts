@@ -8,11 +8,11 @@ test.describe(
 	() => {
 		test.fixme();
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should update workflow settings', async ({ n8n }) => {
+		test('should update workflow settings', async ({ MNI }) => {
 			await n8n.navigate.toHome();
 
 			const workflowsResponsePromise = n8n.page.waitForResponse(
@@ -64,12 +64,12 @@ test.describe(
 		});
 
 		test.describe('Menu entry Push To Git', () => {
-			test('should not show up in the menu for members @auth:member', async ({ n8n }) => {
+			test('should not show up in the menu for members @auth:member', async ({ MNI }) => {
 				await n8n.workflowMenu.open();
 				await expect(n8n.workflowMenu.getPushToGitItem()).not.toBeAttached();
 			});
 
-			test('should show up for owners @auth:owner', async ({ n8n }) => {
+			test('should show up for owners @auth:owner', async ({ MNI }) => {
 				await n8n.workflowMenu.open();
 				await expect(n8n.workflowMenu.getPushToGitItem()).toBeVisible();
 			});

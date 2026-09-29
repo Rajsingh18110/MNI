@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This framework tests n8n's nodes and workflows to:
+This framework tests MNI's nodes and workflows to:
 
 * ✅ **Ensure Correctness:** Verify that nodes operate correctly
 * 🔄 **Maintain Compatibility:** Detect breaking changes in external APIs
@@ -144,9 +144,9 @@ Controls workflow execution and testing behavior:
 ### Step-by-Step Process
 
 ```bash
-# 1. Create/modify workflow in n8n UI
+# 1. Create/modify workflow in MNI UI
 # 2. Export the workflow
-./packages/cli/bin/n8n export:workflow --separate --output=test-workflows/workflows --pretty --id=XXX
+./packages/cli/bin/MNI export:workflow --separate --output=test-workflows/workflows --pretty --id=XXX
 
 # 3. Add configuration entry to workflowConfig.json
 # Edit workflowConfig.json and add:
@@ -229,9 +229,9 @@ The setup automatically copies these to `/tmp`:
 When credentials expire or need updating:
 
 ```bash
-# Update the credential in n8n UI
+# Update the credential in MNI UI
 # Export all credentials (encrypted)
-./packages/cli/bin/n8n export:credentials --output=test-workflows/credentials.json --all --pretty
+./packages/cli/bin/MNI export:credentials --output=test-workflows/credentials.json --all --pretty
 ```
 
 ⚠️ **Never use `--decrypted` when exporting credentials!**

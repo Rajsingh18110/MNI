@@ -230,7 +230,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 				run_id: 'run-1',
 				thread_id: 'thread-1',
 			},
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			image: 'node:20',
 			ephemeral: true,
 			logger,
@@ -250,7 +250,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 					thread_id: 'thread-1',
 				},
 				name: 'sandbox-name',
-				snapshot: 'n8n/instance-ai:1.123.0',
+				snapshot: 'MNI/instance-ai:1.123.0',
 			}),
 		);
 		expect(clientLog[0].create.mock.calls[1][0]).toEqual(
@@ -269,7 +269,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			'Sandbox create from snapshot failed; falling back to image',
 			expect.objectContaining({
 				mode: 'direct',
-				snapshotName: 'n8n/instance-ai:1.123.0',
+				snapshotName: 'MNI/instance-ai:1.123.0',
 			}),
 		);
 		expect(errorReporter.error).toHaveBeenCalledWith(
@@ -325,7 +325,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			logger,
 			errorReporter,
 		});
@@ -353,7 +353,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 				id: 'sandbox-id',
 				name: 'sandbox-name',
 				apiKey: 'api-key',
-				snapshot: 'n8n/instance-ai:1.123.0',
+				snapshot: 'MNI/instance-ai:1.123.0',
 			});
 
 			await sandbox.start();
@@ -378,7 +378,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 				id: 'sandbox-id',
 				name: 'sandbox-name',
 				apiKey: 'api-key',
-				snapshot: 'n8n/instance-ai:1.123.0',
+				snapshot: 'MNI/instance-ai:1.123.0',
 			});
 
 			await sandbox.start();
@@ -402,7 +402,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -427,7 +427,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -452,7 +452,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -473,7 +473,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -495,7 +495,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -520,7 +520,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -546,7 +546,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -564,7 +564,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 		});
 
 		await sandbox.start();
@@ -590,7 +590,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -614,7 +614,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -636,7 +636,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -655,7 +655,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -673,7 +673,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			image: 'node:20',
 			errorReporter,
 		});
@@ -702,7 +702,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			image: 'node:20',
 			createRetryBackoffBaseMs: 1,
 		});
@@ -726,7 +726,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			timeout: 200_000,
 			logger,
 		});
@@ -756,7 +756,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 				id: 'sandbox-id',
 				name: 'sandbox-name',
 				apiKey: 'api-key',
-				snapshot: 'n8n/instance-ai:1.123.0',
+				snapshot: 'MNI/instance-ai:1.123.0',
 			});
 
 			await expect(sandbox.start()).rejects.toMatchObject({
@@ -777,7 +777,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 		});
 
 		await expect(sandbox.start()).rejects.toMatchObject({ name: 'SandboxNotReadyError' });
@@ -793,7 +793,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			timeout: 100_000,
 			createTimeoutSeconds: 300,
 		});
@@ -820,7 +820,7 @@ describe('DaytonaSandbox (creation strategies)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -844,7 +844,7 @@ describe('DaytonaSandbox (destroy ownership)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 			createRetryBackoffBaseMs: 1,
 		});
 
@@ -865,7 +865,7 @@ describe('DaytonaSandbox (destroy ownership)', () => {
 			id: 'sandbox-id',
 			name: 'sandbox-name',
 			apiKey: 'api-key',
-			snapshot: 'n8n/instance-ai:1.123.0',
+			snapshot: 'MNI/instance-ai:1.123.0',
 		});
 
 		await sandbox.start();

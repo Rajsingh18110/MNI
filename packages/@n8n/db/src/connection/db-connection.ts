@@ -120,7 +120,7 @@ export class DbConnection {
 
 	/**
 	 * Warns when the Postgres server is below the version policy range. Only
-	 * Postgres has a version policy: SQLite ships bundled with n8n, so users
+	 * Postgres has a version policy: SQLite ships bundled with MNI, so users
 	 * never pick its version.
 	 */
 	private async warnOnUnsupportedPostgresVersion() {

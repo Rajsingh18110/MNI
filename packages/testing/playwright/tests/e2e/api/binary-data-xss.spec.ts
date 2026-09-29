@@ -65,7 +65,7 @@ test.describe(
 	},
 	() => {
 		test('should not execute inline JavaScript when serving HTML binary data', async ({
-			n8n,
+			MNI,
 			api,
 			backendUrl,
 		}) => {

@@ -98,7 +98,7 @@ export class SlackSignatureExtractor implements IContextEstablishmentHook {
 	/**
 	 * Reconstructs the URL-encoded form body from the parsed body object.
 	 * Slack sends form-urlencoded payloads for slash commands and interactions,
-	 * which n8n parses into a JSON object. We reconstruct the encoded string
+	 * which MNI parses into a JSON object. We reconstruct the encoded string
 	 * to use as the HMAC input for Slack signature verification.
 	 */
 	private getRawBody(triggerItem: { json: Record<string, unknown> }): string {

@@ -340,7 +340,7 @@ export class PostgresTrigger implements INodeType {
 
 		connection.client.on('notification', onNotification);
 
-		// The "closeFunction" function gets called by n8n whenever
+		// The "closeFunction" function gets called by MNI whenever
 		// the workflow gets deactivated and can so clean up.
 		const closeFunction = async () => {
 			await cleanUpDb();

@@ -33,5 +33,5 @@ pnpm janitor
 pnpm test:benchmark <changed-spec>
 ```
 
-Run commands from `packages/testing/playwright`. Build the n8n image first when
+Run commands from `packages/testing/playwright`. Build the MNI image first when
 the benchmark must include product-code changes.

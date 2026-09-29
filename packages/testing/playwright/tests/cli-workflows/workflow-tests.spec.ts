@@ -75,7 +75,7 @@ function loadWorkflows(): Workflow[] {
  */
 function executeWorkflow(workflowId: string): ExecutionResult {
 	const packagesRoot = findPackagesRoot('cli');
-	const n8nExecutablePath = path.join(packagesRoot, 'cli/bin/n8n');
+	const n8nExecutablePath = path.join(packagesRoot, 'cli/bin/MNI');
 	const command = `"${n8nExecutablePath}" execute --id="${workflowId}"`;
 	const options = {
 		encoding: 'utf-8' as const,

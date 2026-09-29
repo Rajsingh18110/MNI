@@ -293,7 +293,7 @@ describe('getNewEmails UID tracking', () => {
 		expect(batches).toEqual([[]]);
 	});
 
-	it('advances lastMessageUid before emitting, so n8n persists it with the batch', async () => {
+	it('advances lastMessageUid before emitting, so MNI persists it with the batch', async () => {
 		const staticData: IDataObject = {};
 		const seenWhileEmitting: unknown[] = [];
 		const connection = mock<ImapSimple>({

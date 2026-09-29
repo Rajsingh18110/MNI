@@ -65,7 +65,7 @@ pre-commit:
         - merge
         - rebase
     skill_links_check_plugin:
-      glob: '.claude/plugins/n8n/skills/**'
+      glob: '.claude/plugins/MNI/skills/**'
       run: node scripts/sync-agent-skill-links.mjs --check
       skip:
         - merge

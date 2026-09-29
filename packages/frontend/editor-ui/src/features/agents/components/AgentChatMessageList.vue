@@ -90,8 +90,8 @@ function externalWaitPlatform(tc: ToolCall): string | undefined {
 
 /**
  * Open cards always render. Once resolved, answered interactive cards clear
- * from the chat (both approval and n8n chat cards collapse into their
- * tool-step summary) — but display-only n8n chat cards persist: they are
+ * from the chat (both approval and MNI chat cards collapse into their
+ * tool-step summary) — but display-only MNI chat cards persist: they are
  * content, and being born resolved they would otherwise never render at all.
  */
 function shouldRenderInteractive(payload: InteractivePayload): boolean {

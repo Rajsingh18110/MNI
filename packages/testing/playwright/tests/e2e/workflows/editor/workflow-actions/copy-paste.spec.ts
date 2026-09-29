@@ -12,11 +12,11 @@ test.describe(
 	() => {
 		test.fixme();
 
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should copy nodes', async ({ n8n }) => {
+		test('should copy nodes', async ({ MNI }) => {
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 			await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript', closeNDV: true });
 
@@ -36,7 +36,7 @@ test.describe(
 			expect(copiedWorkflow.nodes).toHaveLength(2);
 		});
 
-		test('should paste nodes (both current and old node versions)', async ({ n8n }) => {
+		test('should paste nodes (both current and old node versions)', async ({ MNI }) => {
 			const workflowJson = fs.readFileSync(
 				resolveFromRoot('workflows', 'Test_workflow-actions_paste-data.json'),
 				'utf-8',
@@ -50,7 +50,7 @@ test.describe(
 			await expect(n8n.canvas.nodeConnections()).toHaveCount(5);
 		});
 
-		test('should allow importing nodes without names', async ({ n8n }) => {
+		test('should allow importing nodes without names', async ({ MNI }) => {
 			const workflowJson = fs.readFileSync(
 				resolveFromRoot('workflows', 'Test_workflow-actions_import_nodes_empty_name.json'),
 				'utf-8',

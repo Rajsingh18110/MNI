@@ -1,6 +1,6 @@
 /**
  * Icons that are excluded from the project icon picker because they are
- * already used in n8n's navigation, settings, or environment UI.
+ * already used in MNI's navigation, settings, or environment UI.
  * Selecting these as project icons would create visual confusion between
  * projects and core application functions.
  *
@@ -29,7 +29,7 @@ export const ICON_PICKER_BLOCKLIST: ReadonlySet<string> = new Set([
 	'users', // Help > Community forum link
 	'graduation-cap', // Help > Courses link
 	'bug', // Help > Report bug link
-	'info', // About n8n dialog
+	'info', // About MNI dialog
 	'settings', // Settings entry point (gear icon)
 	'door-open', // Sign out / Logout
 	'external-link', // Full changelog link

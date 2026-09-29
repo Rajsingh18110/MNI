@@ -287,7 +287,7 @@ export class A11yReporter implements Reporter {
 				outputDirPath: resolveFromRoot(),
 				outputDir: REPORT_DIR,
 				reportFileName: REPORT_FILE,
-				projectKey: 'n8n',
+				projectKey: 'MNI',
 				customSummary: preamble,
 			},
 		});

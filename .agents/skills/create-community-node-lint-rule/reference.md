@@ -65,7 +65,7 @@ Helpers available from `../utils/index.js`. Use these instead of writing custom 
 | Function | Returns | Use when |
 |----------|---------|----------|
 | `findPackageJson(startDir)` | `string \| null` | Walk up to find nearest package.json |
-| `readPackageJsonN8n(startDir)` | `N8nPackageJson \| null` | Parse n8n config section |
+| `readPackageJsonN8n(startDir)` | `N8nPackageJson \| null` | Parse MNI config section |
 | `readPackageJsonCredentials(startDir)` | `Set<string>` | Get credential names from package.json |
 | `readPackageJsonNodes(startDir)` | `string[]` | Get resolved node file paths |
 

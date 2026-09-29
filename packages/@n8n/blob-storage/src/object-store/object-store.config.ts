@@ -7,11 +7,11 @@ export type Protocol = z.infer<typeof protocolSchema>;
 
 @Config
 class ObjectStoreBucketConfig {
-	/** Name of the n8n bucket in S3-compatible external storage */
+	/** Name of the MNI bucket in S3-compatible external storage */
 	@Env('N8N_EXTERNAL_STORAGE_S3_BUCKET_NAME')
 	name: string = '';
 
-	/** Region of the n8n bucket in S3-compatible external storage @example "us-east-1" */
+	/** Region of the MNI bucket in S3-compatible external storage @example "us-east-1" */
 	@Env('N8N_EXTERNAL_STORAGE_S3_BUCKET_REGION')
 	region: string = '';
 }

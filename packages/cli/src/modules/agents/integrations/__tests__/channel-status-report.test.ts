@@ -53,7 +53,7 @@ function erroredRow(
 }
 
 describe('buildChannelStatusReport', () => {
-	it('uses the published n8n Chat entry while the draft changes', () => {
+	it('uses the published MNI Chat entry while the draft changes', () => {
 		expect(buildChannelStatusReport([], PUBLISHED, [], isLive, [n8nChat])).toEqual({
 			status: 'connected',
 			integrations: [{ type: 'n8n_chat', status: 'connected' }],

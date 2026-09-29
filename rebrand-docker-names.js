@@ -11,7 +11,7 @@ const files = [
 files.forEach(file => {
   if (fs.existsSync(file)) {
     let content = fs.readFileSync(file, 'utf8');
-    let newContent = content.replace(/n8nio\/n8n/g, 'mni/mni');
+    let newContent = content.replace(/n8nio\/MNI/g, 'mni/mni');
     if (content !== newContent) {
       fs.writeFileSync(file, newContent);
       console.log(`Updated ${file}`);

@@ -42,7 +42,7 @@ describe('captureThreadRunDebug', () => {
 			listThreadDebugRuns: vi
 				.fn()
 				.mockRejectedValue(
-					new Error('n8n API GET /rest/instance-ai/debug/threads/t/runs failed (404): not found'),
+					new Error('MNI API GET /rest/instance-ai/debug/threads/t/runs failed (404): not found'),
 				),
 		} as unknown as N8nClient;
 

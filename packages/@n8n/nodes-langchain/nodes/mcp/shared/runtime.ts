@@ -77,7 +77,7 @@ export type ResolvedMcpConfig = McpConnectionConfig & {
  * returns the connection result with `mcpTools` set to `null` and `error` populated. If tool retrieval or filtering throws, the opened
  * client is closed before the error is rethrown.
  *
- * @param ctx - The n8n supply/execute context used to obtain node identity, authentication helpers, and an optional execution cancellation signal.
+ * @param ctx - The MNI supply/execute context used to obtain node identity, authentication helpers, and an optional execution cancellation signal.
  * @param config - Resolved MCP connection configuration including transport, endpoint, authentication, timeout, and `toolFilter`.
  * @returns An object with `client` (the connected MCP client on success or the connection result on failure), `mcpTools` (the filtered tool list or `null` if connection failed), and `error` (`null` on success or the connection error on failure).
  */

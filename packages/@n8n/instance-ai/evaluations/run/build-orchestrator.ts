@@ -140,7 +140,7 @@ export type BuildArgs = Pick<
 };
 
 /** A lane plus the allocator-managed counters and the caller-provided (traced)
- *  build/execute wrappers. `runner` is the underlying Lane (n8n client,
+ *  build/execute wrappers. `runner` is the underlying Lane (MNI client,
  *  credential state) — named distinctly so it doesn't shadow loop variables. */
 export interface LaneState {
 	runner: Lane;
@@ -425,7 +425,7 @@ export function createBuildOrchestrator(deps: BuildOrchestratorDeps): BuildOrche
 
 	function stashRunDebug(client: N8nClient, build: BuildResult): void {
 		if (!build.threadId) return;
-		// Re-read from n8n AFTER the build was scrubbed, so it arrives raw and the
+		// Re-read from MNI AFTER the build was scrubbed, so it arrives raw and the
 		// run-debug report would render a local run's real key verbatim.
 		runDebugByThreadId.set(
 			build.threadId,
@@ -523,7 +523,7 @@ export function createBuildOrchestrator(deps: BuildOrchestratorDeps): BuildOrche
 			}));
 		// The lane's deterministic verdicts ride along on EVERY path, including the
 		// unjudged one: they describe what the run actually did to the provider and
-		// to n8n, which stays true whether or not the author expectations got judged.
+		// to MNI, which stays true whether or not the author expectations got judged.
 		// Deliberately not passed through `attribute` — that answers "is this the
 		// agent's miss or infra's", and these are measurements, not judgements.
 		const withInjected = async (

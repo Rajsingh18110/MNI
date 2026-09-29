@@ -6,14 +6,14 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_chat_partial_execution.json');
 			await n8n.notifications.quickCloseAll();
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.canvas.deselectAll();
 		});
 
-		test('should update session ID in node output when session is reset', async ({ n8n }) => {
+		test('should update session ID in node output when session is reset', async ({ MNI }) => {
 			await n8n.canvas.logsPanel.open();
 			await n8n.canvas.logsPanel.sendManualChatMessage('Test message 1');
 			await expect(n8n.canvas.logsPanel.getManualChatMessages()).toHaveCount(2);

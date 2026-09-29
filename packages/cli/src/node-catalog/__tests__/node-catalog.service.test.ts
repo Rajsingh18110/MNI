@@ -362,7 +362,7 @@ describe('NodeCatalogService', () => {
 			});
 		});
 
-		test('skips verified entries n8n has not vetted as official', async () => {
+		test('skips verified entries MNI has not vetted as official', async () => {
 			Container.set(
 				CommunityNodeTypesService,
 				mock<CommunityNodeTypesService>({

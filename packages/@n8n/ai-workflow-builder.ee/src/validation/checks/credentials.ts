@@ -133,7 +133,7 @@ function validateHttpRequestNode(
 			violations.push({
 				name: 'http-request-hardcoded-credentials',
 				type: 'minor',
-				description: `HTTP Request node "${node.name}" has a hardcoded value for sensitive header "${header.name}". Use n8n credentials instead (e.g., httpHeaderAuth, httpBearerAuth).`,
+				description: `HTTP Request node "${node.name}" has a hardcoded value for sensitive header "${header.name}". Use MNI credentials instead (e.g., httpHeaderAuth, httpBearerAuth).`,
 				pointsDeducted: 5,
 			});
 		}
@@ -145,7 +145,7 @@ function validateHttpRequestNode(
 			violations.push({
 				name: 'http-request-hardcoded-credentials',
 				type: 'minor',
-				description: `HTTP Request node "${node.name}" has a hardcoded value for credential-like query parameter "${param.name}". Use n8n credentials instead (e.g., httpQueryAuth).`,
+				description: `HTTP Request node "${node.name}" has a hardcoded value for credential-like query parameter "${param.name}". Use MNI credentials instead (e.g., httpQueryAuth).`,
 				pointsDeducted: 5,
 			});
 		}
@@ -166,7 +166,7 @@ function validateSetNode(
 			violations.push({
 				name: 'set-node-credential-field',
 				type: 'minor',
-				description: `Set node "${node.name}" has a field named "${assignment.name}" which appears to be storing credentials. Credentials should be stored securely using n8n's credential system, not in workflow data.`,
+				description: `Set node "${node.name}" has a field named "${assignment.name}" which appears to be storing credentials. Credentials should be stored securely using MNI's credential system, not in workflow data.`,
 				pointsDeducted: 5,
 			});
 		}

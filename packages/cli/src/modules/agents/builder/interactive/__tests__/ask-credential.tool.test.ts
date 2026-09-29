@@ -383,9 +383,9 @@ describe('ask_embedding_credential tool', () => {
 		expect(credentialService.list).not.toHaveBeenCalled();
 		expect(result).toEqual({
 			credentialId: 'managed',
-			credentialName: 'Managed by n8n',
+			credentialName: 'Managed by MNI',
 			credentials: {
-				openAiApi: { id: 'managed', name: 'Managed by n8n' },
+				openAiApi: { id: 'managed', name: 'Managed by MNI' },
 			},
 		});
 	});

@@ -42,7 +42,7 @@ function browserConnect(
 		description:
 			"Connect to the user's browser for web automation. " +
 			'Optionally specify a Chromium-based browser (chrome, brave, edge, chromium). ' +
-			'Requires the n8n AI Browser Bridge extension to be installed. ' +
+			'Requires the MNI AI Browser Bridge extension to be installed. ' +
 			'Must be called before using any other browser tools.',
 		inputSchema: browserConnectSchema,
 		outputSchema: browserConnectOutputSchema,

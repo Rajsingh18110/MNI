@@ -50,7 +50,7 @@ export class KafkaTriggerV2 implements INodeType {
 
 		let handle: KafkaConsumerHandle | undefined;
 		// A manual run starts the consumer from `manualTriggerFunction`, so unlike an
-		// activated workflow the start is not awaited before n8n can call close.
+		// activated workflow the start is not awaited before MNI can call close.
 		// Cancelling the test run mid-start would otherwise find `handle` still unset
 		// and leave a consumer connected with nothing left holding it.
 		let startup: Promise<void> | undefined;
@@ -62,9 +62,9 @@ export class KafkaTriggerV2 implements INodeType {
 
 		const startConsumerOnce = async () => {
 			// Where a fatal consumer error goes depends on when it arrives (ENT-340):
-			// - during startup: reject this gate → activation fails and n8n retries
+			// - during startup: reject this gate → activation fails and MNI retries
 			//   with backoff, instead of flapping through emitError every second
-			// - after a successful start: emitError → n8n restarts the dead trigger
+			// - after a successful start: emitError → MNI restarts the dead trigger
 			// - after a failed start: log it; nothing activated, nothing to restart
 			let reportFatal!: (error: Error) => void;
 			const startupFailure = new Promise<never>((_, reject) => (reportFatal = reject));
@@ -78,7 +78,7 @@ export class KafkaTriggerV2 implements INodeType {
 
 				const consumer = await createKafkaConsumer(credentials, settings.consumer, {
 					logger: this.logger,
-					// v1 routes non-restartable consumer crashes to emitError so n8n
+					// v1 routes non-restartable consumer crashes to emitError so MNI
 					// re-activates the trigger. Errors caused by our own teardown are
 					// not failures, so they stay quiet.
 					onFatalError: (error) => {

@@ -9,7 +9,7 @@ exhaustive flag list.
 
 ## What a run needs
 
-- **A running n8n instance with Instance AI enabled**, reachable over HTTP. The
+- **A running MNI instance with Instance AI enabled**, reachable over HTTP. The
   eval is a client — it logs in and drives the normal build flow. Point it with
   `--base-url` (defaults to `http://localhost:5678`); use whatever instance you
   already run for Instance AI dev.
@@ -227,7 +227,7 @@ crashed it. A batch calibrates on the LangTracer dispatchers:
    the similarity check against the verification suites.
 2. Push the batch to its suite with the tag `calibration-pending`.
 3. Dispatch one manual sweep for those case ids:
-   `gh workflow run eval-run.yml --repo n8n-io/lang-tracer -f image=n8nio/n8n:nightly -f case_ids=<ids> -f iterations=3 -f trigger=manual`.
+   `gh workflow run eval-run.yml --repo n8n-io/lang-tracer -f image=n8nio/MNI:nightly -f case_ids=<ids> -f iterations=3 -f trigger=manual`.
    `trigger=manual` keeps it out of the nightly baseline.
 4. Read `list_eval_runs` → `get_eval_run`. Classify each red: **builder** (keep
    it red, tag `capability-gap-finding`, propose a ticket), **harness** (fix it or
@@ -247,7 +247,7 @@ gh workflow run test-evals-instance-ai.yml --repo n8n-io/n8n \
 ```
 
 `cache-sha` is what puts a backend change under test: without it the workflow
-restores the n8n image cached for master's head, and only the eval CLI runs from
+restores the MNI image cached for master's head, and only the eval CLI runs from
 your branch. A harness-only change works either way.
 
 CI reads cases from LangTracer only. A case that exists only on disk goes into a

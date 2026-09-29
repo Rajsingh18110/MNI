@@ -43,7 +43,7 @@ export type JobData = {
 	mcpToolCall?: {
 		toolName: string;
 		arguments: Record<string, unknown>;
-		/** The n8n node name that provides this tool. */
+		/** The MNI node name that provides this tool. */
 		sourceNodeName?: string;
 	};
 	/** The MCP request as node input, so the worker gives the tool node the same `$json` as direct mode. */
@@ -61,7 +61,7 @@ export type JobOptions = Bull.JobOptions;
 /**
  * Message sent by main to worker and vice versa about a job. `JobMessage` is
  * sent via Bull's internal pubsub setup - do not confuse with `PubSub.Command`
- * and `PubSub.Response`, which are sent via n8n's own pubsub setup to keep
+ * and `PubSub.Response`, which are sent via MNI's own pubsub setup to keep
  * main and worker processes in sync outside of a job's lifecycle.
  */
 export type JobMessage =

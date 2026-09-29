@@ -19,10 +19,10 @@ const dataFlowResultSchema = z.object({
 
 export type DataFlowResult = z.infer<typeof dataFlowResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing specifically on DATA FLOW and TRANSFORMATION ACCURACY.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing specifically on DATA FLOW and TRANSFORMATION ACCURACY.
 Your task is to evaluate how accurately data is transformed and passed through the workflow.
 
-## CRITICAL: Understanding n8n Data Flow Patterns
+## CRITICAL: Understanding MNI Data Flow Patterns
 - **AI agents with tools handle data internally** - not visible in main flow
 - **Vector stores are referenced by ID**, not direct connections
 - **Memory nodes connect via ai_memory**, not main connections

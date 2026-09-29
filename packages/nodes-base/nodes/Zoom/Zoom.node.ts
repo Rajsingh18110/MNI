@@ -293,7 +293,7 @@ export class Zoom implements INodeType {
 									'YYYY-MM-DDTHH:mm:ss',
 								);
 							} else {
-								// if none timezone it's defined used n8n timezone
+								// if none timezone it's defined used MNI timezone
 								body.start_time = moment
 									.tz(additionalFields.startTime as string, this.getTimezone())
 									.format();

@@ -905,7 +905,7 @@ const manualTriggerNode: LoadedClass<INodeType> = {
 			icon: 'fa:mouse-pointer',
 			group: ['trigger'],
 			version: 1,
-			description: 'Runs the flow on clicking a button in n8n',
+			description: 'Runs the flow on clicking a button in MNI',
 			eventTriggerDescription: '',
 			maxNodes: 1,
 			defaults: {
@@ -1137,7 +1137,7 @@ const executeWorkflowNode: LoadedClass<INodeType> = {
 			codex: {
 				categories: ['Core Nodes'],
 				subcategories: { 'Core Nodes': ['Helpers', 'Flow'] },
-				alias: ['n8n', 'call', 'sub', 'workflow', 'sub-workflow', 'subworkflow'],
+				alias: ['MNI', 'call', 'sub', 'workflow', 'sub-workflow', 'subworkflow'],
 				resources: {
 					primaryDocumentation: [
 						{

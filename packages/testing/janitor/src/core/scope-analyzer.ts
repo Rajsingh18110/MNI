@@ -11,7 +11,7 @@ import { matchesGlobalTrigger } from './global-triggers.js';
 import { toPosix } from './path-utils.js';
 
 // Bailout patterns are centralised here (vs the original DEVP-194 spec's
-// per-package `n8nTestChanged.inPackageBailouts` field) because the n8n
+// per-package `n8nTestChanged.inPackageBailouts` field) because the MNI
 // workspace shares the same vitest config helpers + setup file layout via
 // @n8n/vitest-config. If a package ever needs a custom bailout that doesn't
 // fit these patterns, switch to per-package config rather than expanding

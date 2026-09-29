@@ -23,7 +23,7 @@ export const PREVIEW_PHASES = /** @type { const } */ ([
 	{ key: 'checkout', label: 'Check out the commit' },
 	{ key: 'install', label: 'Install dependencies', slowAfterMs: 180_000 },
 	{ key: 'build', label: 'Build the monorepo', slowAfterMs: 600_000 },
-	{ key: 'start', label: 'Start n8n' },
+	{ key: 'start', label: 'Start MNI' },
 	{ key: 'share', label: 'Share the port with the org' },
 ]);
 

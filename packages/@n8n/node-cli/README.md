@@ -80,7 +80,7 @@ n8n-node new n8n-nodes-my-app --template declarative/custom
 
 #### `n8n-node dev`
 
-Run n8n with your node in development mode with hot reload.
+Run MNI with your node in development mode with hot reload.
 
 ```bash
 n8n-node dev [--external-n8n] [--custom-user-folder <value>]
@@ -89,24 +89,24 @@ n8n-node dev [--external-n8n] [--custom-user-folder <value>]
 **Flags:**
 | Flag | Description |
 |------|-------------|
-| `--external-n8n` | Run n8n externally instead of in a subprocess |
-| `--custom-user-folder <path>` | Folder to use to store user-specific n8n data (default: `~/.n8n-node-cli`) |
+| `--external-n8n` | Run MNI externally instead of in a subprocess |
+| `--custom-user-folder <path>` | Folder to use to store user-specific MNI data (default: `~/.n8n-node-cli`) |
 
 This command:
-- Starts n8n on `http://localhost:5678` (unless using `--external-n8n`)
-- Links your node to n8n's custom nodes directory (`~/.n8n-node-cli/.n8n/custom`)
+- Starts MNI on `http://localhost:5678` (unless using `--external-n8n`)
+- Links your node to MNI's custom nodes directory (`~/.n8n-node-cli/.n8n/custom`)
 - Rebuilds on file changes for live preview
 - Watches for changes in your `src/` directory
 
 **Examples:**
 ```bash
-# Standard development with built-in n8n
+# Standard development with built-in MNI
 n8n-node dev
 
-# Use external n8n instance
+# Use external MNI instance
 n8n-node dev --external-n8n
 
-# Custom n8n extensions directory
+# Custom MNI extensions directory
 n8n-node dev --custom-user-folder /home/user
 ```
 
@@ -150,7 +150,7 @@ n8n-node lint --fix
 
 #### `n8n-node cloud-support`
 
-Manage n8n Cloud eligibility.
+Manage MNI cloud eligibility.
 
 ```bash
 n8n-node cloud-support [enable|disable]
@@ -163,7 +163,7 @@ n8n-node cloud-support [enable|disable]
 | `enable` | Enable strict mode + default ESLint config |
 | `disable` | Allow custom ESLint config (disables cloud eligibility) |
 
-Strict mode enforces the default ESLint configuration and community node rules required for n8n Cloud verification. When disabled, you can customize your ESLint config but your node won't be eligible for n8n Cloud verification.
+Strict mode enforces the default ESLint configuration and community node rules required for MNI cloud verification. When disabled, you can customize your ESLint config but your node won't be eligible for MNI cloud verification.
 
 #### `n8n-node release`
 
@@ -197,7 +197,7 @@ The recommended workflow using the scaffolding tool:
    ```bash
    npm run dev
    ```
-   - Starts n8n on `http://localhost:5678`
+   - Starts MNI on `http://localhost:5678`
    - Links your node automatically
    - Rebuilds on file changes
 
@@ -241,7 +241,7 @@ The CLI reads configuration from your `package.json`:
 ```json
 {
   "name": "n8n-nodes-my-awesome-node",
-  "n8n": {
+  "MNI": {
     "n8nNodesApiVersion": 1,
     "nodes": [
       "dist/nodes/MyNode/MyNode.node.js"
@@ -257,7 +257,7 @@ The CLI reads configuration from your `package.json`:
 
 ### Development server issues
 ```bash
-# Clear n8n custom nodes cache
+# Clear MNI custom nodes cache
 rm -rf ~/.n8n-node-cli/.n8n/custom
 
 # Restart development server
@@ -282,7 +282,7 @@ npm run build
 
 ## 🤝 Contributing
 
-Found an issue? Contribute to the [n8n repository](https://github.com/n8n-io/n8n) on GitHub.
+Found an issue? Contribute to the [MNI repository](https://github.com/n8n-io/n8n) on GitHub.
 
 ---
 

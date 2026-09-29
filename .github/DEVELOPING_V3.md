@@ -1,6 +1,6 @@
 # Developing v3 features
 
-n8n is preparing a **v3 major release** (~October 2026). v3 is an *operational*
+MNI is preparing a **v3 major release** (~October 2026). v3 is an *operational*
 release: breaking changes, removals, and legacy cleanup — not a big-bang feature
 launch. From July until release we keep **two long-lived branches alive at once**,
 and this guide explains how to develop against them without friction.
@@ -42,7 +42,7 @@ flowchart LR
 ## Developing a normal feature on `master` (behind an opt-in flag)
 
 Land new implementations on `master` disabled by default, so they ride the daily
-sync into `3.x` and can be trialed without affecting v2 users. n8n uses **PostHog**
+sync into `3.x` and can be trialed without affecting v2 users. MNI uses **PostHog**
 for flags, evaluated server-side and bootstrapped to the frontend.
 
 ### Frontend (editor-ui)
@@ -65,7 +65,7 @@ for flags, evaluated server-side and bootstrapped to the frontend.
 3. Put per-experiment code in its own folder under
    `packages/frontend/editor-ui/src/experiments/<name>/`.
 
-The **`n8n:experiments` skill** ([`.agents/skills/experiments/`](../.agents/skills/experiments/SKILL.md))
+The **`MNI:experiments` skill** ([`.agents/skills/experiments/`](../.agents/skills/experiments/SKILL.md))
 is the authoritative, step-by-step procedure — including creating the disabled
 PostHog flags in Staging/Production first.
 
@@ -230,7 +230,7 @@ rolling number for the day — `v3-rc-<date>.1`, `.2`, … — and moves `v3-rc`
 - **`v3-rc-<date>.N`** — pin this to hold a build still. Immutable.
 - **`v3-rc` / `v3-rc-<date>`** — track the newest RC overall / of that day. These move.
 
-The retag covers the whole set — `n8nio/n8n`, `n8nio/runners` and
+The retag covers the whole set — `n8nio/MNI`, `n8nio/runners` and
 `n8nio/runners:v3-rc[-<date>.N]-distroless` — so pinning one RC across a stack gives
 images built from one `3.x` commit, unlike `v3-nightly`, which moves daily and can be
 mid-build when you pull. The same tags exist on GHCR (`ghcr.io/n8n-io/…`).

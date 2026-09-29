@@ -28,7 +28,7 @@ async function signalMain(stack: N8NStack, index: number, signal: 'SIGSTOP' | 'S
 		`
 		const fs = require('node:fs');
 		const children = fs.readFileSync('/proc/1/task/1/children', 'utf8').trim().split(/\\s+/);
-		if (children.length !== 1 || !Number(children[0])) throw new Error('Expected one n8n process');
+		if (children.length !== 1 || !Number(children[0])) throw new Error('Expected one MNI process');
 		process.kill(Number(children[0]), '${signal}');
 	`,
 	]);

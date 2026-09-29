@@ -9,11 +9,11 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'NODES' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
-		test('should be able to create and delete multiple conditions', async ({ n8n }) => {
+		test('should be able to create and delete multiple conditions', async ({ MNI }) => {
 			await n8n.canvas.addNode(IF_NODE_NAME, { closeNDV: false });
 
 			// Default state
@@ -38,7 +38,7 @@ test.describe(
 			await expect(n8n.ndv.getFilterConditions(FILTER_PARAM_NAME)).toHaveCount(1);
 		});
 
-		test('should correctly evaluate conditions', async ({ n8n }) => {
+		test('should correctly evaluate conditions', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_filter.json');
 
 			await n8n.canvas.clickExecuteWorkflowButton();

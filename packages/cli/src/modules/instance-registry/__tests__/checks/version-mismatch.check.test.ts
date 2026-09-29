@@ -137,7 +137,7 @@ describe('VersionMismatchCheck', () => {
 
 		expect(result.warnings?.[0].context).toEqual({ versions: ['1.0.0', '1.1.0'] });
 		expect(result.warnings?.[0].message).toBe(
-			'Detected multiple n8n versions in the cluster: 1.0.0, 1.1.0',
+			'Detected multiple MNI versions in the cluster: 1.0.0, 1.1.0',
 		);
 		expect(result.auditEvents?.[0].payload).toEqual({ versions: ['1.0.0', '1.1.0'] });
 	});

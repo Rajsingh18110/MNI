@@ -16,7 +16,7 @@ import type { NonStreamingResponseMode } from './chat-hub.types';
  * This tracks executions from start to completion (including waiting states).
  */
 export interface ChatHubExecutionContext {
-	/** The n8n execution ID */
+	/** The MNI execution ID */
 	executionId: string;
 	/** Chat session ID */
 	sessionId: ChatSessionId;
@@ -69,7 +69,7 @@ export class ChatHubExecutionStore {
 		this.cleanupDelayMs = this.chatHubConfig.executionContextTtl * Time.seconds.toMilliseconds;
 
 		if (this.useRedis) {
-			this.redisClient = this.redisClientService.createClient({ type: 'subscriber(n8n)' });
+			this.redisClient = this.redisClientService.createClient({ type: 'subscriber(MNI)' });
 		}
 	}
 

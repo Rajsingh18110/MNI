@@ -31,7 +31,7 @@ import type { Agent } from '../../../entities/agent.entity';
 import { AgentRepository } from '../../../repositories/agent.repository';
 import { stringProperty } from '../../integration-helpers';
 
-const DEFAULT_SLACK_APP_NAME = 'n8n Agent';
+const DEFAULT_SLACK_APP_NAME = 'MNI Agent';
 
 const REQUIRED_BOT_EVENTS = [
 	'app_mention',
@@ -120,7 +120,7 @@ export class SlackMethodsService {
 			display_information: {
 				name: slackAppName,
 				...(options.managed
-					? { description: `Work with ${slackAppName}, your n8n AI agent, in Slack.` }
+					? { description: `Work with ${slackAppName}, your MNI AI agent, in Slack.` }
 					: {}),
 			},
 			features: {

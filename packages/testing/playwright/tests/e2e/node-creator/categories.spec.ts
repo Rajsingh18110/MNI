@@ -7,12 +7,12 @@ test.skip(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test('should have "Actions" section collapsed when opening actions view from Trigger root view', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.nodeCreator.open();
 			await n8n.canvas.nodeCreator.searchFor('ActiveCampaign');
@@ -30,13 +30,13 @@ test.skip(
 		});
 
 		test('should have "Triggers" section collapsed when opening actions view from Regular root view', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.addNode('Manual Trigger');
 
 			await n8n.canvas.clickNodePlusEndpoint(MANUAL_TRIGGER_NODE_DISPLAY_NAME);
-			await n8n.canvas.nodeCreator.searchFor('n8n');
-			await n8n.canvas.nodeCreator.getNodeItems().filter({ hasText: 'n8n' }).first().click();
+			await n8n.canvas.nodeCreator.searchFor('MNI');
+			await n8n.canvas.nodeCreator.getNodeItems().filter({ hasText: 'MNI' }).first().click();
 
 			await n8n.canvas.nodeCreator.expectCategoryCollapsed('Actions', false);
 
@@ -50,11 +50,11 @@ test.skip(
 		});
 
 		test('should show callout and two suggested nodes if node has no trigger actions', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.nodeCreator.open();
-			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n training)');
-			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n training)');
+			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (MNI training)');
+			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (MNI training)');
 
 			await expect(n8n.canvas.nodeCreator.getNoTriggersCallout()).toBeVisible();
 			await expect(n8n.canvas.nodeCreator.getItem('On a Schedule')).toBeVisible();
@@ -62,19 +62,19 @@ test.skip(
 		});
 
 		test('should show intro callout if user has not made a production execution', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.canvas.nodeCreator.open();
-			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n training)');
-			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n training)');
+			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (MNI training)');
+			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (MNI training)');
 			await n8n.page.pause();
 			await expect(n8n.canvas.nodeCreator.getActivationCallout()).toBeVisible();
 		});
 
-		test('should show Trigger and Actions sections during search', async ({ n8n }) => {
+		test('should show Trigger and Actions sections during search', async ({ MNI }) => {
 			await n8n.canvas.nodeCreator.open();
-			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n training)');
-			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n training)');
+			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (MNI training)');
+			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (MNI training)');
 
 			await n8n.canvas.nodeCreator.searchFor('Non existent action name');
 

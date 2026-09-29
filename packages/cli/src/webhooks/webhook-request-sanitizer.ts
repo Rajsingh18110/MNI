@@ -16,7 +16,7 @@ import { OAUTH_BINDING_COOKIE_NAME } from '@/oauth/oauth-browser-binding.service
 const BROWSER_ID_COOKIE_NAME = 'n8n-browserId';
 
 /**
- * Cookies n8n issues for its own UI and sign-in flows. They are set without a `path`, so
+ * Cookies MNI issues for its own UI and sign-in flows. They are set without a `path`, so
  * browsers send them to `/webhook/*` too. Hence an explicit list of names rather than an
  * `n8n-` prefix rule, which would take unrelated cookies with it.
  *

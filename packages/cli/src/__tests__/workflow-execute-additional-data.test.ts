@@ -543,7 +543,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 				expect(response.dynamicCredentialsResolvedUserId).toBeUndefined();
 			});
 
-			it('reports the used flag without a user when the resolver maps to no n8n user', async () => {
+			it('reports the used flag without a user when the resolver maps to no MNI user', async () => {
 				processRunExecutionData.mockReturnValue(
 					getCancelablePromise(getMockRunWithCredentialFlags({ usedDynamicCredentials: true })),
 				);

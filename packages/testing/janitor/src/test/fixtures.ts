@@ -11,7 +11,7 @@ export interface RuleTestContext {
 const defaultTestConfig: DefineConfigInput = {
 	rootDir: '/',
 	excludeFromPages: ['BasePage.ts'],
-	fixtureObjectName: 'n8n',
+	fixtureObjectName: 'MNI',
 	apiFixtureName: 'api',
 	flowLayerName: 'Composable',
 	rawApiPatterns: [/\brequest\.(get|post|put|patch|delete|head)\s*\(/i, /\bfetch\s*\(/],

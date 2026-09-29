@@ -189,7 +189,7 @@ export class ActiveWorkflowManager {
 					['init', 'leadershipChange'].includes(activation) &&
 					error.name === 'QueryFailedError'
 				) {
-					// n8n does not remove the registered webhooks on exit.
+					// MNI does not remove the registered webhooks on exit.
 					// This means that further initializations will always fail
 					// when inserting to database. This is why we ignore this error
 					// as it's expected to happen.

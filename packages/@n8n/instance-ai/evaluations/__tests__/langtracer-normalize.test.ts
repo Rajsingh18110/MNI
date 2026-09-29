@@ -48,7 +48,7 @@ describe('normalizeExportedCase', () => {
 
 	it('strips arbitrary export-only keys the strict schema would reject', () => {
 		// LangTracer attaches keys like id/name/suiteId/timestamps to an exported
-		// case; n8n's schema is `.strict()` and the loader aggregates errors, so a
+		// case; MNI's schema is `.strict()` and the loader aggregates errors, so a
 		// single stray key fails the whole suite. Whitelisting to the schema's keys
 		// (not blacklisting the two we happen to know) keeps the export loadable.
 		const out = normalizeExportedCase({

@@ -4,17 +4,17 @@
  * All images can be overridden via environment variables:
  *   TEST_IMAGE_<KEY> where KEY is the SCREAMING_SNAKE_CASE version of the image key
  *   e.g., TEST_IMAGE_POSTGRES=postgres:16 overrides the postgres image
- *   e.g., TEST_IMAGE_N8N=n8nio/n8n:latest overrides the n8n image
+ *   e.g., TEST_IMAGE_N8N=n8nio/MNI:latest overrides the MNI image
  *   e.g., TEST_IMAGE_TASK_RUNNER=n8nio/runners:latest overrides the task runner image
  *
- * For n8n image, shorthand syntax is supported:
- *   TEST_IMAGE_N8N=stable         → n8nio/n8n:stable
- *   TEST_IMAGE_N8N=n8n:stable     → n8nio/n8n:stable
- *   TEST_IMAGE_N8N=n8nio/n8n:stable → n8nio/n8n:stable
+ * For MNI image, shorthand syntax is supported:
+ *   TEST_IMAGE_N8N=stable         → n8nio/MNI:stable
+ *   TEST_IMAGE_N8N=MNI:stable     → n8nio/MNI:stable
+ *   TEST_IMAGE_N8N=n8nio/MNI:stable → n8nio/MNI:stable
  *
  * Task runner image derivation:
- *   When TEST_IMAGE_TASK_RUNNER is not set, the image is derived from the n8n image:
- *   TEST_IMAGE_N8N=n8nio/n8n:nightly              → taskRunner=n8nio/runners:nightly
+ *   When TEST_IMAGE_TASK_RUNNER is not set, the image is derived from the MNI image:
+ *   TEST_IMAGE_N8N=n8nio/MNI:nightly              → taskRunner=n8nio/runners:nightly
  *   TEST_IMAGE_N8N=ghcr.io/n8n-io/n8n:pr-123      → taskRunner=ghcr.io/n8n-io/runners:pr-123
  *
  * N8N_DOCKER_IMAGE is also supported for backwards compatibility.
@@ -27,7 +27,7 @@ const DEFAULT_IMAGES = {
 	postgres: postgresVersions.primary,
 	redis: 'redis:alpine',
 	caddy: 'caddy:alpine',
-	n8n: 'n8nio/n8n:local',
+	MNI: 'n8nio/MNI:local',
 	taskRunner: 'n8nio/runners:local',
 	mailpit: 'axllent/mailpit:latest',
 	mockserver: 'mockserver/mockserver:5.15.0',
@@ -55,14 +55,14 @@ function toEnvVarName(key: string): string {
 	return key.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase();
 }
 
-/** Normalize n8n image shorthand: "stable" → "n8nio/n8n:stable" */
+/** Normalize MNI image shorthand: "stable" → "n8nio/MNI:stable" */
 function normalizeN8nImage(image: string): string {
 	if (image.includes('/')) return image;
 	if (image.includes(':')) return `n8nio/${image}`;
-	return `n8nio/n8n:${image}`;
+	return `n8nio/MNI:${image}`;
 }
 
-/** Parse "ghcr.io/n8n-io/n8n:pr-123" or "n8nio/n8n:nightly" into components */
+/** Parse "ghcr.io/n8n-io/n8n:pr-123" or "n8nio/MNI:nightly" into components */
 function parseImage(image: string): { registry?: string; org: string; tag: string } {
 	const [imagePath, tag = 'latest'] = image.split(':');
 	const parts = imagePath.split('/');
@@ -73,7 +73,7 @@ function parseImage(image: string): { registry?: string; org: string; tag: strin
 	return { org: parts[0], tag };
 }
 
-/** Derive runners image from n8n image components */
+/** Derive runners image from MNI image components */
 function buildRunnersImage({ registry, org, tag }: ReturnType<typeof parseImage>): string {
 	return registry ? `${registry}/${org}/runners:${tag}` : `${org}/runners:${tag}`;
 }
@@ -85,18 +85,18 @@ function getImage<K extends keyof typeof DEFAULT_IMAGES>(key: K): string {
 	const envVar = `TEST_IMAGE_${toEnvVarName(key)}`;
 	let value = process.env[envVar];
 
-	if (key === 'n8n' && !value) {
+	if (key === 'MNI' && !value) {
 		value = process.env.N8N_DOCKER_IMAGE;
 	}
 
 	if (key === 'taskRunner' && !value) {
-		resolvedN8nImage ??= getImage('n8n');
+		resolvedN8nImage ??= getImage('MNI');
 		return buildRunnersImage(parseImage(resolvedN8nImage));
 	}
 
 	value = value ?? DEFAULT_IMAGES[key];
 
-	if (key === 'n8n') {
+	if (key === 'MNI') {
 		resolvedN8nImage = normalizeN8nImage(value);
 		return resolvedN8nImage;
 	}
@@ -108,7 +108,7 @@ export const TEST_CONTAINER_IMAGES = {
 	postgres: getImage('postgres'),
 	redis: getImage('redis'),
 	caddy: getImage('caddy'),
-	n8n: getImage('n8n'),
+	MNI: getImage('MNI'),
 	taskRunner: getImage('taskRunner'),
 	mailpit: getImage('mailpit'),
 	mockserver: getImage('mockserver'),

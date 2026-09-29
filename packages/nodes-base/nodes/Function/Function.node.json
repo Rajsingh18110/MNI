@@ -12,7 +12,7 @@
 		],
 		"generic": [
 			{
-				"label": "2021 Goals: Level Up Your Vocabulary With Vonage and n8n",
+				"label": "2021 Goals: Level Up Your Vocabulary With Vonage and MNI",
 				"icon": "🎯",
 				"url": "https://n8n.io/blog/2021-goals-level-up-your-vocabulary-with-vonage-and-n8n/"
 			},
@@ -22,42 +22,42 @@
 				"url": "https://n8n.io/blog/learn-to-automate-your-factorys-incident-reporting-a-step-by-step-guide/"
 			},
 			{
-				"label": "2021: The Year to Automate the New You with n8n",
+				"label": "2021: The Year to Automate the New You with MNI",
 				"icon": "☀️",
 				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-n8n/"
 			},
 			{
-				"label": "Why business process automation with n8n can change your daily life",
+				"label": "Why business process automation with MNI can change your daily life",
 				"icon": "🧬",
 				"url": "https://n8n.io/blog/why-business-process-automation-with-n8n-can-change-your-daily-life/"
 			},
 			{
-				"label": "Why I chose n8n over Zapier in 2020",
+				"label": "Why I chose MNI over Zapier in 2020",
 				"icon": "😍",
 				"url": "https://n8n.io/blog/why-i-chose-n8n-over-zapier-in-2020/"
 			},
 			{
-				"label": "How to host virtual coffee breaks with n8n",
+				"label": "How to host virtual coffee breaks with MNI",
 				"icon": "☕️",
 				"url": "https://n8n.io/blog/how-to-host-virtual-coffee-breaks-with-n8n/"
 			},
 			{
-				"label": "Automatically pulling and visualizing data with n8n",
+				"label": "Automatically pulling and visualizing data with MNI",
 				"icon": "📈",
 				"url": "https://n8n.io/blog/automatically-pulling-and-visualizing-data-with-n8n/"
 			},
 			{
-				"label": "Database Monitoring and Alerting with n8n",
+				"label": "Database Monitoring and Alerting with MNI",
 				"icon": "📡",
 				"url": "https://n8n.io/blog/database-monitoring-and-alerting-with-n8n/"
 			},
 			{
-				"label": "Supercharging your conference registration process with n8n",
+				"label": "Supercharging your conference registration process with MNI",
 				"icon": "🎫",
 				"url": "https://n8n.io/blog/supercharging-your-conference-registration-process-with-n8n/"
 			},
 			{
-				"label": "Creating triggers for n8n workflows using polling",
+				"label": "Creating triggers for MNI workflows using polling",
 				"icon": "⏲",
 				"url": "https://n8n.io/blog/creating-triggers-for-n8n-workflows-using-polling/"
 			},
@@ -72,7 +72,7 @@
 				"url": "https://n8n.io/blog/how-to-build-a-low-code-self-hosted-url-shortener/"
 			},
 			{
-				"label": "Build your own virtual assistant with n8n: A step by step guide",
+				"label": "Build your own virtual assistant with MNI: A step by step guide",
 				"icon": "👦",
 				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-n8n-a-step-by-step-guide/"
 			},
@@ -82,27 +82,27 @@
 				"url": "https://n8n.io/blog/how-uproc-scraped-a-multi-page-website-with-a-low-code-workflow/"
 			},
 			{
-				"label": "How to automatically give kudos to contributors with GitHub, Slack, and n8n",
+				"label": "How to automatically give kudos to contributors with GitHub, Slack, and MNI",
 				"icon": "👏",
 				"url": "https://n8n.io/blog/how-to-automatically-give-kudos-to-contributors-with-github-slack-and-n8n/"
 			},
 			{
-				"label": "5 workflow automations for Mattermost that we love at n8n",
+				"label": "5 workflow automations for Mattermost that we love at MNI",
 				"icon": "🤖",
 				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
 			},
 			{
-				"label": "Tracking Time Spent in Meetings With Google Calendar, Twilio, and n8n",
+				"label": "Tracking Time Spent in Meetings With Google Calendar, Twilio, and MNI",
 				"icon": "🗓",
 				"url": "https://n8n.io/blog/tracking-time-spent-in-meetings-with-google-calendar-twilio-and-n8n/"
 			},
 			{
-				"label": "Creating Error Workflows in n8n",
+				"label": "Creating Error Workflows in MNI",
 				"icon": "🌪",
 				"url": "https://n8n.io/blog/creating-error-workflows-in-n8n/"
 			},
 			{
-				"label": "Sending Automated Congratulations with Google Sheets, Twilio, and n8n ",
+				"label": "Sending Automated Congratulations with Google Sheets, Twilio, and MNI ",
 				"icon": "🙌",
 				"url": "https://n8n.io/blog/sending-automated-congratulations-with-google-sheets-twilio-and-n8n/"
 			},
@@ -112,7 +112,7 @@
 				"url": "https://n8n.io/blog/how-a-membership-development-manager-automates-his-work-and-investments/"
 			},
 			{
-				"label": "How Goomer automated their operations with over 200 n8n workflows",
+				"label": "How Goomer automated their operations with over 200 MNI workflows",
 				"icon": "🛵",
 				"url": "https://n8n.io/blog/how-goomer-automated-their-operations-with-over-200-n8n-workflows/"
 			},

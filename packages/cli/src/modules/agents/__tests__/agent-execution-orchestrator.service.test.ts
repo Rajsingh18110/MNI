@@ -1480,7 +1480,7 @@ describe('AgentExecutionOrchestratorService', () => {
 		);
 	});
 
-	it('runs production n8n Chat with a published user-owned session', async () => {
+	it('runs production MNI Chat with a published user-owned session', async () => {
 		const {
 			service,
 			agentRepository,
@@ -2219,7 +2219,7 @@ describe('AgentExecutionOrchestratorService', () => {
 		).toEqual(messageContext);
 	});
 
-	it('records a production n8n Chat wake in the owning user session', async () => {
+	it('records a production MNI Chat wake in the owning user session', async () => {
 		const {
 			service,
 			agentRepository,

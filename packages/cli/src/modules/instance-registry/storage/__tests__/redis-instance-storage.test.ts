@@ -16,7 +16,7 @@ import {
 } from '../lua-scripts';
 import { RedisInstanceStorage } from '../redis-instance-storage';
 
-const PREFIX = 'n8n';
+const PREFIX = 'MNI';
 
 function createRegistration(overrides: Partial<InstanceRegistration> = {}): InstanceRegistration {
 	return {
@@ -49,7 +49,7 @@ describe('RedisInstanceStorage', () => {
 	describe('constructor', () => {
 		it('should create Redis client with command timeout', () => {
 			expect(redisClientService.createClient).toHaveBeenCalledWith({
-				type: 'registry(n8n)',
+				type: 'registry(MNI)',
 				extraOptions: { commandTimeout: REGISTRY_CONSTANTS.OPERATION_TIMEOUT_MS },
 			});
 		});

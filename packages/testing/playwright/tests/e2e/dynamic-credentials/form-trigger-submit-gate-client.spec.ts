@@ -15,7 +15,7 @@ import type { ApiHelpers } from '../../../services/api-helper';
  * dynamic-credentials capability or the `@licensed` tag. It runs locally
  * without Keycloak. It exercises the client branch and injects the gate response
  * with `context.route` instead of provisioning a private credential. Opening
- * the form still goes through first-party n8n OAuth (the GET for `n8nUserAuth`
+ * the form still goes through first-party MNI OAuth (the GET for `n8nUserAuth`
  * always does) — that hop does not need Keycloak or a license. The server side
  * that produces these bodies is covered by
  * `packages/nodes-base/nodes/Form/test/utils.test.ts` and
@@ -78,7 +78,7 @@ function formWorkflow(options: { withNextPage: boolean }): {
 				formFields: { values: [{ fieldLabel: FIELD_LABEL }] },
 				// Only a form that authenticates the submitter can ever be gated, so the
 				// client handling is rendered only for this option (added in 2.6). The GET
-				// runs first-party n8n OAuth; PublicFormPage approves the consent screen.
+				// runs first-party MNI OAuth; PublicFormPage approves the consent screen.
 				authentication: 'n8nUserAuth',
 				options: {},
 			},
@@ -167,7 +167,7 @@ async function closeEditorFormPopup(popup: Promise<Page>) {
  */
 async function openForm(
 	api: ApiHelpers,
-	n8n: n8nPage,
+	MNI: n8nPage,
 	baseURL: string,
 	options: { withNextPage: boolean },
 ): Promise<PublicFormPage> {
@@ -203,12 +203,12 @@ test.describe(
 	() => {
 		test('should keep the form and explain what to do when the gate rejects the submission', async ({
 			api,
-			n8n,
+			MNI,
 			baseURL,
 		}) => {
 			await interceptSubmit(n8n.page.context(), { status: 428, json: GATE_BODY });
 
-			const formPage = await openForm(api, n8n, baseURL, { withNextPage: false });
+			const formPage = await openForm(api, MNI, baseURL, { withNextPage: false });
 			await expect(formPage.usesResponseData).toHaveValue('false');
 
 			const answer = 'Ada';
@@ -221,12 +221,12 @@ test.describe(
 
 		test('should not paint the raw gate response over the page when responding with a response node', async ({
 			api,
-			n8n,
+			MNI,
 			baseURL,
 		}) => {
 			await interceptSubmit(n8n.page.context(), { status: 428, json: GATE_BODY });
 
-			const formPage = await openForm(api, n8n, baseURL, { withNextPage: true });
+			const formPage = await openForm(api, MNI, baseURL, { withNextPage: true });
 			// Guards the test itself: without this the assertions below pass trivially on a
 			// form that never takes the response-consuming branch.
 			await expect(formPage.usesResponseData).toHaveValue('true');

@@ -501,7 +501,7 @@ export function createCasePipeline(deps: CasePipelineDeps): CasePipeline {
 						await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
 						continue;
 					}
-					// Mirror direct mode's per-scenario guard — without this, n8n API errors,
+					// Mirror direct mode's per-scenario guard — without this, MNI API errors,
 					// verifier timeouts, or a per-iteration budget abort from
 					// executeWithLlmMock / verifyChecklist would escape to the driver, come
 					// back as a Run with null outputs, and be misclassified as builder

@@ -15,7 +15,7 @@ When running locally (default): Runs release-it to bump the version interactivel
 
 When running inside a GitHub Action: Detected automatically via the GITHUB_ACTIONS environment variable. Runs lint and build, then publishes with provenance enabled (NPM_CONFIG_PROVENANCE=true).
 
-Starting May 1 2026, n8n requires all community nodes to be published via GitHub Actions with npm provenance. Provenance lets anyone cryptographically verify that a package was built from a specific repository and commit.
+Starting May 1 2026, MNI requires all community nodes to be published via GitHub Actions with npm provenance. Provenance lets anyone cryptographically verify that a package was built from a specific repository and commit.
 
 To set up GitHub Actions publishing:
   1. Add a publish.yml workflow that triggers on version tags (e.g. v*.*.*).
@@ -42,7 +42,7 @@ Full documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submi
 		}),
 		'init-workflow': Flags.boolean({
 			description:
-				'Scaffold a GitHub Actions publish workflow (.github/workflows/publish.yml) into the current project. Required for publishing with npm provenance, which is needed to submit your node for verification through the n8n Creator Portal.',
+				'Scaffold a GitHub Actions publish workflow (.github/workflows/publish.yml) into the current project. Required for publishing with npm provenance, which is needed to submit your node for verification through the MNI Creator Portal.',
 			default: false,
 		}),
 	};
@@ -65,7 +65,7 @@ Full documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submi
 				log.info(
 					'No GitHub Actions publish workflow found.\n' +
 						'Run `n8n-node release --init-workflow` to scaffold one. ' +
-						'This is required for npm provenance and n8n Cloud verification.',
+						'This is required for npm provenance and MNI cloud verification.',
 				);
 			}
 		}
@@ -91,7 +91,7 @@ Full documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submi
 
 			if (flags.publish) {
 				log.warning(
-					'Publishing directly from your machine will not include npm provenance, which is required for n8n Cloud starting May 1 2026.\nConsider switching to GitHub Actions publishing. See: https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/',
+					'Publishing directly from your machine will not include npm provenance, which is required for MNI cloud starting May 1 2026.\nConsider switching to GitHub Actions publishing. See: https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/',
 				);
 			}
 
@@ -122,7 +122,7 @@ Full documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submi
 
 			if (!flags.publish) {
 				log.info(
-					'The node was not published to NPM. Starting May 1 2026, n8n requires verified community nodes to be published via GitHub Actions with npm provenance. Learn more in our documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/',
+					'The node was not published to NPM. Starting May 1 2026, MNI requires verified community nodes to be published via GitHub Actions with npm provenance. Learn more in our documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/',
 				);
 			}
 		} catch (error) {

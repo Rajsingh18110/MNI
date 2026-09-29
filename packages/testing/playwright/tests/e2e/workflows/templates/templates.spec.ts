@@ -39,7 +39,7 @@ const COLLECTIONS = [
  * Prevents the browser's "before unload" confirmation dialog
  * Used when navigating away from workflows with unsaved changes in tests
  */
-function preventNavigation(n8n: n8nPage) {
+function preventNavigation(MNI: n8nPage) {
 	return n8n.page.evaluate(() => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		(window as any).preventNodeViewBeforeUnload = true;
@@ -110,7 +110,7 @@ function createCustomTemplateHostRequirements(hostname: string): TestRequirement
  * - Collections API filters by category
  * - Search API returns different results based on category
  */
-async function setupDynamicTemplateRoutes(n8n: n8nPage, hostname: string) {
+async function setupDynamicTemplateRoutes(MNI: n8nPage, hostname: string) {
 	await n8n.page.route(`https://${hostname}/api/templates/collections*`, (route) => {
 		const url = new URL(route.request().url());
 		const categoryParam = url.searchParams.get('category[]');
@@ -143,7 +143,7 @@ test.describe(
 	() => {
 		test.describe('For api.n8n.io', () => {
 			test('Opens website when clicking templates sidebar link', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(createTemplateHostRequirements());
@@ -174,7 +174,7 @@ test.describe(
 			});
 
 			test('Redirects to website when visiting templates page directly', async ({
-				n8n,
+				MNI,
 				setupRequirements,
 			}) => {
 				await setupRequirements(createTemplateHostRequirements());
@@ -187,13 +187,13 @@ test.describe(
 		test.describe('For a custom template host', () => {
 			const hostname = TEMPLATE_HOST.CUSTOM;
 
-			test.beforeEach(async ({ n8n, setupRequirements }) => {
+			test.beforeEach(async ({ MNI, setupRequirements }) => {
 				await setupRequirements(createCustomTemplateHostRequirements(hostname));
-				await setupDynamicTemplateRoutes(n8n, hostname);
+				await setupDynamicTemplateRoutes(MNI, hostname);
 			});
 
-			test('can open onboarding flow', async ({ n8n }) => {
-				await preventNavigation(n8n);
+			test('can open onboarding flow', async ({ MNI }) => {
+				await preventNavigation(MNI);
 
 				await Promise.all([
 					n8n.page.waitForResponse(`https://${hostname}/api/workflows/templates/${TEMPLATE_ID}`),
@@ -210,8 +210,8 @@ test.describe(
 				await expect(n8n.canvas.sticky.getStickies()).toHaveCount(1);
 			});
 
-			test('can import template', async ({ n8n }) => {
-				await preventNavigation(n8n);
+			test('can import template', async ({ MNI }) => {
+				await preventNavigation(MNI);
 
 				await Promise.all([
 					n8n.page.waitForResponse(`https://${hostname}/api/workflows/templates/${TEMPLATE_ID}`),
@@ -228,7 +228,7 @@ test.describe(
 				expect(workflowName).toContain(onboardingWorkflow.name);
 			});
 
-			test('should save template id with the workflow', async ({ n8n }) => {
+			test('should save template id with the workflow', async ({ MNI }) => {
 				await n8n.templatesComposer.importFirstTemplate();
 				await n8n.canvas.waitForCanvasReady();
 
@@ -241,13 +241,13 @@ test.describe(
 				expect(requestBody.meta.templateId).toBe(TEMPLATE_ID);
 			});
 
-			test('can open template with images and hides workflow screenshots', async ({ n8n }) => {
+			test('can open template with images and hides workflow screenshots', async ({ MNI }) => {
 				await n8n.navigate.toTemplate(TEMPLATE_ID);
 				await expect(n8n.templates.getDescription()).toBeVisible();
 				await expect(n8n.templates.getDescriptionImages()).toHaveCount(1);
 			});
 
-			test('renders search elements correctly', async ({ n8n }) => {
+			test('renders search elements correctly', async ({ MNI }) => {
 				await n8n.navigate.toTemplates();
 
 				await expect(n8n.templates.getSearchInput()).toBeVisible();
@@ -260,7 +260,7 @@ test.describe(
 				expect(templateCardCount).toBeGreaterThan(0);
 			});
 
-			test('can filter templates by category', async ({ n8n }) => {
+			test('can filter templates by category', async ({ MNI }) => {
 				await n8n.navigate.toTemplates();
 				await expect(n8n.templates.getTemplatesLoadingContainer()).toBeHidden();
 				await expect(n8n.templates.getCategoryFilter(TEST_CATEGORY)).toBeVisible();
@@ -283,7 +283,7 @@ test.describe(
 				expect(finalCollectionCount).toBeLessThan(initialCollectionCount);
 			});
 
-			test('should preserve search query in URL', async ({ n8n }) => {
+			test('should preserve search query in URL', async ({ MNI }) => {
 				await n8n.navigate.toTemplates();
 				await expect(n8n.templates.getTemplatesLoadingContainer()).toBeHidden();
 				await expect(n8n.templates.getCategoryFilter(TEST_CATEGORY)).toBeVisible();

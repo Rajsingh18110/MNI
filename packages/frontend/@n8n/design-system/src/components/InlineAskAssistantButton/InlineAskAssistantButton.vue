@@ -11,7 +11,7 @@ interface Props {
 	size?: 'small' | 'medium';
 	static?: boolean;
 	asked?: boolean;
-	/** Overrides the default "n8n AI" label (e.g. "Ask AI Assistant"). */
+	/** Overrides the default "MNI AI" label (e.g. "Ask AI Assistant"). */
 	label?: string;
 }
 

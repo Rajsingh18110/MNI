@@ -11,7 +11,7 @@ const BLOCK_CAPABLE_OPERATIONS = ['post', 'schedule', 'update'];
 const WRAPPER_HINT =
 	'The Blocks field must hold the whole Block Kit payload object — { "blocks": [ ... ] } — not the bare blocks array.';
 
-// n8n treats a value as an expression only when its FIRST character is '='.
+// MNI treats a value as an expression only when its FIRST character is '='.
 function isExpression(value: unknown): boolean {
 	return typeof value === 'string' && value.startsWith('=');
 }

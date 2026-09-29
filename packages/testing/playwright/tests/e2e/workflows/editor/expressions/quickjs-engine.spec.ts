@@ -17,7 +17,7 @@ const SCHEDULE_PARAMETER_NAME = 'daysInterval';
 /** The counter the probe keeps on the page under test. */
 type ProbeWindow = Window & { wasmInstantiations: number };
 
-async function addEditFields(n8n: n8nPage): Promise<void> {
+async function addEditFields(MNI: n8nPage): Promise<void> {
 	await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME);
 	await n8n.ndv.getAssignmentCollectionAdd('assignments').click();
 	await n8n.ndv.clickAssignmentExpressionToggle('assignments');
@@ -29,14 +29,14 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			// A local run points at an instance this harness does not configure, so
 			// the engine is whatever the developer started.
 			const engine = await n8n.api.getFrontendExpressionEngine();
 			test.skip(engine !== 'quickjs', 'instance does not run the quickjs frontend engine');
 		});
 
-		test('evaluates through the wasm runtime, not the legacy evaluator', async ({ n8n }) => {
+		test('evaluates through the wasm runtime, not the legacy evaluator', async ({ MNI }) => {
 			// `n8n.page` is the page the fixture drives. The bare `page` fixture is a
 			// second, blank one in the same context, and sees none of this traffic.
 			const page = n8n.page;
@@ -70,13 +70,13 @@ test.describe(
 			expect(instantiations, 'the page instantiated the QuickJS wasm module').toBeGreaterThan(0);
 		});
 
-		test('resolves $json with n8n extensions, and the backend agrees', async ({ n8n }) => {
+		test('resolves $json with MNI extensions, and the backend agrees', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME);
 			await n8n.ndv.setPinnedData([{ myStr: 'Monday Morning' }]);
 			await n8n.ndv.close();
 
-			await addEditFields(n8n);
+			await addEditFields(MNI);
 			await n8n.ndv.clearExpressionEditor();
 			await n8n.ndv.typeInExpressionEditor('{{$json.myStr.toSnakeCase()}}');
 
@@ -90,7 +90,7 @@ test.describe(
 			await expect(n8n.ndv.getOutputDataContainer()).toContainText('monday_morning');
 		});
 
-		test('resolves luxon and Intl through the host bridge', async ({ n8n }) => {
+		test('resolves luxon and Intl through the host bridge', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME);
 			await n8n.ndv.activateParameterExpressionEditor(SCHEDULE_PARAMETER_NAME);
@@ -108,7 +108,7 @@ test.describe(
 			await expect(n8n.ndv.getInlineExpressionEditorOutput()).toHaveText('2024 March 05');
 		});
 
-		test('keeps resolving after the node view is reopened', async ({ n8n }) => {
+		test('keeps resolving after the node view is reopened', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME);
 			await n8n.ndv.activateParameterExpressionEditor(SCHEDULE_PARAMETER_NAME);

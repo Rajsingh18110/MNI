@@ -11,7 +11,7 @@
   * We are migrating from single-dash format (--color-primary-shade-1) to a new
   * double-dash format (--color--primary--shade-1) to align with design system guidelines.
   *
-  * To maintain backwards compatibility for users (for example embed customers that customize n8n)
+  * To maintain backwards compatibility for users (for example embed customers that customize MNI)
   * we use CSS variable fallbacks:
   * --color--primary: var(--color-primary, var(--color--orange-300))
   *

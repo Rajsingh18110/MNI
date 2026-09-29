@@ -87,18 +87,18 @@ describe('computeTriggerDiff', () => {
 	});
 
 	describe('triggers that are always re-registered on a version change', () => {
-		const n8nTrigger = makeNode('n8n', {
+		const n8nTrigger = makeNode('MNI', {
 			type: 'n8n-nodes-base.n8nTrigger',
 			parameters: { events: ['update'] },
 		});
 
-		test('re-registers an unchanged n8n Trigger when the published version changed', () => {
+		test('re-registers an unchanged MNI Trigger when the published version changed', () => {
 			const diff = computeTriggerDiff([n8nTrigger], [{ ...n8nTrigger }], { versionChanged: true });
 
-			expect(diff).toEqual({ toAdd: new Set(['n8n']), toRemove: new Set(['n8n']) });
+			expect(diff).toEqual({ toAdd: new Set(['MNI']), toRemove: new Set(['MNI']) });
 		});
 
-		test('leaves an unchanged n8n Trigger running when the published version is the same', () => {
+		test('leaves an unchanged MNI Trigger running when the published version is the same', () => {
 			const diff = computeTriggerDiff([n8nTrigger], [{ ...n8nTrigger }], { versionChanged: false });
 
 			expect(diff).toEqual({ toAdd: new Set(), toRemove: new Set() });

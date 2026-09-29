@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Lane setup — one authenticated n8n lane per --base-url (TRUST-261):
+// Lane setup — one authenticated MNI lane per --base-url (TRUST-261):
 // login, MCP-registry seed, optional MCP build-user pool, and the pre-run
 // workflow snapshot. Plus the end-of-run per-lane artifact cleanup.
 // ---------------------------------------------------------------------------

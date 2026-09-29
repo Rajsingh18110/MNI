@@ -102,7 +102,7 @@ describe('onUpdate behavior verification', () => {
 });
 
 /**
- * Integration test simulating the full n8n sync architecture:
+ * Integration test simulating the full MNI sync architecture:
  *
  * ┌─────────────┐      ┌──────────────────────────────┐      ┌────────────┐
  * │     UI      │      │        SharedWorker          │      │   Server   │

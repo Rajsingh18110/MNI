@@ -48,7 +48,7 @@ vi.spyOn(process, 'on');
 describe('normalizeFrameFilename', () => {
 	it('rewrites pnpm-nested n8n-core frames to a stable app:/// root', () => {
 		const input =
-			'/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_abc123/node_modules/n8n-core/src/execution-engine/workflow-execute.ts';
+			'/usr/local/lib/node_modules/MNI/node_modules/.pnpm/n8n-core@file+packages+core_abc123/node_modules/n8n-core/src/execution-engine/workflow-execute.ts';
 
 		expect(normalizeFrameFilename(input)).toBe(
 			'app:///n8n-core/src/execution-engine/workflow-execute.ts',
@@ -57,7 +57,7 @@ describe('normalizeFrameFilename', () => {
 
 	it('rewrites pnpm-nested n8n-nodes-base frames to a stable app:/// root', () => {
 		const input =
-			'/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@1.2.3_xyz789/node_modules/n8n-nodes-base/nodes/HttpRequest/V3/HttpRequestV3.node.ts';
+			'/usr/local/lib/node_modules/MNI/node_modules/.pnpm/n8n-nodes-base@1.2.3_xyz789/node_modules/n8n-nodes-base/nodes/HttpRequest/V3/HttpRequestV3.node.ts';
 
 		expect(normalizeFrameFilename(input)).toBe(
 			'app:///n8n-nodes-base/nodes/HttpRequest/V3/HttpRequestV3.node.ts',
@@ -66,7 +66,7 @@ describe('normalizeFrameFilename', () => {
 
 	it('rewrites pnpm-nested @n8n scoped frames to a stable app:/// root', () => {
 		const input =
-			'/usr/local/lib/node_modules/n8n/node_modules/.pnpm/@n8n+n8n-nodes-langchain@1.0.0_peer+hash/node_modules/@n8n/n8n-nodes-langchain/nodes/agents/Agent.node.ts';
+			'/usr/local/lib/node_modules/MNI/node_modules/.pnpm/@n8n+n8n-nodes-langchain@1.0.0_peer+hash/node_modules/@n8n/n8n-nodes-langchain/nodes/agents/Agent.node.ts';
 
 		expect(normalizeFrameFilename(input)).toBe(
 			'app:///@n8n/n8n-nodes-langchain/nodes/agents/Agent.node.ts',
@@ -74,20 +74,20 @@ describe('normalizeFrameFilename', () => {
 	});
 
 	it('rewrites cli install-prefix frames (src) to a stable app:/// root', () => {
-		const input = '/usr/local/lib/node_modules/n8n/src/commands/start.ts';
+		const input = '/usr/local/lib/node_modules/MNI/src/commands/start.ts';
 
 		expect(normalizeFrameFilename(input)).toBe('app:///src/commands/start.ts');
 	});
 
 	it('rewrites cli install-prefix frames (bin) to a stable app:/// root', () => {
-		const input = '/usr/local/lib/node_modules/n8n/bin/n8n';
+		const input = '/usr/local/lib/node_modules/MNI/bin/MNI';
 
-		expect(normalizeFrameFilename(input)).toBe('app:///bin/n8n');
+		expect(normalizeFrameFilename(input)).toBe('app:///bin/MNI');
 	});
 
 	it('prefers the pnpm replacement when both segments are present', () => {
 		const input =
-			'/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_abc123/node_modules/n8n-core/src/foo.ts';
+			'/usr/local/lib/node_modules/MNI/node_modules/.pnpm/n8n-core@file+packages+core_abc123/node_modules/n8n-core/src/foo.ts';
 
 		expect(normalizeFrameFilename(input)).toBe('app:///n8n-core/src/foo.ts');
 	});
@@ -106,7 +106,7 @@ describe('normalizeFrameFilename', () => {
 
 	it('handles pnpm frames not under the cli install prefix (e.g. dev installs)', () => {
 		const input =
-			'/home/dev/n8n/node_modules/.pnpm/n8n-core@file+packages+core_abc/node_modules/n8n-core/src/x.ts';
+			'/home/dev/MNI/node_modules/.pnpm/n8n-core@file+packages+core_abc/node_modules/n8n-core/src/x.ts';
 
 		expect(normalizeFrameFilename(input)).toBe('app:///n8n-core/src/x.ts');
 	});

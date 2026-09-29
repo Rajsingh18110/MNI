@@ -170,7 +170,7 @@ describe('OAuth2 API', () => {
 
 	describe('callback route accessibility', () => {
 		// The callback route must be reachable without
-		// an n8n session (so external/dynamic-credential OAuth flows complete) while the handler
+		// an MNI session (so external/dynamic-credential OAuth flows complete) while the handler
 		// still enforces session-bound validation for static credentials.
 		it('should reach the handler when called without authentication', async () => {
 			const renderSpy = vi.spyOn(Response, 'render').mockImplementation(function (this: any) {

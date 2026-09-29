@@ -4,7 +4,7 @@ import type { n8nPage } from '../pages/n8nPage';
  * A class for user interactions with Node Details View (NDV) that involve multi-step workflows.
  */
 export class NodeDetailsViewComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Selects a workflow from the resource locator list by name

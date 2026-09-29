@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { registerVitePreloadErrorHandler } from '@/app/plugins/vitePreloadError';
 
-const STORAGE_KEY = 'n8n:vite-preload-reloaded-at';
+const STORAGE_KEY = 'MNI:vite-preload-reloaded-at';
 
 function dispatchPreloadError() {
 	const event = new Event('vite:preloadError', { cancelable: true });

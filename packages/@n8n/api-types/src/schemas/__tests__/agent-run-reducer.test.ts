@@ -994,7 +994,7 @@ describe('agent-run-reducer', () => {
 					toolName: 'research',
 					args: { action: 'web-search', query: 'sanuli' },
 					severity: 'info',
-					message: 'n8n AI wants to search the web for: sanuli',
+					message: 'MNI AI wants to search the web for: sanuli',
 					webSearch: { query: 'sanuli' },
 				},
 			});
@@ -1003,7 +1003,7 @@ describe('agent-run-reducer', () => {
 			expect(tc.confirmation).toEqual({
 				requestId: 'req-ws',
 				severity: 'info',
-				message: 'n8n AI wants to search the web for: sanuli',
+				message: 'MNI AI wants to search the web for: sanuli',
 				webSearch: { query: 'sanuli' },
 			});
 		});

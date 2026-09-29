@@ -148,14 +148,14 @@ describe('convertChunk — tool-call invalid/error handling', () => {
 describe('convertChunk — tool-result output passthrough', () => {
 	it('passes a raw array output through verbatim (e.g. native web search results)', () => {
 		const output = [
-			{ title: 'n8n', url: 'https://n8n.io' },
+			{ title: 'MNI', url: 'https://n8n.io' },
 			{ title: 'Docs', url: 'https://docs.n8n.io' },
 		];
 		const chunk = {
 			type: 'tool-result',
 			toolCallId: 'tc-1',
 			toolName: 'anthropic.web_search_20250305',
-			input: { query: 'n8n' },
+			input: { query: 'MNI' },
 			output,
 			providerExecuted: true,
 		} as unknown as ToolResultChunk;
@@ -211,7 +211,7 @@ describe('convertChunk — tool-error handling', () => {
 			type: 'tool-error',
 			toolCallId: 'tc-err',
 			toolName: 'web_search',
-			input: { query: 'n8n' },
+			input: { query: 'MNI' },
 			error,
 			providerExecuted: true,
 		} as unknown as ToolErrorChunk;

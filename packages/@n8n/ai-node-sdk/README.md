@@ -143,7 +143,7 @@ class MyProviderChatModel extends BaseChatModel {
   }
 
   async generate(messages: Message[], config?: ChatModelConfig): Promise<GenerateResult> {
-    // Convert n8n messages to provider format
+    // Convert MNI messages to provider format
     const providerMessages = messages.map(m => ({
       role: m.role,
       content: m.content.find(c => c.type === 'text')?.text ?? '',

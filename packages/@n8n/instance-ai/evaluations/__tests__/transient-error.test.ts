@@ -113,8 +113,8 @@ describe('transient-error', () => {
 			// The built workflow's own (mocked) HTTP traffic — a product signal.
 			'Tool errors: Stripe API returned HTTP 500',
 			'Tool errors: Internal server error',
-			// n8n's own API, not the model provider.
-			'n8n API POST /rest/workflows failed (500): Internal error',
+			// MNI's own API, not the model provider.
+			'MNI API POST /rest/workflows failed (500): Internal error',
 			'Agent response: I could not find a suitable node',
 			'No workflow produced — no error details captured',
 		])('does not classify %j as a provider outage', (message) => {

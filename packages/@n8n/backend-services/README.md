@@ -10,11 +10,11 @@ into its own workspace package while those imports point at `@/...` paths in
 `cli`.
 
 This package is the home for that shared set. It sits above `@n8n/db` and
-below `n8n` (`cli`) in the dependency graph:
+below `MNI` (`cli`) in the dependency graph:
 
 ```mermaid
 flowchart TD
-  cli["n8n (cli) and backend modules"] --> bs["@n8n/backend-services"]
+  cli["MNI (cli) and backend modules"] --> bs["@n8n/backend-services"]
   bs --> db["@n8n/db"]
   bs --> bc["@n8n/backend-common"]
   db --> bc
@@ -53,7 +53,7 @@ Two things do not carry over on purpose:
 
 ## Rules for adding code
 
-- The code must not import from `n8n` (`cli`). If it needs a `cli` seam,
+- The code must not import from `MNI` (`cli`). If it needs a `cli` seam,
   define a narrow DI port here and bind it in `cli` at bootstrap.
 - At least two backend modules must use the code. A service that one module
   uses belongs to that module.

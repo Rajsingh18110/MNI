@@ -85,7 +85,7 @@ export class GoogleCalendar implements INodeType {
 			...eventFields,
 			{
 				displayName:
-					'This node will use the time zone set in n8n’s settings, but you can override this in the workflow settings',
+					'This node will use the time zone set in MNI’s settings, but you can override this in the workflow settings',
 				name: 'useN8nTimeZone',
 				type: 'notice',
 				default: '',

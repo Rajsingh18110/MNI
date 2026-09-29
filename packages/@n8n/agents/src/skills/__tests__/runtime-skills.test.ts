@@ -39,12 +39,12 @@ allowed_tools: workflow
 interface:
   display_name: Workflow Builder
   short_description: Build workflows
-  default_prompt: Build an n8n workflow
+  default_prompt: Build an MNI workflow
   icon: workflow
   brand_color: '#ff6d5a'
 policy:
   allow_implicit_invocation: true
-  product: n8n
+  product: MNI
 dependencies:
   tools:
     - workflow
@@ -57,7 +57,7 @@ dependencies:
       url: http://localhost:3000/sse
 version: '1.0.0'
 license: MIT
-compatibility: 'n8n >= 1.0.0'
+compatibility: 'MNI >= 1.0.0'
 platforms:
   - Daytona
 metadata:
@@ -78,13 +78,13 @@ Follow the workflow-building process.`);
 				interface: {
 					displayName: 'Workflow Builder',
 					shortDescription: 'Build workflows',
-					defaultPrompt: 'Build an n8n workflow',
+					defaultPrompt: 'Build an MNI workflow',
 					icon: 'workflow',
 					brandColor: '#ff6d5a',
 				},
 				policy: {
 					allowImplicitInvocation: true,
-					product: 'n8n',
+					product: 'MNI',
 				},
 				dependencies: {
 					tools: ['workflow'],
@@ -100,7 +100,7 @@ Follow the workflow-building process.`);
 				},
 				version: '1.0.0',
 				license: 'MIT',
-				compatibility: 'n8n >= 1.0.0',
+				compatibility: 'MNI >= 1.0.0',
 				platforms: ['daytona'],
 				metadata: { owner: 'agents' },
 			},
@@ -231,9 +231,9 @@ description: Has no instructions.
 		const movedSkill = {
 			...baseSkill,
 			sourceName: 'renamed-folder',
-			path: '/usr/local/lib/node_modules/n8n/skills/renamed-folder/SKILL.md',
-			sourcePath: '/usr/local/lib/node_modules/n8n/skills/renamed-folder/SKILL.md',
-			directory: '/usr/local/lib/node_modules/n8n/skills/renamed-folder',
+			path: '/usr/local/lib/node_modules/MNI/skills/renamed-folder/SKILL.md',
+			sourcePath: '/usr/local/lib/node_modules/MNI/skills/renamed-folder/SKILL.md',
+			directory: '/usr/local/lib/node_modules/MNI/skills/renamed-folder',
 			sourceDirectory: 'prod-category/renamed-folder',
 			category: 'prod-category',
 		};

@@ -61,7 +61,7 @@ describe('SourceControlExportService', () => {
 		workflowTagMappingRepository,
 		folderRepository,
 		sourceControlScopedService,
-		mock<InstanceSettings>({ n8nFolder: '/mock/n8n' }),
+		mock<InstanceSettings>({ n8nFolder: '/mock/MNI' }),
 		dataTableRepository,
 		projectRelationRepository,
 	);
@@ -124,7 +124,7 @@ describe('SourceControlExportService', () => {
 
 			const dataCaptor = captor<string>();
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/credential_stubs/cred1.json',
+				'/mock/MNI/git/credential_stubs/cred1.json',
 				dataCaptor,
 			);
 			expect(JSON.parse(dataCaptor.value)).toEqual({
@@ -167,7 +167,7 @@ describe('SourceControlExportService', () => {
 
 			const dataCaptor = captor<string>();
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/credential_stubs/cred1.json',
+				'/mock/MNI/git/credential_stubs/cred1.json',
 				dataCaptor,
 			);
 			expect(JSON.parse(dataCaptor.value)).toEqual({
@@ -235,7 +235,7 @@ describe('SourceControlExportService', () => {
 
 			const dataCaptor = captor<string>();
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/credential_stubs/global-cred1.json',
+				'/mock/MNI/git/credential_stubs/global-cred1.json',
 				dataCaptor,
 			);
 
@@ -296,7 +296,7 @@ describe('SourceControlExportService', () => {
 
 			const dataCaptor = captor<string>();
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/credential_stubs/non-global-cred1.json',
+				'/mock/MNI/git/credential_stubs/non-global-cred1.json',
 				dataCaptor,
 			);
 
@@ -352,7 +352,7 @@ describe('SourceControlExportService', () => {
 
 			const dataCaptor = captor<string>();
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/credential_stubs/resolvable-cred1.json',
+				'/mock/MNI/git/credential_stubs/resolvable-cred1.json',
 				dataCaptor,
 			);
 
@@ -394,7 +394,7 @@ describe('SourceControlExportService', () => {
 
 			const dataCaptor = captor<string>();
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/credential_stubs/cred-no-flag.json',
+				'/mock/MNI/git/credential_stubs/cred-no-flag.json',
 				dataCaptor,
 			);
 
@@ -495,7 +495,7 @@ describe('SourceControlExportService', () => {
 			tagRepository.find.mockResolvedValue([mockTag]);
 			workflowTagMappingRepository.find.mockResolvedValue([mockWorkflow]);
 			workflowRepository.find.mockResolvedValue([]);
-			const fileName = '/mock/n8n/git/tags.json';
+			const fileName = '/mock/MNI/git/tags.json';
 
 			// Act
 			const result = await service.exportTagsToWorkFolder(globalAdminContext);
@@ -525,7 +525,7 @@ describe('SourceControlExportService', () => {
 		it('should clear tags file and export it when there are no tags', async () => {
 			// Arrange
 			tagRepository.find.mockResolvedValue([]);
-			const fileName = '/mock/n8n/git/tags.json';
+			const fileName = '/mock/MNI/git/tags.json';
 
 			// Act
 			const result = await service.exportTagsToWorkFolder(globalAdminContext);
@@ -568,7 +568,7 @@ describe('SourceControlExportService', () => {
 				expect.objectContaining({ select: { id: true } }),
 			);
 			const dataCaptor = captor<string>();
-			expect(fsWriteFile).toHaveBeenCalledWith('/mock/n8n/git/tags.json', dataCaptor);
+			expect(fsWriteFile).toHaveBeenCalledWith('/mock/MNI/git/tags.json', dataCaptor);
 			expect(JSON.parse(dataCaptor.value).mappings).toEqual([
 				inaccessibleMapping,
 				accessibleMapping,
@@ -640,7 +640,7 @@ describe('SourceControlExportService', () => {
 			// Assert
 			// new json file should contain only the new folders
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/folders.json',
+				'/mock/MNI/git/folders.json',
 				JSON.stringify(
 					{
 						folders: newFolders.map((f) => ({
@@ -930,11 +930,11 @@ describe('SourceControlExportService', () => {
 				relations: ['variables'],
 			});
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/projects/project-id-1.json',
+				'/mock/MNI/git/projects/project-id-1.json',
 				expectedProject1Json,
 			);
 			expect(fsWriteFile).toHaveBeenCalledWith(
-				'/mock/n8n/git/projects/project-id-2.json',
+				'/mock/MNI/git/projects/project-id-2.json',
 				expectedProject2Json,
 			);
 			expect(result.count).toBe(2);
@@ -943,11 +943,11 @@ describe('SourceControlExportService', () => {
 				expect.arrayContaining([
 					{
 						id: 'project-id-1',
-						name: '/mock/n8n/git/projects/project-id-1.json',
+						name: '/mock/MNI/git/projects/project-id-1.json',
 					},
 					{
 						id: 'project-id-2',
-						name: '/mock/n8n/git/projects/project-id-2.json',
+						name: '/mock/MNI/git/projects/project-id-2.json',
 					},
 				]),
 			);
@@ -997,7 +997,7 @@ describe('SourceControlExportService', () => {
 					name: 'Test Table 1',
 					type: 'datatable' as const,
 					status: 'created' as const,
-					file: '/mock/n8n/git/datatables/dt1.json',
+					file: '/mock/MNI/git/datatables/dt1.json',
 					location: 'local' as const,
 					conflict: false,
 					updatedAt: '2024-01-02T00:00:00.000Z',
@@ -1007,7 +1007,7 @@ describe('SourceControlExportService', () => {
 					name: 'Test Table 2',
 					type: 'datatable' as const,
 					status: 'created' as const,
-					file: '/mock/n8n/git/datatables/dt2.json',
+					file: '/mock/MNI/git/datatables/dt2.json',
 					location: 'local' as const,
 					conflict: false,
 					updatedAt: '2024-01-04T00:00:00.000Z',
@@ -1022,12 +1022,12 @@ describe('SourceControlExportService', () => {
 			// Assert
 			expect(result.count).toBe(2);
 			expect(result.files).toHaveLength(2);
-			expect(result.files[0].name).toBe('/mock/n8n/git/datatables/dt1.json');
-			expect(result.files[1].name).toBe('/mock/n8n/git/datatables/dt2.json');
+			expect(result.files[0].name).toBe('/mock/MNI/git/datatables/dt1.json');
+			expect(result.files[1].name).toBe('/mock/MNI/git/datatables/dt2.json');
 
 			// Check first file
 			const dataCaptor1 = captor<string>();
-			expect(fsWriteFile).toHaveBeenCalledWith('/mock/n8n/git/datatables/dt1.json', dataCaptor1);
+			expect(fsWriteFile).toHaveBeenCalledWith('/mock/MNI/git/datatables/dt1.json', dataCaptor1);
 			const exportedData1 = JSON.parse(dataCaptor1.value);
 			expect(exportedData1).toEqual({
 				id: 'dt1',
@@ -1047,7 +1047,7 @@ describe('SourceControlExportService', () => {
 
 			// Check second file
 			const dataCaptor2 = captor<string>();
-			expect(fsWriteFile).toHaveBeenCalledWith('/mock/n8n/git/datatables/dt2.json', dataCaptor2);
+			expect(fsWriteFile).toHaveBeenCalledWith('/mock/MNI/git/datatables/dt2.json', dataCaptor2);
 			const exportedData2 = JSON.parse(dataCaptor2.value);
 			expect(exportedData2).toEqual({
 				id: 'dt2',
@@ -1084,7 +1084,7 @@ describe('SourceControlExportService', () => {
 					name: 'Test Table 1',
 					type: 'datatable' as const,
 					status: 'created' as const,
-					file: '/mock/n8n/git/datatables/dt1.json',
+					file: '/mock/MNI/git/datatables/dt1.json',
 					location: 'local' as const,
 					conflict: false,
 					updatedAt: '2024-01-02T00:00:00.000Z',
@@ -1136,7 +1136,7 @@ describe('SourceControlExportService', () => {
 				personalProject.id,
 			]);
 			const dataCaptor = captor<string>();
-			expect(fsWriteFile).toHaveBeenCalledWith('/mock/n8n/git/datatables/dt1.json', dataCaptor);
+			expect(fsWriteFile).toHaveBeenCalledWith('/mock/MNI/git/datatables/dt1.json', dataCaptor);
 			expect(JSON.parse(dataCaptor.value).ownedBy).toEqual({
 				type: 'personal',
 				projectId: 'personal-1',
@@ -1153,7 +1153,7 @@ describe('SourceControlExportService', () => {
 					name: 'Test Table 1',
 					type: 'datatable' as const,
 					status: 'created' as const,
-					file: '/mock/n8n/git/datatables/dt1.json',
+					file: '/mock/MNI/git/datatables/dt1.json',
 					location: 'local' as const,
 					conflict: false,
 					updatedAt: '2024-01-02T00:00:00.000Z',

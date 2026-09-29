@@ -11,7 +11,7 @@ files.forEach(file => {
     content = content.replace(/scripts\/dockerize-n8n\.mjs/g, 'scripts/dockerize-mni.mjs');
     content = content.replace(/scripts\/scan-n8n-image\.mjs/g, 'scripts/scan-mni-image.mjs');
     content = content.replace(/scripts\/smoke-n8n-image\.mjs/g, 'scripts/smoke-mni-image.mjs');
-    content = content.replace(/"build:n8n":/g, '"build:mni":');
+    content = content.replace(/"build:MNI":/g, '"build:mni":');
     fs.writeFileSync(file, content);
     console.log(`Updated ${file}`);
   }

@@ -169,7 +169,7 @@ describe('useSourceControlStore', () => {
 			sourceControlStore.preferences.repositoryUrl = 'git@github.com:user/repo.git';
 			sourceControlStore.preferences.connectionType = 'ssh';
 			sourceControlStore.preferences.keyGeneratorType = 'rsa';
-			sourceControlStore.preferences.publicKey = 'ssh-rsa AAAATestKey n8n deploy key';
+			sourceControlStore.preferences.publicKey = 'ssh-rsa AAAATestKey MNI deploy key';
 			sourceControlStore.preferences.branchName = 'main';
 			sourceControlStore.preferences.currentBranch = 'main';
 			sourceControlStore.preferences.branchReadOnly = true;
@@ -191,7 +191,7 @@ describe('useSourceControlStore', () => {
 			expect(sourceControlStore.preferences.repositoryUrl).toBe('git@github.com:user/repo.git');
 			expect(sourceControlStore.preferences.connectionType).toBe('ssh');
 			expect(sourceControlStore.preferences.keyGeneratorType).toBe('rsa');
-			expect(sourceControlStore.preferences.publicKey).toBe('ssh-rsa AAAATestKey n8n deploy key');
+			expect(sourceControlStore.preferences.publicKey).toBe('ssh-rsa AAAATestKey MNI deploy key');
 		});
 	});
 

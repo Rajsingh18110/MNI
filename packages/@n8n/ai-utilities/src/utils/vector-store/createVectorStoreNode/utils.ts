@@ -43,9 +43,9 @@ export function getOperationModeOptions<T extends VectorStore>(
 	);
 }
 
-/** Surfaces provider SDK errors (Pinecone, Supabase, …) as actionable n8n errors instead of raw exceptions */
+/** Surfaces provider SDK errors (Pinecone, Supabase, …) as actionable MNI errors instead of raw exceptions */
 export function normalizeVectorStoreError(node: INode, error: unknown, itemIndex?: number): never {
-	// BaseError covers all n8n error classes (NodeError, UserError, UnexpectedError, …)
+	// BaseError covers all MNI error classes (NodeError, UserError, UnexpectedError, …)
 	if (error instanceof BaseError) throw error;
 	// warning-level errors are treated as user-facing and skipped by error reporting,
 	// so keep programming errors at error level to preserve their visibility

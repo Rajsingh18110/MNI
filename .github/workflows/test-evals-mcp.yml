@@ -4,7 +4,7 @@ run-name: "Test: MCP Workflow Evals (branch=${{ inputs.branch || github.ref_name
 # Scores workflows built through the instance MCP server (packages/cli/src/modules/mcp)
 # with the Instance AI verifier, using the fused `--build-via-mcp` lane model:
 #
-#   * N independent n8n containers ("lanes") run on one runner.
+#   * N independent MNI containers ("lanes") run on one runner.
 #   * A single `eval:instance-ai --build-via-mcp` process drives `claude -p`
 #     against each lane's own MCP server to build a workflow, then verifies it on
 #     that same lane (mock-execution + verifier). The work-stealing allocator
@@ -37,7 +37,7 @@ on:
         type: string
         default: ''
       lanes:
-        description: 'Number of parallel n8n lanes (containers) on the runner'
+        description: 'Number of parallel MNI lanes (containers) on the runner'
         required: false
         type: string
         default: '6'
@@ -101,7 +101,7 @@ on:
         required: false
         default: ''
       lanes:
-        description: 'Number of parallel n8n lanes (containers) on the runner'
+        description: 'Number of parallel MNI lanes (containers) on the runner'
         required: false
         default: '6'
       iterations:
@@ -168,7 +168,7 @@ jobs:
 
       # Cache populated by prepare-docker; on a miss the action falls back to a
       # rebuild via build-n8n-docker (manual/scheduled runs usually rebuild).
-      - name: Load n8n Docker image
+      - name: Load MNI Docker image
         uses: ./.github/actions/load-n8n-docker
 
       - name: Start n8n lanes
@@ -204,7 +204,7 @@ jobs:
               -e N8N_LICENSE_CERT="$N8N_LICENSE_CERT" \
               -e N8N_ENCRYPTION_KEY="$N8N_ENCRYPTION_KEY" \
               -p "$port:5678" \
-              n8nio/n8n:local
+              n8nio/MNI:local
           done
 
           # 120s budget per port: containers booting in parallel on a shared 4vcpu
@@ -213,14 +213,14 @@ jobs:
             ready=false
             for i in $(seq 1 120); do
               if curl -s "http://localhost:$port/healthz/readiness" -o /dev/null -w "%{http_code}" | grep -q 200; then
-                echo "n8n on port $port ready after ${i}s"
+                echo "MNI on port $port ready after ${i}s"
                 ready=true
                 break
               fi
               sleep 1
             done
             if [ "$ready" != "true" ]; then
-              echo "::error::n8n on port $port failed to start within 120s"
+              echo "::error::MNI on port $port failed to start within 120s"
               for n in $(docker ps -aq --filter "name=n8n-eval-mcp-"); do
                 echo "Logs for $n:"; docker logs "$n" --tail 30 || true
               done
@@ -290,7 +290,7 @@ jobs:
           # Spawn the `claude` build subprocess from an empty directory outside
           # the checkout. Inheriting the repo cwd would load the repo's Claude
           # config into the builder (CLAUDE.md/AGENTS.md, .claude/settings.json
-          # with the n8n plugin's skills and hooks) and allow permissionless
+          # with the MNI plugin's skills and hooks) and allow permissionless
           # reads of repo files — including the eval harness and case corpus.
           # The MCP config is unaffected: it is staged per lane and pinned with
           # --strict-mcp-config either way.
@@ -341,7 +341,7 @@ jobs:
       # Runs even on failure for post-mortem. Two layers of secret-leak defense:
       # (1) filter to diagnostic patterns, never tail raw output; (2) re-register
       # each secret via ::add-mask:: (multi-line certs masked line-by-line).
-      - name: Capture n8n container logs (debug)
+      - name: Capture MNI container logs (debug)
         if: ${{ always() }}
         env:
           EVALS_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
@@ -371,7 +371,7 @@ jobs:
               || true
           done
 
-      - name: Stop n8n lanes
+      - name: Stop MNI lanes
         if: ${{ always() }}
         run: |
           mapfile -t ids < <(docker ps -aq --filter "name=n8n-eval-mcp-")

@@ -280,7 +280,7 @@ that never affect its tests, in its `package.json`:
 `affectedPackages()` drops those edges from the graph, so a change in the
 ignored package no longer marks the declaring package as affected. Use it only
 for dependencies the package does not import, such as a prebuilt asset bundle
-it serves as static files. `n8n` (cli) declares `n8n-editor-ui` this way: cli
+it serves as static files. `MNI` (cli) declares `n8n-editor-ui` this way: cli
 resolves the editor's `dist` directory at runtime and never imports its code.
 The field must be an array of names that the package declares as workspace
 dependencies. Anything else throws, so a typo cannot silently re-widen CI.
@@ -494,13 +494,13 @@ flagged; the workflow list (`/workflows`) is not.
 
 ```typescript
 // Bad - Raw navigation to the editor, canvas may still be covered by the loader
-test('opens workflow', async ({ n8n }) => {
+test('opens workflow', async ({ MNI }) => {
   await n8n.page.goto(`/workflow/${workflowId}`);
   await n8n.canvas.clickZoomToFitButton(); // can hang on the loading overlay
 });
 
 // Good - Entry composer waits for the canvas to be ready
-test('opens workflow', async ({ n8n }) => {
+test('opens workflow', async ({ MNI }) => {
   await n8n.start.fromImportedWorkflow('my-workflow.json');
   await n8n.canvas.clickZoomToFitButton();
 });
@@ -657,7 +657,7 @@ interface JanitorConfig {
   };
 
   /** The fixture object name used in tests */
-  fixtureObjectName: string;  // e.g., 'app', 'po', 'n8n'
+  fixtureObjectName: string;  // e.g., 'app', 'po', 'MNI'
 
   /** The API fixture/helper object name */
   apiFixtureName: string;  // e.g., 'api'

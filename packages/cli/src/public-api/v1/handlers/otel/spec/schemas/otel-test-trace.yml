@@ -40,7 +40,7 @@ properties:
     type: string
     minLength: 1
     description: The `service.name` resource attribute reported on the test span.
-    example: n8n
+    example: MNI
   exporterHeaders:
     type: string
     description: >

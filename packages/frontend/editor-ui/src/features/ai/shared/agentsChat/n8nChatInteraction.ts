@@ -62,7 +62,7 @@ export function isAwaitingCard(card: N8nChatCard): boolean {
 /**
  * Parse any integration action tool input (slack_action, chat_action, …)
  * into its renderable card, or undefined when it carries none. Used for the
- * live n8n chat cards and for session-log card previews of every integration.
+ * live MNI chat cards and for session-log card previews of every integration.
  */
 export function parseIntegrationActionCard(input: unknown): N8nChatInteractionInput | undefined {
 	const parsed = actionToolInputSchema.safeParse(input);
@@ -131,7 +131,7 @@ export function cardChoiceLabel(card: N8nChatCard, resume: N8nChatResumeValue): 
 }
 
 /**
- * Component types the n8n chat card renderer (`N8nChatActionCard.vue`)
+ * Component types the MNI chat card renderer (`N8nChatActionCard.vue`)
  * implements. Compile-time lockstep with the shared list: when
  * `RICH_CARD_COMPONENT_TYPES` in `@n8n/api-types` gains a member (i.e. a new
  * component type is added for Slack & co), the assignment below fails to

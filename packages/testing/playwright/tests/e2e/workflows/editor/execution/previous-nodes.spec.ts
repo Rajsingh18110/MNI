@@ -9,7 +9,7 @@ test.describe(
 	() => {
 		test.fixme();
 
-		test('should execute only previous nodes and not the current node', async ({ n8n }) => {
+		test('should execute only previous nodes and not the current node', async ({ MNI }) => {
 			// Import workflow with Manual Trigger -> Code1 -> Code2
 			await n8n.start.fromImportedWorkflow('execute-previous-nodes.json');
 

@@ -86,7 +86,7 @@
     "langsmith": "catalog:",
     "lodash": "catalog:",
     "mockserver-client": "^5.15.0",
-    "n8n": "workspace:*",
+    "MNI": "workspace:*",
     "n8n-containers": "workspace:*",
     "n8n-core": "workspace:*",
     "n8n-workflow": "workspace:*",

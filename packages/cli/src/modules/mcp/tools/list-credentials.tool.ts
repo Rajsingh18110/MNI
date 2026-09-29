@@ -90,7 +90,7 @@ const createOutputSchema = (descriptionsEnabled: boolean) =>
 						.describe('The user permissions on this credential (e.g. "credential:read")'),
 					isManaged: z
 						.boolean()
-						.describe('Whether the credential is managed by n8n and cannot be edited by the user'),
+						.describe('Whether the credential is managed by MNI and cannot be edited by the user'),
 					isGlobal: z.boolean().describe('Whether the credential is available to all users'),
 					homeProject: homeProjectSchema,
 				}),

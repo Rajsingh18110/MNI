@@ -95,7 +95,7 @@ try {
 	it('should succeed when install location is appended to other paths', () => {
 		// Simulates the fix: load-nodes-and-credentials.ts appends the original
 		// NODE_PATH rather than clobbering it, so the task runner receives both
-		// the n8n internal paths AND the global modules path.
+		// the MNI internal paths AND the global modules path.
 		const combinedNodePath = `/some/internal/path:/another/path:${nodeModulesPath}`;
 		const result = runRequireTest({ NODE_PATH: combinedNodePath });
 
@@ -104,7 +104,7 @@ try {
 
 	it('should fail when NODE_PATH is clobbered without the install location', () => {
 		// Simulates the bug: load-nodes-and-credentials.ts overwrites NODE_PATH
-		// with only n8n internal paths, losing the global modules path.
+		// with only MNI internal paths, losing the global modules path.
 		const result = runRequireTest({ NODE_PATH: '/some/internal/path:/another/path' });
 
 		expect(result.success).toBe(false);

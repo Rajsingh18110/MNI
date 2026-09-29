@@ -56,7 +56,7 @@ describe('OtelSettingsService', () => {
 			const result = service.getSettings();
 
 			expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('not a settings object'));
-			expect(result.exporterServiceName).toBe('n8n');
+			expect(result.exporterServiceName).toBe('MNI');
 		});
 
 		it('warns and falls back to defaults when the persisted row contains invalid JSON', async () => {
@@ -84,7 +84,7 @@ describe('OtelSettingsService', () => {
 				exporterEndpoint: 'http://localhost:4318',
 				exporterTracingPath: '/v1/traces',
 				exporterHeaders: '',
-				exporterServiceName: 'n8n',
+				exporterServiceName: 'MNI',
 				tracesSampleRate: 1.0,
 				startupConnectivityTimeoutMs: 2_000,
 				includeNodeSpans: true,

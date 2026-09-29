@@ -1,5 +1,5 @@
 ---
-name: n8n:ui-design
+name: MNI:ui-design
 description: Guidelines on designing and building UI. Use when working in editor-ui or design-system packages. Triggers for tasks that include refactoring components, styling changes, or feature work.
 ---
 

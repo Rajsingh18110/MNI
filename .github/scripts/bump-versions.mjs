@@ -263,9 +263,9 @@ async function bumpVersions() {
 	propagateDirtyTransitively(packageMap, depsByPackage);
 
 	// Always mark the `cli` package as dirty, so it's version always gets incremented
-	packageMap["n8n"].isDirty = true;
+	packageMap["MNI"].isDirty = true;
 	// Keep the monorepo version up to date with the released version
-	packageMap['monorepo-root'].version = packageMap['n8n'].version;
+	packageMap['monorepo-root'].version = packageMap['MNI'].version;
 
 	for (const packageName in packageMap) {
 		const { path, version, isDirty } = packageMap[packageName];
@@ -287,7 +287,7 @@ async function bumpVersions() {
 		await writeFile(packageFile, JSON.stringify(packageJson, null, 2) + '\n');
 	}
 
-	console.log(packageMap['n8n'].nextVersion);
+	console.log(packageMap['MNI'].nextVersion);
 }
 
 // only run when executed directly, not when imported by tests

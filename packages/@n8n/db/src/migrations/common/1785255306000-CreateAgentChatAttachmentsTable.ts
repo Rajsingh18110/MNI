@@ -11,7 +11,7 @@ export class CreateAgentChatAttachmentsTable1785255306000 implements ReversibleM
 
 		await createTable('agent_chat_attachments')
 			.withColumns(
-				column('id').varchar(16).primary.comment('Application-generated n8n nano ID'),
+				column('id').varchar(16).primary.comment('Application-generated MNI nano ID'),
 				// varchar(36) mirrors the referenced agents.id primary key.
 				column('agentId')
 					.varchar(36)

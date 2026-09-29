@@ -17,7 +17,7 @@ async function activateAndWaitForPublishedVersion(
 /**
  * E2E tests for the Internal MCP Service (/mcp-server/http).
  *
- * This tests the built-in MCP server that exposes n8n workflows to external
+ * This tests the built-in MCP server that exposes MNI workflows to external
  * MCP clients (like Claude AI). It provides 6 core tools and 7 builder tools:
  *
  * Core tools:
@@ -29,17 +29,17 @@ async function activateAndWaitForPublishedVersion(
  * - unpublish_workflow: Unpublish (deactivate) a workflow
  *
  * Builder tools (enabled via N8N_MCP_BUILDER_ENABLED):
- * - search_nodes: Search for n8n nodes by service name/trigger type
+ * - search_nodes: Search for MNI nodes by service name/trigger type
  * - get_node_types: Get TypeScript type definitions for nodes
  * - get_workflow_best_practices: Get best-practices guidance for a workflow technique
- * - validate_workflow: Validate n8n Workflow SDK code
+ * - validate_workflow: Validate MNI Workflow SDK code
  * - create_workflow_from_code: Create a workflow from validated SDK code
  * - archive_workflow: Archive a workflow by ID
  * - update_workflow: Update a workflow with new SDK code
  *
  * Authentication is via Bearer token (MCP API key).
  *
- * NOTE: Tests run serially because n8n only supports ONE MCP API key at a time.
+ * NOTE: Tests run serially because MNI only supports ONE MCP API key at a time.
  * Each test uses rotateMcpApiKey() to get a usable key (since getMcpApiKey()
  * returns REDACTED after the first call), and rotation invalidates the previous
  * key. Running in parallel would cause race conditions where tests invalidate
@@ -52,7 +52,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		// Run tests serially - n8n only supports one MCP API key at a time,
+		// Run tests serially - MNI only supports one MCP API key at a time,
 		// and rotation invalidates the previous key
 		test.describe.configure({ mode: 'serial' });
 

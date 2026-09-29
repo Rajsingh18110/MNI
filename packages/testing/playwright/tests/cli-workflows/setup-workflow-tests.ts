@@ -18,16 +18,16 @@ const BASE_TMP_DIR = '/tmp';
 const TMP_PDF_DEST_DIR = path.join(BASE_TMP_DIR, 'testData', 'pdfs');
 
 /**
- * Executes an n8n CLI command, providing robust error handling and logging.
- * @param command The n8n CLI subcommand (e.g., 'import:credentials').
+ * Executes an MNI CLI command, providing robust error handling and logging.
+ * @param command The MNI CLI subcommand (e.g., 'import:credentials').
  * @param args Arguments specific to the subcommand.
  * @param options Options for `child_process.execFile`. `cwd` is typically required.
  * @returns A promise that resolves with the stdout of the command, or rejects on error.
  */
 async function runN8nCliCommand(command: string, args: string[], options: { cwd: string }) {
 	const packagesRoot = findPackagesRoot('cli');
-	const n8nExecutablePath = path.join(packagesRoot, 'cli/bin/n8n');
-	console.log(`Executing n8n command: n8n ${command} ${args.join(' ')}`);
+	const n8nExecutablePath = path.join(packagesRoot, 'cli/bin/MNI');
+	console.log(`Executing MNI command: MNI ${command} ${args.join(' ')}`);
 	await execFileAsync(n8nExecutablePath, [command, ...args], options);
 }
 
@@ -69,12 +69,12 @@ async function copyAsset(sourcePath: string, destinationPath: string): Promise<v
 }
 
 /**
- * Sets up the n8n test environment by importing credentials and workflows,
+ * Sets up the MNI test environment by importing credentials and workflows,
  * and copying necessary test data/assets.
  * This function is designed to be used as a global setup hook in testing frameworks.
  */
 export async function globalWorkflowSetup(): Promise<void> {
-	console.log('\n--- 🚀 Starting n8n workflow test environment setup ---\n');
+	console.log('\n--- 🚀 Starting MNI workflow test environment setup ---\n');
 
 	try {
 		console.log('📥 Importing test credentials...');
@@ -102,9 +102,9 @@ export async function globalWorkflowSetup(): Promise<void> {
 
 		await copyAsset(PDF_SOURCE_DIR, TMP_PDF_DEST_DIR);
 
-		console.log('\n--- ✅ n8n workflow test environment setup complete! ---\n');
+		console.log('\n--- ✅ MNI workflow test environment setup complete! ---\n');
 	} catch (error: unknown) {
-		console.error('\n--- ❌ n8n workflow test environment setup failed! ---\n', error);
+		console.error('\n--- ❌ MNI workflow test environment setup failed! ---\n', error);
 		process.exit(1);
 	}
 }

@@ -52,7 +52,7 @@ export function buildODataQs(options: Partial<Record<ODataOptionKey, unknown>>):
 
 /**
  * Two-mode item input — matches the dv connector's "Row Item" dynamic field
- * while staying ergonomic in n8n:
+ * while staying ergonomic in MNI:
  *
  * - **JSON** (default): the user pastes / templates a record object.
  * - **Fields**: the user adds rows of `{ name, value }` pairs via a
@@ -193,7 +193,7 @@ export function buildRecordPath(entitySet: string, recordId: string): string {
 }
 
 /**
- * Validate a user-entered Row ID up front. n8n's `required: true` flag stops
+ * Validate a user-entered Row ID up front. MNI's `required: true` flag stops
  * a completely empty field from being submitted, but a string like `"  "` or
  * an expression that resolves to `null`/`undefined` still slips through and
  * produces a confusing `/accounts()` URL.

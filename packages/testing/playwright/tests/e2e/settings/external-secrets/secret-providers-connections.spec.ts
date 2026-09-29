@@ -14,7 +14,7 @@ test.describe(
 		const PROVIDER_KEY = 'awsLocalstackE2e';
 		const PROVIDER_TYPE = 'awsSecretsManager';
 
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			// N8N_ENV_FEAT_EXTERNAL_SECRETS_FOR_PROJECTS is set at container startup
 			// via the external-secrets capability config
 
@@ -25,7 +25,7 @@ test.describe(
 			await services.localstack.secretsManager.clear();
 		});
 
-		test.afterEach(async ({ n8n }) => {
+		test.afterEach(async ({ MNI }) => {
 			// Clean up: delete the test connection if it exists
 			try {
 				await n8n.api.externalSecrets.deleteConnection(PROVIDER_KEY);
@@ -34,7 +34,7 @@ test.describe(
 			}
 		});
 
-		test('can create a connection pointing to LocalStack', async ({ n8n, services }) => {
+		test('can create a connection pointing to LocalStack', async ({ MNI, services }) => {
 			// Arrange: Seed secrets in LocalStack
 			await services.localstack.secretsManager.createSecret('e2e-api-key', 'secret-123');
 			await services.localstack.secretsManager.createSecret(
@@ -48,7 +48,7 @@ test.describe(
 			expect(secrets).toContain('e2e-db-credentials');
 
 			// Act: Create a connection with settings that would work with LocalStack
-			// (n8n container has AWS_ENDPOINT_URL set to point to LocalStack)
+			// (MNI container has AWS_ENDPOINT_URL set to point to LocalStack)
 			const created = await n8n.api.externalSecrets.createConnection({
 				providerKey: PROVIDER_KEY,
 				type: PROVIDER_TYPE,

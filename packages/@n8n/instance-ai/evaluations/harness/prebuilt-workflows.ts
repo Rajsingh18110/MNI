@@ -4,7 +4,7 @@
 // Owns everything specific to `--prebuilt-workflows` mode:
 //   • the manifest schema + loader (loadPrebuiltManifest)
 //   • the per-iteration workflow-ID picker (pickPrebuiltWorkflowId)
-//   • the BuildResult adapter that fetches an existing workflow from n8n
+//   • the BuildResult adapter that fetches an existing workflow from MNI
 //     and shapes it like a fresh build (fetchPrebuiltBuild)
 //
 // When `--prebuilt-workflows <path>` is set, the eval CLI uses this module
@@ -88,7 +88,7 @@ export function partitionByPrebuiltCoverage<T extends { fileSlug: string }>(
 }
 
 /**
- * Build a BuildResult for a workflow that already exists in the n8n instance.
+ * Build a BuildResult for a workflow that already exists in the MNI instance.
  * Used by --prebuilt-workflows mode to skip the orchestrator and verify a
  * workflow built by some other tool (e.g. an MCP-driven session).
  *

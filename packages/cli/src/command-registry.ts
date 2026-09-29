@@ -133,7 +133,7 @@ export class CommandRegistry {
 		let output = '';
 
 		output += `${picocolors.bold('USAGE')}\n`;
-		output += `  $ n8n ${commandName}\n\n`;
+		output += `  $ MNI ${commandName}\n\n`;
 
 		const { flagsSchema } = commandEntry;
 		if (flagsSchema && Object.keys(flagsSchema.shape).length > 0) {
@@ -186,7 +186,7 @@ export class CommandRegistry {
 		if (commandEntry.examples?.length) {
 			output += `\n${picocolors.bold('EXAMPLES')}\n`;
 			output += commandEntry.examples
-				.map((example) => `  $ n8n ${commandName}${example ? ` ${example}` : ''}`)
+				.map((example) => `  $ MNI ${commandName}${example ? ` ${example}` : ''}`)
 				.join('\n');
 			output += '\n';
 		}

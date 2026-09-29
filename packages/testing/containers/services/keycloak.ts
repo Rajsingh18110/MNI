@@ -15,7 +15,7 @@ const KEYCLOAK_TEST_REALM = 'test';
 const KEYCLOAK_TEST_CLIENT_ID = 'n8n-e2e';
 const KEYCLOAK_TEST_CLIENT_SECRET = 'n8n-test-secret';
 /** Audience the realm stamps into access tokens, for relying parties to verify. */
-const KEYCLOAK_TEST_AUDIENCE = 'n8n';
+const KEYCLOAK_TEST_AUDIENCE = 'MNI';
 const KEYCLOAK_TEST_USER_EMAIL = 'test@n8n.io';
 const KEYCLOAK_TEST_USER_PASSWORD = 'testpassword';
 const KEYCLOAK_TEST_USER_FIRSTNAME = 'Test';
@@ -50,7 +50,7 @@ export interface KeycloakMeta {
 export type KeycloakResult = ServiceResult<KeycloakMeta>;
 
 function generateRealmJson(callbackUrl: string): string {
-	// Derive the n8n base URL from the OIDC callback URL
+	// Derive the MNI base URL from the OIDC callback URL
 	const n8nBaseUrl = callbackUrl.split('/rest/')[0];
 	return JSON.stringify({
 		realm: KEYCLOAK_TEST_REALM,
@@ -71,7 +71,7 @@ function generateRealmJson(callbackUrl: string): string {
 				redirectUris: [
 					callbackUrl,
 					`${callbackUrl}/*`,
-					// Allow the n8n OAuth2 credential callback for dynamic credential authorization flow
+					// Allow the MNI OAuth2 credential callback for dynamic credential authorization flow
 					`${n8nBaseUrl}/rest/oauth2-credential/callback`,
 				],
 				webOrigins: ['*'],
@@ -436,9 +436,9 @@ export class KeycloakHelper {
 	 *   2. Extract the login form action URL
 	 *   3. POST test user credentials to Keycloak
 	 *
-	 * Returns the n8n OAuth2 callback URL (with `code` and `state` query params).
-	 * The caller should then GET this URL using the n8n API request context (which holds
-	 * the n8n session cookie) so that n8n exchanges the code for tokens and stores them.
+	 * Returns the MNI OAuth2 callback URL (with `code` and `state` query params).
+	 * The caller should then GET this URL using the MNI API request context (which holds
+	 * the MNI session cookie) so that MNI exchanges the code for tokens and stores them.
 	 */
 	async completeAuthorizationCodeFlow(authorizationUrl: string): Promise<string> {
 		const agent = new Agent({ connect: { ca: this.meta.certPem } });
@@ -448,7 +448,7 @@ export class KeycloakHelper {
 			// Keycloak intermittently answers this GET with a 302 rather than the login
 			// page — either to re-establish an authentication session (redirect back into
 			// Keycloak to set AUTH_SESSION_ID) or, if an SSO session already exists,
-			// straight to the n8n callback with a `code`. undiciRequest does NOT follow
+			// straight to the MNI callback with a `code`. undiciRequest does NOT follow
 			// redirects, so follow them ourselves, accumulating cookies across hops.
 			// Cookies are keyed by name so later hops override earlier ones.
 			const cookieJar = new Map<string, string>();
@@ -483,7 +483,7 @@ export class KeycloakHelper {
 				const nextUrl = new URL(location, currentUrl);
 
 				// Already-authenticated short circuit: Keycloak redirected straight to the
-				// n8n OAuth2 callback with the authorization code — no login form needed.
+				// MNI OAuth2 callback with the authorization code — no login form needed.
 				// Match on the pathname and require `code`, so a Keycloak restart redirect
 				// that merely echoes `redirect_uri=…/callback` in its query isn't mistaken
 				// for the final callback.
@@ -528,7 +528,7 @@ export class KeycloakHelper {
 			const formAction = rawFormAction.replace(/&amp;/g, '&');
 
 			// Step 3: POST credentials with session cookies — Keycloak responds with 302
-			// to the n8n callback URL. undiciRequest does NOT follow redirects by default.
+			// to the MNI callback URL. undiciRequest does NOT follow redirects by default.
 			const loginBody = new URLSearchParams({
 				username: this.meta.testUser.email,
 				password: this.meta.testUser.password,
@@ -594,7 +594,7 @@ export class KeycloakHelper {
 		}
 
 		throw new Error(
-			`Keycloak discovery endpoint not reachable from n8n container within ${timeoutMs}ms: ${this.meta.internalDiscoveryUrl}`,
+			`Keycloak discovery endpoint not reachable from MNI container within ${timeoutMs}ms: ${this.meta.internalDiscoveryUrl}`,
 		);
 	}
 }

@@ -151,7 +151,7 @@ describe('useAgentToolCatalog', () => {
 		expect(availableToolTypes.value.map((nt) => nt.name)).not.toContain(OPENAI.name);
 	});
 
-	it('orders MCP tools first, then all n8n nodes by popularity', () => {
+	it('orders MCP tools first, then all MNI nodes by popularity', () => {
 		const { availableToolTypes } = useAgentToolCatalog();
 		const names = availableToolTypes.value.map((nt) => nt.name);
 
@@ -159,7 +159,7 @@ describe('useAgentToolCatalog', () => {
 		expect(names.indexOf(SLACK.name)).toBeLessThan(names.indexOf(CODE_TOOL.name));
 	});
 
-	it('categorizes all non-MCP tools as n8n nodes', () => {
+	it('categorizes all non-MCP tools as MNI nodes', () => {
 		const community = makeNodeType({
 			name: 'n8n-nodes-firecrawl.firecrawlTool',
 			displayName: 'Firecrawl',

@@ -38,7 +38,7 @@ import {
 } from '../workflow-builder/node-builders/subnode-builders';
 
 /**
- * Known n8n runtime variables that need to be escaped in template literals.
+ * Known MNI runtime variables that need to be escaped in template literals.
  * These are evaluated at workflow runtime, not at parse time.
  */
 const N8N_RUNTIME_VARIABLES = [
@@ -65,7 +65,7 @@ const N8N_RUNTIME_VARIABLES = [
 ];
 
 /**
- * Escape n8n runtime variables in template literal expressions.
+ * Escape MNI runtime variables in template literal expressions.
  * Converts ${$today} to \${$today} so they become literal strings during parsing.
  *
  * Also handles $('NodeName') function call syntax.
@@ -73,7 +73,7 @@ const N8N_RUNTIME_VARIABLES = [
 function escapeN8nVariablesInTemplateLiterals(code: string): string {
 	let result = code;
 
-	// Escape known n8n variables: ${$today...} -> \${$today...}
+	// Escape known MNI variables: ${$today...} -> \${$today...}
 	// The pattern matches ${$variableName (not preceded by a backslash)
 	for (const varName of N8N_RUNTIME_VARIABLES) {
 		// Build pattern to match ${$varname (e.g., ${$today, ${$json, etc.)
@@ -89,7 +89,7 @@ function escapeN8nVariablesInTemplateLiterals(code: string): string {
 	// This matches ${$( followed by anything (not preceded by backslash)
 	result = result.replace(/(?<!\\)\$\{\$\(/g, '\\${$(');
 
-	// Escape ${{ patterns (literal $ before n8n expression {{ }})
+	// Escape ${{ patterns (literal $ before MNI expression {{ }})
 	// This prevents JS from interpreting ${{ as template literal interpolation ${
 	result = result.replace(/(?<!\\)\$\{\{/g, '\\${{');
 
@@ -362,12 +362,12 @@ function escapeNodeReferencesInSingleQuotedStrings(code: string): string {
 
 /**
  * Combined preprocessing: escape both node references in single-quoted strings
- * and n8n runtime variables in template literals.
+ * and MNI runtime variables in template literals.
  */
 function escapeN8nVariables(code: string): string {
 	// First, fix node references in single-quoted strings
 	let result = escapeNodeReferencesInSingleQuotedStrings(code);
-	// Then, escape n8n runtime variables in template literals
+	// Then, escape MNI runtime variables in template literals
 	result = escapeN8nVariablesInTemplateLiterals(result);
 	return result;
 }
@@ -607,7 +607,7 @@ export function parseWorkflowCode(code: string): WorkflowJSON {
 	// This converts literal \n to actual newlines, etc.
 	const unescapedCode = unescapeJsonEscapeSequences(code);
 
-	// Pre-process: escape n8n runtime variables in template literals
+	// Pre-process: escape MNI runtime variables in template literals
 	// This prevents "$today is not defined" errors when parsing Code nodes
 	const executableCode = escapeN8nVariables(unescapedCode);
 
@@ -661,7 +661,7 @@ export function parseWorkflowCodeToBuilder(code: string): WorkflowBuilder {
 	// Pre-process: handle double-escaped JSON strings (e.g., when code was JSON.stringify'd twice)
 	const unescapedCode = unescapeJsonEscapeSequences(code);
 
-	// Pre-process: escape n8n runtime variables in template literals
+	// Pre-process: escape MNI runtime variables in template literals
 	const executableCode = escapeN8nVariables(unescapedCode);
 
 	try {

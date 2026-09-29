@@ -166,7 +166,7 @@ async function runCredentialCheck(trigger: 'auto' | 'recheck') {
 	checking.value = true;
 	let result: TeamsCredentialCheck;
 	// Shown to the user as unreachable, but kept apart in telemetry: a failed
-	// n8n request says nothing about whether Microsoft accepts the credential.
+	// MNI request says nothing about whether Microsoft accepts the credential.
 	let requestFailed = false;
 	try {
 		result = await checkTeamsCredential(

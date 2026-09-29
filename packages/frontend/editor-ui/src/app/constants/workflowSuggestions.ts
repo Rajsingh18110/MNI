@@ -33,24 +33,24 @@ export const WORKFLOW_SUGGESTIONS: WorkflowSuggestion[] = [
 		id: 'invoice-pipeline',
 		summary: 'Invoice processing pipeline',
 		prompt:
-			'Create an invoice processing workflow using an n8n Form. When a user submits an invoice file (PDF or image) with their email address, use OpenAI `gpt-4.1-mini` to extract invoice data. Then, validate the date format is correct, the currency is valid, and the total amount is greater than zero. If validation fails, email the user a clear error message that explains which check failed from my Gmail. If the data passes validation, store the structured result in a datatable plus email the user. Every Monday morning, generate a weekly spending report using `gpt-4.1-mini` based on stored invoices and send a clean email using Gmail.',
+			'Create an invoice processing workflow using an MNI Form. When a user submits an invoice file (PDF or image) with their email address, use OpenAI `gpt-4.1-mini` to extract invoice data. Then, validate the date format is correct, the currency is valid, and the total amount is greater than zero. If validation fails, email the user a clear error message that explains which check failed from my Gmail. If the data passes validation, store the structured result in a datatable plus email the user. Every Monday morning, generate a weekly spending report using `gpt-4.1-mini` based on stored invoices and send a clean email using Gmail.',
 	},
 	{
 		id: 'rag-assistant',
 		summary: 'RAG knowledge assistant',
 		prompt:
-			'Build an automation that creates a document-to-chat RAG pipeline. The workflow starts with an n8n Form where a user uploads one or more files (PDF, CSV, or JSON). Each upload should trigger a process that reads the file, splits it into chunks, and generates embeddings using OpenAI `gpt-4.1-mini` model, saved in one Pinecone table. Add a second part of the workflow for querying: use a Chat Message Trigger to act as a chatbot interface. When a user sends a question, retrieve the top 5 most relevant chunks from Pinecone, pass them into `gpt-4.1-mini` as context, and have it answer naturally using only the retrieved information. If a question can\'t be answered confidently, the bot should respond with: "I couldn\'t find that in the uploaded documents." Log each chat interaction in a Data Table with the user query, matched file(s), and timestamp. Send a daily summary email through Gmail showing total questions asked, top files referenced, and any failed lookups.',
+			'Build an automation that creates a document-to-chat RAG pipeline. The workflow starts with an MNI Form where a user uploads one or more files (PDF, CSV, or JSON). Each upload should trigger a process that reads the file, splits it into chunks, and generates embeddings using OpenAI `gpt-4.1-mini` model, saved in one Pinecone table. Add a second part of the workflow for querying: use a Chat Message Trigger to act as a chatbot interface. When a user sends a question, retrieve the top 5 most relevant chunks from Pinecone, pass them into `gpt-4.1-mini` as context, and have it answer naturally using only the retrieved information. If a question can\'t be answered confidently, the bot should respond with: "I couldn\'t find that in the uploaded documents." Log each chat interaction in a Data Table with the user query, matched file(s), and timestamp. Send a daily summary email through Gmail showing total questions asked, top files referenced, and any failed lookups.',
 	},
 	{
 		id: 'lead-qualification',
 		summary: 'Lead qualification and call scheduling',
 		prompt:
-			'Create an n8n form with a lead generation form I can embed on my website homepage. Build an automation that processes form submissions, uses AI to qualify the lead, sends data to an n8n data table. For high-score leads, it should also email them to offer to schedule a 15-min call in a free slot in my calendar.',
+			'Create an MNI form with a lead generation form I can embed on my website homepage. Build an automation that processes form submissions, uses AI to qualify the lead, sends data to an MNI data table. For high-score leads, it should also email them to offer to schedule a 15-min call in a free slot in my calendar.',
 	},
 	{
 		id: 'youtube-auto-chapters',
 		summary: 'YouTube video chapters',
 		prompt:
-			"Build an n8n workflow that automatically generates YouTube chapter timestamps from video captions. Use the n8n chat trigger for me to enter the URL of the YouTube video. Use the YouTube Get a video node to get the video title, description, and existing metadata. Use the YouTube Captions API to download the transcript for the given video ID. Send the transcript to AI agent using Anthropic's Claude model. Prompt the model to identify topic shifts and return structured output in timestamp - chapter format. Append the generated chapter list to the existing video description. Use the YouTube Update a video node to update the video description. Respond back with the updates using the respond to chat node.",
+			"Build an MNI workflow that automatically generates YouTube chapter timestamps from video captions. Use the MNI chat trigger for me to enter the URL of the YouTube video. Use the YouTube Get a video node to get the video title, description, and existing metadata. Use the YouTube Captions API to download the transcript for the given video ID. Send the transcript to AI agent using Anthropic's Claude model. Prompt the model to identify topic shifts and return structured output in timestamp - chapter format. Append the generated chapter list to the existing video description. Use the YouTube Update a video node to update the video description. Respond back with the updates using the respond to chat node.",
 	},
 ];

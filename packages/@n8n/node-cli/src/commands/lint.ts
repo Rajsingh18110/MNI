@@ -99,7 +99,7 @@ ${picocolors.dim('Expected:')}
 ${picocolors.gray(expectedConfig)}
 
 To restore default config: ${enableCommand}
-To disable strict mode: set ${picocolors.yellow('"strict": false')} in ${picocolors.cyan('package.json')} under the ${picocolors.yellow('"n8n"')} section.`);
+To disable strict mode: set ${picocolors.yellow('"strict": false')} in ${picocolors.cyan('package.json')} under the ${picocolors.yellow('"MNI"')} section.`);
 				process.exit(1);
 			}
 		} catch (error: unknown) {
@@ -121,9 +121,9 @@ To create default config: ${enableCommand}`,
 		if (this.containsCloudOnlyErrors(eslintOutput)) {
 			const disableCommand = await suggestCloudSupportCommand('disable');
 
-			this.log(`${picocolors.yellow('⚠️  n8n Cloud compatibility issues detected')}
+			this.log(`${picocolors.yellow('⚠️  MNI cloud compatibility issues detected')}
 
-These lint failures prevent verification to n8n Cloud.
+These lint failures prevent verification to MNI cloud.
 
 To disable cloud compatibility checks:
   ${disableCommand}

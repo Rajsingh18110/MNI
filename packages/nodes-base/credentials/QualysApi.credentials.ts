@@ -35,7 +35,7 @@ export class QualysApi implements ICredentialType {
 			displayName: 'Requested With',
 			name: 'requestedWith',
 			type: 'string',
-			default: 'n8n application',
+			default: 'MNI application',
 			description: 'User description, like a user agent',
 		},
 	];

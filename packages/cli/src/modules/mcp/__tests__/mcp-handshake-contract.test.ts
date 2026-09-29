@@ -14,7 +14,7 @@ import { MCP_DISCOVER_METHOD } from '../mcp.constants';
 // answering a rejected handshake with a 2xx, this fails instead of silently
 // turning failed connections back into successful ones.
 const buildHandler = () =>
-	createMcpHandler(async () => new McpServer({ name: 'n8n MCP Server', version: '1.0.0' }), {
+	createMcpHandler(async () => new McpServer({ name: 'MNI MCP Server', version: '1.0.0' }), {
 		legacy: 'stateless',
 	});
 

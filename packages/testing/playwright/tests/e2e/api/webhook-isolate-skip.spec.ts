@@ -169,7 +169,7 @@ test.describe(
 			expect(v1Acquires).toBeGreaterThan(staticAcquires);
 		});
 
-		test('rejects an unauthenticated n8n user-auth request without the webhook-phase isolate', async ({
+		test('rejects an unauthenticated MNI user-auth request without the webhook-phase isolate', async ({
 			api,
 		}) => {
 			// The deepest skip-path case: `authentication: 'n8nOAuth2'` is a static
@@ -182,7 +182,7 @@ test.describe(
 			});
 
 			expect(response.status()).toBe(401);
-			expect(response.headers()['www-authenticate']).toContain('n8n Webhook');
+			expect(response.headers()['www-authenticate']).toContain('MNI Webhook');
 		});
 	},
 );

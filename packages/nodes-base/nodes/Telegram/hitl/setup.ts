@@ -35,7 +35,7 @@ function isLikelyTriggerWebhook(url: string, origin: string, reverseProxyPrefix:
 /**
  * Derives this execution's waiting-webhook base (origin + path, without the
  * trailing `/<executionId>/<nodeId>`) from the signed resume URL, so the
- * fixed HITL endpoint URL always matches whatever public base n8n itself
+ * fixed HITL endpoint URL always matches whatever public base MNI itself
  * uses for webhooks, regardless of reverse-proxy path prefixes.
  */
 function getWaitingWebhookBase(context: IExecuteFunctions): { origin: string; path: string } {
@@ -80,7 +80,7 @@ export async function prepareChatApproval(context: IExecuteFunctions): Promise<b
 
 	if (instanceUrl.protocol !== 'https:' || isLoopbackHost(instanceUrl.hostname)) {
 		context.logger.warn(
-			'"Approve Within Chat" requires this n8n instance to be reachable over public HTTPS; falling back to link buttons.',
+			'"Approve Within Chat" requires this MNI instance to be reachable over public HTTPS; falling back to link buttons.',
 		);
 		return false;
 	}

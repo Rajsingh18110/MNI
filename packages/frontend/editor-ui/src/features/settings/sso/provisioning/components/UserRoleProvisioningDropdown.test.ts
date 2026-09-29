@@ -87,7 +87,7 @@ describe('UserRoleProvisioningDropdown — default condition row', () => {
 		expect(screen.getByTestId('default-condition-role-select')).toBeInTheDocument();
 	});
 
-	it('does not render the default condition row when mapping rules inside n8n', () => {
+	it('does not render the default condition row when mapping rules inside MNI', () => {
 		renderDropdown({ roleAssignment: 'instance', mappingMethod: 'rules_in_n8n' });
 
 		expect(screen.queryByTestId('default-condition-row')).toBeNull();

@@ -306,7 +306,7 @@ describe('AST Interpreter', () => {
 		});
 	});
 
-	describe('interpretSDKCode - n8n runtime variables in templates', () => {
+	describe('interpretSDKCode - MNI runtime variables in templates', () => {
 		let sdkFunctions: SDKFunctions;
 
 		beforeEach(() => {
@@ -1350,7 +1350,7 @@ describe('AST Interpreter', () => {
 	});
 
 	describe('expr(placeholder(...)) round-trip', () => {
-		it('prepends = to the placeholder marker so it parses as an n8n expression', () => {
+		it('prepends = to the placeholder marker so it parses as an MNI expression', () => {
 			const funcs: SDKFunctions = {
 				...createMockSDKFunctions(),
 				expr,

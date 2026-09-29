@@ -32,7 +32,7 @@ export function toGraphBaseUrl(graphApiBaseUrl: unknown): string {
 
 /**
  * Graph nests its real error one level under `error.error` on a raw HTTP client error, or
- * under `context.data.error` once n8n has already wrapped the failure in a NodeApiError
+ * under `context.data.error` once MNI has already wrapped the failure in a NodeApiError
  * (the case for every request that goes through `httpRequestWithAuthentication`). Unwraps
  * whichever is present while preserving the outer status code.
  */

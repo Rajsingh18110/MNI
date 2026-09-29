@@ -1,6 +1,6 @@
-name: 'Prepare n8n Docker (reusable)'
+name: 'Prepare MNI Docker (reusable)'
 
-# Reusable workflow that ensures the n8n + runners CI test images for the
+# Reusable workflow that ensures the MNI + runners CI test images for the
 # current commit SHA are present in the GHA cache. Cache-aware: if another
 # job in the same run already populated `n8n-docker-image-<sha>`, this
 # becomes a no-op.

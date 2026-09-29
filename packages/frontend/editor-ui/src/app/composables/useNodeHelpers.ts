@@ -427,7 +427,7 @@ export function useNodeHelpers() {
 	// plus the resolver kind, which selects the message.
 	//
 	// A trigger is "blocking" when it can't establish the identity the effective resolver
-	// keys on: the system resolver (self-connect) needs the n8n user identity, a custom
+	// keys on: the system resolver (self-connect) needs the MNI user identity, a custom
 	// resolver needs an external identity extracted from the trigger data.
 	//
 	// The reachable set is the forward main closure of each blocking trigger plus the AI
@@ -519,7 +519,7 @@ export function useNodeHelpers() {
 			// Trigger incompatibility blocks this node regardless of who connected the
 			// credential, so warn on it here too. A merely-not-yet-connected credential is
 			// surfaced via the callout/banner. The message depends on the resolver: the
-			// system resolver needs a trigger that establishes the n8n user identity, a
+			// system resolver needs a trigger that establishes the MNI user identity, a
 			// custom resolver needs one that extracts an external identity.
 			const messageKey: BaseTextKey = warning.isSystemResolver
 				? 'nodeIssues.credentials.privateRequiresIdentityTriggerWithFormAndWebhook'

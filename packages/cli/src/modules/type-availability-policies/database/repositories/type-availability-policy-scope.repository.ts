@@ -26,7 +26,7 @@ export class TypeAvailabilityPolicyScopeRepository extends BaseRepository<TypeAv
 	}
 
 	/**
-	 * `SELECT ... FOR UPDATE`, Postgres only. n8n's SQLite driver has one write connection
+	 * `SELECT ... FOR UPDATE`, Postgres only. MNI's SQLite driver has one write connection
 	 * behind a mutex and opens every transaction with `BEGIN IMMEDIATE`, so a write
 	 * transaction already runs to completion before the next one starts — every read inside
 	 * it sees the previous writer's commit, and no row lock is needed.

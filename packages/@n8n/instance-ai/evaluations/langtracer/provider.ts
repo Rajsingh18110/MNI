@@ -34,7 +34,7 @@ const REMOVED_SEED_KEYS: Record<string, string> = {
 	seedThread: 'now `seed: { mode: "replay", threadId, … }`',
 };
 
-/** Normalize + validate an `export_suite` payload into n8n test cases (same
+/** Normalize + validate an `export_suite` payload into MNI test cases (same
  *  filter/exclude/tier selection as the disk loader); failures are aggregated so
  *  a drift surfaces every bad case at once. */
 export function casesFromExportedFiles(

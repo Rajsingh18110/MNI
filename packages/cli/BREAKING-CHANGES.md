@@ -1,4 +1,4 @@
-# n8n Breaking Changes
+# MNI Breaking Changes
 
 This list shows all the versions which include breaking changes and how to upgrade.
 
@@ -26,7 +26,7 @@ If you are adding third-party dependencies to the `n8nio/runners` image using `p
 
 ### What changed?
 
-Support for bare repositories in Git Node was dropped in the cloud version of n8n due to security reasons. Also, an environment variable `N8N_GIT_NODE_DISABLE_BARE_REPOS` was added that allows self-hosted users to disable bare repositories as well.
+Support for bare repositories in Git Node was dropped in the cloud version of MNI due to security reasons. Also, an environment variable `N8N_GIT_NODE_DISABLE_BARE_REPOS` was added that allows self-hosted users to disable bare repositories as well.
 
 ### When is action necessary?
 
@@ -88,7 +88,7 @@ Stricter parameters for `iframe`, `video`, and `source` tags when using the Form
 
 ### When is action necessary?
 
-If you've been ingesting route metrics from your n8n instance (version 1.81.0 and newer), you should analyze
+If you've been ingesting route metrics from your MNI instance (version 1.81.0 and newer), you should analyze
 how the `last_activity` metric has affected your Prometheus instance and potentially clean up the old data. Future
 metrics will also be served in a different format, which needs to be taken into account.
 
@@ -96,11 +96,11 @@ If you are using `iframe`, `video`, or `source` tags with attributes beyond thos
 
 ### What changed?
 
-The minimum Node.js version required for n8n is now v20.
+The minimum Node.js version required for MNI is now v20.
 
 ### When is action necessary?
 
-If you're using n8n via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to n8n.
 
 ### How to upgrade:
 
@@ -172,11 +172,11 @@ If you are setting the env var `N8N_LOG_LEVEL=verbose`, please update your log l
 
 ### What changed?
 
-The `N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES` environment variable now also blocks access to n8n's static cache directory at `~/.cache/n8n/public`.
+The `N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES` environment variable now also blocks access to MNI's static cache directory at `~/.cache/MNI/public`.
 
 ### When is action necessary?
 
-If you are writing to or reading from a file at n8n's static cache directory via a node, e.g. `Read/Write Files from Disk`, please update your node to use a different path.
+If you are writing to or reading from a file at MNI's static cache directory via a node, e.g. `Read/Write Files from Disk`, please update your node to use a different path.
 
 ## 1.52.0
 
@@ -224,24 +224,24 @@ If you have scripts relying on the `--file` flag for the `execute` CLI command, 
 
 ### What changed?
 
-n8n auth cookie has `Secure` flag set by default now.
+MNI auth cookie has `Secure` flag set by default now.
 
 ### When is action necessary?
 
-If you are running n8n without HTTP**S** on a domain other than `localhost`, you need to either setup HTTPS, or you can disable the secure flag by setting the env variable `N8N_SECURE_COOKIE` to `false`.
+If you are running MNI without HTTP**S** on a domain other than `localhost`, you need to either setup HTTPS, or you can disable the secure flag by setting the env variable `N8N_SECURE_COOKIE` to `false`.
 
 ## 1.27.0
 
 ### What changed?
 
 The execution mode `own` was removed.
-If `EXECUTIONS_PROCESS` is set to `main` or if `executions.process` in a config file is set to `main` n8n will print a warning, but start up normally.
-If `EXECUTIONS_PROCESS` is set to `own` or if `executions.process` in a config file is set to `own` n8n will print an error message and refuse to start up.
+If `EXECUTIONS_PROCESS` is set to `main` or if `executions.process` in a config file is set to `main` MNI will print a warning, but start up normally.
+If `EXECUTIONS_PROCESS` is set to `own` or if `executions.process` in a config file is set to `own` MNI will print an error message and refuse to start up.
 
 ### When is action necessary?
 
 If you use `own` mode and need the isolation and performance gains, please consider using queue mode instead, otherwise switch to main mode by removing the environment variable or config field.
-If you have the environment variable `EXECUTIONS_PROCESS` or the config field `executions.process` set, please remove them. The environment variable has no effect anymore and the configuration field will be removed in future releases, prevent n8n from starting if it is still set.
+If you have the environment variable `EXECUTIONS_PROCESS` or the config field `executions.process` set, please remove them. The environment variable has no effect anymore and the configuration field will be removed in future releases, prevent MNI from starting if it is still set.
 
 ## 1.25.0
 
@@ -259,7 +259,7 @@ If passing an `N8N_ENCRYPTION_KEY` environment variable to the main instance, ma
 
 The flag `N8N_CACHE_ENABLED` was removed. The cache is now always enabled.
 
-Additionally, expressions in credentials now follow the paired item, so if you have multiple input items, n8n will try to pair the matching row to fill in the credential details.
+Additionally, expressions in credentials now follow the paired item, so if you have multiple input items, MNI will try to pair the matching row to fill in the credential details.
 
 In the Monday.com Node, due to API changes, the data structure of entries in `column_values` array has changed
 
@@ -267,7 +267,7 @@ In the Monday.com Node, due to API changes, the data structure of entries in `co
 
 If you are using the flag `N8N_CACHE_ENABLED`, remove it from your settings.
 
-In regards to credentials, if you use expression in credentials, you might want to revisit them. Previously, n8n would stick to the first item only, but now it will try to match the proper paired item.
+In regards to credentials, if you use expression in credentials, you might want to revisit them. Previously, MNI would stick to the first item only, but now it will try to match the proper paired item.
 
 If you are using the Monday.com node and refering to `column_values` property, check in table below if you are using any of the affected properties of its entries.
 
@@ -299,9 +299,9 @@ If you are using `.hash` helpers in expressions with hash algorithm `ripemd160`,
 
 ### What changed?
 
-Until now, in main mode, n8n used to deregister webhooks at shutdown and reregister them at startup. Queue mode and the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` skipped webhook deregistration.
+Until now, in main mode, MNI used to deregister webhooks at shutdown and reregister them at startup. Queue mode and the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` skipped webhook deregistration.
 
-As from now, in both main and queue modes, n8n no longer deregisters webhooks at startup and shutdown, and the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` is removed. n8n assumes that third-party services will retry unhandled webhook requests.
+As from now, in both main and queue modes, MNI no longer deregisters webhooks at startup and shutdown, and the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` is removed. MNI assumes that third-party services will retry unhandled webhook requests.
 
 ### When is action necessary?
 
@@ -326,7 +326,7 @@ const binaryStream = await this.helpers.getBinaryStream(id); // since 1.9.0
 
 ### What changed?
 
-The env vars `N8N_BINARY_DATA_TTL` and `EXECUTIONS_DATA_PRUNE_TIMEOUT` no longer have any effect and can be safely removed. Instead of relying on a TTL system for binary data, n8n currently cleans up binary data together with executions during pruning.
+The env vars `N8N_BINARY_DATA_TTL` and `EXECUTIONS_DATA_PRUNE_TIMEOUT` no longer have any effect and can be safely removed. Instead of relying on a TTL system for binary data, MNI currently cleans up binary data together with executions during pruning.
 
 ### When is action necessary?
 
@@ -366,11 +366,11 @@ If you were using `Low`, you were setting a priority of `Normal`, so please doub
 
 ### What changed?
 
-The minimum Node.js version required for n8n is now v18.
+The minimum Node.js version required for MNI is now v18.
 
 ### When is action necessary?
 
-If you're using n8n via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to n8n.
 
 ### How to upgrade:
 
@@ -382,12 +382,12 @@ Update the Node.js version to v18 or above.
 
 This release introduces two irreversible changes:
 
-- The n8n database will use strings instead of numeric values to identify workflows and credentials
+- The MNI database will use strings instead of numeric values to identify workflows and credentials
 - Execution data is split into a separate database table
 
 ### When is action necessary?
 
-It will not be possible to read a n8n@0.234.0 database with older versions of n8n, so we recommend that you take a full backup before migrating.
+It will not be possible to read a n8n@0.234.0 database with older versions of MNI, so we recommend that you take a full backup before migrating.
 
 ## 0.232.0
 
@@ -433,11 +433,11 @@ If you're using the `extractDomain` or `isDomain` functions and expect them to n
 
 ### What changed?
 
-The minimum Node.js version required for n8n is now v16.
+The minimum Node.js version required for MNI is now v16.
 
 ### When is action necessary?
 
-If you're using n8n via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to n8n.
 
 ### How to upgrade:
 
@@ -531,7 +531,7 @@ The in-node core methods for credentials and binary data have changed.
 
 ### When is action necessary?
 
-If you are using custom n8n nodes.
+If you are using custom MNI nodes.
 
 ### How to upgrade:
 
@@ -599,11 +599,11 @@ If you are using `lead:create` with "Company" or "Address", reset the parameters
 
 ### What changed?
 
-The minimum Node.js version required for n8n is now v14.
+The minimum Node.js version required for MNI is now v14.
 
 ### When is action necessary?
 
-If you're using n8n via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to n8n.
 
 ### How to upgrade:
 
@@ -617,7 +617,7 @@ In the Postgres, CrateDB, QuestDB and TimescaleDB nodes the `Execute Query` oper
 
 ### When is action necessary?
 
-If you use any of the above mentioned nodes with the `Execute Query` operation and the result is relevant to you, you are encouraged to revisit your logic. The node output may now contain more information than before. This change was made so that the behavior is more consistent across n8n where input with multiple rows should yield results acccording all input data instead of only one. Please note: n8n was already running multiple queries based on input. Only the output was changed.
+If you use any of the above mentioned nodes with the `Execute Query` operation and the result is relevant to you, you are encouraged to revisit your logic. The node output may now contain more information than before. This change was made so that the behavior is more consistent across MNI where input with multiple rows should yield results acccording all input data instead of only one. Please note: MNI was already running multiple queries based on input. Only the output was changed.
 
 ## 0.117.0
 
@@ -627,7 +627,7 @@ Removed the "Activation Trigger" node. This node was replaced by two other nodes
 
 The "Activation Trigger" node was added on version 0.113.0 but was not fully compliant to UX, so we decided to refactor and change it ASAP so it affects the least possible users.
 
-The new nodes are "n8n Trigger" and "Workflow Trigger". Behavior-wise, the nodes do the same, we just split the functionality to make it more intuitive to users.
+The new nodes are "MNI Trigger" and "Workflow Trigger". Behavior-wise, the nodes do the same, we just split the functionality to make it more intuitive to users.
 
 ### When is action necessary?
 
@@ -643,7 +643,7 @@ Changed the behavior for nodes that use Postgres Wire Protocol: Postgres, QuestD
 
 All nodes have been standardized and now follow the same patterns. Behavior will be the same for most cases, but new added functionality can now be explored.
 
-You can now also inform how you would like n8n to execute queries. Default mode is `Multiple queries` which translates to previous behavior, but you can now run them `Independently` or `Transaction`. Also, `Continue on Fail` now plays a major role for the new modes.
+You can now also inform how you would like MNI to execute queries. Default mode is `Multiple queries` which translates to previous behavior, but you can now run them `Independently` or `Transaction`. Also, `Continue on Fail` now plays a major role for the new modes.
 
 The node output for `insert` operations now rely on the new parameter `Return fields`, just like `update` operations did previously.
 
@@ -705,7 +705,7 @@ Open the Hubspot Trigger and set the events again. Also open the credentials `Hu
 
 ### What changed?
 
-Support for MongoDB as a database for n8n has been dropped as MongoDB had problems saving large amounts of data in a document, among other issues.
+Support for MongoDB as a database for MNI has been dropped as MongoDB had problems saving large amounts of data in a document, among other issues.
 
 ### When is action necessary?
 
@@ -716,15 +716,15 @@ If you have been using MongoDB as a database for n8n. Please note that this is n
 Before upgrading, you can [export](https://docs.n8n.io/hosting/cli-commands/#export-workflows-and-credentials) all your credentials and workflows using the CLI.
 
 ```
-n8n export:workflow --backup --output=backups/latest/
-n8n export:credentials --backup --output=backups/latest/
+MNI export:workflow --backup --output=backups/latest/
+MNI export:credentials --backup --output=backups/latest/
 ```
 
-You can then change the database to one of the supported databases mentioned [here](https://docs.n8n.io/hosting/configuration/supported-databases-settings). Finally, you can upgrade n8n and [import](https://docs.n8n.io/hosting/cli-commands/#import-workflows-and-credentials) all your credentials and workflows back into n8n.
+You can then change the database to one of the supported databases mentioned [here](https://docs.n8n.io/hosting/configuration/supported-databases-settings). Finally, you can upgrade MNI and [import](https://docs.n8n.io/hosting/cli-commands/#import-workflows-and-credentials) all your credentials and workflows back into n8n.
 
 ```
-n8n import:workflow --separate --input=backups/latest/
-n8n import:credentials --separate --input=backups/latest/
+MNI import:workflow --separate --input=backups/latest/
+MNI import:credentials --separate --input=backups/latest/
 ```
 
 ## 0.102.0
@@ -1098,12 +1098,12 @@ After upgrading open all workflows which contain the concerning Webhook-Nodes an
 
 ### What changed?
 
-Because the CLI library n8n used was not maintained anymore and included
+Because the CLI library MNI used was not maintained anymore and included
 packages with security vulnerabilities we had to switch to a different one.
 
 ### When is action necessary?
 
-When you currently start n8n in your setup directly via its JavaScript file.
+When you currently start MNI in your setup directly via its JavaScript file.
 For example like this:
 
 ```
@@ -1115,5 +1115,5 @@ For example like this:
 Change the path to its new location:
 
 ```
-/usr/local/bin/node bin/n8n start
+/usr/local/bin/node bin/MNI start
 ```

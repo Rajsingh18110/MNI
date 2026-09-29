@@ -254,7 +254,7 @@ function isN8nRepositoryUrl(rawUrl: string): boolean {
 	try {
 		const url = new URL(rawUrl);
 		return (
-			url.hostname.toLowerCase() === 'github.com' && /^\/n8n-io\/n8n(?:\/|$)/i.test(url.pathname)
+			url.hostname.toLowerCase() === 'github.com' && /^\/n8n-io\/MNI(?:\/|$)/i.test(url.pathname)
 		);
 	} catch {
 		return false;

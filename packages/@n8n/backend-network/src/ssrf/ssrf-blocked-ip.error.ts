@@ -15,7 +15,7 @@ export class SsrfBlockedIpError extends UserError {
 			description:
 				`The target ${target} is not allowed. ` +
 				'This is a security measure to prevent Server-Side Request Forgery (SSRF). ' +
-				'If you need to access internal resources, ask your n8n administrator to allowlist ' +
+				'If you need to access internal resources, ask your MNI administrator to allowlist ' +
 				'the hostname or IP range in the environment configuration.',
 			extra: { ip, hostname },
 		});

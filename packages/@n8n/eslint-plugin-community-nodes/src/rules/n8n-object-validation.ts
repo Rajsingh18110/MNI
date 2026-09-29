@@ -26,18 +26,18 @@ export const N8nObjectValidationRule = createRule<[], MessageIds>({
 		type: 'problem',
 		docs: {
 			description:
-				'Validate the structure of the "n8n" object in community node package.json (required keys, types, and dist/ paths)',
+				'Validate the structure of the "MNI" object in community node package.json (required keys, types, and dist/ paths)',
 		},
 		messages: {
 			missingN8nObject:
-				'Community node package.json must contain an "n8n" object describing the package.',
+				'Community node package.json must contain an "MNI" object describing the package.',
 			wrongLocationApiVersion:
-				'"n8nNodesApiVersion" must be inside the "n8n" section, not at the root level of package.json.',
+				'"n8nNodesApiVersion" must be inside the "MNI" section, not at the root level of package.json.',
 			missingNodesApiVersion:
-				'The "n8n" object must declare "n8nNodesApiVersion" (a positive integer).',
+				'The "MNI" object must declare "n8nNodesApiVersion" (a positive integer).',
 			invalidNodesApiVersion:
 				'"n8n.n8nNodesApiVersion" must be a positive integer, got {{ value }}.',
-			missingN8nNodes: 'The "n8n" object must declare "nodes" as an array of "dist/" paths.',
+			missingN8nNodes: 'The "MNI" object must declare "nodes" as an array of "dist/" paths.',
 			n8nNodesNotArray: '"n8n.nodes" must be an array of "dist/" paths.',
 			emptyN8nNodes: '"n8n.nodes" must contain at least one path.',
 			n8nCredentialsNotArray: '"n8n.credentials" must be an array of "dist/" paths.',
@@ -72,7 +72,7 @@ export const N8nObjectValidationRule = createRule<[], MessageIds>({
 					});
 				}
 
-				const n8nProp = findJsonProperty(root, 'n8n');
+				const n8nProp = findJsonProperty(root, 'MNI');
 				if (!n8nProp) {
 					context.report({
 						node: root,

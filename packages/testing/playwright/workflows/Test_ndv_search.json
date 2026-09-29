@@ -14,7 +14,7 @@
 				"operation": "getAllPeople"
 			},
 			"id": "4737af43-e49b-4c92-b76f-32605c047114",
-			"name": "Customer Datastore (n8n training)",
+			"name": "Customer Datastore (MNI training)",
 			"type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
 			"typeVersion": 1,
 			"position": [1020, 380]
@@ -35,7 +35,7 @@
 		}
 	],
 	"pinData": {
-		"Customer Datastore (n8n training)": [
+		"Customer Datastore (MNI training)": [
 			{
 				"json": {
 					"id": "23423532",
@@ -93,14 +93,14 @@
 			"main": [
 				[
 					{
-						"node": "Customer Datastore (n8n training)",
+						"node": "Customer Datastore (MNI training)",
 						"type": "main",
 						"index": 0
 					}
 				]
 			]
 		},
-		"Customer Datastore (n8n training)": {
+		"Customer Datastore (MNI training)": {
 			"main": [
 				[
 					{

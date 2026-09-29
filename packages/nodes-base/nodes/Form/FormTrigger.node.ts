@@ -7,12 +7,12 @@ import { FormTriggerV2 } from './v2/FormTriggerV2.node';
 export class FormTrigger extends VersionedNodeType {
 	constructor() {
 		const baseDescription: INodeTypeBaseDescription = {
-			displayName: 'n8n Form Trigger',
+			displayName: 'MNI Form Trigger',
 			name: 'formTrigger',
 			icon: 'node:form-trigger',
 			iconColor: 'teal',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in MNI and pass their responses to the workflow',
 			defaultVersion: 2.6,
 		};
 

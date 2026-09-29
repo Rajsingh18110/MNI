@@ -45,7 +45,7 @@ export interface ExecutionStatusOptions {
 	/**
 	 * Static endpoint auth token for unauthenticated requests.
 	 * Sent as X-Authorization header.
-	 * Required when the caller has no n8n session (e.g. external users).
+	 * Required when the caller has no MNI session (e.g. external users).
 	 */
 	endpointToken?: string;
 }
@@ -91,7 +91,7 @@ export class DynamicCredentialApiHelper {
 	 *
 	 * Returns the execution status, asserting a 2xx response.
 	 * For external (unauthenticated) callers, provide both `bearerToken` and `endpointToken`.
-	 * For authenticated n8n users, the session cookie is used automatically.
+	 * For authenticated MNI users, the session cookie is used automatically.
 	 */
 	async getExecutionStatus(
 		workflowId: string,
@@ -143,8 +143,8 @@ export class DynamicCredentialApiHelper {
 	 * Starts the OAuth2 authorization flow for a credential.
 	 * Returns the OAuth2 provider authorization URL (e.g. Keycloak login page).
 	 * The caller should then follow this URL to complete the login and obtain the
-	 * n8n callback URL (with code + state), then GET the callback URL using the
-	 * n8n API context to store the tokens.
+	 * MNI callback URL (with code + state), then GET the callback URL using the
+	 * MNI API context to store the tokens.
 	 */
 	async getAuthorizationUrl(
 		credentialId: string,
@@ -204,8 +204,8 @@ export class DynamicCredentialApiHelper {
 	}
 
 	/**
-	 * GETs the n8n OAuth callback URL returned by the provider's authorization
-	 * flow, completing the connect: n8n exchanges the code and stores the user's
+	 * GETs the MNI OAuth callback URL returned by the provider's authorization
+	 * flow, completing the connect: MNI exchanges the code and stores the user's
 	 * tokens for the resolver-keyed credential.
 	 *
 	 * The callback URL is absolute (the provider redirects to the instance host);
@@ -223,10 +223,10 @@ export class DynamicCredentialApiHelper {
 	}
 
 	/**
-	 * Resolves the provider authorization URL from a gate-issued n8n authorize link
+	 * Resolves the provider authorization URL from a gate-issued MNI authorize link
 	 * (`/rest/credentials/:id/authorize?token=…`).
 	 *
-	 * The link is bound to an n8n user, so it must be opened with that user's session:
+	 * The link is bound to an MNI user, so it must be opened with that user's session:
 	 * we GET its path+query via the authenticated api.request context, which resolves the
 	 * intent and 302-redirects to the provider. `maxRedirects: 0` captures that redirect so
 	 * the caller can drive the provider flow directly.

@@ -14,7 +14,7 @@ export function splitAndTrim(str: string | string[]) {
 
 // The "Analyzers" field is a multiOptions parameter, so it normally resolves to
 // an array of "analyzerId::cortexId" entries. When its value comes from an
-// expression wrapped in surrounding text/whitespace, n8n switches to string
+// expression wrapped in surrounding text/whitespace, MNI switches to string
 // interpolation and the array is coerced to a comma-joined string. Normalize
 // both shapes so the operation does not throw "(...).map is not a function".
 export function parseAnalyzers(value: string | string[]) {

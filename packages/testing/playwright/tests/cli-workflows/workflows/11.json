@@ -77,7 +77,7 @@
 				"resource": "memberTag",
 				"list": "eb9ad4be19",
 				"email": "nodeqa@n8n.io",
-				"tags": ["n8n"],
+				"tags": ["MNI"],
 				"options": {}
 			},
 			"name": "Mailchimp4",
@@ -99,7 +99,7 @@
 				"operation": "delete",
 				"list": "eb9ad4be19",
 				"email": "nodeqa@n8n.io",
-				"tags": ["n8n"],
+				"tags": ["MNI"],
 				"options": {}
 			},
 			"name": "Mailchimp5",

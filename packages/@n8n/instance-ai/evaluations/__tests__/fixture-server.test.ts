@@ -105,7 +105,7 @@ describe('provider fixtures', () => {
 		expect(fixture?.manifest.verify).toEqual(row.verify);
 	});
 
-	// n8n serializes every credential type's own test request, so the manifest's
+	// MNI serializes every credential type's own test request, so the manifest's
 	// transcription of it can be CHECKED rather than trusted. Without this the
 	// table above only pins what someone typed on the day, and an upstream change
 	// to `test.request` silently downgrades the value check to "unverifiable".
@@ -264,7 +264,7 @@ describe('fixture server served to a real browser', () => {
 		expect(await page.locator('h1').textContent()).toContain('API keys');
 
 		await page.getByRole('button', { name: 'Create Key' }).click();
-		await page.getByLabel('Name', { exact: true }).fill('n8n');
+		await page.getByLabel('Name', { exact: true }).fill('MNI');
 		// Submit is "Add" on the real console — "Create Key" only opens the dialog.
 		const add = page.getByRole('dialog').getByRole('button', { name: 'Add' });
 		// The real console disables Add until Expires is set (NODE-5755): a name
@@ -368,7 +368,7 @@ describe('openai fixture served to a real browser', () => {
 		expect(await dialog.getByRole('button', { name: 'Create secret key' }).isDisabled()).toBe(
 			false,
 		);
-		await page.getByPlaceholder('My Test Key').fill('n8n');
+		await page.getByPlaceholder('My Test Key').fill('MNI');
 		await dialog.getByRole('button', { name: 'Create secret key' }).click();
 
 		await page.waitForFunction("document.getElementById('key-value')?.value !== ''");
@@ -465,7 +465,7 @@ describe('gemini fixture served to a real browser', () => {
 	it('hands out exactly the ledger secret, as TEXT rather than a field', async () => {
 		const page = await openConsole();
 		await page.getByRole('button', { name: 'Create API key' }).click();
-		await page.getByLabel('Name your key').fill('n8n');
+		await page.getByLabel('Name your key').fill('MNI');
 		await page.getByRole('button', { name: 'Create key', exact: true }).click();
 
 		await page.waitForFunction("document.getElementById('key-value')?.textContent !== ''");
@@ -504,7 +504,7 @@ describe('gemini fixture served to a real browser', () => {
 		// Mint on this page first — see the openai equivalent.
 		const page = await openConsole();
 		await page.getByRole('button', { name: 'Create API key' }).click();
-		await page.getByLabel('Name your key').fill('n8n');
+		await page.getByLabel('Name your key').fill('MNI');
 		await page.getByRole('button', { name: 'Create key', exact: true }).click();
 		await page.waitForFunction("document.getElementById('key-value')?.textContent !== ''");
 
@@ -531,7 +531,7 @@ describe('slack fixture served to a real browser', () => {
 		await expect(page.locator('#manifest-input').click({ timeout: 1_000 })).rejects.toThrow(
 			/Timeout|intercepts pointer events/,
 		);
-		await page.locator('#manifest-input').fill('{"display_information":{"name":"n8n"}}');
+		await page.locator('#manifest-input').fill('{"display_information":{"name":"MNI"}}');
 		expect(await page.locator('#manifest-input').inputValue()).toContain('display_information');
 		await page.close();
 	});
@@ -545,7 +545,7 @@ describe('slack fixture served to a real browser', () => {
 		await page.getByRole('button', { name: 'Create New App' }).click();
 		await page.getByRole('button', { name: 'From a manifest' }).click();
 
-		const manifest = '{\n    "display_information": {\n        "name": "n8n"\n    }\n}';
+		const manifest = '{\n    "display_information": {\n        "name": "MNI"\n    }\n}';
 		await page.locator('#manifest-input').pressSequentially(manifest);
 		expect(await page.locator('#manifest-input').inputValue()).not.toBe(manifest);
 
@@ -561,7 +561,7 @@ describe('slack fixture served to a real browser', () => {
 		await page.getByRole('button', { name: 'Create New App' }).click();
 		await page.getByRole('button', { name: 'From a manifest' }).click();
 
-		const manifest = '{\n    "display_information": {\n        "name": "n8n"\n    }\n}';
+		const manifest = '{\n    "display_information": {\n        "name": "MNI"\n    }\n}';
 		await page.locator('#manifest-input').fill(manifest);
 		expect(await page.locator('#manifest-input').inputValue()).toBe(manifest);
 
@@ -704,7 +704,7 @@ describe('providerFixtureManifestSchema', () => {
 	});
 });
 
-// The listener n8n's credential test talks to. Getting this wrong silently
+// The listener MNI's credential test talks to. Getting this wrong silently
 // discards the strongest of the three deterministic checks.
 describe('the provider stand-in accepts each provider shape', () => {
 	const SECRET = 'sk-test-0123456789abcdef';

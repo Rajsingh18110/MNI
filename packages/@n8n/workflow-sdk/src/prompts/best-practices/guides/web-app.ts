@@ -11,7 +11,7 @@ export class WebAppBestPractices implements BestPracticesDocument {
 
 Webhook (responseNode) → Code node (build HTML) → respondToWebhook (Content-Type: text/html).
 
-Serve a single-page application from an n8n webhook. The workflow fetches data, then renders a full HTML page with a client-side framework (Alpine.js + Tailwind via CDN is the default stack — no build step needed).
+Serve a single-page application from an MNI webhook. The workflow fetches data, then renders a full HTML page with a client-side framework (Alpine.js + Tailwind via CDN is the default stack — no build step needed).
 
 ## File-based HTML (REQUIRED for pages > ~50 lines)
 

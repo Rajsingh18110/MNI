@@ -209,7 +209,7 @@ function mapResult(result?: NodeOutput) {
 			'A connected tool returned an engine request to its parent agent, which is only supported for top-level node execution.',
 			{
 				description:
-					'If you are seeing this from a nested AgentToolV3 sub-agent, update n8n — recent versions resolve sub-agent engine requests inline.',
+					'If you are seeing this from a nested AgentToolV3 sub-agent, update MNI — recent versions resolve sub-agent engine requests inline.',
 			},
 		);
 	} else if (containsBinaryData(result) && !containsDataThatIsUsefulToTheAgent(result)) {
@@ -496,7 +496,7 @@ export async function getInputConnectionData(
 						connectedNodeType,
 						runExecutionData,
 					),
-					// Pass a context so n8n expressions in the user-provided
+					// Pass a context so MNI expressions in the user-provided
 					// `toolDescription` are evaluated against the upstream input
 					// data (matches the behaviour of nodes that supply their own
 					// tool, such as `toolWorkflow`).

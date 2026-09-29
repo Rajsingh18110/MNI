@@ -385,7 +385,7 @@ describe('AgentConfigService', () => {
 					...baseConfig,
 					description: 'Legacy description',
 					credential: 'stored-cred',
-					memory: { enabled: true, storage: 'n8n' },
+					memory: { enabled: true, storage: 'MNI' },
 					tools: [{ type: 'custom', id: 'tool-1' }],
 				} as unknown as AgentJsonConfig,
 				integrations: [{ type: 'slack', credentialId: 'slack-cred' }],
@@ -405,7 +405,7 @@ describe('AgentConfigService', () => {
 				expect.objectContaining({
 					instructions: 'Updated instructions',
 					credential: 'stored-cred',
-					memory: { enabled: true, storage: 'n8n' },
+					memory: { enabled: true, storage: 'MNI' },
 					tools: [{ type: 'custom', id: 'tool-1' }],
 				}),
 			);
@@ -424,7 +424,7 @@ describe('AgentConfigService', () => {
 			expect(runtimeCacheService.clearRuntimes).toHaveBeenCalledWith(agentId);
 		});
 
-		it('persists n8n Chat as a draft channel', async () => {
+		it('persists MNI Chat as a draft channel', async () => {
 			const { service, agentRepository } = makeService();
 			const agent = makeAgent({ integrations: [{ type: 'slack', credentialId: 'slack-cred' }] });
 			agentRepository.findByIdAndProjectId.mockResolvedValue(agent);
@@ -502,7 +502,7 @@ describe('AgentConfigService', () => {
 				schema: {
 					...baseConfig,
 					credential: 'stored-cred',
-					memory: { enabled: true, storage: 'n8n' },
+					memory: { enabled: true, storage: 'MNI' },
 					tools: [{ type: 'custom', id: 'tool-1' }],
 				} as unknown as AgentJsonConfig,
 			});
@@ -512,7 +512,7 @@ describe('AgentConfigService', () => {
 			const result = await service.updateConfig(
 				agentId,
 				projectId,
-				{ ...baseConfig, memory: { enabled: false, storage: 'n8n' } },
+				{ ...baseConfig, memory: { enabled: false, storage: 'MNI' } },
 				user,
 				{ clearOmittedOptionalFields: true, ...fencedOn(agent) },
 			);
@@ -520,7 +520,7 @@ describe('AgentConfigService', () => {
 			const saved = agentRepository.saveDraftFenced.mock.calls.at(-1)?.[0] as Agent;
 			// Provided fields keep their submitted value; omitted ones are removed
 			// instead of retaining the stored value.
-			expect(saved.schema?.memory).toEqual({ enabled: false, storage: 'n8n' });
+			expect(saved.schema?.memory).toEqual({ enabled: false, storage: 'MNI' });
 			expect(saved.schema).not.toHaveProperty('credential');
 			expect(saved.schema).not.toHaveProperty('tools');
 			expect(result.config).not.toHaveProperty('credential');
@@ -674,7 +674,7 @@ describe('AgentConfigService', () => {
 					credential: 'unknown-top-level',
 					memory: {
 						enabled: true,
-						storage: 'n8n',
+						storage: 'MNI',
 						observationalMemory: {
 							observerModel: { model: 'openai/gpt-4o', credential: 'unknown-nested' },
 							reflectorModel: { model: 'openai/gpt-4o', credential: 'known-cred' },

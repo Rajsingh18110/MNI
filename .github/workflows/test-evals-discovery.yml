@@ -57,7 +57,7 @@ jobs:
 
       - name: Export Node Types
         run: |
-          ./packages/cli/bin/n8n export:nodes --output ./packages/@n8n/ai-workflow-builder.ee/evaluations/nodes.json
+          ./packages/cli/bin/MNI export:nodes --output ./packages/@n8n/ai-workflow-builder.ee/evaluations/nodes.json
 
       - name: Run Discovery Evals
         id: eval

@@ -18,9 +18,9 @@ test.describe(
 	},
 	() => {
 		test(
-			'treatment user opens a workflow card into the n8n Assistant',
+			'treatment user opens a workflow card into the MNI Assistant',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n, api, setupRequirements }) => {
+			async ({ MNI, api, setupRequirements }) => {
 				await setupRequirements(requirements);
 				const workflow = await api.workflows.createWorkflow({
 					name: `Open by default ${nanoid()}`,
@@ -38,7 +38,7 @@ test.describe(
 		test(
 			'workflow deep-link creates a thread and redirects to it',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n, api }) => {
+			async ({ MNI, api }) => {
 				const workflow = await api.workflows.createWorkflow({
 					name: `Open by default ${nanoid()}`,
 					nodes: [],
@@ -57,7 +57,7 @@ test.describe(
 		test(
 			'malformed workflow id lands on the assistant empty view',
 			{ annotation: [{ type: SKIP_PROXY_SETUP_ANNOTATION }] },
-			async ({ n8n }) => {
+			async ({ MNI }) => {
 				await n8n.navigate.toInstanceAi();
 
 				await n8n.page.goto('/assistant/new?workflowId=%25%25');

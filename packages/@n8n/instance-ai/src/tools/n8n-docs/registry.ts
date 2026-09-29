@@ -220,7 +220,7 @@ async function fetchRegistry(abortSignal?: AbortSignal): Promise<ParsedN8nDocsRe
 	});
 	const registry = parseN8nDocsRegistry(response.text, fetchedAt);
 	if (registry.entries.length === 0) {
-		throw new Error('n8n docs registry was empty');
+		throw new Error('MNI docs registry was empty');
 	}
 	registryCache = registry;
 	registryFetchedAtMs = Date.now();
@@ -248,14 +248,14 @@ export async function getN8nDocsRegistry(
 			throw error;
 		}
 		const message = getErrorMessage(error);
-		context.logger?.warn('Failed to fetch n8n docs registry', { error: message });
+		context.logger?.warn('Failed to fetch MNI docs registry', { error: message });
 		if (registryCache) {
 			return {
 				registry: registryCache,
-				hint: `Using cached n8n docs registry because refresh failed: ${message}`,
+				hint: `Using cached MNI docs registry because refresh failed: ${message}`,
 			};
 		}
-		return { error: message, hint: `Could not load n8n docs registry: ${message}` };
+		return { error: message, hint: `Could not load MNI docs registry: ${message}` };
 	} finally {
 		if (!abortSignal) {
 			registryFetchPromise = undefined;

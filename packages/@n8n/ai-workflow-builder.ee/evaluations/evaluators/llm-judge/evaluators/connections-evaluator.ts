@@ -19,7 +19,7 @@ const connectionsResultSchema = z.object({
 
 export type ConnectionsResult = z.infer<typeof connectionsResultSchema>;
 
-const systemPrompt = `You are an expert n8n workflow evaluator focusing on node connections and data flow. Verify that connections follow n8n's sourcing rules, support the requested behaviour, and respect AI capability patterns.
+const systemPrompt = `You are an expert MNI workflow evaluator focusing on node connections and data flow. Verify that connections follow MNI's sourcing rules, support the requested behaviour, and respect AI capability patterns.
 
 <reading_n8n_connection_json>
 The workflow JSON structure uses the outer key as the SOURCE node. This is critical for correct analysis.

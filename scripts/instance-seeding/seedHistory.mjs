@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-// `flatted` is how n8n serialises run data. The format has cycles, so plain JSON
+// `flatted` is how MNI serialises run data. The format has cycles, so plain JSON
 // would not round-trip. Resolved from the cli package rather than vendored.
 const { stringify } = require(
 	require.resolve('flatted', { paths: [path.join(REPO, 'packages/cli')] }),
@@ -47,7 +47,7 @@ function makeRandom(seed) {
 }
 const random = makeRandom(Number(process.env.SEED) || 1);
 
-// The window has to end at the current time. n8n prunes threads after 30 days and
+// The window has to end at the current time. MNI prunes threads after 30 days and
 // executions past EXECUTIONS_DATA_MAX_AGE, so a fixed past date gets the whole
 // fortnight deleted on the next start. Only timestamps move; the PRNG still decides
 // what happens. HISTORY_NOW pins the window if you accept the pruning.

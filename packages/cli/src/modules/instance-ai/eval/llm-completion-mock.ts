@@ -19,7 +19,7 @@ import {
 	discoverStructuredOutputSchema,
 } from './structured-output-conformance';
 
-const COMPLETION_MOCK_PROMPT = `You simulate ONE response from the LLM that powers an AI agent inside an n8n workflow under evaluation. The agent runs a tool-calling loop and calls you once per turn. Decide the agent's NEXT step and submit it via submit_agent_step.
+const COMPLETION_MOCK_PROMPT = `You simulate ONE response from the LLM that powers an AI agent inside an MNI workflow under evaluation. The agent runs a tool-calling loop and calls you once per turn. Decide the agent's NEXT step and submit it via submit_agent_step.
 
 This is a MOCK whose only purpose is to exercise the workflow's wiring and data flow — NOT to produce a realistic deliverable. Keep everything MINIMAL and schema-valid. Never write long documents, full HTML pages, or essays; a short stub string that satisfies the schema is ideal.
 

@@ -2,7 +2,7 @@ import { gt, valid } from 'semver';
 
 import { N8N_VERSION } from '@/constants';
 
-/** The payload of every system task job: the n8n version that last provisioned it. */
+/** The payload of every system task job: the MNI version that last provisioned it. */
 export type SystemTaskJobPayload = { n8nVersion: string };
 
 export function versionStamp(): SystemTaskJobPayload {

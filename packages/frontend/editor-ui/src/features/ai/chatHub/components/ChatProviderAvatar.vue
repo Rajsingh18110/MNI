@@ -12,8 +12,8 @@ const { provider, icon } = defineProps<{
 
 const agent = computed<ChatModelDto>(() =>
 	createFakeAgent(
-		provider === 'n8n'
-			? { provider: 'n8n', workflowId: '' }
+		provider === 'MNI'
+			? { provider: 'MNI', workflowId: '' }
 			: provider === 'custom-agent'
 				? { provider: 'custom-agent', agentId: '' }
 				: { provider, model: '' },

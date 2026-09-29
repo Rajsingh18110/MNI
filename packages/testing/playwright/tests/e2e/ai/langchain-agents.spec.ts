@@ -15,7 +15,7 @@ import type { n8nPage } from '../../../pages/n8nPage';
 
 // Helper functions for common operations
 async function addOpenAILanguageModelWithCredentials(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	parentNode: string,
 	options: { exactMatch?: boolean; closeNDV?: boolean } = { exactMatch: true, closeNDV: false },
 ) {
@@ -32,7 +32,7 @@ async function addOpenAILanguageModelWithCredentials(
 	await n8n.ndv.clickBackToCanvasButton();
 }
 
-async function executeChatAndWaitForResponse(n8n: n8nPage, message: string) {
+async function executeChatAndWaitForResponse(MNI: n8nPage, message: string) {
 	await n8n.canvas.logsPanel.sendManualChatMessage(message);
 	// No execution-success toast is shown for a chat run started on an unsaved
 	// workflow, so the bot reply is the completion signal. The first message also
@@ -40,7 +40,7 @@ async function executeChatAndWaitForResponse(n8n: n8nPage, message: string) {
 	await expect(n8n.canvas.getManualChatLatestBotMessage()).toBeVisible({ timeout: 15000 });
 }
 
-async function verifyChatMessages(n8n: n8nPage, expectedCount: number, inputMessage?: string) {
+async function verifyChatMessages(MNI: n8nPage, expectedCount: number, inputMessage?: string) {
 	const messages = n8n.canvas.getManualChatMessages();
 	await expect(messages).toHaveCount(expectedCount);
 	if (inputMessage) {
@@ -50,7 +50,7 @@ async function verifyChatMessages(n8n: n8nPage, expectedCount: number, inputMess
 	return messages;
 }
 
-async function verifyLogsPanelEntries(n8n: n8nPage, expectedEntries: string[]) {
+async function verifyLogsPanelEntries(MNI: n8nPage, expectedEntries: string[]) {
 	await expect(n8n.canvas.logsPanel.getLogEntries().first()).toBeVisible();
 	await expect(n8n.canvas.logsPanel.getLogEntries()).toHaveCount(expectedEntries.length);
 	for (let i = 0; i < expectedEntries.length; i++) {
@@ -58,7 +58,7 @@ async function verifyLogsPanelEntries(n8n: n8nPage, expectedEntries: string[]) {
 	}
 }
 
-async function setupBasicAgentWorkflow(n8n: n8nPage, additionalNodes: string[] = []) {
+async function setupBasicAgentWorkflow(MNI: n8nPage, additionalNodes: string[] = []) {
 	await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
 	// Add additional nodes if specified
@@ -69,7 +69,7 @@ async function setupBasicAgentWorkflow(n8n: n8nPage, additionalNodes: string[] =
 	}
 
 	// Always add OpenAI Language Model
-	await addOpenAILanguageModelWithCredentials(n8n, AGENT_NODE_NAME);
+	await addOpenAILanguageModelWithCredentials(MNI, AGENT_NODE_NAME);
 }
 
 test.use({ capability: 'proxy' });
@@ -79,14 +79,14 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'AI' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n, services }) => {
+		test.beforeEach(async ({ MNI, services }) => {
 			await services.proxy.clearAllExpectations();
 			await services.proxy.loadExpectations('langchain');
 			await n8n.canvas.openNewWorkflow();
 		});
 
 		test.describe('Workflow Execution Behavior', () => {
-			test('should not open chat modal', async ({ n8n }) => {
+			test('should not open chat modal', async ({ MNI }) => {
 				await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: true });
 
 				await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
@@ -102,7 +102,7 @@ test.describe(
 				await expect(n8n.canvas.getManualChatModal()).toBeHidden();
 			});
 
-			test('should remove test workflow button', async ({ n8n }) => {
+			test('should remove test workflow button', async ({ MNI }) => {
 				await n8n.canvas.addNode(SCHEDULE_TRIGGER_NODE_NAME, { closeNDV: true });
 
 				await n8n.canvas.addNode(EDIT_FIELDS_SET_NODE_NAME, { closeNDV: true });
@@ -122,7 +122,7 @@ test.describe(
 		});
 
 		test.describe('Node Connection and Configuration', () => {
-			test('should add nodes to all Agent node input types', async ({ n8n }) => {
+			test('should add nodes to all Agent node input types', async ({ MNI }) => {
 				const agentSubNodes = [
 					AI_LANGUAGE_MODEL_OPENAI_CHAT_MODEL_NODE_NAME,
 					AI_MEMORY_REDIS_CHAT_NODE_NAME,
@@ -166,7 +166,7 @@ test.describe(
 				await expect(n8n.canvas.getCanvasNodes()).toHaveCount(2 + agentSubNodes.length); // Chat Trigger + Agent + 4 inputs
 			});
 
-			test('should add multiple tool nodes to Agent node tool input type', async ({ n8n }) => {
+			test('should add multiple tool nodes to Agent node tool input type', async ({ MNI }) => {
 				await n8n.canvas.addNode(AGENT_NODE_NAME, { closeNDV: true });
 
 				const tools = [
@@ -192,27 +192,27 @@ test.describe(
 		});
 
 		test.describe('Chat Execution and Interaction', () => {
-			test('should be able to open and execute Agent node', async ({ n8n }) => {
-				await setupBasicAgentWorkflow(n8n);
+			test('should be able to open and execute Agent node', async ({ MNI }) => {
+				await setupBasicAgentWorkflow(MNI);
 
 				const inputMessage = 'Hello!';
 				await n8n.canvas.clickManualChatButton();
-				await executeChatAndWaitForResponse(n8n, inputMessage);
+				await executeChatAndWaitForResponse(MNI, inputMessage);
 
 				// Verify chat message appears
 				await expect(n8n.canvas.getManualChatLatestBotMessage()).toBeVisible();
 			});
 			test('should add and use Manual Chat Trigger node together with Agent node', async ({
-				n8n,
+				MNI,
 			}) => {
-				await setupBasicAgentWorkflow(n8n);
+				await setupBasicAgentWorkflow(MNI);
 
 				const inputMessage = 'Hello!';
 				await n8n.canvas.clickManualChatButton();
-				await executeChatAndWaitForResponse(n8n, inputMessage);
+				await executeChatAndWaitForResponse(MNI, inputMessage);
 
-				await verifyChatMessages(n8n, 2, inputMessage);
-				await verifyLogsPanelEntries(n8n, [
+				await verifyChatMessages(MNI, 2, inputMessage);
+				await verifyLogsPanelEntries(MNI, [
 					'When chat message received',
 					'AI Agent',
 					'OpenAI Chat Model',
@@ -224,7 +224,7 @@ test.describe(
 			});
 		});
 
-		test('should keep the same session when switching tabs', async ({ n8n }) => {
+		test('should keep the same session when switching tabs', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_chat_partial_execution.json');
 			await n8n.canvas.clickZoomToFitButton();
 

@@ -12,7 +12,7 @@ export const schema = {
 		 * @deprecated
 		 */
 		isInstanceOwnerSetUp: {
-			// n8n loads this setting from SettingsRepository (DB) on startup
+			// MNI loads this setting from SettingsRepository (DB) on startup
 			doc: "Whether the instance owner's account has been set up",
 			format: Boolean,
 			default: false,

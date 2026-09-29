@@ -48,7 +48,7 @@ export function buildLegacyAgentOptions(requestObject: IRequestOptions): AgentOp
 /**
  * This function is a temporary implementation that translates all http requests
  * done via the request library to axios directly.
- * We are not using n8n's interface as it would an unnecessary step,
+ * We are not using MNI's interface as it would an unnecessary step,
  * considering the `request` helper has been be deprecated and should be removed.
  * @deprecated This is only used by legacy request helpers, that are also deprecated
  */

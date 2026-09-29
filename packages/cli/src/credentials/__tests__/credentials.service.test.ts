@@ -1676,7 +1676,7 @@ describe('CredentialsService', () => {
 	});
 
 	describe('updateInstanceCredential', () => {
-		const payload = { name: 'n8n Assistant model', type: 'openAiApi', data: { apiKey: 'new-key' } };
+		const payload = { name: 'MNI Assistant model', type: 'openAiApi', data: { apiKey: 'new-key' } };
 		const preparedCredential = {
 			name: payload.name,
 			type: payload.type,
@@ -1932,7 +1932,7 @@ describe('CredentialsService', () => {
 
 	describe('runInstanceCredentialHooks', () => {
 		it('returns the payload after the matching hook runs', async () => {
-			const encrypted = { name: 'n8n Assistant model', type: 'openAiApi', data: 'encrypted' };
+			const encrypted = { name: 'MNI Assistant model', type: 'openAiApi', data: 'encrypted' };
 			const createEncryptedDataSpy = vi
 				.spyOn(service, 'createEncryptedData')
 				.mockResolvedValue(encrypted as never);
@@ -1944,14 +1944,14 @@ describe('CredentialsService', () => {
 
 			const result = await service.runInstanceCredentialHooks('create', {
 				id: null,
-				name: 'n8n Assistant model',
+				name: 'MNI Assistant model',
 				type: 'openAiApi',
 				data: { apiKey: 'k' },
 			});
 
 			expect(createEncryptedDataSpy).toHaveBeenCalledWith({
 				id: null,
-				name: 'n8n Assistant model',
+				name: 'MNI Assistant model',
 				type: 'openAiApi',
 				data: { apiKey: 'k' },
 			});
@@ -1968,7 +1968,7 @@ describe('CredentialsService', () => {
 			credentialsTester.testCredentials.mockResolvedValue(testResult);
 			const payload = {
 				id: '',
-				name: 'n8n Assistant model',
+				name: 'MNI Assistant model',
 				type: 'openAiApi',
 				data: { apiKey: 'key' },
 			};
@@ -1987,7 +1987,7 @@ describe('CredentialsService', () => {
 			await expect(
 				service.testWithCredentials(memberUser, {
 					id: '',
-					name: 'n8n Assistant model',
+					name: 'MNI Assistant model',
 					type: 'openAiApi',
 					data: { apiKey: 'key' },
 				}),
@@ -4082,14 +4082,14 @@ describe('CredentialsService', () => {
 		describe('assigned instance credentials', () => {
 			const existingCredential = mockExistingCredential({
 				id: 'instance-credential-id',
-				name: 'n8n Assistant sandbox',
+				name: 'MNI Assistant sandbox',
 				type: 'httpHeaderAuth',
 				data: {},
 				usageScope: 'instance',
 				shared: [],
 			});
 			const payload = {
-				name: 'n8n Assistant sandbox',
+				name: 'MNI Assistant sandbox',
 				type: 'httpHeaderAuth',
 				data: { name: 'Authorization', value: 'secret' },
 			};
@@ -4105,14 +4105,14 @@ describe('CredentialsService', () => {
 				const validateSecondary = vi.fn();
 				const operationContext = {};
 				instanceCredentialAssignmentRepository.findCredentialUseIds.mockResolvedValue([
-					'instance-ai:sandbox:n8n',
+					'instance-ai:sandbox:MNI',
 					'other-feature:sandbox',
 				]);
 				instanceCredentialUseRegistry.get.mockImplementation((credentialUseId) => ({
 					id: credentialUseId,
 					credentialTypes: ['httpHeaderAuth'],
 					validate:
-						credentialUseId === 'instance-ai:sandbox:n8n' ? validatePrimary : validateSecondary,
+						credentialUseId === 'instance-ai:sandbox:MNI' ? validatePrimary : validateSecondary,
 				}));
 
 				await service.prepareUpdateData(ownerUser, payload, existingCredential, {
@@ -4133,10 +4133,10 @@ describe('CredentialsService', () => {
 
 			it('propagates per-use validation failures', async () => {
 				instanceCredentialAssignmentRepository.findCredentialUseIds.mockResolvedValue([
-					'instance-ai:sandbox:n8n',
+					'instance-ai:sandbox:MNI',
 				]);
 				instanceCredentialUseRegistry.get.mockReturnValue({
-					id: 'instance-ai:sandbox:n8n',
+					id: 'instance-ai:sandbox:MNI',
 					credentialTypes: ['httpHeaderAuth'],
 					validate: () => {
 						throw new Error('The credential\'s header name must be "x-api-key"');
@@ -4157,10 +4157,10 @@ describe('CredentialsService', () => {
 
 			it('fails closed when an assigned use is no longer registered', async () => {
 				instanceCredentialAssignmentRepository.findCredentialUseIds.mockResolvedValue([
-					'instance-ai:sandbox:n8n',
+					'instance-ai:sandbox:MNI',
 				]);
 				instanceCredentialUseRegistry.get.mockImplementation(() => {
-					throw new Error('Unknown instance credential use "instance-ai:sandbox:n8n"');
+					throw new Error('Unknown instance credential use "instance-ai:sandbox:MNI"');
 				});
 
 				await expect(

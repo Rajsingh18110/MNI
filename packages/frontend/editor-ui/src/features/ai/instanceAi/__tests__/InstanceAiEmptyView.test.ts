@@ -490,11 +490,11 @@ describe('InstanceAiEmptyView', () => {
 	});
 
 	it('resets the browser tab title left behind by the previous thread', () => {
-		document.title = 'Previous thread - n8n';
+		document.title = 'Previous thread - MNI';
 
 		renderView();
 
-		expect(document.title).toBe('n8n Assistant - n8n');
+		expect(document.title).toBe('MNI Assistant - MNI');
 	});
 
 	it('passes the fixed suggestions to the empty-state composer', () => {

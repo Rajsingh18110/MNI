@@ -97,7 +97,7 @@ describe('SubAgentSourceResolver', () => {
 		});
 	});
 
-	it('resolves a saved n8n agent version', async () => {
+	it('resolves a saved MNI agent version', async () => {
 		agentRepository.findByIdAndProjectId.mockResolvedValue(makeAgent());
 		agentHistoryRepository.findByVersionAndAgentId.mockResolvedValue(makeAgentHistory());
 
@@ -220,7 +220,7 @@ describe('SubAgentSourceResolver', () => {
 		});
 	});
 
-	it('rejects missing or inaccessible n8n agents', async () => {
+	it('rejects missing or inaccessible MNI agents', async () => {
 		agentRepository.findByIdAndProjectId.mockResolvedValue(null);
 
 		await expect(resolver.resolveForRuntime({ agentId }, { projectId })).rejects.toThrow(

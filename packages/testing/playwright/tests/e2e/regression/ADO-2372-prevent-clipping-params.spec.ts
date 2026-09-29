@@ -6,7 +6,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test('should show last parameters and open at scroll top of parameters', async ({ n8n }) => {
+		test('should show last parameters and open at scroll top of parameters', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test-workflow-with-long-parameters.json');
 
 			await n8n.canvas.openNode('Schedule Trigger');
@@ -58,7 +58,7 @@ test.describe(
 			await expect(n8n.ndv.getInlineExpressionEditorInput().nth(1)).not.toBeInViewport();
 		});
 
-		test('NODE-1272 ensure expressions scrolled to top, not middle', async ({ n8n }) => {
+		test('NODE-1272 ensure expressions scrolled to top, not middle', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test-workflow-with-long-parameters.json');
 
 			await n8n.canvas.openNode('With long expression');

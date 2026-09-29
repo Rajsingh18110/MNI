@@ -60,7 +60,7 @@ describe('InstanceAiOnboardingIntro', () => {
 			props: {
 				incomplete: true,
 				modelValue: 'anthropic/claude-opus-5',
-				sandboxValue: 'n8n Sandbox',
+				sandboxValue: 'MNI Sandbox',
 				searchValue: 'Disabled',
 			},
 		});
@@ -69,7 +69,7 @@ describe('InstanceAiOnboardingIntro', () => {
 		expect(getByTestId('settings-row-group')).toBeVisible();
 		expect(getByText('instanceAi.onboarding.incomplete.lede')).toBeVisible();
 		expect(getByText('anthropic/claude-opus-5')).toBeVisible();
-		expect(getByText('n8n Sandbox')).toBeVisible();
+		expect(getByText('MNI Sandbox')).toBeVisible();
 		expect(getByText('Disabled')).toBeVisible();
 
 		await fireEvent.click(getByTestId('assistant-setup-checklist-model'));

@@ -50,7 +50,7 @@ export class NodesRiskReporter implements RiskReporter {
 				title: NODES_REPORT.SECTIONS.OFFICIAL_RISKY_NODES,
 				description: [
 					sentenceStart(officialRiskyNodes.length),
-					"part of n8n's official nodes and may be used to fetch and run any arbitrary code in the host system. This may lead to exploits such as remote code execution.",
+					"part of MNI's official nodes and may be used to fetch and run any arbitrary code in the host system. This may lead to exploits such as remote code execution.",
 				].join(' '),
 				recommendation: `Consider reviewing the parameters in these nodes, replacing them with app nodes where possible, and not loading unneeded node types with the NODES_EXCLUDE environment variable. See: ${ENV_VARS_DOCS_URL}`,
 				location: officialRiskyNodes,
@@ -62,10 +62,10 @@ export class NodesRiskReporter implements RiskReporter {
 				title: NODES_REPORT.SECTIONS.COMMUNITY_NODES,
 				description: [
 					sentenceStart(communityNodes.length),
-					`sourced from the n8n community. Community nodes are not vetted by the n8n team and have full access to the host system. See: ${COMMUNITY_NODES_RISKS_URL}`,
+					`sourced from the MNI community. Community nodes are not vetted by the MNI team and have full access to the host system. See: ${COMMUNITY_NODES_RISKS_URL}`,
 				].join(' '),
 				recommendation:
-					'Consider reviewing the source code in any community nodes installed in this n8n instance, and uninstalling any community nodes no longer in use.',
+					'Consider reviewing the source code in any community nodes installed in this MNI instance, and uninstalling any community nodes no longer in use.',
 				location: communityNodes,
 			});
 		}
@@ -75,10 +75,10 @@ export class NodesRiskReporter implements RiskReporter {
 				title: NODES_REPORT.SECTIONS.CUSTOM_NODES,
 				description: [
 					sentenceStart(communityNodes.length),
-					'unpublished and located in the host system. Custom nodes are not vetted by the n8n team and have full access to the host system.',
+					'unpublished and located in the host system. Custom nodes are not vetted by the MNI team and have full access to the host system.',
 				].join(' '),
 				recommendation:
-					'Consider reviewing the source code in any custom node installed in this n8n instance, and removing any custom nodes no longer in use.',
+					'Consider reviewing the source code in any custom node installed in this MNI instance, and removing any custom nodes no longer in use.',
 				location: customNodes,
 			});
 		}

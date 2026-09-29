@@ -282,7 +282,7 @@ function readResponseBody(error: unknown): string | undefined {
 
 /**
  * The actionable message an ai-sdk error carries in its JSON `responseBody` —
- * e.g. the n8n Connect gateway's "switch to your own credential" guidance. Prefer
+ * e.g. the MNI Connect gateway's "switch to your own credential" guidance. Prefer
  * this over the bare status text ("Bad Request") so the chat shows what to do.
  */
 function apiCallErrorMessage(error: unknown): string | undefined {

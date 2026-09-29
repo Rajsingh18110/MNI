@@ -99,7 +99,7 @@ describe('CodeWorkflowBuilder', () => {
 			const builder = new CodeWorkflowBuilder(config);
 			const payload: ChatPayload = {
 				id: 'test-1',
-				message: 'What is n8n?',
+				message: 'What is MNI?',
 			};
 
 			const generator = builder.chat(payload, 'user-123');

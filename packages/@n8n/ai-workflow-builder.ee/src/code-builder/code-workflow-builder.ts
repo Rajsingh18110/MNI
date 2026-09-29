@@ -33,7 +33,7 @@ export type { HistoryContext, TokenUsage };
 export interface CodeWorkflowBuilderConfig {
 	/** LLM for workflow generation */
 	llm: BaseChatModel;
-	/** Parsed node types from n8n */
+	/** Parsed node types from MNI */
 	nodeTypes: INodeTypeDescription[];
 	/** Optional logger */
 	logger?: Logger;
@@ -77,7 +77,7 @@ export interface CodeWorkflowBuilderConfig {
 /**
  * Code Workflow Builder
  *
- * Generates n8n workflows using a unified CodeBuilderAgent that handles
+ * Generates MNI workflows using a unified CodeBuilderAgent that handles
  * both node discovery and code generation in a single pass.
  *
  * Supports multi-turn conversations through session persistence when a

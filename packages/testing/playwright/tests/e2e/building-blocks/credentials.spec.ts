@@ -8,7 +8,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test('composer: createFromList creates credential', async ({ n8n }) => {
+		test('composer: createFromList creates credential', async ({ MNI }) => {
 			const projectId = await n8n.start.fromNewProject();
 			const credentialName = `credential-${nanoid()}`;
 			await n8n.navigate.toCredentials(projectId);
@@ -24,7 +24,7 @@ test.describe(
 			await expect(n8n.credentials.cards.getCredential(credentialName)).toBeVisible();
 		});
 
-		test('composer: createFromNdv creates credential for node', async ({ n8n }) => {
+		test('composer: createFromNdv creates credential for node', async ({ MNI }) => {
 			const name = `credential-${nanoid()}`;
 			await n8n.start.fromNewProjectBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
@@ -34,7 +34,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialSelect()).toHaveValue(name);
 		});
 
-		test('composer: createFromApi creates credential (then NDV picks it up)', async ({ n8n }) => {
+		test('composer: createFromApi creates credential (then NDV picks it up)', async ({ MNI }) => {
 			const name = `credential-${nanoid()}`;
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 			await n8n.credentialsComposer.createFromApi({
@@ -50,7 +50,7 @@ test.describe(
 		});
 
 		test('create a new credential from empty state using the credential chooser list', async ({
-			n8n,
+			MNI,
 		}) => {
 			const projectId = await n8n.start.fromNewProject();
 			await n8n.navigate.toCredentials(projectId);
@@ -61,7 +61,7 @@ test.describe(
 			await expect(n8n.credentials.cards.getCredentials()).toHaveCount(1);
 		});
 
-		test('create a new credential from the NDV', async ({ n8n }) => {
+		test('create a new credential from the NDV', async ({ MNI }) => {
 			const uniqueCredentialName = `credential-${nanoid()}`;
 			await n8n.start.fromNewProjectBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
@@ -77,7 +77,7 @@ test.describe(
 			await expect(n8n.ndv.getCredentialSelect()).toHaveValue(uniqueCredentialName);
 		});
 
-		test('add an existing credential from the NDV', async ({ n8n }) => {
+		test('add an existing credential from the NDV', async ({ MNI }) => {
 			const uniqueCredentialName = `credential-${nanoid()}`;
 			const projectId = await n8n.start.fromNewProjectBlankCanvas();
 

@@ -1239,7 +1239,7 @@ describe('publishAsSystem()', () => {
 			where: { versionId },
 		});
 		expect(versionRow.workflowId).toBe(workflow.id);
-		expect(versionRow.authors).toBe('n8n');
+		expect(versionRow.authors).toBe('MNI');
 		expect(versionRow.nodes).toEqual(nodes);
 		expect(versionRow.nodeGroups).toEqual(nodeGroups);
 

@@ -51,7 +51,7 @@ test.describe(
 	() => {
 		test(`Admin opens /projects/:id/executions ×${ITERATIONS} | ${WORKFLOWS_IN_PROJECT} wf | ${PRESEEDED_EXECUTIONS} execs`, async ({
 			services,
-			n8n,
+			MNI,
 		}, testInfo) => {
 			const ctx = await setupAdminViewsExecutionsList(n8n.api);
 			await inflateProjectWorkflows(
@@ -75,7 +75,7 @@ test.describe(
 						name: 'ui',
 						run: () =>
 							loopUiScenario({
-								n8n: adminN8n,
+								MNI: adminN8n,
 								scenario: (page) => viewExecutionsListAsAdmin(page, ctx),
 								repeats: ITERATIONS,
 							}),

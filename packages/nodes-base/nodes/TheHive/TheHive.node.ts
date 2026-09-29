@@ -437,7 +437,7 @@ export class TheHive implements INodeType {
 
 					/*
 						Execute responder feature differs from Cortex execute responder
-						if it doesn't interfere with n8n standards then we should keep it
+						if it doesn't interfere with MNI standards then we should keep it
 					*/
 
 					if (operation === 'executeResponder') {

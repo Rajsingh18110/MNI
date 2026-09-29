@@ -271,7 +271,7 @@ export class McpOAuthApiHelper {
 
 		const client = await this.registerClientOrFail(
 			{
-				client_name: options?.clientName ?? 'n8n e2e OAuth client',
+				client_name: options?.clientName ?? 'MNI e2e OAuth client',
 				redirect_uris: [redirectUri],
 				grant_types: ['authorization_code', 'refresh_token'],
 				token_endpoint_auth_method: 'none',

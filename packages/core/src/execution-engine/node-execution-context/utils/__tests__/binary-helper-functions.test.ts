@@ -41,7 +41,7 @@ const bufferToIncomingMessage = (buffer: Buffer, encoding = 'utf-8') => {
 };
 
 describe('test binary data helper methods', () => {
-	const temporaryDir = mkdtempSync(join(tmpdir(), 'n8n'));
+	const temporaryDir = mkdtempSync(join(tmpdir(), 'MNI'));
 	const binaryDataConfig = mock<BinaryDataConfig>({
 		mode: 'default',
 		availableModes: ['default', 'filesystem'],

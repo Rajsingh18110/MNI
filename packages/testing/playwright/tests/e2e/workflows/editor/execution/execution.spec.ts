@@ -25,7 +25,7 @@ const TIMEOUTS = {
  * Helper function to assert node execution states (success/running indicators)
  */
 async function assertNodeExecutionStates(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	checks: Array<{
 		nodeName: string;
 		success?: 'visible' | 'hidden';
@@ -50,7 +50,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test('should test manual workflow @engine:v2', async ({ n8n }) => {
+		test('should test manual workflow @engine:v2', async ({ MNI }) => {
 			const { workflowId } = await n8n.start.fromImportedWorkflow('Manual_wait_set.json');
 
 			await expect(n8n.canvas.getExecuteWorkflowButton()).toBeVisible();
@@ -66,13 +66,13 @@ test.describe(
 			await expect(n8n.canvas.stopExecutionButton()).toBeVisible();
 			await expect(n8n.canvas.stopExecutionWaitingForWebhookButton()).toBeHidden();
 
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'Manual', success: 'visible' },
 				{ nodeName: 'Wait', success: 'hidden', running: 'visible' },
 				{ nodeName: 'Set', success: 'hidden' },
 			]);
 
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'Manual', success: 'visible' },
 				{ nodeName: 'Wait', success: 'visible' },
 				{ nodeName: 'Set', success: 'visible' },
@@ -94,7 +94,7 @@ test.describe(
 		});
 
 		// Failing/flaky in multi-main
-		test.fixme('should test manual workflow stop', async ({ n8n }) => {
+		test.fixme('should test manual workflow stop', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Manual_wait_set.json');
 
 			await expect(n8n.canvas.getExecuteWorkflowButton()).toBeVisible();
@@ -110,7 +110,7 @@ test.describe(
 			await expect(n8n.canvas.stopExecutionButton()).toBeVisible();
 			await expect(n8n.canvas.stopExecutionWaitingForWebhookButton()).toBeHidden();
 
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'Manual', success: 'visible' },
 				{ nodeName: 'Wait', running: 'visible' },
 			]);
@@ -119,7 +119,7 @@ test.describe(
 
 			await n8n.notifications.waitForNotificationAndClose(NOTIFICATIONS.EXECUTION_STOPPED);
 
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'Manual', success: 'visible' },
 				{ nodeName: 'Wait', running: 'hidden' },
 				{ nodeName: 'Set', success: 'hidden' },
@@ -130,7 +130,7 @@ test.describe(
 			await expect(n8n.canvas.clearExecutionDataButton()).toBeHidden();
 		});
 
-		test('should test webhook workflow', async ({ n8n, api }) => {
+		test('should test webhook workflow', async ({ MNI, api }) => {
 			await n8n.start.fromImportedWorkflow('Webhook_wait_set.json');
 
 			await expect(n8n.canvas.getExecuteWorkflowButton()).toBeVisible();
@@ -156,7 +156,7 @@ test.describe(
 			const response = await api.webhooks.trigger(webhookUrl);
 			expect(response.status()).toBe(200);
 
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'Webhook', success: 'visible' },
 				{ nodeName: 'Wait', success: 'hidden', running: 'visible' },
 				{ nodeName: 'Set', success: 'hidden' },
@@ -165,7 +165,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeSuccessStatusIndicator('Wait')).toBeVisible({
 				timeout: TIMEOUTS.NODE_SUCCESS_WAIT,
 			});
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'Webhook', success: 'visible' },
 				{ nodeName: 'Wait', success: 'visible' },
 				{ nodeName: 'Set', success: 'visible' },
@@ -180,7 +180,7 @@ test.describe(
 			await expect(n8n.canvas.clearExecutionDataButton()).toBeHidden();
 		});
 
-		test('should execute workflow from specific trigger nodes independently', async ({ n8n }) => {
+		test('should execute workflow from specific trigger nodes independently', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Two_schedule_triggers.json');
 
 			await n8n.canvas.clickZoomToFitButton();
@@ -214,7 +214,7 @@ test.describe(
 		});
 
 		test.describe('execution preview', () => {
-			test('when deleting the last execution, it should show empty state', async ({ n8n }) => {
+			test('when deleting the last execution, it should show empty state', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.addInitialNodeToCanvas('Manual Trigger');
 				await n8n.canvas.clickExecuteWorkflowButton();
@@ -253,7 +253,7 @@ test.describe(
 			});
 		});
 
-		test('should send proper payload for node rerun', async ({ n8n }) => {
+		test('should send proper payload for node rerun', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Multiple_trigger_node_rerun.json');
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.canvas.clickExecuteWorkflowButton();
@@ -272,7 +272,7 @@ test.describe(
 			});
 		});
 
-		test('should send proper payload for manual node run', async ({ n8n }) => {
+		test('should send proper payload for manual node run', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Check_manual_node_run_for_pinned_and_rundata.json');
 			await n8n.canvas.clickZoomToFitButton();
 
@@ -300,7 +300,7 @@ test.describe(
 		});
 
 		test('should successfully execute partial executions with nodes attached to the second output', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('Test_Workflow_pairedItem_incomplete_manual_bug.json');
 			await n8n.canvas.clickZoomToFitButton();
@@ -319,7 +319,7 @@ test.describe(
 			await expect(n8n.notifications.getErrorNotifications()).toHaveCount(0);
 		});
 
-		test('should execute workflow partially up to the node that has issues', async ({ n8n }) => {
+		test('should execute workflow partially up to the node that has issues', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow(
 				'Test_workflow_partial_execution_with_missing_credentials.json',
 			);
@@ -336,7 +336,7 @@ test.describe(
 
 			await workflowRunPromise;
 
-			await assertNodeExecutionStates(n8n, [
+			await assertNodeExecutionStates(MNI, [
 				{ nodeName: 'DebugHelper', success: 'visible' },
 				{ nodeName: 'Filter', success: 'visible' },
 			]);
@@ -347,7 +347,7 @@ test.describe(
 		});
 
 		test('Paired items should be correctly mapped after passed through the merge node with more than two inputs', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromImportedWorkflow('merge_node_inputs_paired_items.json');
 

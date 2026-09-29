@@ -300,7 +300,7 @@ export class BackgroundTaskManager {
 
 		if (this.maxConcurrentTotal !== -1 && this.runningTaskCount() >= this.maxConcurrentTotal) {
 			options.onLimitReached?.(
-				`Cannot start background task: this n8n instance is at its limit of ${this.maxConcurrentTotal} concurrent tasks. Wait for existing tasks to complete.`,
+				`Cannot start background task: this MNI instance is at its limit of ${this.maxConcurrentTotal} concurrent tasks. Wait for existing tasks to complete.`,
 			);
 			return { status: 'limit-reached' };
 		}

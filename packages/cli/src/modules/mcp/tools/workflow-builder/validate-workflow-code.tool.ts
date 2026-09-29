@@ -18,7 +18,7 @@ const inputSchema = {
 		.string()
 		.max(MAX_WORKFLOW_CODE_LENGTH)
 		.describe(
-			`Full TypeScript/JavaScript workflow code using the n8n Workflow SDK. Must include the workflow export. Max ${MAX_WORKFLOW_CODE_LENGTH} characters.`,
+			`Full TypeScript/JavaScript workflow code using the MNI Workflow SDK. Must include the workflow export. Max ${MAX_WORKFLOW_CODE_LENGTH} characters.`,
 		),
 } satisfies z.ZodRawShape;
 
@@ -49,7 +49,7 @@ const outputSchema = {
 } satisfies z.ZodRawShape;
 
 /**
- * MCP tool that validates n8n Workflow SDK code.
+ * MCP tool that validates MNI Workflow SDK code.
  * Parses and validates the code, returning the workflow JSON if valid or errors if not.
  */
 export const createValidateWorkflowCodeTool = (
@@ -60,7 +60,7 @@ export const createValidateWorkflowCodeTool = (
 	name: CODE_BUILDER_VALIDATE_TOOL.toolName,
 	config: {
 		description:
-			'Validate n8n Workflow SDK code. Required before creating or updating workflows from code. If you have not already read get_workflow_sdk_reference, call that first; guessing SDK syntax commonly creates invalid workflows.',
+			'Validate MNI Workflow SDK code. Required before creating or updating workflows from code. If you have not already read get_workflow_sdk_reference, call that first; guessing SDK syntax commonly creates invalid workflows.',
 		inputSchema,
 		outputSchema,
 		annotations: {

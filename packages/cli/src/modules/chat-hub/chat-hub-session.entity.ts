@@ -78,7 +78,7 @@ export class ChatHubSession extends WithTimestamps {
 	credential?: Relation<CredentialsEntity> | null;
 
 	/*
-	 * Enum value of the LLM provider to use, e.g. 'openai', 'anthropic', 'google', 'n8n' (if applicable).
+	 * Enum value of the LLM provider to use, e.g. 'openai', 'anthropic', 'google', 'MNI' (if applicable).
 	 */
 	@Column({ type: 'varchar', length: 16, nullable: true })
 	provider: ChatHubProvider | null;
@@ -90,13 +90,13 @@ export class ChatHubSession extends WithTimestamps {
 	model: string | null;
 
 	/*
-	 * ID of the custom n8n agent workflow to use (if applicable)
+	 * ID of the custom MNI agent workflow to use (if applicable)
 	 */
 	@Column({ type: 'varchar', length: 36, nullable: true })
 	workflowId: string | null;
 
 	/**
-	 * Custom n8n agent workflow to use (if applicable)
+	 * Custom MNI agent workflow to use (if applicable)
 	 */
 	@ManyToOne('WorkflowEntity', { onDelete: 'SET NULL', nullable: true })
 	@JoinColumn({ name: 'workflowId' })
@@ -110,7 +110,7 @@ export class ChatHubSession extends WithTimestamps {
 	agentId: string | null;
 
 	/**
-	 * Custom n8n agent workflow to use (if applicable)
+	 * Custom MNI agent workflow to use (if applicable)
 	 */
 	@ManyToOne('ChatHubAgent', { onDelete: 'SET NULL', nullable: true })
 	@JoinColumn({ name: 'agentId' })
@@ -118,7 +118,7 @@ export class ChatHubSession extends WithTimestamps {
 
 	/**
 	 * Cached display name of the agent/model.
-	 * Used for all providers (LLM providers, custom agents, and n8n workflows).
+	 * Used for all providers (LLM providers, custom agents, and MNI workflows).
 	 */
 	@Column({ type: 'varchar', length: 128, nullable: true })
 	agentName: string | null;

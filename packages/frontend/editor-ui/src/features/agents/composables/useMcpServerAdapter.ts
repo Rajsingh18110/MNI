@@ -84,7 +84,7 @@ function resolveDefaultTimeout(nodeType: INodeTypeDescription): number | undefin
 }
 
 /**
- * Maps an MCP `authentication` option value to the n8n credential type name
+ * Maps an MCP `authentication` option value to the MNI credential type name
  * that the node registers under `node.credentials`. The two do not always
  * match: `bearerAuth` uses the `httpBearerAuth` credential type, etc.
  * OAuth2 variants use their own name as-is (e.g. `mcpOAuth2Api`).

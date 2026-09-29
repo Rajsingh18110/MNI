@@ -7,7 +7,7 @@
  *   node .github/scripts/post-qa-metrics-comment.mjs --metrics memory-heap-used-baseline --pr 27880 --dry-run
  *
  * Env:
- *   QA_METRICS_COMMENT_WEBHOOK_URL - n8n workflow webhook (required)
+ *   QA_METRICS_COMMENT_WEBHOOK_URL - MNI workflow webhook (required)
  *   QA_METRICS_WEBHOOK_USER/PASSWORD - Basic auth for webhook
  *   GITHUB_TOKEN - For posting comments (not needed with --dry-run)
  *   GITHUB_REF, GITHUB_REPOSITORY, GITHUB_SHA - Auto-set in CI

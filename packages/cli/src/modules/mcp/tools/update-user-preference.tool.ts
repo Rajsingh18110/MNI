@@ -43,7 +43,7 @@ const inputSchema = {
 		.enum(['user', 'project', 'instance'])
 		.optional()
 		.describe(
-			'Who the preference applies to after the change: `user` the caller in every project, `project` everyone in one project, `instance` everyone on this n8n instance. Leave it out to keep the current scope.',
+			'Who the preference applies to after the change: `user` the caller in every project, `project` everyone in one project, `instance` everyone on this MNI instance. Leave it out to keep the current scope.',
 		),
 	projectId: z
 		.string()
@@ -237,7 +237,7 @@ export const createUpdateUserPreferenceTool = (
 
 /** Who a preference applies to, in the words the client relays to the user. */
 function scopeInWords(scope: AiPreferenceScope): string {
-	if (scope === 'instance') return 'everyone on this n8n instance';
+	if (scope === 'instance') return 'everyone on this MNI instance';
 	if (scope === 'project') return 'everyone in the project';
 	return 'the user only, in every project';
 }

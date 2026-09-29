@@ -27,7 +27,7 @@ import { PyTaskRunnerProcess } from '@/task-runners/task-runner-process-py';
  * End-to-end cover for the premise the Code-node Python guidance rests on: that the
  * runner really does reject an import the deployment has not allowlisted. The hints
  * and the build-time check all assert this, and nothing else proves it — the runner's
- * own suite drives the runner directly, never through n8n (INS-1222).
+ * own suite drives the runner directly, never through MNI (INS-1222).
  *
  * Covers `N8N_RUNNERS_STDLIB_ALLOW` -> spawned runner env -> the runner permitting or
  * rejecting the import, so a change to the forwarding cannot pass unnoticed.
@@ -41,7 +41,7 @@ describe.skipIf(!venvPresent)('Python TaskRunner execution on internal mode', ()
 	const runnerConfig = Container.get(TaskRunnersConfig);
 	runnerConfig.mode = 'internal';
 	runnerConfig.port = 45679;
-	// n8n forwards these to the runner as it spawns. The whole point of the test is
+	// MNI forwards these to the runner as it spawns. The whole point of the test is
 	// that the runner then enforces exactly this.
 	process.env.N8N_RUNNERS_STDLIB_ALLOW = 'json';
 	process.env.N8N_RUNNERS_EXTERNAL_ALLOW = '';

@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       n8n_version:
-        description: 'n8n version to build the Daytona snapshot for'
+        description: 'MNI version to build the Daytona snapshot for'
         required: true
         type: string
     secrets:
@@ -24,7 +24,7 @@ on:
   workflow_dispatch:
     inputs:
       n8n_version:
-        description: 'n8n version to build the Daytona snapshot for (e.g. 1.123.0)'
+        description: 'MNI version to build the Daytona snapshot for (e.g. 1.123.0)'
         required: true
         type: string
 

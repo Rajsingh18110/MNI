@@ -209,7 +209,7 @@ describe('TeamsArmTemplateService', () => {
 			).toBe(false);
 		});
 
-		it('rejects an n8n token minted for anything other than this route', () => {
+		it('rejects an MNI token minted for anything other than this route', () => {
 			// The instance signs tokens for other purposes with the same secret.
 			const token = jwtService.sign(
 				{ projectId: PROJECT_ID, agentId: AGENT_ID, credentialId: CREDENTIAL_ID },

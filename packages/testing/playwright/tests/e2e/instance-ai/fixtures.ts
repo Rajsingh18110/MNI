@@ -7,20 +7,20 @@ import { test as base, expect as baseExpect } from '../../../fixtures/base';
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY ?? 'mock-anthropic-api-key';
 const HAS_REAL_API_KEY = !!process.env.ANTHROPIC_API_KEY;
 const EXPECTATIONS_DIR = './expectations';
-const INSTANCE_AGENT_SYSTEM_PROMPT_ANCHOR = 'You are the n8n Instance Agent';
+const INSTANCE_AGENT_SYSTEM_PROMPT_ANCHOR = 'You are the MNI instance Agent';
 export const SKIP_PROXY_SETUP_ANNOTATION = 'skip-proxy-setup';
 const SYSTEM_PROMPT_ANCHORS = [
 	INSTANCE_AGENT_SYSTEM_PROMPT_ANCHOR,
-	'You are the n8n Workflow Planner',
-	'You are an expert n8n workflow builder',
+	'You are the MNI Workflow Planner',
+	'You are an expert MNI workflow builder',
 	'You generate a short descriptive title for a conversation',
 ] as const;
 const SUB_AGENT_INITIAL_PROMPT_ANCHORS = [
-	'You are the n8n Workflow Planner',
-	'You are an expert n8n workflow builder',
+	'You are the MNI Workflow Planner',
+	'You are an expert MNI workflow builder',
 ] as const;
 const LEGACY_SYSTEM_ARRAY_PREFIX =
-	/\\\[\\\{"type":"text","text":"(?=You are the n8n Instance Agent)/g;
+	/\\\[\\\{"type":"text","text":"(?=You are the MNI instance Agent)/g;
 const LEGACY_SYSTEM_STRING_PREFIX = '[{"type":"text","text":"';
 const BODY_REGEX_WILDCARD = '[\\s\\S]*';
 const ID_VALUE_PLACEHOLDER = '__INSTANCE_AI_ID_VALUE__';

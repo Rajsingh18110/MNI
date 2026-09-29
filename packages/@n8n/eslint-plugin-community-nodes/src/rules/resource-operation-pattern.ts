@@ -15,7 +15,7 @@ export const ResourceOperationPatternRule = createRule({
 	meta: {
 		type: 'problem',
 		docs: {
-			description: 'Enforce proper resource/operation pattern for better UX in n8n nodes',
+			description: 'Enforce proper resource/operation pattern for better UX in MNI nodes',
 		},
 		messages: {
 			tooManyOperationsWithoutResources:

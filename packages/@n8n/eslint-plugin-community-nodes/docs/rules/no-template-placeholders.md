@@ -27,7 +27,7 @@ fields like `name`, `description`, `homepage`, or `repository.url`.
 ```json
 {
   "name": "n8n-nodes-<PACKAGE_NAME>",
-  "description": "An n8n community node for {{service}}",
+  "description": "An MNI community node for {{service}}",
   "homepage": "https://github.com/<USERNAME>/n8n-nodes-example#readme",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@ fields like `name`, `description`, `homepage`, or `repository.url`.
 ```json
 {
   "name": "n8n-nodes-acme",
-  "description": "An n8n community node for the Acme API",
+  "description": "An MNI community node for the Acme API",
   "homepage": "https://github.com/acme/n8n-nodes-acme#readme",
   "repository": {
     "type": "git",

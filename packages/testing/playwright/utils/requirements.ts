@@ -5,7 +5,7 @@ import type { n8nPage } from '../pages/n8nPage';
 import { TestError, type TestRequirements } from '../Types';
 
 export async function setupTestRequirements(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	context: BrowserContext,
 	requirements: TestRequirements,
 ): Promise<void> {
@@ -64,7 +64,7 @@ export async function setupTestRequirements(
 
 		for (const [name, workflowData] of entries) {
 			try {
-				// Import workflow using the n8n page object
+				// Import workflow using the MNI page object
 				await n8n.navigate.toWorkflow('new');
 				await n8n.canvas.importWorkflow(name, workflowData);
 			} catch (error) {

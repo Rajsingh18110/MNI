@@ -71,7 +71,7 @@
 				"operation": "getAllPeople"
 			},
 			"id": "fa7d5e97-7809-4065-9b6e-d47892c47c91",
-			"name": "Customer Datastore (n8n training)",
+			"name": "Customer Datastore (MNI training)",
 			"type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
 			"typeVersion": 1,
 			"position": [80, 480]
@@ -2054,7 +2054,7 @@
 			"main": [
 				[
 					{
-						"node": "Customer Datastore (n8n training)",
+						"node": "Customer Datastore (MNI training)",
 						"type": "main",
 						"index": 0
 					}
@@ -2079,7 +2079,7 @@
 				]
 			]
 		},
-		"Customer Datastore (n8n training)": {
+		"Customer Datastore (MNI training)": {
 			"main": [
 				[
 					{

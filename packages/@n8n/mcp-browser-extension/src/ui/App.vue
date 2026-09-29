@@ -39,19 +39,19 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 			<template v-if="isConnected">
 				<h1 class="title">
 					<span class="status-dot" />
-					Connected to n8n
+					Connected to MNI
 				</h1>
 				<div class="panel">
 					<InfoRow
 						icon="shield"
 						:title="
-							relayHostKey ? `Connected to ${relayHostKey}` : 'Connected to your n8n instance'
+							relayHostKey ? `Connected to ${relayHostKey}` : 'Connected to your MNI instance'
 						"
 					/>
 					<InfoRow
 						icon="lock"
 						title="Browser access"
-						description="Tabs n8n opens will appear below"
+						description="Tabs MNI opens will appear below"
 					/>
 					<template v-if="controlledTabs.length">
 						<hr class="divider" />
@@ -62,7 +62,7 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 			</template>
 
 			<template v-else-if="showConnectPrompt">
-				<h1 class="title">Allow n8n to access your browser</h1>
+				<h1 class="title">Allow MNI to access your browser</h1>
 				<p v-if="isAutoConnect" class="subtitle">Auto-connecting (eval mode)…</p>
 				<div class="panel">
 					<InfoRow
@@ -80,7 +80,7 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 					<InfoRow
 						icon="lock"
 						title="Browser access"
-						description="n8n can access tabs it opens. Tabs you select below are shared for this connection only"
+						description="MNI can access tabs it opens. Tabs you select below are shared for this connection only"
 					>
 						<button
 							v-if="tabs.length"
@@ -106,20 +106,20 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 			</template>
 
 			<template v-else-if="hasRelayUrl">
-				<h1 class="title">Allow n8n to access your browser</h1>
+				<h1 class="title">Allow MNI to access your browser</h1>
 				<p class="error">
 					Can't connect to <strong>{{ relayHostKey || 'this address' }}</strong> — it isn't a valid
-					n8n instance.
+					MNI instance.
 				</p>
 			</template>
 
 			<template v-else>
-				<h1 class="title">n8n Browser Use extension</h1>
+				<h1 class="title">MNI Browser Use extension</h1>
 				<div class="panel">
 					<InfoRow
 						icon="eye-off"
 						title="Disconnected"
-						description="Initiate the connection from your n8n instance to get started"
+						description="Initiate the connection from your MNI instance to get started"
 					/>
 				</div>
 				<RememberedHosts :hosts="approvedHosts" @forget="forgetHost" />

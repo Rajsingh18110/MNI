@@ -117,7 +117,7 @@ export const browserCreateCredentialSchema = z
 		credentialsKey: z
 			.string()
 			.describe('Key identifying the buffered secrets group to use (e.g. "gcp-setup")'),
-		type: z.string().describe('n8n credential type (e.g. "anthropicApi", "googleApi")'),
+		type: z.string().describe('MNI credential type (e.g. "anthropicApi", "googleApi")'),
 		name: z.string().describe('Display name for the new credential'),
 		data: z
 			.record(z.unknown())
@@ -135,7 +135,7 @@ export const browserCreateCredentialSchema = z
 			.optional()
 			.describe('Clear the session buffer for credentialsKey after success (default: true)'),
 	})
-	.describe('Assemble buffered secrets into an n8n credential');
+	.describe('Assemble buffered secrets into an MNI credential');
 
 function browserCreateCredential(
 	_connection: BrowserConnection,
@@ -143,7 +143,7 @@ function browserCreateCredential(
 	return {
 		name: 'browser_create_credential',
 		description:
-			'Assemble secrets captured with browser_capture_secret into a new n8n credential. Literal fields go in `data`; fields that must come from the buffer go in `resolveData` (leaf values are buffer field names). The buffer is cleared after success unless clear=false.',
+			'Assemble secrets captured with browser_capture_secret into a new MNI credential. Literal fields go in `data`; fields that must come from the buffer go in `resolveData` (leaf values are buffer field names). The buffer is cleared after success unless clear=false.',
 		inputSchema: browserCreateCredentialSchema,
 		async execute(args, context: ToolContext) {
 			requireSecretsBuffer(context);
@@ -195,7 +195,7 @@ function requireSecretsBuffer(
 	context: ToolContext,
 ): asserts context is ToolContext & { secretsBuffer: SecretsBuffer } {
 	if (!context.secretsBuffer) {
-		throw new Error('This tool is only available when running inside the n8n gateway context.');
+		throw new Error('This tool is only available when running inside the MNI gateway context.');
 	}
 }
 
@@ -203,7 +203,7 @@ function requireCreateCredential(context: ToolContext): asserts context is ToolC
 	createCredential: (payload: CreateCredentialPayload) => Promise<{ credentialId: string }>;
 } {
 	if (!context.createCredential) {
-		throw new Error('This tool is only available when running inside the n8n gateway context.');
+		throw new Error('This tool is only available when running inside the MNI gateway context.');
 	}
 }
 

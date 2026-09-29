@@ -26,7 +26,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Identity & Access' }],
 	},
 	() => {
-		// All tests in this file share a single n8n container. Parallelising them
+		// All tests in this file share a single MNI container. Parallelising them
 		// would pay the ~30–90 s container startup per worker; the tests themselves
 		// are short API calls, so serial execution is cheaper overall.
 		test.describe.configure({ mode: 'serial' });

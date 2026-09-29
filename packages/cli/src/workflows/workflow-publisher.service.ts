@@ -10,7 +10,7 @@ import { isCredSharingEnabled } from '@/constants/credential-sharing';
  * Resolves who a triggered execution should be attributed to.
  *
  * A schedule, poll or production webhook is started by the system, so nothing
- * on the execution path carries a user. n8n already records who published every
+ * on the execution path carries a user. MNI already records who published every
  * version, though — it just never reads it back. That record gives a triggered
  * run the identity it lacks: the workflow is attributed to whoever published
  * it, and stays attributed to them while they are away.

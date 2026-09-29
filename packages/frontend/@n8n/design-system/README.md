@@ -2,7 +2,7 @@
 
 # @n8n/design-system
 
-The n8n component library for Vue 3. It gives you components, design tokens, icons, and
+The MNI component library for Vue 3. It gives you components, design tokens, icons, and
 the directives plugin. Run `pnpm dev` to see the components in Storybook.
 
 ## Table of Contents
@@ -92,7 +92,7 @@ absent, these components render empty and show no error.
 
 The `app.provide(IconBodyLoaderKey, loadLucideIconBody)` call gives you the full Lucide
 set. If you omit the call, `N8nIcon` renders only the bundled icon set. That set holds
-`triangle`, `status-error`, and the custom n8n icons. Every other Lucide name renders
+`triangle`, `status-error`, and the custom MNI icons. Every other Lucide name renders
 empty, and a dev build writes a warning to the console.
 
 The barrel gives you the components and their types:

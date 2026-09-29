@@ -147,7 +147,7 @@ comments. Run twice and average to shake out variance before quoting numbers.
 
 ## Canvas benchmark suite (`tests/performance/canvas/`)
 
-Measures n8n canvas rendering, interaction and execution-data display under
+Measures MNI canvas rendering, interaction and execution-data display under
 realistic high-node-count workflows (30 / 80 / 200 nodes), with pinned data
 scenarios scaling up to ~6 MB at the largest tier (see [Size tiers](#size-tiers)
 for why we stop there).
@@ -155,7 +155,7 @@ for why we stop there).
 ### Run locally
 
 ```bash
-# One-time: build the n8n docker image used by container-mode tests
+# One-time: build the MNI docker image used by container-mode tests
 pnpm build:docker
 
 # Run the full canvas benchmark suite
@@ -247,7 +247,7 @@ cage, which a prior `--max-old-space-size=8192` flag couldn't exceed anyway — 
 canvas-execution.spec.ts logs it each run, so if a future Chromium release shifts
 that ceiling the log surfaces it and we can revisit the ladder.
 
-The real fix lives in the n8n frontend (per-node DOM cost reduction, Vue Flow
+The real fix lives in the MNI frontend (per-node DOM cost reduction, Vue Flow
 virtualization, chunked / debounced run-data application). When that lands, raise
 the tier ceiling here.
 

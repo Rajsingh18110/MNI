@@ -23,7 +23,7 @@ describe('parseTargets', () => {
 		});
 		assert.deepEqual(
 			targets.map((t) => t.label),
-			['n8n', 'runners', 'runners-distroless'],
+			['MNI', 'runners', 'runners-distroless'],
 		);
 	});
 
@@ -36,7 +36,7 @@ describe('parseTargets', () => {
 		});
 		assert.deepEqual(
 			targets.map((t) => t.label),
-			['n8n'],
+			['MNI'],
 		);
 	});
 
@@ -56,13 +56,13 @@ describe('assertSbomIsUsable', () => {
 
 	it('accepts an SBOM with npm components and an operating system', () => {
 		assert.doesNotThrow(() =>
-			assertSbomIsUsable(write('ok.json', [{ purl: 'pkg:npm/a@1' }, OS]), 'n8n'),
+			assertSbomIsUsable(write('ok.json', [{ purl: 'pkg:npm/a@1' }, OS]), 'MNI'),
 		);
 	});
 
 	it('rejects an SBOM the scanner failed to populate', () => {
 		const p = write('empty.json', [{ purl: 'pkg:apk/alpine/busybox@1.0' }, OS]);
-		assert.throws(() => assertSbomIsUsable(p, 'n8n'), /no npm components/);
+		assert.throws(() => assertSbomIsUsable(p, 'MNI'), /no npm components/);
 	});
 
 	// Warns rather than throws: the distroless runners image carries no package
@@ -143,7 +143,7 @@ describe('processTargets', () => {
 		const attempted = [];
 		assert.throws(
 			() =>
-				processTargets([{ label: 'n8n' }, { label: 'n8n-pc' }, { label: 'runners' }], {
+				processTargets([{ label: 'MNI' }, { label: 'n8n-pc' }, { label: 'runners' }], {
 					shouldAttest: false,
 					processTarget: (target) => {
 						attempted.push(target.label);
@@ -152,7 +152,7 @@ describe('processTargets', () => {
 				}),
 			/2 of 3 image\(s\) failed/,
 		);
-		assert.deepEqual(attempted, ['n8n', 'n8n-pc', 'runners']);
+		assert.deepEqual(attempted, ['MNI', 'n8n-pc', 'runners']);
 	});
 });
 
@@ -170,7 +170,7 @@ describe('main', () => {
 			},
 		});
 
-		assert.equal(received.targets[0].label, 'n8n');
+		assert.equal(received.targets[0].label, 'MNI');
 		assert.equal(received.options.shouldAttest, false);
 	});
 });

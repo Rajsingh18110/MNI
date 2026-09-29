@@ -19,15 +19,15 @@ import {
 import { formWebhook } from '../utils/utils';
 
 const descriptionV1: INodeTypeDescription = {
-	displayName: 'n8n Form Trigger',
+	displayName: 'MNI Form Trigger',
 	name: 'formTrigger',
 	icon: 'node:form-trigger',
 	iconColor: 'teal',
 	group: ['trigger'],
 	version: 1,
-	description: 'Generate webforms in n8n and pass their responses to the workflow',
+	description: 'Generate webforms in MNI and pass their responses to the workflow',
 	defaults: {
-		name: 'n8n Form Trigger',
+		name: 'MNI Form Trigger',
 	},
 
 	inputs: [],

@@ -106,7 +106,7 @@ describe('parseConfig — allowedOrigins', () => {
 });
 
 describe('resolvePermissionConfirmation', () => {
-	it('keeps instance mode for an n8n cloud origin', () => {
+	it('keeps instance mode for an MNI cloud origin', () => {
 		expect(resolvePermissionConfirmation('instance', 'https://foo.app.n8n.cloud')).toBe('instance');
 	});
 

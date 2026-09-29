@@ -15,7 +15,7 @@
 		},
 		{
 			"parameters": {
-				"text": "=Hello from n8n testing framework {{$evaluateExpression(Math.random())}}",
+				"text": "=Hello from MNI testing framework {{$evaluateExpression(Math.random())}}",
 				"additionalFields": {}
 			},
 			"name": "Twitter",

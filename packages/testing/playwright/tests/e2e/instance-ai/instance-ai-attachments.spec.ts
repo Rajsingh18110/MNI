@@ -41,7 +41,7 @@ test.describe(
 			}
 		});
 
-		test('should extract text from an html attachment and answer from it', async ({ n8n }) => {
+		test('should extract text from an html attachment and answer from it', async ({ MNI }) => {
 			await n8n.navigate.toInstanceAi();
 
 			await n8n.instanceAi.getFileInput().setInputFiles(testHtmlPath);

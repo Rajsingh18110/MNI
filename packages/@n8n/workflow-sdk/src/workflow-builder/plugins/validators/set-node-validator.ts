@@ -183,7 +183,7 @@ export const setNodeValidator: ValidatorPlugin = {
 			if (isNonEmptyString(assignment.name) && isCredentialFieldName(assignment.name)) {
 				issues.push({
 					code: 'SET_CREDENTIAL_FIELD',
-					message: `${nodeRef} has a field named "${assignment.name}" which appears to be storing credentials. Use n8n's credential system instead.`,
+					message: `${nodeRef} has a field named "${assignment.name}" which appears to be storing credentials. Use MNI's credential system instead.`,
 					severity: 'warning',
 					nodeName: displayName,
 					originalName: origForWarning,

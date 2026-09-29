@@ -28,7 +28,7 @@ function expiresOnTimestamp(data: ClientOAuth2TokenData & { expires_on?: string 
 }
 
 /**
- * Adapts n8n's credential retrieval into the TokenCredential interface expected by @azure/identity
+ * Adapts MNI's credential retrieval into the TokenCredential interface expected by @azure/identity
  */
 export class N8nOAuth2TokenCredential implements TokenCredential {
 	constructor(

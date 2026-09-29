@@ -49,7 +49,7 @@ const now = Math.floor(Date.now() / 1000);
 const validClaims = {
 	sub: 'external-user-1',
 	iss: 'https://issuer.example.com',
-	aud: 'n8n',
+	aud: 'MNI',
 	iat: now,
 	exp: now + 30,
 	jti: 'unique-jti-1',

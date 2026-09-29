@@ -39,7 +39,7 @@ export const dataTableListFieldDocs = {
 export const createDataTableColumnFieldDocs = {
 	csvColumnName: {
 		description:
-			'Name of the CSV column to read the values from. If you do not set it, n8n maps the ' +
+			'Name of the CSV column to read the values from. If you do not set it, MNI maps the ' +
 			'CSV columns by position.',
 		example: 'Email Address',
 	},
@@ -55,7 +55,7 @@ export const createDataTableFieldDocs = {
 	},
 	fileId: {
 		description:
-			'ID of a CSV file that you uploaded in the n8n editor. If you set it, n8n fills the new ' +
+			'ID of a CSV file that you uploaded in the MNI editor. If you set it, MNI fills the new ' +
 			'table with the rows from that file. Only a session-authenticated caller can upload a ' +
 			'file, so an API-key caller cannot use this field.',
 	},

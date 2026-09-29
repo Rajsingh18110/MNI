@@ -1,4 +1,4 @@
-# n8n Workflow Comparison
+# MNI Workflow Comparison
 
 Graph-based workflow similarity comparison using NetworkX and graph edit distance.
 

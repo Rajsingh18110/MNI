@@ -139,7 +139,7 @@ describe('InstanceAiService — refineTitleIfNeeded input cleaning', () => {
 		// so a recency-limited window would miss the user's messages entirely.
 		const stored = [
 			userMessage(withCurrentDateTime('hey', '\n2026-07-03 09:30')),
-			assistantMessage("Hi! I'm your n8n assistant."),
+			assistantMessage("Hi! I'm your MNI assistant."),
 			userMessage(
 				withCurrentDateTime(
 					'lets build a workflow that greets me on telegram every morning',

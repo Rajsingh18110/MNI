@@ -12,7 +12,7 @@ test.describe(
 	},
 	() => {
 		test('should show up when double clicked on a node and close when Back to canvas clicked', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
@@ -23,7 +23,7 @@ test.describe(
 			await expect(n8n.ndv.container).toBeHidden();
 		});
 
-		test('should show input panel when node is not connected', async ({ n8n }) => {
+		test('should show input panel when node is not connected', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.deselectAll();
@@ -34,7 +34,7 @@ test.describe(
 			await expect(n8n.ndv.inputPanel.get()).toContainText('No input connected');
 		});
 
-		test('should change input and go back to canvas', async ({ n8n }) => {
+		test('should change input and go back to canvas', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('NDV-test-select-input.json');
 			await n8n.canvas.clickZoomToFitButton();
 			await n8n.canvas.getCanvasNodes().last().dblclick();
@@ -50,7 +50,7 @@ test.describe(
 			await expect(n8n.ndv.container).toBeHidden();
 		});
 
-		test('should show correct validation state for resource locator params', async ({ n8n }) => {
+		test('should show correct validation state for resource locator params', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Typeform Trigger', { closeNDV: false });
 			await expect(n8n.ndv.container).toBeVisible();
@@ -61,7 +61,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeIssuesByName('Typeform Trigger')).toBeVisible();
 		});
 
-		test('should show validation errors only after blur or re-opening of NDV', async ({ n8n }) => {
+		test('should show validation errors only after blur or re-opening of NDV', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Airtable', { closeNDV: false, action: 'Search records' });
@@ -83,7 +83,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeIssuesByName('Search records')).toBeVisible();
 		});
 
-		test('should show all validation errors when opening pasted node', async ({ n8n }) => {
+		test('should show all validation errors when opening pasted node', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_ndv_errors.json');
 			const canvasNodes = n8n.canvas.getCanvasNodes();
 			await expect(canvasNodes).toHaveCount(1);
@@ -92,7 +92,7 @@ test.describe(
 			await expect(n8n.canvas.getNodeIssuesByName('Airtable')).toBeVisible();
 		});
 
-		test('should render run errors correctly', async ({ n8n }) => {
+		test('should render run errors correctly', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_ndv_run_error.json');
 			await n8n.canvas.openNode('Error');
 			await n8n.ndv.execute();
@@ -102,14 +102,14 @@ test.describe(
 			);
 
 			await expect(n8n.ndv.getNodeRunErrorDescription()).toContainText(
-				"An expression here won't work because it uses .item and n8n can't figure out the matching item.",
+				"An expression here won't work because it uses .item and MNI can't figure out the matching item.",
 			);
 
 			await expect(n8n.ndv.getNodeRunErrorMessage()).toBeVisible();
 			await expect(n8n.ndv.getNodeRunErrorDescription()).toBeVisible();
 		});
 
-		test('webhook should fallback to webhookId if path is empty', async ({ n8n }) => {
+		test('webhook should fallback to webhookId if path is empty', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Webhook', { closeNDV: false });
 
@@ -134,7 +134,7 @@ test.describe(
 			expect(updatedUrlText).not.toMatch(uuidRegex);
 		});
 
-		test('should properly show node execution indicator', async ({ n8n }) => {
+		test('should properly show node execution indicator', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Code', { action: 'Code in JavaScript', closeNDV: false });
@@ -149,7 +149,7 @@ test.describe(
 			await expect(n8n.ndv.getNodeRunTooltipIndicator()).toBeVisible();
 		});
 
-		test('should show node name and version in settings', async ({ n8n }) => {
+		test('should show node name and version in settings', async ({ MNI }) => {
 			await n8n.start.fromImportedWorkflow('Test_workflow_ndv_version.json');
 
 			await n8n.canvas.openNode('Edit Fields (old)');
@@ -172,7 +172,7 @@ test.describe(
 		});
 
 		test('should not push NDV header out with a lot of code in Code node editor', async ({
-			n8n,
+			MNI,
 		}) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
@@ -194,7 +194,7 @@ test.describe(
 			await expect(n8n.ndv.getExecuteNodeButton()).toBeVisible();
 		});
 
-		test('should allow editing code in fullscreen in the code editors', async ({ n8n }) => {
+		test('should allow editing code in fullscreen in the code editors', async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 			await n8n.canvas.addNode('Manual Trigger');
 			await n8n.canvas.addNode('Code', { action: 'Code in JavaScript', closeNDV: false });
@@ -215,7 +215,7 @@ test.describe(
 
 		test.describe('Complex Edge Cases', () => {
 			test('ADO-2931 - should handle multiple branches of the same input with the first branch empty correctly', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.importWorkflow(
@@ -234,7 +234,7 @@ test.describe(
 		});
 
 		test.describe('Execution Indicators - Multi-Node', () => {
-			test('should properly show node execution indicator for multiple nodes', async ({ n8n }) => {
+			test('should properly show node execution indicator for multiple nodes', async ({ MNI }) => {
 				await n8n.start.fromBlankCanvas();
 				await n8n.canvas.addNode(CODE_NODE_NAME, { action: 'Code in JavaScript' });
 				await n8n.ndv.clickBackToCanvasButton();

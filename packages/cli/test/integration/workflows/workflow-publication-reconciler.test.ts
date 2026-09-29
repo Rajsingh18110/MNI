@@ -172,7 +172,7 @@ describe('WorkflowPublicationReconciler (integration)', () => {
 
 		expect(activeWorkflowTriggers.get(workflow.id)?.has(trigger.id)).toBe(true);
 		// The trigger node was told the instance just started, so events like the
-		// n8n Trigger's "Instance Started" fire for every workflow of the pass.
+		// MNI Trigger's "Instance Started" fire for every workflow of the pass.
 		expect(addTriggersSpy).toHaveBeenCalledWith(
 			workflow.id,
 			expect.anything(),

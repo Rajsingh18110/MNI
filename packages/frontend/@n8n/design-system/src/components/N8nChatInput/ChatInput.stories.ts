@@ -148,7 +148,7 @@ const workflowSuggestions: WorkflowSuggestion[] = [
 		id: 'invoice-pipeline',
 		summary: 'Invoice processing pipeline',
 		prompt:
-			'Create an invoice parsing workflow using n8n forms. Extract key information and store in Airtable.',
+			'Create an invoice parsing workflow using MNI forms. Extract key information and store in Airtable.',
 	},
 	{
 		id: 'ai-news-digest',

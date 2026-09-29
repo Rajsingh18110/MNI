@@ -39,7 +39,7 @@ export function renderHtml(report: RunReport): string {
   <div class="manifest">
     <span class="manifest-item"><span class="manifest-label">git</span> <code>${escapeHtml(manifest.gitRef)}</code></span>
     <span class="manifest-item"><span class="manifest-label">computer-use</span> <code>${escapeHtml(manifest.daemonVersion)}</code></span>
-    <span class="manifest-item"><span class="manifest-label">n8n</span> <code>${escapeHtml(manifest.n8nVersion)}</code></span>
+    <span class="manifest-item"><span class="manifest-label">MNI</span> <code>${escapeHtml(manifest.n8nVersion)}</code></span>
   </div>
   <div class="banner ${passRate === 1 ? 'banner-ok' : 'banner-bad'}">
     <div class="banner-stat">

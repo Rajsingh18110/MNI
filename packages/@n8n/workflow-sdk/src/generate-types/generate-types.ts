@@ -1,7 +1,7 @@
 /**
  * Type Generation Script
  *
- * Generates TypeScript types from n8n node definitions.
+ * Generates TypeScript types from MNI node definitions.
  *
  * This script reads node definitions from:
  * - packages/nodes-base/dist/types/nodes.json
@@ -505,7 +505,7 @@ function emitBuilderHint(
 }
 
 /**
- * `builderHint` is an extended n8n property not part of the upstream
+ * `builderHint` is an extended MNI property not part of the upstream
  * `NodeTypeDescription`. Centralized cast keeps the rest of the file clean.
  */
 function getNodeBuilderHint(node: NodeTypeDescription): NodeBuilderHint | undefined {
@@ -1793,7 +1793,7 @@ function stripExpressionFromType(typeStr: string): string {
 }
 
 /**
- * Map n8n property types to TypeScript types with Expression wrappers
+ * Map MNI property types to TypeScript types with Expression wrappers
  */
 export function mapPropertyType(
 	prop: NodeProperty,
@@ -2782,7 +2782,7 @@ export function generateSharedFile(
 	const needsResourceMapper = outputProps.some((p) => p.type === 'resourceMapper');
 
 	if (needsFilter || needsAssignment || needsResourceMapper) {
-		lines.push('// Helper types for special n8n fields');
+		lines.push('// Helper types for special MNI fields');
 		if (needsFilter) {
 			lines.push(generateFilterTypeDeclaration(true));
 		}
@@ -2902,7 +2902,7 @@ export function generateDiscriminatorFile(
 
 	// Inline helper types (only the ones needed)
 	if (needsFilter || needsAssignment || needsResourceMapper) {
-		lines.push('// Helper types for special n8n fields');
+		lines.push('// Helper types for special MNI fields');
 		if (needsFilter) {
 			lines.push(generateFilterTypeDeclaration(false));
 		}
@@ -3355,7 +3355,7 @@ export function generateSingleVersionTypeFile(
 	const needsResourceMapper = outputProps.some((p) => p.type === 'resourceMapper');
 
 	if (needsFilter || needsAssignment || needsResourceMapper) {
-		lines.push('// Helper types for special n8n fields');
+		lines.push('// Helper types for special MNI fields');
 		if (needsFilter) {
 			lines.push(generateFilterTypeDeclaration(false));
 		}
@@ -3622,7 +3622,7 @@ export function generateNodeTypeFile(nodes: NodeTypeDescription | NodeTypeDescri
 	const needsResourceMapper = outputProps.some((p) => p.type === 'resourceMapper');
 
 	if (needsFilter || needsAssignment || needsResourceMapper) {
-		lines.push('// Helper types for special n8n fields');
+		lines.push('// Helper types for special MNI fields');
 		if (needsFilter) {
 			lines.push(generateFilterTypeDeclaration(false));
 		}

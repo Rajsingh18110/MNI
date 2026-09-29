@@ -429,7 +429,7 @@ describe('extractBinaryMessages', () => {
 				text: {
 					mimeType: 'text/plain',
 					fileName: 'test.txt',
-					// Default n8n binary format: base64 without data URL prefix
+					// Default MNI binary format: base64 without data URL prefix
 					data: Buffer.from(textContent).toString('base64'),
 				},
 			},

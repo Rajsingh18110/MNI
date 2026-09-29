@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Spin up N local n8n eval lanes and run eval:instance-ai against them.
+# Spin up N local MNI eval lanes and run eval:instance-ai against them.
 #
 # Usage:
 #   ./scripts/run-eval-lanes.sh --instance-count 5
@@ -11,7 +11,7 @@
 # Requires:
 #   - docker
 #   - dotenvx for env-file mode (pnpm exec dotenvx works)
-#   - n8nio/n8n:local image (build with: INCLUDE_TEST_CONTROLLER=true pnpm build:docker)
+#   - n8nio/MNI:local image (build with: INCLUDE_TEST_CONTROLLER=true pnpm build:docker)
 #   - Either an env file with N8N_INSTANCE_AI_MODEL_API_KEY (+ optional N8N_EVAL_*),
 #     or --inherit-env with ANTHROPIC_API_KEY exported. Env-file entries are passed
 #     into each lane via docker --env-file; inherited mode passes an allowlist only.
@@ -23,7 +23,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------
 INSTANCE_COUNT=""
 START_PORT=6678
-IMAGE="n8nio/n8n:local"
+IMAGE="n8nio/MNI:local"
 BUILD_IMAGE=false
 SKIP_EVAL=false
 KEEP_CONTAINERS=false
@@ -51,7 +51,7 @@ usage() {
 Usage: run-eval-lanes.sh [--instance-count N] [options] [-- eval-args...]
 
 Options:
-  --instance-count N  Number of n8n instances / ports to open (required)
+  --instance-count N  Number of MNI instances / ports to open (required)
   --start-port N      First host port to try (default: 6678; skips Node fetch-blocked ports)
   --image NAME        Docker image (default: n8nio/n8n:local)
   --build             Build docker image before starting lanes
@@ -93,7 +93,7 @@ port_in_use() {
 }
 
 # Node's fetch() (undici) refuses a fixed set of "bad" ports. The eval CLI
-# uses fetch for every n8n REST call, so lane ports must not land on them.
+# uses fetch for every MNI REST call, so lane ports must not land on them.
 # See: https://fetch.spec.whatwg.org/#port-blocking
 is_node_fetch_blocked_port() {
 	case "$1" in

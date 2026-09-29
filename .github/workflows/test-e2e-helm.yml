@@ -108,7 +108,7 @@ jobs:
             --kubeconfig-file /tmp/n8n-helm-kubeconfig.txt
 
           N8N_URL=$(cat /tmp/n8n-helm-url.txt)
-          echo "n8n URL: ${N8N_URL}"
+          echo "MNI URL: ${N8N_URL}"
           echo "N8N_BASE_URL=${N8N_URL}" >> "$GITHUB_ENV"
 
           KUBECONFIG_PATH=$(cat /tmp/n8n-helm-kubeconfig.txt)
@@ -133,13 +133,13 @@ jobs:
           kubectl get pods -o wide
           echo ""
           echo "=== Pod Descriptions ==="
-          kubectl describe pods -l app.kubernetes.io/name=n8n
+          kubectl describe pods -l app.kubernetes.io/name=MNI
           echo ""
           echo "=== Recent Events ==="
           kubectl get events --sort-by=.lastTimestamp | tail -30
           echo ""
-          echo "=== n8n Pod Logs (last 100 lines) ==="
-          kubectl logs -l app.kubernetes.io/name=n8n --tail=100 || true
+          echo "=== MNI Pod Logs (last 100 lines) ==="
+          kubectl logs -l app.kubernetes.io/name=MNI --tail=100 || true
           echo ""
           echo "=== Health Check ==="
           curl -s -o /dev/null -w "HTTP %{http_code}" "${{ env.N8N_BASE_URL }}/healthz/readiness" || echo "UNREACHABLE"

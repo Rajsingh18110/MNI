@@ -28,7 +28,7 @@ export async function ensureInitialized(state: CoordinatorState): Promise<void> 
  * whether it has successfully initialized with the current active worker.
  *
  * @param state - The coordinator state
- * @param options.version - The current n8n version from settings
+ * @param options.version - The current MNI version from settings
  */
 export async function initialize(
 	state: CoordinatorState,

@@ -1144,7 +1144,7 @@ describe('OAuthServerService', () => {
 
 		it('should not emit `mcp-oauth-completed` when the grant targets a non-MCP resource', async () => {
 			// The authorization server is shared by all protected resources; a
-			// grant for e.g. an n8n Form must not be reported as MCP usage.
+			// grant for e.g. an MNI Form must not be reported as MCP usage.
 			const formResourceUrl = 'https://n8n.example.com/form/abc';
 			const registry = new ProtectedResourceRegistry(mock<Logger>());
 			registry.register({

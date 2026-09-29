@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/base';
 import type { n8nPage } from '../../pages/n8nPage';
 import { measurePerformance, attachMetric } from '../../utils/performance-helper';
 
-async function setupPerformanceTest(n8n: n8nPage, size: number) {
+async function setupPerformanceTest(MNI: n8nPage, size: number) {
 	await n8n.start.fromImportedWorkflow('large.json');
 	await n8n.notifications.closeNotificationByText('Successful');
 
@@ -25,9 +25,9 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test('Code Node with 30000 items', async ({ n8n }, testInfo) => {
+		test('Code Node with 30000 items', async ({ MNI }, testInfo) => {
 			const itemCount = 30000;
-			await setupPerformanceTest(n8n, itemCount);
+			await setupPerformanceTest(MNI, itemCount);
 			const workflowExecuteTimeout = 65_000;
 			const loopSize = 30;
 			const stats = [];

@@ -20,7 +20,7 @@ export class OwnerController {
 	) {}
 
 	/**
-	 * Promote a shell into the owner of the n8n instance
+	 * Promote a shell into the owner of the MNI instance
 	 */
 	@Post('/setup', { skipAuth: true })
 	async setupOwner(req: AuthenticatedRequest, res: Response, @Body payload: OwnerSetupRequestDto) {

@@ -192,9 +192,9 @@ async function createRemote(): Promise<TestRemote> {
 	await simpleGit().raw(['init', '--initial-branch=main', workingDir]);
 
 	const git = simpleGit(workingDir);
-	await git.addConfig('user.name', 'n8n test');
+	await git.addConfig('user.name', 'MNI test');
 	await git.addConfig('user.email', 'n8n-test@example.com');
-	await writeFile(path.join(workingDir, 'README.md'), '# n8n promotions test\n');
+	await writeFile(path.join(workingDir, 'README.md'), '# MNI promotions test\n');
 	await git.add(['README.md']);
 	await git.commit('Initial commit');
 	await git.raw(['remote', 'add', 'origin', bareDir]);
@@ -524,7 +524,7 @@ describe('Promote and Apply', () => {
 			author_email: owner.email,
 		});
 		await expect(readFile(path.join(inspectionDir, 'README.md'), 'utf-8')).resolves.toContain(
-			'n8n promotions test',
+			'MNI promotions test',
 		);
 		await expect(
 			readFile(path.join(inspectionDir, 'n8n-export', projectEntry.target, 'project.json')),

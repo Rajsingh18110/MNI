@@ -316,7 +316,7 @@ function isStrictSubset(subset: readonly string[], superset: readonly string[]):
  * Options in the same group that `option` covers: the ones SUPERSEDED_BY declares
  * subordinate to it, plus every sibling whose scopes are a strict subset of its
  * own. The latter is the select-all case — "Manage all settings" over the MCP and
- * n8n Assistant options — which stays out of SUPERSEDED_BY on purpose, so those
+ * MNI Assistant options — which stays out of SUPERSEDED_BY on purpose, so those
  * options remain toggleable while the select-all is checked.
  */
 export function getCoveredOptions(

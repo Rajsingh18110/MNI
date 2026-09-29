@@ -55,9 +55,9 @@ describe('research tool', () => {
 	describe('web-search action', () => {
 		it('should call webResearchService.search and return results', async () => {
 			const searchResponse = {
-				query: 'n8n docs',
+				query: 'MNI docs',
 				results: [
-					{ title: 'n8n Docs', url: 'https://docs.n8n.io', snippet: 'Documentation for n8n' },
+					{ title: 'MNI Docs', url: 'https://docs.n8n.io', snippet: 'Documentation for MNI' },
 				],
 			};
 			const context = createMockContext({ permissions: { webSearch: 'always_allow' } });
@@ -66,11 +66,11 @@ describe('research tool', () => {
 			const tool = createResearchTool(context);
 			const result = await executeTool(
 				tool,
-				{ action: 'web-search' as const, query: 'n8n docs' },
+				{ action: 'web-search' as const, query: 'MNI docs' },
 				createAgentCtx() as never,
 			);
 
-			expect(context.webResearchService!.search).toHaveBeenCalledWith('n8n docs', {
+			expect(context.webResearchService!.search).toHaveBeenCalledWith('MNI docs', {
 				maxResults: undefined,
 				includeDomains: undefined,
 				abortSignal: undefined,
@@ -258,16 +258,16 @@ describe('research tool', () => {
 
 			const tool = createResearchTool(context);
 			await tool.handler!(
-				{ action: 'web-search' as const, query: 'how to deploy n8n' },
+				{ action: 'web-search' as const, query: 'how to deploy MNI' },
 				createAgentCtx({ suspend: suspendFn }) as never,
 			);
 
 			expect(suspendFn).toHaveBeenCalledTimes(1);
 			expect(suspendFn.mock.calls[0][0]).toEqual(
 				expect.objectContaining({
-					message: expect.stringContaining('how to deploy n8n'),
+					message: expect.stringContaining('how to deploy MNI'),
 					severity: 'info',
-					webSearch: { query: 'how to deploy n8n' },
+					webSearch: { query: 'how to deploy MNI' },
 				}),
 			);
 			expect(context.webResearchService!.search).not.toHaveBeenCalled();

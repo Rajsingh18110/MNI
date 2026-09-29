@@ -40,7 +40,7 @@ export class DynamicCredentialsContextHook implements IContextEstablishmentHook 
 	 *
 	 * - `usesDynamicCredentials`: true when the workflow references a private
 	 *   (resolvable) credential. Drives redaction-for-everyone.
-	 * - `executedByUserId`: the n8n user the run executes as, derived from the
+	 * - `executedByUserId`: the MNI user the run executes as, derived from the
 	 *   established identity carrier by the same identifier credential resolution
 	 *   uses — so the redaction owner cannot drift from the resolved user. Grants
 	 *   that user access to their own run. One place covers every identity path

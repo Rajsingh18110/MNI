@@ -39,15 +39,15 @@ const log = {
 
 function showHelp() {
 	console.log(`
-${colors.bright}n8n Stack Manager${colors.reset}
+${colors.bright}MNI Stack Manager${colors.reset}
 
-Start n8n containers for development and testing.
+Start MNI containers for development and testing.
 
 ${colors.yellow}Usage:${colors.reset}
   npm run stack [options]
 
 ${colors.yellow}Options:${colors.reset}
-  --services-only   Start services only (no n8n containers), write .env for local dev
+  --services-only   Start services only (no MNI containers), write .env for local dev
   --services <list> Comma-separated services (e.g. postgres,redis,mailpit,proxy,kafka)
   --postgres        Use PostgreSQL instead of SQLite
   --engine          Run engine v2 in its own container (implies --postgres, not for --services-only)
@@ -268,7 +268,7 @@ async function main() {
 		}
 	}
 
-	// Services-only mode: start containers, write .env, no n8n
+	// Services-only mode: start containers, write .env, no MNI
 	if (servicesOnly) {
 		if (services.length === 0) {
 			log.error('No services specified. Use flags like --postgres, --redis, --mailpit, etc.');
@@ -321,7 +321,7 @@ async function main() {
 
 			console.log('');
 			log.info('Containers are running in the background');
-			log.info(`Run ${colors.bright}pnpm dev${colors.reset} in another terminal to start n8n`);
+			log.info(`Run ${colors.bright}pnpm dev${colors.reset} in another terminal to start MNI`);
 			log.info(
 				`Cleanup: ${colors.bright}pnpm --filter n8n-containers services:clean${colors.reset}`,
 			);
@@ -335,7 +335,7 @@ async function main() {
 		return;
 	}
 
-	log.header('Starting n8n Stack');
+	log.header('Starting MNI Stack');
 	log.info(`Project name: ${config.projectName}`);
 	displayConfig(config);
 
@@ -353,7 +353,7 @@ async function main() {
 		}
 
 		console.log('');
-		log.info(`n8n URL: ${colors.bright}${colors.green}${stack.baseUrl}${colors.reset}`);
+		log.info(`MNI URL: ${colors.bright}${colors.green}${stack.baseUrl}${colors.reset}`);
 
 		// Display OIDC configuration if enabled
 		const keycloakResult = stack.serviceResults.keycloak as KeycloakResult | undefined;

@@ -9,7 +9,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Chat' }],
 	},
 	() => {
-		test('use chat as chat user @auth:chat', async ({ n8n, anthropicApiKey }) => {
+		test('use chat as chat user @auth:chat', async ({ MNI, anthropicApiKey }) => {
 			const ownerN8n = await n8n.start.withUser(INSTANCE_OWNER_CREDENTIALS);
 
 			// Create global credential as owner

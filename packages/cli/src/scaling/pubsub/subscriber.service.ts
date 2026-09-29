@@ -72,7 +72,7 @@ export class Subscriber {
 		this.workerResponseChannel = `${prefix}:${WORKER_RESPONSE_PUBSUB_CHANNEL}`;
 		this.mcpRelayChannel = `${prefix}:${MCP_RELAY_PUBSUB_CHANNEL}`;
 
-		this.client = this.redisClientService.createClient({ type: 'subscriber(n8n)' });
+		this.client = this.redisClientService.createClient({ type: 'subscriber(MNI)' });
 
 		// ioredis replays SUBSCRIBE on reconnect without awaiting it, so a failed replay leaves
 		// the connection ready with zero subscriptions. Re-issue our own on every recovery.

@@ -67,7 +67,7 @@ export type AssistantPreferenceWrite = {
 };
 
 /**
- * One write for every assistant surface: the n8n Assistant tool and the MCP tool both call this,
+ * One write for every assistant surface: the MNI Assistant tool and the MCP tool both call this,
  * so the source, the refusal mapping and the events cannot drift between them.
  *
  * Write first: the surface shows the result afterwards and doing nothing is agreement, so

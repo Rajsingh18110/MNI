@@ -238,7 +238,7 @@ async function waitForStableMemory(
 }
 
 /**
- * Trigger a V8 heap snapshot on the n8n server, download it locally, and
+ * Trigger a V8 heap snapshot on the MNI server, download it locally, and
  * return the local file path for programmatic analysis (e.g., memlab).
  */
 export async function takeHeapSnapshot(

@@ -20,7 +20,7 @@
 				"date": "={{(new Date()).toISOString()}}",
 				"tags": "test",
 				"type": "test",
-				"source": "n8n",
+				"source": "MNI",
 				"sourceRef": "={{Date.now().toString()}}",
 				"additionalFields": {}
 			},
@@ -612,7 +612,7 @@
 				"date": "={{(new Date()).toISOString()}}",
 				"tags": "test",
 				"type": "test",
-				"source": "n8n",
+				"source": "MNI",
 				"sourceRef": "={{Date.now().toString()}}",
 				"additionalFields": {}
 			},

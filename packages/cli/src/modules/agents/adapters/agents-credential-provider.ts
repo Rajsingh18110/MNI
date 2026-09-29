@@ -19,7 +19,7 @@ function toResolvedCredential(data: unknown): ResolvedCredential {
 }
 
 /**
- * Resolves and lists n8n credentials for use by SDK agents.
+ * Resolves and lists MNI credentials for use by SDK agents.
  *
  * This is not a DI-managed singleton — a new instance is created per request,
  * scoped to a specific project. When a request user is provided, list/resolve
@@ -37,7 +37,7 @@ export class AgentsCredentialProvider
 	) {}
 
 	/**
-	 * Mint the n8n Connect (AI Gateway) synthetic credential for a model slot
+	 * Mint the MNI Connect (AI Gateway) synthetic credential for a model slot
 	 * marked with `AI_GATEWAY_MANAGED_TAG`, keyed by the model's provider prefix
 	 * (e.g. `openai`). The provider → credential-type mapping and support check
 	 * live in `AiGatewayService`, resolved lazily so no gateway wiring leaks into
@@ -53,8 +53,8 @@ export class AgentsCredentialProvider
 	}
 
 	/**
-	 * Mint the n8n Connect (AI Gateway) synthetic credential for a web-search
-	 * provider, keyed by n8n credential type (e.g. `braveSearchApi`). Same gateway
+	 * Mint the MNI Connect (AI Gateway) synthetic credential for a web-search
+	 * provider, keyed by MNI credential type (e.g. `braveSearchApi`). Same gateway
 	 * mint as models — the returned credential points the search at the gateway
 	 * instead of the real provider, so no user API key is needed.
 	 */

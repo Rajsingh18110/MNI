@@ -17,7 +17,7 @@
 			"parameters": {
 				"domain": "n8n.io",
 				"additionalFields": {
-					"companyName": "n8n",
+					"companyName": "MNI",
 					"twitter": "n8n_io"
 				}
 			},
@@ -36,7 +36,7 @@
 		{
 			"parameters": {
 				"operation": "autocomplete",
-				"name": "n8n"
+				"name": "MNI"
 			},
 			"name": "Clearbit1",
 			"type": "n8n-nodes-base.clearbit",
@@ -55,7 +55,7 @@
 				"resource": "person",
 				"email": "jan@n8n.io",
 				"additionalFields": {
-					"company": "n8n"
+					"company": "MNI"
 				}
 			},
 			"name": "Clearbit2",

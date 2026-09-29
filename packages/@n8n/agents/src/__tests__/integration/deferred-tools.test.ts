@@ -60,7 +60,7 @@ describe('deferred tools integration', () => {
 			.deferredTool(countCharactersTool);
 
 		const { stream } = await agent.stream(
-			'Use deferred tools to count the characters in the text "n8n". Search for the tool, load it, call it, then answer with the length.',
+			'Use deferred tools to count the characters in the text "MNI". Search for the tool, load it, call it, then answer with the length.',
 		);
 
 		const chunks = await collectStreamChunks(stream);

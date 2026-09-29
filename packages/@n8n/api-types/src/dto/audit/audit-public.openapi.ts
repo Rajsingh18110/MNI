@@ -76,9 +76,9 @@ export const auditReportFieldDocs: Record<string, ZodOpenAPIMetadata> = {
 				{
 					title: 'Community nodes',
 					description:
-						'This node is sourced from the community. Community nodes are not vetted by the n8n team and have full access to the host system.',
+						'This node is sourced from the community. Community nodes are not vetted by the MNI team and have full access to the host system.',
 					recommendation:
-						'Consider reviewing the source code in any community nodes installed in this n8n instance, and uninstalling any community nodes no longer used.',
+						'Consider reviewing the source code in any community nodes installed in this MNI instance, and uninstalling any community nodes no longer used.',
 					location: [
 						{
 							kind: 'community',

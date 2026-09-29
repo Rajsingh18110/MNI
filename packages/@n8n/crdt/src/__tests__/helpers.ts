@@ -23,7 +23,7 @@ export function createNestedObject(depth: number, breadth: number): Record<strin
 
 /**
  * Create a workflow-like structure using maps (nodes keyed by id).
- * Simulates real n8n workflow data for testing.
+ * Simulates real MNI workflow data for testing.
  *
  * @param nodeCount - Number of nodes to create
  * @returns Workflow structure with nodes, connections, and settings

@@ -29,19 +29,19 @@ while [ ! -e "$DATA_DISK" ]; do
 done
 
 # Then mount it
-if [ -d "/n8n" ]; then
+if [ -d "/MNI" ]; then
 	echo "Data disk already mounted. Clearing it..."
-	sudo rm -rf /n8n/*
-	sudo rm -rf /n8n/.[!.]*
+	sudo rm -rf /MNI/*
+	sudo rm -rf /MNI/.[!.]*
 else
-	sudo mkdir -p /n8n
+	sudo mkdir -p /MNI
 	sudo parted "$DATA_DISK" --script mklabel gpt mkpart xfspart xfs 0% 100%
 	sudo partprobe "$DATA_DISK"
 	# Wait for udev to create the partition symlink before formatting
 	sudo udevadm settle
 	sudo mkfs.xfs "${DATA_DISK}-part1"
-	sudo mount "${DATA_DISK}-part1" /n8n
-	sudo chown -R "$CURRENT_USER":"$CURRENT_USER" /n8n
+	sudo mount "${DATA_DISK}-part1" /MNI
+	sudo chown -R "$CURRENT_USER":"$CURRENT_USER" /MNI
 fi
 
 ### Remove unneeded dependencies

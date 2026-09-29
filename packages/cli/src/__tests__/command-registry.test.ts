@@ -70,7 +70,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should execute the specified command', async () => {
-		process.argv = ['node', 'n8n', 'test-command'];
+		process.argv = ['node', 'MNI', 'test-command'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		await commandRegistry.execute();
@@ -84,7 +84,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should handle command errors', async () => {
-		process.argv = ['node', 'n8n', 'test-command'];
+		process.argv = ['node', 'MNI', 'test-command'];
 
 		const error = new Error('Test error');
 		const commandClass = commandMetadata.get('test-command')!.class;
@@ -99,7 +99,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should parse and apply command flags', async () => {
-		process.argv = ['node', 'n8n', 'test-command', '--flag1', 'value1', '--flag2', '-s', '123'];
+		process.argv = ['node', 'MNI', 'test-command', '--flag1', 'value1', '--flag2', '-s', '123'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		await commandRegistry.execute();
@@ -113,7 +113,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should handle alias flags', async () => {
-		process.argv = ['node', 'n8n', 'test-command', '--flag1', 'value1', '-s', '123'];
+		process.argv = ['node', 'MNI', 'test-command', '--flag1', 'value1', '-s', '123'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		await commandRegistry.execute();
@@ -126,7 +126,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should exit with error when command not found', async () => {
-		process.argv = ['node', 'n8n', 'non-existent-command'];
+		process.argv = ['node', 'MNI', 'non-existent-command'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		await commandRegistry.execute();
@@ -136,7 +136,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should surface the error when a command file exists but fails to load', async () => {
-		process.argv = ['node', 'n8n', 'test-command'];
+		process.argv = ['node', 'MNI', 'test-command'];
 		// Pretend the command file exists so the dynamic import is attempted; the
 		// import then fails (no such file), standing in for a broken dependency.
 		(access as unknown as Mock).mockResolvedValue(undefined);
@@ -148,7 +148,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should display help when --help flag is used', async () => {
-		process.argv = ['node', 'n8n', 'test-command', '--help'];
+		process.argv = ['node', 'MNI', 'test-command', '--help'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		await commandRegistry.execute();
@@ -161,7 +161,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should list all commands when global help is requested', async () => {
-		process.argv = ['node', 'n8n', '--help'];
+		process.argv = ['node', 'MNI', '--help'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		await commandRegistry.execute();
@@ -171,7 +171,7 @@ describe('CommandRegistry', () => {
 	});
 
 	it('should display proper command usage with printCommandUsage', () => {
-		process.argv = ['node', 'n8n', 'test-command'];
+		process.argv = ['node', 'MNI', 'test-command'];
 
 		commandRegistry = new CommandRegistry(commandMetadata, moduleRegistry, logger, cliParser);
 		const commandEntry = commandMetadata.get('test-command')!;

@@ -1,5 +1,5 @@
 /**
- * Polls the /metrics endpoint from an n8n instance to collect application metrics
+ * Polls the /metrics endpoint from an MNI instance to collect application metrics
  * during benchmark test runs.
  *
  * A Poller can be started and stopped once. After it's stopped, it cannot be restarted.

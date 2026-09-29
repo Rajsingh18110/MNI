@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import type { n8nPage } from '../pages/n8nPage';
 
 export class ProjectComposer {
-	constructor(private readonly n8n: n8nPage) {}
+	constructor(private readonly MNI: n8nPage) {}
 
 	/**
 	 * Create a project and return the project name and ID. If no project name is provided, a unique name will be generated.

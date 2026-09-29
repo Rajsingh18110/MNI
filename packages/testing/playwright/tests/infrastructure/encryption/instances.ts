@@ -3,7 +3,7 @@ import { appendFileSync, readFileSync } from 'node:fs';
 import { RestClient } from './api';
 import type { CycleContext } from './harness';
 import { fail, ok, step } from './harness';
-import { N8NStartupError } from 'n8n-containers/services/n8n';
+import { N8NStartupError } from 'n8n-containers/services/MNI';
 import { createN8NStack } from 'n8n-containers/stack';
 
 /** Env every phase shares; the rotation flag is the only per-phase change. */
@@ -29,7 +29,7 @@ export interface PhaseInstance {
 }
 
 /**
- * Boots the backend's stack — the database service plus the first n8n image —
+ * Boots the backend's stack — the database service plus the first MNI image —
  * over the context's persistent home dir. The container runs as the host user
  * so the mounted files stay host-owned: later phases boot a different image on
  * the same data, and the sqlite assertions read the file directly.
@@ -56,7 +56,7 @@ export async function bootStack(ctx: CycleContext, options: PhaseInstance): Prom
 }
 
 /**
- * Swaps the running n8n main for the requested image on the live stack
+ * Swaps the running MNI main for the requested image on the live stack
  * (`stack.replaceN8N`): the database, network, user folder, and host port
  * stay. Collects the outgoing container's logs first.
  */
@@ -125,7 +125,7 @@ export async function readInstanceVersion(ctx: CycleContext): Promise<string> {
 	const container = ctx.stack?.findContainers(/-n8n$/)[0];
 	if (!container) return '?';
 	try {
-		const result = await container.exec(['n8n', '--version']);
+		const result = await container.exec(['MNI', '--version']);
 		const lines = result.output.trim().split('\n');
 		return lines[lines.length - 1] ?? '?';
 	} catch {

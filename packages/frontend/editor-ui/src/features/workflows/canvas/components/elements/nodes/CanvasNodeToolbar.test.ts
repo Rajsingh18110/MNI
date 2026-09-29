@@ -365,7 +365,7 @@ describe('CanvasNodeToolbar', () => {
 		});
 	});
 
-	// ADO-5556: All icon-only node hover actions (except "Add to n8n AI") lack an
+	// ADO-5556: All icon-only node hover actions (except "Add to MNI AI") lack an
 	// explanatory tooltip. They only carry a native `title`/`aria-label`, so no
 	// styled tooltip appears on hover to label the control.
 	describe('hover action tooltips (ADO-5556)', () => {

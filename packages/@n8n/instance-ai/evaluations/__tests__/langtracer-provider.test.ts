@@ -1,6 +1,6 @@
 import { casesFromExportedFiles } from '../langtracer/provider';
 
-/** A minimal case body in lang-tracer's `export_suite` shape (n8n WorkflowTestCase). */
+/** A minimal case body in lang-tracer's `export_suite` shape (MNI WorkflowTestCase). */
 function validCase(overrides: Record<string, unknown> = {}): Record<string, unknown> {
 	return {
 		conversation: [{ role: 'user', text: 'build a thing' }],
@@ -21,7 +21,7 @@ describe('casesFromExportedFiles', () => {
 		expect(cases[0].testCase.complexity).toBe('simple');
 	});
 
-	it('folds legacy buildExpectations so the export validates against the n8n schema', () => {
+	it('folds legacy buildExpectations so the export validates against the MNI schema', () => {
 		const cases = casesFromExportedFiles(
 			{ 'c.json': validCase({ buildExpectations: ['has a trigger'] }) },
 			{ suite: 'demo' },

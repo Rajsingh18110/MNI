@@ -59,7 +59,7 @@ async function runManualExecution(
 }
 
 async function openExecutionOutput(
-	n8n: n8nPage,
+	MNI: n8nPage,
 	{ workflowId, executionId }: ExecutionRef,
 ): Promise<Locator> {
 	await n8n.navigate.toExecution(workflowId, executionId);
@@ -93,7 +93,7 @@ test.describe(
 			await context.dispose();
 		});
 
-		test('can be enabled and scoped from the Security & Policies UI', async ({ n8n }) => {
+		test('can be enabled and scoped from the Security & Policies UI', async ({ MNI }) => {
 			await n8n.securitySettings.goto();
 
 			await n8n.securitySettings.enableEnforcement();
@@ -131,7 +131,7 @@ test.describe(
 
 			test('shows the no-permission notice when a member without the reveal scope opens redacted data @engine:v2', async ({
 				api,
-				n8n,
+				MNI,
 			}) => {
 				await api.enableProjectFeatures();
 				await api.securitySettings.setRedactionFloor('all');
@@ -156,7 +156,7 @@ test.describe(
 
 			test('disables copy to editor when a member cannot reveal the redacted data @engine:v2', async ({
 				api,
-				n8n,
+				MNI,
 			}) => {
 				await api.enableProjectFeatures();
 				await api.securitySettings.setRedactionFloor('all');
@@ -234,7 +234,7 @@ test.describe(
 
 			test('prevents members without the enable-redaction scope from setting redaction', async ({
 				api,
-				n8n,
+				MNI,
 			}) => {
 				await api.enableProjectFeatures();
 
@@ -269,11 +269,11 @@ test.describe(
 		});
 
 		test.describe('when floor is "production"', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.api.securitySettings.setRedactionFloor('production');
 			});
 
-			test('locks only the production select in the workflow settings', async ({ n8n }) => {
+			test('locks only the production select in the workflow settings', async ({ MNI }) => {
 				const workflow = await n8n.api.workflows.createWorkflow(webhookWorkflow());
 				await n8n.navigate.toWorkflow(workflow.id);
 				await n8n.workflowSettingsModal.open();
@@ -289,7 +289,7 @@ test.describe(
 				await expect(n8n.workflowSettingsModal.getRedactManualInput()).toBeEnabled();
 			});
 
-			test('lets set stricter policy in the workflow settings', async ({ n8n }) => {
+			test('lets set stricter policy in the workflow settings', async ({ MNI }) => {
 				const workflow = await n8n.api.workflows.createWorkflow(webhookWorkflow());
 				await n8n.navigate.toWorkflow(workflow.id);
 
@@ -316,9 +316,9 @@ test.describe(
 				expect(saved.settings?.redactionPolicy).toBe('non-manual');
 			});
 
-			test('redacts production executions @engine:v2', async ({ api, n8n }) => {
+			test('redacts production executions @engine:v2', async ({ api, MNI }) => {
 				const execution = await runProductionExecution(api);
-				const output = await openExecutionOutput(n8n, execution);
+				const output = await openExecutionOutput(MNI, execution);
 
 				await expect(output).toHaveText(/Output data redacted/);
 				await expect(output).not.toContainText(execution.secret);
@@ -327,9 +327,9 @@ test.describe(
 				expect(executionData.data).not.toContain(execution.secret);
 			});
 
-			test('leaves manual executions unredacted', async ({ api, n8n }) => {
+			test('leaves manual executions unredacted', async ({ api, MNI }) => {
 				const execution = await runManualExecution(api);
-				const output = await openExecutionOutput(n8n, execution);
+				const output = await openExecutionOutput(MNI, execution);
 
 				await expect(output).toContainText(execution.secret);
 				await expect(output).not.toHaveText(/Output data redacted/);
@@ -356,11 +356,11 @@ test.describe(
 		});
 
 		test.describe('when floor is "all"', () => {
-			test.beforeEach(async ({ n8n }) => {
+			test.beforeEach(async ({ MNI }) => {
 				await n8n.api.securitySettings.setRedactionFloor('all');
 			});
 
-			test('locks both selects in the workflow settings', async ({ n8n }) => {
+			test('locks both selects in the workflow settings', async ({ MNI }) => {
 				const workflow = await n8n.api.workflows.createWorkflow(webhookWorkflow());
 				await n8n.navigate.toWorkflow(workflow.id);
 				await n8n.workflowSettingsModal.open();
@@ -381,9 +381,9 @@ test.describe(
 				);
 			});
 
-			test('redacts production executions @engine:v2', async ({ api, n8n }) => {
+			test('redacts production executions @engine:v2', async ({ api, MNI }) => {
 				const execution = await runProductionExecution(api);
-				const output = await openExecutionOutput(n8n, execution);
+				const output = await openExecutionOutput(MNI, execution);
 
 				await expect(output).toHaveText(/Output data redacted/);
 				await expect(output).not.toContainText(execution.secret);
@@ -392,9 +392,9 @@ test.describe(
 				expect(executionData.data).not.toContain(execution.secret);
 			});
 
-			test('redacts manual executions', async ({ api, n8n }) => {
+			test('redacts manual executions', async ({ api, MNI }) => {
 				const execution = await runManualExecution(api);
-				const output = await openExecutionOutput(n8n, execution);
+				const output = await openExecutionOutput(MNI, execution);
 
 				await expect(output).toHaveText(/Output data redacted/);
 				await expect(output).not.toContainText(execution.secret);
@@ -428,9 +428,9 @@ test.describe(
 		});
 
 		test.describe('when floor is "off" and workflow redaction is "non-manual"', () => {
-			test('redacts production executions @engine:v2', async ({ api, n8n }) => {
+			test('redacts production executions @engine:v2', async ({ api, MNI }) => {
 				const execution = await runProductionExecution(api, { redactionPolicy: 'non-manual' });
-				const output = await openExecutionOutput(n8n, execution);
+				const output = await openExecutionOutput(MNI, execution);
 
 				await expect(output).toHaveText(/Output data redacted/);
 				await expect(output).not.toContainText(execution.secret);
@@ -439,9 +439,9 @@ test.describe(
 				expect(executionData.data).not.toContain(execution.secret);
 			});
 
-			test('leaves manual executions unredacted', async ({ api, n8n }) => {
+			test('leaves manual executions unredacted', async ({ api, MNI }) => {
 				const execution = await runManualExecution(api, { redactionPolicy: 'non-manual' });
-				const output = await openExecutionOutput(n8n, execution);
+				const output = await openExecutionOutput(MNI, execution);
 
 				await expect(output).toContainText(execution.secret);
 				await expect(output).not.toHaveText(/Output data redacted/);
@@ -453,17 +453,17 @@ test.describe(
 
 		test('does not retroactively redact executions captured before the floor was raised @engine:v2', async ({
 			api,
-			n8n,
+			MNI,
 		}) => {
 			const execution = await runProductionExecution(api);
 
-			const before = await openExecutionOutput(n8n, execution);
+			const before = await openExecutionOutput(MNI, execution);
 			await expect(before).toContainText(execution.secret);
 			await expect(before).not.toHaveText(/Output data redacted/);
 
 			await api.securitySettings.setRedactionFloor('all');
 
-			const after = await openExecutionOutput(n8n, execution);
+			const after = await openExecutionOutput(MNI, execution);
 			await expect(after).toContainText(execution.secret);
 			await expect(after).not.toHaveText(/Output data redacted/);
 
@@ -472,7 +472,7 @@ test.describe(
 		});
 
 		test('should redact Code node console output in the editor logs when the policy redacts manual runs', async ({
-			n8n,
+			MNI,
 			api,
 		}) => {
 			await api.securitySettings.setRedactionFloor('all');

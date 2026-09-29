@@ -55,7 +55,7 @@ function toConnections(connections: Record<string, unknown>): IConnections {
 	return result;
 }
 
-/** Flatten n8n's connections map into edges like "A → B" or "A -(ai_tool)→ B". */
+/** Flatten MNI's connections map into edges like "A → B" or "A -(ai_tool)→ B". */
 function summarizeConnections(connections: Record<string, unknown>): string[] {
 	const edges: string[] = [];
 	for (const [from, byType] of Object.entries(connections)) {

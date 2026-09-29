@@ -2,7 +2,7 @@
   "name": "@n8n/mcp-browser-extension",
   "version": "0.0.8",
   "private": true,
-  "description": "Chrome extension that lets n8n AI control browser tabs via CDP",
+  "description": "Chrome extension that lets MNI AI control browser tabs via CDP",
   "scripts": {
     "clean": "rimraf dist .turbo",
     "build": "vite build --config vite.sw.config.mts && vite build --config vite.ui.config.mts",

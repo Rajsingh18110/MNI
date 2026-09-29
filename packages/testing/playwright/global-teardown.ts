@@ -20,7 +20,7 @@ function globalTeardown() {
 
 	for (const port of ports) {
 		try {
-			// `lsof -ti` returns one PID per line. Dev-mode n8n holds the port
+			// `lsof -ti` returns one PID per line. Dev-mode MNI holds the port
 			// from multiple PIDs (parent + worker), so split and space-join
 			// before passing to `kill` — otherwise the second PID lands on its
 			// own shell line and gets executed as a command.

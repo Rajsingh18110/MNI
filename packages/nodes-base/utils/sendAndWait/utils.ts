@@ -47,12 +47,12 @@ type FormResponseTypeOptions = {
 const INPUT_FIELD_IDENTIFIER = 'field-0';
 
 const appendAttributionOption: INodeProperties = {
-	displayName: 'Append n8n Attribution',
+	displayName: 'Append MNI Attribution',
 	name: 'appendAttribution',
 	type: 'boolean',
 	default: true,
 	description:
-		'Whether to include the phrase "This message was sent automatically with n8n" to the end of the message',
+		'Whether to include the phrase "This message was sent automatically with MNI" to the end of the message',
 };
 
 // Operation Properties ----------------------------------------------------------

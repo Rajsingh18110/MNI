@@ -239,7 +239,7 @@ export const personAdditionalFieldsOptions: INodeProperties['options'] = [
 	{
 		displayName: 'Language Spoken',
 		name: 'languages_spoken',
-		type: 'options', // Action Network accepts a `string[]` of language codes, but supports only one language per person - sending an array of 2+ languages will result in the first valid language being set as the preferred language for the person. Therefore, the user may select only one option in the n8n UI.
+		type: 'options', // Action Network accepts a `string[]` of language codes, but supports only one language per person - sending an array of 2+ languages will result in the first valid language being set as the preferred language for the person. Therefore, the user may select only one option in the MNI UI.
 		default: [],
 		description: 'Language spoken by the person',
 		options: languageOptions,

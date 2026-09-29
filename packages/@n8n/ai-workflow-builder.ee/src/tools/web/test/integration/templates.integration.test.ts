@@ -6,7 +6,7 @@ import { fetchTemplateList, fetchTemplateByID } from '../../templates';
 /**
  * Integration tests for templates API
  *
- * These tests make actual API calls to n8n's template API.
+ * These tests make actual API calls to MNI's template API.
  * They are skipped by default and only run when ENABLE_INTEGRATION_TESTS=true
  *
  * To run these tests:

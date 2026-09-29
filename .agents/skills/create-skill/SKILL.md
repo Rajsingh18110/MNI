@@ -1,5 +1,5 @@
 ---
-name: n8n:create-skill
+name: MNI:create-skill
 description: >-
   Guides users through creating effective Agent Skills. Use when you want to
   create, write, or author a new skill, or asks about skill structure, best
@@ -13,8 +13,8 @@ Skills are markdown (plus optional scripts) that teach the agent a focused workf
 
 | Location | When to use |
 |----------|-------------|
-| **`.agents/skills/<name>/`** | Default for n8n: team-shared, versioned, agent-neutral source. |
-| `.claude/plugins/n8n/skills/<name>/` | Claude-specific override, or a generated symlink to `.agents/skills/<name>/`. |
+| **`.agents/skills/<name>/`** | Default for MNI: team-shared, versioned, agent-neutral source. |
+| `.claude/plugins/MNI/skills/<name>/` | Claude-specific override, or a generated symlink to `.agents/skills/<name>/`. |
 | `.opencode/skills/<name>/` | OpenCode-specific override only. Shared skills stay in `.agents/skills/<name>/`. |
 | `~/.claude/skills/<name>/` | Personal skill for Claude Code across all projects. |
 | `~/.config/opencode/skills/<name>/` | Personal skill for OpenCode across all projects. |
@@ -50,14 +50,14 @@ skill-name/
 
 ```yaml
 ---
-name: n8n:skill-name      # n8n:<name> — lowercase, hyphens, max 64 chars
+name: MNI:skill-name      # MNI:<name> — lowercase, hyphens, max 64 chars
 description: >-         # max 1024 chars, non-empty — see below
   ...
 ---
 ```
 
-**Name** — shared n8n skills use the `n8n:<name>` form so Claude Code namespaces
-them under the `n8n` plugin (invoked as `/n8n:<name>`). The `<name>` part must
+**Name** — shared MNI skills use the `MNI:<name>` form so Claude Code namespaces
+them under the `MNI` plugin (invoked as `/MNI:<name>`). The `<name>` part must
 match the skill's directory name.
 
 **Description** (discovery is everything — third person, WHAT + WHEN, trigger words):
@@ -87,7 +87,7 @@ match the skill's directory name.
 - **MCPs are optional per user** — not everyone has the same servers enabled. If a skill **requires** a specific MCP to work as written, say so explicitly:
   - Put a hint in the **frontmatter description** (e.g. “Requires Linear MCP for …”) so mismatches are obvious early.
   - Add a short **Prerequisites** (or **Requirements**) block near the top: which integration, what it is used for, and a **fallback** (e.g. web UI, `gh`, or “ask the user to paste …”) when it is missing.
-- **Referencing other skills** — use the harness-visible invocation name (e.g. `n8n:create-issue` where namespacing is available, otherwise `create-issue`). For human-readable links, give the canonical path from the repo root (e.g. `.agents/skills/create-issue/SKILL.md`). From a sibling folder, a relative link works too: `[create-issue](../create-issue/SKILL.md)`. Parent skills should delegate steps instead of duplicating long procedures.
+- **Referencing other skills** — use the harness-visible invocation name (e.g. `MNI:create-issue` where namespacing is available, otherwise `create-issue`). For human-readable links, give the canonical path from the repo root (e.g. `.agents/skills/create-issue/SKILL.md`). From a sibling folder, a relative link works too: `[create-issue](../create-issue/SKILL.md)`. Parent skills should delegate steps instead of duplicating long procedures.
 
 ## Patterns (pick what fits)
 
@@ -116,7 +116,7 @@ match the skill's directory name.
 
 ```markdown
 ---
-name: n8n:my-workflow
+name: MNI:my-workflow
 description: Does X using project convention Y. Use when the user asks for X or mentions Z.
 ---
 

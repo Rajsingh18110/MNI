@@ -99,7 +99,7 @@ describe('ScopedJwtStrategy (integration)', () => {
 
 		it('rejects tokens that fail validation', async () => {
 			// Wrong issuer → abstain. Subject missing / disabled / disabled-actor → fail.
-			expect(await strategy.buildTokenGrant(jwtService.sign({ iss: 'n8n', sub: '1' }))).toBeNull();
+			expect(await strategy.buildTokenGrant(jwtService.sign({ iss: 'MNI', sub: '1' }))).toBeNull();
 			expect(
 				await strategy.buildTokenGrant(makeScopedJwt('422b72e6-2df2-47c9-8082-f8393b088fde')),
 			).toBe(false);

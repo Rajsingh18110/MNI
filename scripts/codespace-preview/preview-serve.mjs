@@ -29,7 +29,7 @@ const CONCURRENCY = process.env.PREVIEW_BUILD_CONCURRENCY ?? '2';
 // who only wants to look at the UI. Running with no auth is not an option: the
 // `skipInstanceOwnerSetup` setting was removed in migration 1681134145997. So seed a
 // known owner instead. These are not secrets — the security boundary is the
-// org-visible forwarded port, which already requires a GitHub sign-in and n8n org
+// org-visible forwarded port, which already requires a GitHub sign-in and MNI org
 // membership. Never point this at anything publicly reachable.
 // The password must satisfy passwordSchema: 8-64 chars, >=1 digit, >=1 uppercase.
 const OWNER_EMAIL = process.env.PREVIEW_OWNER_EMAIL ?? 'preview@n8n.io';

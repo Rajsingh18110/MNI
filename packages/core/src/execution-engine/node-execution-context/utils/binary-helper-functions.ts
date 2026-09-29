@@ -245,7 +245,7 @@ export const getNodeBinaryHelperFunctions = (
 });
 
 /**
- * Takes a buffer and converts it into the format n8n uses. It encodes the binary data as
+ * Takes a buffer and converts it into the format MNI uses. It encodes the binary data as
  * base64 and adds metadata.
  */
 

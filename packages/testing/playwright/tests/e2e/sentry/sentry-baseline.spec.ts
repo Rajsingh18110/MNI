@@ -12,7 +12,7 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Catalysts' }],
 	},
 	() => {
-		test('frontend error is captured', async ({ n8n, n8nContainer }) => {
+		test('frontend error is captured', async ({ MNI, n8nContainer }) => {
 			const kent = n8nContainer.services.kent;
 			await n8n.navigate.toHome();
 
@@ -36,7 +36,7 @@ test.describe(
 				.toHaveLength(1);
 		});
 
-		test('backend transaction is captured', async ({ n8n, n8nContainer }) => {
+		test('backend transaction is captured', async ({ MNI, n8nContainer }) => {
 			const kent = n8nContainer.services.kent;
 			await n8n.navigate.toHome();
 
@@ -48,7 +48,7 @@ test.describe(
 		});
 
 		test('events have deployment identification via server_name tag', async ({
-			n8n,
+			MNI,
 			n8nContainer,
 		}) => {
 			const kent = n8nContainer.services.kent;

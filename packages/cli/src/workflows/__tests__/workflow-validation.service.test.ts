@@ -885,7 +885,7 @@ describe('WorkflowValidationService', () => {
 			expect(result.error).toContain('end-user credentials');
 			expect(result.error).toContain('"My OAuth2"');
 			expect(result.error).toContain(
-				'only supported with manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication',
+				'only supported with manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication',
 			);
 		});
 
@@ -913,7 +913,7 @@ describe('WorkflowValidationService', () => {
 		});
 
 		it('should not treat a Send-and-Wait action node (webhook method, non-trigger group) as a trigger', async () => {
-			// Regression: an MCP trigger (n8n identity) alongside a Gmail tool node using
+			// Regression: an MCP trigger (MNI identity) alongside a Gmail tool node using
 			// "Send and Wait for Response". The tool carries a HITL `webhook`, so the old
 			// method-based check mistook it for an identity-less trigger and blocked publish.
 			const nodes: INode[] = [
@@ -1233,7 +1233,7 @@ describe('WorkflowValidationService', () => {
 
 				expect(result.isValid).toBe(false);
 				expect(result.error).toBe(
-					'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication. To use another trigger, switch the credential to Fixed.',
+					'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication. To use another trigger, switch the credential to Fixed.',
 				);
 			});
 
@@ -1259,7 +1259,7 @@ describe('WorkflowValidationService', () => {
 
 				expect(result.isValid).toBe(false);
 				expect(result.error).toContain(
-					'only supported with manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication',
+					'only supported with manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication',
 				);
 			});
 		});
@@ -1294,7 +1294,7 @@ describe('WorkflowValidationService', () => {
 
 				expect(result.isValid).toBe(false);
 				expect(result.error).toBe(
-					'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication. To use another trigger, switch the credential to Fixed.',
+					'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication. To use another trigger, switch the credential to Fixed.',
 				);
 			});
 
@@ -1330,7 +1330,7 @@ describe('WorkflowValidationService', () => {
 
 				expect(result.isValid).toBe(false);
 				expect(result.error).toBe(
-					'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication. To use another trigger, switch the credential to Fixed.',
+					'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication. To use another trigger, switch the credential to Fixed.',
 				);
 			});
 		});
@@ -1376,7 +1376,7 @@ describe('WorkflowValidationService', () => {
 			const result = await service.validateDynamicCredentials(nodes, mockNodeTypes);
 
 			expect(result.error).toBe(
-				'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication. To use another trigger, switch the credential to Fixed.',
+				'Cannot publish workflow: end-user credentials ("My OAuth2") are only supported with manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication. To use another trigger, switch the credential to Fixed.',
 			);
 		});
 

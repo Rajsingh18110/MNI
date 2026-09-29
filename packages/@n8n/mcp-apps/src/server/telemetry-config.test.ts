@@ -17,7 +17,7 @@ const config: McpAppTelemetryConfig = {
 
 describe('injectTelemetryConfig', () => {
 	it('injects the config global right after <head>, before existing head content', () => {
-		const html = '<!doctype html><html><head><title>n8n</title></head><body></body></html>';
+		const html = '<!doctype html><html><head><title>MNI</title></head><body></body></html>';
 		const out = injectTelemetryConfig(html, config);
 
 		expect(out).toContain(`<head><script>window.${MCP_APP_TELEMETRY_GLOBAL}=`);

@@ -7,7 +7,7 @@ import type { HealthCheckServer } from './health-check-server';
 import { JsTaskRunner } from './js-task-runner/js-task-runner';
 import { TaskRunnerSentry } from './task-runner-sentry';
 
-process.title = 'n8n task-runner';
+process.title = 'MNI task-runner';
 
 // Initialize module paths from NODE_PATH environment variable.
 // This is necessary because Node.js doesn't automatically pick up NODE_PATH

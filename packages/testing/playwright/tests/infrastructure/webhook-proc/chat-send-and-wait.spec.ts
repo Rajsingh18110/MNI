@@ -3,8 +3,8 @@ import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../fixtures/base';
 
-const HEARTBEAT = 'n8n|heartbeat';
-const HEARTBEAT_ACK = 'n8n|heartbeat-ack';
+const HEARTBEAT = 'MNI|heartbeat';
+const HEARTBEAT_ACK = 'MNI|heartbeat-ack';
 const QUESTION = 'What is your name?';
 
 test.use({ capability: { webhooks: 1, workers: 1 } });

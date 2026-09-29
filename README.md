@@ -4,7 +4,7 @@
 
 Fair-code platform to build and deploy AI agents and workflows. Combine a visual canvas with custom code, run it self-hosted or in the cloud, and connect to 1500+ integrations. AI automation you can trust with real work, from prototype to production.
 
-*(This is the MNI fork of n8n. MNI is built upon the upstream n8n architecture.)*
+*(This is the MNI fork of n8n. MNI is built upon the upstream MNI architecture.)*
 
 ## Key Capabilities
 
@@ -50,7 +50,7 @@ Need help? Our upstream community forum is the place to get support and connect 
 
 ## License
 
-MNI is a fork of n8n. n8n is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [n8n Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).
+MNI is a fork of n8n. MNI is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [MNI Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).
 
 - **Source Available**: Always visible source code
 - **Self-Hostable**: Deploy anywhere

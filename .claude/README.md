@@ -1,10 +1,10 @@
 # Claude Code Configuration
 
-This directory contains shared Claude Code configuration for the n8n team.
+This directory contains shared Claude Code configuration for the MNI team.
 
-Agents and commands live under the `n8n` plugin at `.claude/plugins/n8n/` for
-`n8n:` namespacing. Shared skills are sourced from `.agents/skills/` and linked
-into the plugin. See [plugin README](plugins/n8n/README.md) for full details.
+Agents and commands live under the `MNI` plugin at `.claude/plugins/MNI/` for
+`MNI:` namespacing. Shared skills are sourced from `.agents/skills/` and linked
+into the plugin. See [plugin README](plugins/MNI/README.md) for full details.
 
 ## Setup
 
@@ -40,7 +40,7 @@ To auto-approve Linear MCP tools, add to your global settings:
 ## Plugin
 
 All skills, commands, and agents are auto-discovered from
-`.claude/plugins/n8n/`. They get the `n8n:` namespace prefix automatically
-(e.g. `n8n:create-pr`, `/n8n:plan`, `n8n:developer`).
+`.claude/plugins/MNI/`. They get the `MNI:` namespace prefix automatically
+(e.g. `MNI:create-pr`, `/MNI:plan`, `MNI:developer`).
 
-See [plugin README](plugins/n8n/README.md) for structure and design decisions.
+See [plugin README](plugins/MNI/README.md) for structure and design decisions.

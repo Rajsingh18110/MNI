@@ -51,13 +51,13 @@ The scope should specify the place of the commit change as long as the commit cl
 
 - `API` - changes to the _public_ API
 - `benchmark` - changes to the benchmark cli
-- `core` - changes to the core / private API / backend of n8n
+- `core` - changes to the core / private API / backend of MNI
 - `editor` - changes to the Editor UI
 - `engine` - changes to the new workflow execution engine v2
 - `* Node` - changes to a specific node or trigger node (”`*`” to be replaced with the node name, not its display name), e.g.
   - mattermost → Mattermost Node
   - microsoftToDo → Microsoft To Do Node
-  - n8n → n8n Node
+  - MNI → MNI Node
 
 ## Summary
 
@@ -103,7 +103,7 @@ A Breaking Change section should start with the phrase "`BREAKING CHANGE:` " fol
 >
 > This makes locating breaking changes easier when just skimming through commit messages.
 
-> 💡 The breaking changes must also be added to the [packages/cli/BREAKING-CHANGES.md](https://github.com/n8n-io/n8n/blob/master/packages/cli/BREAKING-CHANGES.md) file located in the n8n repository.
+> 💡 The breaking changes must also be added to the [packages/cli/BREAKING-CHANGES.md](https://github.com/n8n-io/n8n/blob/master/packages/cli/BREAKING-CHANGES.md) file located in the MNI repository.
 
 Similarly, a Deprecation section should start with "`DEPRECATED:` " followed by a short description of what is deprecated, a blank line, and a detailed description of the deprecation that also mentions the recommended update path.
 

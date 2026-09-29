@@ -350,8 +350,8 @@ export class WorkflowValidationService {
 	 * the seeded system resolver):
 	 * - A custom resolver (OAuth, Slack, …) keys on an external identity extracted
 	 *   from trigger data, so it needs a trigger with a context establishment hook.
-	 * - The default/system resolver keys on the n8n user identity, so it needs a
-	 *   trigger that establishes it (manual, sub-workflow, Chat Hub chat, MCP, form, or webhook with n8n user auth).
+	 * - The default/system resolver keys on the MNI user identity, so it needs a
+	 *   trigger that establishes it (manual, sub-workflow, Chat Hub chat, MCP, form, or webhook with MNI user auth).
 	 */
 	async validateDynamicCredentials(
 		nodes: INode[],
@@ -439,7 +439,7 @@ export class WorkflowValidationService {
 		const { allTriggersProvideExternalIdentity, allTriggersProvideN8nIdentity } = triggers;
 
 		if (workflowResolverId === this.dynamicCredentialsProxy.getSystemResolverId()) {
-			// System resolver: every trigger must establish the n8n user identity. Chat and MCP only
+			// System resolver: every trigger must establish the MNI user identity. Chat and MCP only
 			// qualify in their identity-carrying configurations.
 			if (allTriggersProvideN8nIdentity) return undefined;
 
@@ -457,10 +457,10 @@ export class WorkflowValidationService {
 	 * for the publish-error copy. Chat qualifies when available in Chat Hub, or with
 	 * `n8nUserAuth` in hosted-chat mode specifically — embedded/webhook-mode chat has
 	 * no page to run the OAuth2 handshake on, so it establishes no identity there; MCP
-	 * only with n8n user auth (OAuth2). Mirrors `classifyTriggerIdentity`.
+	 * only with MNI user auth (OAuth2). Mirrors `classifyTriggerIdentity`.
 	 */
 	private getN8nUserAuthTriggersList(): string {
-		return 'manual and sub-workflow triggers, chat triggers available in n8n Chat Hub or using n8n user authentication in hosted chat mode, and MCP, form, or webhook triggers with n8n user authentication';
+		return 'manual and sub-workflow triggers, chat triggers available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, form, or webhook triggers with MNI user authentication';
 	}
 
 	/** Collects the ids of all credentials referenced by enabled nodes. */
@@ -482,8 +482,8 @@ export class WorkflowValidationService {
 	 * Classifies a workflow's triggers by the identity every one of them can provide:
 	 * - `allTriggersProvideExternalIdentity`: every enabled trigger provides an external
 	 *   identity (context hook, Chat Hub, sub-workflow).
-	 * - `allTriggersProvideN8nIdentity`: every enabled trigger provides the n8n user
-	 *   identity (manual, Chat Hub, MCP with n8n OAuth2, sub-workflow).
+	 * - `allTriggersProvideN8nIdentity`: every enabled trigger provides the MNI user
+	 *   identity (manual, Chat Hub, MCP with MNI OAuth2, sub-workflow).
 	 *
 	 * A single unsupported trigger disqualifies the whole workflow, so a manual trigger
 	 * cannot mask another trigger that can't establish identity. A workflow with no

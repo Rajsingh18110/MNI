@@ -110,7 +110,7 @@ async function resolveCredentialSelection(
 
 	if (deps.isCredentialTypeKnown && !deps.isCredentialTypeKnown(input.credentialType)) {
 		throw new Error(
-			`Unknown credential type "${input.credentialType}". Use an exact n8n credential type name.`,
+			`Unknown credential type "${input.credentialType}". Use an exact MNI credential type name.`,
 		);
 	}
 
@@ -192,7 +192,7 @@ export function buildAskCredentialTool(deps: CredentialSetupDeps): BuiltTool {
 export function buildAskEmbeddingCredentialTool(deps: AskEmbeddingCredentialToolDeps): BuiltTool {
 	return new Tool(ASK_EMBEDDING_CREDENTIAL_TOOL_NAME)
 		.description(
-			'Resolve the OpenAI embedding credential for Episodic Memory. Tries to resolve n8n managed credential. Otherwise behaves ' +
+			'Resolve the OpenAI embedding credential for Episodic Memory. Tries to resolve MNI managed credential. Otherwise behaves ' +
 				'like ask_credential: show a credential picker card in the chat UI and suspend until ' +
 				'the user selects a credential. Returns { credentialId, credentialName, credentials } ' +
 				'on success or { skipped: true } if the user skips credential setup.',
@@ -206,7 +206,7 @@ export function buildAskEmbeddingCredentialTool(deps: AskEmbeddingCredentialTool
 				ctx: InterruptibleToolContext<CredentialSuspendPayload, CredentialResumeData>,
 			): Promise<AskCredentialToolResult> => {
 				if (deps.isAssistantProxyEnabled()) {
-					return withNodeCredentialMap(input, MANAGED_CREDENTIAL_TOKEN, 'Managed by n8n');
+					return withNodeCredentialMap(input, MANAGED_CREDENTIAL_TOKEN, 'Managed by MNI');
 				}
 				return await resolveCredentialSelection(input, ctx, deps);
 			},

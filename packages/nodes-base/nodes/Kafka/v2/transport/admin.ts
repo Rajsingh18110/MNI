@@ -55,7 +55,7 @@ export async function assertTopicExists(
 	const kafka = await createKafkaClient(credentials);
 	const admin = kafka.admin({
 		// Without this the library's own logger writes ERROR-and-above straight
-		// to stdout, bypassing n8n's logger; there is no fatal-error handler here
+		// to stdout, bypassing MNI's logger; there is no fatal-error handler here
 		// since this admin client is short-lived and has no run loop to abort.
 		...(logger ? { kafkaJS: { logger: createLibraryLogger(logger) } } : {}),
 	});

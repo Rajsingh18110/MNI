@@ -68,7 +68,7 @@ export const RESOURCE_DECISION_KEYS: ResourceDecision[] = [
 	'alwaysDeny',
 ];
 
-/** Reduced option set sent to the n8n instance UI — no persistent allow/deny to avoid fatigue. */
+/** Reduced option set sent to the MNI instance UI — no persistent allow/deny to avoid fatigue. */
 export const INSTANCE_RESOURCE_DECISION_KEYS: ResourceDecision[] = [
 	'denyOnce',
 	'allowOnce',

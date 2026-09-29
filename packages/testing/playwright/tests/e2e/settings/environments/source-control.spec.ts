@@ -8,7 +8,7 @@ import {
 
 test.use({ capability: 'source-control' });
 
-async function saveSettings(n8n: n8nPage) {
+async function saveSettings(MNI: n8nPage) {
 	await Promise.all([
 		n8n.page.waitForResponse(
 			(response) =>
@@ -19,7 +19,7 @@ async function saveSettings(n8n: n8nPage) {
 	]);
 }
 
-async function connectRepository(n8n: n8nPage) {
+async function connectRepository(MNI: n8nPage) {
 	await expect(n8n.settingsEnvironment.getConnectButton()).toBeEnabled();
 	await Promise.all([
 		n8n.page.waitForResponse(
@@ -31,7 +31,7 @@ async function connectRepository(n8n: n8nPage) {
 	]);
 }
 
-async function disconnectRepository(n8n: n8nPage) {
+async function disconnectRepository(MNI: n8nPage) {
 	await Promise.all([
 		n8n.page.waitForResponse(
 			(response) =>
@@ -55,10 +55,10 @@ test.describe(
 		let repoUrl: string;
 		let repoName: string;
 
-		test.beforeEach(async ({ n8n, api, services }) => {
+		test.beforeEach(async ({ MNI, api, services }) => {
 			await api.enableFeature('sourceControl');
 			const gitea = services.gitea;
-			await initSourceControl({ n8n, api, gitea });
+			await initSourceControl({ MNI, api, gitea });
 
 			// Create unique repo with branches via API (not UI)
 			repoName = generateUniqueRepoName();
@@ -67,13 +67,13 @@ test.describe(
 			repoUrl = buildRepoUrl(repoName);
 		});
 
-		test('should connect to Git repository using SSH', async ({ n8n }) => {
+		test('should connect to Git repository using SSH', async ({ MNI }) => {
 			// Test UI connection flow with unique repo
 			await n8n.navigate.toEnvironments();
 
 			await n8n.settingsEnvironment.waitForConnectForm();
 			await n8n.settingsEnvironment.fillRepoUrl(repoUrl);
-			await connectRepository(n8n);
+			await connectRepository(MNI);
 
 			await expect(n8n.settingsEnvironment.getDisconnectButton()).toBeVisible();
 			await expect(n8n.settingsEnvironment.getBranchSelect()).toBeVisible();
@@ -86,7 +86,7 @@ test.describe(
 			await expect(n8n.sideBar.getSourceControlConnectedIndicator()).toBeVisible();
 		});
 
-		test('should switch between branches', async ({ n8n, api, services }) => {
+		test('should switch between branches', async ({ MNI, api, services }) => {
 			const gitea = services.gitea;
 			await gitea.createBranch(repoName, 'development');
 			await gitea.createBranch(repoName, 'staging');
@@ -103,7 +103,7 @@ test.describe(
 			await expect(n8n.settingsEnvironment.getVisiblePopoverOption('staging')).toBeVisible();
 			await expect(n8n.settingsEnvironment.getVisiblePopoverOption('production')).toBeVisible();
 			await n8n.settingsEnvironment.getVisiblePopoverOption('development').click();
-			await saveSettings(n8n);
+			await saveSettings(MNI);
 
 			// Verify branch switched by checking preferences
 			let preferences = await api.sourceControl.getPreferences();
@@ -111,20 +111,20 @@ test.describe(
 
 			// Switch back to 'main'
 			await n8n.settingsEnvironment.selectBranch('main');
-			await saveSettings(n8n);
+			await saveSettings(MNI);
 
 			// Verify switched back
 			preferences = await api.sourceControl.getPreferences();
 			expect(preferences.branchName).toBe('main');
 		});
 
-		test('should enable read-only mode and restrict operations', async ({ n8n, api }) => {
+		test('should enable read-only mode and restrict operations', async ({ MNI, api }) => {
 			await api.sourceControl.connect({ repositoryUrl: repoUrl });
 
 			await n8n.navigate.toEnvironments();
 
 			await n8n.settingsEnvironment.enableReadOnlyMode();
-			await saveSettings(n8n);
+			await saveSettings(MNI);
 
 			// Verify push button is disabled in read-only mode
 			await n8n.navigate.toHome();
@@ -133,7 +133,7 @@ test.describe(
 
 			await n8n.navigate.toEnvironments();
 			await n8n.settingsEnvironment.disableReadOnlyMode();
-			await saveSettings(n8n);
+			await saveSettings(MNI);
 
 			// Verify push button is enabled again
 			await n8n.navigate.toHome();
@@ -141,11 +141,11 @@ test.describe(
 			await expect(n8n.sideBar.getSourceControlPullButton()).toBeEnabled();
 		});
 
-		test('should disconnect and reconnect with existing keys', async ({ n8n, api }) => {
+		test('should disconnect and reconnect with existing keys', async ({ MNI, api }) => {
 			await api.sourceControl.connect({ repositoryUrl: repoUrl });
 
 			await n8n.navigate.toEnvironments();
-			await disconnectRepository(n8n);
+			await disconnectRepository(MNI);
 
 			// check that source control is disconnected
 			await n8n.navigate.toHome();
@@ -155,7 +155,7 @@ test.describe(
 			await n8n.navigate.toEnvironments();
 			await n8n.settingsEnvironment.waitForConnectForm();
 			await n8n.settingsEnvironment.fillRepoUrl(repoUrl);
-			await connectRepository(n8n);
+			await connectRepository(MNI);
 
 			await expect(n8n.settingsEnvironment.getDisconnectButton()).toBeVisible();
 			await expect(n8n.settingsEnvironment.getBranchSelect()).toBeVisible();

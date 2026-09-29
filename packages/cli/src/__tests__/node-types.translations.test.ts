@@ -62,7 +62,7 @@ describe('NodeTypes translations', () => {
 			JSON.stringify({
 				name: PACKAGE_NAME,
 				version: '1.0.0',
-				n8n: { nodes: ['dist/nodes/Fixture/Fixture.node.js'] },
+				MNI: { nodes: ['dist/nodes/Fixture/Fixture.node.js'] },
 			}),
 		);
 		writeFileSync(join(nodeDir, 'Fixture.node.js'), nodeSource);

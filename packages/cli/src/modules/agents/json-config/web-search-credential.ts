@@ -2,7 +2,7 @@ import type { CredentialProvider, ResolvedCredential } from '@n8n/agents';
 import { UserError } from 'n8n-workflow';
 
 /**
- * n8n credential type the AI Gateway serves each fallback web-search provider
+ * MNI credential type the AI Gateway serves each fallback web-search provider
  * under. Only providers the gateway can mint a managed credential for appear
  * here; SearXNG is self-hosted and has no managed path.
  */
@@ -11,8 +11,8 @@ export const WEB_SEARCH_GATEWAY_CREDENTIAL_TYPES: Record<string, string> = {
 };
 
 /**
- * A `CredentialProvider` that can also mint the n8n Connect (AI Gateway)
- * synthetic credential for a web-search provider, keyed by n8n credential type
+ * A `CredentialProvider` that can also mint the MNI Connect (AI Gateway)
+ * synthetic credential for a web-search provider, keyed by MNI credential type
  * (e.g. `braveSearchApi`). Mirrors `AiGatewayModelCredentialResolver` — the
  * capability lives on the provider so no gateway resolver is threaded through
  * the build path.
@@ -35,7 +35,7 @@ export interface WebSearchGatewayProxyConfig {
 const BRAVE_GATEWAY_URL_SUFFIX = /\/res\/v1$/;
 
 /**
- * Mint an AI Gateway proxy config for a managed (n8n Connect) web search. The
+ * Mint an AI Gateway proxy config for a managed (MNI Connect) web search. The
  * gateway authenticates the tenant token from Brave's `X-Subscription-Token`
  * header — the same field the Brave credential normally carries — so the minted
  * token is passed there rather than as a bearer token.

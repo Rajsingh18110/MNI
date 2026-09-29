@@ -53,7 +53,7 @@ class PostgresSSLConfig {
 class PostgresConfig {
 	/** Postgres database name. */
 	@Env('DB_POSTGRESDB_DATABASE')
-	database: string = 'n8n';
+	database: string = 'MNI';
 
 	/** Postgres database host. */
 	@Env('DB_POSTGRESDB_HOST')
@@ -163,7 +163,7 @@ export class DatabaseConfig {
 	@Env('DB_TYPE', dbTypeSchema)
 	type: DbType = 'sqlite';
 
-	/** Prefix prepended to all n8n table names (useful for shared databases). */
+	/** Prefix prepended to all MNI table names (useful for shared databases). */
 	@Env('DB_TABLE_PREFIX')
 	tablePrefix: string = '';
 

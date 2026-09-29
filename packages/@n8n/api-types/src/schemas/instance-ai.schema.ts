@@ -22,7 +22,7 @@ import { Z } from '../zod-class';
 export const UNLIMITED_CREDITS = -1;
 
 /**
- * The instance's n8n Assistant credit standing, as reported by `GET /instance-ai/credits`, by the
+ * The instance's MNI Assistant credit standing, as reported by `GET /instance-ai/credits`, by the
  * `updateInstanceAiCredits` push and by the internal callers that pass it around.
  *
  * `creditsQuota` is {@link UNLIMITED_CREDITS} when credits are not metered — either the proxy is
@@ -1586,7 +1586,7 @@ export const instanceAiCredentialHandoffContextSchema = z.object({
 		 *  guidance instead of configuration steps. */
 		placeholderTitles: z.array(z.string().min(1).max(255)).max(20).optional(),
 		/** The provider's key page from the recipe (where the user creates/copies
-		 *  the secret) — distinct from documentationUrl, the n8n docs page of the
+		 *  the secret) — distinct from documentationUrl, the MNI docs page of the
 		 *  credential type. The thread directs the user there. */
 		docsUrl: z.string().url().max(2048).optional(),
 		documentationUrl: z.string().url().max(2048).optional(),
@@ -1763,12 +1763,12 @@ export class InstanceAiCorrectTaskRequest extends Z.class({
  * - `agent_builder_page` — Instance AI hand-off from the agent builder
  * - `agent_preview` — send a preview chat session to Instance AI
  * - `assistant_page` — first message typed on the Instance AI empty/home page
- * - `onboarding` — seeded "Welcome to n8n" thread for a new user; the greeting is stored before the first user turn
+ * - `onboarding` — seeded "Welcome to MNI" thread for a new user; the greeting is stored before the first user turn
  * - `evals` — Instance AI evaluation harness / offline eval runners
  * - `playwright` — Playwright E2E helpers that create threads via the REST API
  * Experiment cleanup: remove with openWorkflowInAssistant.
  * - `workflow_list_auto` — treatment redirect: a workflow list card opened in the assistant by default
- * - `workflow_list_button` — deliberate "Edit with n8n Assistant" button on a workflow list card
+ * - `workflow_list_button` — deliberate "Edit with MNI Assistant" button on a workflow list card
  */
 export const INSTANCE_AI_THREAD_SOURCES = [
 	'website-template',
@@ -1797,7 +1797,7 @@ export type InstanceAiThreadSourcePersisted =
 	| typeof INSTANCE_AI_THREAD_SOURCE_FALLBACK;
 
 /**
- * Pre-fill taxonomy for Instance AI messages. A pre-fill is message text n8n
+ * Pre-fill taxonomy for Instance AI messages. A pre-fill is message text MNI
  * wrote, not text the user typed: the opener a failed execution, a credential
  * modal, a template card or a suggestion chip puts in the composer. Analytics
  * used to recover the type by string-matching the message body, which broke
@@ -2343,7 +2343,7 @@ export const DEFAULT_INSTANCE_AI_PERMISSIONS: InstanceAiPermissions = {
 /**
  * Permission keys that remain active when branchReadOnly is enabled.
  *
- * This set mirrors n8n's own backend permission model for protected branches:
+ * This set mirrors MNI's own backend permission model for protected branches:
  * publish/unpublish, credential delete/update, and workflow update have no
  * hard backend lockout — only project-scope gates. branchReadOnly is a
  * UX-level nudge toward the source-control sync workflow, not a global write
@@ -2496,7 +2496,7 @@ export interface InstanceAiSetupState {
 }
 
 /**
- * How each n8n Assistant setup component is configured, derived from the admin
+ * How each MNI Assistant setup component is configured, derived from the admin
  * settings response. Single source of truth for the setup gate and the setup
  * telemetry snapshot, on both backend and frontend. The response already
  * resolves precedence (credential ids are null when env config wins), so env
@@ -2783,10 +2783,10 @@ export const CONFIG_EVALUATIONS_FLAG = '088_config_evaluations';
 /** Enabled arm of `CONFIG_EVALUATIONS_FLAG` (matches the editor-ui experiment). */
 export const CONFIG_EVALUATIONS_ENABLED_VARIANT = 'variant';
 
-/** Enables adding selected canvas nodes as chat context in the n8n Assistant */
+/** Enables adding selected canvas nodes as chat context in the MNI Assistant */
 export const CANVAS_NODE_CONTEXT_FLAG = '104_canvas_aia_node_context';
 
-/** Enables workflow, node, and canvas group mentions in the n8n Assistant */
+/** Enables workflow, node, and canvas group mentions in the MNI Assistant */
 export const AI_ASSISTANT_AT_MENTIONS_FLAG = '116_at_mentions_enabled';
 
 /** Enables the conversation-history tool and the past-conversations first-turn hint */

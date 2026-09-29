@@ -34,7 +34,7 @@ const useWorkflowTimezone: INodeProperties = {
 };
 
 const descriptionV2: INodeTypeDescription = {
-	displayName: 'n8n Form Trigger',
+	displayName: 'MNI Form Trigger',
 	name: 'formTrigger',
 	icon: 'node:form-trigger',
 	iconColor: 'teal',
@@ -42,7 +42,7 @@ const descriptionV2: INodeTypeDescription = {
 	// since trigger and node are sharing descriptions and logic we need to sync the versions
 	// and keep them aligned in both nodes
 	version: [2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6],
-	description: 'Generate webforms in n8n and pass their responses to the workflow',
+	description: 'Generate webforms in MNI and pass their responses to the workflow',
 	defaults: {
 		name: 'On form submission',
 	},
@@ -113,7 +113,7 @@ const descriptionV2: INodeTypeDescription = {
 			displayOptions: { show: { '@version': [{ _cnd: { lte: 2.5 } }] } },
 			builderHint: {
 				propertyHint:
-					"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
+					"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
 			},
 		},
 		{
@@ -127,9 +127,9 @@ const descriptionV2: INodeTypeDescription = {
 				},
 				{
 					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-					name: 'n8n User Auth',
+					name: 'MNI user Auth',
 					value: 'n8nUserAuth',
-					description: 'Require user to be logged in with their n8n account',
+					description: 'Require user to be logged in with their MNI account',
 				},
 				{
 					name: 'None',
@@ -140,7 +140,7 @@ const descriptionV2: INodeTypeDescription = {
 			displayOptions: { show: { '@version': [{ _cnd: { gte: 2.6 } }] } },
 			builderHint: {
 				propertyHint:
-					"Default to 'none'. n8n exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
+					"Default to 'none'. MNI exposes inbound trigger URLs publicly by design. Only select an authentication method when the user explicitly asks to authenticate inbound traffic.",
 			},
 		},
 		{

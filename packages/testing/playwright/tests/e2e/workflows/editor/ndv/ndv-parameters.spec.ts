@@ -6,12 +6,12 @@ test.describe(
 		annotation: [{ type: 'owner', description: 'Adore' }],
 	},
 	() => {
-		test.beforeEach(async ({ n8n }) => {
+		test.beforeEach(async ({ MNI }) => {
 			await n8n.start.fromBlankCanvas();
 		});
 
 		test.describe('Parameter Hints', () => {
-			test('should display parameter hints correctly', async ({ n8n }) => {
+			test('should display parameter hints correctly', async ({ MNI }) => {
 				await n8n.start.fromImportedWorkflow('schedule-trigger-with-set-nodes.json');
 				await n8n.canvas.openNode('Set1');
 
@@ -41,7 +41,7 @@ test.describe(
 		});
 
 		test.describe('Remote Options & Network', () => {
-			test('should not retrieve remote options when a parameter value changes', async ({ n8n }) => {
+			test('should not retrieve remote options when a parameter value changes', async ({ MNI }) => {
 				let fetchParameterOptionsCallCount = 0;
 				await n8n.page.route('**/rest/dynamic-node-parameters/options', async (route) => {
 					fetchParameterOptionsCallCount++;
@@ -61,7 +61,7 @@ test.describe(
 			});
 
 			test('Should show a notice when remote options cannot be fetched because of missing credentials', async ({
-				n8n,
+				MNI,
 			}) => {
 				await n8n.page.route('**/rest/dynamic-node-parameters/options', async (route) => {
 					await route.fulfill({ status: 403 });
@@ -77,7 +77,7 @@ test.describe(
 				).toBeVisible();
 			});
 
-			test('Should show error state when remote options cannot be fetched', async ({ n8n }) => {
+			test('Should show error state when remote options cannot be fetched', async ({ MNI }) => {
 				await n8n.page.route('**/rest/dynamic-node-parameters/options', async (route) => {
 					await route.fulfill({ status: 500 });
 				});
@@ -97,7 +97,7 @@ test.describe(
 		});
 
 		test.describe('Parameter Management - Advanced', () => {
-			test('Should clear mismatched collection parameters', async ({ n8n }) => {
+			test('Should clear mismatched collection parameters', async ({ MNI }) => {
 				await n8n.canvas.addNode('Manual Trigger');
 				await n8n.canvas.addNode('Notion', { action: 'Create a database page', closeNDV: false });
 				await expect(n8n.ndv.container).toBeVisible();
@@ -108,7 +108,7 @@ test.describe(
 				await expect(n8n.ndv.getParameterItemWithText('Currently no items exist')).toBeVisible();
 			});
 
-			test('Should keep RLC values after operation change', async ({ n8n }) => {
+			test('Should keep RLC values after operation change', async ({ MNI }) => {
 				const TEST_DOC_ID = '1111';
 
 				await n8n.canvas.addNode('Manual Trigger');
@@ -124,7 +124,7 @@ test.describe(
 				await expect(input).toHaveValue(TEST_DOC_ID);
 			});
 
-			test('Should not clear resource/operation after credential change', async ({ n8n }) => {
+			test('Should not clear resource/operation after credential change', async ({ MNI }) => {
 				await n8n.canvas.addNode('Manual Trigger');
 				await n8n.canvas.addNode('Discord', { closeNDV: false, action: 'Delete a message' });
 				await expect(n8n.ndv.container).toBeVisible();
@@ -142,7 +142,7 @@ test.describe(
 
 		test.describe('Node Creator Integration', () => {
 			test('Should open appropriate node creator after clicking on connection hint link', async ({
-				n8n,
+				MNI,
 			}) => {
 				const hintMapper = {
 					Memory: 'AI Nodes',
@@ -169,7 +169,7 @@ test.describe(
 		});
 
 		test.describe('Expression Editor Features', () => {
-			test('should allow selecting item for expressions', async ({ n8n }) => {
+			test('should allow selecting item for expressions', async ({ MNI }) => {
 				await n8n.canvas.importWorkflow(
 					'schedule-trigger-with-set-nodes.json',
 					'My test workflow 2',

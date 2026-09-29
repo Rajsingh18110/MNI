@@ -360,7 +360,7 @@ export class GoogleApi implements ICredentialType {
 			},
 		);
 
-		// Fixed Google vendor host, independent of any n8n config, so SSRF protection is opted out.
+		// Fixed Google vendor host, independent of any MNI config, so SSRF protection is opted out.
 		const http = getTokenRequestClient('fixed-vendor');
 
 		const { access_token } = (await http.request({

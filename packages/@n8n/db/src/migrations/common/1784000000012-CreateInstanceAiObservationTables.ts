@@ -16,7 +16,7 @@ export class CreateInstanceAiObservationTables1784000000012 implements Reversibl
 			.withColumns(
 				column('id')
 					.varchar(36)
-					.primary.notNull.comment('Application-generated n8n string ID, not a database UUID'),
+					.primary.notNull.comment('Application-generated MNI string ID, not a database UUID'),
 				column('observationScopeId').uuid.notNull.comment(
 					'instance_ai_threads.id source stream for this observation log',
 				),

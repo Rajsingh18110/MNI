@@ -27,7 +27,7 @@ function isManagedEpisodicMemoryCredentialPath(path: readonly string[]): boolean
 }
 
 /**
- * Model-credential paths where the n8n Connect managed tag is a valid value.
+ * Model-credential paths where the MNI Connect managed tag is a valid value.
  * Memory worker models are ordinary chat models, so the gateway can serve them
  * just like the main and per-difficulty models.
  */
@@ -45,7 +45,7 @@ function isAiGatewayModelCredentialPath(path: readonly string[]): boolean {
 	return AI_GATEWAY_MODEL_CREDENTIAL_PATHS.has(path.join('.'));
 }
 
-/** The web-search credential can carry the n8n Connect tag for the Brave provider. */
+/** The web-search credential can carry the MNI Connect tag for the Brave provider. */
 function isAiGatewayWebSearchCredentialPath(path: readonly string[]): boolean {
 	return path.join('.') === 'config.webSearch.credential';
 }

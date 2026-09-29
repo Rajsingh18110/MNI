@@ -946,7 +946,7 @@ export class N8nMemoryImpl
 	// ── Descriptor ───────────────────────────────────────────────────────
 
 	describe(): MemoryDescriptor {
-		return { name: 'n8n', connectionParams: {}, constructorName: this.constructor.name };
+		return { name: 'MNI', connectionParams: {}, constructorName: this.constructor.name };
 	}
 
 	// ── Helpers ──────────────────────────────────────────────────────────
