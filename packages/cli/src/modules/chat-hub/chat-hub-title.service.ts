@@ -103,7 +103,7 @@ export class ChatHubTitleService {
 			);
 
 			const providerSettings =
-				resolvedModel.provider !== 'MNI' && resolvedModel.provider !== 'custom-agent'
+				resolvedModel.provider !== 'n8n' && resolvedModel.provider !== 'custom-agent'
 					? await this.chatHubSettingsService.getProviderSettings(resolvedModel.provider, trx)
 					: undefined;
 
@@ -160,7 +160,7 @@ export class ChatHubTitleService {
 		credentialId: string;
 		projectId: string;
 	}> {
-		if (model.provider === 'MNI') {
+		if (model.provider === 'n8n') {
 			return await this.resolveFromN8nWorkflow(user, model, trx);
 		}
 

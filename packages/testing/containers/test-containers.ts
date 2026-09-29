@@ -27,7 +27,7 @@ const DEFAULT_IMAGES = {
 	postgres: postgresVersions.primary,
 	redis: 'redis:alpine',
 	caddy: 'caddy:alpine',
-	MNI: 'n8nio/MNI:local',
+	n8n: 'n8nio/MNI:local',
 	taskRunner: 'n8nio/runners:local',
 	mailpit: 'axllent/mailpit:latest',
 	mockserver: 'mockserver/mockserver:5.15.0',
@@ -85,18 +85,18 @@ function getImage<K extends keyof typeof DEFAULT_IMAGES>(key: K): string {
 	const envVar = `TEST_IMAGE_${toEnvVarName(key)}`;
 	let value = process.env[envVar];
 
-	if (key === 'MNI' && !value) {
+	if (key === 'n8n' && !value) {
 		value = process.env.N8N_DOCKER_IMAGE;
 	}
 
 	if (key === 'taskRunner' && !value) {
-		resolvedN8nImage ??= getImage('MNI');
+		resolvedN8nImage ??= getImage('n8n');
 		return buildRunnersImage(parseImage(resolvedN8nImage));
 	}
 
 	value = value ?? DEFAULT_IMAGES[key];
 
-	if (key === 'MNI') {
+	if (key === 'n8n') {
 		resolvedN8nImage = normalizeN8nImage(value);
 		return resolvedN8nImage;
 	}
@@ -108,7 +108,7 @@ export const TEST_CONTAINER_IMAGES = {
 	postgres: getImage('postgres'),
 	redis: getImage('redis'),
 	caddy: getImage('caddy'),
-	MNI: getImage('MNI'),
+	n8n: getImage('n8n'),
 	taskRunner: getImage('taskRunner'),
 	mailpit: getImage('mailpit'),
 	mockserver: getImage('mockserver'),

@@ -17,7 +17,7 @@ import {
 	N8NStartupError,
 	type N8NInstancesResult,
 	type N8NStartupDiagnostics,
-} from './services/MNI';
+} from './services/n8n';
 import { helperFactories, services } from './services/registry';
 import type { TaskRunnerResult } from './services/task-runner';
 import type {

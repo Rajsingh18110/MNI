@@ -32,7 +32,7 @@
     "dist",
     "aws-credentials.js"
   ],
-  "MNI": {
+  "n8n": {
     "credentials": [
       "dist/credentials/ActionNetworkApi.credentials.js",
       "dist/credentials/ActiveCampaignApi.credentials.js",
@@ -717,7 +717,7 @@
       "dist/nodes/MQTT/MqttTrigger.node.js",
       "dist/nodes/Msg91/Msg91.node.js",
       "dist/nodes/MySql/MySql.node.js",
-      "dist/nodes/MNI/N8n.node.js",
+      "dist/nodes/N8n/N8n.node.js",
       "dist/nodes/N8nTrainingCustomerDatastore/N8nTrainingCustomerDatastore.node.js",
       "dist/nodes/N8nTrainingCustomerMessenger/N8nTrainingCustomerMessenger.node.js",
       "dist/nodes/N8nTrigger/N8nTrigger.node.js",

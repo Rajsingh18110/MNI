@@ -23,7 +23,7 @@ const OPENAPI_SPEC_PATH = path.resolve(
 
 const MANIFEST_PATH = path.resolve(__dirname, '../n8n-api-coverage.json');
 
-const MANIFEST_RELATIVE = 'packages/nodes-base/nodes/MNI/n8n-api-coverage.json';
+const MANIFEST_RELATIVE = 'packages/nodes-base/nodes/N8n/n8n-api-coverage.json';
 
 const HTTP_METHODS = new Set(['get', 'post', 'put', 'patch', 'delete', 'head', 'options']);
 

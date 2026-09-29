@@ -244,7 +244,7 @@ describe('ChatView', () => {
 						}),
 					],
 				},
-				MNI: {
+				n8n: {
 					models: [
 						createMockAgent({
 							name: 'My Workflow Agent',
@@ -761,7 +761,7 @@ describe('ChatView', () => {
 
 			vi.mocked(chatApi.fetchChatModelsApi).mockResolvedValueOnce(
 				createMockModelsResponse({
-					MNI: {
+					n8n: {
 						models: [
 							createMockAgent({
 								name: 'Prompt Agent',
@@ -794,7 +794,7 @@ describe('ChatView', () => {
 
 			vi.mocked(chatApi.fetchChatModelsApi).mockResolvedValueOnce(
 				createMockModelsResponse({
-					MNI: {
+					n8n: {
 						models: [
 							createMockAgent({
 								name: 'Multi Prompt Agent',

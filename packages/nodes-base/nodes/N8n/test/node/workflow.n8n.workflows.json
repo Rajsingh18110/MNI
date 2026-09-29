@@ -16,7 +16,7 @@
 				}
 			},
 			"id": "90a66b97-baf9-4388-aee6-ce46dfce2749",
-			"name": "MNI",
+			"name": "n8n",
 			"type": "n8n-nodes-base.n8n",
 			"typeVersion": 1,
 			"position": [900, 360],
@@ -29,7 +29,7 @@
 		}
 	],
 	"pinData": {
-		"MNI": [
+		"n8n": [
 			{
 				"json": {
 					"createdAt": "2023-02-07T10:30:32.416Z",
@@ -630,7 +630,7 @@
 			"main": [
 				[
 					{
-						"node": "MNI",
+						"node": "n8n",
 						"type": "main",
 						"index": 0
 					}

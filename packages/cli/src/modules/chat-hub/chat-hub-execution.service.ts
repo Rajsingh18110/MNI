@@ -100,9 +100,9 @@ export class ChatHubExecutionService {
 		pushRef?: string,
 	) {
 		const executionMode =
-			pushRef && model.provider === 'MNI'
+			pushRef && model.provider === 'n8n'
 				? 'manual'
-				: model.provider === 'MNI'
+				: model.provider === 'n8n'
 					? 'webhook'
 					: 'chat';
 		const { id: workflowId } = workflowData;
@@ -144,7 +144,7 @@ export class ChatHubExecutionService {
 			);
 			await this.chatStreamService.endExecution(user.id, sessionId, 'error');
 		} finally {
-			if (model.provider !== 'MNI') {
+			if (model.provider !== 'n8n') {
 				await this.chatHubWorkflowService.deleteChatWorkflow(workflowId);
 			}
 		}

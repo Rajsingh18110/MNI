@@ -405,6 +405,8 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 	async run() {
 		const { flags } = this;
 
+		console.log('TRACE: run() started');
+
 		// Load settings from database and set them to config.
 		const databaseSettings = await Container.get(SettingsRepository).findBy({
 			loadOnStartup: true,
@@ -421,7 +423,9 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 			}
 		}
 
+		console.log('TRACE: before server.start()');
 		await this.server.start();
+		console.log('TRACE: after server.start()');
 
 		Container.get(ExecutionsPruningService).init();
 		Container.get(WorkflowHistoryCompactionService).init();
@@ -436,10 +440,13 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 			const { EnqueuedExecutionRecoveryService } = await import(
 				'@/executions/enqueued-execution-recovery.service.js'
 			);
+			console.log('TRACE: before recoverEnqueuedExecutions()');
 			await Container.get(EnqueuedExecutionRecoveryService).recoverEnqueuedExecutions();
+			console.log('TRACE: after recoverEnqueuedExecutions()');
 		}
 
 		// Start to get active workflows and run their triggers
+		console.log('TRACE: before active workflows init');
 		if (this.globalConfig.workflows.useWorkflowPublicationService) {
 			const { WorkflowPublicationOutboxConsumer } = await import(
 				'@/workflows/publication/workflow-publication-outbox-consumer.js'
@@ -469,8 +476,10 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 		} else {
 			await this.activeWorkflowManager.init();
 		}
+		console.log('TRACE: after active workflows init');
 
 		Container.get(LoadNodesAndCredentials).releaseTypes();
+		console.log('TRACE: after releaseTypes');
 
 		const editorUrl = this.getEditorUrl();
 

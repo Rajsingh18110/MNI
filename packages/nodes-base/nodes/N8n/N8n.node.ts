@@ -11,18 +11,18 @@ import { searchWorkflows } from './WorkflowLocator';
  *
  * See: https://docs.n8n.io/api/api-reference/
  */
-export class MNI implements INodeType {
+export class N8n implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'MNI',
-		name: 'MNI',
-		icon: 'node:MNI',
+		name: 'n8n',
+		icon: 'node:n8n',
 		iconColor: 'pink-red',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Handle events and perform actions on your MNI instance',
 		defaults: {
-			name: 'MNI',
+			name: 'n8n',
 		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],

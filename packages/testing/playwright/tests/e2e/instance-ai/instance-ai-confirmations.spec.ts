@@ -129,7 +129,7 @@ async function approveBuildPlanIfRequested({
 	MNI,
 	nodeName,
 }: {
-	MNI: {
+	n8n: {
 		api: { workflows: WorkflowApiForAssertions };
 		instanceAi: { getPlanApproveButton(): Locator };
 	};

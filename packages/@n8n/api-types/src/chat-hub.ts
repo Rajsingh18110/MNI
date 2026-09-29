@@ -71,7 +71,7 @@ export type AgentIconOrEmoji = z.infer<typeof agentIconOrEmojiSchema>;
 
 export const chatHubProviderSchema = z.enum([
 	...chatHubLLMProviderSchema.options,
-	'MNI',
+	'n8n',
 	'custom-agent',
 ] as const);
 export type ChatHubProvider = z.infer<typeof chatHubProviderSchema>;
@@ -187,7 +187,7 @@ const nvidiaModelSchema = z.object({
 });
 
 const n8nModelSchema = z.object({
-	provider: z.literal('MNI'),
+	provider: z.literal('n8n'),
 	workflowId: z.string(),
 });
 
@@ -313,7 +313,7 @@ export const emptyChatModelsResponse: ChatModelsResponse = {
 	cohere: { models: [] },
 	mistralCloud: { models: [] },
 	nvidia: { models: [] },
-	MNI: { models: [] },
+	n8n: { models: [] },
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	'custom-agent': { models: [] },
 };

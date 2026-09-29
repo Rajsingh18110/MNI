@@ -79,7 +79,7 @@ export class ChatHubService {
 		provider: ChatHubProvider,
 		credentials: INodeCredentials,
 	): string | null {
-		if (provider === 'MNI' || provider === 'custom-agent') {
+		if (provider === 'n8n' || provider === 'custom-agent') {
 			return null;
 		}
 
@@ -124,7 +124,7 @@ export class ChatHubService {
 		const { workflow, previousMessage, message, sessionId, user, messageId, model } = opts;
 
 		if (
-			model.provider !== 'MNI' ||
+			model.provider !== 'n8n' ||
 			workflow.responseMode !== 'responseNodes' ||
 			previousMessage?.status !== 'waiting' ||
 			!previousMessage?.executionId
@@ -203,7 +203,7 @@ export class ChatHubService {
 
 	private getModelCredential(model: ChatHubConversationModel, credentials: INodeCredentials) {
 		const credentialId =
-			model.provider !== 'MNI' ? this.pickCredentialId(model.provider, credentials) : null;
+			model.provider !== 'n8n' ? this.pickCredentialId(model.provider, credentials) : null;
 
 		return credentialId;
 	}
@@ -367,7 +367,7 @@ export class ChatHubService {
 			sessionUpdates.agentId = null;
 			sessionUpdates.workflowId = null;
 
-			if (updates.agent.model.provider === 'MNI') {
+			if (updates.agent.model.provider === 'n8n') {
 				sessionUpdates.workflowId = updates.agent.model.workflowId;
 			} else if (updates.agent.model.provider === 'custom-agent') {
 				sessionUpdates.agentId = updates.agent.model.agentId;
@@ -411,7 +411,7 @@ export class ChatHubService {
 			}
 		}
 
-		if (model.provider === 'MNI') {
+		if (model.provider === 'n8n') {
 			// Find the workflow to get its name
 			const workflowEntity = await this.workflowFinderService.findWorkflowForUser(
 				model.workflowId,
@@ -619,7 +619,7 @@ export class ChatHubService {
 		} = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'MNI') {
+		if (model.provider !== 'n8n') {
 			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
@@ -901,7 +901,7 @@ export class ChatHubService {
 		const { sessionId, editId, messageId, message, model, credentials, timeZone } = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'MNI') {
+		if (model.provider !== 'n8n') {
 			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
@@ -1136,7 +1136,7 @@ export class ChatHubService {
 		const { sessionId, retryId, model, credentials, timeZone } = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'MNI') {
+		if (model.provider !== 'n8n') {
 			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 

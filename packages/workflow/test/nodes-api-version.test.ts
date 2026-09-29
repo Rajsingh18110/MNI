@@ -1,11 +1,11 @@
 import { N8N_NODES_API_VERSION, checkNodesApiVersion } from '../src/nodes-api-version';
 
 const pkg = (n8nNodesApiVersion?: unknown) => ({
-	MNI: n8nNodesApiVersion === undefined ? {} : { n8nNodesApiVersion },
+	n8n: n8nNodesApiVersion === undefined ? {} : { n8nNodesApiVersion },
 });
 
 describe('checkNodesApiVersion', () => {
-	it('treats a missing MNI section as legacy level 1', () => {
+	it('treats a missing n8n section as legacy level 1', () => {
 		expect(checkNodesApiVersion({})).toEqual({ compatible: true, version: 1 });
 	});
 

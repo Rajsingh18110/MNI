@@ -27,7 +27,7 @@ describe('cloud-support command', () => {
 	describe('status', () => {
 		tmpdirTest('shows enabled status when strict mode and default config', async ({ tmpdir }) => {
 			await setupTestPackage(tmpdir, {
-				packageJson: { MNI: { strict: true } },
+				packageJson: { n8n: { strict: true } },
 				eslintConfig: true,
 			});
 
@@ -38,7 +38,7 @@ describe('cloud-support command', () => {
 
 		tmpdirTest('shows disabled status when not strict mode', async ({ tmpdir }) => {
 			await setupTestPackage(tmpdir, {
-				packageJson: { MNI: { strict: false } },
+				packageJson: { n8n: { strict: false } },
 				eslintConfig: true,
 			});
 
@@ -51,7 +51,7 @@ describe('cloud-support command', () => {
 	describe('disable', () => {
 		tmpdirTest('updates config when user confirms', async ({ tmpdir }) => {
 			await setupTestPackage(tmpdir, {
-				packageJson: { MNI: { strict: true } },
+				packageJson: { n8n: { strict: true } },
 				eslintConfig: true,
 			});
 
@@ -79,7 +79,7 @@ describe('cloud-support command', () => {
 
 		tmpdirTest('does not update config when user cancels', async ({ tmpdir }) => {
 			await setupTestPackage(tmpdir, {
-				packageJson: { MNI: { strict: true } },
+				packageJson: { n8n: { strict: true } },
 				eslintConfig: true,
 			});
 
@@ -101,7 +101,7 @@ describe('cloud-support command', () => {
 
 		tmpdirTest('does not update config when user declines', async ({ tmpdir }) => {
 			await setupTestPackage(tmpdir, {
-				packageJson: { MNI: { strict: true } },
+				packageJson: { n8n: { strict: true } },
 				eslintConfig: true,
 			});
 

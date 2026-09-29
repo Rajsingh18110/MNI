@@ -255,7 +255,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 		});
 
 		const updateToIncompatible = async (n8nNodesApiVersion: unknown) => {
-			downloadedPackageJson = { name: PACKAGE_NAME, version: '2.0.0', MNI: { n8nNodesApiVersion } };
+			downloadedPackageJson = { name: PACKAGE_NAME, version: '2.0.0', n8n: { n8nNodesApiVersion } };
 			return await communityPackagesService.updatePackage(
 				PACKAGE_NAME,
 				mock<InstalledPackages>({ packageName: PACKAGE_NAME, installedVersion: '1.0.0' }),
@@ -314,7 +314,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 				downloadedPackageJson = {
 					name: PACKAGE_NAME,
 					version: '2.0.0',
-					MNI: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
 				};
 
 				await expect(communityPackagesService.installPackage(PACKAGE_NAME)).rejects.toThrow(
@@ -334,7 +334,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 				downloadedPackageJson = {
 					name: PACKAGE_NAME,
 					version: '2.0.0',
-					MNI: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
 				};
 				// The follower resolves the version to install from the leader's database record.
 				installedPackageRepository.findOne.mockResolvedValue(

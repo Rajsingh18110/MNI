@@ -111,7 +111,7 @@ describe('lint command', () => {
 
 	tmpdirTest('strict mode with default config - passes validation', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
-			packageJson: { MNI: { strict: true } },
+			packageJson: { n8n: { strict: true } },
 			eslintConfig: true,
 		});
 
@@ -163,7 +163,7 @@ describe('lint command', () => {
 
 	tmpdirTest('strict mode with modified config - fails validation', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
-			packageJson: { MNI: { strict: true } },
+			packageJson: { n8n: { strict: true } },
 			eslintConfig:
 				"import { config } from '@n8n/node-cli/eslint';\n\n// Custom modification\nexport default config;\n",
 		});
@@ -181,7 +181,7 @@ describe('lint command', () => {
 
 	tmpdirTest('strict mode with missing config - fails validation', async ({ tmpdir }) => {
 		await setupTestPackage(tmpdir, {
-			packageJson: { MNI: { strict: true } },
+			packageJson: { n8n: { strict: true } },
 		});
 
 		await fs.writeFile(`${tmpdir}/pnpm-lock.yaml`, 'lockfileVersion: 5.4\n');

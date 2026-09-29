@@ -344,7 +344,7 @@ export class ChatHubWorkflowService {
 		trx: EntityManager,
 		manual?: boolean,
 	): Promise<{ allowFileUploads: boolean; allowedFilesMimeTypes: string }> {
-		if (model.provider === 'MNI') {
+		if (model.provider === 'n8n') {
 			const workflow = await this.workflowFinderService.findWorkflowForUser(
 				model.workflowId,
 				user,
@@ -763,7 +763,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 				options: {
 					enableStreaming,
 					maxTokensFromMemory:
-						model.provider !== 'MNI' && model.provider !== 'custom-agent'
+						model.provider !== 'n8n' && model.provider !== 'custom-agent'
 							? getMaxContextWindowTokens(model.provider, model.model)
 							: undefined,
 					systemMessage,
@@ -782,7 +782,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 		conversationModel: ChatHubConversationModel,
 		providerSettings?: ChatProviderSettingsDto,
 	): INode {
-		if (conversationModel.provider === 'MNI' || conversationModel.provider === 'custom-agent') {
+		if (conversationModel.provider === 'n8n' || conversationModel.provider === 'custom-agent') {
 			throw new OperationalError('Custom agent workflows do not require a model node');
 		}
 
@@ -1267,7 +1267,7 @@ Respond the title only:`,
 		executionMetadata: ChatHubAuthenticationMetadata,
 		manual?: boolean,
 	): Promise<PreparedChatWorkflow> {
-		if (model.provider === 'MNI') {
+		if (model.provider === 'n8n') {
 			return await this.prepareWorkflowAgentWorkflow(
 				user,
 				sessionId,

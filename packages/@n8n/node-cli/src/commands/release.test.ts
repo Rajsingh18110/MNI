@@ -41,7 +41,7 @@ describe('release command', () => {
 			JSON.stringify({
 				name: 'test-node',
 				version: '1.0.0',
-				MNI: {
+				n8n: {
 					nodes: ['dist/nodes/TestNode.node.js'],
 				},
 			}),
@@ -61,7 +61,7 @@ describe('release command', () => {
 			JSON.stringify({
 				name: 'test-node',
 				version: '1.0.0',
-				MNI: {
+				n8n: {
 					nodes: ['dist/nodes/TestNode.node.js'],
 				},
 			}),
@@ -81,7 +81,7 @@ describe('release command', () => {
 			JSON.stringify({
 				name: 'test-node',
 				version: '1.0.0',
-				MNI: {
+				n8n: {
 					nodes: ['dist/nodes/TestNode.node.js'],
 				},
 			}),
@@ -103,7 +103,7 @@ describe('release command', () => {
 			JSON.stringify({
 				name: 'test-node',
 				version: '1.0.0',
-				MNI: {
+				n8n: {
 					nodes: ['dist/nodes/TestNode.node.js'],
 				},
 			}),
@@ -179,7 +179,7 @@ describe('release command', () => {
 			JSON.stringify({
 				name: 'test-node',
 				version: '1.0.0',
-				MNI: {
+				n8n: {
 					nodes: ['dist/nodes/TestNode.node.js'],
 				},
 			}),

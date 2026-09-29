@@ -503,7 +503,7 @@ test('security test', async ({ MNI }) => {
 			project.createSourceFile(
 				'/test-root/fixtures/base.ts',
 				`
-export const test = { MNI: {} };
+export const test = { n8n: {} };
 `,
 			);
 

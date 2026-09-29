@@ -33,8 +33,8 @@ describe('scanDirectoryForPackages', () => {
 			? JSON.stringify({ name: '@elevenlabs/n8n-nodes-elevenlabs', version: '1.0.0' })
 			: JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2' });
 
-	const firecrawlPackageJson = (MNI?: object) =>
-		JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2', ...{ MNI } });
+	const firecrawlPackageJson = (n8n?: object) =>
+		JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2', ...{ n8n } });
 
 	const enoent = (file: string): NodeJS.ErrnoException => {
 		const error: NodeJS.ErrnoException = new Error(

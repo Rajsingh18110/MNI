@@ -26,12 +26,12 @@ describe('scanDirectoryForPackages (real filesystem)', () => {
 		rmSync(nodeModulesDir, { recursive: true, force: true });
 	});
 
-	const writePackage = (name: string, MNI?: object) => {
+	const writePackage = (name: string, n8n?: object) => {
 		const dir = path.join(nodeModulesDir, name);
 		mkdirSync(dir);
 		writeFileSync(
 			path.join(dir, 'package.json'),
-			JSON.stringify({ name, version: '1.0.0', ...(MNI ? { MNI } : {}) }),
+			JSON.stringify({ name, version: '1.0.0', ...(n8n ? { n8n } : {}) }),
 		);
 		return dir;
 	};

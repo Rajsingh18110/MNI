@@ -82,7 +82,7 @@ describe('DatabricksTrigger', () => {
 	it('should be registered in the package manifest', () => {
 		const manifest = JSON.parse(
 			readFileSync(resolve(__dirname, '../../../package.json'), 'utf8'),
-		) as { MNI: { nodes: string[] } };
+		) as { n8n: { nodes: string[] } };
 
 		expect(manifest.n8n.nodes).toContain('dist/nodes/Databricks/DatabricksTrigger.node.js');
 	});

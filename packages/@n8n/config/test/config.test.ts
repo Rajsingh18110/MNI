@@ -308,6 +308,9 @@ describe('GlobalConfig', () => {
 			webhookTest: 'webhook-test',
 			webhookWaiting: 'webhook-waiting',
 			health: '/healthz',
+			documentationUrl: 'https://docs.n8n.io',
+			communityUrl: 'https://community.n8n.io',
+			supportUrl: 'https://n8n.io/support',
 		},
 		cache: {
 			backend: 'auto',

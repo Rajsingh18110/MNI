@@ -58,6 +58,8 @@ export class LoadNodesAndCredentials {
 	// actual file, or the lazy loaded json
 	types: Types = { nodes: [], credentials: [] };
 
+	private typesLoaded = false;
+
 	loaders: Record<string, NodeLoader> = {};
 
 	excludeNodes = this.globalConfig.nodes.exclude;
@@ -142,6 +144,7 @@ export class LoadNodesAndCredentials {
 
 	releaseTypes() {
 		this.types = { nodes: [], credentials: [] };
+		this.typesLoaded = false;
 		for (const loader of Object.values(this.loaders)) {
 			loader.releaseTypes();
 		}
@@ -157,7 +160,7 @@ export class LoadNodesAndCredentials {
 	 * service or the frontend service writing static JSON files).
 	 */
 	async collectTypes(): Promise<Types> {
-		const needsReload = this.types.nodes.length === 0 && this.types.credentials.length === 0;
+		const needsReload = !this.typesLoaded;
 		if (needsReload) {
 			await this.postProcessLoaders();
 		}
@@ -627,6 +630,7 @@ export class LoadNodesAndCredentials {
 		this.known = known;
 		this.loaded = loaded;
 		this.types = types;
+		this.typesLoaded = true;
 
 		createAiTools(this.types, this.known);
 		createHitlTools(this.types, this.known);
